@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoAtlas Interactive - Kỹ Năng Atlat, Nhận Dạng Biểu Đồ & Máy Tính Địa Lý THPT</title>
+
+  <!-- Google Fonts: Be Vietnam Pro & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Apache ECharts CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body class="h-full lg:h-screen lg:overflow-hidden flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased select-none">
+
+  <!-- ====================================================================== -->
+  <!-- TOP HEADER (HEIGHT: 64px / h-16, FIXED & Z-INDEX: 2000)                -->
+  <!-- ====================================================================== -->
+  <header class="h-16 shrink-0 app-header bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 flex items-center justify-between shadow-xs">
+    
+    <!-- Brand Identity -->
+    <div class="flex items-center space-x-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-lg font-bold shadow-sm ring-2 ring-blue-500/20">
+        🌏
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <span class="font-bold text-sm sm:text-base tracking-tight text-slate-900 dark:text-white">
+            GeoAtlas Interactive
+          </span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300 border border-blue-200 dark:border-blue-900">
+            THPT 2024
+          </span>
+        </div>
+        <p class="text-[11px] text-slate-500 hidden sm:block">Kỹ năng Atlat &bull; Nhận dạng Biểu đồ &bull; Máy tính Địa lý</p>
+      </div>
+    </div>
+
+    <!-- Center: 3 Segmented Pill Controls -->
+    <nav class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 shadow-inner">
+      <button 
+        data-tab-target="mode-atlas" 
+        class="mode-nav-btn segmented-pill-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 bg-blue-600 text-white shadow-xs"
+      >
+        <span>🗺️</span>
+        <span class="hidden md:inline">1. Atlas Số Thông Minh</span>
+        <span class="md:hidden">Atlas</span>
+      </button>
+
+      <button 
+        data-tab-target="mode-charts" 
+        class="mode-nav-btn segmented-pill-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+      >
+        <span>📊</span>
+        <span class="hidden md:inline">2. Nhận Dạng Biểu Đồ</span>
+        <span class="md:hidden">Biểu Đồ</span>
+      </button>
+
+      <button 
+        data-tab-target="mode-calc" 
+        class="mode-nav-btn segmented-pill-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+      >
+        <span>🧮</span>
+        <span class="hidden md:inline">3. Máy Tính & Công Thức</span>
+        <span class="md:hidden">Máy Tính</span>
+      </button>
+    </nav>
+
+    <!-- Right: National Sovereignty Tag & Theme Toggle -->
+    <div class="flex items-center space-x-2.5">
+      <div class="hidden xl:flex items-center space-x-1.5 text-xs px-3 py-1.5 rounded-full bg-red-50 text-red-700 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900 font-semibold shadow-xs">
+        <span>🇻🇳</span>
+        <span>Hoàng Sa & Trường Sa: Chủ quyền Việt Nam</span>
+      </div>
+
+      <button 
+        id="theme-toggle-btn"
+        title="Chuyển chế độ Sáng / Tối"
+        class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs shadow-xs transition"
+      >
+        <span class="dark:hidden">🌙</span>
+        <span class="hidden dark:inline">☀️</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ====================================================================== -->
+  <!-- MAIN WORKSPACE: VIEWPORT LOCK (100vh - 64px)                           -->
+  <!-- ====================================================================== -->
+  <main class="flex-1 lg:h-[calc(100vh-4rem)] relative overflow-hidden bg-slate-50 dark:bg-slate-950">
+
+    <!-- ==================================================================== -->
+    <!-- PHÂN HỆ 1: ATLAS SỐ THÔNG MINH (GRID 12 CỘT: 7 TRÁI / 5 PHẢI)         -->
+    <!-- ==================================================================== -->
+    <div id="mode-atlas" class="mode-view grid grid-cols-12 gap-4 p-4 h-full">
+      <!-- Khung Trái (7 Cột): Bản đồ Leaflet chuẩn GIS -->
+      <div class="col-span-12 lg:col-span-7 h-full min-h-[420px] rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
+        <div id="atlas-map-container" class="w-full h-full relative">
+          <div id="atlas-map" class="w-full h-full"></div>
+          
+          <!-- Tọa độ con trỏ chuột thời gian thực -->
+          <div class="absolute bottom-3 right-3 floating-map-ctrl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2.5 py-1.5 rounded-lg text-[11px] font-mono text-slate-600 dark:text-slate-300 shadow-sm border border-slate-200 dark:border-slate-700 pointer-events-none">
+            📍 Tọa độ: <span id="cursor-coords" class="font-bold text-blue-600 dark:text-blue-400">16.0000°B, 107.5000°Đ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Khung Phải (5 Cột): Bảng điều khiển bộ lọc & Tra cứu Atlat -->
+      <div class="col-span-12 lg:col-span-5 h-full overflow-y-auto pr-1 space-y-4">
+        
+        <!-- Thanh tìm kiếm thông minh -->
+        <div class="bg-white dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+          <div class="flex items-center space-x-2">
+            <div class="relative flex-1">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400 text-xs">🔍</span>
+              <input 
+                type="text" 
+                id="atlas-search-input" 
+                placeholder="Tìm tỉnh, than Cẩm Phả, thủy điện Hòa Bình..." 
+                class="w-full pl-8 pr-3 py-2 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <button id="atlas-search-btn" class="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs transition">
+              Tìm
+            </button>
+            <button onclick="AtlasEngine.resetView()" title="Toàn cảnh Việt Nam" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 text-xs shadow-xs">
+              🧭
+            </button>
+          </div>
+        </div>
+
+        <!-- Bộ Lọc Layer Độc Lập & Thanh Trượt Độ Mờ (Opacity) -->
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3.5">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Các Lớp Chuyên Đề Atlat</span>
+            <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded-full">Chuẩn SGK THPT</span>
+          </div>
+
+          <!-- Lớp 1: Ranh giới & 7 Vùng -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
+                <input type="checkbox" id="layer-chk-provinces" checked onchange="AtlasEngine.toggleLayer('provinces', this.checked)" class="rounded text-blue-600 focus:ring-blue-500">
+                <span>Ranh giới & 7 Vùng Kinh Tế</span>
+              </label>
+              <span class="text-[10px] font-medium text-slate-400">Trang 4-5</span>
+            </div>
+            <!-- Thanh trượt Opacity -->
+            <div class="flex items-center space-x-2 pt-0.5">
+              <span class="text-[10px] text-slate-500 w-16">Độ mờ nền:</span>
+              <input 
+                type="range" 
+                min="0.05" 
+                max="0.85" 
+                step="0.05" 
+                value="0.35" 
+                id="opacity-slider" 
+                oninput="AtlasEngine.setProvincesOpacity(this.value)"
+                class="flex-1 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+            </div>
+            <select onchange="AtlasEngine.renderProvinces(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <option value="all">-- Lọc theo Vùng Kinh Tế (Tất cả 7 vùng) --</option>
+              <option value="Đồng bằng sông Hồng">1. Đồng bằng sông Hồng</option>
+              <option value="Trung du và miền núi Bắc Bộ">2. Trung du & Miền núi Bắc Bộ</option>
+              <option value="Bắc Trung Bộ">3. Bắc Trung Bộ</option>
+              <option value="Duyên hải Nam Trung Bộ">4. Duyên hải Nam Trung Bộ</option>
+              <option value="Tây Nguyên">5. Tây Nguyên</option>
+              <option value="Đông Nam Bộ">6. Đông Nam Bộ</option>
+              <option value="Đồng bằng sông Cửu Long">7. Đồng bằng sông Cửu Long</option>
+            </select>
+          </div>
+
+          <!-- Lớp 2: Khoáng sản Trang 8 -->
+          <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
+                <input type="checkbox" id="layer-chk-minerals" onchange="AtlasEngine.toggleLayer('minerals', this.checked)" class="rounded text-amber-600 focus:ring-amber-500">
+                <span>Khoáng Sản (Atlat Trang 8)</span>
+              </label>
+              <span class="text-[10px] font-semibold text-amber-600 dark:text-amber-400">Ký hiệu SVG Chuẩn</span>
+            </div>
+            <select onchange="AtlasEngine.renderMinerals(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
+              <option value="all">-- Tất cả nhóm khoáng sản --</option>
+              <option value="Nhiên liệu">Nhiên liệu (Than, Dầu mỏ, Khí đốt)</option>
+              <option value="Kim loại">Kim loại (Sắt, Bô-xít, Thiếc, Crôm)</option>
+              <option value="Phi kim loại">Phi kim loại (Apatit Cam Đường)</option>
+            </select>
+          </div>
+
+          <!-- Lớp 3: Năng lượng Trang 22 -->
+          <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
+                <input type="checkbox" id="layer-chk-power" onchange="AtlasEngine.toggleLayer('power', this.checked)" class="rounded text-blue-600 focus:ring-blue-500">
+                <span>Năng Lượng (Atlat Trang 22)</span>
+              </label>
+              <span class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold">Nhà máy điện & công suất</span>
+            </div>
+            <select onchange="AtlasEngine.renderPower(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
+              <option value="all">-- Tất cả nhà máy phát điện --</option>
+              <option value="Thủy điện">Nhà máy Thủy điện (Hòa Bình, Sơn La, Yaly...)</option>
+              <option value="Nhiệt điện">Nhà máy Nhiệt điện (Phú Mỹ, Cà Mau, Phả Lại...)</option>
+            </select>
+          </div>
+
+          <!-- Lớp 4: 15 Trung tâm Công nghiệp Trang 21 (SVG Pie Markers) -->
+          <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
+                <input type="checkbox" id="layer-chk-industrial" onchange="AtlasEngine.toggleLayer('industrial', this.checked)" class="rounded text-purple-600 focus:ring-purple-500">
+                <span>15 Trung Tâm CN (Atlat Trang 21)</span>
+              </label>
+              <span class="text-[10px] font-semibold text-purple-600 dark:text-purple-400">Pie Markers động</span>
+            </div>
+            <select onchange="AtlasEngine.renderIndustrialCenters(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
+              <option value="all">-- Phân cấp quy mô sản xuất --</option>
+              <option value="very_large">Rất lớn: TP.HCM, Hà Nội</option>
+              <option value="large">Lớn: Hải Phòng, Biên Hòa, Vũng Tàu, Đà Nẵng</option>
+              <option value="medium">Vừa: Cần Thơ, Nha Trang, Huế, Vinh...</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Thông tin chi tiết & Tham chiếu số trang Atlat -->
+        <div id="atlas-info-card" class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-4 text-xs">
+          <div class="text-center text-slate-400 py-3">
+            Bấm vào bất kỳ tỉnh thành, mỏ khoáng sản hoặc trung tâm công nghiệp trên bản đồ để xem chi tiết.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- PHÂN HỆ 2: NHẬN DẠNG BIỂU ĐỒ (GRID 12 CỘT: 7 TRÁI / 5 PHẢI)          -->
+    <!-- ==================================================================== -->
+    <div id="mode-charts" class="mode-view hidden grid grid-cols-12 gap-4 p-4 h-full">
+      <!-- Khung Trái (7 Cột): Khung trực quan hóa Apache ECharts -->
+      <div class="col-span-12 lg:col-span-7 h-full min-h-[420px] rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 p-4 flex flex-col">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 shrink-0">
+          <div class="flex items-center space-x-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+              Khung Trực Quan Hóa (Apache ECharts)
+            </span>
+            <span class="text-[10px] text-slate-400 font-medium">Tự động co giãn Responsive</span>
+          </div>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">Quan sát dạng hình học & tỉ lệ thang đo</span>
+        </div>
+        <!-- Vùng vẽ biểu đồ ECharts -->
+        <div id="chart-visual-canvas" class="flex-1 w-full min-h-[350px] mt-2"></div>
+      </div>
+
+      <!-- Khung Phải (5 Cột): Bảng điều khiển bóc tách, đề bài & 5 nút Thử & Sai -->
+      <div class="col-span-12 lg:col-span-5 h-full overflow-y-auto pr-1" id="chart-control-panel">
+        <!-- Rendered by js/chart-trainer.js -->
+      </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- PHÂN HỆ 3: MÁY TÍNH & CÔNG THỨC ĐỊA LÝ (GRID 12 CỘT: 7 TRÁI / 5 PHẢI) -->
+    <!-- ==================================================================== -->
+    <div id="mode-calc" class="mode-view hidden grid grid-cols-12 gap-4 p-4 h-full">
+      <!-- Khung Trái (7 Cột): Bảng số liệu mẫu Click-to-Bind & Công thức KaTeX -->
+      <div class="col-span-12 lg:col-span-7 h-full min-h-[420px] rounded-xl overflow-y-auto relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 p-5 space-y-4">
+        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+          <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Mô Hình Toán Học Chuẩn Sư Phạm</span>
+          <div id="calc-katex-formula" class="katex-formula-box text-sm sm:text-base py-1"></div>
+        </div>
+
+        <!-- Bảng số liệu mẫu có cơ chế Click-to-Bind -->
+        <div id="calc-table-display"></div>
+      </div>
+
+      <!-- Khung Phải (5 Cột): Bộ chọn công thức, Unit Normalizer & Lời giải từng bước -->
+      <div class="col-span-12 lg:col-span-5 h-full overflow-y-auto pr-1 space-y-4">
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-1.5">
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">Chọn 1 trong 6 công thức trọng tâm THPT:</label>
+          <select id="calc-formula-select" class="w-full p-2.5 text-xs font-bold rounded-xl border border-blue-300 dark:border-blue-700 bg-blue-50/50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <!-- Populated by geo-calculator.js -->
+          </select>
+        </div>
+
+        <!-- Các ô nhập liệu có Unit Normalizer -->
+        <div id="calc-inputs-container" class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3"></div>
+
+        <!-- Kết quả tính toán & Các bước giải KaTeX với hệ số nhân rõ ràng -->
+        <div id="calc-result-display"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Core JavaScript Modules (Fallback Store first) -->
+  <script src="./js/fallback-store.js"></script>
+  <script src="./js/atlas-engine.js"></script>
+  <script src="./js/chart-trainer.js"></script>
+  <script src="./js/geo-calculator.js"></script>
+  <script src="./js/app.js"></script>
+
+</body>
+</html>

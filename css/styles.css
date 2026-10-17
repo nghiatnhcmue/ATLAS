@@ -1,0 +1,314 @@
+/* ==========================================================================
+   GeoAtlas Interactive - Design System & Stylesheet (WCAG AAA & EdTech)
+   Typography: 'Be Vietnam Pro' & 'JetBrains Mono'
+   Surfaces: Modern Slate (#F8FAFC) & Card (#FFFFFF) with 1px border (#E2E8F0)
+   Viewport Lock: lg:h-screen lg:overflow-hidden
+   Z-Index Hierarchy: Map (10), Floating Tools (1000), Header/Modals/Toasts (2000)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-sans: 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --color-app-bg: #F8FAFC;
+  --color-card-bg: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-text-main: #0F172A;
+  --color-text-body: #334155;
+  --color-text-muted: #64748B;
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+}
+
+/* Base Setup */
+html, body {
+  height: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--color-app-bg);
+  color: var(--color-text-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular numbers for all tables and metric values */
+table, .tabular-nums, font-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   SLEEK CUSTOM SCROLLBARS (Width: 6px)
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ==========================================================================
+   Z-INDEX HIERARCHY & LEAFLET ISOLATION
+   ========================================================================== */
+#atlas-map-container {
+  isolation: isolate;
+  position: relative;
+  z-index: 10;
+}
+
+#atlas-map, #map, .leaflet-container {
+  width: 100%;
+  height: 100%;
+  background-color: #dbeafe !important; /* Bản vá 4.1: Nền biển xanh nhạt chuẩn giấy Atlat khi offline/chậm */
+}
+
+.dark #atlas-map, .dark #map, .dark .leaflet-container {
+  background-color: #0c1e3d !important; /* Nền biển sâu cho Dark Mode */
+}
+
+/* Bản vá 4.2: Chú giải Động (Dynamic Legend) ở góc dưới bên trái */
+#atlas-dynamic-legend {
+  z-index: 900 !important;
+  pointer-events: auto;
+}
+
+/* Floating controls on map */
+.floating-map-ctrl {
+  z-index: 1000 !important;
+  pointer-events: auto;
+}
+
+/* Top Header, Modal, and Toasts */
+.app-header {
+  z-index: 2000 !important;
+}
+.app-modal, .app-toast {
+  z-index: 2000 !important;
+}
+
+/* ==========================================================================
+   MAP LABELS, POPUPS & SOVEREIGNTY DEMARCATION
+   ========================================================================== */
+
+/* Sovereignty pill for Hoang Sa & Truong Sa */
+.sovereignty-pill {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  color: #1E3A8A;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  transition: all 0.2s ease;
+}
+
+.sovereignty-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(30, 58, 138, 0.15);
+  background: #ffffff;
+}
+
+.dark .sovereignty-pill {
+  background: rgba(15, 23, 42, 0.92);
+  color: #93C5FD;
+  border-color: rgba(51, 65, 85, 0.9);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* Decluttered Map Label Tooltip (Hover / Zoom >= 8) */
+.map-label-tooltip {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 3px 8px !important;
+  white-space: nowrap !important;
+}
+
+.map-label-tooltip:before {
+  border-top-color: #ffffff !important;
+}
+
+.dark .map-label-tooltip {
+  background: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+.dark .map-label-tooltip:before {
+  border-top-color: #1e293b !important;
+}
+
+/* Leaflet Popup Content Styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.dark .leaflet-popup-content-wrapper {
+  background: #1e293b;
+  color: #f1f5f9;
+  border-color: #334155;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  line-height: 1.5;
+  font-family: var(--font-sans);
+}
+
+.leaflet-popup-tip {
+  background: #ffffff;
+}
+.dark .leaflet-popup-tip {
+  background: #1e293b;
+}
+
+/* ==========================================================================
+   CLEAN VECTOR SVG ICONS (Atlat Trang 8, 21, 22)
+   White outline: stroke: #FFFFFF; stroke-width: 1.5px;
+   Filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
+   ========================================================================== */
+.atlat-vector-icon {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.28));
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.atlat-vector-icon:hover {
+  transform: scale(1.25);
+  z-index: 999;
+}
+
+/* SVG Pie Marker for Industrial Centers */
+.pie-marker-wrapper {
+  cursor: pointer;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.22));
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pie-marker-wrapper:hover {
+  transform: scale(1.28);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+  z-index: 9999 !important;
+}
+
+/* ==========================================================================
+   SEMANTIC PEDAGOGICAL CARDS (WCAG AAA)
+   - Optimal: #ECFDF5 / #10B981 / #065F46
+   - Warning/Trap: #FFFBEB / #F59E0B / #92400E
+   - Incorrect/Critique: #FEF2F2 / #EF4444 / #991B1B
+   ========================================================================== */
+.card-pedagogical-optimal {
+  background-color: #ECFDF5;
+  border: 1px solid #10B981;
+  color: #065F46;
+}
+
+.card-pedagogical-warning {
+  background-color: #FFFBEB;
+  border: 1px solid #F59E0B;
+  color: #92400E;
+}
+
+.card-pedagogical-critique {
+  background-color: #FEF2F2;
+  border: 1px solid #EF4444;
+  color: #991B1B;
+}
+
+.dark .card-pedagogical-optimal {
+  background-color: rgba(6, 95, 70, 0.2);
+  border-color: #10B981;
+  color: #6EE7B7;
+}
+
+.dark .card-pedagogical-warning {
+  background-color: rgba(146, 64, 14, 0.2);
+  border-color: #F59E0B;
+  color: #FCD34D;
+}
+
+.dark .card-pedagogical-critique {
+  background-color: rgba(153, 27, 27, 0.2);
+  border-color: #EF4444;
+  color: #FCA5A5;
+}
+
+/* Keyword Highlighting Toggle */
+.keyword-highlight {
+  background: #FEF08A;
+  color: #854D0E;
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.dark .keyword-highlight {
+  background: #713F12;
+  color: #FEF08A;
+}
+
+/* Click-to-bind table cells */
+.click-to-bind {
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.click-to-bind:hover {
+  background-color: #DBEAFE !important;
+  color: #1D4ED8 !important;
+  font-weight: 700;
+}
+
+.dark .click-to-bind:hover {
+  background-color: #1E3A8A !important;
+  color: #93C5FD !important;
+}
+
+/* KaTeX formula box */
+.katex-formula-box {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.75rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex-display {
+  margin: 0.25rem 0 !important;
+}
+
+/* Segmented Pill Navigation */
+.segmented-pill-btn {
+  transition: all 0.18s ease;
+}

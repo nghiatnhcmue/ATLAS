@@ -1,0 +1,303 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Lớp Công nghiệp Năng lượng (Atlat Trang 22)",
+    "count": 14
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_01",
+        "name": "Thủy điện Sơn La",
+        "type": "Thủy điện",
+        "plant_type": "Thủy điện",
+        "symbol_type": "star_blue",
+        "capacity_mw": 2400,
+        "river_fuel": "Sông Đà",
+        "province": "Sơn La",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.99,
+          21.49
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_02",
+        "name": "Thủy điện Hòa Bình",
+        "type": "Thủy điện",
+        "plant_type": "Thủy điện",
+        "symbol_type": "star_blue",
+        "capacity_mw": 1920,
+        "river_fuel": "Sông Đà",
+        "province": "Hòa Bình",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.32,
+          20.81
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_03",
+        "name": "Thủy điện Lai Châu",
+        "type": "Thủy điện",
+        "plant_type": "Thủy điện",
+        "symbol_type": "star_blue",
+        "capacity_mw": 1200,
+        "river_fuel": "Sông Đà",
+        "province": "Lai Châu",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.98,
+          22.13
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_04",
+        "name": "Thủy điện Yaly",
+        "type": "Thủy điện",
+        "plant_type": "Thủy điện",
+        "symbol_type": "star_blue",
+        "capacity_mw": 720,
+        "river_fuel": "Sông Sê San",
+        "province": "Gia Lai",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.82,
+          14.23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_05",
+        "name": "Thủy điện Trị An",
+        "type": "Thủy điện",
+        "plant_type": "Thủy điện",
+        "symbol_type": "star_blue",
+        "capacity_mw": 400,
+        "river_fuel": "Sông Đồng Nai",
+        "province": "Đồng Nai",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.03,
+          11.09
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_06",
+        "name": "Thủy điện Tuyên Quang",
+        "type": "Thủy điện",
+        "plant_type": "Thủy điện",
+        "symbol_type": "star_blue",
+        "capacity_mw": 342,
+        "river_fuel": "Sông Gâm",
+        "province": "Tuyên Quang",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.39,
+          22.35
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_07",
+        "name": "Thủy điện Đa Nhim",
+        "type": "Thủy điện",
+        "plant_type": "Thủy điện",
+        "symbol_type": "star_blue",
+        "capacity_mw": 160,
+        "river_fuel": "Sông Đa Nhim",
+        "province": "Lâm Đồng",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.65,
+          11.83
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_08",
+        "name": "Thủy điện Hàm Thuận - Đa Mi",
+        "type": "Thủy điện",
+        "plant_type": "Thủy điện",
+        "symbol_type": "star_blue",
+        "capacity_mw": 475,
+        "river_fuel": "Sông La Ngà",
+        "province": "Bình Thuận",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.92,
+          11.33
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_09",
+        "name": "Nhiệt điện Phú Mỹ",
+        "type": "Nhiệt điện khí",
+        "plant_type": "Nhiệt điện",
+        "symbol_type": "star_red",
+        "capacity_mw": 3900,
+        "river_fuel": "Khí Nam Côn Sơn",
+        "province": "Bà Rịa - Vũng Tàu",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.03,
+          10.6
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_10",
+        "name": "Nhiệt điện Cà Mau",
+        "type": "Nhiệt điện khí",
+        "plant_type": "Nhiệt điện",
+        "symbol_type": "star_red",
+        "capacity_mw": 1500,
+        "river_fuel": "Khí PM3",
+        "province": "Cà Mau",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.08,
+          9.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_11",
+        "name": "Nhiệt điện Vĩnh Tân",
+        "type": "Nhiệt điện than",
+        "plant_type": "Nhiệt điện",
+        "symbol_type": "star_red",
+        "capacity_mw": 4244,
+        "river_fuel": "Than",
+        "province": "Bình Thuận",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.8,
+          11.31
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_12",
+        "name": "Nhiệt điện Duyên Hải",
+        "type": "Nhiệt điện than",
+        "plant_type": "Nhiệt điện",
+        "symbol_type": "star_red",
+        "capacity_mw": 3178,
+        "river_fuel": "Than",
+        "province": "Trà Vinh",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.51,
+          9.58
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_13",
+        "name": "Nhiệt điện Phả Lại",
+        "type": "Nhiệt điện than",
+        "plant_type": "Nhiệt điện",
+        "symbol_type": "star_red",
+        "capacity_mw": 1040,
+        "river_fuel": "Than",
+        "province": "Hải Dương",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.31,
+          21.11
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_14",
+        "name": "Nhiệt điện Uông Bí",
+        "type": "Nhiệt điện than",
+        "plant_type": "Nhiệt điện",
+        "symbol_type": "star_red",
+        "capacity_mw": 630,
+        "river_fuel": "Than",
+        "province": "Quảng Ninh",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.77,
+          21.03
+        ]
+      }
+    }
+  ]
+}

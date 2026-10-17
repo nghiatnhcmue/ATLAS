@@ -1,0 +1,714 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "15 Trung tâm Công nghiệp Việt Nam (Atlat Trang 21)",
+    "count": 15
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_01",
+        "name": "TP. Hồ Chí Minh",
+        "scale_tier": "very_large",
+        "scale_desc": "Rất lớn (Trên 120 nghìn tỉ đồng)",
+        "radius_px": 28,
+        "atlat_page": 21,
+        "province": "TP. Hồ Chí Minh",
+        "sectors": [
+          {
+            "sector": "Cơ khí",
+            "name": "Cơ khí",
+            "share": 24,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Điện tử",
+            "name": "Điện tử",
+            "share": 26,
+            "color": "#06b6d4"
+          },
+          {
+            "sector": "Hóa chất",
+            "name": "Hóa chất",
+            "share": 20,
+            "color": "#10b981"
+          },
+          {
+            "sector": "Dệt may",
+            "name": "Dệt may",
+            "share": 16,
+            "color": "#f59e0b"
+          },
+          {
+            "sector": "Thực phẩm",
+            "name": "Thực phẩm",
+            "share": 14,
+            "color": "#ef4444"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.66,
+          10.76
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_02",
+        "name": "Hà Nội",
+        "scale_tier": "very_large",
+        "scale_desc": "Rất lớn (Trên 120 nghìn tỉ đồng)",
+        "radius_px": 28,
+        "atlat_page": 21,
+        "province": "Hà Nội",
+        "sectors": [
+          {
+            "sector": "Cơ khí",
+            "name": "Cơ khí",
+            "share": 26,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Điện tử",
+            "name": "Điện tử",
+            "share": 28,
+            "color": "#06b6d4"
+          },
+          {
+            "sector": "Thực phẩm",
+            "name": "Thực phẩm",
+            "share": 18,
+            "color": "#ef4444"
+          },
+          {
+            "sector": "Dệt may",
+            "name": "Dệt may",
+            "share": 16,
+            "color": "#f59e0b"
+          },
+          {
+            "sector": "Hóa chất",
+            "name": "Hóa chất",
+            "share": 12,
+            "color": "#10b981"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.85,
+          21.02
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_03",
+        "name": "Biên Hòa",
+        "scale_tier": "large",
+        "scale_desc": "Lớn (40 - 120 nghìn tỉ đồng)",
+        "radius_px": 22,
+        "atlat_page": 21,
+        "province": "Đồng Nai",
+        "sectors": [
+          {
+            "sector": "Cơ khí",
+            "name": "Cơ khí",
+            "share": 28,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Điện tử",
+            "name": "Điện tử",
+            "share": 24,
+            "color": "#06b6d4"
+          },
+          {
+            "sector": "Hóa chất",
+            "name": "Hóa chất",
+            "share": 22,
+            "color": "#10b981"
+          },
+          {
+            "sector": "Vật liệu",
+            "name": "Vật liệu",
+            "share": 14,
+            "color": "#8b5cf6"
+          },
+          {
+            "sector": "Thực phẩm",
+            "name": "Thực phẩm",
+            "share": 12,
+            "color": "#ef4444"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.82,
+          10.95
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_04",
+        "name": "Thủ Dầu Một",
+        "scale_tier": "large",
+        "scale_desc": "Lớn (40 - 120 nghìn tỉ đồng)",
+        "radius_px": 22,
+        "atlat_page": 21,
+        "province": "Bình Dương",
+        "sectors": [
+          {
+            "sector": "Điện tử",
+            "name": "Điện tử",
+            "share": 32,
+            "color": "#06b6d4"
+          },
+          {
+            "sector": "Gỗ mỹ nghệ",
+            "name": "Gỗ mỹ nghệ",
+            "share": 26,
+            "color": "#d97706"
+          },
+          {
+            "sector": "Cơ khí",
+            "name": "Cơ khí",
+            "share": 20,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Hóa chất",
+            "name": "Hóa chất",
+            "share": 12,
+            "color": "#10b981"
+          },
+          {
+            "sector": "Dệt may",
+            "name": "Dệt may",
+            "share": 10,
+            "color": "#f59e0b"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.65,
+          10.98
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_05",
+        "name": "Hải Phòng",
+        "scale_tier": "large",
+        "scale_desc": "Lớn (40 - 120 nghìn tỉ đồng)",
+        "radius_px": 22,
+        "atlat_page": 21,
+        "province": "Hải Phòng",
+        "sectors": [
+          {
+            "sector": "Đóng tàu",
+            "name": "Đóng tàu",
+            "share": 34,
+            "color": "#1d4ed8"
+          },
+          {
+            "sector": "Điện tử",
+            "name": "Điện tử",
+            "share": 26,
+            "color": "#06b6d4"
+          },
+          {
+            "sector": "Luyện kim",
+            "name": "Luyện kim",
+            "share": 16,
+            "color": "#475569"
+          },
+          {
+            "sector": "Thực phẩm",
+            "name": "Thực phẩm",
+            "share": 14,
+            "color": "#ef4444"
+          },
+          {
+            "sector": "Dệt may",
+            "name": "Dệt may",
+            "share": 10,
+            "color": "#f59e0b"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.68,
+          20.84
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_06",
+        "name": "Vũng Tàu",
+        "scale_tier": "large",
+        "scale_desc": "Lớn (40 - 120 nghìn tỉ đồng)",
+        "radius_px": 22,
+        "atlat_page": 21,
+        "province": "Bà Rịa - Vũng Tàu",
+        "sectors": [
+          {
+            "sector": "Dầu khí",
+            "name": "Dầu khí",
+            "share": 46,
+            "color": "#0f172a"
+          },
+          {
+            "sector": "Khí điện",
+            "name": "Khí điện",
+            "share": 22,
+            "color": "#f97316"
+          },
+          {
+            "sector": "Đóng tàu",
+            "name": "Đóng tàu",
+            "share": 18,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Hải sản",
+            "name": "Hải sản",
+            "share": 14,
+            "color": "#ef4444"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.08,
+          10.34
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_07",
+        "name": "Hạ Long",
+        "scale_tier": "large",
+        "scale_desc": "Lớn (40 - 120 nghìn tỉ đồng)",
+        "radius_px": 22,
+        "atlat_page": 21,
+        "province": "Quảng Ninh",
+        "sectors": [
+          {
+            "sector": "Cơ khí đóng tàu",
+            "name": "Cơ khí đóng tàu",
+            "share": 36,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Khai thác than",
+            "name": "Khai thác than",
+            "share": 32,
+            "color": "#0f172a"
+          },
+          {
+            "sector": "Vật liệu",
+            "name": "Vật liệu",
+            "share": 18,
+            "color": "#8b5cf6"
+          },
+          {
+            "sector": "Thực phẩm",
+            "name": "Thực phẩm",
+            "share": 14,
+            "color": "#ef4444"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.07,
+          20.95
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_08",
+        "name": "Đà Nẵng",
+        "scale_tier": "medium",
+        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "radius_px": 16,
+        "atlat_page": 21,
+        "province": "Đà Nẵng",
+        "sectors": [
+          {
+            "sector": "Cơ khí",
+            "name": "Cơ khí",
+            "share": 30,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Dệt may",
+            "name": "Dệt may",
+            "share": 26,
+            "color": "#f59e0b"
+          },
+          {
+            "sector": "Điện tử",
+            "name": "Điện tử",
+            "share": 24,
+            "color": "#06b6d4"
+          },
+          {
+            "sector": "Thực phẩm",
+            "name": "Thực phẩm",
+            "share": 20,
+            "color": "#ef4444"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.2,
+          16.05
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_09",
+        "name": "Cần Thơ",
+        "scale_tier": "medium",
+        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "radius_px": 16,
+        "atlat_page": 21,
+        "province": "Cần Thơ",
+        "sectors": [
+          {
+            "sector": "Chế biến lương thực",
+            "name": "Chế biến lương thực",
+            "share": 55,
+            "color": "#ef4444"
+          },
+          {
+            "sector": "Cơ khí",
+            "name": "Cơ khí",
+            "share": 18,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Dược phẩm",
+            "name": "Dược phẩm",
+            "share": 15,
+            "color": "#10b981"
+          },
+          {
+            "sector": "Năng lượng",
+            "name": "Năng lượng",
+            "share": 12,
+            "color": "#f97316"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.78,
+          10.04
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_10",
+        "name": "Nha Trang",
+        "scale_tier": "medium",
+        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "radius_px": 16,
+        "atlat_page": 21,
+        "province": "Khánh Hòa",
+        "sectors": [
+          {
+            "sector": "Thủy sản",
+            "name": "Thủy sản",
+            "share": 52,
+            "color": "#ef4444"
+          },
+          {
+            "sector": "Đóng tàu",
+            "name": "Đóng tàu",
+            "share": 24,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Dệt may",
+            "name": "Dệt may",
+            "share": 14,
+            "color": "#f59e0b"
+          },
+          {
+            "sector": "Hóa chất",
+            "name": "Hóa chất",
+            "share": 10,
+            "color": "#06b6d4"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.19,
+          12.23
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_11",
+        "name": "Huế",
+        "scale_tier": "medium",
+        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "radius_px": 16,
+        "atlat_page": 21,
+        "province": "Thừa Thiên Huế",
+        "sectors": [
+          {
+            "sector": "Dệt may",
+            "name": "Dệt may",
+            "share": 42,
+            "color": "#f59e0b"
+          },
+          {
+            "sector": "Thực phẩm",
+            "name": "Thực phẩm",
+            "share": 28,
+            "color": "#ef4444"
+          },
+          {
+            "sector": "Vật liệu",
+            "name": "Vật liệu",
+            "share": 18,
+            "color": "#8b5cf6"
+          },
+          {
+            "sector": "Cơ khí",
+            "name": "Cơ khí",
+            "share": 12,
+            "color": "#2563eb"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.59,
+          16.46
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_12",
+        "name": "Vinh",
+        "scale_tier": "medium",
+        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "radius_px": 16,
+        "atlat_page": 21,
+        "province": "Nghệ An",
+        "sectors": [
+          {
+            "sector": "Thực phẩm",
+            "name": "Thực phẩm",
+            "share": 42,
+            "color": "#ef4444"
+          },
+          {
+            "sector": "Dệt may",
+            "name": "Dệt may",
+            "share": 28,
+            "color": "#f59e0b"
+          },
+          {
+            "sector": "Cơ khí",
+            "name": "Cơ khí",
+            "share": 18,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Gỗ giấy",
+            "name": "Gỗ giấy",
+            "share": 12,
+            "color": "#8b5cf6"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.68,
+          18.67
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_13",
+        "name": "Thái Nguyên",
+        "scale_tier": "medium",
+        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "radius_px": 16,
+        "atlat_page": 21,
+        "province": "Thái Nguyên",
+        "sectors": [
+          {
+            "sector": "Luyện kim",
+            "name": "Luyện kim",
+            "share": 44,
+            "color": "#334155"
+          },
+          {
+            "sector": "Điện tử",
+            "name": "Điện tử",
+            "share": 30,
+            "color": "#06b6d4"
+          },
+          {
+            "sector": "Cơ khí",
+            "name": "Cơ khí",
+            "share": 16,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Chế biến chè",
+            "name": "Chế biến chè",
+            "share": 10,
+            "color": "#10b981"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.84,
+          21.59
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_14",
+        "name": "Việt Trì",
+        "scale_tier": "medium",
+        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "radius_px": 16,
+        "atlat_page": 21,
+        "province": "Phú Thọ",
+        "sectors": [
+          {
+            "sector": "Hóa chất",
+            "name": "Hóa chất",
+            "share": 40,
+            "color": "#10b981"
+          },
+          {
+            "sector": "Giấy",
+            "name": "Giấy",
+            "share": 28,
+            "color": "#d97706"
+          },
+          {
+            "sector": "Thực phẩm",
+            "name": "Thực phẩm",
+            "share": 18,
+            "color": "#ef4444"
+          },
+          {
+            "sector": "Dệt may",
+            "name": "Dệt may",
+            "share": 14,
+            "color": "#f59e0b"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.4,
+          21.32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IND_15",
+        "name": "Cẩm Phả",
+        "scale_tier": "medium",
+        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "radius_px": 16,
+        "atlat_page": 21,
+        "province": "Quảng Ninh",
+        "sectors": [
+          {
+            "sector": "Than đá",
+            "name": "Than đá",
+            "share": 56,
+            "color": "#0f172a"
+          },
+          {
+            "sector": "Cơ khí",
+            "name": "Cơ khí",
+            "share": 22,
+            "color": "#2563eb"
+          },
+          {
+            "sector": "Nhiệt điện",
+            "name": "Nhiệt điện",
+            "share": 14,
+            "color": "#dc2626"
+          },
+          {
+            "sector": "Vật liệu",
+            "name": "Vật liệu",
+            "share": 8,
+            "color": "#8b5cf6"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.27,
+          21.01
+        ]
+      }
+    }
+  ]
+}

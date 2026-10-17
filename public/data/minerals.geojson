@@ -1,0 +1,469 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Lớp Khoáng sản Việt Nam (Atlat Trang 8)",
+    "count": 23
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_01",
+        "name": "Mỏ than Cẩm Phả",
+        "symbol_type": "square_black",
+        "mineral_code": "coal",
+        "mineral_type": "Than đá",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Quảng Ninh"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.27,
+          21.01
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_02",
+        "name": "Mỏ than Vàng Danh",
+        "symbol_type": "square_black",
+        "mineral_code": "coal",
+        "mineral_type": "Than đá",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Quảng Ninh"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.79,
+          21.08
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_03",
+        "name": "Mỏ than Đông Triều",
+        "symbol_type": "square_black",
+        "mineral_code": "coal",
+        "mineral_type": "Than đá",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Quảng Ninh"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.51,
+          21.08
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_04",
+        "name": "Mỏ than Nông Sơn",
+        "symbol_type": "square_black",
+        "mineral_code": "coal",
+        "mineral_type": "Than đá",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Quảng Nam"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.04,
+          15.65
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_05",
+        "name": "Mỏ than Quỳnh Nhai",
+        "symbol_type": "square_black",
+        "mineral_code": "coal",
+        "mineral_type": "Than đá",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Sơn La"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.56,
+          21.78
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_06",
+        "name": "Mỏ dầu Hồng Ngọc",
+        "symbol_type": "trapezoid_black",
+        "mineral_code": "oil",
+        "mineral_type": "Dầu mỏ",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Bà Rịa - Vũng Tàu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.05,
+          10.12
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_07",
+        "name": "Mỏ dầu Rạng Đông",
+        "symbol_type": "trapezoid_black",
+        "mineral_code": "oil",
+        "mineral_type": "Dầu mỏ",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Bà Rịa - Vũng Tàu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.15,
+          9.95
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_08",
+        "name": "Mỏ dầu Bạch Hổ",
+        "symbol_type": "trapezoid_black",
+        "mineral_code": "oil",
+        "mineral_type": "Dầu mỏ",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Bà Rịa - Vũng Tàu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.98,
+          9.78
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_09",
+        "name": "Mỏ dầu Rồng",
+        "symbol_type": "trapezoid_black",
+        "mineral_code": "oil",
+        "mineral_type": "Dầu mỏ",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Bà Rịa - Vũng Tàu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.88,
+          9.62
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_10",
+        "name": "Mỏ dầu Đại Hùng",
+        "symbol_type": "trapezoid_black",
+        "mineral_code": "oil",
+        "mineral_type": "Dầu mỏ",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Bà Rịa - Vũng Tàu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.62,
+          8.48
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_11",
+        "name": "Mỏ khí Tiền Hải",
+        "symbol_type": "trapezoid_white",
+        "mineral_code": "gas",
+        "mineral_type": "Khí tự nhiên",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Thái Bình"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.56,
+          20.4
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_12",
+        "name": "Mỏ khí Lan Tây",
+        "symbol_type": "trapezoid_white",
+        "mineral_code": "gas",
+        "mineral_type": "Khí tự nhiên",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Bà Rịa - Vũng Tàu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.88,
+          7.9
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_13",
+        "name": "Mỏ khí Lan Đỏ",
+        "symbol_type": "trapezoid_white",
+        "mineral_code": "gas",
+        "mineral_type": "Khí tự nhiên",
+        "group": "Nhiên liệu",
+        "atlat_page": 8,
+        "province": "Bà Rịa - Vũng Tàu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.02,
+          7.78
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_14",
+        "name": "Mỏ sắt Trại Cau",
+        "symbol_type": "triangle_black",
+        "mineral_code": "iron",
+        "mineral_type": "Sắt",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Thái Nguyên"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.89,
+          21.59
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_15",
+        "name": "Mỏ sắt Thạch Khê",
+        "symbol_type": "triangle_black",
+        "mineral_code": "iron",
+        "mineral_type": "Sắt",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Hà Tĩnh"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.97,
+          18.39
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_16",
+        "name": "Mỏ sắt Văn Bàn",
+        "symbol_type": "triangle_black",
+        "mineral_code": "iron",
+        "mineral_type": "Sắt",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Lào Cai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.25,
+          22.05
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_17",
+        "name": "Mỏ sắt Tùng Bá",
+        "symbol_type": "triangle_black",
+        "mineral_code": "iron",
+        "mineral_type": "Sắt",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Hà Giang"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.03,
+          22.88
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_18",
+        "name": "Mỏ bô-xít Nhân Cơ",
+        "symbol_type": "al_symbol",
+        "mineral_code": "bauxite",
+        "mineral_type": "Bô-xít",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Đắk Nông"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.56,
+          11.98
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_19",
+        "name": "Mỏ bô-xít Tân Rai",
+        "symbol_type": "al_symbol",
+        "mineral_code": "bauxite",
+        "mineral_type": "Bô-xít",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Lâm Đồng"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.82,
+          11.72
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_20",
+        "name": "Mỏ apatit Cam Đường",
+        "symbol_type": "inverted_v",
+        "mineral_code": "apatite",
+        "mineral_type": "Apatit",
+        "group": "Phi kim loại",
+        "atlat_page": 8,
+        "province": "Lào Cai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.01,
+          22.42
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_21",
+        "name": "Mỏ thiếc Tĩnh Túc",
+        "symbol_type": "sn_symbol",
+        "mineral_code": "tin",
+        "mineral_type": "Thiếc",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Cao Bằng"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.88,
+          22.65
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_22",
+        "name": "Mỏ thiếc Quỳ Hợp",
+        "symbol_type": "sn_symbol",
+        "mineral_code": "tin",
+        "mineral_type": "Thiếc",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Nghệ An"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.18,
+          19.32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_23",
+        "name": "Mỏ crôm Cổ Định",
+        "symbol_type": "cr_symbol",
+        "mineral_code": "chromium",
+        "mineral_type": "Crôm",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Thanh Hóa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.62,
+          19.78
+        ]
+      }
+    }
+  ]
+}
