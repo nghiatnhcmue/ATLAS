@@ -15,8 +15,28 @@ const AtlasEngine = (function () {
   let layerPower = null;
   let layerIndustrial = null;
 
+  let provinceMode = "63"; // "63" (Atlat SGK) hoặc "34" (Nghị quyết 202/2025/QH15)
+  let currentBaseMapLayer = null;
+
+  const BASEMAPS = {
+    topo: {
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+      attribution: "&copy; Esri World Topo Map & Atlat Địa lí Việt Nam"
+    },
+    imagery: {
+      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      attribution: "&copy; Esri World Imagery & Atlat Địa lí Việt Nam"
+    },
+    streets: {
+      url: "https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+      attribution: "&copy; Google Maps Road Layer"
+    }
+  };
+
   let geoData = {
     provinces: null,
+    provinces63: null,
+    provinces34: null,
     minerals: null,
     power: null,
     industrial: null
@@ -24,6 +44,8 @@ const AtlasEngine = (function () {
 
   const LAYER_FILES = {
     provinces: "./public/data/vn_provinces.geojson",
+    provinces63: "./public/data/vn_provinces_63.geojson",
+    provinces34: "./public/data/vn_provinces_34.geojson",
     minerals: "./public/data/minerals.geojson",
     power: "./public/data/hydropower.geojson",
     industrial: "./public/data/industrial_centers.geojson"
@@ -180,6 +202,33 @@ const AtlasEngine = (function () {
     `;
   }
 
+  function setBaseMap(type) {
+    if (!map || !BASEMAPS[type]) return;
+    if (currentBaseMapLayer) {
+      map.removeLayer(currentBaseMapLayer);
+    }
+    const cfg = BASEMAPS[type];
+    currentBaseMapLayer = L.tileLayer(cfg.url, {
+      attribution: cfg.attribution,
+      maxZoom: 19
+    }).addTo(map);
+
+    if (currentBaseMapLayer.bringToBack) {
+      currentBaseMapLayer.bringToBack();
+    }
+
+    ["topo", "imagery", "streets"].forEach(t => {
+      const btn = document.getElementById(`btn-bm-${t}`);
+      if (btn) {
+        if (t === type) {
+          btn.className = "px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-xs";
+        } else {
+          btn.className = "px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium";
+        }
+      }
+    });
+  }
+
   function init(mapContainerId = "atlas-map") {
     if (map) return;
 
@@ -199,11 +248,8 @@ const AtlasEngine = (function () {
 
     L.control.zoom({ position: "topright" }).addTo(map);
 
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-      attribution: '&copy; CARTO & Atlat Địa lí Việt Nam',
-      subdomains: "abcd",
-      maxZoom: 19
-    }).addTo(map);
+    // Sử dụng Basemap chuẩn không bao giờ cần API Key (Esri Topo / Satellite / Google Roads)
+    setBaseMap("topo");
 
     addSovereigntyDemarcation();
 
@@ -288,32 +334,78 @@ const AtlasEngine = (function () {
   }
 
   async function ensureLayerData(name) {
-    if (geoData[name]) return geoData[name];
-    if (loadingPromises[name]) return loadingPromises[name];
+    const effectiveName = (name === "provinces") ? (provinceMode === "34" ? "provinces34" : "provinces63") : name;
 
-    loadingPromises[name] = (async () => {
+    if (geoData[effectiveName]) {
+      if (name === "provinces") geoData.provinces = geoData[effectiveName];
+      return geoData[effectiveName];
+    }
+    if (loadingPromises[effectiveName]) return loadingPromises[effectiveName];
+
+    loadingPromises[effectiveName] = (async () => {
       try {
-        const file = LAYER_FILES[name];
-        if (!file) throw new Error("Unknown layer: " + name);
+        const file = LAYER_FILES[effectiveName] || LAYER_FILES[name];
+        if (!file) throw new Error("Unknown layer: " + effectiveName);
         const res = await fetch(file);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        geoData[name] = data;
+        geoData[effectiveName] = data;
+        if (name === "provinces") geoData.provinces = data;
         return data;
       } catch (err) {
-        console.warn(`[AtlasEngine] Fetch layer '${name}' thất bại. Sử dụng Seed Fallback:`, err);
-        if (window.GEO_ATLAS_FALLBACK_DATA && window.GEO_ATLAS_FALLBACK_DATA[name]) {
-          geoData[name] = window.GEO_ATLAS_FALLBACK_DATA[name];
-          if (typeof window.showOfflineToast === "function") {
-            window.showOfflineToast();
+        console.warn(`[AtlasEngine] Fetch layer '${effectiveName}' thất bại. Sử dụng Seed Fallback:`, err);
+        if (window.GEO_ATLAS_FALLBACK_DATA) {
+          const fallbackData = window.GEO_ATLAS_FALLBACK_DATA[effectiveName] || window.GEO_ATLAS_FALLBACK_DATA[name];
+          if (fallbackData) {
+            geoData[effectiveName] = fallbackData;
+            if (name === "provinces") geoData.provinces = fallbackData;
+            if (typeof window.showOfflineToast === "function") {
+              window.showOfflineToast();
+            }
+            return geoData[effectiveName];
           }
-          return geoData[name];
         }
         return null;
       }
     })();
 
-    return loadingPromises[name];
+    return loadingPromises[effectiveName];
+  }
+
+  async function setProvinceMode(mode) {
+    if (mode !== "63" && mode !== "34") return;
+    provinceMode = mode;
+
+    const btn63 = document.getElementById("btn-mode-63");
+    const btn34 = document.getElementById("btn-mode-34");
+    const badge = document.getElementById("province-mode-badge");
+    const hint = document.getElementById("province-mode-hint");
+
+    if (mode === "63") {
+      if (btn63) btn63.className = "px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-blue-600 text-white shadow-xs";
+      if (btn34) btn34.className = "px-2.5 py-1.5 rounded-md font-semibold transition text-center flex items-center justify-center space-x-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800";
+      if (badge) {
+        badge.innerText = "63 Tỉnh Thành (Atlat)";
+        badge.className = "text-[9px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300";
+      }
+      if (hint) {
+        hint.innerText = "Chuẩn SGK & Atlat trang 4-5. Bấm vào tỉnh để xem số liệu và phương án sáp nhập mới.";
+      }
+    } else {
+      if (btn34) btn34.className = "px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-emerald-600 text-white shadow-xs";
+      if (btn63) btn63.className = "px-2.5 py-1.5 rounded-md font-semibold transition text-center flex items-center justify-center space-x-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800";
+      if (badge) {
+        badge.innerText = "34 Tỉnh Thành Mới (NQ 202/2025)";
+        badge.className = "text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300";
+      }
+      if (hint) {
+        hint.innerText = "Sắp xếp theo Nghị quyết 202/2025/QH15 (28 Tỉnh + 6 Thành phố TW). Bấm vào tỉnh để xem chi tiết sáp nhập.";
+      }
+    }
+
+    await ensureLayerData("provinces");
+    renderProvinces();
+    updateDynamicLegend();
   }
 
   async function loadData() {
@@ -331,11 +423,12 @@ const AtlasEngine = (function () {
       filter: (f) => filterRegion === "all" || f.properties.region_name === filterRegion,
       style: (f) => {
         const color = REGION_COLORS[f.properties.region_name] || "#94a3b8";
+        const isCity = f.properties.administrative_type === "Thành phố trực thuộc Trung ương";
         return {
           fillColor: color,
-          weight: f.properties.is_special_island ? 2 : 1,
-          opacity: 0.9,
-          color: f.properties.is_special_island ? "#dc2626" : "#ffffff",
+          weight: f.properties.is_special_island ? 2 : (isCity ? 2.2 : 1),
+          opacity: 0.95,
+          color: f.properties.is_special_island ? "#dc2626" : (isCity ? "#1d4ed8" : "#ffffff"),
           dashArray: f.properties.is_special_island ? "4,4" : "",
           fillOpacity: currentOpacity
         };
@@ -344,16 +437,43 @@ const AtlasEngine = (function () {
         const p = feature.properties;
         layer.on({
           mouseover: (e) => {
-            e.target.setStyle({ weight: 2.5, color: "#0f172a", fillOpacity: Math.min(1, currentOpacity + 0.3) });
+            e.target.setStyle({ 
+              weight: 2.5, 
+              color: "#0f172a", 
+              fillOpacity: Math.min(1, currentOpacity + 0.3) 
+            });
+            layer.openTooltip();
           },
           mouseout: (e) => {
             layerProvinces.resetStyle(e.target);
+            layer.closeTooltip();
           },
           click: () => {
             showDetailsPanel(p, "province");
           }
         });
-        layer.bindTooltip(`<strong>${p.name}</strong><br><span class="text-[10px] text-slate-500">${p.region_name}</span>`, { sticky: true, className: "map-label-tooltip" });
+
+        // Tooltip sạch sẽ, không dùng sticky để chống kẹt/đè chữ
+        const subInfo = provinceMode === "34" 
+          ? (p.merged_from_desc ? `<div class="text-[10px] text-amber-600 dark:text-amber-400 font-semibold mt-0.5">${p.merged_from_desc}</div>` : '')
+          : (p.merged_into ? `<div class="text-[10px] text-blue-600 dark:text-blue-400 mt-0.5">➡️ Sắp xếp mới: ${p.merged_into}</div>` : '');
+
+        const iconType = p.administrative_type === 'Thành phố trực thuộc Trung ương' ? '🏛️' : '📍';
+        layer.bindTooltip(`
+          <div class="p-1 text-left">
+            <div class="font-bold text-xs text-slate-900 dark:text-white flex items-center space-x-1">
+              <span>${iconType}</span>
+              <span>${p.name}</span>
+            </div>
+            <div class="text-[10px] text-slate-500 dark:text-slate-300 font-medium">${p.region_name || ''}</div>
+            ${subInfo}
+          </div>
+        `, { 
+          sticky: false,
+          direction: "auto", 
+          className: "map-label-tooltip",
+          opacity: 0.95
+        });
       }
     }).addTo(layerProvinces);
   }
@@ -616,11 +736,15 @@ const AtlasEngine = (function () {
       }
     }
 
-    // 4. Tìm Tỉnh thành / Vùng kinh tế
+    // 4. Tìm Tỉnh thành / Vùng kinh tế (Hỗ trợ tìm cả tên cũ và tên mới)
     if (geoData.provinces) {
       const match = geoData.provinces.features.find(f => {
         const p = f.properties || {};
-        return normalizeVN(p.name).includes(kw) || normalizeVN(p.region_name).includes(kw);
+        if (normalizeVN(p.name).includes(kw)) return true;
+        if (normalizeVN(p.region_name).includes(kw)) return true;
+        if (p.merged_from && p.merged_from.some(m => normalizeVN(m).includes(kw))) return true;
+        if (p.merged_into && normalizeVN(p.merged_into).includes(kw)) return true;
+        return false;
       });
       if (match) {
         await toggleLayer("provinces", true);
@@ -636,27 +760,59 @@ const AtlasEngine = (function () {
     const infoContainer = document.getElementById("atlas-info-card");
     if (!infoContainer) return;
 
+    const is34 = provinceMode === "34" || props.resolution;
+    const isCity = props.administrative_type === "Thành phố trực thuộc Trung ương";
+    const adminTypeBadge = isCity 
+      ? '<span class="text-[10px] px-2 py-0.5 rounded-full bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 font-bold">Thành phố Trực thuộc TW</span>'
+      : '<span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 font-bold">Tỉnh</span>';
+
+    const mergedBlock = is34 ? `
+      <div class="bg-amber-50 dark:bg-amber-950/40 p-2.5 rounded-lg border border-amber-200 dark:border-amber-900/60 text-xs">
+        <div class="font-bold text-amber-800 dark:text-amber-300 flex items-center space-x-1 mb-1">
+          <span>📜</span>
+          <span>Sắp xếp theo Nghị quyết 202/2025/QH15:</span>
+        </div>
+        <p class="text-[11px] text-amber-700 dark:text-amber-400 font-medium">${props.merged_from_desc || 'Giữ nguyên ranh giới không sáp nhập'}</p>
+        ${props.merged_from && props.merged_from.length > 1 ? `<div class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Gồm các đơn vị cũ: <strong>${props.merged_from.join(", ")}</strong></div>` : ''}
+      </div>
+    ` : `
+      <div class="bg-blue-50 dark:bg-blue-950/40 p-2.5 rounded-lg border border-blue-200 dark:border-blue-900/60 text-xs">
+        <div class="font-bold text-blue-800 dark:text-blue-300 flex items-center space-x-1 mb-1">
+          <span>📖</span>
+          <span>Kiến thức Atlat Địa lí THPT (Trang 4-5):</span>
+        </div>
+        <div class="text-[11px] text-blue-700 dark:text-blue-400">Đơn vị hành chính truyền thống ôn thi tốt nghiệp.</div>
+        ${props.merged_into ? `<div class="text-[10px] text-slate-600 dark:text-slate-300 mt-1 font-semibold">➡️ Từ 01/7/2025 sáp nhập thành: <span class="text-blue-600 dark:text-blue-400">${props.merged_into}</span></div>` : ''}
+      </div>
+    `;
+
     infoContainer.innerHTML = `
       <div class="space-y-3">
         <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
           <div>
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white">${props.name}</h4>
-            <span class="text-[11px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300 font-medium">${props.region_name || props.region}</span>
+            <div class="flex items-center space-x-2">
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white">${props.name}</h4>
+              ${adminTypeBadge}
+            </div>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 font-medium inline-block mt-1">${props.region_name || props.region}</span>
           </div>
-          <span class="text-[10px] font-bold text-slate-400">Atlat Trang 4-5</span>
+          <span class="text-[10px] font-bold text-slate-400">${is34 ? 'NQ 202/2025' : 'Atlat Trang 4-5'}</span>
         </div>
+
+        ${mergedBlock}
+
         <div class="grid grid-cols-3 gap-2 text-center text-xs">
           <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
             <span class="text-[10px] text-slate-400 block uppercase font-medium">Diện tích</span>
-            <span class="font-bold tabular-nums">${props.area ? props.area.toLocaleString() : 'N/A'} km²</span>
+            <span class="font-bold tabular-nums text-slate-800 dark:text-slate-100">${props.area ? props.area.toLocaleString() : 'N/A'} km²</span>
           </div>
           <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
             <span class="text-[10px] text-slate-400 block uppercase font-medium">Dân số</span>
-            <span class="font-bold tabular-nums">${props.pop ? props.pop.toLocaleString() : 'N/A'} k</span>
+            <span class="font-bold tabular-nums text-slate-800 dark:text-slate-100">${props.pop ? props.pop.toLocaleString() : 'N/A'} k</span>
           </div>
           <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
             <span class="text-[10px] text-slate-400 block uppercase font-medium">Mật độ</span>
-            <span class="font-bold text-blue-600 dark:text-blue-400 tabular-nums">${props.density || 'N/A'} ng/km²</span>
+            <span class="font-bold text-blue-600 dark:text-blue-400 tabular-nums">${props.density ? props.density.toLocaleString() : 'N/A'} ng/km²</span>
           </div>
         </div>
       </div>
@@ -810,6 +966,9 @@ const AtlasEngine = (function () {
   return {
     init,
     normalizeVN,
+    setBaseMap,
+    setProvinceMode,
+    getProvinceMode: () => provinceMode,
     renderProvinces,
     setProvincesOpacity,
     renderMinerals,

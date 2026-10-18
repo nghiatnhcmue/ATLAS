@@ -139,6 +139,13 @@
       <div class="col-span-12 lg:col-span-7 h-full min-h-[420px] rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
         <div id="atlas-map-container" class="w-full h-full relative">
           <div id="atlas-map" class="w-full h-full"></div>
+
+          <!-- Bộ chuyển đổi Bản đồ nền (Basemap Switcher: Topo / Vệ tinh / Đường bộ) -->
+          <div class="absolute top-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-1 text-[11px]">
+            <button id="btn-bm-topo" onclick="AtlasEngine.setBaseMap('topo')" class="px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-xs">🗺️ Địa hình</button>
+            <button id="btn-bm-imagery" onclick="AtlasEngine.setBaseMap('imagery')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium">🛰️ Vệ tinh</button>
+            <button id="btn-bm-streets" onclick="AtlasEngine.setBaseMap('streets')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium">🚗 Đường bộ</button>
+          </div>
           
           <!-- Tọa độ con trỏ chuột thời gian thực -->
           <div class="absolute bottom-3 right-3 floating-map-ctrl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2.5 py-1.5 rounded-lg text-[11px] font-mono text-slate-600 dark:text-slate-300 shadow-sm border border-slate-200 dark:border-slate-700 pointer-events-none">
@@ -169,6 +176,43 @@
               🧭
             </button>
           </div>
+        </div>
+
+        <!-- Bộ Chuyển Đổi: 63 Tỉnh Thành (Atlat) vs 34 Tỉnh Thành Mới (NQ 202/2025/QH15) -->
+        <div class="bg-white dark:bg-slate-900 p-3.5 rounded-xl border border-blue-200/80 dark:border-slate-800 shadow-sm space-y-2.5">
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center space-x-1.5">
+              <span>🏛️</span>
+              <span>ĐỊA GIỚI HÀNH CHÍNH</span>
+            </span>
+            <span id="province-mode-badge" class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+              63 Tỉnh Thành (Atlat)
+            </span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 bg-slate-50 dark:bg-slate-800/60 p-1 rounded-lg border border-slate-200/70 dark:border-slate-700 text-xs">
+            <button 
+              id="btn-mode-63" 
+              onclick="AtlasEngine.setProvinceMode('63')"
+              class="px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-blue-600 text-white shadow-xs"
+              title="63 Tỉnh Thành truyền thống theo Atlat Địa lí Việt Nam & SGK"
+            >
+              <span>🇻🇳</span>
+              <span class="truncate">63 Tỉnh (Atlat SGK)</span>
+            </button>
+            <button 
+              id="btn-mode-34" 
+              onclick="AtlasEngine.setProvinceMode('34')"
+              class="px-2.5 py-1.5 rounded-md font-semibold transition text-center flex items-center justify-center space-x-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+              title="34 Tỉnh Thành mới theo Nghị quyết số 202/2025/QH15 (28 Tỉnh + 6 Thành phố TW)"
+            >
+              <span>🆕</span>
+              <span class="truncate">34 Tỉnh Mới (NQ 2025)</span>
+            </button>
+          </div>
+          <p id="province-mode-hint" class="text-[10px] text-slate-500 dark:text-slate-400 italic">
+            Chuẩn SGK & Atlat trang 4-5. Bấm vào tỉnh để xem số liệu và phương án sáp nhập mới.
+          </p>
         </div>
 
         <!-- Bộ Lọc Layer Độc Lập & Thanh Trượt Độ Mờ (Opacity) -->

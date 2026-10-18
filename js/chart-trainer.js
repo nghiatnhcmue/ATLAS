@@ -33,47 +33,6 @@ const ChartTrainer = (function () {
     });
   }
 
-  // Bản vá 2.1: Chống vẽ nhầm dòng "Tổng số" / "Cả nước" vào cơ cấu
-  function separateTotalRow(rows) {
-    if (!Array.isArray(rows)) return { totalRow: null, componentRows: [] };
-    const isTotal = (name) => /^(tổng|tổng số|tổng cộng|cả nước|tổng số toàn ngành)$/i.test((name || '').trim());
-    const totalRow = rows.find(r => isTotal(r.name));
-    const componentRows = rows.filter(r => !isTotal(r.name));
-    return {
-      totalRow,
-      componentRows: componentRows.length > 0 ? componentRows : rows
-    };
-  }
-
-  // Bản vá 2.2: Phát hiện khoảng cách năm không đều trong bảng số liệu
-  function detectUnevenYearGaps(headers) {
-    if (!Array.isArray(headers) || headers.length <= 2) return null;
-    const rawYears = headers.slice(1);
-    const years = rawYears.map(h => {
-      const m = String(h).match(/\d{4}/);
-      return m ? parseInt(m[0], 10) : null;
-    });
-
-    if (years.some(y => y === null || isNaN(y))) return null;
-
-    const gaps = [];
-    for (let i = 0; i < years.length - 1; i++) {
-      gaps.push(years[i + 1] - years[i]);
-    }
-
-    const allEqual = gaps.every(g => g === gaps[0]);
-    if (!allEqual && gaps.length > 0) {
-      const gapStr = gaps.map(g => `${g} năm`).join(" - ");
-      return {
-        years,
-        gaps,
-        gapStr,
-        warningText: `Chú ý: Khoảng cách thời gian giữa các năm không đều nhau (${gapStr})!`
-      };
-    }
-    return null;
-  }
-
   async function init() {
     let usedFallback = false;
     try {
@@ -120,20 +79,14 @@ const ChartTrainer = (function () {
     const container = document.getElementById("chart-control-panel");
     if (!container || !q) return;
 
-    // Bản vá 2.3: Chống vỡ HTML khi Highlight từ khóa (Single-Pass Regex Highlight)
+    // Highlight text nếu bật gợi ý
     let promptDisplay = q.raw_prompt || "";
-    if (showHighlight && Array.isArray(q.keywords) && q.keywords.length > 0) {
-      const validKw = q.keywords.filter(k => typeof k === 'string' && k.trim().length > 0);
-      if (validKw.length > 0) {
-        const sortedKw = [...validKw]
-          .sort((a, b) => b.length - a.length)
-          .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-        const regex = new RegExp(`(${sortedKw.join('|')})`, 'gi');
-        promptDisplay = promptDisplay.replace(
-          regex,
-          '<mark class="bg-amber-100 text-amber-900 font-semibold px-1.5 py-0.5 rounded border border-amber-300">$1</mark>'
-        );
-      }
+    if (showHighlight && Array.isArray(q.keywords)) {
+      q.keywords.forEach(kw => {
+        if (!kw) return;
+        const regex = new RegExp(`(${kw})`, "gi");
+        promptDisplay = promptDisplay.replace(regex, `<span class="keyword-highlight">$1</span>`);
+      });
     }
 
     const headers = q?.data_table?.headers || [];
@@ -232,22 +185,6 @@ const ChartTrainer = (function () {
           </div>
         </div>
 
-        ${(() => {
-          const unevenInfo = detectUnevenYearGaps(headers);
-          if (!unevenInfo) return '';
-          return `
-            <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-xs text-amber-900 dark:text-amber-200 flex items-start space-x-2 shadow-xs">
-              <span class="text-base shrink-0">⚠️</span>
-              <div class="leading-relaxed">
-                <span class="font-bold">${unevenInfo.warningText}</span>
-                <div class="text-[11px] text-amber-800 dark:text-amber-300 mt-0.5">
-                  👉 Bẫy thi THPT: Khi vẽ biểu đồ đường/cột, khoảng cách các mốc năm trên trục hoành phải tương ứng tỉ lệ thời gian.
-                </div>
-              </div>
-            </div>
-          `;
-        })()}
-
         <!-- Bảng số liệu thu gọn có bọc thẻ overflow-x-auto -->
         <div class="w-full overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-700 shadow-xs max-h-40">
           <table class="w-full border-collapse">
@@ -343,15 +280,14 @@ const ChartTrainer = (function () {
     const canvas = document.getElementById("chart-visual-canvas");
     if (!canvas || !q) return;
 
-    // Bản vá 2.1: Quản lý vòng đời ECharts Singleton & NotMerge
-    let chartInstance = echarts.getInstanceByDom(canvas) || echarts.init(canvas);
-    echartInstance = chartInstance;
-    chartInstance.clear();
+    if (echartInstance) {
+      echartInstance.dispose();
+    }
+    echartInstance = echarts.init(canvas);
 
     const headers = q?.data_table?.headers || [];
     const categories = headers.slice(1);
     const rows = normalizeRows(q?.data_table?.rows);
-    const { totalRow, componentRows } = separateTotalRow(rows);
     const modernColors = ['#2563EB', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#06B6D4'];
 
     let option = {
@@ -380,7 +316,6 @@ const ChartTrainer = (function () {
       }
     };
 
-    // Bản vá 2.2: Chuẩn hóa 3 quy tắc vẽ biểu đồ Địa lý THPT
     if (chartType === "line") {
       option.xAxis = { 
         type: "category", 
@@ -388,36 +323,8 @@ const ChartTrainer = (function () {
         boundaryGap: false,
         axisLabel: { hideOverlap: true, interval: 0, rotate: 15, fontFamily: 'Be Vietnam Pro' }
       };
-
-      // Quy tắc Đường Tốc độ tăng trưởng: Chuẩn hóa năm đầu tiên về 100% nếu bảng là số tuyệt đối
-      const isGrowthPrompt = /tốc độ tăng trưởng/i.test(q.raw_prompt || '') || 
-                             /tốc độ tăng trưởng/i.test(q.title || '') || 
-                             (Array.isArray(q.keywords) && q.keywords.some(k => /tốc độ tăng trưởng/i.test(k)));
-      const isAbsoluteData = !q.structural_analysis?.is_total_100 && !(rows[0]?.unit && rows[0].unit.includes('%'));
-
-      let lineRows = rows;
-      if (isGrowthPrompt && isAbsoluteData) {
-        lineRows = rows.map(r => {
-          const firstVal = r.values[0] || 1;
-          return {
-            ...r,
-            values: r.values.map(v => Math.round((v / firstVal) * 1000) / 10)
-          };
-        });
-        option.yAxis = {
-          type: "value",
-          scale: true,
-          axisLabel: { formatter: '{value}%', fontFamily: 'Be Vietnam Pro' }
-        };
-      } else {
-        option.yAxis = { 
-          type: "value", 
-          scale: true,
-          axisLabel: { fontFamily: 'Be Vietnam Pro' }
-        };
-      }
-
-      option.series = lineRows.map(r => ({
+      option.yAxis = { type: "value" };
+      option.series = rows.map(r => ({
         name: r.name,
         type: "line",
         data: r.values,
@@ -431,10 +338,7 @@ const ChartTrainer = (function () {
         data: categories,
         axisLabel: { hideOverlap: true, interval: 0, rotate: 15, fontFamily: 'Be Vietnam Pro' }
       };
-      option.yAxis = { 
-        type: "value",
-        axisLabel: { fontFamily: 'Be Vietnam Pro' }
-      };
+      option.yAxis = { type: "value" };
       option.series = rows.map(r => ({
         name: r.name,
         type: "bar",
@@ -442,166 +346,68 @@ const ChartTrainer = (function () {
         barMaxWidth: 35
       }));
     } else if (chartType === "stacked_area") {
-      // Quy tắc Biểu đồ Miền: yAxis từ 0 đến 100%, xAxis boundaryGap=false, tự động quy đổi sang % nếu chưa là %
       option.xAxis = { 
         type: "category", 
         data: categories, 
         boundaryGap: false,
         axisLabel: { hideOverlap: true, interval: 0, rotate: 15, fontFamily: 'Be Vietnam Pro' }
       };
-      option.yAxis = { 
-        type: "value", 
-        min: 0, 
-        max: 100, 
-        axisLabel: { formatter: '{value}%', fontFamily: 'Be Vietnam Pro' } 
-      };
-
-      // Dùng componentRows để không vẽ chồng dòng "Tổng số"
-      const isAlreadyPercent = q.structural_analysis?.is_total_100 || (componentRows[0]?.unit && componentRows[0].unit.includes('%'));
-      let areaRows = componentRows;
-      if (!isAlreadyPercent) {
-        const numCols = categories.length;
-        const colSums = [];
-        for (let c = 0; c < numCols; c++) {
-          let sum = 0;
-          componentRows.forEach(r => { sum += (r.values[c] || 0); });
-          colSums.push(sum);
-        }
-        areaRows = componentRows.map(r => ({
-          ...r,
-          values: r.values.map((v, c) => {
-            const sum = colSums[c] || 1;
-            return Math.round((v / sum) * 1000) / 10;
-          })
-        }));
-      }
-
-      option.series = areaRows.map(r => ({
+      option.yAxis = { type: "value", max: q.structural_analysis?.is_total_100 ? 100 : undefined };
+      option.series = rows.map(r => ({
         name: r.name,
         type: "line",
         stack: "Total",
         areaStyle: { opacity: 0.8 },
-        data: r.values,
-        smooth: false
+        data: r.values
       }));
     } else if (chartType === "pie") {
-      // Bản vá 1: Thuật toán chia tâm đa biểu đồ tròn cho N năm
       delete option.grid;
-      delete option.xAxis;
-      delete option.yAxis;
-
-      const N = categories.length;
-      let pieConfigs = [];
-
-      if (N <= 1) {
-        pieConfigs = [
-          { center: ['50%', '50%'], radius: '58%', titleX: '50%', titleY: '88%' }
-        ];
-      } else if (N === 2) {
-        pieConfigs = [
-          { center: ['28%', '50%'], radius: '44%', titleX: '28%', titleY: '88%' },
-          { center: ['72%', '50%'], radius: '44%', titleX: '72%', titleY: '88%' }
-        ];
-      } else if (N === 3) {
-        pieConfigs = [
-          { center: ['18%', '50%'], radius: '32%', titleX: '18%', titleY: '80%' },
-          { center: ['50%', '50%'], radius: '32%', titleX: '50%', titleY: '80%' },
-          { center: ['82%', '50%'], radius: '32%', titleX: '82%', titleY: '80%' }
+      if (categories.length === 2) {
+        option.series = [
+          {
+            name: categories[0],
+            type: "pie",
+            radius: "45%",
+            center: ["28%", "54%"],
+            avoidLabelOverlap: true,
+            data: rows.map(r => ({ name: r.name, value: r.values[0] || 0 })),
+            label: { formatter: "{b}: {d}%", fontSize: 11, fontFamily: 'Be Vietnam Pro' }
+          },
+          {
+            name: categories[1],
+            type: "pie",
+            radius: "55%",
+            center: ["72%", "54%"],
+            avoidLabelOverlap: true,
+            data: rows.map(r => ({ name: r.name, value: r.values[1] || 0 })),
+            label: { formatter: "{b}: {d}%", fontSize: 11, fontFamily: 'Be Vietnam Pro' }
+          }
         ];
       } else {
-        // N >= 4 (Bấm thử sai): Chia 2 hàng (y = 32% và y = 75%), radius: 22%
-        const row1Count = Math.ceil(N / 2);
-        const row2Count = N - row1Count;
-
-        for (let i = 0; i < row1Count; i++) {
-          const xPercent = Math.round(((i + 1) / (row1Count + 1)) * 100);
-          pieConfigs.push({
-            center: [`${xPercent}%`, '32%'],
-            radius: '22%',
-            titleX: `${xPercent}%`,
-            titleY: '52%'
-          });
-        }
-
-        for (let i = 0; i < row2Count; i++) {
-          const xPercent = Math.round(((i + 1) / (row2Count + 1)) * 100);
-          pieConfigs.push({
-            center: [`${xPercent}%`, '75%'],
-            radius: '22%',
-            titleX: `${xPercent}%`,
-            titleY: '95%'
-          });
-        }
+        option.series = [{
+          name: categories[0] || "Cơ cấu",
+          type: "pie",
+          radius: "60%",
+          center: ["50%", "54%"],
+          avoidLabelOverlap: true,
+          data: rows.map(r => ({ name: r.name, value: r.values[0] || 0 })),
+          label: { formatter: "{b}: {d}%", fontSize: 11, fontFamily: 'Be Vietnam Pro' }
+        }];
       }
-
-      // Tạo series gồm N hình tròn, dùng componentRows để loại bỏ dòng "Tổng số"
-      option.series = pieConfigs.map((cfg, i) => ({
-        name: categories[i] ? `Năm ${categories[i]}` : `Cơ cấu ${i + 1}`,
-        type: "pie",
-        radius: cfg.radius,
-        center: cfg.center,
-        avoidLabelOverlap: true,
-        data: componentRows.map(r => ({
-          name: r.name,
-          value: r.values[i] || 0
-        })),
-        label: {
-          formatter: "{b}: {d}%",
-          fontSize: N >= 4 ? 9 : (N === 3 ? 10 : 11),
-          fontFamily: 'Be Vietnam Pro'
-        }
-      }));
-
-      // Gắn nhãn tiêu đề Năm bên dưới mỗi hình tròn
-      const yearTitles = pieConfigs.map((cfg, i) => ({
-        text: categories[i] ? `Năm ${categories[i]}` : '',
-        left: cfg.titleX,
-        top: cfg.titleY,
-        textAlign: 'center',
-        textStyle: {
-          fontSize: N >= 4 ? 11 : 12,
-          fontWeight: 'bold',
-          color: '#1e293b',
-          fontFamily: 'Be Vietnam Pro'
-        }
-      }));
-
-      option.title = [
-        {
-          text: `${q.title || 'Biểu đồ'} - [Dạng: ${getChartLabel(chartType)}]`,
-          left: "center",
-          top: 8,
-          textStyle: { fontSize: 13, fontWeight: "bold", fontFamily: 'Be Vietnam Pro' }
-        },
-        ...yearTitles
-      ];
     } else if (chartType === "combo_bar_line") {
-      // Quy tắc Biểu đồ Kết hợp: 2 trục tung độc lập (Trục 0 bên trái cho Cột, Trục 1 bên phải cho Đường)
       option.xAxis = { 
         type: "category", 
         data: categories,
         axisLabel: { hideOverlap: true, interval: 0, rotate: 15, fontFamily: 'Be Vietnam Pro' }
       };
       option.yAxis = [
-        { 
-          type: "value", 
-          name: rows[0]?.unit ? `${rows[0].name} (${rows[0].unit})` : (rows[0]?.name || "Cột"),
-          position: "left",
-          axisLabel: { fontFamily: 'Be Vietnam Pro' }
-        },
-        { 
-          type: "value", 
-          name: rows[1]?.unit ? `${rows[1].name} (${rows[1].unit})` : (rows[1]?.name || "Đường"),
-          position: "right",
-          splitLine: { show: false },
-          axisLabel: { fontFamily: 'Be Vietnam Pro' }
-        }
+        { type: "value", name: rows[0]?.unit || "" },
+        { type: "value", name: rows[1]?.unit || "" }
       ];
       option.series = [
         {
           name: rows[0]?.name || "Chỉ tiêu 1",
           type: "bar",
-          yAxisIndex: 0,
           data: rows[0]?.values || [],
           barMaxWidth: 30
         },
@@ -616,7 +422,7 @@ const ChartTrainer = (function () {
       ];
     }
 
-    chartInstance.setOption(option, true);
+    echartInstance.setOption(option);
   }
 
   function getChartLabel(t) {

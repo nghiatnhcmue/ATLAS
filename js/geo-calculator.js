@@ -320,21 +320,7 @@ const GeoCalculator = (function () {
     }
   };
 
-  // Bản vá 3.1: Hàm đọc số liệu chuẩn Việt Nam (xử lý cả dấu chấm và phẩy)
-  function parseVNNumber(val) {
-    if (typeof val === 'number') return val;
-    let s = String(val || '').trim().replace(/\s+/g, '').replace(/%/g, '');
-    if (s.includes('.') && s.includes(',')) {
-      s = s.replace(/\./g, '').replace(',', '.'); // VD: 1.254,5 -> 1254.5
-    } else if (s.includes(',')) {
-      s = s.replace(',', '.'); // VD: 18,4 -> 18.4
-    }
-    const num = parseFloat(s);
-    return isNaN(num) ? null : num;
-  }
-
   let activeFormulaId = "density";
-  let activeInputIndex = 0;
 
   function init() {
     renderFormulaSelector();
@@ -356,22 +342,15 @@ const GeoCalculator = (function () {
     });
   }
 
-  // Bản vá 3.2: Bảo vệ Render KaTeX (Double-Backslash & Fallback)
   function loadFormula(formulaId) {
     activeFormulaId = formulaId;
-    activeInputIndex = 0; // Reset về ô nhập đầu tiên
     const f = FORMULAS[formulaId];
     if (!f) return;
 
     // Hiển thị công thức KaTeX
     const mathDisplay = document.getElementById("calc-katex-formula");
     if (mathDisplay && window.katex) {
-      try {
-        katex.render(f.latex, mathDisplay, { displayMode: true, throwOnError: false });
-      } catch (err) {
-        console.warn("[GeoCalculator] Lỗi render KaTeX formula:", err);
-        mathDisplay.innerText = f.latex;
-      }
+      katex.render(f.latex, mathDisplay, { displayMode: true, throwOnError: false });
     }
 
     // Render bảng số liệu mẫu (Khung trái 60%) có cơ chế Click-to-Bind
@@ -384,24 +363,23 @@ const GeoCalculator = (function () {
     calculate();
   }
 
-  // Bản vá 3.1: Bảo vệ dữ liệu bảng & chỉ gắn sự kiện vào .data-cell thực
   function renderSampleTable(tbl) {
     const container = document.getElementById("calc-table-display");
     if (!container || !tbl) return;
 
-    const headersHtml = tbl.headers.map(h => `<th class="px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-center whitespace-nowrap select-none">${h}</th>`).join("");
+    const headersHtml = tbl.headers.map(h => `<th class="px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-center whitespace-nowrap">${h}</th>`).join("");
     const rowsHtml = tbl.rows.map(r => {
       const rowName = r[0];
       const cells = r.slice(1).map((val, cellIdx) => `
         <td 
-          class="data-cell px-3 py-2 text-xs font-mono tabular-nums text-slate-800 dark:text-slate-200 border-b border-slate-100 dark:border-slate-800 text-center whitespace-nowrap cursor-pointer hover:bg-blue-100/70 dark:hover:bg-blue-900/40 hover:text-blue-700 dark:hover:text-blue-300 transition select-none" 
-          title="Bấm để nạp số ${val} vào ô nhập đang chọn"
-          onclick="GeoCalculator.bindValueToActiveInput('${val}')"
+          class="px-3 py-2 text-xs font-mono tabular-nums text-slate-800 dark:text-slate-200 border-b border-slate-100 dark:border-slate-800 text-center whitespace-nowrap click-to-bind" 
+          title="Bấm để truyền số ${val} vào ô nhập"
+          onclick="GeoCalculator.bindValueToInput(${cellIdx}, '${val}')"
         >
           ${val}
         </td>
       `).join("");
-      return `<tr><td class="px-3 py-2 text-xs font-semibold text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-800/40 border-b border-slate-100 dark:border-slate-800 min-w-[140px] max-w-[220px] whitespace-normal select-none">${rowName}</td>${cells}</tr>`;
+      return `<tr><td class="px-3 py-2 text-xs font-semibold text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-800/40 border-b border-slate-100 dark:border-slate-800 min-w-[140px] max-w-[220px] whitespace-normal">${rowName}</td>${cells}</tr>`;
     }).join("");
 
     container.innerHTML = `
@@ -420,7 +398,6 @@ const GeoCalculator = (function () {
     `;
   }
 
-  // Bản vá 3.2: Render các ô nhập có trạng thái Active Input viền sáng
   function renderInputs(f) {
     const container = document.getElementById("calc-inputs-container");
     if (!container) return;
@@ -430,22 +407,16 @@ const GeoCalculator = (function () {
         <option value="${uIdx}">${u.label}</option>
       `).join("");
 
-      const isActive = idx === activeInputIndex;
-
       return `
-        <div class="space-y-1.5" id="calc-input-row-${idx}">
-          <div class="flex items-center justify-between">
-            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">${inp.label}:</label>
-            <span id="active-badge-${idx}" class="text-[9px] font-bold px-2 py-0.5 rounded-full transition ${isActive ? 'bg-blue-600 text-white' : 'hidden'}">Đang chọn</span>
-          </div>
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">${inp.label}:</label>
           <div class="flex space-x-2">
             <input 
               type="number" 
               step="any" 
               id="calc-input-${idx}" 
               value="${inp.defaultVal}" 
-              class="w-2/3 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 font-mono tabular-nums bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none transition ${isActive ? 'ring-2 ring-blue-500 bg-blue-50/50 dark:bg-slate-800' : ''}"
-              onfocus="GeoCalculator.setActiveInput(${idx})"
+              class="w-2/3 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 font-mono tabular-nums bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               oninput="GeoCalculator.calculate()"
             />
             <select 
@@ -461,62 +432,23 @@ const GeoCalculator = (function () {
     }).join("");
   }
 
-  // Chọn ô nhập active
-  function setActiveInput(idx) {
-    activeInputIndex = idx;
-    const f = FORMULAS[activeFormulaId];
-    if (!f) return;
-
-    f.inputs.forEach((_, i) => {
-      const inputEl = document.getElementById(`calc-input-${i}`);
-      const badgeEl = document.getElementById(`active-badge-${i}`);
-      if (inputEl) {
-        if (i === activeInputIndex) {
-          inputEl.classList.add("ring-2", "ring-blue-500", "bg-blue-50/50");
-        } else {
-          inputEl.classList.remove("ring-2", "ring-blue-500", "bg-blue-50/50");
-        }
-      }
-      if (badgeEl) {
-        if (i === activeInputIndex) {
-          badgeEl.classList.remove("hidden");
-        } else {
-          badgeEl.classList.add("hidden");
-        }
-      }
-    });
-  }
-
-  // Bản vá 3.2: Click-to-Bind nạp số vào ô active, tự động nhảy sang ô tiếp theo và tính toán Live
-  function bindValueToActiveInput(valStr) {
+  // Cơ chế Click-to-Bind với bộ lọc số liệu thông minh (chuyển dấu phẩy thành dấu chấm)
+  function bindValueToInput(inputIndex, valStr) {
     if (valStr === undefined || valStr === null) return;
-    const parsed = parseVNNumber(valStr);
-    const validNum = parsed !== null ? parsed : 0;
+    const cleanStr = valStr.toString().trim()
+      .replace(/[+%]/g, '')
+      .replace(/\s+/g, '')
+      .replace(',', '.');
+    const cleanNum = parseFloat(cleanStr);
+    const validNum = isNaN(cleanNum) ? 0 : cleanNum;
 
-    const f = FORMULAS[activeFormulaId];
-    const numInputs = f?.inputs?.length || 2;
-
-    // 1. Nạp số vào ô activeInputIndex và chớp xanh phản hồi
-    const inputEl = document.getElementById(`calc-input-${activeInputIndex}`);
+    const inputEl = document.getElementById(`calc-input-${inputIndex}`);
     if (inputEl) {
       inputEl.value = validNum;
-      inputEl.classList.add("ring-2", "ring-emerald-500", "bg-emerald-50");
-      setTimeout(() => {
-        inputEl.classList.remove("ring-emerald-500", "bg-emerald-50");
-      }, 400);
+      inputEl.classList.add("ring-2", "ring-blue-500", "bg-blue-50");
+      setTimeout(() => inputEl.classList.remove("ring-2", "ring-blue-500", "bg-blue-50"), 800);
+      calculate();
     }
-
-    // 2. Tự động chuyển active sang ô kế tiếp (Auto-Advance)
-    const nextIdx = (activeInputIndex + 1) % numInputs;
-    setActiveInput(nextIdx);
-
-    // 3. Tính toán kết quả tức thời (Live Calculation)
-    calculate();
-  }
-
-  function bindValueToInput(inputIndex, valStr) {
-    setActiveInput(inputIndex);
-    bindValueToActiveInput(valStr);
   }
 
   function calculate() {
@@ -528,8 +460,8 @@ const GeoCalculator = (function () {
     inputs.forEach((inp, idx) => {
       const inputEl = document.getElementById(`calc-input-${idx}`);
       const rawVal = inputEl ? inputEl.value : "";
-      const parsed = parseVNNumber(rawVal);
-      const val = parsed !== null ? parsed : 0;
+      const parsedVal = parseFloat(String(rawVal).replace(',', '.'));
+      const val = isNaN(parsedVal) ? 0 : parsedVal;
 
       const unitSelect = document.getElementById(`calc-unit-${idx}`);
       const unitIdx = unitSelect ? parseInt(unitSelect.value) || 0 : 0;
@@ -555,16 +487,7 @@ const GeoCalculator = (function () {
     const stepsHtml = res.stepsLatex.map(s => {
       const div = document.createElement("div");
       div.className = "overflow-x-auto py-1";
-      if (window.katex) {
-        try {
-          katex.render(s, div, { displayMode: true, throwOnError: false });
-        } catch (err) {
-          console.warn("[GeoCalculator] Lỗi render step KaTeX:", err);
-          div.innerHTML = `<span class="font-mono text-xs text-slate-700 dark:text-slate-300">${s}</span>`;
-        }
-      } else {
-        div.innerHTML = `<span class="font-mono text-xs text-slate-700 dark:text-slate-300">${s}</span>`;
-      }
+      katex.render(s, div, { displayMode: true, throwOnError: false });
       return div.outerHTML;
     }).join("");
 
@@ -598,10 +521,7 @@ const GeoCalculator = (function () {
   return {
     init,
     calculate,
-    setActiveInput,
-    bindValueToActiveInput,
-    bindValueToInput,
-    parseVNNumber
+    bindValueToInput
   };
 })();
 
