@@ -83,6 +83,9 @@ function initTheme() {
     toggleBtn.addEventListener("click", () => {
       const currentDark = document.documentElement.classList.toggle("dark");
       localStorage.setItem("geoatlas_theme", currentDark ? "dark" : "light");
+      if (typeof ChartTrainer.syncTheme === "function") {
+        ChartTrainer.syncTheme();
+      }
       ChartTrainer.resize();
     });
   }
@@ -183,3 +186,23 @@ window.showOfflineToast = function () {
     }
   }, 8000);
 };
+
+window.showAppToast = function (msg) {
+  const existing = document.getElementById("geoatlas-app-toast");
+  if (existing) existing.remove();
+
+  const toast = document.createElement("div");
+  toast.id = "geoatlas-app-toast";
+  toast.className = "fixed bottom-5 left-1/2 -translate-x-1/2 z-[2000] app-toast flex items-center space-x-2 px-4 py-2.5 bg-slate-900/95 text-white dark:bg-slate-100 dark:text-slate-900 rounded-xl shadow-xl text-xs font-semibold border border-slate-700 dark:border-slate-300 transition-all duration-300";
+  toast.innerHTML = `<span>${msg}</span>`;
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    if (toast.parentElement) {
+      toast.style.opacity = "0";
+      setTimeout(() => toast.remove(), 400);
+    }
+  }, 4000);
+};
+

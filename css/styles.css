@@ -312,3 +312,53 @@ table, .tabular-nums, font-mono {
 .segmented-pill-btn {
   transition: all 0.18s ease;
 }
+
+/* ==========================================================================
+   PURE VECTOR BASEMAP OCEAN BACKGROUND & GRATICULE
+   Light Mode: #CBE7F5 | Dark Mode: #0B192C
+   ========================================================================== */
+#atlas-map.atlat-pure-vector,
+.atlat-pure-vector .leaflet-container {
+  background-color: #CBE7F5 !important;
+}
+
+.dark #atlas-map.atlat-pure-vector,
+.dark .atlat-pure-vector .leaflet-container {
+  background-color: #0B192C !important;
+}
+
+/* ==========================================================================
+   ANIMATED MONSOON & CLIMATE VECTORS
+   ========================================================================== */
+@keyframes monsoonFlow {
+  from {
+    stroke-dashoffset: 32;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animated-monsoon-line {
+  animation: monsoonFlow 1.6s linear infinite;
+}
+
+/* ==========================================================================
+   DECLUTTERED PROVINCE CLEAN LABELS (Zoom >= 7)
+   ========================================================================== */
+.province-clean-label {
+  text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff, 0 1px 2px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  text-align: center;
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+}
+
+.dark .province-clean-label {
+  text-shadow: 0 0 3px #0f172a, 0 0 6px #0f172a, 0 1px 2px rgba(255, 255, 255, 0.25);
+}
+
+.graticule-deg-label {
+  pointer-events: none;
+  text-align: center;
+}

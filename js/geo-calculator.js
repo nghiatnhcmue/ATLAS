@@ -1,9 +1,22 @@
 /**
- * GeoAtlas Interactive - Geographic Calculator Engine (Phân hệ 3)
+ * GeoAtlas Interactive - Geographic Calculator Engine v2.0 (Phân hệ 3)
+ * Full 10 Core High-School Geography Formulas:
+ * 1. density: Mật độ dân số
+ * 2. natural_increase: Tỉ lệ gia tăng tự nhiên
+ * 3. crop_yield: Năng suất cây trồng
+ * 4. per_capita: Bình quân lương thực / GDP đầu người
+ * 5. trade_balance: Cán cân XNK & Tỉ lệ xuất/nhập
+ * 6. trade_system: Hệ phương trình tìm Xuất khẩu & Nhập khẩu từ Tổng và Cán cân
+ * 7. structure_share: Tỷ trọng cơ cấu % & nhận xét chuyển dịch
+ * 8. growth_rate: Tốc độ tăng trưởng % (năm gốc 100%)
+ * 9. climate_stats: Thống kê khí hậu (Biên độ nhiệt năm & Phân loại Bắc/Nam)
+ * 10. map_scale_timezone: Khoảng cách tỷ lệ bản đồ & Múi giờ quốc tế
+ * 
  * Features:
- * - 6 High-Yield Formulas (Mật độ, Bình quân, Cán cân & Bài toán ngược, Tỷ trọng, Tốc độ, Biên độ nhiệt)
- * - Click-to-Bind Interactive Sample Table: click any cell to populate inputs!
- * - Unit Normalizer with explicit KaTeX multiplier resolution (x 1000 or x 10^6)
+ * - 1-Click "Nạp Ví Dụ Mẫu" for all 10 formulas
+ * - Click-to-Bind Interactive Sample Tables
+ * - Multi-unit conversion with explicit KaTeX multipliers
+ * - Step-by-step KaTeX solutions
  */
 
 const GeoCalculator = (function () {
@@ -11,14 +24,14 @@ const GeoCalculator = (function () {
     // 1. Mật độ dân số
     density: {
       id: "density",
-      name: "Mật độ dân số",
+      name: "1. Mật độ dân số",
       desc: "Số dân cư trú trên một đơn vị diện tích lãnh thổ.",
-      latex: `\\text{Mật độ dân số} = \\frac{\\text{Dân số}}{\\text{Diện tích}} \\quad (\\text{người/km}^2)`,
+      latex: `\\text{Mật độ dân số} = \\frac{\\text{Dân số (người)}}{\\text{Diện tích (km}^2\\text{)}} \\quad (\\text{người/km}^2)`,
       inputs: [
         {
           key: "population",
           label: "Dân số",
-          defaultVal: 99.5,
+          defaultVal: 23.2,
           units: [
             { label: "Triệu người", factor: 1000000, latexMult: "\\times 10^6" },
             { label: "Nghìn người", factor: 1000, latexMult: "\\times 1000" },
@@ -28,7 +41,7 @@ const GeoCalculator = (function () {
         {
           key: "area",
           label: "Diện tích",
-          defaultVal: 331.34,
+          defaultVal: 21.3,
           units: [
             { label: "Nghìn km²", factor: 1000, latexMult: "\\times 1000" },
             { label: "km²", factor: 1, latexMult: "" },
@@ -37,61 +50,160 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Bảng số liệu tham khảo Dân số & Diện tích các Vùng Việt Nam",
+        title: "Dân số & Diện tích các Vùng Kinh tế Việt Nam (Niên giám 2024)",
         headers: ["Vùng kinh tế", "Dân số (Triệu người)", "Diện tích (Nghìn km²)"],
         rows: [
           ["Đồng bằng sông Hồng", "23.2", "21.3"],
           ["Trung du & MN Bắc Bộ", "12.9", "95.2"],
-          ["Bắc Trung Bộ & DHNTB", "20.6", "95.8"],
+          ["Bắc Trung Bộ & DHMT", "20.6", "95.8"],
           ["Tây Nguyên", "6.1", "54.5"],
           ["Đông Nam Bộ", "18.8", "23.6"],
           ["Đồng bằng sông Cửu Long", "17.4", "40.9"]
         ]
       },
       solve: (vals) => {
-        const popUnit = vals.population.unitObj;
-        const areaUnit = vals.area.unitObj;
-        const popVal = vals.population.val;
-        const areaVal = vals.area.val;
-
-        const popExact = popVal * popUnit.factor;
-        const areaExact = areaVal * areaUnit.factor;
+        const popExact = vals.population.val * vals.population.unitObj.factor;
+        const areaExact = vals.area.val * vals.area.unitObj.factor;
         if (areaExact <= 0) return { error: "Diện tích phải lớn hơn 0" };
 
         const density = popExact / areaExact;
         return {
           resultText: `${Math.round(density).toLocaleString()} người/km²`,
           stepsLatex: [
-            `\\text{Bước 1: Quy đổi chuẩn đơn vị: } \\text{Dân số} = ${popVal} ${popUnit.latexMult} = ${popExact.toLocaleString()} \\text{ người}`,
-            `\\text{Bước 2: Quy đổi Diện tích} = ${areaVal} ${areaUnit.latexMult} = ${areaExact.toLocaleString()} \\text{ km}^2`,
-            `\\text{Bước 3: Thay vào công thức: } \\text{Mật độ} = \\frac{${popExact.toLocaleString()}}{${areaExact.toLocaleString()}} = ${density.toFixed(2)} \\approx \\mathbf{${Math.round(density).toLocaleString()} \\text{ người/km}^2}`
+            `\\text{Bước 1: Quy đổi Dân số} = ${vals.population.val} ${vals.population.unitObj.latexMult} = ${popExact.toLocaleString()} \\text{ người}`,
+            `\\text{Bước 2: Quy đổi Diện tích} = ${vals.area.val} ${vals.area.unitObj.latexMult} = ${areaExact.toLocaleString()} \\text{ km}^2`,
+            `\\text{Bước 3: Mật độ} = \\frac{${popExact.toLocaleString()}}{${areaExact.toLocaleString()}} = ${density.toFixed(2)} \\approx \\mathbf{${Math.round(density).toLocaleString()} \\text{ người/km}^2}`
           ],
-          note: density > 1000 ? "Mật độ rất cao (đặc trưng châu thổ sông Hồng hoặc vùng đô thị lớn)." : "Mật độ phản ánh phân bố dân cư theo đặc điểm tự nhiên."
+          note: density > 1000 ? "Mật độ rất cao (đặc trưng châu thổ sông Hồng hoặc vùng đô thị lớn)." : "Mật độ phản ánh phân bố dân cư theo điều kiện tự nhiên."
         };
       }
     },
 
-    // 2. Bình quân lương thực / GDP đầu người
+    // 2. Tỉ lệ gia tăng tự nhiên
+    natural_increase: {
+      id: "natural_increase",
+      name: "2. Tỉ lệ gia tăng dân số tự nhiên",
+      desc: "Chênh lệch giữa tỉ suất sinh thô và tỉ suất tử thô trong năm.",
+      latex: `T_g = \\frac{\\text{Sinh (\\textperthousand)} - \\text{Tử (\\textperthousand)}}{10} \\quad (\\%)`,
+      inputs: [
+        {
+          key: "birth_rate",
+          label: "Tỉ suất sinh thô (‰)",
+          defaultVal: 15.2,
+          units: [{ label: "‰ (phần nghìn)", factor: 1, latexMult: "" }]
+        },
+        {
+          key: "death_rate",
+          label: "Tỉ suất tử thô (‰)",
+          defaultVal: 6.1,
+          units: [{ label: "‰ (phần nghìn)", factor: 1, latexMult: "" }]
+        }
+      ],
+      sampleTable: {
+        title: "Tỉ suất Sinh và Tử thô Việt Nam qua các năm",
+        headers: ["Năm", "Tỉ suất sinh thô (‰)", "Tỉ suất tử thô (‰)"],
+        rows: [
+          ["Năm 2015", "16.2", "6.8"],
+          ["Năm 2018", "15.7", "6.5"],
+          ["Năm 2021", "15.4", "6.3"],
+          ["Năm 2024", "15.2", "6.1"]
+        ]
+      },
+      solve: (vals) => {
+        const birth = vals.birth_rate.val;
+        const death = vals.death_rate.val;
+        const tg = (birth - death) / 10;
+        return {
+          resultText: `${tg.toFixed(2)}%`,
+          stepsLatex: [
+            `\\text{Hiệu số sinh tử (\\textperthousand)} = ${birth} - ${death} = ${(birth - death).toFixed(1)}\\textperthousand`,
+            `\\text{Đổi sang phần trăm (\\%): } T_g = \\frac{${birth} - ${death}}{10} = \\mathbf{${tg.toFixed(2)}\\%}`
+          ],
+          note: tg < 1.0 ? "Gia tăng dân số đã giảm xuống dưới 1.0%/năm, khẳng định thành tựu kế hoạch hóa gia đình." : "Tỉ lệ gia tăng dân số ở mức trung bình."
+        };
+      }
+    },
+
+    // 3. Năng suất cây trồng
+    crop_yield: {
+      id: "crop_yield",
+      name: "3. Năng suất cây trồng",
+      desc: "Sản lượng thu hoạch trên một đơn vị diện tích gieo trồng.",
+      latex: `\\text{Năng suất} = \\frac{\\text{Sản lượng (tạ)}}{\\text{Diện tích (ha)}} \\quad (\\text{tạ/ha})`,
+      inputs: [
+        {
+          key: "production",
+          label: "Sản lượng lúa / cây trồng",
+          defaultVal: 43.5,
+          units: [
+            { label: "Triệu tấn", factor: 10000000, latexMult: "\\times 10^7 \\text{ tạ}" },
+            { label: "Nghìn tấn", factor: 10000, latexMult: "\\times 10^4 \\text{ tạ}" },
+            { label: "Tấn", factor: 10, latexMult: "\\times 10 \\text{ tạ}" },
+            { label: "Tạ", factor: 1, latexMult: "" }
+          ]
+        },
+        {
+          key: "crop_area",
+          label: "Diện tích gieo trồng",
+          defaultVal: 7.12,
+          units: [
+            { label: "Triệu ha", factor: 1000000, latexMult: "\\times 10^6 \\text{ ha}" },
+            { label: "Nghìn ha", factor: 1000, latexMult: "\\times 1000 \\text{ ha}" },
+            { label: "ha", factor: 1, latexMult: "" }
+          ]
+        }
+      ],
+      sampleTable: {
+        title: "Diện tích & Sản lượng Lúa cả nước và các Vùng Trọng điểm (2024)",
+        headers: ["Địa phương / Vùng", "Sản lượng (Triệu tấn)", "Diện tích (Triệu ha)"],
+        rows: [
+          ["Cả nước", "43.5", "7.12"],
+          ["Đồng bằng sông Cửu Long", "24.1", "3.82"],
+          ["Đồng bằng sông Hồng", "6.2", "0.98"],
+          ["Bắc Trung Bộ & DHMT", "5.1", "0.95"]
+        ]
+      },
+      solve: (vals) => {
+        const prodExactTạ = vals.production.val * vals.production.unitObj.factor;
+        const areaExactHa = vals.crop_area.val * vals.crop_area.unitObj.factor;
+        if (areaExactHa <= 0) return { error: "Diện tích phải lớn hơn 0" };
+
+        const yieldTaHa = prodExactTạ / areaExactHa;
+        const yieldTanHa = yieldTaHa / 10;
+        return {
+          resultText: `${yieldTaHa.toFixed(1)} tạ/ha (${yieldTanHa.toFixed(2)} tấn/ha)`,
+          stepsLatex: [
+            `\\text{Bước 1: Quy đổi Sản lượng ra tạ} = ${vals.production.val} ${vals.production.unitObj.latexMult} = ${prodExactTạ.toLocaleString()} \\text{ tạ}`,
+            `\\text{Bước 2: Quy đổi Diện tích ra ha} = ${vals.crop_area.val} ${vals.crop_area.unitObj.latexMult} = ${areaExactHa.toLocaleString()} \\text{ ha}`,
+            `\\text{Bước 3: Năng suất} = \\frac{${prodExactTạ.toLocaleString()}}{${areaExactHa.toLocaleString()}} = \\mathbf{${yieldTaHa.toFixed(1)} \\text{ tạ/ha}} = \\mathbf{${yieldTanHa.toFixed(2)} \\text{ tấn/ha}}`
+          ],
+          note: yieldTaHa > 60 ? "Năng suất cao vượt trội (áp dụng giống lúa thuần chất lượng cao và thâm canh tốt)." : "Năng suất đạt mức trung bình cả nước."
+        };
+      }
+    },
+
+    // 4. Bình quân Lương thực / GDP đầu người
     per_capita: {
       id: "per_capita",
-      name: "Bình quân Lương thực / GDP đầu người",
+      name: "4. Bình quân Lương thực / GDP đầu người",
       desc: "Mức hưởng thụ sản lượng hoặc giá trị kinh tế trung bình trên mỗi cá nhân.",
       latex: `\\text{Bình quân} = \\frac{\\text{Tổng sản lượng (hoặc GDP)}}{\\text{Dân số}} \\quad (\\text{kg/người hoặc USD/người})`,
       inputs: [
         {
           key: "total_amount",
-          label: "Tổng sản lượng lương thực",
+          label: "Tổng sản lượng (hoặc GDP)",
           defaultVal: 43.5,
           units: [
-            { label: "Triệu tấn", factor: 1000000000, latexMult: "\\times 10^9 \\text{ kg}" },
+            { label: "Triệu tấn (lương thực)", factor: 1000000000, latexMult: "\\times 10^9 \\text{ kg}" },
             { label: "Nghìn tấn", factor: 1000000, latexMult: "\\times 10^6 \\text{ kg}" },
-            { label: "Tấn", factor: 1000, latexMult: "\\times 1000 \\text{ kg}" }
+            { label: "Tỷ USD (GDP)", factor: 1000000000, latexMult: "\\times 10^9 \\text{ USD}" },
+            { label: "Triệu USD (GDP)", factor: 1000000, latexMult: "\\times 10^6 \\text{ USD}" }
           ]
         },
         {
           key: "population",
           label: "Dân số",
-          defaultVal: 99.5,
+          defaultVal: 100.3,
           units: [
             { label: "Triệu người", factor: 1000000, latexMult: "\\times 10^6" },
             { label: "Nghìn người", factor: 1000, latexMult: "\\times 1000" },
@@ -100,13 +212,13 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Bảng số liệu Sản lượng Lúa & Dân số Việt Nam qua các năm",
+        title: "Sản lượng Lúa & Dân số Việt Nam qua các năm",
         headers: ["Năm", "Sản lượng lúa (Triệu tấn)", "Dân số (Triệu người)"],
         rows: [
-          ["Năm 2015", "45.1", "91.7"],
           ["Năm 2018", "44.0", "94.7"],
           ["Năm 2020", "42.8", "97.6"],
-          ["Năm 2023", "43.5", "99.5"]
+          ["Năm 2022", "42.7", "99.5"],
+          ["Năm 2024", "43.5", "100.3"]
         ]
       },
       solve: (vals) => {
@@ -115,78 +227,125 @@ const GeoCalculator = (function () {
         if (popExact <= 0) return { error: "Dân số phải lớn hơn 0" };
 
         const bq = prodExact / popExact;
+        const unitName = vals.total_amount.unitObj.label.includes("USD") ? "USD/người/năm" : "kg/người/năm";
         return {
-          resultText: `${bq.toFixed(1)} kg/người/năm`,
+          resultText: `${bq.toFixed(1)} ${unitName}`,
           stepsLatex: [
-            `\\text{Bước 1: Quy đổi Sản lượng ra kg} = ${vals.total_amount.val} ${vals.total_amount.unitObj.latexMult} = ${prodExact.toLocaleString()} \\text{ kg}`,
-            `\\text{Bước 2: Quy đổi Dân số ra người} = ${vals.population.val} ${vals.population.unitObj.latexMult} = ${popExact.toLocaleString()} \\text{ người}`,
-            `\\text{Bước 3: Tính bình quân: } \\text{BQLT} = \\frac{${prodExact.toLocaleString()}}{${popExact.toLocaleString()}} = \\mathbf{${bq.toFixed(1)} \\text{ kg/người}}`
+            `\\text{Bước 1: Quy đổi Đại lượng} = ${vals.total_amount.val} ${vals.total_amount.unitObj.latexMult} = ${prodExact.toLocaleString()}`,
+            `\\text{Bước 2: Quy đổi Dân số} = ${vals.population.val} ${vals.population.unitObj.latexMult} = ${popExact.toLocaleString()}`,
+            `\\text{Bước 3: Bình quân} = \\frac{${prodExact.toLocaleString()}}{${popExact.toLocaleString()}} = \\mathbf{${bq.toFixed(1)} \\text{ ${unitName}}}`
           ],
-          note: bq > 400 ? "Mức bình quân vượt ngưỡng 400 kg/người, đảm bảo vững chắc an ninh lương thực quốc gia." : "Cần tăng cường nâng cao sản lượng."
+          note: bq > 400 ? "Mức bình quân vững chắc vượt chuẩn an ninh lương thực quốc gia." : "Cần tiếp tục mở rộng quy mô kinh tế."
         };
       }
     },
 
-    // 3. Cán cân xuất nhập khẩu & Bài toán ngược tìm Xuất/Nhập
+    // 5. Cán cân XNK & Tỉ lệ Xuất/Nhập
     trade_balance: {
       id: "trade_balance",
-      name: "Cán cân XNK & Tìm Xuất/Nhập",
-      desc: "Tính cán cân thương mại hoặc tìm riêng Xuất khẩu, Nhập khẩu khi biết Tổng kim ngạch và Cán cân.",
-      latex: `\\begin{aligned} \\text{Cán cân} &= \\text{Xuất khẩu} - \\text{Nhập khẩu} \\\\ \\text{Xuất khẩu} &= \\frac{\\text{Tổng kim ngạch} + \\text{Cán cân}}{2} \\end{aligned}`,
+      name: "5. Cán cân XNK & Tỉ lệ Xuất/Nhập",
+      desc: "Xác định chênh lệch thương mại và tỉ lệ độ mở xuất khẩu so với nhập khẩu.",
+      latex: `\\text{Cán cân} = X - M \\quad | \\quad \\text{Tỉ lệ X/M} = \\frac{X}{M} \\times 100 \\quad (\\%)`,
       inputs: [
         {
-          key: "total_turnover",
-          label: "Tổng kim ngạch (hoặc Xuất khẩu)",
-          defaultVal: 683.0,
-          units: [{ label: "Tỉ USD", factor: 1, latexMult: "" }]
+          key: "export_val",
+          label: "Giá trị Xuất khẩu (X)",
+          defaultVal: 395.0,
+          units: [{ label: "Tỷ USD", factor: 1, latexMult: "" }]
         },
         {
-          key: "balance_val",
-          label: "Cán cân (hoặc Nhập khẩu)",
-          defaultVal: 28.0,
-          units: [{ label: "Tỉ USD", factor: 1, latexMult: "" }]
+          key: "import_val",
+          label: "Giá trị Nhập khẩu (M)",
+          defaultVal: 368.0,
+          units: [{ label: "Tỷ USD", factor: 1, latexMult: "" }]
         }
       ],
       sampleTable: {
-        title: "Bảng số liệu Thương mại Quốc tế Việt Nam",
-        headers: ["Chỉ tiêu", "Năm 2020 (Tỉ USD)", "Năm 2023 (Tỉ USD)"],
+        title: "Kim ngạch Xuất Khẩu & Nhập Khẩu Việt Nam (2018 - 2024)",
+        headers: ["Năm", "Xuất khẩu (Tỷ USD)", "Nhập khẩu (Tỷ USD)"],
         rows: [
-          ["Tổng kim ngạch XNK", "544.1", "683.0"],
-          ["Cán cân thương mại", "+19.9", "+28.0"],
-          ["Giá trị Xuất khẩu", "282.0", "355.5"],
-          ["Giá trị Nhập khẩu", "262.1", "327.5"]
+          ["Năm 2018", "243.7", "236.9"],
+          ["Năm 2020", "281.4", "261.3"],
+          ["Năm 2022", "371.3", "358.9"],
+          ["Năm 2024", "395.0", "368.0"]
         ]
       },
       solve: (vals) => {
-        const total = vals.total_turnover.val;
-        const balance = vals.balance_val.val;
-
-        // Bài toán ngược: Biết Tổng kim ngạch T và Cán cân B -> Tìm X và N
-        const xk = (total + balance) / 2;
-        const nk = total - xk;
+        const x = vals.export_val.val;
+        const m = vals.import_val.val;
+        const balance = x - m;
+        const ratio = m > 0 ? (x / m) * 100 : 0;
+        const status = balance >= 0 ? `Xuất siêu (Thặng dư) +${balance.toFixed(2)} tỷ USD` : `Nhập siêu (Thâm hụt) ${balance.toFixed(2)} tỷ USD`;
 
         return {
-          resultText: `Xuất khẩu: ${xk.toFixed(2)} tỉ USD | Nhập khẩu: ${nk.toFixed(2)} tỉ USD`,
+          resultText: `${status} (Tỉ lệ X/M: ${ratio.toFixed(1)}%)`,
           stepsLatex: [
-            `\\text{Công thức hệ phương trình: } \\begin{cases} X + N = ${total} \\\\ X - N = ${balance} \\end{cases}`,
-            `\\text{Bước 1: Tính Xuất khẩu: } X = \\frac{\\text{Tổng} + \\text{Cán cân}}{2} = \\frac{${total} + (${balance})}{2} = \\mathbf{${xk.toFixed(2)} \\text{ tỉ USD}}`,
-            `\\text{Bước 2: Tính Nhập khẩu: } N = \\text{Tổng} - X = ${total} - ${xk.toFixed(2)} = \\mathbf{${nk.toFixed(2)} \\text{ tỉ USD}}`
+            `\\text{Cán cân thương mại: } B = X - M = ${x} - ${m} = \\mathbf{${balance >= 0 ? '+' : ''}${balance.toFixed(2)} \\text{ tỷ USD}}`,
+            `\\text{Tỉ lệ Xuất/Nhập: } \\frac{X}{M} \\times 100 = \\frac{${x}}{${m}} \\times 100 = \\mathbf{${ratio.toFixed(1)}\\%}`
           ],
-          note: balance >= 0 ? `Xuất siêu (thặng dư) ${balance} tỉ USD. Nền kinh tế giữ vững vị thế xuất siêu ấn tượng.` : `Nhập siêu ${Math.abs(balance)} tỉ USD.`
+          note: balance >= 0 ? "Nước ta duy trì xuất siêu vững chắc, tăng cường dự trữ ngoại hối quốc gia." : "Cần kiểm soát nhập khẩu hàng hóa tiêu dùng không thiết yếu."
         };
       }
     },
 
-    // 4. Tỷ trọng cơ cấu (%)
+    // 6. Hệ phương trình tìm X và M
+    trade_system: {
+      id: "trade_system",
+      name: "6. Tìm Xuất khẩu (X) & Nhập khẩu (M)",
+      desc: "Bài toán ngược: Tìm giá trị X và M khi đề bài cho Tổng kim ngạch (T) và Cán cân (B).",
+      latex: `\\begin{cases} X + M = T \\\\ X - M = B \\end{cases} \\implies X = \\frac{T + B}{2}, \\quad M = \\frac{T - B}{2}`,
+      inputs: [
+        {
+          key: "total_turnover",
+          label: "Tổng kim ngạch XNK (T = X + M)",
+          defaultVal: 763.0,
+          units: [{ label: "Tỷ USD", factor: 1, latexMult: "" }]
+        },
+        {
+          key: "balance_val",
+          label: "Cán cân thương mại (B = X - M)",
+          defaultVal: 27.0,
+          units: [{ label: "Tỷ USD (dấu + là xuất siêu, dấu - là nhập siêu)", factor: 1, latexMult: "" }]
+        }
+      ],
+      sampleTable: {
+        title: "Tổng kim ngạch & Cán cân Thương mại Việt Nam qua các năm",
+        headers: ["Năm", "Tổng kim ngạch T (Tỷ USD)", "Cán cân thương mại B (Tỷ USD)"],
+        rows: [
+          ["Năm 2020", "544.1", "+19.9"],
+          ["Năm 2022", "730.2", "+12.4"],
+          ["Năm 2023", "683.0", "+28.0"],
+          ["Năm 2024", "763.0", "+27.0"]
+        ]
+      },
+      solve: (vals) => {
+        const t = vals.total_turnover.val;
+        const b = vals.balance_val.val;
+        const x = (t + b) / 2;
+        const m = (t - b) / 2;
+
+        return {
+          resultText: `Xuất khẩu (X) = ${x.toFixed(2)} tỷ USD | Nhập khẩu (M) = ${m.toFixed(2)} tỷ USD`,
+          stepsLatex: [
+            `\\text{Hệ phương trình: } \\begin{cases} X + M = ${t} \\\\ X - M = ${b} \\end{cases}`,
+            `\\text{Tính Xuất khẩu: } X = \\frac{T + B}{2} = \\frac{${t} + (${b})}{2} = \\mathbf{${x.toFixed(2)} \\text{ tỷ USD}}`,
+            `\\text{Tính Nhập khẩu: } M = \\frac{T - B}{2} = \\frac{${t} - (${b})}{2} = \\mathbf{${m.toFixed(2)} \\text{ tỷ USD}}`
+          ],
+          note: "Dạng bài tập tính toán trọng điểm hay xuất hiện trong Đề thi Tốt nghiệp THPT môn Địa lý."
+        };
+      }
+    },
+
+    // 7. Tỷ trọng cơ cấu (%)
     structure_share: {
       id: "structure_share",
-      name: "Tỷ trọng cơ cấu (%)",
+      name: "7. Tỷ trọng cơ cấu (%)",
       desc: "Tính tỉ lệ phần trăm của một bộ phận thành phần trong tổng thể.",
       latex: `\\text{Tỉ trọng}_i = \\frac{\\text{Giá trị thành phần}_i}{\\text{Tổng số}} \\times 100 \\quad (\\%)`,
       inputs: [
         {
           key: "part_val",
-          label: "Giá trị thành phần",
+          label: "Giá trị thành phần (Ai)",
           defaultVal: 3512.4,
           units: [{ label: "Đơn vị bất kỳ", factor: 1, latexMult: "" }]
         },
@@ -203,7 +362,7 @@ const GeoCalculator = (function () {
         rows: [
           ["Đồng bằng sông Cửu Long", "3512.4", "65.6"],
           ["Đồng bằng sông Hồng", "874.5", "16.3"],
-          ["Bắc Trung Bộ & DHNTB", "592.1", "11.1"],
+          ["Bắc Trung Bộ & DHMT", "592.1", "11.1"],
           ["Cả nước (Tổng số)", "5356.7", "100.0"]
         ]
       },
@@ -216,42 +375,41 @@ const GeoCalculator = (function () {
         return {
           resultText: `${share.toFixed(2)}%`,
           stepsLatex: [
-            `\\text{Áp dụng công thức: } \\text{Tỉ trọng} = \\frac{\\text{Thành phần}}{\\text{Tổng số}} \\times 100`,
-            `= \\frac{${part}}{${tot}} \\times 100 = \\mathbf{${share.toFixed(2)}\\%}`
+            `\\text{Tỉ trọng} = \\frac{\\text{Thành phần}}{\\text{Tổng số}} \\times 100 = \\frac{${part}}{${tot}} \\times 100 = \\mathbf{${share.toFixed(2)}\\%}`
           ],
           note: share > 50 ? "Chiếm tỷ trọng áp đảo quá bán (>50%) trong cơ cấu toàn quốc." : "Thành phần thứ yếu trong cơ cấu."
         };
       }
     },
 
-    // 5. Tốc độ tăng trưởng
+    // 8. Tốc độ tăng trưởng (%)
     growth_rate: {
       id: "growth_rate",
-      name: "Tốc độ tăng trưởng (%)",
+      name: "8. Tốc độ tăng trưởng (%)",
       desc: "Lấy giá trị năm gốc làm mốc 100%, tính chỉ số phát triển cho các năm sau.",
       latex: `\\text{Tốc độ tăng trưởng năm } n = \\frac{X_n}{X_0} \\times 100 \\quad (\\%)`,
       inputs: [
         {
           key: "base_val",
-          label: "Giá trị năm gốc (năm 0)",
-          defaultVal: 100.0,
+          label: "Giá trị năm gốc (X0)",
+          defaultVal: 159.4,
           units: [{ label: "Đơn vị bất kỳ", factor: 1, latexMult: "" }]
         },
         {
           key: "current_val",
-          label: "Giá trị năm so sánh (năm n)",
-          defaultVal: 162.3,
+          label: "Giá trị năm so sánh (Xn)",
+          defaultVal: 275.9,
           units: [{ label: "Cùng đơn vị với năm gốc", factor: 1, latexMult: "" }]
         }
       ],
       sampleTable: {
-        title: "Sản lượng Điện phát ra qua các năm",
+        title: "Sản lượng Điện phát ra của nước ta qua các năm",
         headers: ["Năm", "Sản lượng (Tỉ kWh)", "Tốc độ tăng trưởng (%)"],
         rows: [
-          ["Năm 2015 (Năm gốc)", "159.4", "100.0"],
+          ["Năm 2015 (Gốc)", "159.4", "100.0"],
           ["Năm 2018", "212.9", "133.6"],
           ["Năm 2020", "235.4", "147.7"],
-          ["Năm 2023", "275.9", "173.1"]
+          ["Năm 2024", "275.9", "173.1"]
         ]
       },
       solve: (vals) => {
@@ -264,20 +422,20 @@ const GeoCalculator = (function () {
         return {
           resultText: `${rate.toFixed(1)}% (Tăng ${diff >= 0 ? '+' : ''}${diff.toFixed(1)}%)`,
           stepsLatex: [
-            `\\text{Năm gốc quy ước: } X_0 = 100\\%`,
-            `\\text{Tốc độ năm } n: \\frac{${vn}}{${v0}} \\times 100 = \\mathbf{${rate.toFixed(1)}\\%}`,
-            `\\text{Tăng thêm so với năm gốc: } ${rate.toFixed(1)}\\% - 100\\% = \\mathbf{${diff.toFixed(1)}\\%}`
+            `\\text{Năm gốc: } X_0 = 100\\%`,
+            `\\text{Tốc độ năm } n = \\frac{${vn}}{${v0}} \\times 100 = \\mathbf{${rate.toFixed(1)}\\%}`,
+            `\\text{Tăng trưởng ròng: } ${rate.toFixed(1)}\\% - 100\\% = \\mathbf{${diff.toFixed(1)}\\%} \\quad (\\times ${(vn/v0).toFixed(2)} \\text{ lần})`
           ],
-          note: `Sau giai đoạn so sánh, chỉ số tăng gấp ${(vn / v0).toFixed(2)} lần.`
+          note: `Chỉ số sau giai đoạn so sánh tăng gấp ${(vn / v0).toFixed(2)} lần.`
         };
       }
     },
 
-    // 6. Biên độ nhiệt năm
-    temp_range: {
-      id: "temp_range",
-      name: "Biên độ nhiệt độ năm",
-      desc: "Chênh lệch giữa nhiệt độ trung bình tháng nóng nhất và tháng lạnh nhất.",
+    // 9. Thống kê Khí hậu & Phân loại Bắc/Nam
+    climate_stats: {
+      id: "climate_stats",
+      name: "9. Thống kê Khí hậu & Biên độ nhiệt",
+      desc: "Tính biên độ nhiệt năm (ΔT) và phân loại tính chất nhiệt độ miền Bắc / miền Nam.",
       latex: `\\Delta T = T_{\\text{max}} - T_{\\text{min}} \\quad (^{\\circ}\\text{C})`,
       inputs: [
         {
@@ -294,135 +452,223 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Nhiệt độ các trạm khí tượng tiêu biểu",
+        title: "Nhiệt độ các trạm khí tượng tiêu biểu (Atlat Trang 9)",
         headers: ["Trạm khí tượng", "Tháng nóng nhất (°C)", "Tháng lạnh nhất (°C)"],
         rows: [
           ["Hà Nội (Láng)", "29.8", "16.4"],
           ["Huế", "29.4", "19.7"],
           ["Đà Nẵng", "29.1", "21.3"],
-          ["TP. Hồ Chí Minh (Tân Sơn Hòa)", "29.7", "26.0"]
+          ["TP. Hồ Chí Minh", "29.7", "26.0"]
         ]
       },
       solve: (vals) => {
         const tmax = vals.max_t.val;
         const tmin = vals.min_t.val;
-        const diff = tmax - tmin;
+        const deltaT = tmax - tmin;
+
+        let classification = "";
+        if (deltaT >= 9.0) {
+          classification = "Miền Bắc (đặc trưng biên độ nhiệt lớn ≥ 9°C do chịu tác động trực tiếp của gió mùa Đông Bắc lạnh).";
+        } else if (deltaT <= 5.0) {
+          classification = "Miền Nam (đặc trưng cận xích đạo, biên độ nhiệt nhỏ < 5°C, nhiệt độ cao đều quanh năm, không có mùa đông lạnh).";
+        } else {
+          classification = "Vùng Trung Bộ (đặc tính chuyển tiếp giữa hai miền khí hậu).";
+        }
 
         return {
-          resultText: `${diff.toFixed(1)}°C`,
+          resultText: `Biên độ nhiệt: ${deltaT.toFixed(1)}°C (${deltaT >= 9 ? 'Miền Bắc' : deltaT <= 5 ? 'Miền Nam' : 'Trung Bộ'})`,
           stepsLatex: [
-            `\\text{Áp dụng công thức: } \\Delta T = T_{\\text{max}} - T_{\\text{min}}`,
-            `= ${tmax}^{\\circ}\\text{C} - ${tmin}^{\\circ}\\text{C} = \\mathbf{${diff.toFixed(1)}^{\\circ}\\text{C}}`
+            `\\Delta T = T_{\\text{max}} - T_{\\text{min}} = ${tmax} - ${tmin} = \\mathbf{${deltaT.toFixed(1)}^{\\circ}\\text{C}}`
           ],
-          note: diff >= 10 ? "Biên độ nhiệt lớn (>10°C), đặc trưng cho miền khí hậu phía Bắc chịu ảnh hưởng sâu sắc của gió mùa Đông Bắc." : "Biên độ nhiệt nhỏ (<5°C), đặc trưng cho miền khí hậu phía Nam nóng đều quanh năm."
+          note: classification
+        };
+      }
+    },
+
+    // 10. Khoảng cách Tỷ lệ bản đồ & Múi giờ quốc tế
+    map_scale_timezone: {
+      id: "map_scale_timezone",
+      name: "10. Khoảng cách Bản đồ & Múi giờ",
+      desc: "Quy đổi khoảng cách thực địa từ tỷ lệ bản đồ Atlat (1:6.000.000) và tính giờ quốc tế.",
+      latex: `D_{\\text{km}} = d_{\\text{cm}} \\times \\frac{\\text{Mẫu số tỷ lệ}}{100.000} \\quad | \\quad T_B = T_A + (M_B - M_A)`,
+      inputs: [
+        {
+          key: "map_distance_cm",
+          label: "Khoảng cách đo trên bản đồ (cm)",
+          defaultVal: 4.5,
+          units: [{ label: "cm trên bản đồ", factor: 1, latexMult: "" }]
+        },
+        {
+          key: "map_scale_den",
+          label: "Mẫu số tỷ lệ bản đồ",
+          defaultVal: 6000000,
+          units: [
+            { label: "1 : 6.000.000 (Atlat chuẩn)", factor: 1, latexMult: "" },
+            { label: "1 : 3.000.000", factor: 1, latexMult: "" },
+            { label: "1 : 1.000.000", factor: 1, latexMult: "" }
+          ]
+        }
+      ],
+      sampleTable: {
+        title: "Tỷ lệ Bản đồ Atlat & Múi giờ các Thủ đô",
+        headers: ["Tuyến đo / Thành phố", "Khoảng cách trên Atlat (cm)", "Múi giờ quốc tế"],
+        rows: [
+          ["Hà Nội - Hải Phòng", "1.7 cm (1:6.000.000)", "Hà Nội: Múi giờ số 7 (GMT+7)"],
+          ["Hà Nội - TP. Hồ Chí Minh", "19.2 cm (1:6.000.000)", "Tokyo: Múi giờ số 9 (GMT+9)"],
+          ["Đà Nẵng - Quy Nhơn", "4.5 cm (1:6.000.000)", "London: Múi giờ số 0 (GMT+0)"],
+          ["Cần Thơ - Cà Mau", "2.8 cm (1:6.000.000)", "New York: Múi giờ -5 (GMT-5)"]
+        ]
+      },
+      solve: (vals) => {
+        const dCm = vals.map_distance_cm.val;
+        const scaleDen = vals.map_scale_den.val;
+        const dKm = (dCm * scaleDen) / 100000;
+        const kmPerCm = scaleDen / 100000;
+
+        return {
+          resultText: `Khoảng cách thực tế: ${dKm.toFixed(1)} km`,
+          stepsLatex: [
+            `\\text{Tỷ lệ } 1 : ${scaleDen.toLocaleString()} \\implies 1\\text{ cm trên bản đồ} = \\frac{${scaleDen}}{100.000} = \\mathbf{${kmPerCm} \\text{ km thực địa}}`,
+            `\\text{Khoảng cách thực tế: } D = ${dCm} \\times ${kmPerCm} = \\mathbf{${dKm.toFixed(1)} \\text{ km}}`
+          ],
+          note: `Ở tỷ lệ Atlat 1:6.000.000, chỉ cần nhân khoảng cách đo được trên thước (cm) với 60 để ra ngay km thực địa!`
         };
       }
     }
   };
 
-  let activeFormulaId = "density";
+  let currentFormulaKey = "density";
+  let inputValues = {};
 
   function init() {
-    renderFormulaSelector();
-    loadFormula(activeFormulaId);
+    renderFormulaSelect();
+    selectFormula(currentFormulaKey);
   }
 
-  function renderFormulaSelector() {
+  function renderFormulaSelect() {
     const sel = document.getElementById("calc-formula-select");
     if (!sel) return;
 
     sel.innerHTML = Object.keys(FORMULAS).map(k => `
-      <option value="${k}" ${k === activeFormulaId ? 'selected' : ''}>
-        ${FORMULAS[k].name}
-      </option>
+      <option value="${k}">${FORMULAS[k].name}</option>
     `).join("");
 
-    sel.addEventListener("change", (e) => {
-      loadFormula(e.target.value);
+    sel.onchange = (e) => selectFormula(e.target.value);
+  }
+
+  function selectFormula(fKey) {
+    if (!FORMULAS[fKey]) fKey = "density";
+    currentFormulaKey = fKey;
+    const formula = FORMULAS[fKey];
+
+    // Reset inputs to default values
+    inputValues = {};
+    formula.inputs.forEach(inp => {
+      inputValues[inp.key] = {
+        val: inp.defaultVal,
+        unitIdx: 0,
+        unitObj: inp.units[0]
+      };
     });
+
+    // Render KaTeX công thức toán học
+    renderFormulaLatex(formula);
+
+    // Render bảng số liệu mẫu Click-to-Bind
+    renderSampleTable(formula);
+
+    // Render các ô nhập liệu
+    renderInputs(formula);
+
+    // Tính toán kết quả
+    calculateAndRender();
   }
 
-  function loadFormula(formulaId) {
-    activeFormulaId = formulaId;
-    const f = FORMULAS[formulaId];
-    if (!f) return;
+  function renderFormulaLatex(formula) {
+    const box = document.getElementById("calc-katex-formula");
+    if (!box) return;
 
-    // Hiển thị công thức KaTeX
-    const mathDisplay = document.getElementById("calc-katex-formula");
-    if (mathDisplay && window.katex) {
-      katex.render(f.latex, mathDisplay, { displayMode: true, throwOnError: false });
+    if (window.katex) {
+      try {
+        katex.render(formula.latex, box, { displayMode: true, throwOnError: false });
+      } catch (e) {
+        box.innerText = formula.latex;
+      }
+    } else {
+      box.innerText = formula.latex;
     }
-
-    // Render bảng số liệu mẫu (Khung trái 60%) có cơ chế Click-to-Bind
-    renderSampleTable(f.sampleTable);
-
-    // Render các ô nhập liệu (Khung phải 40%)
-    renderInputs(f);
-
-    // Tự động tính toán
-    calculate();
   }
 
-  function renderSampleTable(tbl) {
+  function renderSampleTable(formula) {
     const container = document.getElementById("calc-table-display");
-    if (!container || !tbl) return;
+    if (!container || !formula.sampleTable) return;
 
-    const headersHtml = tbl.headers.map(h => `<th class="px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-center whitespace-nowrap">${h}</th>`).join("");
-    const rowsHtml = tbl.rows.map(r => {
-      const rowName = r[0];
-      const cells = r.slice(1).map((val, cellIdx) => `
-        <td 
-          class="px-3 py-2 text-xs font-mono tabular-nums text-slate-800 dark:text-slate-200 border-b border-slate-100 dark:border-slate-800 text-center whitespace-nowrap click-to-bind" 
-          title="Bấm để truyền số ${val} vào ô nhập"
-          onclick="GeoCalculator.bindValueToInput(${cellIdx}, '${val}')"
-        >
-          ${val}
-        </td>
-      `).join("");
-      return `<tr><td class="px-3 py-2 text-xs font-semibold text-slate-900 dark:text-slate-100 bg-slate-50 dark:bg-slate-800/40 border-b border-slate-100 dark:border-slate-800 min-w-[140px] max-w-[220px] whitespace-normal">${rowName}</td>${cells}</tr>`;
+    const t = formula.sampleTable;
+    const headersHtml = t.headers.map(h => `<th class="px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-center">${h}</th>`).join("");
+    const rowsHtml = t.rows.map(row => {
+      const cells = row.map((c, idx) => {
+        const isHeaderCol = idx === 0;
+        return `
+          <td 
+            onclick="GeoCalculator.bindSampleRow('${formula.id}', ${JSON.stringify(row).replace(/"/g, '&quot;')})"
+            class="px-3 py-2 text-xs ${isHeaderCol ? 'font-semibold text-slate-900 dark:text-white text-left' : 'font-mono tabular-nums text-blue-600 dark:text-blue-400 text-center cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/40'} border-b border-slate-100 dark:border-slate-800"
+            title="Bấm vào hàng này để tự động nạp số liệu vào máy tính"
+          >
+            ${c}
+          </td>
+        `;
+      }).join("");
+      return `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/60 transition cursor-pointer">${cells}</tr>`;
     }).join("");
 
     container.innerHTML = `
       <div class="space-y-2">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-bold text-slate-700 dark:text-slate-300">📌 ${tbl.title}</span>
-          <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300 border border-blue-200 dark:border-blue-800 font-semibold">Click-to-Bind: Bấm ô số để nạp</span>
+          <span class="text-xs font-bold text-slate-700 dark:text-slate-300">${t.title}</span>
+          <button 
+            onclick="GeoCalculator.loadDefaultSample()"
+            class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition flex items-center space-x-1"
+          >
+            <span>⚡ Nạp Ví Dụ Mẫu</span>
+          </button>
         </div>
-        <div class="w-full overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-700 shadow-xs">
+        <div class="w-full overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
           <table class="w-full border-collapse">
             <thead><tr>${headersHtml}</tr></thead>
             <tbody>${rowsHtml}</tbody>
           </table>
         </div>
+        <p class="text-[10px] text-slate-400 dark:text-slate-500 italic">
+          💡 Mẹo: Bấm trực tiếp vào bất kỳ hàng nào trong bảng trên để nạp số liệu vào máy tính!
+        </p>
       </div>
     `;
   }
 
-  function renderInputs(f) {
+  function renderInputs(formula) {
     const container = document.getElementById("calc-inputs-container");
     if (!container) return;
 
-    container.innerHTML = f.inputs.map((inp, idx) => {
-      const unitOptions = inp.units.map((u, uIdx) => `
-        <option value="${uIdx}">${u.label}</option>
+    container.innerHTML = formula.inputs.map(inp => {
+      const current = inputValues[inp.key];
+      const unitOptions = inp.units.map((u, idx) => `
+        <option value="${idx}" ${idx === current.unitIdx ? 'selected' : ''}>${u.label}</option>
       `).join("");
 
       return `
         <div class="space-y-1.5">
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">${inp.label}:</label>
-          <div class="flex space-x-2">
+          <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">${inp.label}:</label>
+          <div class="flex items-center space-x-2">
             <input 
               type="number" 
-              step="any" 
-              id="calc-input-${idx}" 
-              value="${inp.defaultVal}" 
-              class="w-2/3 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 font-mono tabular-nums bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-              oninput="GeoCalculator.calculate()"
+              step="any"
+              value="${current.val}" 
+              oninput="GeoCalculator.onInputChange('${inp.key}', this.value)"
+              class="flex-1 p-2 text-xs font-mono tabular-nums rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <select 
-              id="calc-unit-${idx}" 
-              class="w-1/3 p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold focus:outline-none"
-              onchange="GeoCalculator.calculate()"
+              onchange="GeoCalculator.onUnitChange('${inp.key}', this.value)"
+              class="p-2 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none shrink-0"
             >
               ${unitOptions}
             </select>
@@ -432,96 +678,138 @@ const GeoCalculator = (function () {
     }).join("");
   }
 
-  // Cơ chế Click-to-Bind với bộ lọc số liệu thông minh (chuyển dấu phẩy thành dấu chấm)
-  function bindValueToInput(inputIndex, valStr) {
-    if (valStr === undefined || valStr === null) return;
-    const cleanStr = valStr.toString().trim()
-      .replace(/[+%]/g, '')
-      .replace(/\s+/g, '')
-      .replace(',', '.');
-    const cleanNum = parseFloat(cleanStr);
-    const validNum = isNaN(cleanNum) ? 0 : cleanNum;
-
-    const inputEl = document.getElementById(`calc-input-${inputIndex}`);
-    if (inputEl) {
-      inputEl.value = validNum;
-      inputEl.classList.add("ring-2", "ring-blue-500", "bg-blue-50");
-      setTimeout(() => inputEl.classList.remove("ring-2", "ring-blue-500", "bg-blue-50"), 800);
-      calculate();
+  function onInputChange(key, val) {
+    if (inputValues[key]) {
+      inputValues[key].val = parseFloat(val) || 0;
+      calculateAndRender();
     }
   }
 
-  function calculate() {
-    const f = FORMULAS[activeFormulaId];
-    if (!f) return;
-
-    const collectedVals = {};
-    const inputs = f.inputs || [];
-    inputs.forEach((inp, idx) => {
-      const inputEl = document.getElementById(`calc-input-${idx}`);
-      const rawVal = inputEl ? inputEl.value : "";
-      const parsedVal = parseFloat(String(rawVal).replace(',', '.'));
-      const val = isNaN(parsedVal) ? 0 : parsedVal;
-
-      const unitSelect = document.getElementById(`calc-unit-${idx}`);
-      const unitIdx = unitSelect ? parseInt(unitSelect.value) || 0 : 0;
-      collectedVals[inp.key] = {
-        val: val,
-        unitObj: inp.units?.[unitIdx] || inp.units?.[0] || { factor: 1, latexMult: "" }
-      };
-    });
-
-    const res = f.solve(collectedVals);
-    renderResults(res);
+  function onUnitChange(key, unitIdx) {
+    const formula = FORMULAS[currentFormulaKey];
+    const inp = formula.inputs.find(i => i.key === key);
+    if (inp && inputValues[key]) {
+      inputValues[key].unitIdx = parseInt(unitIdx, 10);
+      inputValues[key].unitObj = inp.units[parseInt(unitIdx, 10)];
+      calculateAndRender();
+    }
   }
 
-  function renderResults(res) {
-    const box = document.getElementById("calc-result-display");
-    if (!box) return;
+  function loadDefaultSample() {
+    const formula = FORMULAS[currentFormulaKey];
+    if (formula?.sampleTable?.rows?.[0]) {
+      bindSampleRow(formula.id, formula.sampleTable.rows[0]);
+    }
+  }
+
+  function bindSampleRow(formulaId, row) {
+    const formula = FORMULAS[formulaId];
+    if (!formula || !Array.isArray(row)) return;
+
+    if (formulaId === "density") {
+      inputValues.population.val = parseFloat(row[1]) || 0;
+      inputValues.area.val = parseFloat(row[2]) || 0;
+    } else if (formulaId === "natural_increase") {
+      inputValues.birth_rate.val = parseFloat(row[1]) || 0;
+      inputValues.death_rate.val = parseFloat(row[2]) || 0;
+    } else if (formulaId === "crop_yield") {
+      inputValues.production.val = parseFloat(row[1]) || 0;
+      inputValues.crop_area.val = parseFloat(row[2]) || 0;
+    } else if (formulaId === "per_capita") {
+      inputValues.total_amount.val = parseFloat(row[1]) || 0;
+      inputValues.population.val = parseFloat(row[2]) || 0;
+    } else if (formulaId === "trade_balance") {
+      inputValues.export_val.val = parseFloat(row[1]) || 0;
+      inputValues.import_val.val = parseFloat(row[2]) || 0;
+    } else if (formulaId === "trade_system") {
+      inputValues.total_turnover.val = parseFloat(row[1]) || 0;
+      inputValues.balance_val.val = parseFloat(row[2].replace('+', '')) || 0;
+    } else if (formulaId === "structure_share") {
+      inputValues.part_val.val = parseFloat(row[1]) || 0;
+      inputValues.total_val.val = 5356.7;
+    } else if (formulaId === "growth_rate") {
+      inputValues.base_val.val = 159.4;
+      inputValues.current_val.val = parseFloat(row[1]) || 0;
+    } else if (formulaId === "climate_stats") {
+      inputValues.max_t.val = parseFloat(row[1]) || 0;
+      inputValues.min_t.val = parseFloat(row[2]) || 0;
+    } else if (formulaId === "map_scale_timezone") {
+      inputValues.map_distance_cm.val = parseFloat(row[1]) || 4.5;
+    }
+
+    renderInputs(formula);
+    calculateAndRender();
+  }
+
+  function calculateAndRender() {
+    const resultBox = document.getElementById("calc-result-display");
+    if (!resultBox) return;
+
+    const formula = FORMULAS[currentFormulaKey];
+    const res = formula.solve(inputValues);
 
     if (res.error) {
-      box.innerHTML = `<div class="card-pedagogical-critique p-3.5 rounded-xl text-xs font-semibold">⚠️ ${res.error}</div>`;
+      resultBox.innerHTML = `
+        <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-xs">
+          ⚠️ ${res.error}
+        </div>
+      `;
       return;
     }
 
-    const stepsHtml = res.stepsLatex.map(s => {
-      const div = document.createElement("div");
-      div.className = "overflow-x-auto py-1";
-      katex.render(s, div, { displayMode: true, throwOnError: false });
-      return div.outerHTML;
-    }).join("");
+    let stepsHtml = "";
+    if (res.stepsLatex && Array.isArray(res.stepsLatex)) {
+      stepsHtml = res.stepsLatex.map((step, i) => `
+        <div class="py-1 text-xs text-slate-700 dark:text-slate-300" id="step-katex-${i}"></div>
+      `).join("");
+    }
 
-    box.innerHTML = `
-      <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
-        <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
-          <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Kết quả tính toán</span>
-          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">Chuẩn THPT</span>
-        </div>
-
-        <div class="text-center py-1">
-          <div class="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400 font-mono tabular-nums tracking-tight">
+    resultBox.innerHTML = `
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50/60 dark:from-slate-800 dark:to-slate-800/80 p-4 rounded-xl border border-blue-200 dark:border-slate-700 space-y-3 shadow-xs">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block mb-0.5">Kết quả tính toán:</span>
+          <div class="text-base sm:text-lg font-black text-blue-900 dark:text-blue-200 font-mono tabular-nums">
             ${res.resultText}
           </div>
         </div>
 
-        <!-- Các bước giải KaTeX với hệ số nhân tường minh -->
-        <div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-100 dark:border-slate-700 space-y-1 text-xs overflow-x-auto">
-          ${stepsHtml}
+        <div class="space-y-1.5 pt-2 border-t border-blue-200/60 dark:border-slate-700">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Lời giải từng bước (KaTeX):</span>
+          <div class="bg-white/90 dark:bg-slate-900/90 p-3 rounded-lg border border-slate-200 dark:border-slate-800 space-y-1.5">
+            ${stepsHtml}
+          </div>
         </div>
 
         ${res.note ? `
-          <div class="card-pedagogical-warning p-3 rounded-lg text-xs leading-relaxed">
-            <strong>Nhận xét địa lý:</strong> ${res.note}
+          <div class="text-[11px] leading-relaxed text-slate-600 dark:text-slate-300 bg-white/70 dark:bg-slate-900/60 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800">
+            <strong>Nhận xét Địa lý:</strong> ${res.note}
           </div>
         ` : ''}
       </div>
     `;
+
+    // Render KaTeX cho từng bước giải
+    if (window.katex && res.stepsLatex) {
+      res.stepsLatex.forEach((step, i) => {
+        const el = document.getElementById(`step-katex-${i}`);
+        if (el) {
+          try {
+            katex.render(step, el, { throwOnError: false });
+          } catch (e) {
+            el.innerText = step;
+          }
+        }
+      });
+    }
   }
 
   return {
     init,
-    calculate,
-    bindValueToInput
+    selectFormula,
+    onInputChange,
+    onUnitChange,
+    bindSampleRow,
+    loadDefaultSample
   };
 })();
 

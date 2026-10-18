@@ -71,7 +71,7 @@
             GeoAtlas Interactive
           </span>
           <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300 border border-blue-200 dark:border-blue-900">
-            THPT 2024
+            Chuẩn Thi THPT 2026 • GDPT 2018
           </span>
         </div>
         <p class="text-[11px] text-slate-500 hidden sm:block">Kỹ năng Atlat &bull; Nhận dạng Biểu đồ &bull; Máy tính Địa lý</p>
@@ -140,11 +140,28 @@
         <div id="atlas-map-container" class="w-full h-full relative">
           <div id="atlas-map" class="w-full h-full"></div>
 
-          <!-- Bộ chuyển đổi Bản đồ nền (Basemap Switcher: Topo / Vệ tinh / Đường bộ) -->
+          <!-- Bộ chuyển đổi 4 Bản đồ nền (Vector Atlat Thuần / Địa hình / Đường bộ / Vệ tinh) -->
           <div class="absolute top-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-1 text-[11px]">
-            <button id="btn-bm-topo" onclick="AtlasEngine.setBaseMap('topo')" class="px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-xs">🗺️ Địa hình</button>
-            <button id="btn-bm-imagery" onclick="AtlasEngine.setBaseMap('imagery')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium">🛰️ Vệ tinh</button>
-            <button id="btn-bm-streets" onclick="AtlasEngine.setBaseMap('streets')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium">🚗 Đường bộ</button>
+            <button id="btn-bm-vector" onclick="AtlasEngine.setBaseMap('vector')" class="px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-xs">🗺️ Vector Atlat</button>
+            <button id="btn-bm-physical" onclick="AtlasEngine.setBaseMap('physical')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium">🏔️ Địa hình</button>
+            <button id="btn-bm-osm" onclick="AtlasEngine.setBaseMap('osm')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium">🌍 Đường bộ</button>
+            <button id="btn-bm-satellite" onclick="AtlasEngine.setBaseMap('satellite')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium">🛰️ Vệ tinh</button>
+          </div>
+
+          <!-- Floating GIS Toolbar (Reset View, Measure Tool, Compare Mode, Mini-Game) -->
+          <div class="absolute top-3 right-14 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-1 text-[11px]">
+            <button onclick="AtlasEngine.resetView()" title="Toàn cảnh Việt Nam" class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
+              <span>🧭</span><span class="hidden sm:inline">Toàn cảnh</span>
+            </button>
+            <button id="btn-tool-measure" onclick="AtlasEngine.toggleMeasureTool()" title="Thước đo khoảng cách thực tế & tỷ lệ Atlat" class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
+              <span>📐</span><span class="hidden sm:inline">Thước đo</span>
+            </button>
+            <button onclick="AtlasEngine.openCompareModal()" title="So sánh 2 Tỉnh thành hoặc Vùng kinh tế" class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
+              <span>⚖️</span><span class="hidden sm:inline">So sánh</span>
+            </button>
+            <button onclick="AtlasEngine.startMiniGame()" title="Mini-game 15 giây định vị nhanh Atlat" class="px-2 py-1 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-400 hover:bg-amber-500/20 transition font-bold flex items-center space-x-1">
+              <span>🎮</span><span class="hidden sm:inline">Định vị</span>
+            </button>
           </div>
           
           <!-- Tọa độ con trỏ chuột thời gian thực -->
@@ -246,11 +263,12 @@
               />
             </div>
             <select onchange="AtlasEngine.renderProvinces(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500">
-              <option value="all">-- Lọc theo Vùng Kinh Tế (Tất cả 7 vùng) --</option>
+              <option value="all">-- Lọc theo Vùng Kinh Tế (Tất cả vùng) --</option>
               <option value="Đồng bằng sông Hồng">1. Đồng bằng sông Hồng</option>
               <option value="Trung du và miền núi Bắc Bộ">2. Trung du & Miền núi Bắc Bộ</option>
-              <option value="Bắc Trung Bộ">3. Bắc Trung Bộ</option>
-              <option value="Duyên hải Nam Trung Bộ">4. Duyên hải Nam Trung Bộ</option>
+              <option value="Bắc Trung Bộ">3. Bắc Trung Bộ (Atlat)</option>
+              <option value="Duyên hải Nam Trung Bộ">4. Duyên hải Nam Trung Bộ (Atlat)</option>
+              <option value="Bắc Trung Bộ và Duyên hải miền Trung">★ Bắc Trung Bộ & DH miền Trung (GDPT 2018)</option>
               <option value="Tây Nguyên">5. Tây Nguyên</option>
               <option value="Đông Nam Bộ">6. Đông Nam Bộ</option>
               <option value="Đồng bằng sông Cửu Long">7. Đồng bằng sông Cửu Long</option>
@@ -306,6 +324,28 @@
               <option value="medium">Vừa: Cần Thơ, Nha Trang, Huế, Vinh...</option>
             </select>
           </div>
+
+          <!-- Lớp 5: Khí Hậu & Gió Mùa Trang 9 -->
+          <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
+                <input type="checkbox" id="layer-chk-climate" onchange="AtlasEngine.toggleLayer('climate', this.checked)" class="rounded text-blue-600 focus:ring-blue-500">
+                <span>Khí Hậu & Gió Mùa (Trang 9)</span>
+              </label>
+              <span class="text-[10px] font-semibold text-blue-600 dark:text-blue-400">Vector động & Bão</span>
+            </div>
+          </div>
+
+          <!-- Lớp 6: 9 Hệ Thống Sông & Cảng Biển, Sân Bay Trang 10, 23 -->
+          <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
+                <input type="checkbox" id="layer-chk-rivers" onchange="AtlasEngine.toggleLayer('rivers', this.checked)" class="rounded text-cyan-600 focus:ring-cyan-500">
+                <span>Sông Ngòi & Cảng Biển (Trang 10, 23)</span>
+              </label>
+              <span class="text-[10px] font-semibold text-cyan-600 dark:text-cyan-400">Cảng loại I & Sân bay</span>
+            </div>
+          </div>
         </div>
 
         <!-- Thông tin chi tiết & Tham chiếu số trang Atlat -->
@@ -360,7 +400,7 @@
       <!-- Khung Phải (5 Cột): Bộ chọn công thức, Unit Normalizer & Lời giải từng bước -->
       <div class="col-span-12 lg:col-span-5 h-full overflow-y-auto pr-1 space-y-4">
         <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-1.5">
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">Chọn 1 trong 6 công thức trọng tâm THPT:</label>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">Chọn 1 trong 10 công thức trọng tâm THPT:</label>
           <select id="calc-formula-select" class="w-full p-2.5 text-xs font-bold rounded-xl border border-blue-300 dark:border-blue-700 bg-blue-50/50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
             <!-- Populated by geo-calculator.js -->
           </select>
@@ -376,12 +416,72 @@
 
   </main>
 
+  <!-- Modal So Sánh 2 Thực Thể (Compare Mode Modal) -->
+  <div id="compare-modal" class="fixed inset-0 z-[2000] bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full p-5 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+        <div class="flex items-center space-x-2">
+          <span class="text-lg">⚖️</span>
+          <h3 class="font-bold text-sm text-slate-900 dark:text-white">So Sánh Đối Chiếu 2 Tỉnh Thành / Vùng Kinh Tế</h3>
+        </div>
+        <button onclick="AtlasEngine.closeCompareModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm font-bold">✕</button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1">Thực thể A:</label>
+          <select id="compare-select-a" onchange="AtlasEngine.renderCompareTable()" class="w-full p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none"></select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold text-slate-600 dark:text-slate-400 mb-1">Thực thể B:</label>
+          <select id="compare-select-b" onchange="AtlasEngine.renderCompareTable()" class="w-full p-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none"></select>
+        </div>
+      </div>
+
+      <div id="compare-table-container" class="rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+        <!-- Rendered by AtlasEngine -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Mini-Game 15 Giây "Định Vị Nhanh Atlat" -->
+  <div id="game-modal" class="fixed top-20 right-6 z-[2000] max-w-sm w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-amber-300 dark:border-amber-800 space-y-3 hidden">
+    <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex items-center space-x-2">
+        <span class="text-base">🎮</span>
+        <h4 class="font-bold text-xs text-amber-800 dark:text-amber-300 uppercase tracking-wider">Định Vị Nhanh Atlat</h4>
+      </div>
+      <button onclick="AtlasEngine.closeMiniGame()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold">✕ Đóng</button>
+    </div>
+
+    <div class="bg-amber-50 dark:bg-amber-950/40 p-3 rounded-xl border border-amber-200 dark:border-amber-900/60 text-center space-y-1">
+      <span class="text-[10px] font-bold uppercase text-amber-700 dark:text-amber-400">Hãy tìm & bấm chọn trên bản đồ:</span>
+      <div id="game-target-name" class="text-base font-black text-blue-700 dark:text-blue-300">...</div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2 text-center text-xs">
+      <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">
+        <span class="text-[9px] text-slate-400 block uppercase font-bold">Thời gian</span>
+        <span id="game-time-left" class="font-mono font-bold text-rose-600 dark:text-rose-400 text-sm">15s</span>
+      </div>
+      <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">
+        <span class="text-[9px] text-slate-400 block uppercase font-bold">Điểm số</span>
+        <span id="game-score" class="font-mono font-bold text-emerald-600 dark:text-emerald-400 text-sm">0</span>
+      </div>
+      <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">
+        <span class="text-[9px] text-slate-400 block uppercase font-bold">Chuỗi thắng</span>
+        <span id="game-streak" class="font-mono font-bold text-amber-600 dark:text-amber-400 text-sm">0</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Core JavaScript Modules (Fallback Store first) -->
   <script src="./js/fallback-store.js"></script>
   <script src="./js/atlas-engine.js"></script>
   <script src="./js/chart-trainer.js"></script>
   <script src="./js/geo-calculator.js"></script>
   <script src="./js/app.js"></script>
+
 
 </body>
 </html>

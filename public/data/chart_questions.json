@@ -1,27 +1,159 @@
 {
   "metadata": {
-    "title": "Ngân hàng Câu hỏi & Bảng số liệu Nhận dạng Biểu đồ Địa lý THPT Chuẩn Sư Phạm",
-    "total_questions": 10,
-    "schema_version": "2.0"
+    "title": "Ngân hàng Câu hỏi & Bảng số liệu Nhận dạng Biểu đồ Địa lý THPT Chuẩn Sư Phạm v2.0",
+    "standard": "Chương trình GDPT 2018 & Định hướng Đề thi Tốt nghiệp THPT 2025 - 2026",
+    "total_questions": 20,
+    "chart_types_supported": [
+      "pie",
+      "stacked_area",
+      "line",
+      "bar_single",
+      "bar_grouped",
+      "bar_stacked",
+      "combo_bar_line",
+      "bar_horizontal"
+    ]
   },
+  "keyword_guide": [
+    {
+      "chart_type": "pie",
+      "chart_name": "Biểu đồ Tròn",
+      "golden_keywords": [
+        "cơ cấu",
+        "quy mô và cơ cấu",
+        "tỉ trọng",
+        "phân theo",
+        "thành phần"
+      ],
+      "time_rule": "Từ 1 đến 3 mốc năm (≤ 3 năm)",
+      "typical_units": [
+        "%",
+        "Nghìn ha (tính ra %)",
+        "Nghìn tấn",
+        "Tỷ đồng"
+      ],
+      "critical_traps": "Nếu thời gian từ 4 năm trở lên, tuyệt đối KHÔNG chọn tròn mà phải chọn MIỀN. Nếu 2-3 năm có tổng khác nhau, phải vẽ BÁN KÍNH KHÁC NHAU."
+    },
+    {
+      "chart_type": "stacked_area",
+      "chart_name": "Biểu đồ Miền",
+      "golden_keywords": [
+        "chuyển dịch cơ cấu",
+        "thay đổi cơ cấu",
+        "sự biến đổi cơ cấu"
+      ],
+      "time_rule": "Từ 4 mốc năm trở lên (≥ 4 năm)",
+      "typical_units": [
+        "%",
+        "Tổng các cột luôn bằng 100%"
+      ],
+      "critical_traps": "Không chọn miền khi chỉ có 1 - 3 năm. Không chọn miền khi số liệu là giá trị tuyệt đối chưa đổi ra % hoặc tổng không bằng 100%."
+    },
+    {
+      "chart_type": "line",
+      "chart_name": "Biểu đồ Đường",
+      "golden_keywords": [
+        "tốc độ tăng trưởng",
+        "tốc độ phát triển",
+        "chỉ số tăng trưởng",
+        "gia tốc"
+      ],
+      "time_rule": "Chuỗi thời gian liên tục từ 4 năm trở lên",
+      "typical_units": [
+        "% (năm gốc = 100%)",
+        "Triệu người",
+        "Triệu tấn (biến động qua nhiều năm)"
+      ],
+      "critical_traps": "Cứ thấy cụm từ 'tốc độ tăng trưởng' và đơn vị % (với năm đầu = 100%) thì chọn ngay BIỂU ĐỒ ĐƯỜNG."
+    },
+    {
+      "chart_type": "bar_single",
+      "chart_name": "Biểu đồ Cột đơn",
+      "golden_keywords": [
+        "tình hình phát triển",
+        "quy mô",
+        "sản lượng",
+        "diện tích của một đối tượng"
+      ],
+      "time_rule": "Nhiều năm hoặc nhiều đối tượng tại 1 thời điểm",
+      "typical_units": [
+        "Nghìn tấn",
+        "Triệu tấn",
+        "Triệu USD",
+        "Nghìn người"
+      ],
+      "critical_traps": "Chỉ có 1 đối tượng nghiên cứu duy nhất diễn biến qua các mốc thời gian hoặc so sánh giữa các tỉnh/vùng."
+    },
+    {
+      "chart_type": "bar_grouped",
+      "chart_name": "Biểu đồ Cột ghép",
+      "golden_keywords": [
+        "so sánh quy mô",
+        "tương quan",
+        "sản lượng và diện tích cùng đơn vị"
+      ],
+      "time_rule": "Từ 2 đến 4 năm, hoặc so sánh 2 - 3 đối tượng cùng đơn vị",
+      "typical_units": [
+        "Cùng một đơn vị tính duy nhất (nghìn ha, triệu tấn, tỷ USD)"
+      ],
+      "critical_traps": "Chỉ dùng khi các đối tượng CÙNG CHUNG ĐƠN VỊ TÍNH (VD: Khai thác và Nuôi trồng; Xuất khẩu và Nhập khẩu)."
+    },
+    {
+      "chart_type": "bar_stacked",
+      "chart_name": "Biểu đồ Cột chồng",
+      "golden_keywords": [
+        "quy mô và cơ cấu",
+        "tổng số và các bộ phận cấu thành",
+        "phân theo thành phần kinh tế"
+      ],
+      "time_rule": "Từ 2 đến 4 mốc năm",
+      "typical_units": [
+        "Đơn vị tuyệt đối (nghìn tấn, nghìn người) hoặc đơn vị %"
+      ],
+      "critical_traps": "Các bộ phận cấu thành cộng lại phải bằng Tổng số (Ví dụ: Thành thị + Nông thôn = Tổng dân số)."
+    },
+    {
+      "chart_type": "combo_bar_line",
+      "chart_name": "Biểu đồ Kết hợp (Cột và Đường)",
+      "golden_keywords": [
+        "diện tích và sản lượng",
+        "sản lượng và năng suất",
+        "dân số và tỉ lệ dân thành thị"
+      ],
+      "time_rule": "Từ 3 đến 5 mốc năm",
+      "typical_units": [
+        "2 ĐƠN VỊ TÍNH KHÁC NHAU (cần 2 trục tung bên trái và bên phải)"
+      ],
+      "critical_traps": "Bảng số liệu có 2 đại lượng mang 2 đơn vị tính khác biệt hoàn toàn (Nghìn ha và Triệu tấn; Triệu người và %)."
+    },
+    {
+      "chart_type": "bar_horizontal",
+      "chart_name": "Biểu đồ Thanh ngang",
+      "golden_keywords": [
+        "so sánh quy mô giữa các vùng",
+        "xếp hạng địa phương",
+        "tên đối tượng dài"
+      ],
+      "time_rule": "1 mốc năm (hoặc 1 mốc thời gian cố định)",
+      "typical_units": [
+        "Nghìn ha",
+        "Triệu người",
+        "Nghìn tỷ đồng"
+      ],
+      "critical_traps": "Tối ưu nhất khi so sánh nhiều vùng/tỉnh có tên dài để trục tung chữ ngang không bị gãy hoặc chồng chéo."
+    }
+  ],
   "questions": [
     {
       "id": "GEO_CHART_01",
-      "title": "Tốc độ tăng trưởng GDP phân theo khu vực kinh tế (2015 - 2023)",
-      "raw_prompt": "Theo bảng số liệu, để thể hiện tốc độ tăng trưởng GDP phân theo khu vực kinh tế nước ta giai đoạn 2015 - 2023, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "type": "multiple_choice",
+      "title": "Tốc độ tăng trưởng GDP phân theo khu vực kinh tế (2015 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện tốc độ tăng trưởng GDP phân theo khu vực kinh tế nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
       "keywords": [
         "tốc độ tăng trưởng",
-        "giai đoạn 2015 - 2023",
+        "giai đoạn 2015 - 2024",
         "năm gốc 100%"
       ],
-      "structural_analysis": {
-        "time_points": 5,
-        "units": [
-          "%"
-        ],
-        "is_total_100": false,
-        "has_base_year_100": true
-      },
       "data_table": {
         "headers": [
           "Năm",
@@ -29,7 +161,7 @@
           "2018",
           "2020",
           "2022",
-          "2023"
+          "2024"
         ],
         "rows": [
           {
@@ -40,7 +172,7 @@
               108.6,
               114.2,
               121.5,
-              126.1
+              128.4
             ]
           },
           {
@@ -51,7 +183,7 @@
               127.4,
               139.8,
               155.6,
-              162.3
+              168.2
             ]
           },
           {
@@ -62,23 +194,30 @@
               121.5,
               129.6,
               142.8,
-              151.7
+              156.3
             ]
           }
         ]
       },
       "optimal_chart": "line",
       "optimal_chart_name": "Biểu đồ đường",
-      "pedagogical_explanation": "Từ khóa vàng 'tốc độ tăng trưởng' kết hợp chuỗi thời gian nhiều năm (2015-2023) với năm gốc 2015 = 100% là tín hiệu nhận biết chuẩn 100% của Biểu đồ đường (Line Chart).",
+      "pedagogical_explanation": "Từ khóa vàng 'tốc độ tăng trưởng' kết hợp chuỗi thời gian nhiều năm với năm gốc 2015 = 100% là tín hiệu nhận biết chuẩn mực của Biểu đồ đường (Line Chart).",
       "counter_factual": {
         "pie": "Sai lầm: Biểu đồ tròn chỉ dùng thể hiện cơ cấu/tỉ trọng (tổng = 100%), không thể hiện được tốc độ tăng trưởng qua 5 mốc năm.",
-        "stacked_area": "Sai lầm: Biểu đồ miền chỉ dùng thể hiện chuyển dịch cơ cấu qua chuỗi thời gian khi tổng các thành phần luôn bằng 100%.",
-        "bar": "Không tối ưu: Biểu đồ cột khó phản ánh gia tốc và xu hướng tăng trưởng nhanh/chậm liên tục bằng đường biểu diễn.",
-        "combo_bar_line": "Sai lầm: Bảng số liệu chỉ có 1 đơn vị tính duy nhất (%), không cần 2 trục tung."
+        "stacked_area": "Sai lầm: Biểu đồ miền chỉ dùng thể hiện chuyển dịch cơ cấu khi tổng các thành phần luôn đúng bằng 100%.",
+        "bar_single": "Không tối ưu: Cột đơn không thể hiện đồng thời 3 khu vực với gia tốc biến thiên liên tục."
+      },
+      "structural_analysis": {
+        "time_points": 5,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
       }
     },
     {
       "id": "GEO_CHART_02",
+      "type": "multiple_choice",
       "title": "Chuyển dịch cơ cấu GDP 3 khu vực kinh tế (2010 - 2024)",
       "raw_prompt": "Theo bảng số liệu, để thể hiện sự chuyển dịch cơ cấu GDP phân theo khu vực kinh tế của nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
@@ -86,14 +225,6 @@
         "giai đoạn 2010 - 2024",
         "tổng cộng bằng 100%"
       ],
-      "structural_analysis": {
-        "time_points": 5,
-        "units": [
-          "%"
-        ],
-        "is_total_100": true,
-        "has_base_year_100": false
-      },
       "data_table": {
         "headers": [
           "Năm",
@@ -112,7 +243,7 @@
               17.0,
               14.7,
               12.6,
-              11.8
+              11.5
             ]
           },
           {
@@ -123,7 +254,7 @@
               33.3,
               34.3,
               37.5,
-              38.6
+              38.8
             ]
           },
           {
@@ -134,43 +265,42 @@
               49.7,
               51.0,
               49.9,
-              49.6
+              49.7
             ]
           }
         ]
       },
       "optimal_chart": "stacked_area",
       "optimal_chart_name": "Biểu đồ miền",
-      "pedagogical_explanation": "Từ khóa 'chuyển dịch cơ cấu' qua chuỗi thời gian 5 mốc năm (lớn hơn 3 năm) với tổng các thành phần luôn đúng bằng 100% là đặc trưng tuyệt đối của Biểu đồ miền (Stacked Area Chart).",
+      "pedagogical_explanation": "Từ khóa 'chuyển dịch cơ cấu' qua chuỗi thời gian 5 mốc năm (≥ 4 năm) với tổng các thành phần luôn bằng 100% là đặc trưng của Biểu đồ miền.",
       "counter_factual": {
-        "pie": "Sai lầm nghiêm trọng: Quy tắc Atlat THPT cấm vẽ biểu đồ tròn khi số mốc năm lớn hơn 3 năm (ở đây có tới 5 năm).",
-        "line": "Sai lầm: Biểu đồ đường không thể hiện được tính tổng thể (100%) của các bộ phận cấu thành nền kinh tế.",
-        "bar": "Không tối ưu: Cột chồng khó theo dõi liên tục bằng dải màu miền diện tích.",
-        "combo_bar_line": "Sai lầm: Cùng chung đơn vị % và cùng bản chất tỉ trọng, không cần trục tung phụ."
+        "pie": "Sai lầm nghiêm trọng: Quy tắc Atlat THPT cấm vẽ biểu đồ tròn khi số mốc năm lớn hơn 3 năm (ở đây có 5 năm).",
+        "line": "Sai lầm: Biểu đồ đường không thể hiện được tính tổng thể toàn vẹn 100% của nền kinh tế.",
+        "bar_grouped": "Không tối ưu: Cột ghép khó nhận diện trực quan xu hướng thu hẹp hay mở rộng diện tích cơ cấu."
+      },
+      "structural_analysis": {
+        "time_points": 5,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
       }
     },
     {
       "id": "GEO_CHART_03",
-      "title": "Quy mô và cơ cấu diện tích lúa theo mùa vụ năm 2010 và 2023",
-      "raw_prompt": "Theo bảng số liệu, để thể hiện quy mô và cơ cấu diện tích lúa phân theo mùa vụ của nước ta năm 2010 và 2023, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "type": "multiple_choice",
+      "title": "Quy mô và cơ cấu diện tích lúa theo mùa vụ năm 2010 và 2024",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện quy mô và cơ cấu diện tích lúa phân theo mùa vụ của nước ta năm 2010 và 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
       "keywords": [
         "quy mô và cơ cấu",
-        "2 mốc năm (2010 và 2023)",
+        "2 mốc năm (2010 và 2024)",
         "bán kính khác nhau"
       ],
-      "structural_analysis": {
-        "time_points": 2,
-        "units": [
-          "Nghìn ha"
-        ],
-        "is_total_100": false,
-        "has_base_year_100": false
-      },
       "data_table": {
         "headers": [
           "Vụ lúa",
           "Năm 2010",
-          "Năm 2023"
+          "Năm 2024"
         ],
         "rows": [
           {
@@ -178,7 +308,7 @@
             "unit": "Nghìn ha",
             "values": [
               3085.9,
-              2992.3
+              2980.5
             ]
           },
           {
@@ -186,7 +316,7 @@
             "unit": "Nghìn ha",
             "values": [
               2438.4,
-              2705.8
+              2720.0
             ]
           },
           {
@@ -194,39 +324,37 @@
             "unit": "Nghìn ha",
             "values": [
               1965.1,
-              1421.9
+              1410.2
             ]
           }
         ]
       },
       "optimal_chart": "pie",
       "optimal_chart_name": "Biểu đồ tròn (có bán kính khác nhau)",
-      "pedagogical_explanation": "Từ khóa then chốt: 'quy mô và cơ cấu' trong khoảng thời gian chỉ có 2 năm (<= 3 năm). Cần vẽ 2 hình tròn với bán kính khác nhau (R_năm sau khác R_năm trước).",
+      "pedagogical_explanation": "Từ khóa then chốt: 'quy mô và cơ cấu' trong khoảng thời gian chỉ có 2 năm (≤ 3 năm). Cần vẽ 2 hình tròn với bán kính khác nhau (R năm sau khác R năm trước).",
       "counter_factual": {
-        "stacked_area": "Sai lầm: Biểu đồ miền không bao giờ vẽ cho 2 mốc năm (chỉ vẽ khi >= 4 năm).",
+        "stacked_area": "Sai lầm: Biểu đồ miền không bao giờ vẽ cho 2 mốc năm (chỉ vẽ khi ≥ 4 năm).",
         "line": "Sai lầm: 2 mốc năm không tạo thành chuỗi biến thiên liên tục, không phản ánh được cơ cấu.",
-        "bar": "Không tối ưu: Cột chỉ so sánh độ lớn tuyệt đối từng vụ, không thể hiện trực quan tỉ trọng góc tròn.",
         "combo_bar_line": "Sai lầm: Cùng chung một đơn vị nghìn ha, không cần 2 trục tung."
+      },
+      "structural_analysis": {
+        "time_points": 2,
+        "units": [
+          "Nghìn ha"
+        ],
+        "is_total_100": true
       }
     },
     {
       "id": "GEO_CHART_04",
-      "title": "Diện tích và sản lượng lúa cả năm của Việt Nam (2015 - 2023)",
-      "raw_prompt": "Theo bảng số liệu, để thể hiện diện tích và sản lượng lúa của nước ta giai đoạn 2015 - 2023, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "type": "multiple_choice",
+      "title": "Diện tích và sản lượng lúa cả năm của Việt Nam (2015 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện diện tích và sản lượng lúa của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
         "hai đại lượng khác nhau",
         "khác đơn vị (nghìn ha và triệu tấn)",
-        "giai đoạn 2015 - 2023"
+        "giai đoạn 2015 - 2024"
       ],
-      "structural_analysis": {
-        "time_points": 5,
-        "units": [
-          "Nghìn ha",
-          "Triệu tấn"
-        ],
-        "is_total_100": false,
-        "has_base_year_100": false
-      },
       "data_table": {
         "headers": [
           "Năm",
@@ -234,7 +362,7 @@
           "2018",
           "2020",
           "2022",
-          "2023"
+          "2024"
         ],
         "rows": [
           {
@@ -245,11 +373,11 @@
               7570.4,
               7279.0,
               7108.8,
-              7120.0
+              7110.5
             ]
           },
           {
-            "name": "Sản lượng lúa cả năm",
+            "name": "Sản lượng lúa",
             "unit": "Triệu tấn",
             "values": [
               45.1,
@@ -263,324 +391,31 @@
       },
       "optimal_chart": "combo_bar_line",
       "optimal_chart_name": "Biểu đồ kết hợp (Cột và Đường)",
-      "pedagogical_explanation": "Bảng số liệu có 2 đại lượng khác nhau về bản chất và khác đơn vị đo (Diện tích là 'Nghìn ha', Sản lượng là 'Triệu tấn'). Bắt buộc phải dùng biểu đồ kết hợp với 2 trục tung bên trái và bên phải.",
+      "pedagogical_explanation": "Bảng số liệu gồm 2 đối tượng mang 2 đơn vị tính khác biệt hoàn toàn (Nghìn ha và Triệu tấn). Bắt buộc phải dùng biểu đồ kết hợp cột - đường với 2 trục tung.",
       "counter_factual": {
-        "line": "Sai lầm: Nếu vẽ 2 đường chung 1 trục tung, giá trị sản lượng (~43) sẽ bị chìm nghỉm sát đáy so với diện tích (~7500).",
-        "pie": "Sai lầm: Hai đại lượng khác đơn vị đo không thể cộng lại thành một tổng thể hình tròn 100%.",
-        "stacked_area": "Sai lầm: Không thể chồng 2 đại lượng khác đơn vị đo lên nhau.",
-        "bar": "Không tối ưu: Cột ghép chung một trục tung sẽ bị lỗi tỉ lệ thang đo nghiêm trọng."
+        "pie": "Sai lầm: Hai đơn vị khác nhau không thể gộp chung vào 1 hình tròn 100%.",
+        "stacked_area": "Sai lầm: Không thể chồng chất triệu tấn lên trên nghìn ha.",
+        "bar_single": "Sai lầm: Cột đơn không thể biểu diễn đồng thời 2 đơn vị khác nhau trên 1 trục tung."
+      },
+      "structural_analysis": {
+        "time_points": 5,
+        "units": [
+          "Nghìn ha",
+          "Triệu tấn"
+        ],
+        "is_total_100": false
       }
     },
     {
       "id": "GEO_CHART_05",
-      "title": "So sánh sản lượng thủy sản nuôi trồng giữa các vùng năm 2023",
-      "raw_prompt": "Theo bảng số liệu, để so sánh sản lượng thủy sản nuôi trồng giữa các vùng kinh tế nước ta năm 2023, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "type": "multiple_choice",
+      "title": "Sản lượng thủy sản khai thác và nuôi trồng nước ta (2015 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để so sánh sản lượng thủy sản khai thác và nuôi trồng của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
       "keywords": [
         "so sánh sản lượng",
-        "giữa các vùng lãnh thổ",
-        "trong năm 2023"
+        "2 đối tượng cùng đơn vị (nghìn tấn)",
+        "cột ghép"
       ],
-      "structural_analysis": {
-        "time_points": 1,
-        "units": [
-          "Nghìn tấn"
-        ],
-        "is_total_100": false,
-        "has_base_year_100": false
-      },
-      "data_table": {
-        "headers": [
-          "Vùng kinh tế",
-          "ĐB Sông Hồng",
-          "Bắc Trung Bộ & DHNTB",
-          "Tây Nguyên",
-          "Đông Nam Bộ",
-          "ĐB Sông Cửu Long"
-        ],
-        "rows": [
-          {
-            "name": "Sản lượng nuôi trồng",
-            "unit": "Nghìn tấn",
-            "values": [
-              892.4,
-              615.8,
-              43.5,
-              185.2,
-              3620.1
-            ]
-          }
-        ]
-      },
-      "optimal_chart": "bar",
-      "optimal_chart_name": "Biểu đồ cột",
-      "pedagogical_explanation": "Từ khóa 'so sánh' sản lượng giữa các vùng lãnh thổ độc lập trong 1 năm đơn lẻ (2023) với đơn vị tuyệt đối nghìn tấn. Biểu đồ cột (Bar Chart) là biểu đồ tối ưu nhất.",
-      "counter_factual": {
-        "line": "Sai lầm: Các vùng kinh tế không phải là chuỗi thời gian liên tục. Nối đường giữa các vùng là sai bản chất.",
-        "pie": "Không tối ưu: Đề bài yêu cầu 'so sánh quy mô sản lượng', không yêu cầu tính cơ cấu %.",
-        "stacked_area": "Sai lầm: Biểu đồ miền yêu cầu chuỗi thời gian >= 4 năm, không áp dụng cho không gian.",
-        "combo_bar_line": "Sai lầm: Bảng chỉ có 1 đại lượng duy nhất, không cần biểu đồ kết hợp."
-      }
-    },
-    {
-      "id": "GEO_CHART_06",
-      "title": "Sản lượng thủy sản khai thác và nuôi trồng của nước ta (2010 - 2023)",
-      "raw_prompt": "Theo bảng số liệu, để thể hiện sản lượng thủy sản khai thác và nuôi trồng của nước ta qua các năm nhằm so sánh quy mô, dạng biểu đồ nào thích hợp nhất?",
-      "keywords": [
-        "so sánh quy mô",
-        "cùng đơn vị nghìn tấn",
-        "giai đoạn 2010 - 2023"
-      ],
-      "structural_analysis": {
-        "time_points": 5,
-        "units": [
-          "Nghìn tấn"
-        ],
-        "is_total_100": false,
-        "has_base_year_100": false
-      },
-      "data_table": {
-        "headers": [
-          "Năm",
-          "2010",
-          "2015",
-          "2018",
-          "2021",
-          "2023"
-        ],
-        "rows": [
-          {
-            "name": "Khai thác",
-            "unit": "Nghìn tấn",
-            "values": [
-              2414.4,
-              3049.9,
-              3606.3,
-              3920.0,
-              3980.5
-            ]
-          },
-          {
-            "name": "Nuôi trồng",
-            "unit": "Nghìn tấn",
-            "values": [
-              2728.3,
-              3532.2,
-              4153.8,
-              4860.0,
-              5356.7
-            ]
-          }
-        ]
-      },
-      "optimal_chart": "bar",
-      "optimal_chart_name": "Biểu đồ cột ghép",
-      "pedagogical_explanation": "Đề bài yêu cầu so sánh quy mô sản lượng của 2 đối tượng cùng đơn vị đo (Nghìn tấn) qua các mốc năm. Biểu đồ cột ghép đặt cạnh nhau giúp so sánh tương quan trực tiếp.",
-      "counter_factual": {
-        "line": "Không trực quan bằng cột khi cần so sánh độ lớn quy mô thể tích.",
-        "pie": "Sai lầm: Có tới 5 mốc năm, vượt quá giới hạn vẽ tròn.",
-        "stacked_area": "Sai lầm: Bảng số liệu dạng số tuyệt đối, chưa xử lý ra tỉ lệ cơ cấu %.",
-        "combo_bar_line": "Sai lầm: Hai chỉ tiêu có cùng đơn vị tính là nghìn tấn, không cần 2 trục tung."
-      }
-    },
-    {
-      "id": "GEO_CHART_07",
-      "title": "Giá trị xuất khẩu và nhập khẩu hàng hóa Việt Nam (2010 - 2023)",
-      "raw_prompt": "Theo bảng số liệu, để so sánh giá trị xuất khẩu và nhập khẩu hàng hóa của nước ta giai đoạn 2010 - 2023, dạng biểu đồ nào sau đây thích hợp nhất?",
-      "keywords": [
-        "so sánh giá trị",
-        "cùng đơn vị tỉ USD",
-        "giai đoạn 2010 - 2023"
-      ],
-      "structural_analysis": {
-        "time_points": 5,
-        "units": [
-          "Tỉ USD"
-        ],
-        "is_total_100": false,
-        "has_base_year_100": false
-      },
-      "data_table": {
-        "headers": [
-          "Năm",
-          "2010",
-          "2015",
-          "2018",
-          "2021",
-          "2023"
-        ],
-        "rows": [
-          {
-            "name": "Xuất khẩu",
-            "unit": "Tỉ USD",
-            "values": [
-              72.2,
-              162.0,
-              243.7,
-              336.3,
-              355.5
-            ]
-          },
-          {
-            "name": "Nhập khẩu",
-            "unit": "Tỉ USD",
-            "values": [
-              84.8,
-              165.8,
-              236.9,
-              332.2,
-              327.5
-            ]
-          }
-        ]
-      },
-      "optimal_chart": "bar",
-      "optimal_chart_name": "Biểu đồ cột ghép",
-      "pedagogical_explanation": "Từ khóa 'so sánh giá trị' với cùng đơn vị Tỉ USD. Biểu đồ cột ghép là dạng tối ưu nhất để thấy rõ giai đoạn 2010 nhập siêu và giai đoạn 2023 xuất siêu.",
-      "counter_factual": {
-        "stacked_area": "Sai lầm: Chưa tính ra cơ cấu % và đề bài yêu cầu so sánh giá trị tuyệt đối.",
-        "pie": "Sai lầm: Có 5 mốc năm, không vẽ biểu đồ tròn.",
-        "line": "Không nổi bật bằng cột ghép khi nhấn mạnh chênh lệch kim ngạch.",
-        "combo_bar_line": "Sai lầm: Cùng chung đơn vị tỉ USD, không cần 2 trục tung."
-      }
-    },
-    {
-      "id": "GEO_CHART_08",
-      "title": "Dân số thành thị và nông thôn nước ta (2000 - 2023)",
-      "raw_prompt": "Theo bảng số liệu, để thể hiện tổng dân số và tỉ lệ dân thành thị nước ta giai đoạn 2000 - 2023, dạng biểu đồ nào sau đây là thích hợp nhất?",
-      "keywords": [
-        "tổng số và tỉ lệ",
-        "2 đơn vị (triệu người và %)",
-        "giai đoạn nhiều năm"
-      ],
-      "structural_analysis": {
-        "time_points": 5,
-        "units": [
-          "Triệu người",
-          "%"
-        ],
-        "is_total_100": false,
-        "has_base_year_100": false
-      },
-      "data_table": {
-        "headers": [
-          "Năm",
-          "2000",
-          "2010",
-          "2015",
-          "2020",
-          "2023"
-        ],
-        "rows": [
-          {
-            "name": "Tổng dân số",
-            "unit": "Triệu người",
-            "values": [
-              77.6,
-              86.9,
-              91.7,
-              97.6,
-              99.5
-            ]
-          },
-          {
-            "name": "Tỉ lệ dân thành thị",
-            "unit": "%",
-            "values": [
-              24.2,
-              30.5,
-              33.9,
-              36.8,
-              38.3
-            ]
-          }
-        ]
-      },
-      "optimal_chart": "combo_bar_line",
-      "optimal_chart_name": "Biểu đồ kết hợp (Cột và Đường)",
-      "pedagogical_explanation": "Bảng số liệu gồm 2 đại lượng khác nhau: Tổng dân số (Triệu người) vẽ cột trục tung trái; Tỉ lệ dân thành thị (%) vẽ đường trục tung phải.",
-      "counter_factual": {
-        "line": "Sai lầm: Không thể gộp đại lượng triệu người và phần trăm trên cùng 1 thang đo.",
-        "pie": "Sai lầm: 5 mốc năm và khác đơn vị tính, không thể vẽ tròn.",
-        "stacked_area": "Sai lầm: Dân số và tỉ lệ % không thể xếp chồng miền lên nhau.",
-        "bar": "Sai lầm: Thiếu trục tung phụ hiển thị phần trăm tỉ lệ thành thị."
-      }
-    },
-    {
-      "id": "GEO_CHART_09",
-      "title": "Diện tích và sản lượng cà phê nước ta (2015 - 2023)",
-      "raw_prompt": "Theo bảng số liệu, để thể hiện diện tích và sản lượng cà phê của nước ta giai đoạn 2015 - 2023, dạng biểu đồ nào sau đây là thích hợp nhất?",
-      "keywords": [
-        "diện tích và sản lượng",
-        "khác đơn vị (nghìn ha và nghìn tấn)",
-        "giai đoạn 2015 - 2023"
-      ],
-      "structural_analysis": {
-        "time_points": 4,
-        "units": [
-          "Nghìn ha",
-          "Nghìn tấn"
-        ],
-        "is_total_100": false,
-        "has_base_year_100": false
-      },
-      "data_table": {
-        "headers": [
-          "Năm",
-          "2015",
-          "2018",
-          "2021",
-          "2023"
-        ],
-        "rows": [
-          {
-            "name": "Diện tích cà phê",
-            "unit": "Nghìn ha",
-            "values": [
-              645.4,
-              688.4,
-              710.6,
-              715.3
-            ]
-          },
-          {
-            "name": "Sản lượng cà phê",
-            "unit": "Nghìn tấn",
-            "values": [
-              1452.4,
-              1684.3,
-              1845.0,
-              1920.0
-            ]
-          }
-        ]
-      },
-      "optimal_chart": "combo_bar_line",
-      "optimal_chart_name": "Biểu đồ kết hợp (Cột và Đường)",
-      "pedagogical_explanation": "Diện tích (nghìn ha) và sản lượng (nghìn tấn) là hai đại lượng vật lý khác biệt. Biểu đồ kết hợp cột - đường với 2 trục tung là lựa chọn chuẩn xác nhất.",
-      "counter_factual": {
-        "bar": "Không tối ưu: Cột ghép đơn thuần không làm nổi bật mối quan hệ tăng năng suất như cột-đường.",
-        "pie": "Sai lầm: Khác đơn vị đo, không thể tính cơ cấu hình quạt.",
-        "stacked_area": "Sai lầm: Không thể xếp chồng nghìn ha lên nghìn tấn.",
-        "line": "Không tối ưu: Diện tích thường được quy ước biểu diễn bằng cột thể hiện quy mô đất đai."
-      }
-    },
-    {
-      "id": "GEO_CHART_10",
-      "title": "Tốc độ tăng trưởng đàn gia cầm và sản lượng thịt hơi xuất chuồng",
-      "raw_prompt": "Theo bảng số liệu, để thể hiện tốc độ tăng trưởng số lượng gia cầm và sản lượng thịt gia cầm của nước ta giai đoạn 2015 - 2023, dạng biểu đồ nào sau đây thích hợp nhất?",
-      "keywords": [
-        "tốc độ tăng trưởng",
-        "chỉ số phát triển %",
-        "năm gốc bằng 100%"
-      ],
-      "structural_analysis": {
-        "time_points": 5,
-        "units": [
-          "%"
-        ],
-        "is_total_100": false,
-        "has_base_year_100": true
-      },
       "data_table": {
         "headers": [
           "Năm",
@@ -588,41 +423,1101 @@
           "2018",
           "2020",
           "2022",
-          "2023"
+          "2024"
         ],
         "rows": [
           {
-            "name": "Số lượng gia cầm",
-            "unit": "%",
+            "name": "Khai thác",
+            "unit": "Nghìn tấn",
             "values": [
-              100.0,
-              120.3,
-              147.2,
-              155.8,
-              161.4
+              3179.5,
+              3590.5,
+              3853.4,
+              3862.0,
+              3910.0
             ]
           },
           {
-            "name": "Sản lượng thịt gia cầm",
+            "name": "Nuôi trồng",
+            "unit": "Nghìn tấn",
+            "values": [
+              3532.2,
+              4153.8,
+              4614.9,
+              5138.0,
+              5420.0
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar_grouped",
+      "optimal_chart_name": "Biểu đồ cột ghép",
+      "pedagogical_explanation": "Từ khóa 'so sánh sản lượng' giữa 2 phân ngành có CÙNG ĐƠN VỊ TÍNH (nghìn tấn). Biểu đồ cột ghép (Grouped Bar Chart) đặt cạnh nhau là lựa chọn tối ưu nhất.",
+      "counter_factual": {
+        "combo_bar_line": "Không tối ưu: Cả 2 đều là nghìn tấn, không cần thiết phải dùng 2 trục tung gây rườm rà.",
+        "pie": "Sai lầm: Có tới 5 mốc năm, không được vẽ biểu đồ tròn.",
+        "stacked_area": "Sai lầm: Đề bài yêu cầu 'so sánh sản lượng' chứ không hỏi về chuyển dịch cơ cấu %."
+      },
+      "structural_analysis": {
+        "time_points": 5,
+        "units": [
+          "Nghìn tấn"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "GEO_CHART_06",
+      "type": "multiple_choice",
+      "title": "Diện tích rừng của 6 Vùng Kinh tế - Xã hội năm 2024 (GDPT 2018)",
+      "raw_prompt": "Theo bảng số liệu, để so sánh quy mô diện tích rừng giữa các vùng kinh tế - xã hội của nước ta năm 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "so sánh quy mô giữa các vùng",
+        "nhiều vùng có tên dài",
+        "thanh ngang"
+      ],
+      "data_table": {
+        "headers": [
+          "Vùng kinh tế - xã hội",
+          "Diện tích rừng (Nghìn ha)"
+        ],
+        "rows": [
+          {
+            "name": "Trung du và miền núi Bắc Bộ",
+            "unit": "Nghìn ha",
+            "values": [
+              5380.2
+            ]
+          },
+          {
+            "name": "Bắc Trung Bộ và Duyên hải miền Trung",
+            "unit": "Nghìn ha",
+            "values": [
+              5590.8
+            ]
+          },
+          {
+            "name": "Tây Nguyên",
+            "unit": "Nghìn ha",
+            "values": [
+              2570.5
+            ]
+          },
+          {
+            "name": "Đông Nam Bộ",
+            "unit": "Nghìn ha",
+            "values": [
+              490.6
+            ]
+          },
+          {
+            "name": "Đồng bằng sông Hồng",
+            "unit": "Nghìn ha",
+            "values": [
+              485.2
+            ]
+          },
+          {
+            "name": "Đồng bằng sông Cửu Long",
+            "unit": "Nghìn ha",
+            "values": [
+              245.0
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar_horizontal",
+      "optimal_chart_name": "Biểu đồ thanh ngang (Horizontal Bar)",
+      "pedagogical_explanation": "Khi so sánh quy mô giữa nhiều vùng có tên gọi dài (như 'Trung du và miền núi Bắc Bộ'), biểu đồ thanh ngang giúp nhãn chữ nằm ngang tự nhiên, không bị xoay chéo hoặc cắt cụt.",
+      "counter_factual": {
+        "pie": "Không tối ưu: Biểu đồ tròn có tới 6 múi quạt làm khó so sánh độ chênh lệch giữa các vùng nhỏ.",
+        "line": "Sai lầm: Các vùng kinh tế là các đối tượng không gian độc lập, không có tính liên tục theo thời gian.",
+        "stacked_area": "Sai lầm: Biểu đồ miền chỉ dùng cho chuỗi thời gian, không dùng cho so sánh không gian."
+      },
+      "structural_analysis": {
+        "time_points": 1,
+        "units": [
+          "Nghìn ha"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "GEO_CHART_07",
+      "type": "multiple_choice",
+      "title": "Dân số thành thị và nông thôn nước ta giai đoạn 2018 - 2024",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện quy mô và cơ cấu dân số phân theo thành thị và nông thôn nước ta giai đoạn 2018 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "quy mô và cơ cấu",
+        "cột chồng",
+        "thành phần cấu thành tổng số"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2018",
+          "2020",
+          "2022",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Dân số thành thị",
+            "unit": "Triệu người",
+            "values": [
+              33.8,
+              35.9,
+              37.5,
+              39.2
+            ]
+          },
+          {
+            "name": "Dân số nông thôn",
+            "unit": "Triệu người",
+            "values": [
+              61.7,
+              61.7,
+              62.1,
+              61.8
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar_stacked",
+      "optimal_chart_name": "Biểu đồ cột chồng",
+      "pedagogical_explanation": "Từ khóa 'quy mô và cơ cấu' với số liệu tuyệt đối (triệu người). Cột chồng phản ánh chiều cao cột là Tổng dân số và các đoạn chồng thể hiện tỉ lệ thành thị / nông thôn.",
+      "counter_factual": {
+        "pie": "Sai lầm: Có 4 mốc năm, vượt quá giới hạn tối đa 3 năm của biểu đồ tròn.",
+        "line": "Sai lầm: Đường biểu diễn không làm bật được độ cao tổng thể của cả dân số.",
+        "stacked_area": "Không tối ưu: Miền diện tích chỉ biểu diễn tốt khi đã quy đổi 100%, không phản ánh được quy mô tuyệt đối."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Triệu người"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "GEO_CHART_08",
+      "type": "multiple_choice",
+      "title": "Sản lượng than sạch khai thác của Việt Nam (2018 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện sản lượng than sạch khai thác của nước ta giai đoạn 2018 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "sản lượng than",
+        "quy mô một đối tượng",
+        "cột đơn"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2018",
+          "2020",
+          "2022",
+          "2023",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Than sạch khai thác",
+            "unit": "Triệu tấn",
+            "values": [
+              42.4,
+              48.6,
+              50.1,
+              48.2,
+              51.5
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar_single",
+      "optimal_chart_name": "Biểu đồ cột đơn",
+      "pedagogical_explanation": "Chỉ có duy nhất 1 đối tượng đo lường (Sản lượng than) qua các năm. Biểu đồ cột đơn (Single Bar Chart) trực quan và chuẩn mực nhất.",
+      "counter_factual": {
+        "pie": "Sai lầm: Không thể vẽ hình tròn cho 1 đối tượng duy nhất.",
+        "stacked_area": "Sai lầm: Biểu đồ miền yêu cầu phải có nhiều thành phần cộng lại bằng 100%.",
+        "combo_bar_line": "Sai lầm: Chỉ có 1 đối tượng và 1 đơn vị, không thể vẽ kết hợp."
+      },
+      "structural_analysis": {
+        "time_points": 5,
+        "units": [
+          "Triệu tấn"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "GEO_CHART_09",
+      "type": "true_false",
+      "title": "[Format 2026] Sản lượng điện phát ra phân theo nguồn của Việt Nam",
+      "raw_prompt": "Cho bảng số liệu sản lượng điện phát ra phân theo nguồn của nước ta năm 2020 và 2024 (Đơn vị: Tỷ kWh). Xét tính Đúng/Sai của các nhận định dưới đây:",
+      "keywords": [
+        "đúng sai 4 mệnh đề",
+        "cơ cấu nguồn điện",
+        "năng lượng tái tạo"
+      ],
+      "data_table": {
+        "headers": [
+          "Nguồn điện",
+          "Năm 2020",
+          "Năm 2024"
+        ],
+        "rows": [
+          {
+            "name": "Nhiệt điện than",
+            "unit": "Tỷ kWh",
+            "values": [
+              123.2,
+              142.5
+            ]
+          },
+          {
+            "name": "Thủy điện",
+            "unit": "Tỷ kWh",
+            "values": [
+              72.9,
+              86.8
+            ]
+          },
+          {
+            "name": "Năng lượng tái tạo (gió, mặt trời)",
+            "unit": "Tỷ kWh",
+            "values": [
+              12.6,
+              38.5
+            ]
+          },
+          {
+            "name": "Nguồn khác (khí, sinh khối...)",
+            "unit": "Tỷ kWh",
+            "values": [
+              26.7,
+              24.2
+            ]
+          }
+        ]
+      },
+      "propositions": [
+        {
+          "id": "a",
+          "statement": "Để thể hiện quy mô và cơ cấu sản lượng điện phân theo nguồn năm 2020 và 2024, biểu đồ tròn có bán kính khác nhau là thích hợp nhất.",
+          "is_correct": true,
+          "explanation": "ĐÚNG. Có 2 mốc năm và yêu cầu 'quy mô và cơ cấu' nên biểu đồ tròn có 2 bán kính khác nhau là tối ưu nhất."
+        },
+        {
+          "id": "b",
+          "statement": "Biểu đồ miền là dạng biểu đồ thích hợp nhất để thể hiện sự chuyển dịch cơ cấu điện qua 2 năm 2020 và 2024.",
+          "is_correct": false,
+          "explanation": "SAI. Biểu đồ miền chỉ áp dụng cho chuỗi thời gian từ 4 năm trở lên (≥ 4 năm), không dùng cho 2 năm."
+        },
+        {
+          "id": "c",
+          "statement": "Tỉ trọng năng lượng tái tạo trong tổng sản lượng điện năm 2024 tăng nhanh hơn tỉ trọng nhiệt điện than.",
+          "is_correct": true,
+          "explanation": "ĐÚNG. Tỷ trọng điện tái tạo tăng từ 5.3% lên 13.2% (tăng hơn 2.4 lần), tốc độ bứt phá mạnh nhất."
+        },
+        {
+          "id": "d",
+          "statement": "Năm 2024, thủy điện chiếm tỉ trọng lớn nhất trong cơ cấu nguồn điện của Việt Nam.",
+          "is_correct": false,
+          "explanation": "SAI. Nhiệt điện than đạt 142.5 tỷ kWh (chiếm gần 49%), là nguồn chiếm tỉ trọng lớn nhất."
+        }
+      ],
+      "optimal_chart": "pie",
+      "optimal_chart_name": "Biểu đồ tròn (2 bán kính)",
+      "pedagogical_explanation": "Dạng bài tập Đúng/Sai 4 mệnh đề theo cấu trúc Đề thi Tốt nghiệp THPT mới từ 2025-2026 rèn luyện kỹ năng đọc bảng số liệu kết hợp phương pháp chọn biểu đồ.",
+      "structural_analysis": {
+        "time_points": 2,
+        "units": [
+          "Tỷ kWh"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "GEO_CHART_10",
+      "type": "true_false",
+      "title": "[Format 2026] Trị giá xuất khẩu và nhập khẩu hàng hóa Việt Nam (2018 - 2024)",
+      "raw_prompt": "Cho bảng số liệu kim ngạch xuất khẩu và nhập khẩu của nước ta (Đơn vị: Tỷ USD). Xét tính Đúng/Sai của các mệnh đề sau:",
+      "keywords": [
+        "xuất nhập khẩu",
+        "cán cân thương mại",
+        "cột ghép"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2018",
+          "2020",
+          "2022",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Xuất khẩu",
+            "unit": "Tỷ USD",
+            "values": [
+              243.7,
+              281.4,
+              371.3,
+              395.0
+            ]
+          },
+          {
+            "name": "Nhập khẩu",
+            "unit": "Tỷ USD",
+            "values": [
+              236.9,
+              261.3,
+              358.9,
+              368.0
+            ]
+          }
+        ]
+      },
+      "propositions": [
+        {
+          "id": "a",
+          "statement": "Biểu đồ cột ghép là dạng biểu đồ thích hợp nhất để so sánh kim ngạch xuất khẩu và nhập khẩu qua các năm.",
+          "is_correct": true,
+          "explanation": "ĐÚNG. Hai đại lượng xuất khẩu và nhập khẩu có cùng đơn vị tính (tỷ USD), dùng cột ghép đặt cạnh nhau là chuẩn nhất."
+        },
+        {
+          "id": "b",
+          "statement": "Cần sử dụng biểu đồ kết hợp (cột và đường) vì xuất khẩu và nhập khẩu là hai đối tượng đối lập nhau.",
+          "is_correct": false,
+          "explanation": "SAI. Cả 2 đều chung đơn vị tỷ USD nên không cần đến 2 trục tung của biểu đồ kết hợp."
+        },
+        {
+          "id": "c",
+          "statement": "Trong toàn bộ giai đoạn 2018 - 2024, cán cân thương mại của nước ta luôn ở trạng thái xuất siêu.",
+          "is_correct": true,
+          "explanation": "ĐÚNG. Trong tất cả các năm, giá trị xuất khẩu đều lớn hơn nhập khẩu (cán cân B = X - M > 0)."
+        },
+        {
+          "id": "d",
+          "statement": "Nếu đề bài yêu cầu thể hiện tốc độ tăng trưởng của xuất khẩu và nhập khẩu, dạng biểu đồ thích hợp nhất là biểu đồ đường.",
+          "is_correct": true,
+          "explanation": "ĐÚNG. Khi yêu cầu 'tốc độ tăng trưởng', phải quy đổi năm 2018 = 100% và vẽ biểu đồ đường."
+        }
+      ],
+      "optimal_chart": "bar_grouped",
+      "optimal_chart_name": "Biểu đồ cột ghép",
+      "pedagogical_explanation": "Bộ câu hỏi đa tầng chuẩn mực giúp học sinh phân biệt rõ ràng giữa 'So sánh quy mô' (Cột ghép) và 'Tốc độ tăng trưởng' (Đường).",
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Tỷ USD"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "GEO_CHART_11",
+      "type": "multiple_choice",
+      "title": "Dân số và tỉ lệ dân thành thị của nước ta giai đoạn 2015 - 2024",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện số dân và tỉ lệ dân thành thị của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "số dân và tỉ lệ dân thành thị",
+        "hai đơn vị tính khác nhau (triệu người và %)",
+        "kết hợp cột đường"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2015",
+          "2018",
+          "2021",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Số dân cả nước",
+            "unit": "Triệu người",
+            "values": [
+              91.7,
+              95.5,
+              98.5,
+              100.8
+            ]
+          },
+          {
+            "name": "Tỉ lệ dân thành thị",
+            "unit": "%",
+            "values": [
+              33.8,
+              35.7,
+              37.1,
+              38.9
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "combo_bar_line",
+      "optimal_chart_name": "Biểu đồ kết hợp (Cột và Đường)",
+      "pedagogical_explanation": "Số dân tính bằng Triệu người (vẽ Cột), Tỉ lệ thành thị tính bằng % (vẽ Đường). Hai đơn vị khác nhau bắt buộc dùng Biểu đồ kết hợp cột - đường có 2 trục tung.",
+      "counter_factual": {
+        "pie": "Sai lầm: 4 mốc năm và khác đơn vị tính, không thể vẽ tròn.",
+        "stacked_area": "Sai lầm: Dân số và tỉ lệ % không thể xếp chồng miền lên nhau.",
+        "bar_single": "Sai lầm: Thiếu trục tung phụ hiển thị phần trăm tỉ lệ thành thị."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Triệu người",
+          "%"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "GEO_CHART_12",
+      "type": "multiple_choice",
+      "title": "Tốc độ tăng trưởng sản lượng dầu thô và khí đốt nước ta (2015 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện tốc độ tăng trưởng sản lượng dầu thô và khí tự nhiên của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "tốc độ tăng trưởng",
+        "chỉ số phát triển %",
+        "năm gốc bằng 100%"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2015",
+          "2018",
+          "2020",
+          "2022",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Dầu thô",
             "unit": "%",
             "values": [
               100.0,
-              128.5,
-              168.4,
-              185.0,
-              194.2
+              74.5,
+              59.2,
+              53.6,
+              49.8
+            ]
+          },
+          {
+            "name": "Khí tự nhiên",
+            "unit": "%",
+            "values": [
+              100.0,
+              96.1,
+              86.4,
+              76.2,
+              71.5
             ]
           }
         ]
       },
       "optimal_chart": "line",
       "optimal_chart_name": "Biểu đồ đường",
-      "pedagogical_explanation": "Từ khóa vàng 'tốc độ tăng trưởng' với năm gốc 2015 = 100% qua chuỗi thời gian liên tục từ 2015 đến 2023. Biểu đồ đường (Line Chart) là đáp án duy nhất đúng.",
+      "pedagogical_explanation": "Từ khóa vàng 'tốc độ tăng trưởng' với năm gốc 2015 = 100%. Biểu đồ đường (Line Chart) là đáp án tối ưu duy nhất phản ánh xu hướng suy giảm của khoáng sản nhiên liệu.",
       "counter_factual": {
-        "pie": "Sai lầm: Tốc độ tăng trưởng không phải cơ cấu thành phần của 100%.",
-        "stacked_area": "Sai lầm: Tổng 2 giá trị năm 2023 lên tới 355.6%, không thể vẽ miền 100%.",
-        "bar": "Không tối ưu: Cột không thể hiện được đường xu hướng biến thiên liên tục như đường biểu diễn.",
-        "combo_bar_line": "Sai lầm: Cả 2 đều có cùng đơn vị là % so với năm gốc, không cần 2 trục tung."
+        "pie": "Sai lầm: Tốc độ tăng trưởng không phải cơ cấu thành phần.",
+        "bar_single": "Không tối ưu: Cột không phản ánh rõ đường dốc liên tục qua các năm."
+      },
+      "structural_analysis": {
+        "time_points": 5,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "GEO_CHART_13",
+      "type": "multiple_choice",
+      "title": "Cơ cấu GDP phân theo ngành kinh tế nước ta năm 2024",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện cơ cấu GDP phân theo ngành kinh tế nước ta năm 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "cơ cấu GDP",
+        "1 mốc năm (2024)",
+        "tổng bằng 100%"
+      ],
+      "data_table": {
+        "headers": [
+          "Ngành kinh tế",
+          "Tỉ trọng năm 2024 (%)"
+        ],
+        "rows": [
+          {
+            "name": "Nông, lâm nghiệp và thủy sản",
+            "unit": "%",
+            "values": [
+              11.5
+            ]
+          },
+          {
+            "name": "Công nghiệp và xây dựng",
+            "unit": "%",
+            "values": [
+              38.8
+            ]
+          },
+          {
+            "name": "Dịch vụ",
+            "unit": "%",
+            "values": [
+              42.1
+            ]
+          },
+          {
+            "name": "Thuế sản phẩm trừ trợ cấp",
+            "unit": "%",
+            "values": [
+              7.6
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "pie",
+      "optimal_chart_name": "Biểu đồ tròn",
+      "pedagogical_explanation": "Chỉ có duy nhất 1 mốc năm và yêu cầu 'cơ cấu' với tổng các ngành bằng đúng 100%. Biểu đồ tròn đơn (Single Pie) là đáp án chính xác 100%.",
+      "counter_factual": {
+        "line": "Sai lầm: 1 năm không thể vẽ đường biểu diễn.",
+        "stacked_area": "Sai lầm: Biểu đồ miền yêu cầu chuỗi thời gian ≥ 4 năm."
+      },
+      "structural_analysis": {
+        "time_points": 1,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "GEO_CHART_14",
+      "type": "multiple_choice",
+      "title": "Chuyển dịch cơ cấu lao động phân theo thành phần kinh tế (2012 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện sự chuyển dịch cơ cấu lao động từ 15 tuổi trở lên phân theo thành phần kinh tế nước ta giai đoạn 2012 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "chuyển dịch cơ cấu",
+        "4 mốc năm",
+        "tổng cộng 100%"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2012",
+          "2016",
+          "2020",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Kinh tế Nhà nước",
+            "unit": "%",
+            "values": [
+              10.4,
+              9.1,
+              7.8,
+              6.9
+            ]
+          },
+          {
+            "name": "Kinh tế ngoài Nhà nước",
+            "unit": "%",
+            "values": [
+              86.1,
+              83.2,
+              83.0,
+              83.2
+            ]
+          },
+          {
+            "name": "Khu vực có vốn đầu tư nước ngoài (FDI)",
+            "unit": "%",
+            "values": [
+              3.5,
+              7.7,
+              9.2,
+              9.9
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "stacked_area",
+      "optimal_chart_name": "Biểu đồ miền",
+      "pedagogical_explanation": "Từ khóa 'chuyển dịch cơ cấu' qua 4 mốc năm (≥ 4 năm) với đơn vị tính là % có tổng các thành phần = 100%. Biểu đồ miền là chuẩn xác nhất.",
+      "counter_factual": {
+        "pie": "Sai lầm: 4 mốc năm không được vẽ biểu đồ tròn.",
+        "line": "Sai lầm: Biểu đồ đường không thể hiện được tính tổng hòa 100%."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "GEO_CHART_15",
+      "type": "multiple_choice",
+      "title": "Vốn đầu tư phát triển toàn xã hội phân theo nguồn (2018 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện quy mô và cơ cấu vốn đầu tư phát triển toàn xã hội theo giá hiện hành phân theo thành phần kinh tế giai đoạn 2018 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "quy mô và cơ cấu",
+        "giá trị tuyệt đối (nghìn tỷ đồng)",
+        "cột chồng"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2018",
+          "2020",
+          "2022",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Vốn Nhà nước",
+            "unit": "Nghìn tỷ đồng",
+            "values": [
+              603.2,
+              731.3,
+              762.5,
+              875.0
+            ]
+          },
+          {
+            "name": "Vốn ngoài Nhà nước",
+            "unit": "Nghìn tỷ đồng",
+            "values": [
+              801.5,
+              982.1,
+              1285.4,
+              1490.2
+            ]
+          },
+          {
+            "name": "Vốn đầu tư trực tiếp nước ngoài",
+            "unit": "Nghìn tỷ đồng",
+            "values": [
+              454.1,
+              446.8,
+              510.6,
+              565.4
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar_stacked",
+      "optimal_chart_name": "Biểu đồ cột chồng",
+      "pedagogical_explanation": "Đề bài yêu cầu thể hiện cả 'Quy mô và Cơ cấu' ở dạng số liệu tuyệt đối (nghìn tỷ đồng) qua 4 năm. Cột chồng thể hiện tổng vốn ở độ cao cột và cơ cấu bằng từng đoạn màu.",
+      "counter_factual": {
+        "pie": "Sai lầm: Có 4 mốc năm, không được vẽ tròn.",
+        "stacked_area": "Sai lầm: Số liệu nghìn tỷ đồng chưa đổi thành %, không thể vẽ miền 100%."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Nghìn tỷ đồng"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "GEO_CHART_16",
+      "type": "true_false",
+      "title": "[Format 2026] Diện tích cây công nghiệp hàng năm và lâu năm nước ta",
+      "raw_prompt": "Cho bảng số liệu diện tích gieo trồng cây công nghiệp nước ta (Đơn vị: Nghìn ha). Xét tính Đúng/Sai của các mệnh đề sau:",
+      "keywords": [
+        "cây công nghiệp",
+        "cột ghép hoặc kết hợp",
+        "đúng sai"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2015",
+          "2018",
+          "2021",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Cây công nghiệp hàng năm",
+            "unit": "Nghìn ha",
+            "values": [
+              676.6,
+              574.6,
+              498.2,
+              452.1
+            ]
+          },
+          {
+            "name": "Cây công nghiệp lâu năm",
+            "unit": "Nghìn ha",
+            "values": [
+              2154.5,
+              2219.9,
+              2248.5,
+              2275.6
+            ]
+          }
+        ]
+      },
+      "propositions": [
+        {
+          "id": "a",
+          "statement": "Biểu đồ cột ghép là dạng biểu đồ thích hợp nhất để so sánh diện tích cây công nghiệp hàng năm và lâu năm qua các mốc thời gian.",
+          "is_correct": true,
+          "explanation": "ĐÚNG. Hai nhóm cây trồng cùng chung đơn vị nghìn ha, cột ghép đặt cạnh nhau giúp so sánh đối chiếu trực quan nhất."
+        },
+        {
+          "id": "b",
+          "statement": "Diện tích cây công nghiệp lâu năm luôn chiếm ưu thế và có xu hướng tăng liên tục qua các năm.",
+          "is_correct": true,
+          "explanation": "ĐÚNG. Diện tích cây lâu năm tăng từ 2154.5 lên 2275.6 nghìn ha, gấp nhiều lần cây hàng năm."
+        },
+        {
+          "id": "c",
+          "statement": "Để thể hiện tốc độ tăng trưởng diện tích của 2 loại cây trên, dạng biểu đồ tối ưu là biểu đồ miền.",
+          "is_correct": false,
+          "explanation": "SAI. Thể hiện tốc độ tăng trưởng bắt buộc dùng BIỂU ĐỒ ĐƯỜNG với năm gốc 100%."
+        },
+        {
+          "id": "d",
+          "statement": "Diện tích cây công nghiệp hàng năm giảm do chuyển đổi cơ cấu cây trồng sang các loại cây có hiệu quả kinh tế cao hơn.",
+          "is_correct": true,
+          "explanation": "ĐÚNG. Đây là kiến thức giải thích nguyên nhân địa lý chuẩn SGK."
+        }
+      ],
+      "optimal_chart": "bar_grouped",
+      "optimal_chart_name": "Biểu đồ cột ghép",
+      "pedagogical_explanation": "Rèn luyện tư duy nhận biết đồ thị kết hợp phân tích nguyên nhân địa lý kinh tế ngành.",
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Nghìn ha"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "GEO_CHART_17",
+      "type": "multiple_choice",
+      "title": "Thu nhập bình quân đầu người 1 tháng phân theo 6 Vùng KT-XH năm 2024",
+      "raw_prompt": "Theo bảng số liệu, để so sánh mức thu nhập bình quân đầu người 1 tháng giữa các vùng kinh tế - xã hội nước ta năm 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "so sánh thu nhập bình quân",
+        "6 vùng kinh tế xã hội",
+        "thanh ngang"
+      ],
+      "data_table": {
+        "headers": [
+          "Vùng kinh tế - xã hội",
+          "Thu nhập (Triệu đồng/tháng)"
+        ],
+        "rows": [
+          {
+            "name": "Đông Nam Bộ",
+            "unit": "Triệu đồng",
+            "values": [
+              6.85
+            ]
+          },
+          {
+            "name": "Đồng bằng sông Hồng",
+            "unit": "Triệu đồng",
+            "values": [
+              5.98
+            ]
+          },
+          {
+            "name": "Đồng bằng sông Cửu Long",
+            "unit": "Triệu đồng",
+            "values": [
+              4.45
+            ]
+          },
+          {
+            "name": "Bắc Trung Bộ và Duyên hải miền Trung",
+            "unit": "Triệu đồng",
+            "values": [
+              4.32
+            ]
+          },
+          {
+            "name": "Tây Nguyên",
+            "unit": "Triệu đồng",
+            "values": [
+              3.65
+            ]
+          },
+          {
+            "name": "Trung du và miền núi Bắc Bộ",
+            "unit": "Triệu đồng",
+            "values": [
+              3.48
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar_horizontal",
+      "optimal_chart_name": "Biểu đồ thanh ngang (Horizontal Bar)",
+      "pedagogical_explanation": "So sánh thứ hạng một chỉ tiêu kinh tế xã hội giữa 6 vùng kinh tế có tên địa danh dài. Biểu đồ thanh ngang là tối ưu số 1.",
+      "counter_factual": {
+        "pie": "Không tối ưu: Biểu đồ tròn không thể hiện trực quan khoảng cách chênh lệch thu nhập như thanh nằm ngang.",
+        "line": "Sai lầm: Các vùng độc lập không tạo thành chuỗi thời gian liên tục."
+      },
+      "structural_analysis": {
+        "time_points": 1,
+        "units": [
+          "Triệu đồng"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "GEO_CHART_18",
+      "type": "multiple_choice",
+      "title": "Cơ cấu thị trường xuất khẩu hàng hóa Việt Nam năm 2024",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện cơ cấu thị trường xuất khẩu hàng hóa của nước ta năm 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "cơ cấu thị trường",
+        "1 năm duy nhất",
+        "tổng cộng 100%"
+      ],
+      "data_table": {
+        "headers": [
+          "Thị trường xuất khẩu",
+          "Tỉ trọng năm 2024 (%)"
+        ],
+        "rows": [
+          {
+            "name": "Hoa Kỳ",
+            "unit": "%",
+            "values": [
+              28.5
+            ]
+          },
+          {
+            "name": "Trung Quốc",
+            "unit": "%",
+            "values": [
+              16.8
+            ]
+          },
+          {
+            "name": "EU",
+            "unit": "%",
+            "values": [
+              12.6
+            ]
+          },
+          {
+            "name": "ASEAN",
+            "unit": "%",
+            "values": [
+              9.1
+            ]
+          },
+          {
+            "name": "Hàn Quốc",
+            "unit": "%",
+            "values": [
+              6.8
+            ]
+          },
+          {
+            "name": "Nhật Bản",
+            "unit": "%",
+            "values": [
+              6.5
+            ]
+          },
+          {
+            "name": "Các thị trường khác",
+            "unit": "%",
+            "values": [
+              19.7
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "pie",
+      "optimal_chart_name": "Biểu đồ tròn",
+      "pedagogical_explanation": "Yêu cầu 'cơ cấu thị trường' trong duy nhất 1 mốc năm 2024, tổng các thị trường = 100%. Biểu đồ tròn là lựa chọn chính xác.",
+      "counter_factual": {
+        "stacked_area": "Sai lầm: 1 năm không thể vẽ biểu đồ miền.",
+        "line": "Sai lầm: Không có trục thời gian để vẽ đường."
+      },
+      "structural_analysis": {
+        "time_points": 1,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "GEO_CHART_19",
+      "type": "multiple_choice",
+      "title": "Sản lượng và kim ngạch xuất khẩu cà phê của Việt Nam (2018 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện sản lượng và kim ngạch xuất khẩu cà phê của nước ta giai đoạn 2018 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "sản lượng và kim ngạch",
+        "khác đơn vị (nghìn tấn và tỷ USD)",
+        "kết hợp"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2018",
+          "2020",
+          "2022",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Sản lượng cà phê",
+            "unit": "Nghìn tấn",
+            "values": [
+              1680.0,
+              1740.0,
+              1780.0,
+              1850.0
+            ]
+          },
+          {
+            "name": "Kim ngạch xuất khẩu",
+            "unit": "Tỷ USD",
+            "values": [
+              3.54,
+              2.74,
+              4.05,
+              5.42
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "combo_bar_line",
+      "optimal_chart_name": "Biểu đồ kết hợp (Cột và Đường)",
+      "pedagogical_explanation": "Sản lượng (nghìn tấn - vẽ Cột) và Kim ngạch (tỷ USD - vẽ Đường) có 2 đơn vị khác nhau. Cần 2 trục tung để thể hiện.",
+      "counter_factual": {
+        "pie": "Sai lầm: Khác đơn vị đo lường.",
+        "bar_single": "Sai lầm: Không thể gộp nghìn tấn và tỷ USD vào 1 trục số."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Nghìn tấn",
+          "Tỷ USD"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "GEO_CHART_20",
+      "type": "true_false",
+      "title": "[Format 2026] Công suất lắp máy một số nhà máy thủy điện lớn",
+      "raw_prompt": "Cho bảng số liệu công suất lắp máy của một số nhà máy thủy điện lớn ở Việt Nam (Đơn vị: MW). Xét tính Đúng/Sai của các mệnh đề sau:",
+      "keywords": [
+        "thủy điện",
+        "so sánh công suất",
+        "đúng sai"
+      ],
+      "data_table": {
+        "headers": [
+          "Nhà máy thủy điện",
+          "Công suất (MW)",
+          "Dòng sông"
+        ],
+        "rows": [
+          {
+            "name": "Sơn La",
+            "unit": "MW",
+            "values": [
+              2400
+            ],
+            "river": "Sông Đà"
+          },
+          {
+            "name": "Hòa Bình",
+            "unit": "MW",
+            "values": [
+              1920
+            ],
+            "river": "Sông Đà"
+          },
+          {
+            "name": "Lai Châu",
+            "unit": "MW",
+            "values": [
+              1200
+            ],
+            "river": "Sông Đà"
+          },
+          {
+            "name": "Yaly",
+            "unit": "MW",
+            "values": [
+              720
+            ],
+            "river": "Sông Sê San"
+          },
+          {
+            "name": "Huội Quảng",
+            "unit": "MW",
+            "values": [
+              520
+            ],
+            "river": "Sông Nậm Mu"
+          },
+          {
+            "name": "Trị An",
+            "unit": "MW",
+            "values": [
+              400
+            ],
+            "river": "Sông Đồng Nai"
+          }
+        ]
+      },
+      "propositions": [
+        {
+          "id": "a",
+          "statement": "Để so sánh công suất của các nhà máy thủy điện trên, biểu đồ cột đơn (hoặc thanh ngang) là dạng biểu đồ thích hợp nhất.",
+          "is_correct": true,
+          "explanation": "ĐÚNG. So sánh một chỉ tiêu duy nhất (công suất MW) giữa các đối tượng độc lập."
+        },
+        {
+          "id": "b",
+          "statement": "Sơn La là nhà máy thủy điện có công suất lắp máy lớn nhất Việt Nam và Đông Nam Á.",
+          "is_correct": true,
+          "explanation": "ĐÚNG. Công suất 2.400 MW lớn nhất cả nước."
+        },
+        {
+          "id": "c",
+          "statement": "Hệ thống sông Đà tập trung tiềm năng thủy điện lớn nhất cả nước với các nhà máy Sơn La, Hòa Bình, Lai Châu.",
+          "is_correct": true,
+          "explanation": "ĐÚNG. 3 nhà máy lớn nhất đều nằm trên bậc thang thủy điện sông Đà."
+        },
+        {
+          "id": "d",
+          "statement": "Để thể hiện sự thay đổi công suất của các nhà máy qua thời gian, dạng biểu đồ thích hợp nhất là biểu đồ tròn.",
+          "is_correct": false,
+          "explanation": "SAI. Để thể hiện sự thay đổi qua thời gian thì dùng biểu đồ đường hoặc biểu đồ cột, không dùng biểu đồ tròn."
+        }
+      ],
+      "optimal_chart": "bar_horizontal",
+      "optimal_chart_name": "Biểu đồ thanh ngang",
+      "pedagogical_explanation": "Tích hợp kiến thức Atlat Địa lí trang 22 (Năng lượng) với kỹ năng đồ thị THPT.",
+      "structural_analysis": {
+        "time_points": 2,
+        "units": [
+          "MW"
+        ],
+        "is_total_100": false
       }
     }
   ]
