@@ -31,17 +31,10 @@ class GeoAtlasHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Accept")
 
-        # Mirroring production Edge CDN Cache-Control headers
-        path = getattr(self, 'path', '')
-        if path.endswith(('.geojson', '.json')):
-            self.send_header("Cache-Control", "public, max-age=31536000, immutable")
-        elif path.endswith(('.js', '.css', '.png', '.jpg', '.woff2')):
-            self.send_header("Cache-Control", "public, max-age=2592000, stale-while-revalidate=86400")
-        elif path.endswith(('.html', '/')):
-            self.send_header("Cache-Control", "public, max-age=0, must-revalidate")
-        else:
-            self.send_header("Cache-Control", "public, max-age=3600")
-
+        # Development server: Disable browser cache to ensure live code updates
+        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate, max-age=0")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
         super().end_headers()
 
     def do_OPTIONS(self):

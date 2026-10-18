@@ -317,11 +317,17 @@ table, .tabular-nums, font-mono {
    PURE VECTOR BASEMAP OCEAN BACKGROUND & GRATICULE
    Light Mode: #CBE7F5 | Dark Mode: #0B192C
    ========================================================================== */
+#atlas-map,
+#atlas-map.leaflet-container,
+#atlas-map-container,
 #atlas-map.atlat-pure-vector,
 .atlat-pure-vector .leaflet-container {
   background-color: #CBE7F5 !important;
 }
 
+.dark #atlas-map,
+.dark #atlas-map.leaflet-container,
+.dark #atlas-map-container,
 .dark #atlas-map.atlat-pure-vector,
 .dark .atlat-pure-vector .leaflet-container {
   background-color: #0B192C !important;
