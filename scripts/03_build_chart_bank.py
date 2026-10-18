@@ -660,6 +660,29 @@ ALL_20_QUESTIONS = [
         "optimal_chart": "bar_horizontal",
         "optimal_chart_name": "Biểu đồ thanh ngang",
         "pedagogical_explanation": "Tích hợp kiến thức Atlat Địa lí trang 22 (Năng lượng) với kỹ năng đồ thị THPT."
+    },
+
+    # 21. Combo: Khách du lịch quốc tế và doanh thu du lịch lữ hành (Du lịch)
+    {
+        "id": "GEO_CHART_21",
+        "type": "multiple_choice",
+        "title": "Khách du lịch quốc tế và doanh thu du lịch lữ hành nước ta (2018 - 2024)",
+        "raw_prompt": "Theo bảng số liệu, để thể hiện số lượt khách du lịch quốc tế đến Việt Nam và doanh thu du lịch lữ hành giai đoạn 2018 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+        "keywords": ["khách du lịch và doanh thu", "hai đơn vị tính khác nhau (triệu lượt và nghìn tỷ đồng)", "kết hợp"],
+        "data_table": {
+            "headers": ["Năm", "2018", "2020", "2022", "2024"],
+            "rows": [
+                {"name": "Khách du lịch quốc tế", "unit": "Triệu lượt khách", "values": [15.5, 3.8, 3.7, 18.0]},
+                {"name": "Doanh thu du lịch lữ hành", "unit": "Nghìn tỷ đồng", "values": [41.2, 18.5, 29.4, 62.5]}
+            ]
+        },
+        "optimal_chart": "combo_bar_line",
+        "optimal_chart_name": "Biểu đồ kết hợp (Cột và Đường)",
+        "pedagogical_explanation": "Bảng số liệu có 2 đại lượng mang 2 đơn vị tính khác nhau (Khách du lịch: Triệu lượt khách; Doanh thu: Nghìn tỷ đồng) diễn biến qua 4 mốc thời gian. Biểu đồ kết hợp 2 trục tung là dạng biểu đồ thích hợp nhất.",
+        "counter_factual": {
+            "pie": "Sai lầm: Chuỗi thời gian 4 năm và hai đại lượng khác đơn vị, không thể vẽ biểu đồ tròn.",
+            "bar_single": "Sai lầm: Không thể thể hiện hai đơn vị đo lường khác nhau trên cùng một trục tung đơn."
+        }
     }
 ]
 

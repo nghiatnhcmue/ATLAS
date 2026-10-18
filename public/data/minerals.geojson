@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "metadata": {
     "title": "Lớp Khoáng sản Việt Nam (Atlat Trang 8)",
-    "count": 23
+    "count": 26
   },
   "features": [
     {
@@ -462,6 +462,66 @@
         "coordinates": [
           105.62,
           19.78
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_24",
+        "name": "Mỏ titan Kỳ Anh",
+        "symbol_type": "ti_symbol",
+        "mineral_code": "titan",
+        "mineral_type": "Titan",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Hà Tĩnh"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.3,
+          18.08
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_25",
+        "name": "Mỏ titan Hàm Tân",
+        "symbol_type": "ti_symbol",
+        "mineral_code": "titan",
+        "mineral_type": "Titan",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Bình Thuận"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.75,
+          10.7
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "MIN_26",
+        "name": "Mỏ titan Phù Cát",
+        "symbol_type": "ti_symbol",
+        "mineral_code": "titan",
+        "mineral_type": "Titan",
+        "group": "Kim loại",
+        "atlat_page": 8,
+        "province": "Bình Định"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.1,
+          14.05
         ]
       }
     }

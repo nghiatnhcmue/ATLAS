@@ -1,0 +1,714 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Bản đồ Địa hình & Hệ thống Sông ngòi Việt Nam (Atlat Trang 6-7, 10)",
+    "count": 29,
+    "standard": "Atlat Địa lí Việt Nam & SGK THPT"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.7753,
+          22.3033
+        ]
+      },
+      "properties": {
+        "id": "PEAK_01",
+        "name": "Đỉnh Fansipan (3.147m)",
+        "category": "peak",
+        "elevation_m": 3147,
+        "mountain_range": "Dãy Hoàng Liên Sơn",
+        "province": "Lào Cai",
+        "desc": "Nóc nhà Đông Dương, đỉnh núi cao nhất Việt Nam và toàn bán đảo Đông Dương.",
+        "atlat_page": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.8028,
+          22.6283
+        ]
+      },
+      "properties": {
+        "id": "PEAK_02",
+        "name": "Đỉnh Pu Si Lung (3.076m)",
+        "category": "peak",
+        "elevation_m": 3076,
+        "mountain_range": "Biên giới Việt - Trung",
+        "province": "Lai Châu",
+        "desc": "Đỉnh núi cao thứ hai Việt Nam, địa hình hiểm trở vùng biên cương.",
+        "atlat_page": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.85,
+          16.195
+        ]
+      },
+      "properties": {
+        "id": "PEAK_03",
+        "name": "Đỉnh Bạch Mã (1.444m)",
+        "category": "peak",
+        "elevation_m": 1444,
+        "mountain_range": "Dãy Bạch Mã",
+        "province": "Thừa Thiên Huế",
+        "desc": "Ranh giới tự nhiên giữa miền khí hậu phía Bắc và phía Nam (vĩ tuyến 16°B), bức tường chắn gió mùa Đông Bắc.",
+        "atlat_page": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.98,
+          15.08
+        ]
+      },
+      "properties": {
+        "id": "PEAK_04",
+        "name": "Đỉnh Ngọc Linh (2.598m)",
+        "category": "peak",
+        "elevation_m": 2598,
+        "mountain_range": "Khối núi Kon Tum / Nam Trường Sơn",
+        "province": "Kon Tum",
+        "desc": "Đỉnh cao nhất vùng Trường Sơn Nam, thủ phủ sâm Ngọc Linh quý hiếm.",
+        "atlat_page": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.43,
+          12.4
+        ]
+      },
+      "properties": {
+        "id": "PEAK_05",
+        "name": "Đỉnh Chư Yang Sin (2.405m)",
+        "category": "peak",
+        "elevation_m": 2405,
+        "mountain_range": "Khối núi Nam Tây Nguyên",
+        "province": "Đắk Lắk",
+        "desc": "Đỉnh núi cao nhất vùng Đắk Lắk, thuộc Vườn quốc gia Chư Yang Sin.",
+        "atlat_page": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.44,
+          12.04
+        ]
+      },
+      "properties": {
+        "id": "PEAK_06",
+        "name": "Đỉnh Langbiang (2.167m)",
+        "category": "peak",
+        "elevation_m": 2167,
+        "mountain_range": "Cao nguyên Lâm Viên",
+        "province": "Lâm Đồng",
+        "desc": "Biểu tượng nóc nhà Đà Lạt, cảnh quan thiên nhiên và du lịch sinh thái nổi tiếng.",
+        "atlat_page": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.5,
+            22.6
+          ],
+          [
+            103.8,
+            22.3
+          ],
+          [
+            104.2,
+            21.8
+          ],
+          [
+            104.5,
+            21.4
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RANGE_01",
+        "name": "Dãy Hoàng Liên Sơn",
+        "category": "mountain_range",
+        "direction": "Tây Bắc - Đông Nam",
+        "desc": "Dãy núi cao và đồ sộ nhất Việt Nam chạy theo hướng Tây Bắc - Đông Nam.",
+        "atlat_page": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            105.1,
+            23.2
+          ],
+          [
+            105.4,
+            22.6
+          ],
+          [
+            105.6,
+            21.8
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RANGE_02",
+        "name": "Cánh cung Sông Gâm",
+        "category": "mountain_arc",
+        "direction": "Cánh cung chụm đầu ở Tam Đảo",
+        "desc": "Cánh cung núi thuộc vùng Đông Bắc, đón gió mùa Đông Bắc lạnh.",
+        "atlat_page": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            105.8,
+            22.7
+          ],
+          [
+            106.0,
+            22.2
+          ],
+          [
+            106.1,
+            21.6
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RANGE_03",
+        "name": "Cánh cung Ngân Sơn",
+        "category": "mountain_arc",
+        "direction": "Cánh cung mở rộng về phía Bắc",
+        "desc": "Cánh cung Ngân Sơn vùng Đông Bắc, địa hình núi đón gió mùa.",
+        "atlat_page": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            106.3,
+            22.4
+          ],
+          [
+            106.5,
+            21.9
+          ],
+          [
+            106.4,
+            21.5
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RANGE_04",
+        "name": "Cánh cung Bắc Sơn",
+        "category": "mountain_arc",
+        "direction": "Cánh cung đá vôi",
+        "desc": "Cánh cung Bắc Sơn nổi tiếng với thung lũng đá vôi và văn hóa Bắc Sơn.",
+        "atlat_page": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            107.0,
+            21.8
+          ],
+          [
+            107.1,
+            21.4
+          ],
+          [
+            106.7,
+            21.1
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RANGE_05",
+        "name": "Cánh cung Đông Triều",
+        "category": "mountain_arc",
+        "direction": "Cánh cung ven biển Đông Bắc",
+        "desc": "Cánh cung Đông Triều ôm trọn vùng than Quảng Ninh và danh thắng Yên Tử.",
+        "atlat_page": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            105.3,
+            19.3
+          ],
+          [
+            105.8,
+            18.2
+          ],
+          [
+            106.2,
+            17.5
+          ],
+          [
+            107.2,
+            16.3
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RANGE_06",
+        "name": "Dãy Trường Sơn Bắc",
+        "category": "mountain_range",
+        "direction": "Tây Bắc - Đông Nam",
+        "desc": "Từ nam sông Cả tới dãy Bạch Mã, sườn Đông dốc hẹp ăn lan ra biển.",
+        "atlat_page": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            108.0,
+            15.2
+          ],
+          [
+            108.5,
+            14.0
+          ],
+          [
+            108.3,
+            12.5
+          ],
+          [
+            107.8,
+            11.5
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RANGE_07",
+        "name": "Dãy Trường Sơn Nam",
+        "category": "mountain_range",
+        "direction": "Vòng cung lồi ra biển Đông",
+        "desc": "Khối núi Kon Tum và các cao nguyên badan xếp tầng màu mỡ.",
+        "atlat_page": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.9,
+          21.32
+        ]
+      },
+      "properties": {
+        "id": "PLA_01",
+        "name": "Cao nguyên Sơn La",
+        "category": "plateau",
+        "province": "Sơn La",
+        "desc": "Cao nguyên đá vôi và đất feralit vùng Tây Bắc, trồng ngô, chè, cây ăn quả ôn đới.",
+        "atlat_page": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.64,
+          20.84
+        ]
+      },
+      "properties": {
+        "id": "PLA_02",
+        "name": "Cao nguyên Mộc Châu",
+        "category": "plateau",
+        "province": "Sơn La",
+        "desc": "Khí hậu mát mẻ, nổi tiếng chăn nuôi bò sữa, trồng chè shan tuyết và mận.",
+        "atlat_page": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.0,
+          14.35
+        ]
+      },
+      "properties": {
+        "id": "PLA_03",
+        "name": "Cao nguyên Kon Tum",
+        "category": "plateau",
+        "province": "Kon Tum",
+        "desc": "Cao nguyên phía bắc Tây Nguyên, độ cao ~500m, trồng cà phê, cao su.",
+        "atlat_page": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.0,
+          13.98
+        ]
+      },
+      "properties": {
+        "id": "PLA_04",
+        "name": "Cao nguyên Pleiku",
+        "category": "plateau",
+        "province": "Gia Lai",
+        "desc": "Đất đỏ bazan màu mỡ, vùng chuyên canh cà phê, hồ tiêu, chè lớn.",
+        "atlat_page": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.04,
+          12.67
+        ]
+      },
+      "properties": {
+        "id": "PLA_05",
+        "name": "Cao nguyên Đắk Lắk",
+        "category": "plateau",
+        "province": "Đắk Lắk",
+        "desc": "Cao nguyên bazan diện tích rộng lớn và bằng phẳng nhất, thủ phủ cà phê Buôn Ma Thuột.",
+        "atlat_page": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6,
+          12.25
+        ]
+      },
+      "properties": {
+        "id": "PLA_06",
+        "name": "Cao nguyên Mơ Nông",
+        "category": "plateau",
+        "province": "Đắk Nông",
+        "desc": "Địa hình gợn sóng lượn, giàu khoáng sản bô-xít nhôm và cây công nghiệp lâu năm.",
+        "atlat_page": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.45,
+          11.95
+        ]
+      },
+      "properties": {
+        "id": "PLA_07",
+        "name": "Cao nguyên Lâm Viên",
+        "category": "plateau",
+        "province": "Lâm Đồng",
+        "desc": "Độ cao ~1.500m, khí hậu ôn đới quanh năm, trung tâm rau hoa quả cận nhiệt Đà Lạt.",
+        "atlat_page": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.08,
+          11.53
+        ]
+      },
+      "properties": {
+        "id": "PLA_08",
+        "name": "Cao nguyên Di Linh",
+        "category": "plateau",
+        "province": "Lâm Đồng",
+        "desc": "Độ cao ~1.000m, đất bazan màu mỡ, vùng chuyên canh chè và cà phê robusta.",
+        "atlat_page": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.95,
+            22.5
+          ],
+          [
+            104.9,
+            21.7
+          ],
+          [
+            105.35,
+            21.3
+          ],
+          [
+            105.85,
+            21.05
+          ],
+          [
+            106.35,
+            20.3
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_01",
+        "name": "Sông Hồng",
+        "category": "river",
+        "desc": "Dòng sông bồi đắp đồng bằng sông Hồng trù phú, dài 1.149km (đoạn VN dài 510km).",
+        "atlat_page": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            102.85,
+            22.4
+          ],
+          [
+            103.99,
+            21.49
+          ],
+          [
+            105.32,
+            20.81
+          ],
+          [
+            105.35,
+            21.3
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_02",
+        "name": "Sông Đà",
+        "category": "river",
+        "desc": "Phụ lưu lớn nhất của sông Hồng, giàu tiềm năng thủy điện bậc nhất với chuỗi Lai Châu, Sơn La, Hòa Bình.",
+        "atlat_page": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.0,
+            21.3
+          ],
+          [
+            104.5,
+            20.8
+          ],
+          [
+            105.9,
+            19.8
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_03",
+        "name": "Sông Mã",
+        "category": "river",
+        "desc": "Bồi đắp đồng bằng Thanh Hóa rộng lớn.",
+        "atlat_page": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            104.2,
+            19.5
+          ],
+          [
+            105.0,
+            19.0
+          ],
+          [
+            105.7,
+            18.7
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_04",
+        "name": "Sông Cả (Sông Lam)",
+        "category": "river",
+        "desc": "Dòng sông mẹ của xứ Nghệ, bồi đắp đồng bằng Nghệ An - Hà Tĩnh.",
+        "atlat_page": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            107.6,
+            15.8
+          ],
+          [
+            108.2,
+            15.8
+          ],
+          [
+            108.4,
+            15.9
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_05",
+        "name": "Sông Thu Bồn - Vu Gia",
+        "category": "river",
+        "desc": "Hệ thống sông huyết mạch của vùng đất Quảng Nam - Đà Nẵng, cửa biển Hội An.",
+        "atlat_page": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            108.4,
+            11.8
+          ],
+          [
+            107.5,
+            11.3
+          ],
+          [
+            106.8,
+            10.9
+          ],
+          [
+            106.8,
+            10.5
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_06",
+        "name": "Sông Đồng Nai",
+        "category": "river",
+        "desc": "Lưu vực sông nội địa lớn nhất Việt Nam, cung cấp nước ngọt và thủy điện cho Đông Nam Bộ.",
+        "atlat_page": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            105.15,
+            10.8
+          ],
+          [
+            105.8,
+            10.3
+          ],
+          [
+            106.4,
+            10.2
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_07",
+        "name": "Sông Tiền",
+        "category": "river",
+        "desc": "Nhánh chính phía Bắc sông Mê Kông đổ ra biển Đông qua nhiều cửa sông (Cửa Tiểu, Đại, Ba Lai...).",
+        "atlat_page": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            105.1,
+            10.7
+          ],
+          [
+            105.65,
+            10.1
+          ],
+          [
+            106.35,
+            9.6
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_08",
+        "name": "Sông Hậu",
+        "category": "river",
+        "desc": "Nhánh chính phía Nam sông Mê Kông chảy qua Cần Thơ, đổ ra biển qua cửa Định An, Trần Đề.",
+        "atlat_page": 10
+      }
+    }
+  ]
+}

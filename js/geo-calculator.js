@@ -336,48 +336,81 @@ const GeoCalculator = (function () {
       }
     },
 
-    // 7. Tỷ trọng cơ cấu (%)
+    // 7. Tỷ trọng cơ cấu (%) & Mức độ chuyển dịch cơ cấu (điểm %)
     structure_share: {
       id: "structure_share",
-      name: "7. Tỷ trọng cơ cấu (%)",
-      desc: "Tính tỉ lệ phần trăm của một bộ phận thành phần trong tổng thể.",
-      latex: `\\text{Tỉ trọng}_i = \\frac{\\text{Giá trị thành phần}_i}{\\text{Tổng số}} \\times 100 \\quad (\\%)`,
+      name: "7. Tỷ trọng cơ cấu (%) & Chuyển dịch (điểm %)",
+      desc: "Tính tỉ trọng phần trăm của bộ phận trong tổng thể và xác định mức độ chuyển dịch cơ cấu (điểm %) giữa 2 năm.",
+      latex: `\\text{Tỉ trọng} = \\frac{A_i}{\\text{Tổng}} \\times 100\\% \\quad | \\quad \\Delta = \\%_{T2} - \\%_{T1} \\quad (\\text{điểm \\%})`,
       inputs: [
         {
-          key: "part_val",
-          label: "Giá trị thành phần (Ai)",
-          defaultVal: 3512.4,
+          key: "part_val_1",
+          label: "Giá trị thành phần Năm 1 (A1)",
+          defaultVal: 63.2,
           units: [{ label: "Đơn vị bất kỳ", factor: 1, latexMult: "" }]
         },
         {
-          key: "total_val",
-          label: "Tổng số toàn ngành / cả nước",
-          defaultVal: 5356.7,
+          key: "total_val_1",
+          label: "Tổng số Năm 1 (T1)",
+          defaultVal: 193.2,
           units: [{ label: "Cùng đơn vị với thành phần", factor: 1, latexMult: "" }]
+        },
+        {
+          key: "part_val_2",
+          label: "Giá trị thành phần Năm 2 (A2 - so sánh)",
+          defaultVal: 158.4,
+          units: [{ label: "Cùng đơn vị với Năm 1", factor: 1, latexMult: "" }]
+        },
+        {
+          key: "total_val_2",
+          label: "Tổng số Năm 2 (T2 - so sánh)",
+          defaultVal: 430.0,
+          units: [{ label: "Cùng đơn vị với Năm 1", factor: 1, latexMult: "" }]
         }
       ],
       sampleTable: {
-        title: "Sản lượng Thủy sản Nuôi trồng phân theo Vùng (Nghìn tấn)",
-        headers: ["Vùng kinh tế", "Sản lượng (Nghìn tấn)", "Tỷ trọng mẫu (%)"],
+        title: "Chuyển dịch Cơ cấu GDP theo Ngành kinh tế Việt Nam (2015 - 2024)",
+        headers: ["Ngành kinh tế", "A1 (Năm 2015)", "T1 (Tổng 2015)", "A2 (Năm 2024)", "T2 (Tổng 2024)"],
         rows: [
-          ["Đồng bằng sông Cửu Long", "3512.4", "65.6"],
-          ["Đồng bằng sông Hồng", "874.5", "16.3"],
-          ["Bắc Trung Bộ & DHMT", "592.1", "11.1"],
-          ["Cả nước (Tổng số)", "5356.7", "100.0"]
+          ["Công nghiệp & Xây dựng", "63.2", "193.2", "158.4", "430.0"],
+          ["Dịch vụ", "76.8", "193.2", "182.8", "430.0"],
+          ["Nông, lâm, thủy sản", "33.6", "193.2", "50.8", "430.0"],
+          ["Nuôi trồng thủy sản", "3512.4", "5356.7", "3512.4", "5356.7"]
         ]
       },
       solve: (vals) => {
-        const part = vals.part_val.val;
-        const tot = vals.total_val.val;
-        if (tot <= 0) return { error: "Tổng số phải lớn hơn 0" };
+        const p1 = vals.part_val_1.val;
+        const t1 = vals.total_val_1.val;
+        const p2 = vals.part_val_2.val;
+        const t2 = vals.total_val_2.val;
 
-        const share = (part / tot) * 100;
+        if (t1 <= 0) return { error: "Tổng số Năm 1 phải lớn hơn 0" };
+
+        const share1 = (p1 / t1) * 100;
+        const hasYear2 = t2 > 0;
+        const share2 = hasYear2 ? (p2 / t2) * 100 : share1;
+        const delta = share2 - share1;
+
+        if (!hasYear2 || (p1 === p2 && t1 === t2)) {
+          return {
+            resultText: `Tỉ trọng = ${share1.toFixed(2)}%`,
+            stepsLatex: [
+              `\\text{Tỉ trọng} = \\frac{\\text{Thành phần A}}{\\text{Tổng số T}} \\times 100 = \\frac{${p1}}{${t1}} \\times 100 = \\mathbf{${share1.toFixed(2)}\\%}`
+            ],
+            note: share1 > 50 ? "Chiếm tỷ trọng áp đảo (>50%) trong cơ cấu tổng thể." : "Thành phần cấu thành trong cơ cấu ngành."
+          };
+        }
+
+        const dirText = delta > 0 ? `tăng +${delta.toFixed(2)} điểm %` : (delta < 0 ? `giảm ${delta.toFixed(2)} điểm %` : "không đổi (0 điểm %)");
+
         return {
-          resultText: `${share.toFixed(2)}%`,
+          resultText: `Năm 1: ${share1.toFixed(2)}% | Năm 2: ${share2.toFixed(2)}% => Chuyển dịch: ${dirText}`,
           stepsLatex: [
-            `\\text{Tỉ trọng} = \\frac{\\text{Thành phần}}{\\text{Tổng số}} \\times 100 = \\frac{${part}}{${tot}} \\times 100 = \\mathbf{${share.toFixed(2)}\\%}`
+            `\\text{Bước 1 (Tỉ trọng Năm 1): } \\%_1 = \\frac{${p1}}{${t1}} \\times 100 = \\mathbf{${share1.toFixed(2)}\\%}`,
+            `\\text{Bước 2 (Tỉ trọng Năm 2): } \\%_2 = \\frac{${p2}}{${t2}} \\times 100 = \\mathbf{${share2.toFixed(2)}\\%}`,
+            `\\text{Bước 3 (Mức độ chuyển dịch cơ cấu): } \\Delta = \\%_2 - \\%_1 = ${share2.toFixed(2)}\\% - ${share1.toFixed(2)}\\% = \\mathbf{${delta >= 0 ? '+' : ''}${delta.toFixed(2)} \\text{ điểm \\%}}`
           ],
-          note: share > 50 ? "Chiếm tỷ trọng áp đảo quá bán (>50%) trong cơ cấu toàn quốc." : "Thành phần thứ yếu trong cơ cấu."
+          note: `Lưu ý chuẩn SGK & Đề thi THPT: Đơn vị của chuyển dịch cơ cấu luôn là "điểm phần trăm" (điểm %), tuyệt đối không nhầm lẫn với "tốc độ tăng trưởng (%)".`
         };
       }
     },
@@ -431,12 +464,12 @@ const GeoCalculator = (function () {
       }
     },
 
-    // 9. Thống kê Khí hậu & Phân loại Bắc/Nam
+    // 9. Thống kê Khí hậu: Biên độ nhiệt, Ttb & Lượng mưa
     climate_stats: {
       id: "climate_stats",
       name: "9. Thống kê Khí hậu & Biên độ nhiệt",
-      desc: "Tính biên độ nhiệt năm (ΔT) và phân loại tính chất nhiệt độ miền Bắc / miền Nam.",
-      latex: `\\Delta T = T_{\\text{max}} - T_{\\text{min}} \\quad (^{\\circ}\\text{C})`,
+      desc: "Tính biên độ nhiệt năm (ΔT), nhiệt độ trung bình năm (Ttb), tổng lượng mưa và phân loại miền khí hậu Bắc/Nam.",
+      latex: `\\Delta T = T_{\\text{max}} - T_{\\text{min}} \\quad | \\quad T_{\\text{tb}} \\quad (^{\\circ}\\text{C}) \\quad | \\quad \\text{Lượng mưa (mm)}`,
       inputs: [
         {
           key: "max_t",
@@ -449,36 +482,60 @@ const GeoCalculator = (function () {
           label: "Nhiệt độ tháng thấp nhất (Tmin)",
           defaultVal: 16.4,
           units: [{ label: "°C", factor: 1, latexMult: "" }]
+        },
+        {
+          key: "avg_t",
+          label: "Nhiệt độ trung bình năm (Ttb)",
+          defaultVal: 23.9,
+          units: [{ label: "°C", factor: 1, latexMult: "" }]
+        },
+        {
+          key: "rainfall",
+          label: "Tổng lượng mưa cả năm",
+          defaultVal: 1680,
+          units: [
+            { label: "mm", factor: 1, latexMult: "" },
+            { label: "m (mét)", factor: 1000, latexMult: "\\times 1000 \\text{ mm}" }
+          ]
         }
       ],
       sampleTable: {
-        title: "Nhiệt độ các trạm khí tượng tiêu biểu (Atlat Trang 9)",
-        headers: ["Trạm khí tượng", "Tháng nóng nhất (°C)", "Tháng lạnh nhất (°C)"],
+        title: "Đặc trưng Khí hậu 4 Trạm Tiêu biểu (Atlat Trang 9)",
+        headers: ["Trạm khí tượng", "Tmax (°C)", "Tmin (°C)", "Ttb (°C)", "Lượng mưa (mm)"],
         rows: [
-          ["Hà Nội (Láng)", "29.8", "16.4"],
-          ["Huế", "29.4", "19.7"],
-          ["Đà Nẵng", "29.1", "21.3"],
-          ["TP. Hồ Chí Minh", "29.7", "26.0"]
+          ["Hà Nội (Láng)", "29.8", "16.4", "23.9", "1680"],
+          ["Huế", "29.4", "19.7", "25.1", "2868"],
+          ["Đà Nẵng", "29.1", "21.3", "25.7", "2044"],
+          ["TP. Hồ Chí Minh", "29.7", "26.0", "27.1", "1930"]
         ]
       },
       solve: (vals) => {
         const tmax = vals.max_t.val;
         const tmin = vals.min_t.val;
+        const avgt = vals.avg_t.val;
+        const rainExact = vals.rainfall.val * vals.rainfall.unitObj.factor;
         const deltaT = tmax - tmin;
 
         let classification = "";
-        if (deltaT >= 9.0) {
-          classification = "Miền Bắc (đặc trưng biên độ nhiệt lớn ≥ 9°C do chịu tác động trực tiếp của gió mùa Đông Bắc lạnh).";
-        } else if (deltaT <= 5.0) {
-          classification = "Miền Nam (đặc trưng cận xích đạo, biên độ nhiệt nhỏ < 5°C, nhiệt độ cao đều quanh năm, không có mùa đông lạnh).";
+        let regionTag = "";
+        if (deltaT >= 9.0 || tmin < 18.0) {
+          regionTag = "Miền Bắc";
+          classification = "Miền khí hậu phía Bắc (đặc trưng biên độ nhiệt lớn ≥ 9°C, có mùa đông lạnh với tháng lạnh < 18°C do gió mùa Đông Bắc).";
+        } else if (deltaT <= 5.0 && tmin >= 20.0) {
+          regionTag = "Miền Nam";
+          classification = "Miền khí hậu phía Nam (đặc trưng cận xích đạo gió mùa, biên độ nhiệt nhỏ ≤ 5°C, nhiệt độ cao đều quanh năm, không có mùa đông lạnh).";
         } else {
-          classification = "Vùng Trung Bộ (đặc tính chuyển tiếp giữa hai miền khí hậu).";
+          regionTag = "Trung Bộ";
+          classification = "Vùng Duyên hải miền Trung (chuyển tiếp, mưa thu đông đặc biệt lớn do gió mùa Đông Bắc kết hợp địa hình chắn gió Trường Sơn và bão).";
         }
 
         return {
-          resultText: `Biên độ nhiệt: ${deltaT.toFixed(1)}°C (${deltaT >= 9 ? 'Miền Bắc' : deltaT <= 5 ? 'Miền Nam' : 'Trung Bộ'})`,
+          resultText: `Biên độ nhiệt: ${deltaT.toFixed(1)}°C | Ttb: ${avgt.toFixed(1)}°C | Mưa: ${rainExact.toLocaleString()} mm (${regionTag})`,
           stepsLatex: [
-            `\\Delta T = T_{\\text{max}} - T_{\\text{min}} = ${tmax} - ${tmin} = \\mathbf{${deltaT.toFixed(1)}^{\\circ}\\text{C}}`
+            `\\text{Bước 1 (Biên độ nhiệt năm): } \\Delta T = T_{\\text{max}} - T_{\\text{min}} = ${tmax} - ${tmin} = \\mathbf{${deltaT.toFixed(1)}^{\\circ}\\text{C}}`,
+            `\\text{Bước 2 (Nhiệt độ TB năm): } T_{\\text{tb}} = \\mathbf{${avgt.toFixed(1)}^{\\circ}\\text{C}}`,
+            `\\text{Bước 3 (Tổng lượng mưa cả năm): } = \\mathbf{${rainExact.toLocaleString()} \\text{ mm}}`,
+            `\\text{Kết luận phân loại: } \\mathbf{${regionTag}} \\text{ - } ${classification}`
           ],
           note: classification
         };
@@ -725,14 +782,18 @@ const GeoCalculator = (function () {
       inputValues.total_turnover.val = parseFloat(row[1]) || 0;
       inputValues.balance_val.val = parseFloat(row[2].replace('+', '')) || 0;
     } else if (formulaId === "structure_share") {
-      inputValues.part_val.val = parseFloat(row[1]) || 0;
-      inputValues.total_val.val = 5356.7;
+      inputValues.part_val_1.val = parseFloat(row[1]) || 0;
+      inputValues.total_val_1.val = parseFloat(row[2]) || 0;
+      inputValues.part_val_2.val = parseFloat(row[3]) || 0;
+      inputValues.total_val_2.val = parseFloat(row[4]) || 0;
     } else if (formulaId === "growth_rate") {
       inputValues.base_val.val = 159.4;
       inputValues.current_val.val = parseFloat(row[1]) || 0;
     } else if (formulaId === "climate_stats") {
       inputValues.max_t.val = parseFloat(row[1]) || 0;
       inputValues.min_t.val = parseFloat(row[2]) || 0;
+      inputValues.avg_t.val = parseFloat(row[3]) || 0;
+      inputValues.rainfall.val = parseFloat(row[4]) || 0;
     } else if (formulaId === "map_scale_timezone") {
       inputValues.map_distance_cm.val = parseFloat(row[1]) || 4.5;
     }

@@ -53,7 +53,12 @@ FALLBACK_MINERALS = [
     {"id": "MIN_22", "name": "Mỏ thiếc Quỳ Hợp", "symbol_type": "sn_symbol", "mineral_code": "tin", "mineral_type": "Thiếc", "group": "Kim loại", "coords": [105.18, 19.32], "atlat_page": 8, "province": "Nghệ An"},
 
     # Crôm (cr_symbol / chromium)
-    {"id": "MIN_23", "name": "Mỏ crôm Cổ Định", "symbol_type": "cr_symbol", "mineral_code": "chromium", "mineral_type": "Crôm", "group": "Kim loại", "coords": [105.62, 19.78], "atlat_page": 8, "province": "Thanh Hóa"}
+    {"id": "MIN_23", "name": "Mỏ crôm Cổ Định", "symbol_type": "cr_symbol", "mineral_code": "chromium", "mineral_type": "Crôm", "group": "Kim loại", "coords": [105.62, 19.78], "atlat_page": 8, "province": "Thanh Hóa"},
+
+    # Titan (ti_symbol / titan)
+    {"id": "MIN_24", "name": "Mỏ titan Kỳ Anh", "symbol_type": "ti_symbol", "mineral_code": "titan", "mineral_type": "Titan", "group": "Kim loại", "coords": [106.30, 18.08], "atlat_page": 8, "province": "Hà Tĩnh"},
+    {"id": "MIN_25", "name": "Mỏ titan Hàm Tân", "symbol_type": "ti_symbol", "mineral_code": "titan", "mineral_type": "Titan", "group": "Kim loại", "coords": [107.75, 10.70], "atlat_page": 8, "province": "Bình Thuận"},
+    {"id": "MIN_26", "name": "Mỏ titan Phù Cát", "symbol_type": "ti_symbol", "mineral_code": "titan", "mineral_type": "Titan", "group": "Kim loại", "coords": [109.10, 14.05], "atlat_page": 8, "province": "Bình Định"}
 ]
 
 FALLBACK_POWER_PLANTS = [
@@ -68,13 +73,22 @@ FALLBACK_POWER_PLANTS = [
     {"id": "POW_08", "name": "Thủy điện Hàm Thuận - Đa Mi", "type": "Thủy điện", "plant_type": "Thủy điện", "symbol_type": "star_blue", "capacity_mw": 475, "river_fuel": "Sông La Ngà", "province": "Bình Thuận", "coords": [107.92, 11.33], "atlat_page": 22},
 
     # Nhiệt điện
-    {"id": "POW_09", "name": "Nhiệt điện Phú Mỹ", "type": "Nhiệt điện khí", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 3900, "river_fuel": "Khí Nam Côn Sơn", "province": "Bà Rịa - Vũng Tàu", "coords": [107.03, 10.60], "atlat_page": 22},
-    {"id": "POW_10", "name": "Nhiệt điện Cà Mau", "type": "Nhiệt điện khí", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 1500, "river_fuel": "Khí PM3", "province": "Cà Mau", "coords": [105.08, 9.25], "atlat_page": 22},
-    {"id": "POW_11", "name": "Nhiệt điện Vĩnh Tân", "type": "Nhiệt điện than", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 4244, "river_fuel": "Than", "province": "Bình Thuận", "coords": [108.80, 11.31], "atlat_page": 22},
-    {"id": "POW_12", "name": "Nhiệt điện Duyên Hải", "type": "Nhiệt điện than", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 3178, "river_fuel": "Than", "province": "Trà Vinh", "coords": [106.51, 9.58], "atlat_page": 22},
-    {"id": "POW_13", "name": "Nhiệt điện Phả Lại", "type": "Nhiệt điện than", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 1040, "river_fuel": "Than", "province": "Hải Dương", "coords": [106.31, 21.11], "atlat_page": 22},
-    {"id": "POW_14", "name": "Nhiệt điện Uông Bí", "type": "Nhiệt điện than", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 630, "river_fuel": "Than", "province": "Quảng Ninh", "coords": [106.77, 21.03], "atlat_page": 22}
+    {"id": "POW_09", "name": "Nhiệt điện Phú Mỹ", "type": "Nhiệt điện", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 3900, "river_fuel": "Khí Nam Côn Sơn", "province": "Bà Rịa - Vũng Tàu", "coords": [107.03, 10.60], "atlat_page": 22},
+    {"id": "POW_10", "name": "Nhiệt điện Cà Mau", "type": "Nhiệt điện", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 1500, "river_fuel": "Khí PM3", "province": "Cà Mau", "coords": [105.08, 9.25], "atlat_page": 22},
+    {"id": "POW_11", "name": "Nhiệt điện Vĩnh Tân", "type": "Nhiệt điện", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 4244, "river_fuel": "Than", "province": "Bình Thuận", "coords": [108.80, 11.31], "atlat_page": 22},
+    {"id": "POW_12", "name": "Nhiệt điện Duyên Hải", "type": "Nhiệt điện", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 3178, "river_fuel": "Than", "province": "Trà Vinh", "coords": [106.51, 9.58], "atlat_page": 22},
+    {"id": "POW_13", "name": "Nhiệt điện Phả Lại", "type": "Nhiệt điện", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 1040, "river_fuel": "Than", "province": "Hải Dương", "coords": [106.31, 21.11], "atlat_page": 22},
+    {"id": "POW_14", "name": "Nhiệt điện Uông Bí", "type": "Nhiệt điện", "plant_type": "Nhiệt điện", "symbol_type": "star_red", "capacity_mw": 630, "river_fuel": "Than", "province": "Quảng Ninh", "coords": [106.77, 21.03], "atlat_page": 22},
+
+    # Năng lượng tái tạo: Điện gió & Điện mặt trời
+    {"id": "POW_15", "name": "Điện gió Bạc Liêu", "type": "Điện gió", "plant_type": "Điện gió", "symbol_type": "fan_green", "capacity_mw": 99, "river_fuel": "Năng lượng gió ven biển", "province": "Bạc Liêu", "coords": [105.77, 9.24], "atlat_page": 22},
+    {"id": "POW_16", "name": "Điện gió Trung Nam (Ninh Thuận)", "type": "Điện gió", "plant_type": "Điện gió", "symbol_type": "fan_green", "capacity_mw": 152, "river_fuel": "Năng lượng gió", "province": "Ninh Thuận", "coords": [108.95, 11.65], "atlat_page": 22},
+    {"id": "POW_17", "name": "Điện gió Hướng Linh (Quảng Trị)", "type": "Điện gió", "plant_type": "Điện gió", "symbol_type": "fan_green", "capacity_mw": 120, "river_fuel": "Gió đèo Lao Bảo", "province": "Quảng Trị", "coords": [106.75, 16.70], "atlat_page": 22},
+    {"id": "POW_18", "name": "Điện mặt trời Dầu Tiếng", "type": "Điện mặt trời", "plant_type": "Điện mặt trời", "symbol_type": "sun_yellow", "capacity_mw": 420, "river_fuel": "Bức xạ mặt trời", "province": "Tây Ninh", "coords": [106.28, 11.35], "atlat_page": 22},
+    {"id": "POW_19", "name": "Điện mặt trời Trung Nam Thuận Nam", "type": "Điện mặt trời", "plant_type": "Điện mặt trời", "symbol_type": "sun_yellow", "capacity_mw": 450, "river_fuel": "Bức xạ mặt trời", "province": "Ninh Thuận", "coords": [108.88, 11.45], "atlat_page": 22},
+    {"id": "POW_20", "name": "Điện mặt trời Xuân Thiện (Ea Súp)", "type": "Điện mặt trời", "plant_type": "Điện mặt trời", "symbol_type": "sun_yellow", "capacity_mw": 600, "river_fuel": "Bức xạ mặt trời", "province": "Đắk Lắk", "coords": [108.05, 13.10], "atlat_page": 22}
 ]
+
 
 FALLBACK_INDUSTRIAL_CENTERS = [
     # Rất lớn (radius_px: 28)

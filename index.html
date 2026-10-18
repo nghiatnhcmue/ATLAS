@@ -232,19 +232,19 @@
           </p>
         </div>
 
-        <!-- Bộ Lọc Layer Độc Lập & Thanh Trượt Độ Mờ (Opacity) -->
+        <!-- Bộ Lọc 6 Layer Atlat Độc Lập & Thanh Trượt Độ Mờ (Opacity) -->
         <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3.5">
           <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Các Lớp Chuyên Đề Atlat</span>
-            <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded-full">Chuẩn SGK THPT</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">6 Lớp Chuyên Đề Atlat Độc Lập</span>
+            <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded-full">Chuẩn SGK & Atlat</span>
           </div>
 
-          <!-- Lớp 1: Ranh giới & 7 Vùng -->
+          <!-- Lớp 1: Ranh giới & 7 Vùng Kinh Tế (Trang 4-5) -->
           <div class="space-y-2">
             <div class="flex items-center justify-between">
               <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
                 <input type="checkbox" id="layer-chk-provinces" checked onchange="AtlasEngine.toggleLayer('provinces', this.checked)" class="rounded text-blue-600 focus:ring-blue-500">
-                <span>Ranh giới & 7 Vùng Kinh Tế</span>
+                <span>Lớp 1: Hành chính & 7 Vùng Kinh Tế</span>
               </label>
               <span class="text-[10px] font-medium text-slate-400">Trang 4-5</span>
             </div>
@@ -263,7 +263,7 @@
               />
             </div>
             <select onchange="AtlasEngine.renderProvinces(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500">
-              <option value="all">-- Lọc theo Vùng Kinh Tế (Tất cả vùng) --</option>
+              <option value="all">-- Lọc theo Vùng Kinh Tế (Spotlight Focus) --</option>
               <option value="Đồng bằng sông Hồng">1. Đồng bằng sông Hồng</option>
               <option value="Trung du và miền núi Bắc Bộ">2. Trung du & Miền núi Bắc Bộ</option>
               <option value="Bắc Trung Bộ">3. Bắc Trung Bộ (Atlat)</option>
@@ -275,76 +275,79 @@
             </select>
           </div>
 
-          <!-- Lớp 2: Khoáng sản Trang 8 -->
+          <!-- Lớp 2: Địa hình & Sông ngòi (Trang 6-7, 10) -->
+          <div class="space-y-1.5 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
+                <input type="checkbox" id="layer-chk-topography" onchange="AtlasEngine.toggleLayer('topography', this.checked)" class="rounded text-amber-600 focus:ring-amber-500">
+                <span>Lớp 2: Địa hình & Sông ngòi</span>
+              </label>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400">Trang 6-7, 10</span>
+            </div>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400">
+              Đỉnh Fansipan 3.143m ⛰️, Ngọc Linh, Bạch Mã; 4 cánh cung Đông Bắc; Cao nguyên badan 🟫 & Sông lớn 🌊 (Sông Hồng, Mê Kông).
+            </p>
+          </div>
+
+          <!-- Lớp 3: Khí hậu & Thủy văn (Trang 9) -->
+          <div class="space-y-1.5 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
+                <input type="checkbox" id="layer-chk-climate" onchange="AtlasEngine.toggleLayer('climate', this.checked)" class="rounded text-blue-600 focus:ring-blue-500">
+                <span>Lớp 3: Khí hậu & Thủy văn</span>
+              </label>
+              <span class="text-[10px] font-semibold text-blue-600 dark:text-blue-400">Trang 9</span>
+            </div>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400">
+              Ranh giới Bạch Mã 16°B; Gió Đông Bắc lạnh ❄️, Gió Tây Nam ẩm 🌧️, Gió Phơn Lào ☀️; Tần suất bão 🌀 & 8 Trạm khí tượng 🌡️ ($T_{tb}, \Delta T$, lượng mưa).
+            </p>
+          </div>
+
+          <!-- Lớp 4: Nông, Lâm, Thủy sản (Trang 18-20) -->
+          <div class="space-y-1.5 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
+                <input type="checkbox" id="layer-chk-agriculture" onchange="AtlasEngine.toggleLayer('agriculture', this.checked)" class="rounded text-emerald-600 focus:ring-emerald-500">
+                <span>Lớp 4: Nông, Lâm, Thủy sản</span>
+              </label>
+              <span class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400">Trang 18-20</span>
+            </div>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400">
+              Vùng chuyên canh Lúa gạo 🌾, Cà phê ☕, Cao su 🌲, Chè 🍵, Cây ăn quả 🍊 & 4 Ngư trường lớn 🐟 (Hải Phòng - QN, Ninh Thuận - BT, Cà Mau - KG, Quần đảo).
+            </p>
+          </div>
+
+          <!-- Lớp 5: Khoáng sản & Năng lượng (Trang 8, 22) -->
           <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
             <div class="flex items-center justify-between">
               <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
-                <input type="checkbox" id="layer-chk-minerals" onchange="AtlasEngine.toggleLayer('minerals', this.checked)" class="rounded text-amber-600 focus:ring-amber-500">
-                <span>Khoáng Sản (Atlat Trang 8)</span>
+                <input type="checkbox" id="layer-chk-minerals_power" onchange="AtlasEngine.toggleLayer('minerals_power', this.checked)" class="rounded text-amber-600 focus:ring-amber-500">
+                <span>Lớp 5: Khoáng sản & Năng lượng</span>
               </label>
-              <span class="text-[10px] font-semibold text-amber-600 dark:text-amber-400">Ký hiệu SVG Chuẩn</span>
+              <span class="text-[10px] font-semibold text-amber-600 dark:text-amber-400">Trang 8 & 22</span>
             </div>
-            <select onchange="AtlasEngine.renderMinerals(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
-              <option value="all">-- Tất cả nhóm khoáng sản --</option>
-              <option value="Nhiên liệu">Nhiên liệu (Than, Dầu mỏ, Khí đốt)</option>
-              <option value="Kim loại">Kim loại (Sắt, Bô-xít, Thiếc, Crôm)</option>
-              <option value="Phi kim loại">Phi kim loại (Apatit Cam Đường)</option>
+            <select onchange="AtlasEngine.renderMineralsPowerLayer(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
+              <option value="all">-- Tất cả khoáng sản & năng lượng --</option>
+              <option value="minerals">Chuyên đề Khoáng sản (Than, Dầu khí, Sắt, Bô-xít, Titan...)</option>
+              <option value="power">Chuyên đề Năng lượng (Thủy điện, Nhiệt điện, Điện gió, Mặt trời)</option>
             </select>
           </div>
 
-          <!-- Lớp 3: Năng lượng Trang 22 -->
-          <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
-            <div class="flex items-center justify-between">
-              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
-                <input type="checkbox" id="layer-chk-power" onchange="AtlasEngine.toggleLayer('power', this.checked)" class="rounded text-blue-600 focus:ring-blue-500">
-                <span>Năng Lượng (Atlat Trang 22)</span>
-              </label>
-              <span class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold">Nhà máy điện & công suất</span>
-            </div>
-            <select onchange="AtlasEngine.renderPower(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
-              <option value="all">-- Tất cả nhà máy phát điện --</option>
-              <option value="Thủy điện">Nhà máy Thủy điện (Hòa Bình, Sơn La, Yaly...)</option>
-              <option value="Nhiệt điện">Nhà máy Nhiệt điện (Phú Mỹ, Cà Mau, Phả Lại...)</option>
-            </select>
-          </div>
-
-          <!-- Lớp 4: 15 Trung tâm Công nghiệp Trang 21 (SVG Pie Markers) -->
+          <!-- Lớp 6: Trung tâm Công nghiệp & Kinh tế (Trang 21) -->
           <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
             <div class="flex items-center justify-between">
               <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
                 <input type="checkbox" id="layer-chk-industrial" onchange="AtlasEngine.toggleLayer('industrial', this.checked)" class="rounded text-purple-600 focus:ring-purple-500">
-                <span>15 Trung Tâm CN (Atlat Trang 21)</span>
+                <span>Lớp 6: Trung Tâm CN & Kinh Tế</span>
               </label>
-              <span class="text-[10px] font-semibold text-purple-600 dark:text-purple-400">Pie Markers động</span>
+              <span class="text-[10px] font-semibold text-purple-600 dark:text-purple-400">Trang 21 (Pie SVG Động)</span>
             </div>
             <select onchange="AtlasEngine.renderIndustrialCenters(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
               <option value="all">-- Phân cấp quy mô sản xuất --</option>
-              <option value="very_large">Rất lớn: TP.HCM, Hà Nội</option>
+              <option value="very_large">Rất lớn: TP. Hồ Chí Minh, Hà Nội</option>
               <option value="large">Lớn: Hải Phòng, Biên Hòa, Vũng Tàu, Đà Nẵng</option>
-              <option value="medium">Vừa: Cần Thơ, Nha Trang, Huế, Vinh...</option>
+              <option value="medium">Vừa: Cần Thơ, Nha Trang, Huế, Vinh, Quy Nhơn...</option>
             </select>
-          </div>
-
-          <!-- Lớp 5: Khí Hậu & Gió Mùa Trang 9 -->
-          <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
-            <div class="flex items-center justify-between">
-              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
-                <input type="checkbox" id="layer-chk-climate" onchange="AtlasEngine.toggleLayer('climate', this.checked)" class="rounded text-blue-600 focus:ring-blue-500">
-                <span>Khí Hậu & Gió Mùa (Trang 9)</span>
-              </label>
-              <span class="text-[10px] font-semibold text-blue-600 dark:text-blue-400">Vector động & Bão</span>
-            </div>
-          </div>
-
-          <!-- Lớp 6: 9 Hệ Thống Sông & Cảng Biển, Sân Bay Trang 10, 23 -->
-          <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
-            <div class="flex items-center justify-between">
-              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
-                <input type="checkbox" id="layer-chk-rivers" onchange="AtlasEngine.toggleLayer('rivers', this.checked)" class="rounded text-cyan-600 focus:ring-cyan-500">
-                <span>Sông Ngòi & Cảng Biển (Trang 10, 23)</span>
-              </label>
-              <span class="text-[10px] font-semibold text-cyan-600 dark:text-cyan-400">Cảng loại I & Sân bay</span>
-            </div>
           </div>
         </div>
 

@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "metadata": {
     "title": "Lớp Công nghiệp Năng lượng (Atlat Trang 22)",
-    "count": 14
+    "count": 20
   },
   "features": [
     {
@@ -178,7 +178,7 @@
       "properties": {
         "id": "POW_09",
         "name": "Nhiệt điện Phú Mỹ",
-        "type": "Nhiệt điện khí",
+        "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
         "capacity_mw": 3900,
@@ -199,7 +199,7 @@
       "properties": {
         "id": "POW_10",
         "name": "Nhiệt điện Cà Mau",
-        "type": "Nhiệt điện khí",
+        "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
         "capacity_mw": 1500,
@@ -220,7 +220,7 @@
       "properties": {
         "id": "POW_11",
         "name": "Nhiệt điện Vĩnh Tân",
-        "type": "Nhiệt điện than",
+        "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
         "capacity_mw": 4244,
@@ -241,7 +241,7 @@
       "properties": {
         "id": "POW_12",
         "name": "Nhiệt điện Duyên Hải",
-        "type": "Nhiệt điện than",
+        "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
         "capacity_mw": 3178,
@@ -262,7 +262,7 @@
       "properties": {
         "id": "POW_13",
         "name": "Nhiệt điện Phả Lại",
-        "type": "Nhiệt điện than",
+        "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
         "capacity_mw": 1040,
@@ -283,7 +283,7 @@
       "properties": {
         "id": "POW_14",
         "name": "Nhiệt điện Uông Bí",
-        "type": "Nhiệt điện than",
+        "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
         "capacity_mw": 630,
@@ -296,6 +296,132 @@
         "coordinates": [
           106.77,
           21.03
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_15",
+        "name": "Điện gió Bạc Liêu",
+        "type": "Điện gió",
+        "plant_type": "Điện gió",
+        "symbol_type": "fan_green",
+        "capacity_mw": 99,
+        "river_fuel": "Năng lượng gió ven biển",
+        "province": "Bạc Liêu",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.77,
+          9.24
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_16",
+        "name": "Điện gió Trung Nam (Ninh Thuận)",
+        "type": "Điện gió",
+        "plant_type": "Điện gió",
+        "symbol_type": "fan_green",
+        "capacity_mw": 152,
+        "river_fuel": "Năng lượng gió",
+        "province": "Ninh Thuận",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.95,
+          11.65
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_17",
+        "name": "Điện gió Hướng Linh (Quảng Trị)",
+        "type": "Điện gió",
+        "plant_type": "Điện gió",
+        "symbol_type": "fan_green",
+        "capacity_mw": 120,
+        "river_fuel": "Gió đèo Lao Bảo",
+        "province": "Quảng Trị",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.75,
+          16.7
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_18",
+        "name": "Điện mặt trời Dầu Tiếng",
+        "type": "Điện mặt trời",
+        "plant_type": "Điện mặt trời",
+        "symbol_type": "sun_yellow",
+        "capacity_mw": 420,
+        "river_fuel": "Bức xạ mặt trời",
+        "province": "Tây Ninh",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.28,
+          11.35
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_19",
+        "name": "Điện mặt trời Trung Nam Thuận Nam",
+        "type": "Điện mặt trời",
+        "plant_type": "Điện mặt trời",
+        "symbol_type": "sun_yellow",
+        "capacity_mw": 450,
+        "river_fuel": "Bức xạ mặt trời",
+        "province": "Ninh Thuận",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.88,
+          11.45
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "POW_20",
+        "name": "Điện mặt trời Xuân Thiện (Ea Súp)",
+        "type": "Điện mặt trời",
+        "plant_type": "Điện mặt trời",
+        "symbol_type": "sun_yellow",
+        "capacity_mw": 600,
+        "river_fuel": "Bức xạ mặt trời",
+        "province": "Đắk Lắk",
+        "atlat_page": 22
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.05,
+          13.1
         ]
       }
     }
