@@ -49,6 +49,14 @@ const ChartTrainer = (function () {
   }
 
   async function init() {
+    // 1. Nạp trực tiếp từ Master Atlat Data (100% offline, zero network latency)
+    if (window.ATLAT_DATA && Array.isArray(window.ATLAT_DATA.chart_exercises) && window.ATLAT_DATA.chart_exercises.length > 0) {
+      questionsData = window.ATLAT_DATA.chart_exercises;
+      keywordGuide = window.GEO_ATLAS_FALLBACK_DATA?.chartQuestions?.keyword_guide || [];
+      renderQuestion(0);
+      return;
+    }
+
     try {
       const res = await fetch("./public/data/chart_questions.json");
       if (!res.ok) throw new Error("HTTP response not OK: " + res.status);

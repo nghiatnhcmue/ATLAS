@@ -1,9 +1,8 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "title": "Bản đồ Khí hậu, Thủy văn & Trạm Khí tượng Việt Nam (Atlat Trang 9)",
-    "count": 9,
-    "standard": "Atlat Địa lí Việt Nam & SGK THPT"
+    "title": "Khí hậu & Thủy văn Việt Nam (Atlat Trang 8 & 11)",
+    "stations_count": 8
   },
   "features": [
     {
@@ -35,162 +34,170 @@
     },
     {
       "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          106.76,
-          21.85
-        ]
-      },
       "properties": {
-        "id": "MET_01",
-        "name": "Trạm Khí tượng Lạng Sơn",
         "category": "met_station",
-        "avg_temp": "21.2°C",
-        "temp_range": "13.7°C",
-        "rainfall": "1.400 mm",
-        "climate_type": "Nhiệt đới ẩm gió mùa có mùa đông rất lạnh",
-        "atlat_page": 9
-      }
-    },
-    {
-      "type": "Feature",
+        "name": "Hà Nội (Trạm Láng)",
+        "avg_temp": "23,8°C",
+        "max_temp": "29,8°C",
+        "min_temp": "16,4°C",
+        "temp_range": "13,4°C",
+        "rainfall": "1.676 mm",
+        "climate_type": "Nhiệt đới ẩm gió mùa có mùa đông lạnh",
+        "desc": "Đặc trưng khí hậu miền Bắc: Biên độ nhiệt lớn (13,4°C), có mùa đông lạnh kéo dài từ tháng XI đến tháng IV năm sau do gió mùa Đông Bắc."
+      },
       "geometry": {
         "type": "Point",
         "coordinates": [
           105.8,
           21.02
         ]
-      },
-      "properties": {
-        "id": "MET_02",
-        "name": "Trạm Khí tượng Hà Nội (Láng)",
-        "category": "met_station",
-        "avg_temp": "23.9°C",
-        "temp_range": "12.5°C",
-        "rainfall": "1.676 mm",
-        "climate_type": "Mùa hạ nóng mưa nhiều, mùa đông lạnh ít mưa và có mưa phùn",
-        "atlat_page": 9
       }
     },
     {
       "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Sa Pa",
+        "avg_temp": "15,2°C",
+        "max_temp": "19,8°C",
+        "min_temp": "8,6°C",
+        "temp_range": "11,2°C",
+        "rainfall": "2.700 mm",
+        "climate_type": "Ôn đới núi cao Hoàng Liên Sơn",
+        "desc": "Độ cao >1.500m: Nhiệt độ trung bình năm thấp (15,2°C), sườn đón gió ẩm mưa rất lớn, mùa đông có thể xuất hiện băng giá và tuyết rơi."
+      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          105.68,
-          18.67
+          103.84,
+          22.33
         ]
-      },
-      "properties": {
-        "id": "MET_03",
-        "name": "Trạm Khí tượng Vinh",
-        "category": "met_station",
-        "avg_temp": "24.1°C",
-        "temp_range": "10.9°C",
-        "rainfall": "1.944 mm",
-        "climate_type": "Mùa đông lạnh, mùa hè chịu hiệu ứng gió phơn Tây Nam khô nóng gay gắt",
-        "atlat_page": 9
       }
     },
     {
       "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Huế",
+        "avg_temp": "25,1°C",
+        "max_temp": "29,4°C",
+        "min_temp": "19,7°C",
+        "temp_range": "9,7°C",
+        "rainfall": "2.868 mm",
+        "climate_type": "Khí hậu chuyển tiếp Bắc Trung Bộ",
+        "desc": "Lượng mưa cực đại vào các tháng thu - đông (tháng IX - XII) do gió mùa Đông Bắc qua biển gặp địa hình chắn gió Bạch Mã kết hợp bão và dải hội tụ."
+      },
       "geometry": {
         "type": "Point",
         "coordinates": [
           107.59,
           16.46
         ]
-      },
-      "properties": {
-        "id": "MET_04",
-        "name": "Trạm Khí tượng Huế",
-        "category": "met_station",
-        "avg_temp": "25.1°C",
-        "temp_range": "9.7°C",
-        "rainfall": "2.868 mm",
-        "climate_type": "Lượng mưa cực đại vào thu đông (tháng IX - XII) do bão và frông kết hợp địa hình",
-        "atlat_page": 9
       }
     },
     {
       "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          108.2,
-          16.05
-        ]
-      },
       "properties": {
-        "id": "MET_05",
-        "name": "Trạm Khí tượng Đà Nẵng",
         "category": "met_station",
-        "avg_temp": "25.9°C",
-        "temp_range": "7.8°C",
+        "name": "Đà Nẵng",
+        "avg_temp": "25,7°C",
+        "max_temp": "29,1°C",
+        "min_temp": "21,3°C",
+        "temp_range": "7,8°C",
         "rainfall": "2.044 mm",
-        "climate_type": "Vùng chuyển tiếp khí hậu Bắc - Nam, mùa khô và mùa mưa rõ rệt",
-        "atlat_page": 9
-      }
-    },
-    {
-      "type": "Feature",
+        "climate_type": "Duyên hải Nam Trung Bộ",
+        "desc": "Phía nam đèo Hải Vân: Nhiệt độ trung bình năm trên 25°C, biên độ nhiệt giảm dần (7,8°C), không có mùa đông lạnh sâu như miền Bắc."
+      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.45,
-          11.95
+          108.22,
+          16.07
         ]
-      },
-      "properties": {
-        "id": "MET_06",
-        "name": "Trạm Khí tượng Đà Lạt",
-        "category": "met_station",
-        "avg_temp": "17.9°C",
-        "temp_range": "3.4°C",
-        "rainfall": "1.739 mm",
-        "climate_type": "Khí hậu ôn đới vùng núi cao, nhiệt độ quanh năm dưới 20°C",
-        "atlat_page": 9
       }
     },
     {
       "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Đà Lạt",
+        "avg_temp": "17,9°C",
+        "max_temp": "20,5°C",
+        "min_temp": "14,8°C",
+        "temp_range": "5,7°C",
+        "rainfall": "1.739 mm",
+        "climate_type": "Cận nhiệt đới vùng núi cao Tây Nguyên",
+        "desc": "Độ cao ~1.500m trên cao nguyên Lâm Viên: Mát mẻ quanh năm, biên độ nhiệt năm nhỏ (5,7°C), thích hợp canh tác rau hoa quả ôn đới."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.44,
+          11.94
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Buôn Ma Thuột",
+        "avg_temp": "23,7°C",
+        "max_temp": "26,5°C",
+        "min_temp": "20,8°C",
+        "temp_range": "5,7°C",
+        "rainfall": "1.796 mm",
+        "climate_type": "Cận xích đạo cao nguyên Tây Nguyên",
+        "desc": "Khí hậu phân hóa sâu sắc thành 2 mùa mưa - khô rõ rệt, là thủ phủ vùng chuyên canh cà phê vối số 1 Việt Nam."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.05,
+          12.67
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "TP. Hồ Chí Minh",
+        "avg_temp": "27,1°C",
+        "max_temp": "29,7°C",
+        "min_temp": "26,0°C",
+        "temp_range": "3,7°C",
+        "rainfall": "1.931 mm",
+        "climate_type": "Cận xích đạo gió mùa Nam Bộ",
+        "desc": "Nhiệt độ cao đều quanh năm (>27°C), không có mùa đông lạnh, biên độ nhiệt năm rất nhỏ (3,7°C), mùa mưa trùng với gió mùa Tây Nam."
+      },
       "geometry": {
         "type": "Point",
         "coordinates": [
           106.66,
-          10.76
+          10.77
         ]
-      },
-      "properties": {
-        "id": "MET_07",
-        "name": "Trạm Khí tượng TP. Hồ Chí Minh (Tân Sơn Hòa)",
-        "category": "met_station",
-        "avg_temp": "27.1°C",
-        "temp_range": "3.2°C",
-        "rainfall": "1.931 mm",
-        "climate_type": "Cận xích đạo gió mùa, nóng quanh năm, 2 mùa mưa - khô sâu sắc",
-        "atlat_page": 9
       }
     },
     {
       "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Cà Mau",
+        "avg_temp": "26,8°C",
+        "max_temp": "28,6°C",
+        "min_temp": "25,5°C",
+        "temp_range": "3,1°C",
+        "rainfall": "2.360 mm",
+        "climate_type": "Cực Nam cận xích đạo hải dương",
+        "desc": "Biên độ nhiệt năm nhỏ nhất cả nước (3,1°C), mùa mưa dài và lượng mưa phong phú (>2.300 mm)."
+      },
       "geometry": {
         "type": "Point",
         "coordinates": [
           105.15,
           9.18
         ]
-      },
-      "properties": {
-        "id": "MET_08",
-        "name": "Trạm Khí tượng Cà Mau",
-        "category": "met_station",
-        "avg_temp": "26.8°C",
-        "temp_range": "2.4°C",
-        "rainfall": "2.360 mm",
-        "climate_type": "Biên độ nhiệt năm nhỏ nhất cả nước (< 3°C), lượng mưa dồi dào",
-        "atlat_page": 9
       }
     }
   ]

@@ -29,9 +29,10 @@ const AtlasEngine = (function () {
   let layerMineralsPower = null;   // Lớp 5
   let layerIndustrial = null;      // Lớp 6
 
-  // Hỗ trợ GIS
+  // Hỗ trợ GIS & Chủ quyền
   let layerGraticule = null;
   let layerMeasure = null;
+  let layerBaseline = null;
 
   let currentBaseMapMode = "vector"; // "vector" | "physical" | "osm" | "satellite"
   let currentBaseMapTile = null;
@@ -81,7 +82,8 @@ const AtlasEngine = (function () {
     agriculture: null,
     minerals: null,
     power: null,
-    industrial: null
+    industrial: null,
+    baseline: null
   };
 
   const LAYER_FILES = {
@@ -93,7 +95,8 @@ const AtlasEngine = (function () {
     agriculture: "./public/data/agriculture_fishery.geojson",
     minerals: "./public/data/minerals.geojson",
     power: "./public/data/hydropower.geojson",
-    industrial: "./public/data/industrial_centers.geojson"
+    industrial: "./public/data/industrial_centers.geojson",
+    baseline: "./public/data/atlat_2026_master.json"
   };
 
   const loadingPromises = {};
@@ -279,6 +282,9 @@ const AtlasEngine = (function () {
     map.createPane('agriculturePane');
     map.getPane('agriculturePane').style.zIndex = 380;
 
+    map.createPane('baselinePane');
+    map.getPane('baselinePane').style.zIndex = 390;
+
     map.createPane('pointMarkerPane');
     map.getPane('pointMarkerPane').style.zIndex = 400;
 
@@ -289,6 +295,7 @@ const AtlasEngine = (function () {
     // Khởi tạo các Layer Group
     layerProvinces = L.layerGroup().addTo(map);
     layerProvinceLabels = L.layerGroup().addTo(map);
+    layerBaseline = L.layerGroup().addTo(map);
     layerTopography = L.layerGroup();
     layerClimate = L.layerGroup();
     layerAgriculture = L.layerGroup();
@@ -304,6 +311,7 @@ const AtlasEngine = (function () {
 
     // Khẳng định chủ quyền biển đảo (duy nhất 1 nhãn sạch cho mỗi quần đảo)
     addSovereigntyDemarcation();
+    renderBaselineLayer();
 
     // Tọa độ con trỏ chuột thời gian thực & bắt sự kiện đo đạc / mini-game
     map.on("mousemove", (e) => {
@@ -479,6 +487,67 @@ const AtlasEngine = (function () {
     `);
   }
 
+  // Lập Đường cơ sở biển A1 - A11 (Tuyên bố 12/11/1982, Atlat Trang 7 & 9)
+  function renderBaselineLayer() {
+    if (!layerBaseline) return;
+    layerBaseline.clearLayers();
+
+    const baselineData = window.ATLAT_DATA?.geo_baseline || geoData.baseline;
+    if (!baselineData || !baselineData.features) return;
+
+    L.geoJSON(baselineData, {
+      pane: 'baselinePane',
+      style: (feature) => {
+        if (feature.geometry.type === 'LineString') {
+          return {
+            color: '#DC2626',
+            weight: 2.2,
+            dashArray: '6, 6',
+            opacity: 0.95
+          };
+        }
+      },
+      pointToLayer: (feature, latlng) => {
+        const p = feature.properties;
+        const icon = L.divIcon({
+          className: 'atlat-baseline-point-marker',
+          html: `<div class="baseline-pill font-mono"><span>🔴</span><span>${p.code}</span></div>`,
+          iconSize: [46, 20],
+          iconAnchor: [23, 10],
+          popupAnchor: [0, -10]
+        });
+        return L.marker(latlng, { icon });
+      },
+      onEachFeature: (feature, layer) => {
+        const p = feature.properties;
+        if (feature.geometry.type === 'LineString') {
+          layer.bindTooltip(`
+            <div class="p-1 font-sans">
+              <div class="font-bold text-xs text-red-600">🇻🇳 Đường cơ sở bờ biển Việt Nam</div>
+              <div class="text-[10px] text-slate-500">Tuyên bố ngày 12/11/1982 của Chính phủ • Nối từ A1 đến A11</div>
+            </div>
+          `, { permanent: false, sticky: true });
+        } else {
+          const [lng, lat] = feature.geometry.coordinates;
+          layer.bindPopup(`
+            <div class="p-3 bg-white dark:bg-slate-900 rounded-xl min-w-[240px] font-sans">
+              <div class="flex items-center space-x-1.5 text-red-600 font-bold text-xs mb-1">
+                <span>🚩</span>
+                <h4>${p.name}</h4>
+              </div>
+              <div class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed space-y-1">
+                <div>Tỉnh / Thành: <strong>${p.province}</strong></div>
+                <div>Tọa độ: <strong>${lat}°B, ${lng}°Đ</strong></div>
+                <div>Mô tả: ${p.desc}</div>
+              </div>
+              <div class="mt-2 text-[10px] font-bold text-blue-600 dark:text-blue-400">Tham chiếu: Atlat Địa lí Việt Nam Trang 7 & 9</div>
+            </div>
+          `);
+        }
+      }
+    }).addTo(layerBaseline);
+  }
+
   async function ensureLayerData(name) {
     const effectiveName = (name === "provinces") ? (provinceMode === "34" ? "provinces34" : "provinces63") : name;
 
@@ -486,6 +555,29 @@ const AtlasEngine = (function () {
       if (name === "provinces") geoData.provinces = geoData[effectiveName];
       return geoData[effectiveName];
     }
+
+    // 1. Nạp tức thì từ window.ATLAT_DATA (Zero network latency, 100% offline)
+    if (window.ATLAT_DATA) {
+      const atlatKeyMap = {
+        provinces34: "geo_provinces_34",
+        provinces63: "geo_provinces_63",
+        provinces: provinceMode === "34" ? "geo_provinces_34" : "geo_provinces_63",
+        topography: "geo_topography",
+        climate: "geo_climate",
+        agriculture: "geo_agriculture",
+        minerals: "geo_minerals",
+        power: "geo_power",
+        industrial: "geo_industrial",
+        baseline: "geo_baseline"
+      };
+      const key = atlatKeyMap[effectiveName] || atlatKeyMap[name];
+      if (key && window.ATLAT_DATA[key]) {
+        geoData[effectiveName] = window.ATLAT_DATA[key];
+        if (name === "provinces") geoData.provinces = window.ATLAT_DATA[key];
+        return geoData[effectiveName];
+      }
+    }
+
     if (loadingPromises[effectiveName]) return loadingPromises[effectiveName];
 
     loadingPromises[effectiveName] = (async () => {
@@ -1829,6 +1921,7 @@ const AtlasEngine = (function () {
     renderAgricultureLayer,
     renderMineralsPowerLayer,
     renderIndustrialCenters,
+    renderBaselineLayer,
     updateDynamicLegend,
     toggleLayer,
     searchAndFlyTo,

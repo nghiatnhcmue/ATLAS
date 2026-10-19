@@ -50,15 +50,19 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Dân số & Diện tích các Vùng Kinh tế Việt Nam (Niên giám 2024)",
-        headers: ["Vùng kinh tế", "Dân số (Triệu người)", "Diện tích (Nghìn km²)"],
+        title: "Dân số & Diện tích một số Đơn vị Hành chính Tiêu biểu (Chuẩn Atlat 2026 & NQ 202/2025)",
+        headers: ["Tỉnh / Thành phố", "Dân số (Triệu người)", "Diện tích (Nghìn km²)"],
         rows: [
-          ["Đồng bằng sông Hồng", "23.2", "21.3"],
-          ["Trung du & MN Bắc Bộ", "12.9", "95.2"],
-          ["Bắc Trung Bộ & DHMT", "20.6", "95.8"],
-          ["Tây Nguyên", "6.1", "54.5"],
-          ["Đông Nam Bộ", "18.8", "23.6"],
-          ["Đồng bằng sông Cửu Long", "17.4", "40.9"]
+          ["Thành phố Hồ Chí Minh", "13.609", "6.773"],
+          ["Thành phố Hà Nội", "8.718", "3.360"],
+          ["Thành phố Hải Phòng", "4.103", "3.195"],
+          ["Thành phố Đà Nẵng", "2.820", "11.860"],
+          ["Thành phố Cần Thơ", "3.207", "6.361"],
+          ["Thành phố Huế", "1.160", "4.902"],
+          ["Tỉnh Thanh Hóa", "3.764", "11.115"],
+          ["Tỉnh Nghệ An", "3.472", "16.486"],
+          ["Tỉnh Đồng Nai", "4.290", "12.737"],
+          ["Tỉnh Lâm Đồng", "3.324", "24.233"]
         ]
       },
       solve: (vals) => {
@@ -500,13 +504,17 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Đặc trưng Khí hậu 4 Trạm Tiêu biểu (Atlat Trang 9)",
+        title: "Đặc trưng Khí hậu 8 Trạm Khí tượng Tiêu biểu (Atlat Trang 8 & 11)",
         headers: ["Trạm khí tượng", "Tmax (°C)", "Tmin (°C)", "Ttb (°C)", "Lượng mưa (mm)"],
         rows: [
-          ["Hà Nội (Láng)", "29.8", "16.4", "23.9", "1680"],
+          ["Hà Nội (Trạm Láng)", "29.8", "16.4", "23.8", "1676"],
+          ["Sa Pa (Lào Cai)", "19.8", "8.6", "15.2", "2700"],
           ["Huế", "29.4", "19.7", "25.1", "2868"],
           ["Đà Nẵng", "29.1", "21.3", "25.7", "2044"],
-          ["TP. Hồ Chí Minh", "29.7", "26.0", "27.1", "1930"]
+          ["Đà Lạt (Lâm Đồng)", "20.5", "14.8", "17.9", "1739"],
+          ["Buôn Ma Thuột (Đắk Lắk)", "26.5", "20.8", "23.7", "1796"],
+          ["TP. Hồ Chí Minh", "29.7", "26.0", "27.1", "1931"],
+          ["Cà Mau", "28.6", "25.5", "26.8", "2360"]
         ]
       },
       solve: (vals) => {
