@@ -3,7 +3,7 @@
     "title": "Bộ Dữ Liệu Gốc Atlat Địa Lí Việt Nam 2026 (GDPT 2018)",
     "version": "2026.2.0",
     "published": "2026",
-    "source": "2 Cuốn Atlat Địa lí Việt Nam mới nhất & NQ 202/2025/QH15",
+    "source": "2 Cuốn Atlat Địa lí Việt Nam mới nhất & NQ 202/2025/QH15 & biểu đồ.docx",
     "offline_embedded": true
   },
   "baseline_points": [
@@ -570,6 +570,383 @@
     }
   },
   "chart_exercises": [
+    {
+      "id": "DOCX_CHART_01",
+      "atlat_page": "Trang 25 & biểu đồ.docx (Mục 1)",
+      "title": "Cơ cấu doanh thu du lịch lữ hành phân theo thành phần kinh tế nước ta năm 2010 và 2016",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện cơ cấu doanh thu du lịch lữ hành phân theo thành phần kinh tế của nước ta năm 2010 và 2016 (%), dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "cơ cấu",
+        "tỷ trọng",
+        "năm 2010 và 2016 (2 năm)",
+        "tổng = 100%"
+      ],
+      "data_table": {
+        "headers": [
+          "Thành phần kinh tế",
+          "Năm 2010",
+          "Năm 2016"
+        ],
+        "rows": [
+          {
+            "name": "Kinh tế Nhà nước",
+            "unit": "%",
+            "values": [
+              51.8,
+              36.2
+            ]
+          },
+          {
+            "name": "Kinh tế ngoài Nhà nước",
+            "unit": "%",
+            "values": [
+              45.3,
+              59.6
+            ]
+          },
+          {
+            "name": "Khu vực có vốn đầu tư nước ngoài",
+            "unit": "%",
+            "values": [
+              2.9,
+              4.2
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "pie",
+      "optimal_chart_name": "Biểu đồ tròn (Pie Chart)",
+      "pedagogical_explanation": "Theo quy tắc Mục 1 tệp biểu đồ.docx: Khi đề bài yêu cầu thể hiện 'cơ cấu, tỷ trọng' mà mốc thời gian chỉ từ 1-2 năm với tổng các thành phần bằng 100%, biểu đồ Tròn là lựa chọn chuẩn mực nhất.",
+      "counter_factual": {
+        "stacked_area": "Sai lầm quy tắc: Biểu đồ miền yêu cầu chuỗi thời gian từ 3-4 năm trở lên. Chỉ có 2 mốc năm (2010 và 2016) tuyệt đối không vẽ biểu đồ miền.",
+        "line": "Sai lầm quy tắc: Biểu đồ đường dùng để thể hiện tốc độ tăng trưởng, không phản ánh được cấu trúc 100% của một tổng thể.",
+        "bar": "Không tối ưu: Biểu đồ cột không thể hiện trực quan các múi quạt tỷ trọng thành phần trong 100% như hình tròn."
+      },
+      "structural_analysis": {
+        "time_points": 2,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "DOCX_CHART_02",
+      "atlat_page": "Trang 19 & biểu đồ.docx (Mục 2)",
+      "title": "Tốc độ tăng trưởng GDP của Phi-líp-pin, Thái Lan và Việt Nam giai đoạn 2010 – 2016",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện sự thay đổi, phát triển, tốc độ tăng trưởng GDP của Phi líp pin, Thái Lan và Việt Nam giai đoạn 2010 – 2016, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "tốc độ tăng trưởng",
+        "sự thay đổi",
+        "phát triển",
+        "năm gốc 2010 = 100%",
+        "biểu đồ đường"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2010",
+          "2012",
+          "2014",
+          "2016"
+        ],
+        "rows": [
+          {
+            "name": "Phi-líp-pin",
+            "unit": "%",
+            "values": [
+              100.0,
+              114.2,
+              128.6,
+              146.5
+            ]
+          },
+          {
+            "name": "Thái Lan",
+            "unit": "%",
+            "values": [
+              100.0,
+              107.5,
+              111.8,
+              120.4
+            ]
+          },
+          {
+            "name": "Việt Nam",
+            "unit": "%",
+            "values": [
+              100.0,
+              112.8,
+              126.4,
+              144.2
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "line",
+      "optimal_chart_name": "Biểu đồ đường (Line Chart)",
+      "pedagogical_explanation": "Theo quy tắc Mục 2 tệp biểu đồ.docx: Khi đề bài yêu cầu thể hiện 'sự thay đổi, phát triển, tốc độ tăng trưởng, diễn biến' của các đối tượng qua nhiều năm (năm gốc = 100%), biểu đồ Đường là lựa chọn chuẩn xác nhất.",
+      "counter_factual": {
+        "pie": "Sai lầm quy tắc: Chuỗi thời gian 4 năm không vẽ tròn. Không có tổng cơ cấu 100%.",
+        "bar_stacked": "Sai lầm quy tắc: Các chỉ số tăng trưởng độc lập của 3 quốc gia không thể chồng lên nhau tạo thành tổng thể."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "DOCX_CHART_03",
+      "atlat_page": "Trang 22 & biểu đồ.docx (Mục 3)",
+      "title": "So sánh sản lượng điện của một số địa phương nước ta qua các năm",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện sự biến động hoặc so sánh sản lượng điện của một số địa phương qua các năm (cùng đơn vị tỉ kWh), dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "biến động qua nhiều năm",
+        "so sánh các đối tượng cùng đơn vị",
+        "cột ghép"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2015",
+          "2018",
+          "2020",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Sơn La",
+            "unit": "Tỉ kWh",
+            "values": [
+              9.5,
+              10.2,
+              11.5,
+              12.8
+            ]
+          },
+          {
+            "name": "Quảng Ninh",
+            "unit": "Tỉ kWh",
+            "values": [
+              8.2,
+              9.6,
+              10.8,
+              12.0
+            ]
+          },
+          {
+            "name": "Bà Rịa - Vũng Tàu",
+            "unit": "Tỉ kWh",
+            "values": [
+              12.4,
+              13.8,
+              14.5,
+              15.2
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar",
+      "optimal_chart_name": "Biểu đồ cột (Bar Chart)",
+      "pedagogical_explanation": "Theo quy tắc Mục 3 tệp biểu đồ.docx: Khi đề bài yêu cầu thể hiện 'sự biến động của một đối tượng qua nhiều năm hoặc so sánh các đối tượng khi có cùng đơn vị trong một năm', biểu đồ Cột (cột ghép) là dạng thích hợp nhất.",
+      "counter_factual": {
+        "pie": "Sai lầm quy tắc: Chuỗi 4 mốc năm không vẽ tròn, bảng số liệu không phải là các thành phần cơ cấu 100%.",
+        "combo_bar_line": "Sai lầm quy tắc: Các địa phương có cùng chung 1 đơn vị tính (tỉ kWh) nên không cần dùng biểu đồ kết hợp 2 trục tung."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Tỉ kWh"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "DOCX_CHART_04",
+      "atlat_page": "Trang 24 & biểu đồ.docx (Mục 4)",
+      "title": "Sự thay đổi cơ cấu trị giá xuất khẩu và nhập khẩu hàng hóa nước ta (2010 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện rõ nhất sự thay đổi cơ cấu, tỉ trọng xuất khẩu và nhập khẩu của nước ta giai đoạn 2010 - 2024 (từ 3 năm trở lên), dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "thay đổi cơ cấu",
+        "tỉ trọng của hai nhóm đối tượng",
+        "từ 3 năm trở lên",
+        "tổng = 100%"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2010",
+          "2015",
+          "2020",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Tỉ trọng Xuất khẩu",
+            "unit": "%",
+            "values": [
+              46.0,
+              49.4,
+              51.8,
+              51.8
+            ]
+          },
+          {
+            "name": "Tỉ trọng Nhập khẩu",
+            "unit": "%",
+            "values": [
+              54.0,
+              50.6,
+              48.2,
+              48.2
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "stacked_area",
+      "optimal_chart_name": "Biểu đồ miền (Stacked Area)",
+      "pedagogical_explanation": "Theo quy tắc Mục 4 tệp biểu đồ.docx: Khi đề bài yêu cầu thể hiện rõ nhất 'sự thay đổi cơ cấu, tỉ trọng của hai hoặc ba nhóm đối tượng mà có từ 3 năm trở lên' (ở đây có 4 năm: 2010, 2015, 2020, 2024), biểu đồ Miền là lựa chọn chính xác tuyệt đối.",
+      "counter_factual": {
+        "pie": "Sai lầm quy tắc: Chuỗi 4 mốc thời gian không vẽ tròn vì phải vẽ tới 4 hình tròn gây rối mắt và không thấy được sự biến chuyển liên tục.",
+        "line": "Không tối ưu: Biểu đồ đường không thể hiện được tính bù trừ khép kín 100% của 2 thành phần xuất và nhập."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "DOCX_CHART_05",
+      "atlat_page": "Trang 20 & biểu đồ.docx (Mục 5)",
+      "title": "Sản lượng và Giá trị sản xuất thủy sản của Việt Nam giai đoạn 2015 - 2024",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện sản lượng thủy sản (nghìn tấn) và giá trị sản xuất thủy sản (nghìn tỉ đồng) của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "khác nhau về đơn vị nhưng có mối quan hệ",
+        "sản lượng và giá trị",
+        "kết hợp"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2015",
+          "2018",
+          "2020",
+          "2022",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Sản lượng thủy sản",
+            "unit": "Nghìn tấn",
+            "values": [
+              6562.3,
+              7754.1,
+              8476.0,
+              9100.0,
+              9430.0
+            ]
+          },
+          {
+            "name": "Giá trị sản xuất thủy sản",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              198.5,
+              265.4,
+              312.8,
+              385.0,
+              428.5
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "combo_bar_line",
+      "optimal_chart_name": "Biểu đồ kết hợp cột và đường (Combo Bar & Line)",
+      "pedagogical_explanation": "Theo quy tắc Mục 5 tệp biểu đồ.docx: Biểu đồ kết hợp giữa đường và cột dùng khi đề bài yêu cầu thể hiện 'các đối tượng khác nhau về đơn vị nhưng có mối quan hệ với nhau' (Sản lượng: nghìn tấn vẽ Cột, Giá trị: nghìn tỉ đồng vẽ Đường) với 2 trục tung.",
+      "counter_factual": {
+        "bar": "Sai lầm quy tắc: Không thể gộp nghìn tấn và nghìn tỉ đồng vào 1 trục tung đơn lẻ.",
+        "pie": "Sai lầm quy tắc: Chuỗi 5 năm và khác đơn vị đo lường nên tuyệt đối không vẽ hình tròn."
+      },
+      "structural_analysis": {
+        "time_points": 5,
+        "units": [
+          "Nghìn tấn",
+          "Nghìn tỉ đồng"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "DOCX_CHART_06",
+      "atlat_page": "Trang 21 & biểu đồ.docx (Mục 6)",
+      "title": "Quy mô và cơ cấu giá trị sản xuất công nghiệp theo nhóm ngành của nước ta (2015 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện tốt nhất quy mô và cơ cấu giá trị sản xuất công nghiệp phân theo nhóm ngành nước ta giai đoạn 2015 - 2024 (theo tỉ lệ % tuyệt đối), dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "quy mô và cơ cấu",
+        "theo tỉ lệ % tuyệt đối",
+        "cột chồng"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2015",
+          "2018",
+          "2020",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Công nghiệp chế biến, chế tạo",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              1250.0,
+              1850.0,
+              2450.0,
+              3650.0
+            ]
+          },
+          {
+            "name": "Công nghiệp sản xuất, phân phối điện, khí",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              180.0,
+              260.0,
+              340.0,
+              480.0
+            ]
+          },
+          {
+            "name": "Công nghiệp khai khoáng",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              220.0,
+              240.0,
+              230.0,
+              210.0
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar_stacked",
+      "optimal_chart_name": "Biểu đồ cột chồng (Stacked Bar)",
+      "pedagogical_explanation": "Theo quy tắc Mục 6 tệp biểu đồ.docx: Khi đề bài yêu cầu thể hiện tốt nhất 'quy mô và cơ cấu của đối tượng (theo tỉ lệ % tuyệt đối)', biểu đồ Cột Chồng phản ánh được cả độ cao tổng thể và cấu trúc bộ phận.",
+      "counter_factual": {
+        "pie": "Sai lầm quy tắc: Chuỗi 4 năm không nên vẽ nhiều hình tròn gây rối mắt.",
+        "line": "Không tối ưu: Không thấy rõ tổng quy mô giá trị bằng hình học cột chồng."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Nghìn tỉ đồng"
+        ],
+        "is_total_100": true
+      }
+    },
     {
       "id": "ATLAT_CHART_01",
       "atlat_page": "Trang 18",
@@ -1479,6 +1856,104 @@
         ],
         "is_total_100": false
       }
+    }
+  ],
+  "keyword_guide": [
+    {
+      "chart_type": "pie",
+      "chart_name": "1. Biểu đồ Tròn (Pie Chart)",
+      "time_rule": "Mốc thời gian chỉ từ 1 - 2 năm (tối đa ≤ 3 năm)",
+      "golden_keywords": [
+        "cơ cấu",
+        "tỷ trọng",
+        "tỷ lệ",
+        "kết cấu",
+        "quy mô và cơ cấu (1-2 năm)"
+      ],
+      "typical_units": [
+        "% (tổng các thành phần luôn bằng 100%)"
+      ],
+      "critical_traps": "Không vẽ biểu đồ Tròn khi chuỗi thời gian từ 4 năm trở lên (phải chuyển sang Biểu đồ Miền). Không vẽ tròn khi số liệu có giá trị âm.",
+      "example_prompt": "Cơ cấu doanh thu du lịch lữ hành phân theo thành phần kinh tế của nước ta năm 2010 và 2016 (%) (Trích biểu đồ.docx)"
+    },
+    {
+      "chart_type": "line",
+      "chart_name": "2. Biểu đồ Đường (Line Chart)",
+      "time_rule": "Chuỗi thời gian liên tục qua nhiều năm (≥ 3 - 4 năm)",
+      "golden_keywords": [
+        "tốc độ tăng trưởng",
+        "tốc độ phát triển",
+        "sự thay đổi",
+        "phát triển",
+        "diễn biến"
+      ],
+      "typical_units": [
+        "% (năm gốc = 100%)",
+        "đại lượng liên tục qua thời gian"
+      ],
+      "critical_traps": "Không vẽ biểu đồ Đường cho các đối tượng độc lập phân theo không gian (các tỉnh, các nước trong 1 năm tĩnh). Chỉ vẽ khi có chuỗi thời gian liên tục.",
+      "example_prompt": "GDP của Phi líp pin, Thái Lan và Việt Nam giai đoạn 2010 – 2016 (Trích biểu đồ.docx)"
+    },
+    {
+      "chart_type": "bar",
+      "chart_name": "3. Biểu đồ Cột Đơn/Ghép (Bar Chart)",
+      "time_rule": "1 năm hoặc nhiều năm (so sánh theo không gian/thời gian)",
+      "golden_keywords": [
+        "sự biến động của một đối tượng qua nhiều năm",
+        "so sánh các đối tượng khi có cùng đơn vị trong một năm",
+        "tình hình phát triển",
+        "khối lượng"
+      ],
+      "typical_units": [
+        "Cùng 1 đơn vị tính (Triệu tấn, Tỉ kWh, Nghìn ha...)"
+      ],
+      "critical_traps": "Không vẽ biểu đồ Cột khi các đại lượng khác nhau về đơn vị đo lường trên cùng một trục tung. Nếu tên đối tượng dài, ưu tiên biểu đồ Thanh Ngang.",
+      "example_prompt": "So sánh dân số, diện tích của 1 số tỉnh; So sánh sản lượng điện của 1 địa phương qua các năm (Trích biểu đồ.docx)"
+    },
+    {
+      "chart_type": "stacked_area",
+      "chart_name": "4. Biểu đồ Miền (Stacked Area)",
+      "time_rule": "Chuỗi thời gian từ 3 năm trở lên (thường ≥ 4 năm)",
+      "golden_keywords": [
+        "thay đổi cơ cấu",
+        "chuyển dịch cơ cấu",
+        "tỉ trọng của hai hoặc ba nhóm đối tượng từ 3 năm trở lên"
+      ],
+      "typical_units": [
+        "% (tổng các miền chồng luôn bằng 100%)"
+      ],
+      "critical_traps": "Không vẽ biểu đồ Miền khi chỉ có 1-2 mốc năm (phải vẽ Tròn). Không vẽ miền khi số liệu có giá trị âm hoặc tổng các bộ phận không bằng 100%.",
+      "example_prompt": "Tỷ lệ xuất và nhập khẩu; Cán cân xuất nhập khẩu; Cơ cấu GDP phân theo khu vực kinh tế (Trích biểu đồ.docx)"
+    },
+    {
+      "chart_type": "combo_bar_line",
+      "chart_name": "5. Biểu đồ Kết Hợp Cột + Đường (Combo)",
+      "time_rule": "Chuỗi thời gian từ 3 năm trở lên",
+      "golden_keywords": [
+        "khác nhau về đơn vị nhưng có mối quan hệ với nhau",
+        "quy mô và tốc độ tăng trưởng",
+        "diện tích và sản lượng",
+        "từ ba loại số liệu trở lên"
+      ],
+      "typical_units": [
+        "2 loại đơn vị đo lường khác nhau (ví dụ: Nghìn ha và Triệu tấn, Tỉ USD và %)"
+      ],
+      "critical_traps": "Bắt buộc có 2 trục tung (trục trái và trục phải). Nếu các đại lượng có cùng một đơn vị tính thì KHÔNG được vẽ kết hợp 2 trục.",
+      "example_prompt": "Thể hiện sản lượng khai thác, nuôi trồng và giá trị sản xuất của Việt Nam (Trích biểu đồ.docx)"
+    },
+    {
+      "chart_type": "bar_stacked",
+      "chart_name": "6. Biểu đồ Cột Chồng (Stacked Bar)",
+      "time_rule": "Từ 2 đến nhiều năm",
+      "golden_keywords": [
+        "quy mô và cơ cấu của đối tượng (theo tỉ lệ % tuyệt đối)",
+        "thành phần cấu thành tổng thể"
+      ],
+      "typical_units": [
+        "Cùng 1 đơn vị tính (Triệu người, Nghìn tấn hoặc %)"
+      ],
+      "critical_traps": "Các thành phần xếp chồng bắt buộc phải cộng dồn lại đúng bằng tổng số (hoặc bằng 100%). Không xếp chồng các đại lượng độc lập không cùng một chỉnh thể.",
+      "example_prompt": "Dân số thành thị và nông thôn nước ta (cộng lại bằng tổng dân số cả nước) (Trích biểu đồ.docx)"
     }
   ],
   "geo_baseline": {
