@@ -9,3 +9,6 @@ data/
 GeoAtlas_Production.zip
 dist/
 *.log
+
+*.pdf
+public/data/*.pdf
