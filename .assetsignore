@@ -1,0 +1,9 @@
+# Ignore build/dev scripts and internal docs from static upload
+docs/
+scripts/
+tools/
+*.py
+*.bat
+*.ps1
+*.zip
+*.log
