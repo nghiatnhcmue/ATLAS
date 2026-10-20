@@ -1,0 +1,268 @@
+[
+  {
+    "file": "js/geo-calculator.js",
+    "line": 34,
+    "category": "Giá trị mặc định ô nhập (density)",
+    "snippet": "defaultVal: 23.2,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 44,
+    "category": "Giá trị mặc định ô nhập (density)",
+    "snippet": "defaultVal: 21.3,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 52,
+    "category": "Bảng số liệu mẫu (Công thức density)",
+    "snippet": "sampleTable: {",
+    "in_sources": "Chưa có trích dẫn nguồn chuẩn (thuộc DATA_GAPS)"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 96,
+    "category": "Giá trị mặc định ô nhập (natural_increase)",
+    "snippet": "defaultVal: 15.2,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 102,
+    "category": "Giá trị mặc định ô nhập (natural_increase)",
+    "snippet": "defaultVal: 6.1,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 106,
+    "category": "Bảng số liệu mẫu (Công thức natural_increase)",
+    "snippet": "sampleTable: {",
+    "in_sources": "Chưa có trích dẫn nguồn chuẩn (thuộc DATA_GAPS)"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 141,
+    "category": "Giá trị mặc định ô nhập (crop_yield)",
+    "snippet": "defaultVal: 43.5,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 152,
+    "category": "Giá trị mặc định ô nhập (crop_yield)",
+    "snippet": "defaultVal: 7.12,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 160,
+    "category": "Bảng số liệu mẫu (Công thức crop_yield)",
+    "snippet": "sampleTable: {",
+    "in_sources": "Chưa có trích dẫn nguồn chuẩn (thuộc DATA_GAPS)"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 199,
+    "category": "Giá trị mặc định ô nhập (per_capita)",
+    "snippet": "defaultVal: 43.5,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 210,
+    "category": "Giá trị mặc định ô nhập (per_capita)",
+    "snippet": "defaultVal: 100.3,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 218,
+    "category": "Bảng số liệu mẫu (Công thức per_capita)",
+    "snippet": "sampleTable: {",
+    "in_sources": "Chưa có trích dẫn nguồn chuẩn (thuộc DATA_GAPS)"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 257,
+    "category": "Giá trị mặc định ô nhập (trade_balance)",
+    "snippet": "defaultVal: 395.0,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 263,
+    "category": "Giá trị mặc định ô nhập (trade_balance)",
+    "snippet": "defaultVal: 368.0,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 267,
+    "category": "Bảng số liệu mẫu (Công thức trade_balance)",
+    "snippet": "sampleTable: {",
+    "in_sources": "Chưa có trích dẫn nguồn chuẩn (thuộc DATA_GAPS)"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 305,
+    "category": "Giá trị mặc định ô nhập (trade_system)",
+    "snippet": "defaultVal: 763.0,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 311,
+    "category": "Giá trị mặc định ô nhập (trade_system)",
+    "snippet": "defaultVal: 27.0,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 315,
+    "category": "Bảng số liệu mẫu (Công thức trade_system)",
+    "snippet": "sampleTable: {",
+    "in_sources": "Chưa có trích dẫn nguồn chuẩn (thuộc DATA_GAPS)"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 353,
+    "category": "Giá trị mặc định ô nhập (structure_share)",
+    "snippet": "defaultVal: 63.2,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 359,
+    "category": "Giá trị mặc định ô nhập (structure_share)",
+    "snippet": "defaultVal: 193.2,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 365,
+    "category": "Giá trị mặc định ô nhập (structure_share)",
+    "snippet": "defaultVal: 158.4,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 371,
+    "category": "Giá trị mặc định ô nhập (structure_share)",
+    "snippet": "defaultVal: 430.0,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 375,
+    "category": "Bảng số liệu mẫu (Công thức structure_share)",
+    "snippet": "sampleTable: {",
+    "in_sources": "Chưa có trích dẫn nguồn chuẩn (thuộc DATA_GAPS)"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 432,
+    "category": "Giá trị mặc định ô nhập (growth_rate)",
+    "snippet": "defaultVal: 159.4,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 438,
+    "category": "Giá trị mặc định ô nhập (growth_rate)",
+    "snippet": "defaultVal: 275.9,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 442,
+    "category": "Bảng số liệu mẫu (Công thức growth_rate)",
+    "snippet": "sampleTable: {",
+    "in_sources": "Chưa có trích dẫn nguồn chuẩn (thuộc DATA_GAPS)"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 481,
+    "category": "Giá trị mặc định ô nhập (climate_stats)",
+    "snippet": "defaultVal: 29.8,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 487,
+    "category": "Giá trị mặc định ô nhập (climate_stats)",
+    "snippet": "defaultVal: 16.4,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 493,
+    "category": "Giá trị mặc định ô nhập (climate_stats)",
+    "snippet": "defaultVal: 23.9,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 499,
+    "category": "Giá trị mặc định ô nhập (climate_stats)",
+    "snippet": "defaultVal: 1680,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 506,
+    "category": "Bảng số liệu mẫu (Công thức climate_stats)",
+    "snippet": "sampleTable: {",
+    "in_sources": "Chưa có trích dẫn nguồn chuẩn (thuộc DATA_GAPS)"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 563,
+    "category": "Giá trị mặc định ô nhập (map_scale_timezone)",
+    "snippet": "defaultVal: 4.5,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 569,
+    "category": "Giá trị mặc định ô nhập (map_scale_timezone)",
+    "snippet": "defaultVal: 6000000,",
+    "in_sources": "Giá trị mẫu giả định, chưa gắn nguồn Atlat"
+  },
+  {
+    "file": "js/geo-calculator.js",
+    "line": 577,
+    "category": "Bảng số liệu mẫu (Công thức map_scale_timezone)",
+    "snippet": "sampleTable: {",
+    "in_sources": "Chưa có trích dẫn nguồn chuẩn (thuộc DATA_GAPS)"
+  },
+  {
+    "file": "js/chart-trainer.js",
+    "line": 40,
+    "category": "Từ khóa tín hiệu & Định nghĩa 6 dạng biểu đồ",
+    "snippet": "const CORE_6_CHART_TYPES = [",
+    "in_sources": "Có trong biểu đồ.docx (cần tách ra chart-rules.json)"
+  },
+  {
+    "file": "js/chart-trainer.js",
+    "line": 50,
+    "category": "Từ khóa tín hiệu & Định nghĩa 6 dạng biểu đồ",
+    "snippet": "const SIGNAL_KEYWORDS = [",
+    "in_sources": "Có trong biểu đồ.docx (cần tách ra chart-rules.json)"
+  },
+  {
+    "file": "js/atlas-engine.js",
+    "line": 57,
+    "category": "Cấu hình Tile layer Esri/OSM",
+    "snippet": "const BASEMAPS = {",
+    "in_sources": "Tile bên thứ ba (Cần loại bỏ theo Mục 7.3)"
+  },
+  {
+    "file": "js/atlas-engine.js",
+    "line": 114,
+    "category": "Bảng mã màu 6/7 vùng kinh tế",
+    "snippet": "const REGION_COLORS = {",
+    "in_sources": "Màu CSS tự chọn, cần chuyển sang styles.GD.json"
+  }
+]

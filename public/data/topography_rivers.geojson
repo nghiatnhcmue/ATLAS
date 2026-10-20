@@ -17,13 +17,20 @@
       },
       "properties": {
         "id": "PEAK_01",
-        "name": "Đỉnh Fansipan (3.147m)",
+        "name": "Đỉnh Phanxipăng (3.147m)",
         "category": "peak",
         "elevation_m": 3147,
         "mountain_range": "Dãy Hoàng Liên Sơn",
         "province": "Lào Cai",
         "desc": "Nóc nhà Đông Dương, đỉnh núi cao nhất Việt Nam và toàn bán đảo Đông Dương.",
-        "atlat_page": 6
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.14 (N. Phanxipăng 3 147)",
+        "aliases": [
+          "Fansipan",
+          "Phanxipang",
+          "Phan xi păng",
+          "N. Phanxipăng"
+        ]
       }
     },
     {
@@ -43,7 +50,8 @@
         "mountain_range": "Biên giới Việt - Trung",
         "province": "Lai Châu",
         "desc": "Đỉnh núi cao thứ hai Việt Nam, địa hình hiểm trở vùng biên cương.",
-        "atlat_page": 6
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -61,9 +69,10 @@
         "category": "peak",
         "elevation_m": 1444,
         "mountain_range": "Dãy Bạch Mã",
-        "province": "Thừa Thiên Huế",
+        "province": "Thành phố Huế",
         "desc": "Ranh giới tự nhiên giữa miền khí hậu phía Bắc và phía Nam (vĩ tuyến 16°B), bức tường chắn gió mùa Đông Bắc.",
-        "atlat_page": 6
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -81,9 +90,10 @@
         "category": "peak",
         "elevation_m": 2598,
         "mountain_range": "Khối núi Kon Tum / Nam Trường Sơn",
-        "province": "Kon Tum",
+        "province": "Tỉnh Gia Lai",
         "desc": "Đỉnh cao nhất vùng Trường Sơn Nam, thủ phủ sâm Ngọc Linh quý hiếm.",
-        "atlat_page": 7
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -103,7 +113,8 @@
         "mountain_range": "Khối núi Nam Tây Nguyên",
         "province": "Đắk Lắk",
         "desc": "Đỉnh núi cao nhất vùng Đắk Lắk, thuộc Vườn quốc gia Chư Yang Sin.",
-        "atlat_page": 7
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -123,7 +134,8 @@
         "mountain_range": "Cao nguyên Lâm Viên",
         "province": "Lâm Đồng",
         "desc": "Biểu tượng nóc nhà Đà Lạt, cảnh quan thiên nhiên và du lịch sinh thái nổi tiếng.",
-        "atlat_page": 7
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -155,7 +167,8 @@
         "category": "mountain_range",
         "direction": "Tây Bắc - Đông Nam",
         "desc": "Dãy núi cao và đồ sộ nhất Việt Nam chạy theo hướng Tây Bắc - Đông Nam.",
-        "atlat_page": 6
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -183,7 +196,8 @@
         "category": "mountain_arc",
         "direction": "Cánh cung chụm đầu ở Tam Đảo",
         "desc": "Cánh cung núi thuộc vùng Đông Bắc, đón gió mùa Đông Bắc lạnh.",
-        "atlat_page": 6
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -196,7 +210,7 @@
             22.7
           ],
           [
-            106.0,
+            106,
             22.2
           ],
           [
@@ -211,7 +225,8 @@
         "category": "mountain_arc",
         "direction": "Cánh cung mở rộng về phía Bắc",
         "desc": "Cánh cung Ngân Sơn vùng Đông Bắc, địa hình núi đón gió mùa.",
-        "atlat_page": 6
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -239,7 +254,8 @@
         "category": "mountain_arc",
         "direction": "Cánh cung đá vôi",
         "desc": "Cánh cung Bắc Sơn nổi tiếng với thung lũng đá vôi và văn hóa Bắc Sơn.",
-        "atlat_page": 6
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -248,7 +264,7 @@
         "type": "LineString",
         "coordinates": [
           [
-            107.0,
+            107,
             21.8
           ],
           [
@@ -267,7 +283,8 @@
         "category": "mountain_arc",
         "direction": "Cánh cung ven biển Đông Bắc",
         "desc": "Cánh cung Đông Triều ôm trọn vùng than Quảng Ninh và danh thắng Yên Tử.",
-        "atlat_page": 6
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -299,7 +316,8 @@
         "category": "mountain_range",
         "direction": "Tây Bắc - Đông Nam",
         "desc": "Từ nam sông Cả tới dãy Bạch Mã, sườn Đông dốc hẹp ăn lan ra biển.",
-        "atlat_page": 6
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -308,12 +326,12 @@
         "type": "LineString",
         "coordinates": [
           [
-            108.0,
+            108,
             15.2
           ],
           [
             108.5,
-            14.0
+            14
           ],
           [
             108.3,
@@ -331,7 +349,8 @@
         "category": "mountain_range",
         "direction": "Vòng cung lồi ra biển Đông",
         "desc": "Khối núi Kon Tum và các cao nguyên badan xếp tầng màu mỡ.",
-        "atlat_page": 7
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -349,7 +368,8 @@
         "category": "plateau",
         "province": "Sơn La",
         "desc": "Cao nguyên đá vôi và đất feralit vùng Tây Bắc, trồng ngô, chè, cây ăn quả ôn đới.",
-        "atlat_page": 6
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -367,7 +387,8 @@
         "category": "plateau",
         "province": "Sơn La",
         "desc": "Khí hậu mát mẻ, nổi tiếng chăn nuôi bò sữa, trồng chè shan tuyết và mận.",
-        "atlat_page": 6
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -375,7 +396,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.0,
+          108,
           14.35
         ]
       },
@@ -383,9 +404,10 @@
         "id": "PLA_03",
         "name": "Cao nguyên Kon Tum",
         "category": "plateau",
-        "province": "Kon Tum",
+        "province": "Tỉnh Gia Lai",
         "desc": "Cao nguyên phía bắc Tây Nguyên, độ cao ~500m, trồng cà phê, cao su.",
-        "atlat_page": 7
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -393,7 +415,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.0,
+          108,
           13.98
         ]
       },
@@ -403,7 +425,8 @@
         "category": "plateau",
         "province": "Gia Lai",
         "desc": "Đất đỏ bazan màu mỡ, vùng chuyên canh cà phê, hồ tiêu, chè lớn.",
-        "atlat_page": 7
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -421,7 +444,8 @@
         "category": "plateau",
         "province": "Đắk Lắk",
         "desc": "Cao nguyên bazan diện tích rộng lớn và bằng phẳng nhất, thủ phủ cà phê Buôn Ma Thuột.",
-        "atlat_page": 7
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -437,9 +461,10 @@
         "id": "PLA_06",
         "name": "Cao nguyên Mơ Nông",
         "category": "plateau",
-        "province": "Đắk Nông",
-        "desc": "Địa hình gợn sóng lượn, giàu khoáng sản bô-xít nhôm và cây công nghiệp lâu năm.",
-        "atlat_page": 7
+        "province": "Tỉnh Đắk Lắk",
+        "desc": "Địa hình gợn sóng lượn, giàu khoáng sản bôxit nhôm và cây công nghiệp lâu năm.",
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -457,7 +482,8 @@
         "category": "plateau",
         "province": "Lâm Đồng",
         "desc": "Độ cao ~1.500m, khí hậu ôn đới quanh năm, trung tâm rau hoa quả cận nhiệt Đà Lạt.",
-        "atlat_page": 7
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -475,7 +501,8 @@
         "category": "plateau",
         "province": "Lâm Đồng",
         "desc": "Độ cao ~1.000m, đất bazan màu mỡ, vùng chuyên canh chè và cà phê robusta.",
-        "atlat_page": 7
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -510,7 +537,8 @@
         "name": "Sông Hồng",
         "category": "river",
         "desc": "Dòng sông bồi đắp đồng bằng sông Hồng trù phú, dài 1.149km (đoạn VN dài 510km).",
-        "atlat_page": 10
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
       }
     },
     {
@@ -541,7 +569,8 @@
         "name": "Sông Đà",
         "category": "river",
         "desc": "Phụ lưu lớn nhất của sông Hồng, giàu tiềm năng thủy điện bậc nhất với chuỗi Lai Châu, Sơn La, Hòa Bình.",
-        "atlat_page": 10
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
       }
     },
     {
@@ -550,7 +579,7 @@
         "type": "LineString",
         "coordinates": [
           [
-            103.0,
+            103,
             21.3
           ],
           [
@@ -568,7 +597,8 @@
         "name": "Sông Mã",
         "category": "river",
         "desc": "Bồi đắp đồng bằng Thanh Hóa rộng lớn.",
-        "atlat_page": 10
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
       }
     },
     {
@@ -581,8 +611,8 @@
             19.5
           ],
           [
-            105.0,
-            19.0
+            105,
+            19
           ],
           [
             105.7,
@@ -595,7 +625,8 @@
         "name": "Sông Cả (Sông Lam)",
         "category": "river",
         "desc": "Dòng sông mẹ của xứ Nghệ, bồi đắp đồng bằng Nghệ An - Hà Tĩnh.",
-        "atlat_page": 10
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
       }
     },
     {
@@ -622,7 +653,8 @@
         "name": "Sông Thu Bồn - Vu Gia",
         "category": "river",
         "desc": "Hệ thống sông huyết mạch của vùng đất Quảng Nam - Đà Nẵng, cửa biển Hội An.",
-        "atlat_page": 10
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
       }
     },
     {
@@ -653,7 +685,8 @@
         "name": "Sông Đồng Nai",
         "category": "river",
         "desc": "Lưu vực sông nội địa lớn nhất Việt Nam, cung cấp nước ngọt và thủy điện cho Đông Nam Bộ.",
-        "atlat_page": 10
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
       }
     },
     {
@@ -680,7 +713,8 @@
         "name": "Sông Tiền",
         "category": "river",
         "desc": "Nhánh chính phía Bắc sông Mê Kông đổ ra biển Đông qua nhiều cửa sông (Cửa Tiểu, Đại, Ba Lai...).",
-        "atlat_page": 10
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
       }
     },
     {
@@ -707,7 +741,8 @@
         "name": "Sông Hậu",
         "category": "river",
         "desc": "Nhánh chính phía Nam sông Mê Kông chảy qua Cần Thơ, đổ ra biển qua cửa Định An, Trần Đề.",
-        "atlat_page": 10
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
       }
     }
   ]

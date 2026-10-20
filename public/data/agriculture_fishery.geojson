@@ -1,7 +1,7 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "title": "Bản đồ Nông, Lâm, Thủy sản & Ngư trường Việt Nam (Atlat Trang 18-20)",
+    "title": "Bản đồ Nông, Lâm, Thủy sản & Ngư trường Việt Nam (Atlat GD, tr.19 - 21)",
     "count": 10,
     "standard": "Atlat Địa lí Việt Nam & SGK THPT"
   },
@@ -23,7 +23,8 @@
         "symbol": "rice",
         "icon_emoji": "🌾",
         "desc": "Chiếm trên 50% diện tích và sản lượng lúa cả nước, đóng góp trên 90% lượng gạo xuất khẩu.",
-        "atlat_page": 19
+        "atlat_page": 19,
+        "source": "Atlat GD, tr.19 & tr.20"
       }
     },
     {
@@ -43,7 +44,8 @@
         "symbol": "rice",
         "icon_emoji": "🌾",
         "desc": "Trình độ thâm canh cao nhất cả nước, năng suất lúa dẫn đầu toàn quốc (Thái Bình, Nam Định).",
-        "atlat_page": 19
+        "atlat_page": 19,
+        "source": "Atlat GD, tr.19 & tr.20"
       }
     },
     {
@@ -63,7 +65,8 @@
         "symbol": "coffee",
         "icon_emoji": "☕",
         "desc": "Tây Nguyên dẫn đầu cả nước về diện tích và sản lượng cà phê vối (robusta) và hồ tiêu (Đắk Lắk, Gia Lai).",
-        "atlat_page": 19
+        "atlat_page": 19,
+        "source": "Atlat GD, tr.19 & tr.20"
       }
     },
     {
@@ -83,7 +86,8 @@
         "symbol": "rubber",
         "icon_emoji": "🌲",
         "desc": "Đông Nam Bộ là thủ phủ cao su Việt Nam (Bình Phước, Bình Dương, Tây Ninh) trên đất badan và xám phù sa cổ.",
-        "atlat_page": 19
+        "atlat_page": 19,
+        "source": "Atlat GD, tr.19 & tr.20"
       }
     },
     {
@@ -103,7 +107,8 @@
         "symbol": "tea",
         "icon_emoji": "🍵",
         "desc": "Thái Nguyên, Phú Thọ, Yên Bái dẫn đầu cả nước về diện tích và sản lượng chè búp nổi tiếng.",
-        "atlat_page": 19
+        "atlat_page": 19,
+        "source": "Atlat GD, tr.19 & tr.20"
       }
     },
     {
@@ -123,7 +128,8 @@
         "symbol": "fruit",
         "icon_emoji": "🍊",
         "desc": "Tiền Giang, Bến Tre, Vĩnh Long chiếm diện tích cây ăn trái nhiệt đới lớn nhất nước (xoài, sầu riêng, bưởi, chôm chôm).",
-        "atlat_page": 19
+        "atlat_page": 19,
+        "source": "Atlat GD, tr.19 & tr.20"
       }
     },
     {
@@ -140,7 +146,10 @@
         "name": "Ngư trường Hải Phòng - Quảng Ninh",
         "category": "fishing_ground",
         "desc": "Ngư trường trọng điểm vịnh Bắc Bộ, tập trung trữ lượng cá đáy và hải sản xuất khẩu phong phú.",
-        "atlat_page": 20
+        "atlat_page": 21,
+        "source": "Atlat GD, tr.21",
+        "status": "missing",
+        "hidden": true
       }
     },
     {
@@ -157,7 +166,10 @@
         "name": "Ngư trường Ninh Thuận - Bình Thuận - Bà Rịa Vũng Tàu",
         "category": "fishing_ground",
         "desc": "Ngư trường có năng suất khai thác cao nhất cả nước, nguồn lợi cá nục, cá thu, mực nang dồi dào.",
-        "atlat_page": 20
+        "atlat_page": 21,
+        "source": "Atlat GD, tr.21",
+        "status": "missing",
+        "hidden": true
       }
     },
     {
@@ -174,7 +186,10 @@
         "name": "Ngư trường Cà Mau - Kiên Giang",
         "category": "fishing_ground",
         "desc": "Ngư trường vịnh Thái Lan biển ấm nông, trữ lượng tôm cá biển lớn nhất cả nước.",
-        "atlat_page": 20
+        "atlat_page": 21,
+        "source": "Atlat GD, tr.21",
+        "status": "missing",
+        "hidden": true
       }
     },
     {
@@ -191,7 +206,10 @@
         "name": "Ngư trường Quần đảo Hoàng Sa - Quần đảo Trường Sa",
         "category": "fishing_ground",
         "desc": "Ngư trường biển xa bờ giàu tiềm năng cá ngừ đại dương, cá thu và khẳng định chủ quyền thiêng liêng Tổ quốc.",
-        "atlat_page": 20
+        "atlat_page": 21,
+        "source": "Atlat GD, tr.21",
+        "status": "missing",
+        "hidden": true
       }
     }
   ]

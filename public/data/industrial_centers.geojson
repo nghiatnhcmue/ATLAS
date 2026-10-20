@@ -1,7 +1,7 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "title": "15 Trung tâm Công nghiệp Việt Nam (Atlat Trang 21)",
+    "title": "Lớp Kinh tế & Công nghiệp - Quy mô và Cơ cấu GRDP (Atlat GD, tr.18 & tr.22)",
     "count": 15
   },
   "features": [
@@ -11,40 +11,35 @@
         "id": "IND_01",
         "name": "TP. Hồ Chí Minh",
         "scale_tier": "very_large",
-        "scale_desc": "Rất lớn (Trên 120 nghìn tỉ đồng)",
+        "scale_desc": "Từ 1 000 nghìn tỉ đồng trở lên",
         "radius_px": 28,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "TP. Hồ Chí Minh",
         "sectors": [
           {
-            "sector": "Cơ khí",
-            "name": "Cơ khí",
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 1,
+            "color": "#16A34A"
+          },
+          {
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
             "share": 24,
-            "color": "#2563eb"
+            "color": "#DC2626"
           },
           {
-            "sector": "Điện tử",
-            "name": "Điện tử",
-            "share": 26,
-            "color": "#06b6d4"
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 65,
+            "color": "#EAB308"
           },
           {
-            "sector": "Hóa chất",
-            "name": "Hóa chất",
-            "share": 20,
-            "color": "#10b981"
-          },
-          {
-            "sector": "Dệt may",
-            "name": "Dệt may",
-            "share": 16,
-            "color": "#f59e0b"
-          },
-          {
-            "sector": "Thực phẩm",
-            "name": "Thực phẩm",
-            "share": 14,
-            "color": "#ef4444"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 10,
+            "color": "#0284C7"
           }
         ]
       },
@@ -62,40 +57,35 @@
         "id": "IND_02",
         "name": "Hà Nội",
         "scale_tier": "very_large",
-        "scale_desc": "Rất lớn (Trên 120 nghìn tỉ đồng)",
+        "scale_desc": "Từ 1 000 nghìn tỉ đồng trở lên",
         "radius_px": 28,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Hà Nội",
         "sectors": [
           {
-            "sector": "Cơ khí",
-            "name": "Cơ khí",
-            "share": 26,
-            "color": "#2563eb"
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 2,
+            "color": "#16A34A"
           },
           {
-            "sector": "Điện tử",
-            "name": "Điện tử",
-            "share": 28,
-            "color": "#06b6d4"
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 23,
+            "color": "#DC2626"
           },
           {
-            "sector": "Thực phẩm",
-            "name": "Thực phẩm",
-            "share": 18,
-            "color": "#ef4444"
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 65,
+            "color": "#EAB308"
           },
           {
-            "sector": "Dệt may",
-            "name": "Dệt may",
-            "share": 16,
-            "color": "#f59e0b"
-          },
-          {
-            "sector": "Hóa chất",
-            "name": "Hóa chất",
-            "share": 12,
-            "color": "#10b981"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 10,
+            "color": "#0284C7"
           }
         ]
       },
@@ -111,42 +101,37 @@
       "type": "Feature",
       "properties": {
         "id": "IND_03",
-        "name": "Biên Hòa",
+        "name": "Biên Hòa (Đồng Nai)",
         "scale_tier": "large",
-        "scale_desc": "Lớn (40 - 120 nghìn tỉ đồng)",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng",
         "radius_px": 22,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Đồng Nai",
         "sectors": [
           {
-            "sector": "Cơ khí",
-            "name": "Cơ khí",
-            "share": 28,
-            "color": "#2563eb"
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 9,
+            "color": "#16A34A"
           },
           {
-            "sector": "Điện tử",
-            "name": "Điện tử",
-            "share": 24,
-            "color": "#06b6d4"
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 60,
+            "color": "#DC2626"
           },
           {
-            "sector": "Hóa chất",
-            "name": "Hóa chất",
-            "share": 22,
-            "color": "#10b981"
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 25,
+            "color": "#EAB308"
           },
           {
-            "sector": "Vật liệu",
-            "name": "Vật liệu",
-            "share": 14,
-            "color": "#8b5cf6"
-          },
-          {
-            "sector": "Thực phẩm",
-            "name": "Thực phẩm",
-            "share": 12,
-            "color": "#ef4444"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 6,
+            "color": "#0284C7"
           }
         ]
       },
@@ -162,42 +147,37 @@
       "type": "Feature",
       "properties": {
         "id": "IND_04",
-        "name": "Thủ Dầu Một",
+        "name": "Thủ Dầu Một (Bình Dương)",
         "scale_tier": "large",
-        "scale_desc": "Lớn (40 - 120 nghìn tỉ đồng)",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng",
         "radius_px": 22,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Bình Dương",
         "sectors": [
           {
-            "sector": "Điện tử",
-            "name": "Điện tử",
-            "share": 32,
-            "color": "#06b6d4"
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 3,
+            "color": "#16A34A"
           },
           {
-            "sector": "Gỗ mỹ nghệ",
-            "name": "Gỗ mỹ nghệ",
-            "share": 26,
-            "color": "#d97706"
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 66,
+            "color": "#DC2626"
           },
           {
-            "sector": "Cơ khí",
-            "name": "Cơ khí",
-            "share": 20,
-            "color": "#2563eb"
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 24,
+            "color": "#EAB308"
           },
           {
-            "sector": "Hóa chất",
-            "name": "Hóa chất",
-            "share": 12,
-            "color": "#10b981"
-          },
-          {
-            "sector": "Dệt may",
-            "name": "Dệt may",
-            "share": 10,
-            "color": "#f59e0b"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 7,
+            "color": "#0284C7"
           }
         ]
       },
@@ -215,40 +195,35 @@
         "id": "IND_05",
         "name": "Hải Phòng",
         "scale_tier": "large",
-        "scale_desc": "Lớn (40 - 120 nghìn tỉ đồng)",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng",
         "radius_px": 22,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Hải Phòng",
         "sectors": [
           {
-            "sector": "Đóng tàu",
-            "name": "Đóng tàu",
-            "share": 34,
-            "color": "#1d4ed8"
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 4,
+            "color": "#16A34A"
           },
           {
-            "sector": "Điện tử",
-            "name": "Điện tử",
-            "share": 26,
-            "color": "#06b6d4"
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 53,
+            "color": "#DC2626"
           },
           {
-            "sector": "Luyện kim",
-            "name": "Luyện kim",
-            "share": 16,
-            "color": "#475569"
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 38,
+            "color": "#EAB308"
           },
           {
-            "sector": "Thực phẩm",
-            "name": "Thực phẩm",
-            "share": 14,
-            "color": "#ef4444"
-          },
-          {
-            "sector": "Dệt may",
-            "name": "Dệt may",
-            "share": 10,
-            "color": "#f59e0b"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 5,
+            "color": "#0284C7"
           }
         ]
       },
@@ -264,36 +239,37 @@
       "type": "Feature",
       "properties": {
         "id": "IND_06",
-        "name": "Vũng Tàu",
+        "name": "Vũng Tàu (Bà Rịa - Vũng Tàu)",
         "scale_tier": "large",
-        "scale_desc": "Lớn (40 - 120 nghìn tỉ đồng)",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng",
         "radius_px": 22,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Bà Rịa - Vũng Tàu",
         "sectors": [
           {
-            "sector": "Dầu khí",
-            "name": "Dầu khí",
-            "share": 46,
-            "color": "#0f172a"
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 10,
+            "color": "#16A34A"
           },
           {
-            "sector": "Khí điện",
-            "name": "Khí điện",
-            "share": 22,
-            "color": "#f97316"
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 58,
+            "color": "#DC2626"
           },
           {
-            "sector": "Đóng tàu",
-            "name": "Đóng tàu",
-            "share": 18,
-            "color": "#2563eb"
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 26,
+            "color": "#EAB308"
           },
           {
-            "sector": "Hải sản",
-            "name": "Hải sản",
-            "share": 14,
-            "color": "#ef4444"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 6,
+            "color": "#0284C7"
           }
         ]
       },
@@ -309,36 +285,37 @@
       "type": "Feature",
       "properties": {
         "id": "IND_07",
-        "name": "Hạ Long",
+        "name": "Hạ Long (Quảng Ninh)",
         "scale_tier": "large",
-        "scale_desc": "Lớn (40 - 120 nghìn tỉ đồng)",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng",
         "radius_px": 22,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Quảng Ninh",
         "sectors": [
           {
-            "sector": "Cơ khí đóng tàu",
-            "name": "Cơ khí đóng tàu",
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 5,
+            "color": "#16A34A"
+          },
+          {
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 52,
+            "color": "#DC2626"
+          },
+          {
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
             "share": 36,
-            "color": "#2563eb"
+            "color": "#EAB308"
           },
           {
-            "sector": "Khai thác than",
-            "name": "Khai thác than",
-            "share": 32,
-            "color": "#0f172a"
-          },
-          {
-            "sector": "Vật liệu",
-            "name": "Vật liệu",
-            "share": 18,
-            "color": "#8b5cf6"
-          },
-          {
-            "sector": "Thực phẩm",
-            "name": "Thực phẩm",
-            "share": 14,
-            "color": "#ef4444"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 7,
+            "color": "#0284C7"
           }
         ]
       },
@@ -356,34 +333,35 @@
         "id": "IND_08",
         "name": "Đà Nẵng",
         "scale_tier": "medium",
-        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
         "radius_px": 16,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Đà Nẵng",
         "sectors": [
           {
-            "sector": "Cơ khí",
-            "name": "Cơ khí",
-            "share": 30,
-            "color": "#2563eb"
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 2,
+            "color": "#16A34A"
           },
           {
-            "sector": "Dệt may",
-            "name": "Dệt may",
-            "share": 26,
-            "color": "#f59e0b"
-          },
-          {
-            "sector": "Điện tử",
-            "name": "Điện tử",
-            "share": 24,
-            "color": "#06b6d4"
-          },
-          {
-            "sector": "Thực phẩm",
-            "name": "Thực phẩm",
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
             "share": 20,
-            "color": "#ef4444"
+            "color": "#DC2626"
+          },
+          {
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 68,
+            "color": "#EAB308"
+          },
+          {
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 10,
+            "color": "#0284C7"
           }
         ]
       },
@@ -401,34 +379,35 @@
         "id": "IND_09",
         "name": "Cần Thơ",
         "scale_tier": "medium",
-        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
         "radius_px": 16,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Cần Thơ",
         "sectors": [
           {
-            "sector": "Chế biến lương thực",
-            "name": "Chế biến lương thực",
-            "share": 55,
-            "color": "#ef4444"
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 10,
+            "color": "#16A34A"
           },
           {
-            "sector": "Cơ khí",
-            "name": "Cơ khí",
-            "share": 18,
-            "color": "#2563eb"
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 32,
+            "color": "#DC2626"
           },
           {
-            "sector": "Dược phẩm",
-            "name": "Dược phẩm",
-            "share": 15,
-            "color": "#10b981"
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 52,
+            "color": "#EAB308"
           },
           {
-            "sector": "Năng lượng",
-            "name": "Năng lượng",
-            "share": 12,
-            "color": "#f97316"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 6,
+            "color": "#0284C7"
           }
         ]
       },
@@ -444,36 +423,37 @@
       "type": "Feature",
       "properties": {
         "id": "IND_10",
-        "name": "Nha Trang",
+        "name": "Nha Trang (Khánh Hoà)",
         "scale_tier": "medium",
-        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
         "radius_px": 16,
-        "atlat_page": 21,
-        "province": "Khánh Hòa",
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
+        "province": "Khánh Hoà",
         "sectors": [
           {
-            "sector": "Thủy sản",
-            "name": "Thủy sản",
-            "share": 52,
-            "color": "#ef4444"
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 11,
+            "color": "#16A34A"
           },
           {
-            "sector": "Đóng tàu",
-            "name": "Đóng tàu",
-            "share": 24,
-            "color": "#2563eb"
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 32,
+            "color": "#DC2626"
           },
           {
-            "sector": "Dệt may",
-            "name": "Dệt may",
-            "share": 14,
-            "color": "#f59e0b"
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 50,
+            "color": "#EAB308"
           },
           {
-            "sector": "Hóa chất",
-            "name": "Hóa chất",
-            "share": 10,
-            "color": "#06b6d4"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 7,
+            "color": "#0284C7"
           }
         ]
       },
@@ -491,34 +471,35 @@
         "id": "IND_11",
         "name": "Huế",
         "scale_tier": "medium",
-        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
         "radius_px": 16,
-        "atlat_page": 21,
-        "province": "Thừa Thiên Huế",
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
+        "province": "Huế",
         "sectors": [
           {
-            "sector": "Dệt may",
-            "name": "Dệt may",
-            "share": 42,
-            "color": "#f59e0b"
-          },
-          {
-            "sector": "Thực phẩm",
-            "name": "Thực phẩm",
-            "share": 28,
-            "color": "#ef4444"
-          },
-          {
-            "sector": "Vật liệu",
-            "name": "Vật liệu",
-            "share": 18,
-            "color": "#8b5cf6"
-          },
-          {
-            "sector": "Cơ khí",
-            "name": "Cơ khí",
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
             "share": 12,
-            "color": "#2563eb"
+            "color": "#16A34A"
+          },
+          {
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 32,
+            "color": "#DC2626"
+          },
+          {
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 50,
+            "color": "#EAB308"
+          },
+          {
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 6,
+            "color": "#0284C7"
           }
         ]
       },
@@ -534,36 +515,37 @@
       "type": "Feature",
       "properties": {
         "id": "IND_12",
-        "name": "Vinh",
+        "name": "Vinh (Nghệ An)",
         "scale_tier": "medium",
-        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
         "radius_px": 16,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Nghệ An",
         "sectors": [
           {
-            "sector": "Thực phẩm",
-            "name": "Thực phẩm",
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 23,
+            "color": "#16A34A"
+          },
+          {
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 30,
+            "color": "#DC2626"
+          },
+          {
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
             "share": 42,
-            "color": "#ef4444"
+            "color": "#EAB308"
           },
           {
-            "sector": "Dệt may",
-            "name": "Dệt may",
-            "share": 28,
-            "color": "#f59e0b"
-          },
-          {
-            "sector": "Cơ khí",
-            "name": "Cơ khí",
-            "share": 18,
-            "color": "#2563eb"
-          },
-          {
-            "sector": "Gỗ giấy",
-            "name": "Gỗ giấy",
-            "share": 12,
-            "color": "#8b5cf6"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 5,
+            "color": "#0284C7"
           }
         ]
       },
@@ -581,34 +563,35 @@
         "id": "IND_13",
         "name": "Thái Nguyên",
         "scale_tier": "medium",
-        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
         "radius_px": 16,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Thái Nguyên",
         "sectors": [
           {
-            "sector": "Luyện kim",
-            "name": "Luyện kim",
-            "share": 44,
-            "color": "#334155"
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 11,
+            "color": "#16A34A"
           },
           {
-            "sector": "Điện tử",
-            "name": "Điện tử",
-            "share": 30,
-            "color": "#06b6d4"
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 58,
+            "color": "#DC2626"
           },
           {
-            "sector": "Cơ khí",
-            "name": "Cơ khí",
-            "share": 16,
-            "color": "#2563eb"
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 27,
+            "color": "#EAB308"
           },
           {
-            "sector": "Chế biến chè",
-            "name": "Chế biến chè",
-            "share": 10,
-            "color": "#10b981"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 4,
+            "color": "#0284C7"
           }
         ]
       },
@@ -624,36 +607,37 @@
       "type": "Feature",
       "properties": {
         "id": "IND_14",
-        "name": "Việt Trì",
+        "name": "Việt Trì (Phú Thọ)",
         "scale_tier": "medium",
-        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
         "radius_px": 16,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Phú Thọ",
         "sectors": [
           {
-            "sector": "Hóa chất",
-            "name": "Hóa chất",
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 21,
+            "color": "#16A34A"
+          },
+          {
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
             "share": 40,
-            "color": "#10b981"
+            "color": "#DC2626"
           },
           {
-            "sector": "Giấy",
-            "name": "Giấy",
-            "share": 28,
-            "color": "#d97706"
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 35,
+            "color": "#EAB308"
           },
           {
-            "sector": "Thực phẩm",
-            "name": "Thực phẩm",
-            "share": 18,
-            "color": "#ef4444"
-          },
-          {
-            "sector": "Dệt may",
-            "name": "Dệt may",
-            "share": 14,
-            "color": "#f59e0b"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 4,
+            "color": "#0284C7"
           }
         ]
       },
@@ -669,36 +653,37 @@
       "type": "Feature",
       "properties": {
         "id": "IND_15",
-        "name": "Cẩm Phả",
+        "name": "Cẩm Phả (Quảng Ninh)",
         "scale_tier": "medium",
-        "scale_desc": "Vừa (9 - 40 nghìn tỉ đồng)",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
         "radius_px": 16,
-        "atlat_page": 21,
+        "atlat_page": 18,
+        "source": "Atlat GD, tr.18",
         "province": "Quảng Ninh",
         "sectors": [
           {
-            "sector": "Than đá",
-            "name": "Than đá",
-            "share": 56,
-            "color": "#0f172a"
+            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
+            "share": 5,
+            "color": "#16A34A"
           },
           {
-            "sector": "Cơ khí",
-            "name": "Cơ khí",
-            "share": 22,
-            "color": "#2563eb"
+            "sector": "Công nghiệp và xây dựng",
+            "name": "Công nghiệp và xây dựng",
+            "share": 52,
+            "color": "#DC2626"
           },
           {
-            "sector": "Nhiệt điện",
-            "name": "Nhiệt điện",
-            "share": 14,
-            "color": "#dc2626"
+            "sector": "Dịch vụ",
+            "name": "Dịch vụ",
+            "share": 36,
+            "color": "#EAB308"
           },
           {
-            "sector": "Vật liệu",
-            "name": "Vật liệu",
-            "share": 8,
-            "color": "#8b5cf6"
+            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
+            "share": 7,
+            "color": "#0284C7"
           }
         ]
       },

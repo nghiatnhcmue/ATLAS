@@ -1,7 +1,7 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "title": "Lớp Khoáng sản Việt Nam (Atlat Trang 8)",
+    "title": "Lớp Khoáng sản Việt Nam (Atlat GD, tr.13)",
     "count": 26
   },
   "features": [
@@ -14,7 +14,8 @@
         "mineral_code": "coal",
         "mineral_type": "Than đá",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Quảng Ninh"
       },
       "geometry": {
@@ -34,7 +35,8 @@
         "mineral_code": "coal",
         "mineral_type": "Than đá",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Quảng Ninh"
       },
       "geometry": {
@@ -54,7 +56,8 @@
         "mineral_code": "coal",
         "mineral_type": "Than đá",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Quảng Ninh"
       },
       "geometry": {
@@ -74,8 +77,9 @@
         "mineral_code": "coal",
         "mineral_type": "Than đá",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
-        "province": "Quảng Nam"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Thành phố Đà Nẵng"
       },
       "geometry": {
         "type": "Point",
@@ -94,7 +98,8 @@
         "mineral_code": "coal",
         "mineral_type": "Than đá",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Sơn La"
       },
       "geometry": {
@@ -114,8 +119,9 @@
         "mineral_code": "oil",
         "mineral_type": "Dầu mỏ",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
-        "province": "Bà Rịa - Vũng Tàu"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Thành phố Hồ Chí Minh"
       },
       "geometry": {
         "type": "Point",
@@ -134,8 +140,9 @@
         "mineral_code": "oil",
         "mineral_type": "Dầu mỏ",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
-        "province": "Bà Rịa - Vũng Tàu"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Thành phố Hồ Chí Minh"
       },
       "geometry": {
         "type": "Point",
@@ -154,8 +161,9 @@
         "mineral_code": "oil",
         "mineral_type": "Dầu mỏ",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
-        "province": "Bà Rịa - Vũng Tàu"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Thành phố Hồ Chí Minh"
       },
       "geometry": {
         "type": "Point",
@@ -174,8 +182,9 @@
         "mineral_code": "oil",
         "mineral_type": "Dầu mỏ",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
-        "province": "Bà Rịa - Vũng Tàu"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Thành phố Hồ Chí Minh"
       },
       "geometry": {
         "type": "Point",
@@ -194,8 +203,9 @@
         "mineral_code": "oil",
         "mineral_type": "Dầu mỏ",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
-        "province": "Bà Rịa - Vũng Tàu"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Thành phố Hồ Chí Minh"
       },
       "geometry": {
         "type": "Point",
@@ -214,8 +224,9 @@
         "mineral_code": "gas",
         "mineral_type": "Khí tự nhiên",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
-        "province": "Thái Bình"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Tỉnh Hưng Yên"
       },
       "geometry": {
         "type": "Point",
@@ -234,8 +245,9 @@
         "mineral_code": "gas",
         "mineral_type": "Khí tự nhiên",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
-        "province": "Bà Rịa - Vũng Tàu"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Thành phố Hồ Chí Minh"
       },
       "geometry": {
         "type": "Point",
@@ -254,8 +266,9 @@
         "mineral_code": "gas",
         "mineral_type": "Khí tự nhiên",
         "group": "Nhiên liệu",
-        "atlat_page": 8,
-        "province": "Bà Rịa - Vũng Tàu"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Thành phố Hồ Chí Minh"
       },
       "geometry": {
         "type": "Point",
@@ -274,7 +287,8 @@
         "mineral_code": "iron",
         "mineral_type": "Sắt",
         "group": "Kim loại",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Thái Nguyên"
       },
       "geometry": {
@@ -294,7 +308,8 @@
         "mineral_code": "iron",
         "mineral_type": "Sắt",
         "group": "Kim loại",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Hà Tĩnh"
       },
       "geometry": {
@@ -314,7 +329,8 @@
         "mineral_code": "iron",
         "mineral_type": "Sắt",
         "group": "Kim loại",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Lào Cai"
       },
       "geometry": {
@@ -334,8 +350,9 @@
         "mineral_code": "iron",
         "mineral_type": "Sắt",
         "group": "Kim loại",
-        "atlat_page": 8,
-        "province": "Hà Giang"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Tỉnh Tuyên Quang"
       },
       "geometry": {
         "type": "Point",
@@ -349,13 +366,14 @@
       "type": "Feature",
       "properties": {
         "id": "MIN_18",
-        "name": "Mỏ bô-xít Nhân Cơ",
+        "name": "Mỏ bôxit Nhân Cơ",
         "symbol_type": "al_symbol",
         "mineral_code": "bauxite",
-        "mineral_type": "Bô-xít",
+        "mineral_type": "Bôxit",
         "group": "Kim loại",
-        "atlat_page": 8,
-        "province": "Đắk Nông"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Tỉnh Đắk Lắk"
       },
       "geometry": {
         "type": "Point",
@@ -369,12 +387,13 @@
       "type": "Feature",
       "properties": {
         "id": "MIN_19",
-        "name": "Mỏ bô-xít Tân Rai",
+        "name": "Mỏ bôxit Tân Rai",
         "symbol_type": "al_symbol",
         "mineral_code": "bauxite",
-        "mineral_type": "Bô-xít",
+        "mineral_type": "Bôxit",
         "group": "Kim loại",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Lâm Đồng"
       },
       "geometry": {
@@ -394,7 +413,8 @@
         "mineral_code": "apatite",
         "mineral_type": "Apatit",
         "group": "Phi kim loại",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Lào Cai"
       },
       "geometry": {
@@ -414,7 +434,8 @@
         "mineral_code": "tin",
         "mineral_type": "Thiếc",
         "group": "Kim loại",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Cao Bằng"
       },
       "geometry": {
@@ -434,7 +455,8 @@
         "mineral_code": "tin",
         "mineral_type": "Thiếc",
         "group": "Kim loại",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Nghệ An"
       },
       "geometry": {
@@ -454,8 +476,9 @@
         "mineral_code": "chromium",
         "mineral_type": "Crôm",
         "group": "Kim loại",
-        "atlat_page": 8,
-        "province": "Thanh Hóa"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Thanh Hoá"
       },
       "geometry": {
         "type": "Point",
@@ -474,7 +497,8 @@
         "mineral_code": "titan",
         "mineral_type": "Titan",
         "group": "Kim loại",
-        "atlat_page": 8,
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
         "province": "Hà Tĩnh"
       },
       "geometry": {
@@ -494,8 +518,9 @@
         "mineral_code": "titan",
         "mineral_type": "Titan",
         "group": "Kim loại",
-        "atlat_page": 8,
-        "province": "Bình Thuận"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Tỉnh Lâm Đồng"
       },
       "geometry": {
         "type": "Point",
@@ -514,8 +539,9 @@
         "mineral_code": "titan",
         "mineral_type": "Titan",
         "group": "Kim loại",
-        "atlat_page": 8,
-        "province": "Bình Định"
+        "atlat_page": 13,
+        "source": "Atlat GD, tr.13",
+        "province": "Tỉnh Quảng Ngãi"
       },
       "geometry": {
         "type": "Point",

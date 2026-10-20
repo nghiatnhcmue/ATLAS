@@ -7,10 +7,24 @@ document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   setupModes();
 
-  // Khởi động 3 phân hệ cốt lõi
-  AtlasEngine.init("atlas-map");
-  ChartTrainer.init();
-  GeoCalculator.init();
+  // Khởi động 3 phân hệ cốt lõi độc lập, cách ly lỗi tuyệt đối
+  try {
+    if (typeof AtlasEngine?.init === "function") AtlasEngine.init("atlas-map");
+  } catch (e) {
+    console.error("AtlasEngine init error:", e);
+  }
+
+  try {
+    if (typeof ChartTrainer?.init === "function") ChartTrainer.init();
+  } catch (e) {
+    console.error("ChartTrainer init error:", e);
+  }
+
+  try {
+    if (typeof GeoCalculator?.init === "function") GeoCalculator.init();
+  } catch (e) {
+    console.error("GeoCalculator init error:", e);
+  }
 
   setupSearch();
 
@@ -25,8 +39,31 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     const map = AtlasEngine.getMap();
     if (map) map.invalidateSize();
-    ChartTrainer.resize();
+    if (typeof ChartTrainer?.resize === "function") ChartTrainer.resize();
   });
+
+  // Đóng modal khi bấm Escape hoặc click nền mờ ngoài modal
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      AtlasEngine.closeSymbolHandbook();
+      AtlasEngine.closeCompareModal();
+      AtlasEngine.closeMiniGame();
+    }
+  });
+
+  const handbookModal = document.getElementById("symbol-handbook-modal");
+  if (handbookModal) {
+    handbookModal.addEventListener("click", (e) => {
+      if (e.target === handbookModal) AtlasEngine.closeSymbolHandbook();
+    });
+  }
+
+  const compareModal = document.getElementById("compare-modal");
+  if (compareModal) {
+    compareModal.addEventListener("click", (e) => {
+      if (e.target === compareModal) AtlasEngine.closeCompareModal();
+    });
+  }
 
   console.log("🚀 GeoAtlas Interactive: 3 Phân hệ đã sẵn sàng với Viewport Lock & Anti-overlap!");
 });
@@ -56,13 +93,13 @@ function setupModes() {
       setTimeout(() => {
         const map = AtlasEngine.getMap();
         if (map) map.invalidateSize();
-        ChartTrainer.resize();
+        if (typeof ChartTrainer?.resize === "function") ChartTrainer.resize();
       }, 50);
 
       setTimeout(() => {
         const map = AtlasEngine.getMap();
         if (map) map.invalidateSize();
-        ChartTrainer.resize();
+        if (typeof ChartTrainer?.resize === "function") ChartTrainer.resize();
       }, 180);
     });
   });
@@ -95,9 +132,19 @@ function setupSearch() {
   const input = document.getElementById("atlas-search-input");
   const btn = document.getElementById("atlas-search-btn");
 
+  let isComposing = false;
   if (input) {
-    input.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") AtlasEngine.searchAndFlyTo(input.value);
+    input.addEventListener("compositionstart", () => {
+      isComposing = true;
+    });
+    input.addEventListener("compositionend", () => {
+      isComposing = false;
+    });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        if (isComposing || e.isComposing) return;
+        AtlasEngine.searchAndFlyTo(input.value);
+      }
     });
   }
   if (btn && input) {

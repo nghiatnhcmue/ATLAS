@@ -31,7 +31,7 @@ const GeoCalculator = (function () {
         {
           key: "population",
           label: "Dân số",
-          defaultVal: 23.2,
+          defaultVal: 8.718,
           units: [
             { label: "Triệu người", factor: 1000000, latexMult: "\\times 10^6" },
             { label: "Nghìn người", factor: 1000, latexMult: "\\times 1000" },
@@ -41,7 +41,7 @@ const GeoCalculator = (function () {
         {
           key: "area",
           label: "Diện tích",
-          defaultVal: 21.3,
+          defaultVal: 3.360,
           units: [
             { label: "Nghìn km²", factor: 1000, latexMult: "\\times 1000" },
             { label: "km²", factor: 1, latexMult: "" },
@@ -50,25 +50,25 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Dân số & Diện tích một số Đơn vị Hành chính Tiêu biểu (Chuẩn Atlat 2026 & NQ 202/2025)",
+        title: "Dân số & Diện tích một số Đơn vị Hành chính Tiêu biểu (Chuẩn Atlat GD, tr.5)",
         headers: ["Tỉnh / Thành phố", "Dân số (Triệu người)", "Diện tích (Nghìn km²)"],
         rows: [
-          ["Thành phố Hồ Chí Minh", "13.609", "6.773"],
           ["Thành phố Hà Nội", "8.718", "3.360"],
+          ["Thành phố Hồ Chí Minh", "13.609", "6.773"],
           ["Thành phố Hải Phòng", "4.103", "3.195"],
           ["Thành phố Đà Nẵng", "2.820", "11.860"],
           ["Thành phố Cần Thơ", "3.207", "6.361"],
-          ["Thành phố Huế", "1.160", "4.902"],
-          ["Tỉnh Thanh Hóa", "3.764", "11.115"],
+          ["Thành phố Huế", "1.179", "4.947"],
+          ["Tỉnh Thanh Hoá", "3.764", "11.115"],
           ["Tỉnh Nghệ An", "3.472", "16.486"],
-          ["Tỉnh Đồng Nai", "4.290", "12.737"],
+          ["Tỉnh Đồng Nai", "4.428", "12.737"],
           ["Tỉnh Lâm Đồng", "3.324", "24.233"]
         ]
       },
       solve: (vals) => {
         const popExact = vals.population.val * vals.population.unitObj.factor;
         const areaExact = vals.area.val * vals.area.unitObj.factor;
-        if (areaExact <= 0) return { error: "Diện tích phải lớn hơn 0" };
+        if (areaExact <= 0) return { error: "Mẫu số (diện tích) phải lớn hơn 0" };
 
         const density = popExact / areaExact;
         return {
@@ -277,8 +277,9 @@ const GeoCalculator = (function () {
       solve: (vals) => {
         const x = vals.export_val.val;
         const m = vals.import_val.val;
+        if (m <= 0) return { error: "Mẫu số (kim ngạch nhập khẩu M) phải lớn hơn 0 để tính tỉ lệ Xuất/Nhập" };
         const balance = x - m;
-        const ratio = m > 0 ? (x / m) * 100 : 0;
+        const ratio = (x / m) * 100;
         const status = balance >= 0 ? `Xuất siêu (Thặng dư) +${balance.toFixed(2)} tỷ USD` : `Nhập siêu (Thâm hụt) ${balance.toFixed(2)} tỷ USD`;
 
         return {
@@ -504,7 +505,7 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Đặc trưng Khí hậu 8 Trạm Khí tượng Tiêu biểu (Atlat Trang 8 & 11)",
+        title: "Đặc trưng Khí hậu 8 Trạm Khí tượng Tiêu biểu (Atlat GD, tr.8 & 9)",
         headers: ["Trạm khí tượng", "Tmax (°C)", "Tmin (°C)", "Ttb (°C)", "Lượng mưa (mm)"],
         rows: [
           ["Hà Nội (Trạm Láng)", "29.8", "16.4", "23.8", "1676"],
@@ -587,6 +588,8 @@ const GeoCalculator = (function () {
       solve: (vals) => {
         const dCm = vals.map_distance_cm.val;
         const scaleDen = vals.map_scale_den.val;
+        if (scaleDen <= 0) return { error: "Mẫu số tỉ lệ bản đồ phải lớn hơn 0" };
+        if (dCm < 0) return { error: "Khoảng cách đo trên bản đồ (cm) không được âm" };
         const dKm = (dCm * scaleDen) / 100000;
         const kmPerCm = scaleDen / 100000;
 
@@ -604,6 +607,7 @@ const GeoCalculator = (function () {
 
   let currentFormulaKey = "density";
   let inputValues = {};
+  let currentSolutionData = null;
 
   function init() {
     renderFormulaSelect();
@@ -710,6 +714,24 @@ const GeoCalculator = (function () {
     `;
   }
 
+  function parseVNNumber(val) {
+    if (typeof val === 'number') return isNaN(val) ? 0 : val;
+    if (!val) return 0;
+    let clean = String(val).replace(/[\u00A0\u2009\u202F\s]/g, '').trim();
+    if (clean.includes(',') && !clean.includes('.')) {
+      clean = clean.replace(',', '.');
+    } else if (clean.includes('.') && clean.includes(',')) {
+      clean = clean.replace(/\./g, '').replace(',', '.');
+    }
+    const n = parseFloat(clean);
+    return isNaN(n) ? 0 : n;
+  }
+
+  function formatLatexNumber(latexStr) {
+    if (!latexStr) return "";
+    return latexStr.replace(/(\d+),(\d+)/g, "$1{,}$2");
+  }
+
   function renderInputs(formula) {
     const container = document.getElementById("calc-inputs-container");
     if (!container) return;
@@ -720,14 +742,16 @@ const GeoCalculator = (function () {
         <option value="${idx}" ${idx === current.unitIdx ? 'selected' : ''}>${u.label}</option>
       `).join("");
 
+      const displayVal = current.raw !== undefined ? current.raw : current.val;
+
       return `
         <div class="space-y-1.5">
           <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">${inp.label}:</label>
           <div class="flex items-center space-x-2">
             <input 
-              type="number" 
-              step="any"
-              value="${current.val}" 
+              type="text" 
+              inputmode="decimal"
+              value="${displayVal}" 
               oninput="GeoCalculator.onInputChange('${inp.key}', this.value)"
               class="flex-1 p-2 text-xs font-mono tabular-nums rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -745,7 +769,8 @@ const GeoCalculator = (function () {
 
   function onInputChange(key, val) {
     if (inputValues[key]) {
-      inputValues[key].val = parseFloat(val) || 0;
+      inputValues[key].val = parseVNNumber(val);
+      inputValues[key].raw = val;
       calculateAndRender();
     }
   }
@@ -826,6 +851,13 @@ const GeoCalculator = (function () {
       return;
     }
 
+    currentSolutionData = {
+      formulaName: formula.name,
+      resultText: res.resultText,
+      steps: res.stepsLatex || [],
+      note: res.note || ""
+    };
+
     let stepsHtml = "";
     if (res.stepsLatex && Array.isArray(res.stepsLatex)) {
       stepsHtml = res.stepsLatex.map((step, i) => `
@@ -835,11 +867,21 @@ const GeoCalculator = (function () {
 
     resultBox.innerHTML = `
       <div class="bg-gradient-to-br from-blue-50 to-indigo-50/60 dark:from-slate-800 dark:to-slate-800/80 p-4 rounded-xl border border-blue-200 dark:border-slate-700 space-y-3 shadow-xs">
-        <div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block mb-0.5">Kết quả tính toán:</span>
-          <div class="text-base sm:text-lg font-black text-blue-900 dark:text-blue-200 font-mono tabular-nums">
-            ${res.resultText}
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block mb-0.5">Kết quả tính toán:</span>
+            <div class="text-base sm:text-lg font-black text-blue-900 dark:text-blue-200 font-mono tabular-nums">
+              ${res.resultText}
+            </div>
           </div>
+          <button 
+            onclick="GeoCalculator.copySolution()"
+            title="Sao chép toàn bộ lời giải và đáp số"
+            class="px-2.5 py-1.5 rounded-lg border border-blue-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 text-xs font-bold text-blue-700 dark:text-blue-300 transition flex items-center space-x-1.5 shadow-2xs"
+          >
+            <span>📋</span>
+            <span class="hidden sm:inline">Sao chép lời giải</span>
+          </button>
         </div>
 
         <div class="space-y-1.5 pt-2 border-t border-blue-200/60 dark:border-slate-700">
@@ -863,7 +905,8 @@ const GeoCalculator = (function () {
         const el = document.getElementById(`step-katex-${i}`);
         if (el) {
           try {
-            katex.render(step, el, { throwOnError: false });
+            const formattedStep = formatLatexNumber(step);
+            katex.render(formattedStep, el, { throwOnError: false });
           } catch (e) {
             el.innerText = step;
           }
@@ -872,13 +915,59 @@ const GeoCalculator = (function () {
     }
   }
 
+  function copySolution() {
+    if (!currentSolutionData) return;
+    const cleanSteps = currentSolutionData.steps.map(s => {
+      return "  + " + s
+        .replace(/\\text\{([^}]+)\}/g, "$1")
+        .replace(/\\mathbf\{([^}]+)\}/g, "$1")
+        .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, "($1)/($2)")
+        .replace(/\\times/g, "x")
+        .replace(/\\div/g, "/")
+        .replace(/\\approx/g, "≈")
+        .replace(/\\quad/g, " ")
+        .replace(/\\textperthousand/g, "‰")
+        .replace(/\\%/g, "%")
+        .replace(/[{}]/g, "")
+        .replace(/\\/g, "");
+    }).join("\n");
+
+    const textToCopy = `[GeoAtlas - Máy Tính Địa Lý THPT]\nCông thức: ${currentSolutionData.formulaName}\n- Đáp số: ${currentSolutionData.resultText}\n- Các bước giải:\n${cleanSteps}\n${currentSolutionData.note ? "- Nhận xét Địa lý: " + currentSolutionData.note : ""}`;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        if (typeof window.showAppToast === "function") {
+          window.showAppToast("📋 Đã sao chép lời giải chi tiết vào bộ nhớ tạm!");
+        }
+      });
+    } else {
+      const ta = document.createElement("textarea");
+      ta.value = textToCopy;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      if (typeof window.showAppToast === "function") {
+        window.showAppToast("📋 Đã sao chép lời giải chi tiết vào bộ nhớ tạm!");
+      }
+    }
+  }
+
+  function formatLatexNumber(latexStr) {
+    if (typeof latexStr !== "string") return latexStr;
+    return latexStr.replace(/(\d+),(\d+)/g, "$1{,}$2");
+  }
+
   return {
     init,
     selectFormula,
     onInputChange,
     onUnitChange,
     bindSampleRow,
-    loadDefaultSample
+    loadDefaultSample,
+    copySolution,
+    parseVNNumber,
+    formatLatexNumber
   };
 })();
 

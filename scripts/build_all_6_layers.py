@@ -3,12 +3,12 @@
 """
 GeoAtlas Interactive - Build All 6 Standard Atlat Layers
 Layers:
-1. Hành chính & Vùng kinh tế (Trang 4-5) -> vn_provinces_63.geojson & vn_provinces_34.geojson
-2. Địa hình & Sông ngòi (Trang 6-7, 10) -> topography_rivers.geojson
-3. Khí hậu & Thủy văn (Trang 9) -> climate_hydro.geojson
-4. Nông, Lâm, Thủy sản (Trang 18-20) -> agriculture_fishery.geojson
-5. Khoáng sản & Năng lượng (Trang 8 & 22) -> minerals.geojson & hydropower.geojson
-6. Trung tâm Công nghiệp (Trang 21) -> industrial_centers.geojson
+1. Hành chính & Vùng kinh tế (Atlat GD, tr.4-5) -> vn_provinces_63.geojson & vn_provinces_34.geojson
+2. Địa hình & Sông ngòi (Atlat GD, tr.7 & 10) -> topography_rivers.geojson
+3. Khí hậu & Thủy văn (Atlat GD, tr.8 & 9) -> climate_hydro.geojson
+4. Nông, Lâm, Thủy sản (Atlat GD, tr.19-21) -> agriculture_fishery.geojson
+5. Khoáng sản & Năng lượng (Atlat GD, tr.13 & 23) -> minerals.geojson & hydropower.geojson
+6. Trung tâm Công nghiệp (Atlat GD, tr.18 & 22) -> industrial_centers.geojson
 """
 
 import json
@@ -243,7 +243,7 @@ TOPOGRAPHY_FEATURES = [
     {
         "type": "Feature",
         "geometry": {"type": "Point", "coordinates": [107.60, 12.25]},
-        "properties": {"id": "PLA_06", "name": "Cao nguyên Mơ Nông", "category": "plateau", "province": "Đắk Nông", "desc": "Địa hình gợn sóng lượn, giàu khoáng sản bô-xít nhôm và cây công nghiệp lâu năm.", "atlat_page": 7}
+        "properties": {"id": "PLA_06", "name": "Cao nguyên Mơ Nông", "category": "plateau", "province": "Đắk Nông", "desc": "Địa hình gợn sóng lượn, giàu khoáng sản bôxit nhôm và cây công nghiệp lâu năm.", "atlat_page": 7}
     },
     {
         "type": "Feature",
@@ -358,7 +358,7 @@ CLIMATE_FEATURES = [
             "avg_temp": "24.1°C",
             "temp_range": "10.9°C",
             "rainfall": "1.944 mm",
-            "climate_type": "Mùa đông lạnh, mùa hè chịu hiệu ứng gió phơn Tây Nam khô nóng gay gắt",
+            "climate_type": "Mùa đông lạnh, mùa hè chịu hiệu ứng gió tây khô nóng gay gắt",
             "atlat_page": 9
         }
     },

@@ -58,7 +58,7 @@
   <link rel="stylesheet" href="./css/styles.css?v=2026.2">
 </head>
 
-<body class="h-full lg:h-screen lg:overflow-hidden flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased select-none">
+<body class="h-[100dvh] overflow-hidden flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased select-none">
 
   <!-- ====================================================================== -->
   <!-- TOP HEADER (HEIGHT: 64px / h-16, FIXED & Z-INDEX: 2000)                -->
@@ -75,7 +75,7 @@
           <span class="font-bold text-sm sm:text-base tracking-tight text-slate-900 dark:text-white">
             GeoAtlas Interactive
           </span>
-          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300 border border-blue-200 dark:border-blue-900">
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300 border border-blue-200 dark:border-blue-900 hidden lg:inline-flex">
             Chuẩn Thi THPT 2026 • GDPT 2018
           </span>
         </div>
@@ -83,11 +83,11 @@
       </div>
     </div>
 
-    <!-- Center: 3 Segmented Pill Controls -->
-    <nav class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 shadow-inner">
+    <!-- Center: 3 Segmented Pill Controls (Responsive on Mobile) -->
+    <nav class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 shadow-inner overflow-x-auto no-scrollbar shrink-0">
       <button 
         data-tab-target="mode-atlas" 
-        class="mode-nav-btn segmented-pill-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 bg-blue-600 text-white shadow-xs"
+        class="mode-nav-btn segmented-pill-btn px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 bg-blue-600 text-white shadow-xs shrink-0"
       >
         <span>🗺️</span>
         <span class="hidden md:inline">1. Atlas Số Thông Minh</span>
@@ -96,7 +96,7 @@
 
       <button 
         data-tab-target="mode-charts" 
-        class="mode-nav-btn segmented-pill-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+        class="mode-nav-btn segmented-pill-btn px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white shrink-0"
       >
         <span>📊</span>
         <span class="hidden md:inline">2. Nhận Dạng Biểu Đồ</span>
@@ -105,7 +105,7 @@
 
       <button 
         data-tab-target="mode-calc" 
-        class="mode-nav-btn segmented-pill-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+        class="mode-nav-btn segmented-pill-btn px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white shrink-0"
       >
         <span>🧮</span>
         <span class="hidden md:inline">3. Máy Tính & Công Thức</span>
@@ -113,12 +113,21 @@
       </button>
     </nav>
 
-    <!-- Right: National Sovereignty Tag & Theme Toggle -->
-    <div class="flex items-center space-x-2.5">
+    <!-- Right: National Sovereignty Tag, Symbol Handbook & Theme Toggle -->
+    <div class="flex items-center space-x-2">
       <div class="hidden xl:flex items-center space-x-1.5 text-xs px-3 py-1.5 rounded-full bg-red-50 text-red-700 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900 font-semibold shadow-xs">
         <span>🇻🇳</span>
         <span>Hoàng Sa & Trường Sa: Chủ quyền Việt Nam</span>
       </div>
+
+      <button 
+        onclick="AtlasEngine.openSymbolHandbook()"
+        title="Mở Sổ Tay Ký Hiệu & Cẩm Nang Atlat Chuẩn THPT"
+        class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-semibold shadow-xs transition"
+      >
+        <span>📖</span>
+        <span class="hidden sm:inline">Sổ Tay Ký Hiệu</span>
+      </button>
 
       <button 
         id="theme-toggle-btn"
@@ -145,24 +154,45 @@
         <div id="atlas-map-container" class="w-full h-full relative">
           <div id="atlas-map" class="w-full h-full"></div>
 
-          <!-- Bộ chuyển đổi 4 Bản đồ nền (Vector Atlat Thuần / Địa hình / Đường bộ / Vệ tinh) -->
+          <!-- Bộ chuyển đổi 4 Chuyên Đề Atlat Tự Vẽ (100% Offline Vector từ Data - Tuyệt Đối Không Dùng API Ngoài) -->
           <div class="absolute top-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-1 text-[11px]">
-            <button id="btn-bm-vector" onclick="AtlasEngine.setBaseMap('vector')" class="px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-xs">🗺️ Vector Atlat</button>
-            <button id="btn-bm-physical" onclick="AtlasEngine.setBaseMap('physical')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium">🏔️ Địa hình</button>
-            <button id="btn-bm-osm" onclick="AtlasEngine.setBaseMap('osm')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium">🌍 Đường bộ</button>
-            <button id="btn-bm-satellite" onclick="AtlasEngine.setBaseMap('satellite')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium">🛰️ Vệ tinh</button>
+            <button id="btn-bm-admin" onclick="AtlasEngine.setAtlatTheme('admin')" class="px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-xs" title="Tự vẽ 6 Vùng kinh tế & Tỉnh thành (Atlat GD, tr.4-5 & 18)">🏛️ Hành Chính</button>
+            <button id="btn-bm-physical" onclick="AtlasEngine.setAtlatTheme('physical')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium" title="Tự vẽ phân tầng độ cao địa hình, đỉnh núi, sông ngòi (Atlat GD, tr.6-7)">⛰️ Địa Hình</button>
+            <button id="btn-bm-climate" onclick="AtlasEngine.setAtlatTheme('climate')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium" title="Tự vẽ 2 miền khí hậu, gió mùa, trạm khí tượng (Atlat GD, tr.8-9)">🌤️ Khí Hậu</button>
+            <button id="btn-bm-economic" onclick="AtlasEngine.setAtlatTheme('economic')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium" title="Tự vẽ quy mô GRDP 4 cấp & trung tâm công nghiệp (Atlat GD, tr.18-22)">🏭 Kinh Tế</button>
           </div>
 
-          <!-- Floating GIS Toolbar (Reset View, Measure Tool, Compare Mode, Mini-Game) -->
+          <!-- Bảng chú giải phân tầng độ cao tự vẽ (Tự động hiển thị khi chọn Địa Hình Tr.6-7) -->
+          <div id="elevation-legend" class="absolute bottom-8 left-3 z-[890] hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-2.5 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 text-[10px] font-sans">
+            <div class="font-bold text-[11px] text-slate-800 dark:text-slate-200 mb-1.5 flex items-center space-x-1">
+              <span>⛰️</span><span>Phân Tầng Độ Cao (Atlat GD, tr.6-7)</span>
+            </div>
+            <div class="space-y-1">
+              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#86efac"></span><span>&lt; 50m: Đồng bằng châu thổ thấp</span></div>
+              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#bef264"></span><span>50 - 200m: Đồng bằng cao &amp; duyên hải</span></div>
+              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#fde047"></span><span>200 - 500m: Đồi trung du &amp; bán bình nguyên</span></div>
+              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#fb923c"></span><span>500 - 1000m: Cao nguyên bazan</span></div>
+              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#ea580c"></span><span>1000 - 1500m: Vùng núi trung bình</span></div>
+              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#9a3412"></span><span>&gt; 1500m: Vùng núi cao (Hoàng Liên Sơn, Ngọc Linh)</span></div>
+            </div>
+          </div>
+
+          <!-- Floating GIS Toolbar (Reset View, SGK Original Map, Measure Tool, Compare Mode, Mini-Game, Symbol Handbook) -->
           <div class="absolute top-3 right-14 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-1 text-[11px]">
             <button onclick="AtlasEngine.resetView()" title="Toàn cảnh Việt Nam" class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
               <span>🧭</span><span class="hidden sm:inline">Toàn cảnh</span>
+            </button>
+            <button onclick="AtlasEngine.openAtlatPagesModal()" title="Xem trang bản đồ gốc Atlat 2026 (Scan Sách Giáo Khoa 100% Offline từ Data)" class="px-2 py-1 rounded-md bg-amber-500 hover:bg-amber-600 text-white font-bold transition shadow-xs flex items-center space-x-1">
+              <span>📖</span><span class="hidden sm:inline">Bản Đồ Gốc SGK</span>
             </button>
             <button id="btn-tool-measure" onclick="AtlasEngine.toggleMeasureTool()" title="Thước đo khoảng cách thực tế & tỷ lệ Atlat" class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
               <span>📐</span><span class="hidden sm:inline">Thước đo</span>
             </button>
             <button onclick="AtlasEngine.openCompareModal()" title="So sánh 2 Tỉnh thành hoặc Vùng kinh tế" class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
               <span>⚖️</span><span class="hidden sm:inline">So sánh</span>
+            </button>
+            <button onclick="AtlasEngine.openSymbolHandbook()" title="Tra cứu nhanh Ký hiệu Atlat" class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
+              <span>🔖</span><span class="hidden sm:inline">Ký hiệu</span>
             </button>
             <button onclick="AtlasEngine.startMiniGame()" title="Mini-game 15 giây định vị nhanh Atlat" class="px-2 py-1 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-400 hover:bg-amber-500/20 transition font-bold flex items-center space-x-1">
               <span>🎮</span><span class="hidden sm:inline">Định vị</span>
@@ -200,7 +230,7 @@
           </div>
         </div>
 
-        <!-- Bộ Chuyển Đổi: 63 Tỉnh Thành (Atlat) vs 34 Tỉnh Thành Mới (NQ 202/2025/QH15) -->
+        <!-- Bộ Chuyển Đổi: 34 Tỉnh Mới (Atlat 2026) vs 63 Tỉnh Trước 01/7/2025 -->
         <div class="bg-white dark:bg-slate-900 p-3.5 rounded-xl border border-blue-200/80 dark:border-slate-800 shadow-sm space-y-2.5">
           <div class="flex items-center justify-between pb-1.5 border-b border-slate-100 dark:border-slate-800">
             <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center space-x-1.5">
@@ -208,32 +238,32 @@
               <span>ĐỊA GIỚI HÀNH CHÍNH</span>
             </span>
             <span id="province-mode-badge" class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
-              63 Tỉnh Thành (Atlat)
+              34 Đơn Vị (Chuẩn Atlat GD, tr.4-5)
             </span>
           </div>
 
           <div class="grid grid-cols-2 gap-2 bg-slate-50 dark:bg-slate-800/60 p-1 rounded-lg border border-slate-200/70 dark:border-slate-700 text-xs">
             <button 
-              id="btn-mode-63" 
-              onclick="AtlasEngine.setProvinceMode('63')"
-              class="px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-blue-600 text-white shadow-xs"
-              title="63 Tỉnh Thành truyền thống theo Atlat Địa lí Việt Nam & SGK"
-            >
-              <span>🇻🇳</span>
-              <span class="truncate">63 Tỉnh (Atlat SGK)</span>
-            </button>
-            <button 
               id="btn-mode-34" 
               onclick="AtlasEngine.setProvinceMode('34')"
-              class="px-2.5 py-1.5 rounded-md font-semibold transition text-center flex items-center justify-center space-x-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-              title="34 Tỉnh Thành mới theo Nghị quyết số 202/2025/QH15 (28 Tỉnh + 6 Thành phố TW)"
+              class="px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-blue-600 text-white shadow-xs"
+              title="34 Đơn vị hành chính cấp tỉnh chuẩn Atlat GD 2026 tr.4-5"
             >
-              <span>🆕</span>
-              <span class="truncate">34 Tỉnh Mới (NQ 2025)</span>
+              <span>🏛️</span>
+              <span class="truncate">34 Tỉnh Mới (Atlat 2026)</span>
+            </button>
+            <button 
+              id="btn-mode-63" 
+              onclick="AtlasEngine.setProvinceMode('63')"
+              class="px-2.5 py-1.5 rounded-md font-semibold transition text-center flex items-center justify-center space-x-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+              title="63 Tỉnh Thành trước 01/7/2025 (Nguồn tham khảo: geoBoundaries CC-BY)"
+            >
+              <span>🗺️</span>
+              <span class="truncate">63 Tỉnh (Trước 01/7/2025)</span>
             </button>
           </div>
           <p id="province-mode-hint" class="text-[10px] text-slate-500 dark:text-slate-400 italic">
-            Chuẩn SGK & Atlat trang 4-5. Bấm vào tỉnh để xem số liệu và phương án sáp nhập mới.
+            Chuẩn Atlat GD 2026, tr.4-5 (Bảng diện tích, dân số 34 đơn vị hành chính; ranh giới tổng hợp nội suy).
           </p>
         </div>
 
@@ -244,16 +274,16 @@
             <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded-full">Chuẩn SGK & Atlat</span>
           </div>
 
-          <!-- Lớp 1: Ranh giới & 7 Vùng Kinh Tế (Trang 4-5) -->
+          <!-- Lớp 1: Ranh giới & Vùng Kinh Tế (Atlat GD, tr.4-5 & tr.18) -->
           <div class="space-y-2">
             <div class="flex items-center justify-between">
               <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
                 <input type="checkbox" id="layer-chk-provinces" checked onchange="AtlasEngine.toggleLayer('provinces', this.checked)" class="rounded text-blue-600 focus:ring-blue-500">
-                <span>Lớp 1: Hành chính & 7 Vùng Kinh Tế</span>
+                <span>Lớp 1: Hành chính & Vùng Kinh Tế</span>
               </label>
-              <span class="text-[10px] font-medium text-slate-400">Trang 4-5</span>
+              <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400">Atlat GD, tr.4-5</span>
             </div>
-            <!-- Thanh trượt Opacity -->
+            <!-- Thanh trượt Opacity & Phân hạng Heatmap -->
             <div class="flex items-center space-x-2 pt-0.5">
               <span class="text-[10px] text-slate-500 w-16">Độ mờ nền:</span>
               <input 
@@ -267,99 +297,122 @@
                 class="flex-1 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
               />
             </div>
+            <!-- Heatmap Choropleth Dropdown (Upgrade 1) -->
+            <div class="flex items-center space-x-2 pt-0.5">
+              <span class="text-[10px] text-slate-500 w-16">🎨 Heatmap:</span>
+              <select id="choropleth-select" onchange="AtlasEngine.setChoroplethMode(this.value)" class="flex-1 text-[11px] p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium">
+                <option value="none">-- Tắt Heatmap (Vùng kinh tế) --</option>
+                <option value="density">Mật độ dân số (người/km² - Atlat tr.15)</option>
+                <option value="grdp">Quy mô GRDP (nghìn tỉ đồng - Atlat tr.18)</option>
+                <option value="area">Diện tích tự nhiên (km² - Atlat tr.4-5)</option>
+              </select>
+            </div>
+            <!-- BUG-02: 6 Vùng Kinh Tế chuẩn Atlat GD, tr.5 & tr.18 -->
             <select onchange="AtlasEngine.renderProvinces(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500">
               <option value="all">-- Lọc theo Vùng Kinh Tế (Spotlight Focus) --</option>
-              <option value="Đồng bằng sông Hồng">1. Đồng bằng sông Hồng</option>
-              <option value="Trung du và miền núi Bắc Bộ">2. Trung du & Miền núi Bắc Bộ</option>
-              <option value="Bắc Trung Bộ">3. Bắc Trung Bộ (Atlat)</option>
-              <option value="Duyên hải Nam Trung Bộ">4. Duyên hải Nam Trung Bộ (Atlat)</option>
-              <option value="Bắc Trung Bộ và Duyên hải miền Trung">★ Bắc Trung Bộ & DH miền Trung (GDPT 2018)</option>
-              <option value="Tây Nguyên">5. Tây Nguyên</option>
-              <option value="Đông Nam Bộ">6. Đông Nam Bộ</option>
-              <option value="Đồng bằng sông Cửu Long">7. Đồng bằng sông Cửu Long</option>
+              <option value="Trung du và miền núi phía Bắc">I. Trung du và miền núi phía Bắc</option>
+              <option value="Đồng bằng sông Hồng">II. Đồng bằng sông Hồng</option>
+              <option value="Bắc Trung Bộ">III. Bắc Trung Bộ</option>
+              <option value="Duyên hải Nam Trung Bộ và Tây Nguyên">IV. Duyên hải Nam Trung Bộ và Tây Nguyên</option>
+              <option value="Đông Nam Bộ">V. Đông Nam Bộ</option>
+              <option value="Đồng bằng sông Cửu Long">VI. Đồng bằng sông Cửu Long</option>
             </select>
           </div>
 
-          <!-- Lớp 2: Địa hình & Sông ngòi (Trang 6-7, 10) -->
+          <!-- Lớp 2: Địa hình & Sông ngòi (Atlat GD, tr.7 & tr.10) -->
           <div class="space-y-1.5 pt-2.5 border-t border-slate-100 dark:border-slate-800">
             <div class="flex items-center justify-between">
               <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
                 <input type="checkbox" id="layer-chk-topography" onchange="AtlasEngine.toggleLayer('topography', this.checked)" class="rounded text-amber-600 focus:ring-amber-500">
                 <span>Lớp 2: Địa hình & Sông ngòi</span>
               </label>
-              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400">Trang 6-7, 10</span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400">Atlat GD, tr.7 & tr.10</span>
             </div>
             <p class="text-[10px] text-slate-500 dark:text-slate-400">
-              Đỉnh Fansipan 3.143m ⛰️, Ngọc Linh, Bạch Mã; 4 cánh cung Đông Bắc; Cao nguyên badan 🟫 & Sông lớn 🌊 (Sông Hồng, Mê Kông).
+              Đỉnh Phanxipăng 3.147m ⛰️, Ngọc Linh, Bạch Mã; 4 cánh cung Đông Bắc; Cao nguyên badan 🟫 & Sông lớn 🌊 (Sông Hồng, Mê Kông).
             </p>
           </div>
 
-          <!-- Lớp 3: Khí hậu & Thủy văn (Trang 9) -->
+          <!-- Lớp 3: Khí hậu & Thủy văn (Atlat GD, tr.8 & tr.9) -->
           <div class="space-y-1.5 pt-2.5 border-t border-slate-100 dark:border-slate-800">
             <div class="flex items-center justify-between">
               <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
                 <input type="checkbox" id="layer-chk-climate" onchange="AtlasEngine.toggleLayer('climate', this.checked)" class="rounded text-blue-600 focus:ring-blue-500">
                 <span>Lớp 3: Khí hậu & Thủy văn</span>
               </label>
-              <span class="text-[10px] font-semibold text-blue-600 dark:text-blue-400">Trang 9</span>
+              <span class="text-[10px] font-semibold text-blue-600 dark:text-blue-400">Atlat GD, tr.8 & tr.9</span>
             </div>
             <p class="text-[10px] text-slate-500 dark:text-slate-400">
-              Ranh giới Bạch Mã 16°B; Gió Đông Bắc lạnh ❄️, Gió Tây Nam ẩm 🌧️, Gió Phơn Lào ☀️; Tần suất bão 🌀 & 8 Trạm khí tượng 🌡️ ($T_{tb}, \Delta T$, lượng mưa).
+              Ranh giới miền khí hậu Bạch Mã; Gió mùa Đông Bắc ❄️, Gió mùa Tây Nam 🌧️, Gió tây khô nóng ☀️; Tần suất bão 🌀 & 15 Trạm khí tượng 🌡️ (nhiệt độ trung bình, biên độ nhiệt, lượng mưa).
             </p>
           </div>
 
-          <!-- Lớp 4: Nông, Lâm, Thủy sản (Trang 18-20) -->
+          <!-- Lớp 4: Nông, Lâm, Thủy sản (Atlat GD, tr.19 - 21) -->
           <div class="space-y-1.5 pt-2.5 border-t border-slate-100 dark:border-slate-800">
             <div class="flex items-center justify-between">
               <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
                 <input type="checkbox" id="layer-chk-agriculture" onchange="AtlasEngine.toggleLayer('agriculture', this.checked)" class="rounded text-emerald-600 focus:ring-emerald-500">
                 <span>Lớp 4: Nông, Lâm, Thủy sản</span>
               </label>
-              <span class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400">Trang 18-20</span>
+              <span class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400">Atlat GD, tr.19 - 21</span>
             </div>
             <p class="text-[10px] text-slate-500 dark:text-slate-400">
-              Vùng chuyên canh Lúa gạo 🌾, Cà phê ☕, Cao su 🌲, Chè 🍵, Cây ăn quả 🍊 & 4 Ngư trường lớn 🐟 (Hải Phòng - QN, Ninh Thuận - BT, Cà Mau - KG, Quần đảo).
+              Vùng chuyên canh Lúa gạo 🌾, Cà phê ☕, Cao su 🌲, Chè 🍵, Cây ăn quả 🍊 & Thủy sản (Đồng bằng sông Cửu Long, Duyên hải Nam Trung Bộ).
             </p>
           </div>
 
-          <!-- Lớp 5: Khoáng sản & Năng lượng (Trang 8, 22) -->
+          <!-- Lớp 5: Khoáng sản & Năng lượng (Atlat GD, tr.13 & tr.23) -->
           <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
             <div class="flex items-center justify-between">
               <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
                 <input type="checkbox" id="layer-chk-minerals_power" onchange="AtlasEngine.toggleLayer('minerals_power', this.checked)" class="rounded text-amber-600 focus:ring-amber-500">
                 <span>Lớp 5: Khoáng sản & Năng lượng</span>
               </label>
-              <span class="text-[10px] font-semibold text-amber-600 dark:text-amber-400">Trang 8 & 22</span>
+              <span class="text-[10px] font-semibold text-amber-600 dark:text-amber-400">Atlat GD, tr.13 & tr.23</span>
             </div>
             <select onchange="AtlasEngine.renderMineralsPowerLayer(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
               <option value="all">-- Tất cả khoáng sản & năng lượng --</option>
-              <option value="minerals">Chuyên đề Khoáng sản (Than, Dầu khí, Sắt, Bô-xít, Titan...)</option>
-              <option value="power">Chuyên đề Năng lượng (Thủy điện, Nhiệt điện, Điện gió, Mặt trời)</option>
+              <option value="minerals">Chuyên đề Khoáng sản (Than, Dầu khí, Sắt, Bôxit, Titan... - Tr.13)</option>
+              <option value="power">Chuyên đề Năng lượng (Thủy điện, Nhiệt điện, Điện gió, Mặt trời - Tr.23)</option>
             </select>
           </div>
 
-          <!-- Lớp 6: Trung tâm Công nghiệp & Kinh tế (Trang 21) -->
+          <!-- Lớp 6: Kinh tế & Công nghiệp (Atlat GD, tr.18 & tr.22) -->
           <div class="space-y-2 pt-2.5 border-t border-slate-100 dark:border-slate-800">
             <div class="flex items-center justify-between">
               <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
                 <input type="checkbox" id="layer-chk-industrial" onchange="AtlasEngine.toggleLayer('industrial', this.checked)" class="rounded text-purple-600 focus:ring-purple-500">
-                <span>Lớp 6: Trung Tâm CN & Kinh Tế</span>
+                <span>Lớp 6: Kinh Tế & Công Nghiệp</span>
               </label>
-              <span class="text-[10px] font-semibold text-purple-600 dark:text-purple-400">Trang 21 (Pie SVG Động)</span>
+              <span class="text-[10px] font-semibold text-purple-600 dark:text-purple-400">Atlat GD, tr.18 & tr.22</span>
             </div>
             <select onchange="AtlasEngine.renderIndustrialCenters(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
-              <option value="all">-- Phân cấp quy mô sản xuất --</option>
-              <option value="very_large">Rất lớn: TP. Hồ Chí Minh, Hà Nội</option>
-              <option value="large">Lớn: Hải Phòng, Biên Hòa, Vũng Tàu, Đà Nẵng</option>
-              <option value="medium">Vừa: Cần Thơ, Nha Trang, Huế, Vinh, Quy Nhơn...</option>
+              <option value="all">-- Phân cấp quy mô GRDP (Atlat GD, tr.18) --</option>
+              <option value="very_large">Từ 1 000 nghìn tỉ đồng trở lên (TP.HCM, Hà Nội)</option>
+              <option value="large">Từ 300 đến dưới 1 000 nghìn tỉ (Hải Phòng, Biên Hòa, Vũng Tàu...)</option>
+              <option value="medium">Từ 100 đến dưới 300 nghìn tỉ (Đà Nẵng, Cần Thơ, Nha Trang...)</option>
             </select>
+          </div>
+
+          <!-- Lớp 7: Giao Thông Vận Tải Huyết Mạch (Atlat GD, tr.23 - Upgrade 2) -->
+          <div class="space-y-1.5 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center justify-between">
+              <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
+                <input type="checkbox" id="layer-chk-transportation" onchange="AtlasEngine.toggleLayer('transportation', this.checked)" class="rounded text-red-600 focus:ring-red-500">
+                <span>Lớp 7: Giao Thông Vận Tải (Tr.23)</span>
+              </label>
+              <span class="text-[10px] font-semibold text-red-600 dark:text-red-400">Atlat GD, tr.23</span>
+            </div>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400">
+              QL1A 🔴, Đường Hồ Chí Minh 🟢, Tuyến đường sắt Thống Nhất 🚂, 9 Cảng hàng không ✈️ &amp; 7 Cụm Cảng biển lớn ⚓.
+            </p>
           </div>
         </div>
 
         <!-- Thông tin chi tiết & Tham chiếu số trang Atlat -->
         <div id="atlas-info-card" class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-4 text-xs">
           <div class="text-center text-slate-400 py-3">
-            Bấm vào bất kỳ tỉnh thành, mỏ khoáng sản hoặc trung tâm công nghiệp trên bản đồ để xem chi tiết.
+            Bấm vào bất kỳ tỉnh thành, mỏ khoáng sản, nhà máy năng lượng hoặc cơ cấu kinh tế trên bản đồ để xem chi tiết.
           </div>
         </div>
       </div>
@@ -376,9 +429,19 @@
             <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
               Khung Trực Quan Hóa (Apache ECharts)
             </span>
-            <span class="text-[10px] text-slate-400 font-medium">Tự động co giãn Responsive</span>
+            <span class="text-[10px] text-slate-400 font-medium hidden sm:inline">Tự động co giãn Responsive</span>
           </div>
-          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-mono">Quan sát dạng hình học & tỉ lệ thang đo</span>
+          <div class="flex items-center space-x-1.5">
+            <button onclick="ChartTrainer.exportChartPng()" title="Tải ảnh PNG chất lượng cao (2x DPI)" class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1 transition shadow-2xs">
+              <span>📸</span> <span class="hidden md:inline">Tải ảnh PNG</span>
+            </button>
+            <button onclick="ChartTrainer.resetChartZoom()" title="Đặt lại góc nhìn biểu đồ" class="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1 transition shadow-2xs">
+              <span>🔄</span> <span class="hidden md:inline">Đặt lại</span>
+            </button>
+            <button onclick="ChartTrainer.randomQuestion()" title="Làm câu hỏi ngẫu nhiên" class="px-2 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-[11px] font-bold text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900 flex items-center space-x-1 transition shadow-2xs">
+              <span>🔀</span> <span class="hidden sm:inline">Ngẫu nhiên</span>
+            </button>
+          </div>
         </div>
         <!-- Vùng vẽ biểu đồ ECharts -->
         <div id="chart-visual-canvas" class="flex-1 w-full min-h-[350px] mt-2"></div>
@@ -398,7 +461,7 @@
       <div class="col-span-12 lg:col-span-7 h-full min-h-[420px] rounded-xl overflow-y-auto relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 p-5 space-y-4">
         <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
           <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Mô Hình Toán Học Chuẩn Sư Phạm</span>
-          <div id="calc-katex-formula" class="katex-formula-box text-sm sm:text-base py-1"></div>
+          <div id="calc-katex-formula" class="katex-formula-box text-sm sm:text-base py-1 overflow-x-auto"></div>
         </div>
 
         <!-- Bảng số liệu mẫu có cơ chế Click-to-Bind -->
@@ -452,21 +515,32 @@
     </div>
   </div>
 
-  <!-- Modal Mini-Game 15 Giây "Định Vị Nhanh Atlat" -->
+  <!-- Modal Đấu Trường Atlat THPT 3 Chế Độ (Upgrade 3) -->
   <div id="game-modal" class="fixed top-20 right-6 z-[2000] max-w-sm w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl border border-amber-300 dark:border-amber-800 space-y-3 hidden">
     <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
       <div class="flex items-center space-x-2">
-        <span class="text-base">🎮</span>
-        <h4 class="font-bold text-xs text-amber-800 dark:text-amber-300 uppercase tracking-wider">Định Vị Nhanh Atlat</h4>
+        <span class="text-base">🏆</span>
+        <h4 class="font-bold text-xs text-amber-800 dark:text-amber-300 uppercase tracking-wider">Đấu Trường Atlat THPT</h4>
       </div>
       <button onclick="AtlasEngine.closeMiniGame()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold">✕ Đóng</button>
     </div>
 
-    <div class="bg-amber-50 dark:bg-amber-950/40 p-3 rounded-xl border border-amber-200 dark:border-amber-900/60 text-center space-y-1">
-      <span class="text-[10px] font-bold uppercase text-amber-700 dark:text-amber-400">Hãy tìm & bấm chọn trên bản đồ:</span>
-      <div id="game-target-name" class="text-base font-black text-blue-700 dark:text-blue-300">...</div>
+    <!-- 3 Chế độ chơi Tabs -->
+    <div class="flex items-center space-x-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg text-[10px]">
+      <button id="game-tab-speed" onclick="AtlasEngine.setGameMode('speed')" class="flex-1 py-1 rounded-md bg-amber-500 text-white font-bold transition text-center shadow-xs">⚡ Định Vị 15s</button>
+      <button id="game-tab-silhouette" onclick="AtlasEngine.setGameMode('silhouette')" class="flex-1 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition text-center font-medium">👥 Đoán Bóng</button>
+      <button id="game-tab-symbols" onclick="AtlasEngine.setGameMode('symbols')" class="flex-1 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition text-center font-medium">💎 Ký Hiệu Mỏ</button>
     </div>
 
+    <!-- Vùng tương tác động của chế độ chơi -->
+    <div id="game-interactive-area" class="space-y-2">
+      <div class="bg-amber-50 dark:bg-amber-950/40 p-3 rounded-xl border border-amber-200 dark:border-amber-900/60 text-center space-y-1">
+        <span class="text-[10px] font-bold uppercase text-amber-700 dark:text-amber-400">Hãy tìm & bấm chọn trên bản đồ:</span>
+        <div id="game-target-name" class="text-base font-black text-blue-700 dark:text-blue-300">...</div>
+      </div>
+    </div>
+
+    <!-- Bảng điểm & Thời gian -->
     <div class="grid grid-cols-3 gap-2 text-center text-xs">
       <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800">
         <span class="text-[9px] text-slate-400 block uppercase font-bold">Thời gian</span>
@@ -480,6 +554,403 @@
         <span class="text-[9px] text-slate-400 block uppercase font-bold">Chuỗi thắng</span>
         <span id="game-streak" class="font-mono font-bold text-amber-600 dark:text-amber-400 text-sm">0</span>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal Sổ Tay Ký Hiệu & Cẩm Nang Phòng Thi Chuẩn THPT -->
+  <div id="symbol-handbook-modal" class="fixed inset-0 z-[2000] bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 hidden">
+    <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/50">
+        <div class="flex items-center space-x-3">
+          <div class="w-9 h-9 rounded-xl bg-blue-600/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg font-bold">📖</div>
+          <div>
+            <h3 class="font-black text-sm sm:text-base text-slate-900 dark:text-white flex items-center gap-2">
+              Sổ Tay Ký Hiệu & Cẩm Nang Phòng Thi
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-bold border border-blue-200 dark:border-blue-800">Atlat & Biểu Đồ 2026</span>
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Tra cứu nhanh ký hiệu Atlat, quy tắc nhận dạng 6 dạng biểu đồ và bẫy đề thi THPT</p>
+          </div>
+        </div>
+        <button onclick="AtlasEngine.closeSymbolHandbook()" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-bold transition">✕</button>
+      </div>
+
+      <!-- Tab Buttons Navigation -->
+      <div class="flex items-center space-x-2 px-4 py-2.5 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-x-auto text-xs font-semibold">
+        <button id="hb-tab-btn-minerals" onclick="AtlasEngine.setSymbolHandbookTab('minerals')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-xs transition shrink-0 flex items-center gap-1.5">
+          <span>⛏️</span> Khoáng Sản (Atlat GD, tr.13)
+        </button>
+        <button id="hb-tab-btn-power" onclick="AtlasEngine.setSymbolHandbookTab('power')" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0 flex items-center gap-1.5">
+          <span>⚡</span> Năng Lượng & Kinh Tế (Atlat GD, tr.18 & tr.23)
+        </button>
+        <button id="hb-tab-btn-agriculture" onclick="AtlasEngine.setSymbolHandbookTab('agriculture')" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0 flex items-center gap-1.5">
+          <span>🌾</span> Nông Nghiệp & Ngư Trường (Atlat GD, tr.19 - 21)
+        </button>
+        <button id="hb-tab-btn-matrix" onclick="AtlasEngine.setSymbolHandbookTab('matrix')" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0 flex items-center gap-1.5">
+          <span>📊</span> Ma Trận Biểu Đồ & Bẫy Đề Thi THPT
+        </button>
+      </div>
+
+      <!-- Tab Panels Content Container -->
+      <div class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 text-slate-700 dark:text-slate-300 text-xs">
+        <!-- 1. Pane Khoáng Sản (Atlat GD, tr.13) -->
+        <div id="hb-pane-minerals" class="space-y-4">
+          <div class="p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/60 rounded-xl flex items-start gap-2.5">
+            <span class="text-base text-amber-600">💡</span>
+            <div class="text-[11px] leading-relaxed text-amber-800 dark:text-amber-300">
+              <strong>Mẹo đọc nhanh Trang 13 Atlat:</strong> Chú ý phân loại khoáng sản theo nguồn gốc & công dụng: <em>Nhiên liệu</em> (Than, Dầu khí), <em>Kim loại đen</em> (Sắt, Crôm), <em>Kim loại màu</em> (Thiếc, Bôxit, Titan), <em>Phi kim loại</em> (Apatit).
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span class="w-4 h-4 bg-slate-900 border border-slate-600 inline-block rounded-xs"></span> Than Đá (Antraxit)
+                </span>
+                <span class="px-1.5 py-0.5 rounded-sm bg-slate-200 dark:bg-slate-700 text-[10px] font-mono font-bold">Nhiên liệu</span>
+              </div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400"><strong>Phân bố:</strong> Bể than Quảng Ninh (trữ lượng lớn nhất Đông Nam Á, chất lượng tốt), Bể than sông Hồng (trữ lượng rất lớn nhưng nằm sâu trong lòng đất khó khai thác).</p>
+              <p class="text-[10px] text-blue-600 dark:text-blue-400"><strong>Công dụng:</strong> Nhiên liệu cho nhà máy nhiệt điện (Phả Lại, Cẩm Phả), luyện kim, hóa chất và xuất khẩu.</p>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span class="text-sm font-black">▲</span> Dầu Mỏ & Khí Đốt
+                </span>
+                <span class="px-1.5 py-0.5 rounded-sm bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-[10px] font-mono font-bold">Nhiên liệu</span>
+              </div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400"><strong>Phân bố:</strong> Thềm lục địa phía Nam (Bạch Hổ, Rạng Đông, Đại Hùng - Bể Cửu Long, Bể Nam Côn Sơn). Khí Tiền Hải (Thái Bình), Lan Tây - Lan Đỏ.</p>
+              <p class="text-[10px] text-blue-600 dark:text-blue-400"><strong>Công dụng:</strong> Cung cấp cho nhà máy nhiệt điện khí (Phú Mỹ, Cà Mau), lọc hóa dầu Dung Quất, phân đạm.</p>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span class="w-4 h-4 rounded-full bg-slate-800 inline-block"></span> Quặng Sắt (Fe)
+                </span>
+                <span class="px-1.5 py-0.5 rounded-sm bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-[10px] font-mono font-bold">Kim loại đen</span>
+              </div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400"><strong>Phân bố:</strong> Thạch Khê (Hà Tĩnh - mỏ sắt lớn nhất Đông Nam Á), Trấn Yên (Yên Bái), Trại Cau (Thái Nguyên).</p>
+              <p class="text-[10px] text-blue-600 dark:text-blue-400"><strong>Công dụng:</strong> Nguyên liệu hạt nhân cho ngành công nghiệp luyện kim gang thép Thái Nguyên, Formosa.</p>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span class="text-sm font-black text-rose-600">▼</span> Quặng Bôxit (Al)
+                </span>
+                <span class="px-1.5 py-0.5 rounded-sm bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-[10px] font-mono font-bold">Kim loại màu</span>
+              </div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400"><strong>Phân bố:</strong> Tập trung lớn nhất ở Tây Nguyên (Đắk Nông, Lâm Đồng, Gia Lai) với trữ lượng hàng tỉ tấn.</p>
+              <p class="text-[10px] text-blue-600 dark:text-blue-400"><strong>Công dụng:</strong> Luyện Alumina và nhôm nguyên chất tại các tổ hợp Tân Rai (Lâm Đồng) & Nhân Cơ (Đắk Nông).</p>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span class="text-sm font-black">◆</span> Titan & Thiếc (Sn)
+                </span>
+                <span class="px-1.5 py-0.5 rounded-sm bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-[10px] font-mono font-bold">Kim loại màu</span>
+              </div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400"><strong>Phân bố:</strong> Titan dọc bờ cát ven biển (Hà Tĩnh, Bình Định, Bình Thuận). Thiếc tại Tĩnh Túc (Cao Bằng), Quỳ Hợp (Nghệ An).</p>
+              <p class="text-[10px] text-blue-600 dark:text-blue-400"><strong>Công dụng:</strong> Công nghiệp hàng không, điện tử, mạ hợp kim chống rỉ sét.</p>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span class="w-4 h-4 bg-emerald-600 inline-block rounded-xs"></span> Apatit & Đá Quý
+                </span>
+                <span class="px-1.5 py-0.5 rounded-sm bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-[10px] font-mono font-bold">Phi kim & Đá quý</span>
+              </div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400"><strong>Phân bố:</strong> Apatit tại Cam Đường (Lào Cai). Đá quý tại Lục Yên (Yên Bái), Quỳ Châu (Nghệ An).</p>
+              <p class="text-[10px] text-blue-600 dark:text-blue-400"><strong>Công dụng:</strong> Sản xuất phân bón supe phốt phát Lâm Thao, trang sức cao cấp và mỹ nghệ.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Pane Năng Lượng & Kinh Tế (Atlat GD, tr.18 & tr.23) -->
+        <div id="hb-pane-power" class="space-y-4 hidden">
+          <div class="p-3 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/60 rounded-xl flex items-start gap-2.5">
+            <span class="text-base text-blue-600">⚡</span>
+            <div class="text-[11px] leading-relaxed text-blue-800 dark:text-blue-300">
+              <strong>Mẹo đọc Trang 18, 22-23 Atlat:</strong> Phân biệt <em>Ngôi sao màu xanh dương</em> (Thủy điện) với <em>Ngôi sao màu đỏ</em> (Nhiệt điện). Biểu đồ tròn trên bản đồ là <strong>Quy mô và cơ cấu GRDP phân theo 4 khu vực kinh tế</strong> (Nông-lâm-thủy sản, Công nghiệp-xây dựng, Dịch vụ, Thuế sản phẩm).
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-2">
+              <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400">
+                <span>⭐</span> Hệ Thống Nhà Máy Thủy Điện (Tr.23)
+              </h4>
+              <ul class="text-[11px] space-y-1 text-slate-600 dark:text-slate-400 list-disc list-inside">
+                <li><strong>Sông Đà (bậc thang lớn nhất):</strong> Sơn La (2.400 MW), Hòa Bình (1.920 MW), Lai Châu (1.200 MW).</li>
+                <li><strong>Sông Sê San (Tây Nguyên):</strong> Yaly (720 MW), Sê San 3, Sê San 4, Pleikrông.</li>
+                <li><strong>Sông Đồng Nai (Đông Nam Bộ):</strong> Trị An (400 MW), Đồng Nai 3, Đồng Nai 4.</li>
+                <li><strong>Sông Gâm & Sông Chảy:</strong> Tuyên Quang (342 MW), Thác Bà (110 MW - thủy điện đầu tiên).</li>
+              </ul>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-2">
+              <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-xs text-rose-600 dark:text-rose-400">
+                <span>⭐</span> Hệ Thống Nhà Máy Nhiệt Điện (Tr.23)
+              </h4>
+              <ul class="text-[11px] space-y-1 text-slate-600 dark:text-slate-400 list-disc list-inside">
+                <li><strong>Nhiệt điện Than (phía Bắc):</strong> Phả Lại 1-2 (Hải Dương), Uông Bí, Cẩm Phả, Mông Dương (Quảng Ninh), Ninh Bình, Vũng Áng (Hà Tĩnh).</li>
+                <li><strong>Nhiệt điện Khí (phía Nam):</strong> Cụm Phú Mỹ 1, 2, 3, 4 (Bà Rịa - Vũng Tàu), Cà Mau 1-2, Ô Môn (Cần Thơ), Nhơn Trạch (Đồng Nai).</li>
+                <li><strong>Năng lượng tái tạo:</strong> Gió & Mặt trời phát triển bùng nổ ở Ninh Thuận, Bình Thuận, Tây Nguyên.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-2">
+            <h4 class="font-bold text-slate-900 dark:text-white text-xs">Phân Cấp Quy Mô GRDP Theo Bán Kính Vòng Tròn (Atlat GD, tr.18):</h4>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[10px]">
+              <div class="p-2 rounded-lg bg-red-100/60 dark:bg-red-950/40 border border-red-300 dark:border-red-900/60">
+                <span class="font-bold text-red-700 dark:text-red-400 block text-xs">≥ 1 000 Nghìn Tỉ</span>
+                <span>Rất Lớn: TP.HCM, Hà Nội</span>
+              </div>
+              <div class="p-2 rounded-lg bg-amber-100/60 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-900/60">
+                <span class="font-bold text-amber-700 dark:text-amber-400 block text-xs">300 - < 1 000 Nghìn Tỉ</span>
+                <span>Lớn: Hải Phòng, Biên Hòa, Vũng Tàu, Thủ Dầu Một, Hạ Long</span>
+              </div>
+              <div class="p-2 rounded-lg bg-blue-100/60 dark:bg-blue-950/40 border border-blue-300 dark:border-blue-900/60">
+                <span class="font-bold text-blue-700 dark:text-blue-400 block text-xs">100 - < 300 Nghìn Tỉ</span>
+                <span>Vừa: Đà Nẵng, Cần Thơ, Nha Trang, Huế, Vinh, Thái Nguyên...</span>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700">
+                <span class="font-bold text-slate-700 dark:text-slate-300 block text-xs">< 100 Nghìn Tỉ</span>
+                <span>Nhỏ: Các tỉnh thành còn lại</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Pane Nông Nghiệp & Ngư Trường (Atlat GD, tr.19 - 21) -->
+        <div id="hb-pane-agriculture" class="space-y-4 hidden">
+          <div class="p-3 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/60 rounded-xl flex items-start gap-2.5">
+            <span class="text-base text-emerald-600">🌾</span>
+            <div class="text-[11px] leading-relaxed text-emerald-800 dark:text-emerald-300">
+              <strong>Mẹo đọc Trang 19-21 Atlat:</strong> Nhớ nguyên tắc thế mạnh theo vùng: <em>ĐBSCL</em> (Lúa & Thủy sản), <em>Đông Nam Bộ</em> (Cao su & Cây ăn quả), <em>Tây Nguyên</em> (Cà phê & Hồ tiêu), <em>TDMN Bắc Bộ</em> (Chè & Cây ăn quả cận nhiệt).
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-1.5">
+              <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-xs">
+                <span>🌾</span> Cây Lương Thực (Lúa Gạo - Tr.20)
+              </h4>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400"><strong>Đồng bằng sông Cửu Long:</strong> Vùng trọng điểm sản xuất lúa lớn nhất, chiếm trên 50% diện tích và sản lượng cả nước, vựa gạo xuất khẩu chính.</p>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400"><strong>Đồng bằng sông Hồng:</strong> Vùng có năng suất lúa bình quân cao nhất nước nhờ trình độ thâm canh cao.</p>
+            </div>
+
+            <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-1.5">
+              <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-xs">
+                <span>☕</span> Cây Công Nghiệp Lâu Năm (Tr.20)
+              </h4>
+              <ul class="text-[11px] text-slate-600 dark:text-slate-400 space-y-0.5 list-disc list-inside">
+                <li><strong>Cà phê:</strong> Tây Nguyên (Đắk Lắk, Lâm Đồng, Gia Lai) chiếm hơn 4/5 cả nước.</li>
+                <li><strong>Cao su:</strong> Đông Nam Bộ (Bình Phước, Bình Dương, Tây Ninh) là vùng lớn nhất.</li>
+                <li><strong>Chè:</strong> TDMN Bắc Bộ (Thái Nguyên, Phú Thọ) và Tây Nguyên (Lâm Đồng).</li>
+                <li><strong>Hồ tiêu, Điều:</strong> Đông Nam Bộ và Tây Nguyên.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 space-y-2">
+            <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-xs">
+              <span>🐟</span> Các Ngư Trường Trọng Điểm (Tr.21)
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+              <div class="p-2 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/40">
+                <span class="font-bold text-blue-700 dark:text-blue-300 block">1. Hải Phòng - Quảng Ninh</span>
+                <span class="text-slate-600 dark:text-slate-400">Khai thác trọng điểm vùng vịnh Bắc Bộ với trữ lượng hải sản đa dạng.</span>
+              </div>
+              <div class="p-2 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/40">
+                <span class="font-bold text-blue-700 dark:text-blue-300 block">2. Ninh Thuận - Bình Thuận - BRVT</span>
+                <span class="text-slate-600 dark:text-slate-400">Ngư trường Đông Nam Bộ, sản lượng khai thác và chế biến cá cơm, tôm biển hàng đầu.</span>
+              </div>
+              <div class="p-2 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/40">
+                <span class="font-bold text-blue-700 dark:text-blue-300 block">3. Cà Mau - Kiên Giang</span>
+                <span class="text-slate-600 dark:text-slate-400">Ngư trường vịnh Thái Lan lớn nhất nước, giàu bãi tôm bãi cá trù phú.</span>
+              </div>
+              <div class="p-2 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/40">
+                <span class="font-bold text-blue-700 dark:text-blue-300 block">4. Quần Đảo Hoàng Sa - Trường Sa</span>
+                <span class="text-slate-600 dark:text-slate-400">Ngư trường đại dương ngoài khơi giàu nguồn cá ngừ, mực và gắn liền chủ quyền biển đảo thiêng liêng.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Pane Ma Trận Biểu Đồ & 5 Bẫy Đề Thi -->
+        <div id="hb-pane-matrix" class="space-y-4 hidden">
+          <div class="p-3 bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/60 rounded-xl flex items-start gap-2.5">
+            <span class="text-base text-indigo-600">🎯</span>
+            <div class="text-[11px] leading-relaxed text-indigo-800 dark:text-indigo-300">
+              <strong>Bí kíp 3 bước nhận dạng biểu đồ:</strong> Bước 1 (Tìm từ khóa hạt nhân) ➔ Bước 2 (Đếm số năm / mốc thời gian) ➔ Bước 3 (Kiểm tra đơn vị đo lường).
+            </div>
+          </div>
+
+          <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+            <table class="w-full text-[11px] text-left border-collapse">
+              <thead class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold">
+                <tr>
+                  <th class="p-2.5 border-b border-slate-200 dark:border-slate-700">Dạng Biểu Đồ</th>
+                  <th class="p-2.5 border-b border-slate-200 dark:border-slate-700">Từ Khóa Hạt Nhân</th>
+                  <th class="p-2.5 border-b border-slate-200 dark:border-slate-700">Mốc Thời Gian</th>
+                  <th class="p-2.5 border-b border-slate-200 dark:border-slate-700">Đơn Vị & Lưu Ý</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                  <td class="p-2.5 font-bold text-amber-600 dark:text-amber-400">1. Biểu đồ Tròn</td>
+                  <td class="p-2.5">Cơ cấu, tỷ trọng, quy mô và cơ cấu</td>
+                  <td class="p-2.5 font-semibold text-rose-600">1 - 2 năm (tối đa 3 năm)</td>
+                  <td class="p-2.5">% (tổng 100%) hoặc vẽ bán kính R khác nhau nếu quy mô thay đổi.</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                  <td class="p-2.5 font-bold text-purple-600 dark:text-purple-400">2. Biểu đồ Miền</td>
+                  <td class="p-2.5">Chuyển dịch cơ cấu, thay đổi cơ cấu</td>
+                  <td class="p-2.5 font-semibold text-emerald-600">≥ 3 năm liên tục / cách quãng</td>
+                  <td class="p-2.5">Tổng các phần tử luôn = 100%. Khung hình chữ nhật 2 trục.</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                  <td class="p-2.5 font-bold text-blue-600 dark:text-blue-400">3. Biểu đồ Đường</td>
+                  <td class="p-2.5">Tốc độ tăng trưởng, tốc độ phát triển</td>
+                  <td class="p-2.5">≥ 3-4 năm liên tục</td>
+                  <td class="p-2.5">Đơn vị % (năm gốc tính bằng 100%), đồ thị xuất phát từ mốc 100%.</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                  <td class="p-2.5 font-bold text-emerald-600 dark:text-emerald-400">4. Biểu đồ Cột</td>
+                  <td class="p-2.5">Quy mô, sản lượng, diện tích, so sánh</td>
+                  <td class="p-2.5">1 năm hoặc nhiều năm, nhiều vùng</td>
+                  <td class="p-2.5">Cùng một đơn vị đo lường (nghìn tấn, triệu ha, tỉ đồng...).</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                  <td class="p-2.5 font-bold text-rose-600 dark:text-rose-400">5. Cột Chồng</td>
+                  <td class="p-2.5">Quy mô và cơ cấu, tổng số phân bổ</td>
+                  <td class="p-2.5">≥ 3 năm hoặc nhiều đối tượng</td>
+                  <td class="p-2.5">Các giá trị thành phần cộng lại đúng bằng chiều cao cả cột.</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                  <td class="p-2.5 font-bold text-cyan-600 dark:text-cyan-400">6. Biểu đồ Kết Hợp</td>
+                  <td class="p-2.5">Thể hiện 2 đối tượng khác bản chất</td>
+                  <td class="p-2.5">Từ 3-4 năm trở lên</td>
+                  <td class="p-2.5"><strong>2 trục tung riêng biệt:</strong> Cột (sản lượng/diện tích), Đường (năng suất/tỉ lệ).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="font-bold text-slate-900 dark:text-white text-xs text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
+              <span>⚠️</span> 5 Bẫy Đề Thi Kinh Điển Cần Nhớ Tuyệt Đối
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-[11px]">
+              <div class="p-2.5 rounded-xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/40 dark:bg-rose-950/20">
+                <span class="font-bold text-rose-700 dark:text-rose-300 block mb-0.5">Bẫy 1: Thấy "cơ cấu" vội chọn Tròn dù có từ 3 năm trở lên</span>
+                <span class="text-slate-600 dark:text-slate-400">Nếu đề bài xuất hiện từ "cơ cấu" nhưng bảng số liệu có từ 3 năm trở lên, đáp án bắt buộc phải là <strong>Biểu đồ Miền</strong>.</span>
+              </div>
+              <div class="p-2.5 rounded-xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/40 dark:bg-rose-950/20">
+                <span class="font-bold text-rose-700 dark:text-rose-300 block mb-0.5">Bẫy 2: Thấy số liệu % nhầm là Tròn hoặc Miền</span>
+                <span class="text-slate-600 dark:text-slate-400">Nếu đề bài ghi đơn vị % nhưng năm đầu tiên đều bằng 100% hoặc có từ khóa <em>"tốc độ tăng trưởng"</em>, đáp án đúng là <strong>Biểu đồ Đường</strong>.</span>
+              </div>
+              <div class="p-2.5 rounded-xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/40 dark:bg-rose-950/20">
+                <span class="font-bold text-rose-700 dark:text-rose-300 block mb-0.5">Bẫy 3: Phân biệt "Quy mô & Cơ cấu" (Tròn vs Cột chồng)</span>
+                <span class="text-slate-600 dark:text-slate-400">Nếu yêu cầu "quy mô và cơ cấu" trong 1-2 năm, dùng <strong>Biểu đồ Tròn có bán kính khác nhau</strong>. Nếu từ 3 năm trở lên, dùng <strong>Biểu đồ Cột Chồng hoặc Miền</strong>.</span>
+              </div>
+              <div class="p-2.5 rounded-xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/40 dark:bg-rose-950/20">
+                <span class="font-bold text-rose-700 dark:text-rose-300 block mb-0.5">Bẫy 4: Hai đơn vị đo lường khác nhau trên 1 bảng</span>
+                <span class="text-slate-600 dark:text-slate-400">Khi bảng có 2 đơn vị (ví dụ: Diện tích - nghìn ha và Sản lượng - nghìn tấn), không thể vẽ chung 1 trục cột, bắt buộc phải chọn <strong>Biểu đồ Kết Hợp (Cột và Đường)</strong>.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="flex items-center justify-between p-3.5 border-t border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/40 text-xs text-slate-500 dark:text-slate-400">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          <span>Dữ liệu bám sát Atlat Địa lí Việt Nam & Chương trình GDPT 2018</span>
+        </div>
+        <button onclick="AtlasEngine.closeSymbolHandbook()" class="px-4 py-1.5 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-bold transition">Đóng cẩm nang</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Tra Cứu Trang Bản Đồ Gốc Atlat 2026 (Scan Sách Giáo Khoa 100% Offline từ Data) -->
+  <div id="modal-atlat-pages" class="fixed inset-0 z-[2000] hidden items-center justify-center bg-slate-950/85 backdrop-blur-sm p-2 sm:p-4 animate-fade-in font-sans">
+    <div class="bg-white dark:bg-slate-900 w-full max-w-5xl h-[92vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-slate-200 dark:border-slate-800">
+      
+      <!-- Header -->
+      <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-800/60 flex-wrap gap-2">
+        <div class="flex items-center space-x-2.5">
+          <span class="text-xl">📖</span>
+          <div>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white flex items-center gap-2">
+              <span>Bản Đồ Gốc Atlat Địa lí Việt Nam 2026</span>
+              <span class="text-[9px] bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 font-bold px-2 py-0.5 rounded-full border border-amber-300 dark:border-amber-800">Offline Scan SGK</span>
+            </h3>
+            <p id="atlat-page-viewer-title" class="text-[11px] text-blue-600 dark:text-blue-400 font-semibold truncate max-w-[280px] sm:max-w-md">Trang 4: Hành chính (Bắc Bộ &amp; Bắc Trung Bộ)</p>
+          </div>
+        </div>
+
+        <!-- Controls: Select Page, Prev/Next, Zoom, Close -->
+        <div class="flex items-center space-x-1.5 sm:space-x-2">
+          <select id="atlat-page-select" onchange="AtlasEngine.selectAtlatPage(this.value)" class="text-xs px-2 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold focus:outline-hidden">
+            <option value="1">Trang 1: Bìa sách Atlat 2026</option>
+            <option value="2">Trang 2: Ký hiệu chung</option>
+            <option value="3">Trang 3: Hình thể Việt Nam</option>
+            <option value="4" selected>Trang 4: Hành chính (Phía Bắc)</option>
+            <option value="5">Trang 5: Hành chính (Phía Nam)</option>
+            <option value="6">Trang 6: Địa hình &amp; Địa chất (Phía Bắc)</option>
+            <option value="7">Trang 7: Địa hình &amp; Khoáng sản (Phía Nam)</option>
+            <option value="8">Trang 8: Khí hậu chung</option>
+            <option value="9">Trang 9: Các miền &amp; vùng khí hậu</option>
+            <option value="10">Trang 10: Các hệ thống sông ngòi</option>
+            <option value="13">Trang 13: Địa chất &amp; Khoáng sản</option>
+            <option value="18">Trang 18: Kinh tế chung &amp; Các vùng kinh tế</option>
+            <option value="19">Trang 19: Nông nghiệp chung</option>
+            <option value="21">Trang 21: Công nghiệp chung</option>
+            <option value="22">Trang 22: Các ngành công nghiệp trọng điểm</option>
+            <option value="23">Trang 23: Giao thông &amp; Thương mại</option>
+          </select>
+
+          <div class="flex items-center space-x-1 bg-slate-200 dark:bg-slate-700 p-0.5 rounded-lg text-xs">
+            <button onclick="AtlasEngine.zoomAtlatPage(-0.2)" class="px-2 py-1 rounded-md hover:bg-white dark:hover:bg-slate-800 transition font-bold" title="Thu nhỏ">🔍-</button>
+            <span id="atlat-page-zoom-val" class="px-1.5 font-mono text-[10px] font-bold">100%</span>
+            <button onclick="AtlasEngine.zoomAtlatPage(0.2)" class="px-2 py-1 rounded-md hover:bg-white dark:hover:bg-slate-800 transition font-bold" title="Phóng to">🔍+</button>
+          </div>
+
+          <button onclick="AtlasEngine.prevAtlatPage()" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold" title="Trang trước">◀</button>
+          <button onclick="AtlasEngine.nextAtlatPage()" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold" title="Trang sau">▶</button>
+
+          <button onclick="AtlasEngine.closeAtlatPagesModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-red-500 hover:text-white transition flex items-center justify-center text-sm font-bold">✕</button>
+        </div>
+      </div>
+
+      <!-- Main Viewer Body with Pan/Scroll -->
+      <div class="flex-1 bg-slate-950 overflow-auto flex items-center justify-center p-3 sm:p-5 relative select-none">
+        <img 
+          id="atlat-page-viewer-img" 
+          src="public/data/atlat_pages/page_04.jpg" 
+          alt="Trang Atlat Địa lí Việt Nam 2026" 
+          class="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-transform duration-150 origin-center"
+        />
+      </div>
+
+      <!-- Footer Exam Tip -->
+      <div class="px-4 py-2 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 text-xs flex items-center justify-between text-slate-500 dark:text-slate-400">
+        <span class="flex items-center space-x-1.5">
+          <span>💡</span>
+          <span>Dùng phím cuộn chuột hoặc nút <strong>🔍+</strong> để phóng to xem rõ nét chữ, địa danh và ký hiệu khai thác khoáng sản.</span>
+        </span>
+        <span class="text-[11px] font-mono hidden sm:inline">Nguồn: Atlat Địa lí Việt Nam 2026 (Thầy Lê Huỳnh) - NXB Giáo dục Việt Nam</span>
+      </div>
+
     </div>
   </div>
 

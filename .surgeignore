@@ -1,0 +1,13 @@
+.git
+docs
+scripts
+data
+GeoAtlas_Production.zip
+*.pdf
+public/data/*.pdf
+*.py
+*.pyc
+__pycache__
+*.log
+test*.js
+tests

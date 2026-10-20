@@ -43,7 +43,7 @@ REGION_MAPPING = {
     "Quảng Bình": "Bắc Trung Bộ", "Quảng Trị": "Bắc Trung Bộ", "Thừa Thiên Huế": "Bắc Trung Bộ",
     "Đà Nẵng": "Duyên hải Nam Trung Bộ", "Quảng Nam": "Duyên hải Nam Trung Bộ",
     "Quảng Ngãi": "Duyên hải Nam Trung Bộ", "Bình Định": "Duyên hải Nam Trung Bộ",
-    "Phú Yên": "Duyên hải Nam Trung Bộ", "Khánh Hòa": "Duyên hải Nam Trung Bộ",
+    "Phú Yên": "Duyên hải Nam Trung Bộ", "Khánh Hoà": "Duyên hải Nam Trung Bộ",
     "Ninh Thuận": "Duyên hải Nam Trung Bộ", "Bình Thuận": "Duyên hải Nam Trung Bộ",
     "Kon Tum": "Tây Nguyên", "Gia Lai": "Tây Nguyên", "Đắk Lắk": "Tây Nguyên",
     "Đắk Nông": "Tây Nguyên", "Lâm Đồng": "Tây Nguyên",
@@ -68,10 +68,10 @@ EMBEDDED_FALLBACK_PROVINCES = [
         "properties": {"name": "Quần đảo Hoàng Sa", "province": "Đà Nẵng", "region_name": "Duyên hải Nam Trung Bộ", "capital": "Đà Nẵng", "area": 305.0, "pop": 0.5, "density": 2, "is_special_island": True, "sovereignty": "Chủ quyền thiêng liêng bất khả xâm phạm của Việt Nam"},
         "geometry": {"type": "Polygon", "coordinates": [[[111.20, 17.20], [112.90, 17.20], [112.90, 15.80], [111.20, 15.80], [111.20, 17.20]]]}
     },
-    # 2. Quần đảo Trường Sa (Tỉnh Khánh Hòa)
+    # 2. Quần đảo Trường Sa (Tỉnh Khánh Hoà)
     {
         "type": "Feature",
-        "properties": {"name": "Quần đảo Trường Sa", "province": "Khánh Hòa", "region_name": "Duyên hải Nam Trung Bộ", "capital": "Khánh Hòa", "area": 496.0, "pop": 3.2, "density": 6, "is_special_island": True, "sovereignty": "Chủ quyền thiêng liêng bất khả xâm phạm của Việt Nam"},
+        "properties": {"name": "Quần đảo Trường Sa", "province": "Khánh Hoà", "region_name": "Duyên hải Nam Trung Bộ", "capital": "Khánh Hoà", "area": 496.0, "pop": 3.2, "density": 6, "is_special_island": True, "sovereignty": "Chủ quyền thiêng liêng bất khả xâm phạm của Việt Nam"},
         "geometry": {"type": "Polygon", "coordinates": [[[111.50, 12.00], [117.40, 12.00], [117.40, 6.80], [111.50, 6.80], [111.50, 12.00]]]}
     },
     # 3. Hà Nội
@@ -96,8 +96,8 @@ EMBEDDED_FALLBACK_PROVINCES = [
     {"type": "Feature", "properties": {"name": "Thừa Thiên Huế", "region_name": "Bắc Trung Bộ", "capital": "Huế", "area": 4902.4, "pop": 1160.0, "density": 237}, "geometry": {"type": "Polygon", "coordinates": [[[107.0, 16.8], [108.1, 16.4], [107.9, 16.0], [107.1, 16.1], [107.0, 16.8]]]}},
     # 13. Đà Nẵng
     {"type": "Feature", "properties": {"name": "Đà Nẵng", "region_name": "Duyên hải Nam Trung Bộ", "capital": "Đà Nẵng", "area": 1284.9, "pop": 1220.0, "density": 950}, "geometry": {"type": "Polygon", "coordinates": [[[108.0, 16.2], [108.4, 16.2], [108.3, 15.9], [107.9, 15.9], [108.0, 16.2]]]}},
-    # 14. Khánh Hòa
-    {"type": "Feature", "properties": {"name": "Khánh Hòa", "region_name": "Duyên hải Nam Trung Bộ", "capital": "Nha Trang", "area": 5137.8, "pop": 1255.0, "density": 244}, "geometry": {"type": "Polygon", "coordinates": [[[108.8, 12.8], [109.4, 12.6], [109.3, 11.8], [108.7, 12.0], [108.8, 12.8]]]}},
+    # 14. Khánh Hoà
+    {"type": "Feature", "properties": {"name": "Khánh Hoà", "region_name": "Duyên hải Nam Trung Bộ", "capital": "Nha Trang", "area": 5137.8, "pop": 1255.0, "density": 244}, "geometry": {"type": "Polygon", "coordinates": [[[108.8, 12.8], [109.4, 12.6], [109.3, 11.8], [108.7, 12.0], [108.8, 12.8]]]}},
     # 15. Bình Thuận
     {"type": "Feature", "properties": {"name": "Bình Thuận", "region_name": "Duyên hải Nam Trung Bộ", "capital": "Phan Thiết", "area": 7943.9, "pop": 1250.0, "density": 157}, "geometry": {"type": "Polygon", "coordinates": [[[107.5, 11.6], [108.9, 11.5], [108.7, 10.7], [107.4, 10.8], [107.5, 11.6]]]}},
     # 16. Gia Lai

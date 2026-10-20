@@ -168,7 +168,8 @@ table, .tabular-nums, font-mono {
 }
 
 /* Decluttered Map Label Tooltip (Hover / Zoom >= 8) */
-.map-label-tooltip {
+.map-label-tooltip, .leaflet-tooltip {
+  pointer-events: none !important;
   background: #ffffff !important;
   color: #0f172a !important;
   border: 1px solid #e2e8f0 !important;

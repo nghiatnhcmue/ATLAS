@@ -7,9 +7,13 @@ GeoAtlas Interactive - Data Pipeline: Build 34 Administrative Units (NQ 202/2025
 
 import json
 import os
+import sys
 import shapely
 from shapely.geometry import shape, mapping
 from shapely.ops import unary_union
+
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8")
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "public", "data")
@@ -61,8 +65,8 @@ PROVINCE_63_INFO = {
     "Quảng Nam": {"region": "Duyên hải Nam Trung Bộ", "type": "Tỉnh", "area": 10574.9, "pop": 1519.4, "merged_into": "Thành phố Đà Nẵng"},
     "Quảng Ngãi": {"region": "Duyên hải Nam Trung Bộ", "type": "Tỉnh", "area": 5155.8, "pop": 1245.6, "merged_into": "Tỉnh Quảng Ngãi"},
     "Bình Định": {"region": "Duyên hải Nam Trung Bộ", "type": "Tỉnh", "area": 6071.3, "pop": 1506.3, "merged_into": "Tỉnh Quảng Ngãi"},
-    "Phú Yên": {"region": "Duyên hải Nam Trung Bộ", "type": "Tỉnh", "area": 5023.4, "pop": 876.6, "merged_into": "Tỉnh Khánh Hòa"},
-    "Khánh Hòa": {"region": "Duyên hải Nam Trung Bộ", "type": "Tỉnh", "area": 5137.8, "pop": 1254.0, "merged_into": "Tỉnh Khánh Hòa"},
+    "Phú Yên": {"region": "Duyên hải Nam Trung Bộ", "type": "Tỉnh", "area": 5023.4, "pop": 876.6, "merged_into": "Tỉnh Khánh Hoà"},
+    "Khánh Hoà": {"region": "Duyên hải Nam Trung Bộ", "type": "Tỉnh", "area": 5137.8, "pop": 1254.0, "merged_into": "Tỉnh Khánh Hoà"},
     "Ninh Thuận": {"region": "Duyên hải Nam Trung Bộ", "type": "Tỉnh", "area": 3355.3, "pop": 601.5, "merged_into": "Tỉnh Lâm Đồng"},
     "Bình Thuận": {"region": "Duyên hải Nam Trung Bộ", "type": "Tỉnh", "area": 7942.3, "pop": 1252.8, "merged_into": "Tỉnh Lâm Đồng"},
 
@@ -97,46 +101,56 @@ PROVINCE_63_INFO = {
     "Cà Mau": {"region": "Đồng bằng sông Cửu Long", "type": "Tỉnh", "area": 5221.2, "pop": 1207.6, "merged_into": "Tỉnh Cà Mau"}
 }
 
-# 34 Đơn vị hành chính cấp tỉnh mới (NQ 202/2025/QH15)
-PROVINCE_34_SPECS = {
-    # 6 Thành phố trực thuộc Trung ương
-    "Thành phố Hà Nội": {"type": "Thành phố trực thuộc Trung ương", "region": "Đồng bằng sông Hồng", "merged_from": ["Hà Nội"]},
-    "Thành phố Hải Phòng": {"type": "Thành phố trực thuộc Trung ương", "region": "Đồng bằng sông Hồng", "merged_from": ["Hải Phòng", "Hải Dương"]},
-    "Thành phố Huế": {"type": "Thành phố trực thuộc Trung ương", "region": "Bắc Trung Bộ", "merged_from": ["Thừa Thiên Huế"]},
-    "Thành phố Đà Nẵng": {"type": "Thành phố trực thuộc Trung ương", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Đà Nẵng", "Quảng Nam", "Quần đảo Hoàng Sa"]},
-    "Thành phố Hồ Chí Minh": {"type": "Thành phố trực thuộc Trung ương", "region": "Đồng bằng sông Hồng" if False else "Đông Nam Bộ", "merged_from": ["TP. Hồ Chí Minh", "Bình Dương", "Bà Rịa - Vũng Tàu"]},
-    "Thành phố Cần Thơ": {"type": "Thành phố trực thuộc Trung ương", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Cần Thơ", "Vĩnh Long", "Hậu Giang", "Sóc Trăng"]},
+# Số liệu chính thức từ Bảng Niên giám thống kê 2024 tại Atlat GD Trang 5 (Chuẩn 100% tài liệu gốc)
+GD_P05_OFFICIAL_DATA = {
+    # 1. Trung du và miền núi phía Bắc (9)
+    "Tỉnh Cao Bằng": {"area": 6700.4, "pop": 558.5, "region": "Trung du và miền núi Bắc Bộ", "type": "Tỉnh", "merged_from": ["Cao Bằng"]},
+    "Tỉnh Tuyên Quang": {"area": 13795.6, "pop": 1731.7, "region": "Trung du và miền núi Bắc Bộ", "type": "Tỉnh", "merged_from": ["Tuyên Quang", "Hà Giang"]},
+    "Tỉnh Lào Cai": {"area": 13257.0, "pop": 1656.6, "region": "Trung du và miền núi Bắc Bộ", "type": "Tỉnh", "merged_from": ["Lào Cai", "Yên Bái"]},
+    "Tỉnh Thái Nguyên": {"area": 8375.3, "pop": 1694.5, "region": "Trung du và miền núi Bắc Bộ", "type": "Tỉnh", "merged_from": ["Thái Nguyên", "Bắc Kạn"]},
+    "Tỉnh Lạng Sơn": {"area": 8310.2, "pop": 814.0, "region": "Trung du và miền núi Bắc Bộ", "type": "Tỉnh", "merged_from": ["Lạng Sơn"]},
+    "Tỉnh Phú Thọ": {"area": 9361.4, "pop": 3663.7, "region": "Trung du và miền núi Bắc Bộ", "type": "Tỉnh", "merged_from": ["Phú Thọ", "Vĩnh Phúc", "Hòa Bình"]},
+    "Tỉnh Điện Biên": {"area": 9539.9, "pop": 656.7, "region": "Trung du và miền núi Bắc Bộ", "type": "Tỉnh", "merged_from": ["Điện Biên"]},
+    "Tỉnh Lai Châu": {"area": 9068.7, "pop": 495.5, "region": "Trung du và miền núi Bắc Bộ", "type": "Tỉnh", "merged_from": ["Lai Châu"]},
+    "Tỉnh Sơn La": {"area": 14108.9, "pop": 1330.6, "region": "Trung du và miền núi Bắc Bộ", "type": "Tỉnh", "merged_from": ["Sơn La"]},
 
-    # 28 Tỉnh mới
-    "Tỉnh Cao Bằng": {"type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Cao Bằng"]},
-    "Tỉnh Lạng Sơn": {"type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Lạng Sơn"]},
-    "Tỉnh Quảng Ninh": {"type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Quảng Ninh"]},
-    "Tỉnh Lai Châu": {"type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Lai Châu"]},
-    "Tỉnh Điện Biên": {"type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Điện Biên"]},
-    "Tỉnh Sơn La": {"type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Sơn La"]},
-    "Tỉnh Thanh Hóa": {"type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Thanh Hóa"]},
-    "Tỉnh Nghệ An": {"type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Nghệ An"]},
-    "Tỉnh Hà Tĩnh": {"type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Hà Tĩnh"]},
-    "Tỉnh Tuyên Quang": {"type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Tuyên Quang", "Hà Giang"]},
-    "Tỉnh Lào Cai": {"type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Lào Cai", "Yên Bái"]},
-    "Tỉnh Thái Nguyên": {"type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Thái Nguyên", "Bắc Kạn"]},
-    "Tỉnh Phú Thọ": {"type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Phú Thọ", "Vĩnh Phúc", "Hòa Bình"]},
-    "Tỉnh Bắc Ninh": {"type": "Tỉnh", "region": "Đồng bằng sông Hồng", "merged_from": ["Bắc Ninh", "Bắc Giang"]},
-    "Tỉnh Hưng Yên": {"type": "Tỉnh", "region": "Đồng bằng sông Hồng", "merged_from": ["Hưng Yên", "Thái Bình"]},
-    "Tỉnh Ninh Bình": {"type": "Tỉnh", "region": "Đồng bằng sông Hồng", "merged_from": ["Ninh Bình", "Hà Nam", "Nam Định"]},
-    "Tỉnh Quảng Trị": {"type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Quảng Trị", "Quảng Bình"]},
-    "Tỉnh Quảng Ngãi": {"type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Quảng Ngãi", "Bình Định"]},
-    "Tỉnh Khánh Hòa": {"type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Khánh Hòa", "Phú Yên", "Quần đảo Trường Sa"]},
-    "Tỉnh Gia Lai": {"type": "Tỉnh", "region": "Tây Nguyên", "merged_from": ["Gia Lai", "Kon Tum"]},
-    "Tỉnh Đắk Lắk": {"type": "Tỉnh", "region": "Tây Nguyên", "merged_from": ["Đắk Lắk", "Đắk Nông"]},
-    "Tỉnh Lâm Đồng": {"type": "Tỉnh", "region": "Tây Nguyên", "merged_from": ["Lâm Đồng", "Ninh Thuận", "Bình Thuận"]},
-    "Tỉnh Đồng Nai": {"type": "Tỉnh", "region": "Đông Nam Bộ", "merged_from": ["Đồng Nai", "Bình Phước"]},
-    "Tỉnh Tây Ninh": {"type": "Tỉnh", "region": "Đông Nam Bộ", "merged_from": ["Tây Ninh", "Long An"]},
-    "Tỉnh Đồng Tháp": {"type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Đồng Tháp", "Tiền Giang"]},
-    "Tỉnh An Giang": {"type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["An Giang", "Kiên Giang"]},
-    "Tỉnh Bến Tre": {"type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Bến Tre", "Trà Vinh"]},
-    "Tỉnh Cà Mau": {"type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Cà Mau", "Bạc Liêu"]}
+    # 2. Đồng bằng sông Hồng (6)
+    "Thành phố Hà Nội": {"area": 3359.8, "pop": 8717.6, "region": "Đồng bằng sông Hồng", "type": "Thành phố trực thuộc Trung ương", "merged_from": ["Hà Nội"]},
+    "Tỉnh Bắc Ninh": {"area": 4718.6, "pop": 3509.2, "region": "Đồng bằng sông Hồng", "type": "Tỉnh", "merged_from": ["Bắc Ninh", "Bắc Giang"]},
+    "Tỉnh Quảng Ninh": {"area": 6208.0, "pop": 1396.5, "region": "Đồng bằng sông Hồng", "type": "Tỉnh", "merged_from": ["Quảng Ninh"]},
+    "Thành phố Hải Phòng": {"area": 3194.7, "pop": 4102.7, "region": "Đồng bằng sông Hồng", "type": "Thành phố trực thuộc Trung ương", "merged_from": ["Hải Phòng", "Hải Dương"]},
+    "Tỉnh Hưng Yên": {"area": 2514.8, "pop": 3208.5, "region": "Đồng bằng sông Hồng", "type": "Tỉnh", "merged_from": ["Hưng Yên", "Thái Bình"]},
+    "Tỉnh Ninh Bình": {"area": 3942.6, "pop": 3818.7, "region": "Đồng bằng sông Hồng", "type": "Tỉnh", "merged_from": ["Ninh Bình", "Hà Nam", "Nam Định"]},
+
+    # 3. Bắc Trung Bộ (5)
+    "Tỉnh Thanh Hoá": {"area": 11114.7, "pop": 3764.2, "region": "Bắc Trung Bộ", "type": "Tỉnh", "merged_from": ["Thanh Hóa"]},
+    "Tỉnh Nghệ An": {"area": 16486.5, "pop": 3472.3, "region": "Bắc Trung Bộ", "type": "Tỉnh", "merged_from": ["Nghệ An"]},
+    "Tỉnh Hà Tĩnh": {"area": 5994.5, "pop": 1329.8, "region": "Bắc Trung Bộ", "type": "Tỉnh", "merged_from": ["Hà Tĩnh"]},
+    "Tỉnh Quảng Trị": {"area": 12700.0, "pop": 1584.0, "region": "Bắc Trung Bộ", "type": "Tỉnh", "merged_from": ["Quảng Trị", "Quảng Bình"]},
+    "Thành phố Huế": {"area": 4947.1, "pop": 1178.6, "region": "Bắc Trung Bộ", "type": "Thành phố trực thuộc Trung ương", "merged_from": ["Thừa Thiên Huế"]},
+
+    # 4. Duyên hải Nam Trung Bộ và Tây Nguyên (6)
+    "Thành phố Đà Nẵng": {"area": 11859.6, "pop": 2819.9, "region": "Duyên hải Nam Trung Bộ", "type": "Thành phố trực thuộc Trung ương", "merged_from": ["Đà Nẵng", "Quảng Nam"]},
+    "Tỉnh Quảng Ngãi": {"area": 14832.6, "pop": 1861.7, "region": "Duyên hải Nam Trung Bộ", "type": "Tỉnh", "merged_from": ["Quảng Ngãi", "Bình Định"]},
+    "Tỉnh Khánh Hoà": {"area": 8555.9, "pop": 1882.0, "region": "Duyên hải Nam Trung Bộ", "type": "Tỉnh", "merged_from": ["Khánh Hoà", "Phú Yên"]},
+    "Tỉnh Gia Lai": {"area": 21576.5, "pop": 3153.4, "region": "Tây Nguyên", "type": "Tỉnh", "merged_from": ["Gia Lai", "Kon Tum"]},
+    "Tỉnh Đắk Lắk": {"area": 18096.4, "pop": 2831.4, "region": "Tây Nguyên", "type": "Tỉnh", "merged_from": ["Đắk Lắk", "Đắk Nông"]},
+    "Tỉnh Lâm Đồng": {"area": 24233.1, "pop": 3324.4, "region": "Tây Nguyên", "type": "Tỉnh", "merged_from": ["Lâm Đồng", "Ninh Thuận", "Bình Thuận"]},
+
+    # 5. Đông Nam Bộ (3)
+    "Tỉnh Tây Ninh": {"area": 8536.5, "pop": 2959.0, "region": "Đông Nam Bộ", "type": "Tỉnh", "merged_from": ["Tây Ninh", "Long An"]},
+    "Tỉnh Đồng Nai": {"area": 12737.2, "pop": 4427.7, "region": "Đông Nam Bộ", "type": "Tỉnh", "merged_from": ["Đồng Nai", "Bình Phước"]},
+    "Thành phố Hồ Chí Minh": {"area": 6772.6, "pop": 13608.8, "region": "Đông Nam Bộ", "type": "Thành phố trực thuộc Trung ương", "merged_from": ["TP. Hồ Chí Minh", "Bình Dương", "Bà Rịa - Vũng Tàu"]},
+
+    # 6. Đồng bằng sông Cửu Long (5)
+    "Tỉnh Vĩnh Long": {"area": 6296.2, "pop": 3367.5, "region": "Đồng bằng sông Cửu Long", "type": "Tỉnh", "merged_from": ["Vĩnh Long", "Bến Tre", "Trà Vinh"]},
+    "Tỉnh Đồng Tháp": {"area": 5938.7, "pop": 3397.2, "region": "Đồng bằng sông Cửu Long", "type": "Tỉnh", "merged_from": ["Đồng Tháp", "Tiền Giang"]},
+    "Tỉnh An Giang": {"area": 9888.9, "pop": 3679.3, "region": "Đồng bằng sông Cửu Long", "type": "Tỉnh", "merged_from": ["An Giang", "Kiên Giang"]},
+    "Thành phố Cần Thơ": {"area": 6360.8, "pop": 3207.0, "region": "Đồng bằng sông Cửu Long", "type": "Thành phố trực thuộc Trung ương", "merged_from": ["Cần Thơ", "Hậu Giang", "Sóc Trăng"]},
+    "Tỉnh Cà Mau": {"area": 7942.4, "pop": 2140.7, "region": "Đồng bằng sông Cửu Long", "type": "Tỉnh", "merged_from": ["Cà Mau", "Bạc Liêu"]}
 }
+
+PROVINCE_34_SPECS = GD_P05_OFFICIAL_DATA
 
 def main():
     with open(OLD_GEOJSON_PATH, "r", encoding="utf-8") as f:
@@ -209,19 +223,10 @@ def main():
     for unit_name, spec in PROVINCE_34_SPECS.items():
         constituents = spec["merged_from"]
         matched_shapes = []
-        total_area = 0.0
-        total_pop = 0.0
-        has_island = False
 
         for c_name in constituents:
             if c_name in shapes_by_name:
                 matched_shapes.append(shapes_by_name[c_name])
-            if c_name in PROVINCE_63_INFO:
-                info = PROVINCE_63_INFO[c_name]
-                total_area += info["area"]
-                total_pop += info["pop"]
-            if "Hoàng Sa" in c_name or "Trường Sa" in c_name:
-                has_island = True
 
         if not matched_shapes:
             print(f"[!] Warning: No shapes matched for {unit_name}")
@@ -254,6 +259,8 @@ def main():
                 except Exception:
                     merged_geom = shapely.geometry.MultiPolygon(polys)
 
+        total_area = spec["area"]
+        total_pop = spec["pop"]
         density = round((total_pop * 1000) / total_area) if total_area > 0 else 0
 
         feat_34 = {
@@ -269,16 +276,17 @@ def main():
                 "merged_from": constituents,
                 "merged_from_desc": "Hợp nhất từ: " + ", ".join(constituents) if len(constituents) > 1 else "Giữ nguyên ranh giới",
                 "resolution": "Nghị quyết số 202/2025/QH15",
-                "is_special_island": has_island
+                "is_special_island": False,
+                "source": "Atlat GD, tr.5 (Niên giám thống kê 2024)"
             },
             "geometry": mapping(merged_geom)
         }
         features_34.append(feat_34)
 
-    # Add standalone islands for cartographic clarity
+    # Add standalone islands for cartographic clarity and sovereignty invariant
     for island_name in ["Quần đảo Hoàng Sa", "Quần đảo Trường Sa"]:
         if island_name in shapes_by_name:
-            belong_to = "Thành phố Đà Nẵng" if "Hoàng Sa" in island_name else "Tỉnh Khánh Hòa"
+            belong_to = "Thành phố Đà Nẵng" if "Hoàng Sa" in island_name else "Tỉnh Khánh Hoà"
             features_34.append({
                 "type": "Feature",
                 "properties": {
@@ -289,7 +297,8 @@ def main():
                     "belong_to": belong_to,
                     "is_special_island": True,
                     "resolution": "Nghị quyết số 202/2025/QH15",
-                    "merged_from_desc": f"Thuộc {belong_to} theo Nghị quyết số 202/2025/QH15"
+                    "merged_from_desc": f"Thuộc {belong_to} theo Nghị quyết số 202/2025/QH15",
+                    "source": "Atlat GD, tr.4-5 & tr.32"
                 },
                 "geometry": mapping(shapes_by_name[island_name])
             })

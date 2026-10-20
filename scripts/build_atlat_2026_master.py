@@ -5,7 +5,7 @@ GeoAtlas Interactive - Master Atlat 2026 Data Builder
 Converts and packages 100% official data extracted from Atlat 2026 & GDPT 2018:
 1. 34 New Administrative Units (NQ 202/2025/QH15) & 63 Traditional Provinces (Trang 4-5)
 2. Marine Baseline Points A1 - A11 & Baseline Polyline (Trang 7 & 9)
-3. 8 Standard Climate Stations & Monsoon/Storm Vectors (Trang 8 & 11)
+3. 8 Standard Climate Stations & Monsoon/Storm Vectors (Atlat GD, tr.8 & 9)
 4. Topography & Rivers, Agriculture & Fisheries, Minerals & Energy, Industrial Centers
 5. 15 Standard High-School Exam Chart Identification Exercises (Trang 17, 18, 19, 21, 23, 26)
 
@@ -16,6 +16,10 @@ Outputs:
 
 import json
 import os
+import sys
+
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8")
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "public", "data")
@@ -24,42 +28,53 @@ JS_DIR = os.path.join(BASE_DIR, "js")
 MASTER_JSON_PATH = os.path.join(DATA_DIR, "atlat_2026_master.json")
 ATLAT_DATA_JS_PATH = os.path.join(JS_DIR, "atlat-data.js")
 
-# 1. 34 Tỉnh / Thành phố mới (Số liệu chuẩn Atlat 2026 Trang 4-5)
+# 1. 34 Tỉnh / Thành phố mới (Số liệu chuẩn 100% Bảng Niên giám thống kê 2024 tại Atlat GD Trang 5)
 PROVINCES_34_STATS = {
+    # 1. Trung du và miền núi phía Bắc (9)
+    "Tỉnh Cao Bằng": {"area": 6700.4, "pop": 558.5, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Cao Bằng"]},
+    "Tỉnh Tuyên Quang": {"area": 13795.6, "pop": 1731.7, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Tuyên Quang", "Hà Giang"]},
+    "Tỉnh Lào Cai": {"area": 13257.0, "pop": 1656.6, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Lào Cai", "Yên Bái"]},
+    "Tỉnh Thái Nguyên": {"area": 8375.3, "pop": 1694.5, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Thái Nguyên", "Bắc Kạn"]},
+    "Tỉnh Lạng Sơn": {"area": 8310.2, "pop": 814.0, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Lạng Sơn"]},
+    "Tỉnh Phú Thọ": {"area": 9361.4, "pop": 3663.7, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Phú Thọ", "Vĩnh Phúc", "Hòa Bình"]},
+    "Tỉnh Điện Biên": {"area": 9539.9, "pop": 656.7, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Điện Biên"]},
+    "Tỉnh Lai Châu": {"area": 9068.7, "pop": 495.5, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Lai Châu"]},
+    "Tỉnh Sơn La": {"area": 14108.9, "pop": 1330.6, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Sơn La"]},
+
+    # 2. Đồng bằng sông Hồng (6)
     "Thành phố Hà Nội": {"area": 3359.8, "pop": 8717.6, "type": "Thành phố trực thuộc Trung ương", "region": "Đồng bằng sông Hồng", "merged_from": ["Hà Nội"]},
-    "Thành phố Hồ Chí Minh": {"area": 6772.6, "pop": 13608.8, "type": "Thành phố trực thuộc Trung ương", "region": "Đông Nam Bộ", "merged_from": ["TP. Hồ Chí Minh", "Bình Dương", "Bà Rịa - Vũng Tàu"]},
+    "Tỉnh Bắc Ninh": {"area": 4718.6, "pop": 3509.2, "type": "Tỉnh", "region": "Đồng bằng sông Hồng", "merged_from": ["Bắc Ninh", "Bắc Giang"]},
+    "Tỉnh Quảng Ninh": {"area": 6208.0, "pop": 1396.5, "type": "Tỉnh", "region": "Đồng bằng sông Hồng", "merged_from": ["Quảng Ninh"]},
     "Thành phố Hải Phòng": {"area": 3194.7, "pop": 4102.7, "type": "Thành phố trực thuộc Trung ương", "region": "Đồng bằng sông Hồng", "merged_from": ["Hải Phòng", "Hải Dương"]},
-    "Thành phố Đà Nẵng": {"area": 11859.6, "pop": 2819.9, "type": "Thành phố trực thuộc Trung ương", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Đà Nẵng", "Quảng Nam"]},
-    "Thành phố Cần Thơ": {"area": 6360.8, "pop": 3207.0, "type": "Thành phố trực thuộc Trung ương", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Cần Thơ", "Vĩnh Long", "Hậu Giang", "Sóc Trăng"]},
-    "Thành phố Huế": {"area": 4902.4, "pop": 1160.2, "type": "Thành phố trực thuộc Trung ương", "region": "Bắc Trung Bộ", "merged_from": ["Thừa Thiên Huế"]},
+    "Tỉnh Hưng Yên": {"area": 2514.8, "pop": 3208.5, "type": "Tỉnh", "region": "Đồng bằng sông Hồng", "merged_from": ["Hưng Yên", "Thái Bình"]},
+    "Tỉnh Ninh Bình": {"area": 3942.6, "pop": 3818.7, "type": "Tỉnh", "region": "Đồng bằng sông Hồng", "merged_from": ["Ninh Bình", "Hà Nam", "Nam Định"]},
+
+    # 3. Bắc Trung Bộ (5)
+    "Tỉnh Thanh Hoá": {"area": 11114.7, "pop": 3764.2, "type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Thanh Hóa"]},
     "Tỉnh Nghệ An": {"area": 16486.5, "pop": 3472.3, "type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Nghệ An"]},
-    "Tỉnh Thanh Hóa": {"area": 11114.7, "pop": 3764.2, "type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Thanh Hóa"]},
+    "Tỉnh Hà Tĩnh": {"area": 5994.5, "pop": 1329.8, "type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Hà Tĩnh"]},
+    "Tỉnh Quảng Trị": {"area": 12700.0, "pop": 1584.0, "type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Quảng Trị", "Quảng Bình"]},
+    "Thành phố Huế": {"area": 4947.1, "pop": 1178.6, "type": "Thành phố trực thuộc Trung ương", "region": "Bắc Trung Bộ", "merged_from": ["Thừa Thiên Huế"]},
+
+    # 4. Duyên hải Nam Trung Bộ và Tây Nguyên (6)
+    "Thành phố Đà Nẵng": {"area": 11859.6, "pop": 2819.9, "type": "Thành phố trực thuộc Trung ương", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Đà Nẵng", "Quảng Nam"]},
+    "Tỉnh Quảng Ngãi": {"area": 14832.6, "pop": 1861.7, "type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Quảng Ngãi", "Bình Định"]},
+    "Tỉnh Khánh Hoà": {"area": 8555.9, "pop": 1882.0, "type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Khánh Hoà", "Phú Yên"]},
+    "Tỉnh Gia Lai": {"area": 21576.5, "pop": 3153.4, "type": "Tỉnh", "region": "Tây Nguyên", "merged_from": ["Gia Lai", "Kon Tum"]},
     "Tỉnh Đắk Lắk": {"area": 18096.4, "pop": 2831.4, "type": "Tỉnh", "region": "Tây Nguyên", "merged_from": ["Đắk Lắk", "Đắk Nông"]},
     "Tỉnh Lâm Đồng": {"area": 24233.1, "pop": 3324.4, "type": "Tỉnh", "region": "Tây Nguyên", "merged_from": ["Lâm Đồng", "Ninh Thuận", "Bình Thuận"]},
-    "Tỉnh Cà Mau": {"area": 7942.4, "pop": 2140.7, "type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Cà Mau", "Bạc Liêu"]},
-    "Tỉnh Cao Bằng": {"area": 6700.3, "pop": 543.1, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Cao Bằng"]},
-    "Tỉnh Lạng Sơn": {"area": 8310.2, "pop": 802.1, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Lạng Sơn"]},
-    "Tỉnh Quảng Ninh": {"area": 6207.9, "pop": 1362.9, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Quảng Ninh"]},
-    "Tỉnh Lai Châu": {"area": 9068.8, "pop": 482.7, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Lai Châu"]},
-    "Tỉnh Điện Biên": {"area": 9541.3, "pop": 635.9, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Điện Biên"]},
-    "Tỉnh Sơn La": {"area": 14123.6, "pop": 1300.9, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Sơn La"]},
-    "Tỉnh Hà Tĩnh": {"area": 5994.5, "pop": 1310.4, "type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Hà Tĩnh"]},
-    "Tỉnh Tuyên Quang": {"area": 13795.4, "pop": 1694.0, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Tuyên Quang", "Hà Giang"]},
-    "Tỉnh Lào Cai": {"area": 13251.7, "pop": 1611.1, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Lào Cai", "Yên Bái"]},
-    "Tỉnh Thái Nguyên": {"area": 8386.5, "pop": 1660.3, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Thái Nguyên", "Bắc Kạn"]},
-    "Tỉnh Phú Thọ": {"area": 9361.1, "pop": 3589.9, "type": "Tỉnh", "region": "Trung du và miền núi Bắc Bộ", "merged_from": ["Phú Thọ", "Vĩnh Phúc", "Hòa Bình"]},
-    "Tỉnh Bắc Ninh": {"area": 4718.6, "pop": 3379.1, "type": "Tỉnh", "region": "Đồng bằng sông Hồng", "merged_from": ["Bắc Ninh", "Bắc Giang"]},
-    "Tỉnh Hưng Yên": {"area": 2516.6, "pop": 3170.9, "type": "Tỉnh", "region": "Đồng bằng sông Hồng", "merged_from": ["Hưng Yên", "Thái Bình"]},
-    "Tỉnh Ninh Bình": {"area": 3942.3, "pop": 3700.0, "type": "Tỉnh", "region": "Đồng bằng sông Hồng", "merged_from": ["Ninh Bình", "Hà Nam", "Nam Định"]},
-    "Tỉnh Quảng Trị": {"area": 12640.1, "pop": 1564.7, "type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Quảng Trị", "Quảng Bình"]},
-    "Tỉnh Quảng Ngãi": {"area": 11227.1, "pop": 2751.9, "type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Quảng Ngãi", "Bình Định"]},
-    "Tỉnh Khánh Hòa": {"area": 10161.2, "pop": 2130.6, "type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Khánh Hòa", "Phú Yên"]},
-    "Tỉnh Gia Lai": {"area": 25185.2, "pop": 2193.8, "type": "Tỉnh", "region": "Tây Nguyên", "merged_from": ["Gia Lai", "Kon Tum"]},
-    "Tỉnh Đồng Nai": {"area": 12737.2, "pop": 4290.1, "type": "Tỉnh", "region": "Đông Nam Bộ", "merged_from": ["Đồng Nai", "Bình Phước"]},
-    "Tỉnh Tây Ninh": {"area": 8536.1, "pop": 2952.6, "type": "Tỉnh", "region": "Đông Nam Bộ", "merged_from": ["Tây Ninh", "Long An"]},
-    "Tỉnh Đồng Tháp": {"area": 5894.4, "pop": 3388.7, "type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Đồng Tháp", "Tiền Giang"]},
-    "Tỉnh An Giang": {"area": 9885.5, "pop": 3660.2, "type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["An Giang", "Kiên Giang"]},
-    "Tỉnh Bến Tre": {"area": 4753.1, "pop": 2317.3, "type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Bến Tre", "Trà Vinh"]}
+
+    # 5. Đông Nam Bộ (3)
+    "Tỉnh Tây Ninh": {"area": 8536.5, "pop": 2959.0, "type": "Tỉnh", "region": "Đông Nam Bộ", "merged_from": ["Tây Ninh", "Long An"]},
+    "Tỉnh Đồng Nai": {"area": 12737.2, "pop": 4427.7, "type": "Tỉnh", "region": "Đông Nam Bộ", "merged_from": ["Đồng Nai", "Bình Phước"]},
+    "Thành phố Hồ Chí Minh": {"area": 6772.6, "pop": 13608.8, "type": "Thành phố trực thuộc Trung ương", "region": "Đông Nam Bộ", "merged_from": ["TP. Hồ Chí Minh", "Bình Dương", "Bà Rịa - Vũng Tàu"]},
+
+    # 6. Đồng bằng sông Cửu Long (5)
+    "Tỉnh Vĩnh Long": {"area": 6296.2, "pop": 3367.5, "type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Vĩnh Long", "Bến Tre", "Trà Vinh"]},
+    "Tỉnh Đồng Tháp": {"area": 5938.7, "pop": 3397.2, "type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Đồng Tháp", "Tiền Giang"]},
+    "Tỉnh An Giang": {"area": 9888.9, "pop": 3679.3, "type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["An Giang", "Kiên Giang"]},
+    "Thành phố Cần Thơ": {"area": 6360.8, "pop": 3207.0, "type": "Thành phố trực thuộc Trung ương", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Cần Thơ", "Hậu Giang", "Sóc Trăng"]},
+    "Tỉnh Cà Mau": {"area": 7942.4, "pop": 2140.7, "type": "Tỉnh", "region": "Đồng bằng sông Cửu Long", "merged_from": ["Cà Mau", "Bạc Liêu"]}
 }
 
 # 2. Điểm cơ sở đường biển A1 - A11 (Atlat Trang 7 & 9)
@@ -70,14 +85,14 @@ BASELINE_POINTS = [
     {"code": "A4", "name": "Điểm A4: Hòn Bông Lang (Côn Đảo)", "province": "Bà Rịa - Vũng Tàu", "coords": [106.67, 8.65], "desc": "Điểm cơ sở phía Đông Nam Côn Đảo."},
     {"code": "A5", "name": "Điểm A5: Hòn Bảy Cạnh (Côn Đảo)", "province": "Bà Rịa - Vũng Tàu", "coords": [106.70, 8.66], "desc": "Điểm cơ sở phía Đông Côn Đảo."},
     {"code": "A6", "name": "Điểm A6: Hòn Hải (Nhóm đảo Phú Quý)", "province": "Bình Thuận", "coords": [109.08, 9.97], "desc": "Điểm cơ sở xa bờ nhất Nam Trung Bộ."},
-    {"code": "A7", "name": "Điểm A7: Hòn Đôi (Bán đảo Hòn Gốm)", "province": "Khánh Hòa", "coords": [109.47, 12.65], "desc": "Điểm cơ sở gần cực Đông đất liền."},
+    {"code": "A7", "name": "Điểm A7: Hòn Đôi (Bán đảo Hòn Gốm)", "province": "Khánh Hoà", "coords": [109.47, 12.65], "desc": "Điểm cơ sở gần cực Đông đất liền."},
     {"code": "A8", "name": "Điểm A8: Mũi Đại Lãnh", "province": "Phú Yên", "coords": [109.45, 12.89], "desc": "Điểm cơ sở mũi đất đón bình minh sớm nhất đất liền."},
     {"code": "A9", "name": "Điểm A9: Hòn Ông Căn", "province": "Bình Định", "coords": [109.35, 13.90], "desc": "Điểm cơ sở bờ biển Bình Định."},
     {"code": "A10", "name": "Điểm A10: Đảo Lý Sơn", "province": "Quảng Ngãi", "coords": [109.15, 15.39], "desc": "Điểm cơ sở huyện đảo Lý Sơn."},
     {"code": "A11", "name": "Điểm A11: Đảo Cồn Cỏ", "province": "Quảng Trị", "coords": [107.34, 17.17], "desc": "Điểm cơ sở cửa ngõ phía Nam vịnh Bắc Bộ."}
 ]
 
-# 3. 8 Trạm khí tượng tiêu biểu (Atlat Trang 8 & 11)
+# 3. 8 Trạm khí tượng tiêu biểu (Atlat GD, tr.8 & 9)
 CLIMATE_STATIONS = [
     {
         "name": "Hà Nội (Trạm Láng)",
@@ -173,7 +188,8 @@ CLIMATE_STATIONS = [
 CHART_EXERCISES_15 = [
     {
         "id": "ATLAT_CHART_01",
-        "atlat_page": "Trang 18",
+        "atlat_page": "Atlat GD, tr.18 (DHQG, tr.14)",
+        "source": "Atlat GD, tr.18 (DHQG, tr.14)",
         "title": "Cơ cấu GDP phân theo khu vực kinh tế Việt Nam (2010 - 2024)",
         "raw_prompt": "Theo bảng số liệu, để thể hiện sự chuyển dịch cơ cấu GDP phân theo khu vực kinh tế nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["chuyển dịch cơ cấu", "giai đoạn 2010 - 2024 (4 năm)", "tổng 100%"],
@@ -195,7 +211,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_02",
-        "atlat_page": "Trang 18",
+        "atlat_page": "Atlat GD, tr.18 (DHQG, tr.14)",
+        "source": "Atlat GD, tr.18 (DHQG, tr.14)",
         "title": "Quy mô GDP và Tốc độ tăng trưởng GDP Việt Nam (2010 - 2024)",
         "raw_prompt": "Theo bảng số liệu, để thể hiện quy mô GDP và tốc độ tăng trưởng GDP nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["quy mô và tốc độ tăng", "hai đơn vị tính (nghìn tỉ đồng và %)", "kết hợp"],
@@ -216,7 +233,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_03",
-        "atlat_page": "Trang 19",
+        "atlat_page": "Atlat GD, tr.19 (DHQG, tr.15)",
+        "source": "Atlat GD, tr.19 (DHQG, tr.15)",
         "title": "Quy mô và Cơ cấu giá trị sản xuất Nông - Lâm - Thủy sản năm 2010 và 2024",
         "raw_prompt": "Theo bảng số liệu, để thể hiện quy mô và cơ cấu giá trị sản xuất nông, lâm, thủy sản nước ta năm 2010 và 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["quy mô và cơ cấu", "2 năm (2010 và 2024)", "bán kính khác nhau"],
@@ -238,7 +256,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_04",
-        "atlat_page": "Trang 26",
+        "atlat_page": "Atlat GD, tr.26 (DHQG, tr.21)",
+        "source": "Atlat GD, tr.26 (DHQG, tr.21)",
         "title": "Trị giá xuất khẩu và nhập khẩu hàng hóa nước ta (2010 - 2024)",
         "raw_prompt": "Theo bảng số liệu, để so sánh trị giá xuất khẩu và nhập khẩu hàng hóa nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["so sánh xuất khẩu và nhập khẩu", "cùng đơn vị (tỉ USD)", "cột ghép"],
@@ -259,7 +278,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_05",
-        "atlat_page": "Trang 23",
+        "atlat_page": "Atlat GD, tr.23 (DHQG, tr.19)",
+        "source": "Atlat GD, tr.23 (DHQG, tr.19)",
         "title": "Tốc độ tăng trưởng sản lượng than, dầu thô và khí tự nhiên (2010 - 2024)",
         "raw_prompt": "Theo bảng số liệu, để thể hiện tốc độ tăng trưởng sản lượng than sạch, dầu thô và khí tự nhiên nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["tốc độ tăng trưởng", "năm gốc 2010 = 100%", "biểu đồ đường"],
@@ -281,7 +301,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_06",
-        "atlat_page": "Trang 17",
+        "atlat_page": "Atlat GD, tr.17 (DHQG, tr.13)",
+        "source": "Atlat GD, tr.17 (DHQG, tr.13)",
         "title": "Dân số thành thị và nông thôn nước ta giai đoạn 2010 - 2024",
         "raw_prompt": "Theo bảng số liệu, để thể hiện quy mô và cơ cấu dân số phân theo thành thị và nông thôn nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["quy mô và cơ cấu dân số", "thành thị + nông thôn = tổng dân số", "cột chồng"],
@@ -302,7 +323,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_07",
-        "atlat_page": "Trang 19",
+        "atlat_page": "Atlat GD, tr.19 (DHQG, tr.15)",
+        "source": "Atlat GD, tr.19 (DHQG, tr.15)",
         "title": "Diện tích và sản lượng lúa cả năm của Việt Nam (2015 - 2024)",
         "raw_prompt": "Theo bảng số liệu, để thể hiện diện tích và sản lượng lúa cả năm của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["diện tích và sản lượng", "khác đơn vị (nghìn ha và triệu tấn)", "kết hợp"],
@@ -323,7 +345,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_08",
-        "atlat_page": "Trang 21",
+        "atlat_page": "Atlat GD, tr.22 (DHQG, tr.18)",
+        "source": "Atlat GD, tr.22 (DHQG, tr.18)",
         "title": "Giá trị sản xuất công nghiệp phân theo 6 Vùng Kinh tế - Xã hội năm 2024",
         "raw_prompt": "Theo bảng số liệu, để so sánh giá trị sản xuất công nghiệp giữa 6 Vùng Kinh tế - Xã hội nước ta năm 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["so sánh giữa các vùng", "năm 2024 duy nhất", "tên vùng dài"],
@@ -348,7 +371,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_09",
-        "atlat_page": "Trang 23",
+        "atlat_page": "Atlat GD, tr.23 (DHQG, tr.19)",
+        "source": "Atlat GD, tr.23 (DHQG, tr.19)",
         "title": "Sản lượng điện phát ra của nước ta qua các năm (2015 - 2024)",
         "raw_prompt": "Theo bảng số liệu, để thể hiện tình hình phát triển sản lượng điện phát ra của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["tình hình phát triển", "1 đại lượng duy nhất", "cột đơn"],
@@ -368,7 +392,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_10",
-        "atlat_page": "Trang 26",
+        "atlat_page": "Atlat GD, tr.26 (DHQG, tr.21)",
+        "source": "Atlat GD, tr.26 (DHQG, tr.21)",
         "title": "Cơ cấu thị trường xuất khẩu hàng hóa Việt Nam năm 2024",
         "raw_prompt": "Theo bảng số liệu, để thể hiện cơ cấu thị trường xuất khẩu hàng hóa của nước ta năm 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["cơ cấu thị trường", "năm 2024 duy nhất", "tổng cộng 100%"],
@@ -394,7 +419,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_11",
-        "atlat_page": "Trang 20",
+        "atlat_page": "Atlat GD, tr.21 (DHQG, tr.17)",
+        "source": "Atlat GD, tr.21 (DHQG, tr.17)",
         "title": "Sản lượng thủy sản khai thác và nuôi trồng nước ta (2015 - 2024)",
         "raw_prompt": "Theo bảng số liệu, để so sánh sản lượng thủy sản khai thác và nuôi trồng nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["so sánh khai thác và nuôi trồng", "cùng đơn vị (nghìn tấn)", "cột ghép"],
@@ -415,7 +441,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_12",
-        "atlat_page": "Trang 19",
+        "atlat_page": "Atlat GD, tr.20 (DHQG, tr.16)",
+        "source": "Atlat GD, tr.20 (DHQG, tr.16)",
         "title": "Chuyển dịch cơ cấu diện tích cây công nghiệp nước ta (2010 - 2024)",
         "raw_prompt": "Theo bảng số liệu, để thể hiện sự chuyển dịch cơ cấu diện tích cây công nghiệp phân theo hàng năm và lâu năm nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["chuyển dịch cơ cấu diện tích", "giai đoạn 2010 - 2024", "biểu đồ miền"],
@@ -436,7 +463,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_13",
-        "atlat_page": "Trang 23",
+        "atlat_page": "Atlat GD, tr.23 (DHQG, tr.19)",
+        "source": "Atlat GD, tr.23 (DHQG, tr.19)",
         "title": "Sản lượng dầu thô khai thác của nước ta giai đoạn 2015 - 2024",
         "raw_prompt": "Theo bảng số liệu, để thể hiện diễn biến sản lượng dầu thô khai thác nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["diễn biến sản lượng", "1 chỉ tiêu duy nhất", "cột đơn"],
@@ -456,7 +484,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_14",
-        "atlat_page": "Trang 26",
+        "atlat_page": "Atlat GD, tr.26 (DHQG, tr.21)",
+        "source": "Atlat GD, tr.26 (DHQG, tr.21)",
         "title": "Cán cân thương mại hàng hóa nước ta giai đoạn 2015 - 2024",
         "raw_prompt": "Theo bảng số liệu, để thể hiện cán cân thương mại hàng hóa của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["cán cân thương mại", "thặng dư / thâm hụt (có giá trị âm/dương)", "cột"],
@@ -476,7 +505,8 @@ CHART_EXERCISES_15 = [
     },
     {
         "id": "ATLAT_CHART_15",
-        "atlat_page": "Trang 22",
+        "atlat_page": "Atlat GD, tr.23 (DHQG, tr.19)",
+        "source": "Atlat GD, tr.23 (DHQG, tr.19)",
         "title": "Công suất lắp máy một số nhà máy thủy điện lớn ở nước ta",
         "raw_prompt": "Theo bảng số liệu, để so sánh công suất lắp máy của một số nhà máy thủy điện lớn ở nước ta, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["so sánh công suất", "nhiều đối tượng địa danh", "thanh ngang"],
@@ -505,7 +535,8 @@ CHART_EXERCISES_15 = [
 DOCX_QUESTIONS = [
     {
         "id": "DOCX_CHART_01",
-        "atlat_page": "Trang 25 & biểu đồ.docx (Mục 1)",
+        "atlat_page": "Atlat GD, tr.27 & biểu đồ.docx (Mục 1)",
+        "source": "biểu đồ.docx, Mục 1; Atlat GD, tr.27",
         "title": "Cơ cấu doanh thu du lịch lữ hành phân theo thành phần kinh tế nước ta năm 2010 và 2016",
         "raw_prompt": "Theo bảng số liệu, để thể hiện cơ cấu doanh thu du lịch lữ hành phân theo thành phần kinh tế của nước ta năm 2010 và 2016 (%), dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["cơ cấu", "tỷ trọng", "năm 2010 và 2016 (2 năm)", "tổng = 100%"],
@@ -528,7 +559,8 @@ DOCX_QUESTIONS = [
     },
     {
         "id": "DOCX_CHART_02",
-        "atlat_page": "Trang 19 & biểu đồ.docx (Mục 2)",
+        "atlat_page": "Atlat GD, tr.18 & biểu đồ.docx (Mục 2)",
+        "source": "biểu đồ.docx, Mục 2; Atlat GD, tr.18",
         "title": "Tốc độ tăng trưởng GDP của Phi-líp-pin, Thái Lan và Việt Nam giai đoạn 2010 – 2016",
         "raw_prompt": "Theo bảng số liệu, để thể hiện sự thay đổi, phát triển, tốc độ tăng trưởng GDP của Phi líp pin, Thái Lan và Việt Nam giai đoạn 2010 – 2016, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["tốc độ tăng trưởng", "sự thay đổi", "phát triển", "năm gốc 2010 = 100%", "biểu đồ đường"],
@@ -550,7 +582,8 @@ DOCX_QUESTIONS = [
     },
     {
         "id": "DOCX_CHART_03",
-        "atlat_page": "Trang 22 & biểu đồ.docx (Mục 3)",
+        "atlat_page": "Atlat GD, tr.23 & biểu đồ.docx (Mục 3)",
+        "source": "biểu đồ.docx, Mục 3; Atlat GD, tr.23",
         "title": "So sánh sản lượng điện của một số địa phương nước ta qua các năm",
         "raw_prompt": "Theo bảng số liệu, để thể hiện sự biến động hoặc so sánh sản lượng điện của một số địa phương qua các năm (cùng đơn vị tỉ kWh), dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["biến động qua nhiều năm", "so sánh các đối tượng cùng đơn vị", "cột ghép"],
@@ -572,7 +605,8 @@ DOCX_QUESTIONS = [
     },
     {
         "id": "DOCX_CHART_04",
-        "atlat_page": "Trang 24 & biểu đồ.docx (Mục 4)",
+        "atlat_page": "Atlat GD, tr.26 & biểu đồ.docx (Mục 4)",
+        "source": "biểu đồ.docx, Mục 4; Atlat GD, tr.26",
         "title": "Sự thay đổi cơ cấu trị giá xuất khẩu và nhập khẩu hàng hóa nước ta (2010 - 2024)",
         "raw_prompt": "Theo bảng số liệu, để thể hiện rõ nhất sự thay đổi cơ cấu, tỉ trọng xuất khẩu và nhập khẩu của nước ta giai đoạn 2010 - 2024 (từ 3 năm trở lên), dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["thay đổi cơ cấu", "tỉ trọng của hai nhóm đối tượng", "từ 3 năm trở lên", "tổng = 100%"],
@@ -593,7 +627,8 @@ DOCX_QUESTIONS = [
     },
     {
         "id": "DOCX_CHART_05",
-        "atlat_page": "Trang 20 & biểu đồ.docx (Mục 5)",
+        "atlat_page": "Atlat GD, tr.21 & biểu đồ.docx (Mục 5)",
+        "source": "biểu đồ.docx, Mục 5; Atlat GD, tr.21",
         "title": "Sản lượng và Giá trị sản xuất thủy sản của Việt Nam giai đoạn 2015 - 2024",
         "raw_prompt": "Theo bảng số liệu, để thể hiện sản lượng thủy sản (nghìn tấn) và giá trị sản xuất thủy sản (nghìn tỉ đồng) của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["khác nhau về đơn vị nhưng có mối quan hệ", "sản lượng và giá trị", "kết hợp"],
@@ -614,7 +649,8 @@ DOCX_QUESTIONS = [
     },
     {
         "id": "DOCX_CHART_06",
-        "atlat_page": "Trang 21 & biểu đồ.docx (Mục 6)",
+        "atlat_page": "Atlat GD, tr.22 & biểu đồ.docx (Mục 6)",
+        "source": "biểu đồ.docx, Mục 6; Atlat GD, tr.22",
         "title": "Quy mô và cơ cấu giá trị sản xuất công nghiệp theo nhóm ngành của nước ta (2015 - 2024)",
         "raw_prompt": "Theo bảng số liệu, để thể hiện tốt nhất quy mô và cơ cấu giá trị sản xuất công nghiệp phân theo nhóm ngành nước ta giai đoạn 2015 - 2024 (theo tỉ lệ % tuyệt đối), dạng biểu đồ nào sau đây thích hợp nhất?",
         "keywords": ["quy mô và cơ cấu", "theo tỉ lệ % tuyệt đối", "cột chồng"],
@@ -813,7 +849,7 @@ def main():
     geo_climate_updated = {
         "type": "FeatureCollection",
         "metadata": {
-            "title": "Khí hậu & Thủy văn Việt Nam (Atlat Trang 8 & 11)",
+            "title": "Khí hậu & Thủy văn Việt Nam (Atlat GD, tr.8 & 9)",
             "stations_count": len(CLIMATE_STATIONS)
         },
         "features": climate_features
