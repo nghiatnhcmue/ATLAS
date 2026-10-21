@@ -1825,6 +1825,13 @@ const AtlasEngine = (function () {
     if (!geoData.agriculture) await ensureLayerData("agriculture");
     if (!geoData.agriculture) return;
 
+    if (map && !map.hasLayer(layerAgriculture)) {
+      map.addLayer(layerAgriculture);
+      activeLayers["agriculture"] = true;
+      const chk = document.getElementById("layer-chk-agriculture");
+      if (chk) chk.checked = true;
+    }
+
     layerAgriculture.clearLayers();
 
     const categoryBadgeStyles = {
@@ -1890,6 +1897,13 @@ const AtlasEngine = (function () {
   async function renderMineralsPowerLayer(filterType = "all") {
     if (!geoData.minerals) await ensureLayerData("minerals");
     if (!geoData.power) await ensureLayerData("power");
+
+    if (map && !map.hasLayer(layerMineralsPower)) {
+      map.addLayer(layerMineralsPower);
+      activeLayers["minerals_power"] = true;
+      const chk = document.getElementById("layer-chk-minerals_power");
+      if (chk) chk.checked = true;
+    }
 
     layerMineralsPower.clearLayers();
 
@@ -1963,6 +1977,13 @@ const AtlasEngine = (function () {
     if (!geoData.industrial) await ensureLayerData("industrial");
     if (!geoData.industrial) return;
 
+    if (map && !map.hasLayer(layerIndustrial)) {
+      map.addLayer(layerIndustrial);
+      activeLayers["industrial"] = true;
+      const chk = document.getElementById("layer-chk-industrial");
+      if (chk) chk.checked = true;
+    }
+
     layerIndustrial.clearLayers();
 
     const currentZoom = map.getZoom();
@@ -2019,83 +2040,185 @@ const AtlasEngine = (function () {
   // LỚP 7: GIAO THÔNG VẬN TẢI HUYẾT MẠCH (Atlat GD, tr.23)
   // Tuyến QL1A, Đường Hồ Chí Minh, Đường sắt Thống Nhất Bắc - Nam, 9 Sân bay, 7 Cụm cảng biển
   // ===========================================================================
-  async function renderTransportationLayer() {
+  let currentTransportFilter = "all";
+
+  async function renderTransportationLayer(categoryFilter = "all") {
+    currentTransportFilter = categoryFilter;
     if (!layerTransportation) {
       layerTransportation = L.featureGroup().addTo(map);
     }
-    layerTransportation.clearLayers();
-    await ensureLayerData("transportation");
+    if (!geoData.transportation) await ensureLayerData("transportation");
     const data = geoData.transportation;
     if (!data || !data.features) return;
 
+    if (map && !map.hasLayer(layerTransportation)) {
+      map.addLayer(layerTransportation);
+      activeLayers["transportation"] = true;
+      const chk = document.getElementById("layer-chk-transportation");
+      if (chk) chk.checked = true;
+    }
+
+    layerTransportation.clearLayers();
+
     L.geoJSON(data, {
+      filter: (f) => {
+        const p = f.properties || {};
+        if (categoryFilter === "all") return true;
+        if (categoryFilter === "highway") return p.category === "national_highway" || p.category === "highway" || (p.name && (p.name.includes("Quốc lộ") || p.name.includes("Hồ Chí Minh")));
+        if (categoryFilter === "railway") return p.category === "railway" || (p.name && p.name.includes("Đường sắt"));
+        if (categoryFilter === "airport") return (p.category && p.category.includes("airport")) || (p.name && p.name.includes("hàng không"));
+        if (categoryFilter === "seaport") return (p.category && p.category.includes("seaport")) || (p.name && p.name.includes("Cảng biển"));
+        return true;
+      },
       style: (f) => {
-        const p = f.properties;
-        if (p.category === "highway") {
-          return { color: "#dc2626", weight: 4.0, opacity: 0.95 };
+        const p = f.properties || {};
+        const isHighway1A = (p.name && p.name.includes("Quốc lộ 1A")) || p.category === "highway";
+        const isHoChiMinh = (p.name && p.name.includes("Hồ Chí Minh")) || p.category === "highway_green";
+        const isRailway = p.category === "railway" || (p.name && p.name.includes("Đường sắt"));
+
+        if (isHighway1A) {
+          return {
+            color: "#DC2626", // Đỏ Quốc lộ 1A chuẩn Atlat tr.24
+            weight: 3.5,
+            opacity: 0.95,
+            lineCap: "round",
+            lineJoin: "round"
+          };
         }
-        if (p.category === "highway_green") {
-          return { color: "#16a34a", weight: 3.5, opacity: 0.95 };
+        if (isHoChiMinh) {
+          return {
+            color: "#16A34A", // Xanh lá Đường Hồ Chí Minh
+            weight: 3.5,
+            opacity: 0.95,
+            lineCap: "round",
+            lineJoin: "round"
+          };
         }
-        if (p.category === "railway") {
-          return { color: "#1e293b", weight: 3.5, dashArray: "8, 8", opacity: 0.95 };
+        if (isRailway) {
+          return {
+            color: "#0F172A", // Đường sắt Thống Nhất Bắc - Nam
+            weight: 3.5,
+            dashArray: "10, 8",
+            opacity: 0.95
+          };
         }
-        return { color: "#2563eb", weight: 2.5 };
+        return { color: "#2563EB", weight: 2.5 };
       },
       pointToLayer: (f, latlng) => {
-        const p = f.properties;
-        const isAirport = p.category === "airport";
-        const iconChar = isAirport ? "✈️" : "⚓";
-        const bgClass = isAirport ? "bg-blue-600" : "bg-slate-900";
-        const markerHtml = `
-          <div class="flex items-center justify-center w-7 h-7 rounded-full ${bgClass} text-white shadow-lg border-2 border-white hover:scale-125 transition-transform cursor-pointer">
-            <span style="font-size: 13px;">${iconChar}</span>
-          </div>
-        `;
-        return L.marker(latlng, {
-          icon: L.divIcon({
-            className: "transportation-marker",
-            html: markerHtml,
-            iconSize: [28, 28],
-            iconAnchor: [14, 14]
-          })
-        });
+        const p = f.properties || {};
+        const isIntlAirport = p.category === "airport_intl";
+        const isDomesticAirport = p.category === "airport_domestic";
+        const isAirport = isIntlAirport || isDomesticAirport || (p.category && p.category.includes("airport"));
+        const isSpecialPort = p.category === "seaport_special";
+
+        if (isAirport) {
+          const bgClass = isIntlAirport ? "bg-blue-600" : "bg-sky-500";
+          const shortName = p.name.replace(/^Cảng hàng không Quốc tế\s*/i, '').replace(/^Cảng hàng không\s*/i, '');
+          const badgeBg = isIntlAirport ? "bg-blue-900/90 border-blue-400 text-white" : "bg-sky-900/90 border-sky-400 text-white";
+          const markerHtml = `
+            <div class="flex items-center space-x-1 cursor-pointer hover:scale-115 transition drop-shadow-md">
+              <div class="flex items-center justify-center w-6 h-6 rounded-full ${bgClass} text-white shadow-md border-2 border-white shrink-0">
+                <span style="font-size: 12px; line-height: 1;">✈️</span>
+              </div>
+              <span class="${badgeBg} text-[9.5px] font-bold px-1.5 py-0.5 rounded-full border shadow-xs whitespace-nowrap">${shortName}</span>
+            </div>
+          `;
+          return L.marker(latlng, {
+            icon: L.divIcon({
+              className: "transport-airport-marker",
+              html: markerHtml,
+              iconSize: [110, 24],
+              iconAnchor: [12, 12]
+            })
+          });
+        } else {
+          // Cảng biển
+          const bgClass = isSpecialPort ? "bg-amber-600" : "bg-sky-700";
+          const shortName = p.name.replace(/^Cụm Cảng biển nước sâu\s*/i, '').replace(/^Cụm Cảng biển\s*/i, '').replace(/^Cảng biển\s*/i, '');
+          const badgeBg = isSpecialPort ? "bg-amber-950/90 border-amber-400 text-amber-200" : "bg-slate-900/90 border-sky-400 text-sky-200";
+          const markerHtml = `
+            <div class="flex items-center space-x-1 cursor-pointer hover:scale-115 transition drop-shadow-md">
+              <div class="flex items-center justify-center w-6 h-6 rounded-full ${bgClass} text-white shadow-md border-2 border-white shrink-0">
+                <span style="font-size: 11px; line-height: 1;">⚓</span>
+              </div>
+              <span class="${badgeBg} text-[9.5px] font-bold px-1.5 py-0.5 rounded-full border shadow-xs whitespace-nowrap">${shortName}</span>
+            </div>
+          `;
+          return L.marker(latlng, {
+            icon: L.divIcon({
+              className: "transport-seaport-marker",
+              html: markerHtml,
+              iconSize: [120, 24],
+              iconAnchor: [12, 12]
+            })
+          });
+        }
       },
       onEachFeature: (f, layer) => {
-        const p = f.properties;
+        const p = f.properties || {};
+        const isAirport = (p.category && p.category.includes("airport")) || (p.name && p.name.includes("hàng không"));
+        const isRailway = p.category === "railway" || (p.name && p.name.includes("Đường sắt"));
+        const iconChar = isAirport ? "✈️" : (isRailway ? "🚂" : (f.geometry.type.includes("Line") ? "🛣️" : "⚓"));
+
+        // Thêm nhãn nhận diện tuyến đường chính
+        if (f.geometry.type === "LineString" && f.geometry.coordinates && f.geometry.coordinates.length > 5) {
+          const coords = f.geometry.coordinates;
+          const midIdx = Math.floor(coords.length * 0.4);
+          const pt = coords[midIdx];
+          if (pt && pt.length >= 2) {
+            let badgeText = p.name;
+            let badgeBg = "bg-red-700 text-white";
+            if (p.name.includes("Quốc lộ 1A")) { badgeText = "🔴 QL 1A"; badgeBg = "bg-red-700 text-white"; }
+            else if (p.name.includes("Hồ Chí Minh")) { badgeText = "🟢 Đ. Hồ Chí Minh"; badgeBg = "bg-emerald-700 text-white"; }
+            else if (isRailway) { badgeText = "🚂 Đường sắt Thống Nhất"; badgeBg = "bg-slate-900 text-slate-100"; }
+
+            const lineMarker = L.marker([pt[1], pt[0]], {
+              pane: 'pointMarkerPane',
+              icon: L.divIcon({
+                className: "transport-line-badge",
+                html: `<div class="${badgeBg} text-[9px] font-bold px-1.5 py-0.5 rounded-full border border-white/80 shadow-xs whitespace-nowrap">${badgeText}</div>`,
+                iconSize: [80, 20],
+                iconAnchor: [40, 10]
+              })
+            });
+            lineMarker.bindTooltip(`<strong>${p.name}</strong><br>${p.desc || ''}`, { permanent: false, sticky: false });
+            lineMarker.on("click", () => showDetailsPanel(p, "transportation"));
+            layerTransportation.addLayer(lineMarker);
+          }
+        }
+
         layer.on({
           mouseover: (e) => {
             if (layer.setStyle && f.geometry.type.includes("Line")) {
-              layer.setStyle({ weight: 6, opacity: 1.0 });
+              layer.setStyle({ weight: 5.5, opacity: 1.0 });
             }
-            layer.openTooltip();
+            try { layer.openTooltip(); } catch (err) {}
           },
           mouseout: (e) => {
             if (layer.setStyle && f.geometry.type.includes("Line")) {
-              const isHw = p.category === "highway";
-              const isHg = p.category === "highway_green";
-              const isRw = p.category === "railway";
+              const isHw = (p.name && p.name.includes("Quốc lộ 1A")) || p.category === "highway";
+              const isHg = (p.name && p.name.includes("Hồ Chí Minh")) || p.category === "highway_green";
+              const isRw = p.category === "railway" || (p.name && p.name.includes("Đường sắt"));
               layer.setStyle({
-                weight: isHw ? 4 : (isHg ? 3.5 : (isRw ? 3.5 : 2.5)),
+                weight: (isHw || isHg || isRw) ? 3.5 : 2.5,
                 opacity: 0.95
               });
             }
-            layer.closeTooltip();
+            try { layer.closeTooltip(); } catch (err) {}
           },
           click: () => {
             showDetailsPanel(p, "transportation");
           }
         });
 
-        const iconChar = p.category === "airport" ? "✈️" : (p.category === "seaport" ? "⚓" : (p.category === "railway" ? "🚂" : "🛣️"));
         layer.bindTooltip(`
-          <div class="p-1 text-left font-sans">
+          <div class="p-1.5 text-left font-sans">
             <div class="font-bold text-xs text-slate-900 dark:text-white flex items-center space-x-1">
               <span>${iconChar}</span>
               <span>${p.name}</span>
             </div>
             <div class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mt-0.5">${p.desc || ''}</div>
-            <div class="text-[9px] text-slate-500 mt-0.5">${p.source || 'Atlat GD, tr.23'}</div>
+            <div class="text-[9px] text-slate-500 mt-0.5">${p.source || 'Atlat GD, tr.24'}</div>
           </div>
         `, { permanent: false, sticky: false, opacity: 0.95 });
       }
@@ -3156,9 +3279,10 @@ const AtlasEngine = (function () {
     }
 
     if (type === "transportation") {
-      const isAirport = props.category === "airport";
-      const isPort = props.category === "seaport";
-      const iconChar = isAirport ? "✈️" : (isPort ? "⚓" : (props.category === "railway" ? "🚂" : "🛣️"));
+      const isAirport = (props.category || "").includes("airport") || (props.name || "").includes("hàng không");
+      const isPort = (props.category || "").includes("seaport") || (props.name || "").includes("Cảng biển");
+      const isRailway = (props.category || "").includes("railway") || (props.name || "").includes("Đường sắt");
+      const iconChar = isAirport ? "✈️" : (isPort ? "⚓" : (isRailway ? "🚂" : "🛣️"));
 
       infoContainer.innerHTML = `
         <div class="space-y-2.5">
@@ -3166,7 +3290,7 @@ const AtlasEngine = (function () {
             <h4 class="font-bold text-xs text-slate-900 dark:text-white flex items-center space-x-1.5">
               <span>${iconChar}</span> <span>${props.name}</span>
             </h4>
-            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300">${props.source || 'Atlat GD, tr.23'}</span>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300">${props.source || 'Atlat GD, tr.24'}</span>
           </div>
           <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1.5 text-[11px]">
             <div><strong>Phân loại:</strong> ${props.type || 'Hạ tầng giao thông huyết mạch'}</div>
