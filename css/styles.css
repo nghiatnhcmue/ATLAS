@@ -570,6 +570,10 @@ html, body {
 /* ==========================================================================
    QUY CHUẨN BẢN ĐỒ HỌC ATLAT GIẤY (CARTOGRAPHIC STANDARDS)
    ========================================================================== */
+#atlas-map {
+  --carto-zoom-scale: 1.0;
+}
+
 .leaflet-container,
 .leaflet-container *,
 .leaflet-popup,
@@ -580,6 +584,13 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Nút zoom bản đồ ở góc trên bên trái tách biệt khỏi toolbar */
+.leaflet-top.leaflet-left {
+  top: 10px;
+  left: 10px;
+  z-index: 850;
+}
+
 .carto-peak-label {
   display: inline-flex;
   align-items: center;
@@ -587,13 +598,20 @@ html, body {
   font-family: var(--font-sans) !important;
   letter-spacing: normal !important;
   cursor: pointer;
+  transform: scale(var(--carto-zoom-scale, 1));
+  transform-origin: left center;
+  transition: transform 0.1s ease-out;
 }
 .carto-plateau-label {
+  display: inline-block;
   font-family: var(--font-sans) !important;
   font-weight: 700 !important;
   letter-spacing: normal !important;
   color: #451a03;
   text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;
+  transform: scale(var(--carto-zoom-scale, 1));
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
 }
 .carto-mountain-label {
   background: transparent !important;
@@ -607,8 +625,12 @@ html, body {
   text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff !important;
   font-family: var(--font-sans) !important;
   pointer-events: none !important;
+  transform: scale(var(--carto-zoom-scale, 1));
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
 }
 .carto-river-label {
+  display: inline-block;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
@@ -620,6 +642,9 @@ html, body {
   text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff !important;
   font-family: var(--font-sans) !important;
   pointer-events: none !important;
+  transform: scale(var(--carto-zoom-scale, 1));
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
 }
 .carto-baseline-point {
   display: inline-flex;
@@ -627,6 +652,9 @@ html, body {
   gap: 2px;
   font-family: var(--font-sans) !important;
   letter-spacing: normal !important;
+  transform: scale(var(--carto-zoom-scale, 1));
+  transform-origin: left center;
+  transition: transform 0.1s ease-out;
 }
 .carto-station-label {
   display: inline-flex;
@@ -635,6 +663,9 @@ html, body {
   font-family: var(--font-sans) !important;
   letter-spacing: normal !important;
   cursor: pointer;
+  transform: scale(var(--carto-zoom-scale, 1));
+  transform-origin: left center;
+  transition: transform 0.1s ease-out;
 }
 .carto-sovereignty-label {
   display: inline-block;
@@ -644,4 +675,17 @@ html, body {
   letter-spacing: normal !important;
   text-transform: none !important;
   text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;
+  transform: scale(var(--carto-zoom-scale, 1));
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
+}
+.province-clean-label {
+  transform: scale(var(--carto-zoom-scale, 1));
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
+}
+.sea-label {
+  transform: scale(var(--carto-zoom-scale, 1));
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
 }
