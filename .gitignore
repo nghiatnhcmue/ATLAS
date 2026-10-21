@@ -5,7 +5,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 tools/
-data/
+/data/
 GeoAtlas_Production.zip
 dist/
 *.log
