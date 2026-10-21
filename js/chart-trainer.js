@@ -997,12 +997,12 @@ const ChartTrainer = (function () {
         textStyle: { fontFamily: 'Be Vietnam Pro', fontSize: 12 }
       },
       legend: {
-        top: isMobile ? 42 : 32,
+        top: isMobile ? 46 : 36,
         type: "scroll",
         textStyle: { fontSize: 11, fontFamily: 'Be Vietnam Pro', color: textColor }
       },
       grid: {
-        top: isMobile ? 80 : 72,
+        top: isMobile ? 86 : 76,
         right: isMobile ? 20 : 60,
         bottom: isMobile ? 40 : 60,
         left: isMobile ? 20 : 60,
@@ -1128,92 +1128,173 @@ const ChartTrainer = (function () {
         data: r.values
       }));
     }
-    // 5. Biểu đồ Tròn (pie) - Thuật toán Đa Biểu Đồ Tròn N Năm
+    // 5. Biểu đồ Tròn (pie) - Bố cục Chuẩn Sư phạm Địa lí (Không đè chữ, Legend dưới đáy)
     else if (chartType === "pie") {
       delete option.grid;
       const numYears = categories.length;
 
+      // Đưa Chú giải (Legend) xuống đáy biểu đồ để tiêu đề và nhãn năm thoáng đạt
+      option.legend = {
+        bottom: 8,
+        left: "center",
+        type: "scroll",
+        itemGap: 16,
+        textStyle: { fontSize: isMobile ? 10 : 11, fontFamily: 'Be Vietnam Pro', color: textColor }
+      };
+
+      const baseTitle = {
+        text: `${q.title || 'Biểu đồ'} - [Dạng: ${getChartLabel(chartType)}]`,
+        left: "center",
+        top: 8,
+        textStyle: { fontSize: isMobile ? 11 : 13, fontWeight: "bold", fontFamily: 'Be Vietnam Pro', color: textColor }
+      };
+
+      const formatYearLabel = (raw) => {
+        const str = String(raw || "").trim();
+        return /^năm/i.test(str) ? str : `Năm ${str}`;
+      };
+
       if (numYears <= 1) {
+        option.title = [
+          baseTitle,
+          {
+            text: categories[0] ? formatYearLabel(categories[0]) : "Cơ cấu",
+            left: "50%",
+            top: isMobile ? "78%" : "82%",
+            textAlign: "center",
+            textStyle: { fontSize: 12, fontWeight: "bold", color: textColor, fontFamily: 'Be Vietnam Pro' }
+          }
+        ];
         option.series = [{
           name: categories[0] || "Cơ cấu",
           type: "pie",
-          radius: "58%",
-          center: ["50%", "54%"],
+          radius: isMobile ? "44%" : "48%",
+          center: ["50%", "47%"],
           avoidLabelOverlap: true,
+          labelLine: { length: 8, length2: 12 },
           data: rows.map(r => ({ name: r.name, value: r.values[0] || 0 })),
           label: { formatter: "{b}: {d}%", fontSize: 11, fontFamily: 'Be Vietnam Pro', color: textColor }
         }];
       } else if (numYears === 2) {
+        option.title = [
+          baseTitle,
+          {
+            text: formatYearLabel(categories[0]),
+            left: "28%",
+            top: isMobile ? "78%" : "80%",
+            textAlign: "center",
+            textStyle: { fontSize: 12, fontWeight: "bold", color: textColor, fontFamily: 'Be Vietnam Pro' }
+          },
+          {
+            text: formatYearLabel(categories[1]),
+            left: "72%",
+            top: isMobile ? "78%" : "80%",
+            textAlign: "center",
+            textStyle: { fontSize: 12, fontWeight: "bold", color: textColor, fontFamily: 'Be Vietnam Pro' }
+          }
+        ];
         option.series = [
           {
             name: categories[0],
             type: "pie",
-            radius: "44%",
-            center: ["28%", "54%"],
+            radius: isMobile ? "24%" : "29%",
+            center: ["28%", "46%"],
             avoidLabelOverlap: true,
+            labelLine: { length: 6, length2: 10 },
             data: rows.map(r => ({ name: r.name, value: r.values[0] || 0 })),
             label: { formatter: "{b}: {d}%", fontSize: 10, fontFamily: 'Be Vietnam Pro', color: textColor }
           },
           {
             name: categories[1],
             type: "pie",
-            radius: "48%",
-            center: ["72%", "54%"],
+            radius: isMobile ? "26%" : "32%",
+            center: ["72%", "46%"],
             avoidLabelOverlap: true,
+            labelLine: { length: 6, length2: 10 },
             data: rows.map(r => ({ name: r.name, value: r.values[1] || 0 })),
             label: { formatter: "{b}: {d}%", fontSize: 10, fontFamily: 'Be Vietnam Pro', color: textColor }
           }
         ];
-        option.title.subtext = `Hình 1: ${categories[0]} (trái)  |  Hình 2: ${categories[1]} (phải)`;
-        option.title.subtextStyle = { fontSize: 11, color: textColor, fontFamily: 'Be Vietnam Pro' };
       } else if (numYears === 3) {
+        option.title = [
+          baseTitle,
+          {
+            text: formatYearLabel(categories[0]),
+            left: "18%",
+            top: isMobile ? "76%" : "78%",
+            textAlign: "center",
+            textStyle: { fontSize: 11, fontWeight: "bold", color: textColor, fontFamily: 'Be Vietnam Pro' }
+          },
+          {
+            text: formatYearLabel(categories[1]),
+            left: "50%",
+            top: isMobile ? "76%" : "78%",
+            textAlign: "center",
+            textStyle: { fontSize: 11, fontWeight: "bold", color: textColor, fontFamily: 'Be Vietnam Pro' }
+          },
+          {
+            text: formatYearLabel(categories[2]),
+            left: "82%",
+            top: isMobile ? "76%" : "78%",
+            textAlign: "center",
+            textStyle: { fontSize: 11, fontWeight: "bold", color: textColor, fontFamily: 'Be Vietnam Pro' }
+          }
+        ];
         option.series = [
           {
             name: categories[0],
             type: "pie",
-            radius: "32%",
-            center: ["18%", "54%"],
+            radius: isMobile ? "16%" : "19%",
+            center: ["18%", "46%"],
             avoidLabelOverlap: true,
+            labelLine: { length: 4, length2: 8 },
             data: rows.map(r => ({ name: r.name, value: r.values[0] || 0 })),
             label: { formatter: "{d}%", fontSize: 10, color: textColor }
           },
           {
             name: categories[1],
             type: "pie",
-            radius: "34%",
-            center: ["50%", "54%"],
+            radius: isMobile ? "18%" : "21%",
+            center: ["50%", "46%"],
             avoidLabelOverlap: true,
+            labelLine: { length: 4, length2: 8 },
             data: rows.map(r => ({ name: r.name, value: r.values[1] || 0 })),
             label: { formatter: "{d}%", fontSize: 10, color: textColor }
           },
           {
             name: categories[2],
             type: "pie",
-            radius: "36%",
-            center: ["82%", "54%"],
+            radius: isMobile ? "20%" : "23%",
+            center: ["82%", "46%"],
             avoidLabelOverlap: true,
+            labelLine: { length: 4, length2: 8 },
             data: rows.map(r => ({ name: r.name, value: r.values[2] || 0 })),
             label: { formatter: "{d}%", fontSize: 10, color: textColor }
           }
         ];
-        option.title.subtext = `${categories[0]} (trái) • ${categories[1]} (giữa) • ${categories[2]} (phải)`;
-        option.title.subtextStyle = { fontSize: 11, color: textColor, fontFamily: 'Be Vietnam Pro' };
       } else {
         // >= 4 năm (Trường hợp phản biện: chia 2 hàng để thấy rõ sự rối rắm thị giác)
+        option.title = [
+          baseTitle,
+          {
+            text: "⚠️ Khuyến nghị sư phạm: Khi có từ 4 mốc thời gian trở lên, biểu đồ Miền tối ưu hơn biểu đồ Tròn.",
+            left: "center",
+            bottom: 34,
+            textStyle: { fontSize: 11, color: "#EF4444", fontWeight: "bold", fontFamily: 'Be Vietnam Pro' }
+          }
+        ];
         option.series = categories.map((cat, idx) => {
           const isTop = idx < 2;
           const isLeft = (idx % 2) === 0;
           return {
             name: cat,
             type: "pie",
-            radius: "22%",
-            center: [isLeft ? "30%" : "70%", isTop ? "40%" : "75%"],
+            radius: "16%",
+            center: [isLeft ? "28%" : "72%", isTop ? "34%" : "66%"],
             data: rows.map(r => ({ name: r.name, value: r.values[idx] || 0 })),
             label: { formatter: "{d}%", fontSize: 9, color: textColor }
           };
         });
-        option.title.subtext = "⚠️ Quá nhiều hình tròn (≥ 4 năm) gây rối mắt! Quy chuẩn sư phạm: Bắt buộc dùng biểu đồ Miền.";
-        option.title.subtextStyle = { fontSize: 11, color: "#EF4444", fontWeight: "bold" };
       }
     }
     // 6. Biểu đồ Kết Hợp (combo_bar_line - 2 Trục Tung)
