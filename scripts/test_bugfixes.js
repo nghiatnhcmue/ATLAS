@@ -180,7 +180,7 @@ test("BUG-10", "Bảng mẫu máy tính: Số liệu chuẩn Huế (1.179 / 4.94
   const calcCode = fs.readFileSync("js/geo-calculator.js", "utf-8");
 
   assert(calcCode.includes('["Thành phố Huế", "1.179", "4.947"]'), "Hue sample row updated");
-  assert(calcCode.includes('["Tỉnh Đồng Nai", "4.428", "12.737"]'), "Dong Nai sample row updated");
+  assert(calcCode.includes('["Thành phố Đồng Nai", "4.428", "12.737"]'), "Dong Nai sample row updated");
   assert(calcCode.includes('["Thành phố Hà Nội", "8.718", "3.360"]'), "Hanoi sample row updated");
 });
 

@@ -755,7 +755,7 @@
     "Thành phố Đồng Nai": {
       "area": 12737.2,
       "pop": 4427.7,
-      "type": "Tỉnh",
+      "type": "Thành phố trực thuộc Trung ương",
       "region": "Đông Nam Bộ",
       "merged_from": [
         "Đồng Nai",
@@ -823,6 +823,16 @@
       "merged_from": [
         "Cà Mau",
         "Bạc Liêu"
+      ]
+    },
+    "Đồng Nai": {
+      "area": 12737.2,
+      "pop": 4427.7,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Đông Nam Bộ",
+      "merged_from": [
+        "Đồng Nai",
+        "Bình Phước"
       ]
     }
   },
@@ -51132,8 +51142,8 @@
       {
         "type": "Feature",
         "properties": {
-          "name": "Tỉnh Đồng Nai",
-          "administrative_type": "Tỉnh",
+          "name": "Thành phố Đồng Nai",
+          "administrative_type": "Thành phố trực thuộc Trung ương",
           "region_name": "Đông Nam Bộ",
           "region": "Đông Nam Bộ",
           "area": 12737.2,
@@ -51147,7 +51157,8 @@
           "resolution": "Nghị quyết số 202/2025/QH15",
           "is_special_island": false,
           "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-          "grdp": 100.0
+          "grdp": 100.0,
+          "type": "Thành phố trực thuộc Trung ương"
         },
         "geometry": {
           "type": "Polygon",
@@ -65236,7 +65247,7 @@
           "area": 6873.6,
           "pop": 1034.7,
           "density": 151,
-          "merged_into": "Tỉnh Đồng Nai",
+          "merged_into": "Thành phố Đồng Nai",
           "is_special_island": false,
           "grdp": 82.0
         },
@@ -75366,15 +75377,15 @@
           "shapeID": "63759600B12839449494422",
           "shapeGroup": "VNM",
           "shapeType": "ADM1",
-          "name": "Đồng Nai",
+          "name": "Thành phố Đồng Nai",
           "region_name": "Đông Nam Bộ",
           "region": "Đông Nam Bộ",
           "country": "Việt Nam",
-          "administrative_type": "Tỉnh",
+          "administrative_type": "Thành phố trực thuộc Trung ương",
           "area": 5863.6,
           "pop": 3255.4,
           "density": 555,
-          "merged_into": "Tỉnh Đồng Nai",
+          "merged_into": "Thành phố Đồng Nai",
           "is_special_island": false,
           "grdp": 445.0
         },

@@ -142,7 +142,7 @@ const AtlasEngine = (function () {
     "Tỉnh Quảng Trị": "plain_high", "Thành phố Huế": "plain_high", "Thành phố Đà Nẵng": "plain_high",
     "Tỉnh Quảng Ngãi": "plain_high", "Tỉnh Khánh Hoà": "plain_high", "Tỉnh Gia Lai": "plateau",
     "Tỉnh Đắk Lắk": "plateau", "Tỉnh Lâm Đồng": "mountain_high", "Tỉnh Tây Ninh": "plain_high",
-    "Tỉnh Đồng Nai": "hill", "Thành phố Đồng Nai": "hill", "Thành phố Hồ Chí Minh": "plain_high", "Tỉnh Vĩnh Long": "plain_low",
+    "Thành phố Đồng Nai": "hill", "Đồng Nai": "hill", "Thành phố Hồ Chí Minh": "plain_high", "Tỉnh Vĩnh Long": "plain_low",
     "Tỉnh Đồng Tháp": "plain_low", "Tỉnh An Giang": "plain_low", "Thành phố Cần Thơ": "plain_low",
     "Tỉnh Cà Mau": "plain_low"
   };
@@ -209,7 +209,7 @@ const AtlasEngine = (function () {
 
   // Tra cứu nhanh GRDP 63 tỉnh thành (nghìn tỉ đồng, Atlat GD tr.18 & Niên giám GSO)
   const GRDP_LOOKUP = {
-    "TP. Hồ Chí Minh": 1620, "Hà Nội": 1210, "Bình Dương": 465, "Đồng Nai": 445, "Hải Phòng": 372,
+    "TP. Hồ Chí Minh": 1620, "Hà Nội": 1210, "Bình Dương": 465, "Thành phố Đồng Nai": 445, "Đồng Nai": 445, "Hải Phòng": 372,
     "Bà Rịa - Vũng Tàu": 285, "Quảng Ninh": 275, "Thanh Hóa": 262, "Bắc Ninh": 250, "Nghệ An": 195,
     "Bắc Giang": 182, "Hải Dương": 178, "Long An": 168, "Vĩnh Phúc": 162, "Thái Nguyên": 154,
     "Đà Nẵng": 138, "Quảng Nam": 125, "Kiên Giang": 122, "Cần Thơ": 120, "Khánh Hoà": 118,
@@ -230,7 +230,7 @@ const AtlasEngine = (function () {
   const GRDP_PER_CAPITA_TIERS = {
     // Cấp 1: Từ 125 triệu đồng trở lên
     "Thành phố Hà Nội": 1, "Thành phố Hồ Chí Minh": 1, "Thành phố Hải Phòng": 1, "Thành phố Đồng Nai": 1,
-    "Tỉnh Quảng Ninh": 1, "Tỉnh Bắc Ninh": 1, "Tỉnh Đồng Nai": 1,
+    "Tỉnh Quảng Ninh": 1, "Tỉnh Bắc Ninh": 1,
     "Hà Nội": 1, "TP. Hồ Chí Minh": 1, "Hải Phòng": 1, "Quảng Ninh": 1, "Bắc Ninh": 1, "Đồng Nai": 1, "Bà Rịa - Vũng Tàu": 1, "Bình Dương": 1,
     // Cấp 2: 100 đến dưới 125 triệu đồng
     "Thành phố Đà Nẵng": 2, "Tỉnh Hưng Yên": 2, "Tỉnh Ninh Bình": 2, "Tỉnh Vĩnh Long": 2, "Thành phố Cần Thơ": 2, "Tỉnh Tây Ninh": 2, "Tỉnh Khánh Hoà": 2,
@@ -470,7 +470,17 @@ const AtlasEngine = (function () {
     },
     "Đồng Nai": {
       total: 11,
-      desc: "2 Thành phố, 9 Huyện",
+      desc: "2 Thành phố, 9 Huyện (Cụm đô thị - công nghiệp sân bay quốc tế Long Thành)",
+      units: [
+        { name: "Biên Hòa", type: "Thành phố" }, { name: "Long Khánh", type: "Thành phố" },
+        { name: "Long Thành", type: "Huyện" }, { name: "Nhơn Trạch", type: "Huyện" }, { name: "Trảng Bom", type: "Huyện" },
+        { name: "Vĩnh Cửu", type: "Huyện" }, { name: "Định Quán", type: "Huyện" }, { name: "Tân Phú", type: "Huyện" },
+        { name: "Thống Nhất", type: "Huyện" }, { name: "Cẩm Mỹ", type: "Huyện" }, { name: "Xuân Lộc", type: "Huyện" }
+      ]
+    },
+    "Thành phố Đồng Nai": {
+      total: 11,
+      desc: "2 Thành phố, 9 Huyện (Cụm đô thị - công nghiệp sân bay quốc tế Long Thành)",
       units: [
         { name: "Biên Hòa", type: "Thành phố" }, { name: "Long Khánh", type: "Thành phố" },
         { name: "Long Thành", type: "Huyện" }, { name: "Nhơn Trạch", type: "Huyện" }, { name: "Trảng Bom", type: "Huyện" },
@@ -1357,7 +1367,8 @@ const AtlasEngine = (function () {
           color = REGION_COLORS[p.region_name] || "#94a3b8";
         }
 
-        const isCity = p.administrative_type === "Thành phố trực thuộc Trung ương";
+        const isCity = p.administrative_type === "Thành phố trực thuộc Trung ương" || 
+                       (p.name && (p.name.startsWith("Thành phố") || p.name === "Đồng Nai" || p.name === "Hà Nội" || p.name === "TP. Hồ Chí Minh" || p.name === "Hải Phòng" || p.name === "Đà Nẵng" || p.name === "Cần Thơ" || p.name === "Huế"));
         const isMatch = isProvinceInRegion(p, filterRegion);
 
         const isChoroplethActive = currentChoroplethMode !== "none";
@@ -1431,7 +1442,7 @@ const AtlasEngine = (function () {
           choroplethBadge = `<div class="text-[10px] text-purple-600 dark:text-purple-400 font-bold mt-0.5">📐 Diện tích: ${Number(p.area).toLocaleString()} km²</div>`;
         }
 
-        const iconType = p.administrative_type === 'Thành phố trực thuộc Trung ương' ? '🏛️' : '📍';
+        const iconType = isCity ? '🏛️' : '📍';
         layer.bindTooltip(`
           <div class="p-1 text-left font-sans">
             <div class="font-bold text-xs text-slate-900 dark:text-white flex items-center space-x-1">
@@ -3429,7 +3440,8 @@ const AtlasEngine = (function () {
 
     // Default: Tỉnh thành
     const is34 = provinceMode === "34" || props.resolution;
-    const isCity = props.administrative_type === "Thành phố trực thuộc Trung ương" || (props.name && props.name.startsWith("Thành phố"));
+    const isCity = props.administrative_type === "Thành phố trực thuộc Trung ương" || 
+                   (props.name && (props.name.startsWith("Thành phố") || props.name === "Đồng Nai" || props.name === "Hà Nội" || props.name === "TP. Hồ Chí Minh" || props.name === "Hải Phòng" || props.name === "Đà Nẵng" || props.name === "Cần Thơ" || props.name === "Huế"));
     const adminTypeBadge = isCity 
       ? '<span class="text-[10px] px-2 py-0.5 rounded-full bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 font-bold">Thành phố Trực thuộc TW</span>'
       : '<span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 font-bold">Tỉnh</span>';
@@ -3832,21 +3844,21 @@ const AtlasEngine = (function () {
   // ===========================================================================
   let atlasViewMode = "gis"; // "gis" | "book" | "split"
   const DEFAULT_ATLAT_PAGES_MANIFEST = [
-    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "/public/data/atlat_pages/page_01.jpg?v=2026.3.6" },
-    { page: 3, title: "Trang 3: Kí hiệu chung", file: "/public/data/atlat_pages/page_03.jpg?v=2026.3.6" },
-    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "/public/data/atlat_pages/page_04.jpg?v=2026.3.6" },
-    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "/public/data/atlat_pages/page_05.jpg?v=2026.3.6" },
-    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "/public/data/atlat_pages/page_06.jpg?v=2026.3.6" },
-    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "/public/data/atlat_pages/page_07.jpg?v=2026.3.6" },
-    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "/public/data/atlat_pages/page_08.jpg?v=2026.3.6" },
-    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "/public/data/atlat_pages/page_09.jpg?v=2026.3.6" },
-    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "/public/data/atlat_pages/page_10.jpg?v=2026.3.6" },
-    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "/public/data/atlat_pages/page_13.jpg?v=2026.3.6" },
-    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "/public/data/atlat_pages/page_18.jpg?v=2026.3.6" },
-    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "/public/data/atlat_pages/page_19.jpg?v=2026.3.6" },
-    { page: 21, title: "Trang 21: Công nghiệp chung", file: "/public/data/atlat_pages/page_21.jpg?v=2026.3.6" },
-    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "/public/data/atlat_pages/page_22.jpg?v=2026.3.6" },
-    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "/public/data/atlat_pages/page_23.jpg?v=2026.3.6" }
+    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "/public/data/atlat_pages/page_01.jpg?v=2026.3.7" },
+    { page: 3, title: "Trang 3: Kí hiệu chung", file: "/public/data/atlat_pages/page_03.jpg?v=2026.3.7" },
+    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "/public/data/atlat_pages/page_04.jpg?v=2026.3.7" },
+    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "/public/data/atlat_pages/page_05.jpg?v=2026.3.7" },
+    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "/public/data/atlat_pages/page_06.jpg?v=2026.3.7" },
+    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "/public/data/atlat_pages/page_07.jpg?v=2026.3.7" },
+    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "/public/data/atlat_pages/page_08.jpg?v=2026.3.7" },
+    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "/public/data/atlat_pages/page_09.jpg?v=2026.3.7" },
+    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "/public/data/atlat_pages/page_10.jpg?v=2026.3.7" },
+    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "/public/data/atlat_pages/page_13.jpg?v=2026.3.7" },
+    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "/public/data/atlat_pages/page_18.jpg?v=2026.3.7" },
+    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "/public/data/atlat_pages/page_19.jpg?v=2026.3.7" },
+    { page: 21, title: "Trang 21: Công nghiệp chung", file: "/public/data/atlat_pages/page_21.jpg?v=2026.3.7" },
+    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "/public/data/atlat_pages/page_22.jpg?v=2026.3.7" },
+    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "/public/data/atlat_pages/page_23.jpg?v=2026.3.7" }
   ];
   let atlatPagesManifest = [...DEFAULT_ATLAT_PAGES_MANIFEST];
   let currentAtlatPageNumber = 4;
@@ -4272,7 +4284,7 @@ const AtlasEngine = (function () {
     const titleEl = document.getElementById("atlat-book-page-title");
     const selectEl = document.getElementById("atlat-book-page-select");
 
-    const pageFile = `/public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.6`;
+    const pageFile = `/public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.7`;
     if (imgEl) {
       imgEl.alt = displayTitle;
       imgEl.onerror = () => {

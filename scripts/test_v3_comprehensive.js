@@ -198,7 +198,20 @@ check("BUG-41", "Thành phố Đồng Nai chuẩn hoá thành Thành phố trự
   const p34 = JSON.parse(fs.readFileSync("public/data/vn_provinces_34.geojson", "utf-8"));
   const dn = p34.features.find(f => f.properties.name === "Thành phố Đồng Nai");
   assert(dn, "Thành phố Đồng Nai exists in vn_provinces_34");
-  assert.strictEqual(dn.properties.administrative_type, "Thành phố trực thuộc Trung ương", "Đồng Nai is Thành phố trực thuộc Trung ương");
+  assert.strictEqual(dn.properties.administrative_type, "Thành phố trực thuộc Trung ương", "Đồng Nai is Thành phố trực thuộc Trung ương in 34 provinces");
+
+  const p63 = JSON.parse(fs.readFileSync("public/data/vn_provinces_63.geojson", "utf-8"));
+  const dn63 = p63.features.find(f => f.properties.shapeName === "Đồng Nai" || f.properties.name === "Thành phố Đồng Nai" || f.properties.name === "Đồng Nai");
+  assert(dn63, "Đồng Nai exists in vn_provinces_63");
+  assert.strictEqual(dn63.properties.administrative_type, "Thành phố trực thuộc Trung ương", "Đồng Nai is Thành phố trực thuộc Trung ương in 63 provinces");
+
+  const master = JSON.parse(fs.readFileSync("public/data/atlat_2026_master.json", "utf-8"));
+  const dnMaster = master.geo_provinces_34.features.find(f => f.properties.name === "Thành phố Đồng Nai");
+  assert(dnMaster, "Thành phố Đồng Nai exists in master geo_provinces_34");
+  assert.strictEqual(dnMaster.properties.administrative_type, "Thành phố trực thuộc Trung ương", "Đồng Nai is Thành phố trực thuộc Trung ương in master");
+
+  const atlatData = fs.readFileSync("js/atlat-data.js", "utf-8");
+  assert(atlatData.includes("Thành phố Đồng Nai"), "atlat-data.js includes Thành phố Đồng Nai");
 
   const calc = fs.readFileSync("js/geo-calculator.js", "utf-8");
   assert(calc.includes("Thành phố Đồng Nai"), "geo-calculator.js uses Thành phố Đồng Nai");

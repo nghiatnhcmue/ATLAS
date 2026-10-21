@@ -59,7 +59,8 @@ PROVINCES_34_STATS = {
 
     # 5. Đông Nam Bộ (3)
     "Tỉnh Tây Ninh": {"area": 8536.5, "pop": 2959.0, "type": "Tỉnh", "region": "Đông Nam Bộ", "merged_from": ["Tây Ninh", "Long An"]},
-    "Tỉnh Đồng Nai": {"area": 12737.2, "pop": 4427.7, "type": "Tỉnh", "region": "Đông Nam Bộ", "merged_from": ["Đồng Nai", "Bình Phước"]},
+    "Thành phố Đồng Nai": {"area": 12737.2, "pop": 4427.7, "type": "Thành phố trực thuộc Trung ương", "region": "Đông Nam Bộ", "merged_from": ["Đồng Nai", "Bình Phước"]},
+    "Đồng Nai": {"area": 12737.2, "pop": 4427.7, "type": "Thành phố trực thuộc Trung ương", "region": "Đông Nam Bộ", "merged_from": ["Đồng Nai", "Bình Phước"]},
     "Thành phố Hồ Chí Minh": {"area": 6772.6, "pop": 13608.8, "type": "Thành phố trực thuộc Trung ương", "region": "Đông Nam Bộ", "merged_from": ["TP. Hồ Chí Minh", "Bình Dương", "Bà Rịa - Vũng Tàu"]},
 
     # 6. Đồng bằng sông Cửu Long (5)
@@ -1293,6 +1294,13 @@ def main():
     with open(master_json_path, "w", encoding="utf-8") as f:
         json.dump(master_atlat_data, f, ensure_ascii=False, indent=2)
     print(f"[+] Exported {master_json_path} ({os.path.getsize(master_json_path) / 1024:.1f} KB)")
+
+    # Also sync root data/ directory if exists
+    root_data_path = os.path.join(ROOT_DIR, "data", "atlat_2026_master.json")
+    if os.path.exists(os.path.dirname(root_data_path)):
+        with open(root_data_path, "w", encoding="utf-8") as f:
+            json.dump(master_atlat_data, f, ensure_ascii=False, indent=2)
+        print(f"[+] Exported {root_data_path}")
 
     # Write js/atlat-data.js
     atlat_js_path = os.path.join(JS_DIR, "atlat-data.js")
