@@ -3698,7 +3698,24 @@ const AtlasEngine = (function () {
   // HỆ SINH THÁI ATLAT KÉP: LẬT TRANG ATLAT GIẤY GỐC & BẢN ĐỒ SỐ GIS 34 TỈNH
   // ===========================================================================
   let atlasViewMode = "gis"; // "gis" | "book" | "split"
-  let atlatPagesManifest = [];
+  const DEFAULT_ATLAT_PAGES_MANIFEST = [
+    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "./public/data/atlat_pages/page_01.jpg" },
+    { page: 3, title: "Trang 3: Kí hiệu chung", file: "./public/data/atlat_pages/page_03.jpg" },
+    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "./public/data/atlat_pages/page_04.jpg" },
+    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "./public/data/atlat_pages/page_05.jpg" },
+    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "./public/data/atlat_pages/page_06.jpg" },
+    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "./public/data/atlat_pages/page_07.jpg" },
+    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "./public/data/atlat_pages/page_08.jpg" },
+    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "./public/data/atlat_pages/page_09.jpg" },
+    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "./public/data/atlat_pages/page_10.jpg" },
+    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "./public/data/atlat_pages/page_13.jpg" },
+    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "./public/data/atlat_pages/page_18.jpg" },
+    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "./public/data/atlat_pages/page_19.jpg" },
+    { page: 21, title: "Trang 21: Công nghiệp chung", file: "./public/data/atlat_pages/page_21.jpg" },
+    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "./public/data/atlat_pages/page_22.jpg" },
+    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "./public/data/atlat_pages/page_23.jpg" }
+  ];
+  let atlatPagesManifest = [...DEFAULT_ATLAT_PAGES_MANIFEST];
   let currentAtlatPageNumber = 4;
   let currentAtlatPageIndex = 2; // Trang 4 Hành chính Bắc
   let atlatBookZoom = 1.0;
@@ -3934,19 +3951,22 @@ const AtlasEngine = (function () {
 
   async function initAtlatPages() {
     try {
-      const res = await fetch("public/data/atlat_pages/manifest.json");
+      const res = await fetch("./public/data/atlat_pages/manifest.json");
       if (res.ok) {
-        atlatPagesManifest = await res.json();
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          atlatPagesManifest = data;
+        }
       }
     } catch (e) {
-      console.warn("Could not load atlat_pages manifest:", e);
+      console.warn("Could not load atlat_pages manifest, using embedded default:", e);
     }
 
-    // Populate dropdown #atlat-book-page-select
+    // Populate dropdown #atlat-book-page-select if not already populated
     const selectEl = document.getElementById("atlat-book-page-select");
     if (selectEl && atlatPagesManifest && atlatPagesManifest.length > 0) {
       selectEl.innerHTML = atlatPagesManifest.map(p => 
-        `<option value="${p.page}">Trang ${p.page}: ${p.title.replace(/^Trang\s+\d+:\s*/, '')}</option>`
+        `<option value="${p.page}" ${p.page === 4 ? "selected" : ""}>Trang ${p.page}: ${p.title.replace(/^Trang\s+\d+:\s*/, '')}</option>`
       ).join('');
     }
 
@@ -4119,7 +4139,7 @@ const AtlasEngine = (function () {
     const titleEl = document.getElementById("atlat-book-page-title");
     const selectEl = document.getElementById("atlat-book-page-select");
 
-    const pageFile = `public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg`;
+    const pageFile = `./public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg`;
     if (imgEl) imgEl.src = pageFile;
 
     const guide = ATLAT_PAGE_STUDY_GUIDE[num];

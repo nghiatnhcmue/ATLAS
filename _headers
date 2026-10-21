@@ -10,6 +10,12 @@
   Access-Control-Allow-Methods: GET, OPTIONS
   X-Content-Type-Options: nosniff
 
+# 1b. Anh quet Atlat goc
+/public/data/atlat_pages/*
+  Cache-Control: public, max-age=86400, must-revalidate
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, OPTIONS
+
 # 2. Mã nguồn JS và CSS: Luôn revalidate hoặc cache ngắn 5 phút để cập nhật tức thì
 /js/*
   Cache-Control: public, max-age=300, must-revalidate

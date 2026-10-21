@@ -13,7 +13,6 @@
       "scripts/**",
       "tools/**",
       "dist/**",
-      "public/data/atlat_pages/**",
       "thumb_*.jpg"
     ],
     "not_found_handling": "single-page-application"

@@ -192,7 +192,21 @@
           <div class="flex items-center space-x-1 bg-slate-100 dark:bg-slate-800/80 p-0.5 rounded-lg">
             <button onclick="AtlasEngine.prevAtlatBookPage()" title="Trang trước" class="p-1 sm:px-2 rounded-md hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold transition">◀</button>
             <select id="atlat-book-page-select" onchange="AtlasEngine.selectAtlatBookPage(this.value)" class="text-xs font-semibold py-1 px-2 rounded-md border-0 bg-transparent text-slate-800 dark:text-slate-100 max-w-[180px] sm:max-w-[260px] truncate focus:ring-1 focus:ring-blue-500">
-              <!-- Populated by atlas-engine.js from manifest.json -->
+              <option value="1">Trang 1: Bìa Atlat Địa lí Việt Nam 2026</option>
+              <option value="3">Trang 3: Kí hiệu chung</option>
+              <option value="4" selected>Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)</option>
+              <option value="5">Trang 5: Hành chính (Phía Nam) & Bảng 34 đơn vị</option>
+              <option value="6">Trang 6: Hình thể & Địa hình (Phía Bắc)</option>
+              <option value="7">Trang 7: Hình thể (Phía Nam) & Đường cơ sở</option>
+              <option value="8">Trang 8: Khí hậu chung & 15 Trạm khí tượng</option>
+              <option value="9">Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ</option>
+              <option value="10">Trang 10: Các hệ thống sông ngòi Việt Nam</option>
+              <option value="13">Trang 13: Địa chất & Khoáng sản</option>
+              <option value="18">Trang 18: Kinh tế chung & Quy mô GRDP</option>
+              <option value="19">Trang 19: Nông nghiệp chung</option>
+              <option value="21">Trang 21: Công nghiệp chung</option>
+              <option value="22">Trang 22: Các ngành công nghiệp trọng điểm</option>
+              <option value="23">Trang 23: Giao thông vận tải & Thương mại</option>
             </select>
             <button onclick="AtlasEngine.nextAtlatBookPage()" title="Trang tiếp" class="p-1 sm:px-2 rounded-md hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold transition">▶</button>
           </div>
@@ -528,7 +542,7 @@
         <!-- Viewport kéo rê / zoom / pan -->
         <div id="atlat-book-viewport" class="flex-1 w-full h-full relative overflow-hidden flex items-center justify-center cursor-grab" style="touch-action: none;">
           <div id="atlat-book-wrapper" class="relative inline-block origin-center will-change-transform">
-            <img id="atlat-book-page-img" src="public/data/atlat_pages/page_04.jpg" alt="Trang Atlat Địa lí Việt Nam" class="max-w-none shadow-2xl rounded-sm pointer-events-none select-none" />
+            <img id="atlat-book-page-img" src="./public/data/atlat_pages/page_04.jpg" alt="Trang Atlat Địa lí Việt Nam" class="max-w-none shadow-2xl rounded-sm pointer-events-none select-none" />
           </div>
         </div>
         
