@@ -204,6 +204,43 @@ check("BUG-41", "Thành phố Đồng Nai chuẩn hoá thành Thành phố trự
   assert(calc.includes("Thành phố Đồng Nai"), "geo-calculator.js uses Thành phố Đồng Nai");
 });
 
+// 15. BUG-42: Hệ thống Thủy văn & Khí hậu đầy đủ chuẩn Atlat GD tr.8, 9, 10
+check("BUG-42", "Hệ thống Thủy văn & Khí hậu đầy đủ (15 trạm KT tr.8, 12 trạm TV tr.10, 16 hồ điều tiết, bộ lọc và biểu đồ dòng chảy)", () => {
+  const ch = JSON.parse(fs.readFileSync("public/data/climate_hydro.geojson", "utf-8"));
+  const feats = ch.features;
+  
+  const mets = feats.filter(f => f.properties.category === "met_station");
+  assert.strictEqual(mets.length, 15, `Must have 15 climate stations, got ${mets.length}`);
+
+  const hydros = feats.filter(f => f.properties.category === "hydro_station");
+  assert.strictEqual(hydros.length, 12, `Must have 12 hydro stations, got ${hydros.length}`);
+
+  const lakes = feats.filter(f => f.properties.category === "reservoir_lake");
+  assert(lakes.length >= 15, `Must have >= 15 reservoirs/lakes, got ${lakes.length}`);
+
+  // Check key hydro stations per Atlat GD tr.10:
+  const hn = hydros.find(h => h.properties.name.includes("Hà Nội"));
+  assert(hn && hn.properties.flood_season.includes("VI - X") && hn.properties.peak_month.includes("VIII"), "Hà Nội flood season VI-X, peak VIII");
+
+  const nongSon = hydros.find(h => h.properties.name.includes("Nông Sơn"));
+  assert(nongSon && nongSon.properties.flood_season.includes("IX - XII"), "Nông Sơn autumn-winter flood season IX-XII");
+
+  const tanChau = hydros.find(h => h.properties.name.includes("Tân Châu"));
+  assert(tanChau && tanChau.properties.flood_season.includes("VII - XI"), "Tân Châu Mekong flood season VII-XI");
+
+  // Check engine code supports categoryFilter and custom hydro details panel
+  const engineCode = fs.readFileSync("js/atlas-engine.js", "utf-8");
+  assert(engineCode.includes('renderClimateLayer(categoryFilter = "all")'), "renderClimateLayer supports filter parameter");
+  assert(engineCode.includes("Trạm Thủy Văn"), "atlas-engine.js renders Trạm Thủy Văn popup and details");
+  assert(engineCode.includes("Hồ Tự Nhiên") || engineCode.includes("Hồ Điều Tiết Thủy Lợi"), "atlas-engine.js renders reservoir/lake popup and details");
+
+  // Check UI has climate filter select
+  const html = fs.readFileSync("index.html", "utf-8");
+  assert(html.includes("climate-filter-select"), "index.html has climate-filter-select dropdown");
+  const html200 = fs.readFileSync("200.html", "utf-8");
+  assert(html200.includes("climate-filter-select"), "200.html has climate-filter-select dropdown");
+});
+
 console.log("======================================================================");
 console.log(`  RESULT: ${passed}/${total} TESTS PASSED (${Math.round((passed/total)*100)}%)`);
 console.log("======================================================================");

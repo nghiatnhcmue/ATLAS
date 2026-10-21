@@ -92,97 +92,9 @@ BASELINE_POINTS = [
     {"code": "A11", "name": "Điểm A11: Đảo Cồn Cỏ", "province": "Quảng Trị", "coords": [107.34, 17.17], "desc": "Điểm cơ sở cửa ngõ phía Nam vịnh Bắc Bộ."}
 ]
 
-# 3. 8 Trạm khí tượng tiêu biểu (Atlat GD, tr.8 & 9)
-CLIMATE_STATIONS = [
-    {
-        "name": "Hà Nội (Trạm Láng)",
-        "coords": [105.80, 21.02],
-        "avg_temp": "23,8°C",
-        "max_temp": "29,8°C",
-        "min_temp": "16,4°C",
-        "temp_range": "13,4°C",
-        "rainfall": "1.676 mm",
-        "climate_type": "Nhiệt đới ẩm gió mùa có mùa đông lạnh",
-        "desc": "Đặc trưng khí hậu miền Bắc: Biên độ nhiệt lớn (13,4°C), có mùa đông lạnh kéo dài từ tháng XI đến tháng IV năm sau do gió mùa Đông Bắc."
-    },
-    {
-        "name": "Sa Pa",
-        "coords": [103.84, 22.33],
-        "avg_temp": "15,2°C",
-        "max_temp": "19,8°C",
-        "min_temp": "8,6°C",
-        "temp_range": "11,2°C",
-        "rainfall": "2.700 mm",
-        "climate_type": "Ôn đới núi cao Hoàng Liên Sơn",
-        "desc": "Độ cao >1.500m: Nhiệt độ trung bình năm thấp (15,2°C), sườn đón gió ẩm mưa rất lớn, mùa đông có thể xuất hiện băng giá và tuyết rơi."
-    },
-    {
-        "name": "Huế",
-        "coords": [107.59, 16.46],
-        "avg_temp": "25,1°C",
-        "max_temp": "29,4°C",
-        "min_temp": "19,7°C",
-        "temp_range": "9,7°C",
-        "rainfall": "2.868 mm",
-        "climate_type": "Khí hậu chuyển tiếp Bắc Trung Bộ",
-        "desc": "Lượng mưa cực đại vào các tháng thu - đông (tháng IX - XII) do gió mùa Đông Bắc qua biển gặp địa hình chắn gió Bạch Mã kết hợp bão và dải hội tụ."
-    },
-    {
-        "name": "Đà Nẵng",
-        "coords": [108.22, 16.07],
-        "avg_temp": "25,7°C",
-        "max_temp": "29,1°C",
-        "min_temp": "21,3°C",
-        "temp_range": "7,8°C",
-        "rainfall": "2.044 mm",
-        "climate_type": "Duyên hải Nam Trung Bộ",
-        "desc": "Phía nam đèo Hải Vân: Nhiệt độ trung bình năm trên 25°C, biên độ nhiệt giảm dần (7,8°C), không có mùa đông lạnh sâu như miền Bắc."
-    },
-    {
-        "name": "Đà Lạt",
-        "coords": [108.44, 11.94],
-        "avg_temp": "17,9°C",
-        "max_temp": "20,5°C",
-        "min_temp": "14,8°C",
-        "temp_range": "5,7°C",
-        "rainfall": "1.739 mm",
-        "climate_type": "Cận nhiệt đới vùng núi cao Tây Nguyên",
-        "desc": "Độ cao ~1.500m trên cao nguyên Lâm Viên: Mát mẻ quanh năm, biên độ nhiệt năm nhỏ (5,7°C), thích hợp canh tác rau hoa quả ôn đới."
-    },
-    {
-        "name": "Buôn Ma Thuột",
-        "coords": [108.05, 12.67],
-        "avg_temp": "23,7°C",
-        "max_temp": "26,5°C",
-        "min_temp": "20,8°C",
-        "temp_range": "5,7°C",
-        "rainfall": "1.796 mm",
-        "climate_type": "Cận xích đạo cao nguyên Tây Nguyên",
-        "desc": "Khí hậu phân hóa sâu sắc thành 2 mùa mưa - khô rõ rệt, là thủ phủ vùng chuyên canh cà phê vối số 1 Việt Nam."
-    },
-    {
-        "name": "TP. Hồ Chí Minh",
-        "coords": [106.66, 10.77],
-        "avg_temp": "27,1°C",
-        "max_temp": "29,7°C",
-        "min_temp": "26,0°C",
-        "temp_range": "3,7°C",
-        "rainfall": "1.931 mm",
-        "climate_type": "Cận xích đạo gió mùa Nam Bộ",
-        "desc": "Nhiệt độ cao đều quanh năm (>27°C), không có mùa đông lạnh, biên độ nhiệt năm rất nhỏ (3,7°C), mùa mưa trùng với gió mùa Tây Nam."
-    },
-    {
-        "name": "Cà Mau",
-        "coords": [105.15, 9.18],
-        "avg_temp": "26,8°C",
-        "max_temp": "28,6°C",
-        "min_temp": "25,5°C",
-        "temp_range": "3,1°C",
-        "rainfall": "2.360 mm",
-        "climate_type": "Cực Nam cận xích đạo hải dương",
-        "desc": "Biên độ nhiệt năm nhỏ nhất cả nước (3,1°C), mùa mưa dài và lượng mưa phong phú (>2.300 mm)."
-    }
-]
+# 3. 15 Trạm khí tượng & Thủy văn tiêu biểu (Atlat GD, tr.8, 9, 10)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_full_climate_hydro import CLIMATE_STATIONS, HYDRO_STATIONS, RESERVOIRS_LAKES, build_geojson as build_climate_hydro_geojson
 
 # 4. 15 Bài tập Nhận dạng biểu đồ chuẩn THPT từ số liệu Atlat
 CHART_EXERCISES_15 = [
@@ -818,42 +730,8 @@ def main():
         "features": baseline_features
     }
 
-    # 3. Build GeoJSON for Climate Stations
-    climate_features = []
-    # Retain climate boundary & storm lines from existing climate_hydro
-    for feat in geo_climate["features"]:
-        if feat["properties"].get("category") != "met_station":
-            climate_features.append(feat)
-
-    # Add 8 official stations
-    for cs in CLIMATE_STATIONS:
-        climate_features.append({
-            "type": "Feature",
-            "properties": {
-                "category": "met_station",
-                "name": cs["name"],
-                "avg_temp": cs["avg_temp"],
-                "max_temp": cs["max_temp"],
-                "min_temp": cs["min_temp"],
-                "temp_range": cs["temp_range"],
-                "rainfall": cs["rainfall"],
-                "climate_type": cs["climate_type"],
-                "desc": cs["desc"]
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": cs["coords"]
-            }
-        })
-
-    geo_climate_updated = {
-        "type": "FeatureCollection",
-        "metadata": {
-            "title": "Khí hậu & Thủy văn Việt Nam (Atlat GD, tr.8 & 9)",
-            "stations_count": len(CLIMATE_STATIONS)
-        },
-        "features": climate_features
-    }
+    # 3. Build GeoJSON for Climate & Hydrology
+    geo_climate_updated = build_climate_hydro_geojson()
 
     # 4. Enrich Chart Exercises with structural analysis
     for q in ALL_CHART_QUESTIONS:
@@ -879,6 +757,8 @@ def main():
         },
         "baseline_points": BASELINE_POINTS,
         "climate_stations": CLIMATE_STATIONS,
+        "hydro_stations": HYDRO_STATIONS,
+        "reservoirs_lakes": RESERVOIRS_LAKES,
         "provinces_34_stats": PROVINCES_34_STATS,
         "chart_exercises": ALL_CHART_QUESTIONS,
         "keyword_guide": KEYWORD_GUIDE_6,

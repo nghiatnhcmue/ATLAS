@@ -348,17 +348,25 @@
             </p>
           </div>
 
-          <!-- Lớp 3: Khí hậu & Thủy văn (Atlat GD, tr.8 & tr.9) -->
+          <!-- Lớp 3: Khí hậu & Thủy văn (Atlat GD, tr.8, 9 & 10) -->
           <div class="space-y-1.5 pt-2.5 border-t border-slate-100 dark:border-slate-800">
             <div class="flex items-center justify-between">
               <label class="flex items-center space-x-2 text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
                 <input type="checkbox" id="layer-chk-climate" onchange="AtlasEngine.toggleLayer('climate', this.checked)" class="rounded text-blue-600 focus:ring-blue-500">
                 <span>Lớp 3: Khí hậu & Thủy văn</span>
               </label>
-              <span class="text-[10px] font-semibold text-blue-600 dark:text-blue-400">Atlat GD, tr.8 & tr.9</span>
+              <span class="text-[10px] font-semibold text-blue-600 dark:text-blue-400">Atlat GD, tr.8 - 10</span>
             </div>
+            <!-- Bộ lọc chuyên sâu Khí hậu & Thủy văn -->
+            <select id="climate-filter-select" onchange="AtlasEngine.renderClimateLayer(this.value)" class="w-full text-[11px] p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium">
+              <option value="all">-- Tất cả Khí hậu & Thủy văn (43 đối tượng) --</option>
+              <option value="met_station">Trạm khí tượng & Nhiệt ẩm (15 trạm Atlat tr.8)</option>
+              <option value="hydro_station">Trạm thủy văn & Chế độ dòng chảy (12 trạm Atlat tr.10)</option>
+              <option value="reservoir_lake">Hồ thủy văn & Điều tiết thủy lợi, thủy điện (16 hồ)</option>
+              <option value="monsoon_storm">Gió mùa & Hướng bão (Đông Bắc, Tây Nam, Gió Tây)</option>
+            </select>
             <p class="text-[10px] text-slate-500 dark:text-slate-400">
-              Ranh giới miền khí hậu Bạch Mã; Gió mùa Đông Bắc ❄️, Gió mùa Tây Nam 🌧️, Gió tây khô nóng ☀️; Tần suất bão 🌀 & 15 Trạm khí tượng 🌡️ (nhiệt độ trung bình, biên độ nhiệt, lượng mưa).
+              15 Trạm khí tượng 🌡️, 12 Trạm thủy văn 💧, 16 Hồ điều tiết dòng chảy 🏞️, Ranh giới Bạch Mã 16°B & Luồng gió mùa ❄️/🌧️.
             </p>
           </div>
 

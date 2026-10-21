@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "metadata": {
     "title": "Khí hậu & Thủy văn Việt Nam (Atlat GD, tr.8 & 9)",
-    "stations_count": 8
+    "stations_count": 15
   },
   "features": [
     {
@@ -26,11 +26,831 @@
       },
       "properties": {
         "id": "CLI_BOUND_16",
-        "name": "Ranh giới miền khí hậu Bắc - Nam (Dãy Bạch Mã)",
+        "name": "Ranh giới miền khí hậu Bắc - Nam (Dãy Bạch Mã 16°B)",
         "category": "climate_boundary",
-        "desc": "Ranh giới giữa miền khí hậu phía Bắc và phía Nam. Phía Bắc có mùa đông lạnh, biên độ nhiệt lớn; Phía Nam mang tính chất cận xích đạo nóng quanh năm.",
+        "desc": "Ranh giới tự nhiên phân chia 2 miền khí hậu: Phía Bắc có mùa đông lạnh, biên độ nhiệt lớn; Phía Nam mang tính chất cận xích đạo nóng quanh năm, biên độ nhiệt nhỏ.",
         "atlat_page": 8,
-        "source": "Atlat GD, tr.8"
+        "source": "Atlat GD, tr.8 & tr.9"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.86,
+          21.03
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_01",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Hà Nội",
+        "river_system": "Hệ thống sông Hồng",
+        "river_name": "Sông Hồng",
+        "province": "Thành phố Hà Nội",
+        "coords": [
+          105.86,
+          21.03
+        ],
+        "flood_season": "Tháng VI - X",
+        "peak_month": "Tháng VIII",
+        "dry_season": "Tháng XI - V",
+        "peak_flow": ">9.100 m³/s",
+        "avg_flow": "2.640 m³/s",
+        "regime_desc": "Mùa lũ kéo dài 5 tháng (VI-X), đỉnh lũ cao vào tháng VIII chiếm trên 50-60% lượng nước năm. Lũ lên nhanh do dạng nan quạt hợp lưu từ sông Đà, sông Thao và sông Lô.",
+        "monthly_flow_pattern": "Thấp nhất tháng III (~1.000 m³/s), cao nhất tháng VIII (~9.100 m³/s). Chế độ lũ được điều tiết mạnh bởi hồ thủy điện Hòa Bình, Thác Bà, Tuyên Quang.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Hà Nội)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.5,
+          21.14
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_02",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Sơn Tây",
+        "river_system": "Hệ thống sông Hồng",
+        "river_name": "Sông Hồng",
+        "province": "Thành phố Hà Nội",
+        "coords": [
+          105.5,
+          21.14
+        ],
+        "flood_season": "Tháng VI - X",
+        "peak_month": "Tháng VIII",
+        "dry_season": "Tháng XI - V",
+        "peak_flow": ">8.800 m³/s",
+        "avg_flow": "2.550 m³/s",
+        "regime_desc": "Nằm ngay ngã ba hợp lưu sông Đà, sông Thao, sông Lô (Việt Trì). Điểm khống chế lưu lượng nước chính đổ vào toàn bộ đồng bằng châu thổ Bắc Bộ.",
+        "monthly_flow_pattern": "Đỉnh lũ tháng VIII, mùa cạn từ tháng XI đến tháng V năm sau.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.33,
+          20.82
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_03",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Hòa Bình",
+        "river_system": "Hệ thống sông Hồng",
+        "river_name": "Sông Đà",
+        "province": "Tỉnh Phú Thọ",
+        "coords": [
+          105.33,
+          20.82
+        ],
+        "flood_season": "Tháng VI - X",
+        "peak_month": "Tháng VIII",
+        "dry_season": "Tháng XI - V",
+        "peak_flow": ">6.500 m³/s",
+        "avg_flow": "1.780 m³/s",
+        "regime_desc": "Sông Đà đóng góp trên 53% tổng lượng dòng chảy của toàn bộ hệ thống sông Hồng. Trạm thủy văn gắn liền đập và hồ chứa thủy điện Hòa Bình điều tiết chống lũ.",
+        "monthly_flow_pattern": "Lưu lượng dòng chảy dồi dào, điều tiết bởi hồ Hòa Bình và hồ Sơn La.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 & tr.23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.88,
+          21.72
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_04",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Yên Bái",
+        "river_system": "Hệ thống sông Hồng",
+        "river_name": "Sông Thao",
+        "province": "Tỉnh Yên Bái",
+        "coords": [
+          104.88,
+          21.72
+        ],
+        "flood_season": "Tháng VI - X",
+        "peak_month": "Tháng VIII",
+        "dry_season": "Tháng XI - V",
+        "peak_flow": ">3.200 m³/s",
+        "avg_flow": "760 m³/s",
+        "regime_desc": "Quan trắc dòng chảy dòng chính sông Thao từ Vân Nam (Trung Quốc) chảy vào Việt Nam qua cửa khẩu Lào Cai.",
+        "monthly_flow_pattern": "Lượng phù sa đỏ lớn nhất trong các nhánh sông miền Bắc.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.35,
+          21.36
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_05",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Ghềnh Gà",
+        "river_system": "Hệ thống sông Hồng",
+        "river_name": "Sông Lô",
+        "province": "Tỉnh Phú Thọ",
+        "coords": [
+          105.35,
+          21.36
+        ],
+        "flood_season": "Tháng VI - X",
+        "peak_month": "Tháng VIII",
+        "dry_season": "Tháng XI - V",
+        "peak_flow": ">3.500 m³/s",
+        "avg_flow": "1.050 m³/s",
+        "regime_desc": "Quan trắc lưu lượng sông Lô sau khi nhận tiếp nước từ sông Gâm; điều hòa bởi hồ thủy điện Tuyên Quang và hồ Thác Bà.",
+        "monthly_flow_pattern": "Lũ hè thu dữ dội, mùa cạn kéo dài.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.46,
+          20.21
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_06",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Cẩm Thủy",
+        "river_system": "Hệ thống sông Mã",
+        "river_name": "Sông Mã",
+        "province": "Tỉnh Thanh Hóa",
+        "coords": [
+          105.46,
+          20.21
+        ],
+        "flood_season": "Tháng VII - X",
+        "peak_month": "Tháng VIII - IX",
+        "dry_season": "Tháng XI - VI",
+        "peak_flow": ">2.600 m³/s",
+        "avg_flow": "430 m³/s",
+        "regime_desc": "Mùa lũ kéo dài 4 tháng (VII-X), đỉnh lũ rơi vào tháng VIII - IX. Địa hình núi dốc đứng làm lũ lên rất nhanh và rút nhanh.",
+        "monthly_flow_pattern": "Thấp nhất vào tháng III - IV (~80 m³/s), cao nhất tháng VIII - IX (~2.600 m³/s).",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Cẩm Thủy)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.28,
+          18.98
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_07",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Dừa",
+        "river_system": "Hệ thống sông Cả (Sông Lam)",
+        "river_name": "Sông Cả",
+        "province": "Tỉnh Nghệ An",
+        "coords": [
+          105.28,
+          18.98
+        ],
+        "flood_season": "Tháng VIII - XI",
+        "peak_month": "Tháng IX - X",
+        "dry_season": "Tháng XII - VII",
+        "peak_flow": ">3.100 m³/s",
+        "avg_flow": "450 m³/s",
+        "regime_desc": "Mùa lũ lệch dần về mùa thu đông (VIII-XI) với đỉnh lũ tháng IX - X trùng mùa mưa bão lớn dải Bắc Trung Bộ.",
+        "monthly_flow_pattern": "Mùa cạn kéo dài từ tháng XII đến tháng VII năm sau; khô hạn sâu sắc khi có gió Lào.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Dừa)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.01,
+          15.68
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_08",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Nông Sơn",
+        "river_system": "Hệ thống sông Thu Bồn",
+        "river_name": "Sông Thu Bồn",
+        "province": "Tỉnh Quảng Nam",
+        "coords": [
+          108.01,
+          15.68
+        ],
+        "flood_season": "Tháng IX - XII",
+        "peak_month": "Tháng X - XI",
+        "dry_season": "Tháng I - VIII",
+        "peak_flow": ">1.250 m³/s",
+        "avg_flow": "290 m³/s",
+        "regime_desc": "Mùa lũ đặc thù thu đông (IX-XII), đỉnh lũ tháng X - XI. Địa hình núi cao sườn đón gió biển ngắn dốc gây ra các đợt lũ quét dữ dội.",
+        "monthly_flow_pattern": "Lượng nước 3 tháng lũ chiếm tới 65-70% tổng dòng chảy cả năm; mùa kiệt lưu lượng hạ rất thấp.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Nông Sơn)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.97,
+          13.06
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_09",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Củng Sơn",
+        "river_system": "Hệ thống sông Ba (Đà Rằng)",
+        "river_name": "Sông Ba",
+        "province": "Tỉnh Đắk Lắk",
+        "coords": [
+          108.97,
+          13.06
+        ],
+        "flood_season": "Tháng IX - XII",
+        "peak_month": "Tháng XI",
+        "dry_season": "Tháng I - VIII",
+        "peak_flow": ">1.650 m³/s",
+        "avg_flow": "310 m³/s",
+        "regime_desc": "Sông Ba là con sông lớn nhất Nam Trung Bộ nối Tây Nguyên xuống biển Đông. Đỉnh lũ trễ nhất vào tháng XI; mùa khô Tây Nguyên làm dòng sông cạn kiệt.",
+        "monthly_flow_pattern": "Chênh lệch lưu lượng giữa mùa lũ và mùa cạn cực lớn; lũ gây ngập úng hạ lưu Tuy Hòa.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Củng Sơn)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.35,
+          11.41
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_10",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Tà Lài",
+        "river_system": "Hệ thống sông Đồng Nai",
+        "river_name": "Sông Đồng Nai",
+        "province": "Thành phố Đồng Nai",
+        "coords": [
+          107.35,
+          11.41
+        ],
+        "flood_season": "Tháng VII - XI",
+        "peak_month": "Tháng VIII - IX",
+        "dry_season": "Tháng XII - VI",
+        "peak_flow": ">1.150 m³/s",
+        "avg_flow": "370 m³/s",
+        "regime_desc": "Mùa lũ kéo dài từ tháng VII đến tháng XI, đỉnh lũ tháng VIII - IX trùng mùa mưa gió Tây Nam. Nguồn nước cấp thiết cho toàn bộ vùng kinh tế Đông Nam Bộ.",
+        "monthly_flow_pattern": "Được điều tiết lớn bởi thảm rừng phòng hộ Nam Cát Tiên và hồ chứa Trị An.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Tà Lài)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.24,
+          10.8
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_11",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Tân Châu",
+        "river_system": "Hệ thống sông Mê Công",
+        "river_name": "Sông Tiền",
+        "province": "Tỉnh An Giang",
+        "coords": [
+          105.24,
+          10.8
+        ],
+        "flood_season": "Tháng VII - XI",
+        "peak_month": "Tháng IX - X",
+        "dry_season": "Tháng XII - VI",
+        "peak_flow": ">25.500 m³/s",
+        "avg_flow": "11.200 m³/s",
+        "regime_desc": "Cửa ngõ chính nhận ~80% lưu lượng sông Mê Công vào Việt Nam. Mùa lũ tháng VII - XI, đỉnh lũ tháng IX - X (mùa nước nổi). Lũ lên chậm và rút chậm nhờ điều hòa Biển Hồ.",
+        "monthly_flow_pattern": "Lưu lượng khổng lồ mang theo hàng trăm triệu tấn phù sa; mùa kiệt tháng III - IV hạ thấp dẫn tới xâm nhập mặn.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 & tr.11"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.12,
+          10.7
+        ]
+      },
+      "properties": {
+        "id": "HYDRO_12",
+        "category": "hydro_station",
+        "name": "Trạm Thủy văn Châu Đốc",
+        "river_system": "Hệ thống sông Mê Công",
+        "river_name": "Sông Hậu",
+        "province": "Tỉnh An Giang",
+        "coords": [
+          105.12,
+          10.7
+        ],
+        "flood_season": "Tháng VII - XI",
+        "peak_month": "Tháng IX - X",
+        "peak_flow": ">8.600 m³/s",
+        "avg_flow": "3.800 m³/s",
+        "dry_season": "Tháng XII - VI",
+        "regime_desc": "Cửa ngõ phân lưu chính thứ hai nhận nước từ sông Bassac vào Việt Nam. Trạm đo ngập lụt vùng Tứ giác Long Xuyên và cảnh báo mặn ven biển.",
+        "monthly_flow_pattern": "Mùa nước nổi đem lại nguồn lợi thủy sản tôm cá phong phú và rửa chua phèn đất phù sa.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.32,
+          20.8
+        ]
+      },
+      "properties": {
+        "id": "LAKE_01",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Hòa Bình",
+        "basin": "Lưu vực sông Hồng (Sông Đà)",
+        "province": "Tỉnh Phú Thọ",
+        "coords": [
+          105.32,
+          20.8
+        ],
+        "capacity": "9,45 tỉ m³",
+        "area_km2": "208 km²",
+        "role": "Cắt lũ lịch sử, phát điện (1.920 MW), điều tiết cấp nước mùa kiệt đẩy mặn ngọt hóa cho hạ du Hà Nội và đồng bằng sông Hồng.",
+        "desc": "Công trình thế kỷ trên sông Đà: Dung tích phòng lũ lớn nhất miền Bắc, bảo vệ an toàn tuyệt đối cho thủ đô Hà Nội trong mùa mưa bão.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 & tr.23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.98,
+          21.75
+        ]
+      },
+      "properties": {
+        "id": "LAKE_02",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Thác Bà",
+        "basin": "Lưu vực sông Hồng (Sông Chảy)",
+        "province": "Tỉnh Yên Bái",
+        "coords": [
+          104.98,
+          21.75
+        ],
+        "capacity": "3,9 tỉ m³",
+        "area_km2": "234 km²",
+        "role": "Hồ nhân tạo lớn đầu tiên của miền Bắc, điều tiết dòng chảy sông Chảy đổ vào sông Lô, cấp nước tưới tiêu và phát điện (120 MW).",
+        "desc": "Được ví như 'Hạ Long trên núi' của vùng Tây Bắc, có vai trò điều hòa khí hậu và cân bằng dòng chảy lưu vực sông Chảy.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 & tr.23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.4,
+          22.35
+        ]
+      },
+      "properties": {
+        "id": "LAKE_03",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Tuyên Quang",
+        "basin": "Lưu vực sông Hồng (Sông Gâm)",
+        "province": "Tỉnh Tuyên Quang",
+        "coords": [
+          105.4,
+          22.35
+        ],
+        "capacity": "2,26 tỉ m³",
+        "area_km2": "89 km²",
+        "role": "Cắt lũ cho thành phố Tuyên Quang và hạ lưu sông Lô, bổ sung lưu lượng dòng chảy mùa cạn cho sông Hồng và phát điện (342 MW).",
+        "desc": "Hồ thủy điện lớn trên dòng sông Gâm (Na Hang), đóng vai trò then chốt trong chuỗi hồ bậc thang kiểm soát lũ miền Bắc.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 & tr.23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.62,
+          22.41
+        ]
+      },
+      "properties": {
+        "id": "LAKE_04",
+        "category": "reservoir_lake",
+        "sub_type": "lake",
+        "name": "Hồ Ba Bể",
+        "basin": "Lưu vực sông Cầu / Sông Năng",
+        "province": "Tỉnh Thái Nguyên",
+        "coords": [
+          105.62,
+          22.41
+        ],
+        "capacity": "Tự nhiên karst",
+        "area_km2": "6,5 km²",
+        "role": "Hồ nước ngọt tự nhiên lớn nhất Việt Nam trên núi đá vôi kiến tạo karst, điều hòa dòng chảy sông Năng và bảo tồn sinh học đất ngập nước.",
+        "desc": "Nằm ở độ cao 145m trên mực nước biển, là khu Ramsar bảo tồn sinh quyển quý giá của Đông Bắc.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 & tr.12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.82,
+          21.05
+        ]
+      },
+      "properties": {
+        "id": "LAKE_05",
+        "category": "reservoir_lake",
+        "sub_type": "lake",
+        "name": "Hồ Tây",
+        "basin": "Lưu vực sông Hồng",
+        "province": "Thành phố Hà Nội",
+        "coords": [
+          105.82,
+          21.05
+        ],
+        "capacity": "Tự nhiên khúc uốn",
+        "area_km2": "5,3 km²",
+        "role": "Hồ tự nhiên hình thành từ vết tích khúc uốn cổ (hồ móng ngựa) của sông Hồng khi chuyển dòng; điều hòa vi khí hậu thủ đô Hà Nội.",
+        "desc": "Hồ nước ngọt tự nhiên lớn nhất nội thành Hà Nội, minh chứng lịch sử cho sự biến thiên dòng chảy sông Hồng.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.7,
+          21.58
+        ]
+      },
+      "properties": {
+        "id": "LAKE_06",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Núi Cốc",
+        "basin": "Lưu vực sông Cầu (Sông Công)",
+        "province": "Tỉnh Thái Nguyên",
+        "coords": [
+          105.7,
+          21.58
+        ],
+        "capacity": "175 triệu m³",
+        "area_km2": "25 km²",
+        "role": "Hồ thủy lợi đa mục tiêu trên sông Công, cấp nước sinh hoạt và sản xuất công nghiệp cho Thái Nguyên, cắt giảm lũ hạ lưu.",
+        "desc": "Công trình thủy lợi quan trọng của vùng Đông Bắc, điều tiết dòng chảy lưu vực sông Cầu.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.27,
+          19.88
+        ]
+      },
+      "properties": {
+        "id": "LAKE_07",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Cửa Đạt",
+        "basin": "Lưu vực sông Mã (Sông Chu)",
+        "province": "Tỉnh Thanh Hóa",
+        "coords": [
+          105.27,
+          19.88
+        ],
+        "capacity": "1,45 tỉ m³",
+        "area_km2": "31 km²",
+        "role": "Công trình thủy lợi - thủy điện cắt lũ lớn nhất Bắc Trung Bộ, cấp nước tưới cho hơn 86.000 ha đất canh tác đồng bằng sông Mã và sông Chu.",
+        "desc": "Đập đá đổ bản mặt bê tông cao nhất Việt Nam, điều tiết dòng chảy bảo vệ vùng đồng bằng Thanh Hóa khỏi ngập lụt.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.9,
+          18.2
+        ]
+      },
+      "properties": {
+        "id": "LAKE_08",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Kẻ Gỗ",
+        "basin": "Lưu vực sông Rào Cái",
+        "province": "Tỉnh Hà Tĩnh",
+        "coords": [
+          105.9,
+          18.2
+        ],
+        "capacity": "345 triệu m³",
+        "area_km2": "29 km²",
+        "role": "Hồ thủy lợi nhân tạo lớn nhất Hà Tĩnh, cung cấp nước ngọt phục vụ nông nghiệp và công nghiệp, cắt lũ tiểu mãn cho hạ du Thạch Hà.",
+        "desc": "Nguồn nước sự sống cho cả dải đồng bằng khô hạn Hà Tĩnh khi vào mùa khô gió Lào.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.63,
+          16.32
+        ]
+      },
+      "properties": {
+        "id": "LAKE_09",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Tả Trạch",
+        "basin": "Lưu vực sông Hương",
+        "province": "Thành phố Huế",
+        "coords": [
+          107.63,
+          16.32
+        ],
+        "capacity": "646 triệu m³",
+        "area_km2": "23 km²",
+        "role": "Cắt giảm đỉnh lũ sông Hương cho thành phố di sản Huế, đẩy mặn và ngọt hóa hệ đầm phá Tam Giang - Cầu Hai.",
+        "desc": "Hồ điều tiết chiến lược trên thượng nguồn sông Hương, giữ an toàn di sản Cố đô trước các trận đại hồng thủy mùa thu đông.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.45,
+          15.48
+        ]
+      },
+      "properties": {
+        "id": "LAKE_09_ALT",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Phú Ninh",
+        "basin": "Lưu vực sông Tam Kỳ",
+        "province": "Tỉnh Quảng Nam",
+        "coords": [
+          108.45,
+          15.48
+        ],
+        "capacity": "344 triệu m³",
+        "area_km2": "34 km²",
+        "role": "Công trình thủy lợi lớn thứ hai miền Trung, cấp nước tưới cho 23.000 ha ruộng lúa Quảng Nam và chống hạn hán mùa khô.",
+        "desc": "Hồ điều hòa sinh thái nổi tiếng, cung cấp nguồn nước ngọt bền vững cho khu vực Duyên hải Nam Trung Bộ.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.0,
+          14.05
+        ]
+      },
+      "properties": {
+        "id": "LAKE_10",
+        "category": "reservoir_lake",
+        "sub_type": "lake",
+        "name": "Biển Hồ (Hồ T’Nưng)",
+        "basin": "Lưu vực sông Sê San",
+        "province": "Tỉnh Gia Lai",
+        "coords": [
+          108.0,
+          14.05
+        ],
+        "capacity": "Miệng núi lửa cổ",
+        "area_km2": "2,3 km²",
+        "role": "Hồ tự nhiên hình thành từ miệng núi lửa bazan đã ngừng hoạt động hàng triệu năm; hồ chứa nước ngọt tự nhiên lớn của Pleiku.",
+        "desc": "Được mệnh danh là 'Đôi mắt Pleiku', nguồn cung cấp nước sinh hoạt chính cho thành phố Pleiku trên cao nguyên đất đỏ.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 & tr.14"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.18,
+          12.41
+        ]
+      },
+      "properties": {
+        "id": "LAKE_11",
+        "category": "reservoir_lake",
+        "sub_type": "lake",
+        "name": "Hồ Lắk",
+        "basin": "Lưu vực sông Srêpôk",
+        "province": "Tỉnh Đắk Lắk",
+        "coords": [
+          108.18,
+          12.41
+        ],
+        "capacity": "Tự nhiên trũng bồn địa",
+        "area_km2": "6,2 km²",
+        "role": "Hồ nước ngọt tự nhiên lớn nhất Tây Nguyên và lớn thứ hai cả nước, thông với sông Krông Ana, điều hòa dòng chảy sông Srêpôk.",
+        "desc": "Cảnh quan thiên nhiên kỳ vĩ gắn với văn hóa cồng chiêng voi Tây Nguyên của người M'Nông.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.03,
+          11.13
+        ]
+      },
+      "properties": {
+        "id": "LAKE_12",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Trị An",
+        "basin": "Lưu vực sông Đồng Nai",
+        "province": "Thành phố Đồng Nai",
+        "coords": [
+          107.03,
+          11.13
+        ],
+        "capacity": "2,76 tỉ m³",
+        "area_km2": "323 km²",
+        "role": "Hồ chứa điều tiết thủy văn lớn nhất miền Nam: Cắt lũ, phát điện (400 MW), đẩy mặn ngăn triều cường bảo vệ nước sinh hoạt cho TP.HCM và Đồng Nai.",
+        "desc": "Biển nước nhân tạo lớn nhất miền Nam trên dòng sông Đồng Nai, giữ vai trò sống còn đối với an ninh nguồn nước vùng Đông Nam Bộ.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 & tr.23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.35,
+          11.32
+        ]
+      },
+      "properties": {
+        "id": "LAKE_13",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Dầu Tiếng",
+        "basin": "Lưu vực sông Sài Gòn & Vàm Cỏ Đông",
+        "province": "Tỉnh Tây Ninh",
+        "coords": [
+          106.35,
+          11.32
+        ],
+        "capacity": "1,58 tỉ m³",
+        "area_km2": "270 km²",
+        "role": "Hồ thủy lợi nhân tạo lớn nhất Đông Nam Á, điều tiết nguồn nước ngọt đẩy mặn cho sông Sài Gòn và sông Vàm Cỏ Đông, cấp nước cho hơn 100.000 ha đất canh tác.",
+        "desc": "Công trình thủy lợi kỳ vĩ giáp ba tỉnh Tây Ninh, Bình Dương, Bình Phước, nuôi sống nông nghiệp Đông Nam Bộ.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.01,
+          11.85
+        ]
+      },
+      "properties": {
+        "id": "LAKE_14",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Thác Mơ",
+        "basin": "Lưu vực sông Đồng Nai (Sông Bé)",
+        "province": "Tỉnh Bình Phước",
+        "coords": [
+          107.01,
+          11.85
+        ],
+        "capacity": "1,25 tỉ m³",
+        "area_km2": "109 km²",
+        "role": "Hồ thủy điện và thủy lợi trên sông Bé, điều hòa dòng chảy mùa khô, bổ sung nước cho hạ lưu sông Bé và hồ Trị An.",
+        "desc": "Công trình trữ nước trọng điểm vùng biên giới Đông Nam Bộ, phát điện công suất 150 MW.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 & tr.23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.82,
+          14.22
+        ]
+      },
+      "properties": {
+        "id": "LAKE_15",
+        "category": "reservoir_lake",
+        "sub_type": "reservoir",
+        "name": "Hồ Yaly",
+        "basin": "Lưu vực sông Mê Công (Sông Sê San)",
+        "province": "Tỉnh Gia Lai",
+        "coords": [
+          107.82,
+          14.22
+        ],
+        "capacity": "1,03 tỉ m³",
+        "area_km2": "64 km²",
+        "role": "Hồ chứa thủy điện lớn nhất Tây Nguyên (720 MW), kiểm soát dòng chảy lưu vực sông Sê San trước khi đổ sang Campuchia.",
+        "desc": "Bậc thang thủy điện khổng lồ trên dòng Sê San hùng vĩ, điều hòa nguồn nước mặt trên cao nguyên Kon Tum - Gia Lai.",
+        "atlat_page": 10,
+        "source": "Atlat GD, tr.10 & tr.23"
       }
     },
     {
@@ -38,13 +858,12 @@
       "properties": {
         "category": "met_station",
         "name": "Hà Nội (Trạm Láng)",
-        "avg_temp": "23,8°C",
-        "max_temp": "29,8°C",
-        "min_temp": "16,4°C",
-        "temp_range": "13,4°C",
-        "rainfall": "1.676 mm",
+        "avg_temp": "23,9°C",
+        "rainfall": "1.670 mm",
+        "province": "Thành phố Hà Nội",
         "climate_type": "Nhiệt đới ẩm gió mùa có mùa đông lạnh",
-        "desc": "Đặc trưng khí hậu miền Bắc: Biên độ nhiệt lớn (13,4°C), có mùa đông lạnh kéo dài từ tháng XI đến tháng IV năm sau do gió mùa Đông Bắc."
+        "desc": "Trạm Láng (Hà Nội): Ttb = 23,9°C; Lượng mưa năm = 1.670 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
       },
       "geometry": {
         "type": "Point",
@@ -58,35 +877,13 @@
       "type": "Feature",
       "properties": {
         "category": "met_station",
-        "name": "Sa Pa",
-        "avg_temp": "15,2°C",
-        "max_temp": "19,8°C",
-        "min_temp": "8,6°C",
-        "temp_range": "11,2°C",
-        "rainfall": "2.700 mm",
-        "climate_type": "Ôn đới núi cao Hoàng Liên Sơn",
-        "desc": "Độ cao >1.500m: Nhiệt độ trung bình năm thấp (15,2°C), sườn đón gió ẩm mưa rất lớn, mùa đông có thể xuất hiện băng giá và tuyết rơi."
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.84,
-          22.33
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "category": "met_station",
         "name": "Huế",
         "avg_temp": "25,1°C",
-        "max_temp": "29,4°C",
-        "min_temp": "19,7°C",
-        "temp_range": "9,7°C",
-        "rainfall": "2.868 mm",
+        "rainfall": "2.926 mm",
+        "province": "Thành phố Huế",
         "climate_type": "Khí hậu chuyển tiếp Bắc Trung Bộ",
-        "desc": "Lượng mưa cực đại vào các tháng thu - đông (tháng IX - XII) do gió mùa Đông Bắc qua biển gặp địa hình chắn gió Bạch Mã kết hợp bão và dải hội tụ."
+        "desc": "Trạm Huế: Ttb = 25,1°C; Lượng mưa năm = 2.926 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
       },
       "geometry": {
         "type": "Point",
@@ -100,35 +897,13 @@
       "type": "Feature",
       "properties": {
         "category": "met_station",
-        "name": "Đà Nẵng",
-        "avg_temp": "25,7°C",
-        "max_temp": "29,1°C",
-        "min_temp": "21,3°C",
-        "temp_range": "7,8°C",
-        "rainfall": "2.044 mm",
-        "climate_type": "Duyên hải Nam Trung Bộ",
-        "desc": "Phía nam đèo Hải Vân: Nhiệt độ trung bình năm trên 25°C, biên độ nhiệt giảm dần (7,8°C), không có mùa đông lạnh sâu như miền Bắc."
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          108.22,
-          16.07
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "category": "met_station",
         "name": "Đà Lạt",
-        "avg_temp": "17,9°C",
-        "max_temp": "20,5°C",
-        "min_temp": "14,8°C",
-        "temp_range": "5,7°C",
-        "rainfall": "1.739 mm",
+        "avg_temp": "18,1°C",
+        "rainfall": "1.809 mm",
+        "province": "Tỉnh Lâm Đồng",
         "climate_type": "Cận nhiệt đới vùng núi cao Tây Nguyên",
-        "desc": "Độ cao ~1.500m trên cao nguyên Lâm Viên: Mát mẻ quanh năm, biên độ nhiệt năm nhỏ (5,7°C), thích hợp canh tác rau hoa quả ôn đới."
+        "desc": "Trạm Đà Lạt: Ttb = 18,1°C; Lượng mưa năm = 1.809 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
       },
       "geometry": {
         "type": "Point",
@@ -142,20 +917,19 @@
       "type": "Feature",
       "properties": {
         "category": "met_station",
-        "name": "Buôn Ma Thuột",
-        "avg_temp": "23,7°C",
-        "max_temp": "26,5°C",
-        "min_temp": "20,8°C",
-        "temp_range": "5,7°C",
-        "rainfall": "1.796 mm",
-        "climate_type": "Cận xích đạo cao nguyên Tây Nguyên",
-        "desc": "Khí hậu phân hóa sâu sắc thành 2 mùa mưa - khô rõ rệt, là thủ phủ vùng chuyên canh cà phê vối số 1 Việt Nam."
+        "name": "Cà Mau",
+        "avg_temp": "27,1°C",
+        "rainfall": "2.388 mm",
+        "province": "Tỉnh Cà Mau",
+        "climate_type": "Cực Nam cận xích đạo hải dương",
+        "desc": "Trạm Cà Mau: Ttb = 27,1°C; Lượng mưa năm = 2.388 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.05,
-          12.67
+          105.15,
+          9.18
         ]
       }
     },
@@ -163,14 +937,13 @@
       "type": "Feature",
       "properties": {
         "category": "met_station",
-        "name": "TP. Hồ Chí Minh",
+        "name": "Tân Sơn Hoà (TP. Hồ Chí Minh)",
         "avg_temp": "27,1°C",
-        "max_temp": "29,7°C",
-        "min_temp": "26,0°C",
-        "temp_range": "3,7°C",
-        "rainfall": "1.931 mm",
+        "rainfall": "1.964 mm",
+        "province": "Thành phố Hồ Chí Minh",
         "climate_type": "Cận xích đạo gió mùa Nam Bộ",
-        "desc": "Nhiệt độ cao đều quanh năm (>27°C), không có mùa đông lạnh, biên độ nhiệt năm rất nhỏ (3,7°C), mùa mưa trùng với gió mùa Tây Nam."
+        "desc": "Trạm Tân Sơn Hoà: Ttb = 27,1°C; Lượng mưa năm = 1.964 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
       },
       "geometry": {
         "type": "Point",
@@ -184,20 +957,199 @@
       "type": "Feature",
       "properties": {
         "category": "met_station",
-        "name": "Cà Mau",
-        "avg_temp": "26,8°C",
-        "max_temp": "28,6°C",
-        "min_temp": "25,5°C",
-        "temp_range": "3,1°C",
-        "rainfall": "2.360 mm",
-        "climate_type": "Cực Nam cận xích đạo hải dương",
-        "desc": "Biên độ nhiệt năm nhỏ nhất cả nước (3,1°C), mùa mưa dài và lượng mưa phong phú (>2.300 mm)."
+        "name": "Buôn Ma Thuột",
+        "avg_temp": "23,7°C",
+        "rainfall": "1.796 mm",
+        "province": "Tỉnh Đắk Lắk",
+        "climate_type": "Cận xích đạo cao nguyên Tây Nguyên",
+        "desc": "Trạm Buôn Ma Thuột: Ttb = 23,7°C; Lượng mưa năm = 1.796 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          105.15,
-          9.18
+          108.05,
+          12.67
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Sơn La",
+        "avg_temp": "21,4°C",
+        "rainfall": "1.448 mm",
+        "province": "Tỉnh Sơn La",
+        "climate_type": "Nhiệt đới gió mùa vùng núi Tây Bắc",
+        "desc": "Trạm Sơn La: Ttb = 21,4°C; Lượng mưa năm = 1.448 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.9,
+          21.32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Tuyên Quang",
+        "avg_temp": "22,9°C",
+        "rainfall": "1.720 mm",
+        "province": "Tỉnh Tuyên Quang",
+        "climate_type": "Nhiệt đới ẩm gió mùa Đông Bắc",
+        "desc": "Trạm Tuyên Quang: Ttb = 22,9°C; Lượng mưa năm = 1.720 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.21,
+          21.82
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Lạng Sơn",
+        "avg_temp": "21,5°C",
+        "rainfall": "1.405 mm",
+        "province": "Tỉnh Lạng Sơn",
+        "climate_type": "Cận nhiệt đới gió mùa biên giới Đông Bắc",
+        "desc": "Trạm Lạng Sơn: Ttb = 21,5°C; Lượng mưa năm = 1.405 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.76,
+          21.85
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Hà Tĩnh",
+        "avg_temp": "24,0°C",
+        "rainfall": "2.458 mm",
+        "province": "Tỉnh Hà Tĩnh",
+        "climate_type": "Nhiệt đới gió mùa Bắc Trung Bộ",
+        "desc": "Trạm Hà Tĩnh: Ttb = 24,0°C; Lượng mưa năm = 2.458 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.9,
+          18.34
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Quy Nhơn",
+        "avg_temp": "26,8°C",
+        "rainfall": "1.695 mm",
+        "province": "Tỉnh Quảng Ngãi",
+        "climate_type": "Duyên hải Nam Trung Bộ",
+        "desc": "Trạm Quy Nhơn: Ttb = 26,8°C; Lượng mưa năm = 1.695 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.22,
+          13.77
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Phú Quốc",
+        "avg_temp": "27,2°C",
+        "rainfall": "2.958 mm",
+        "province": "Tỉnh An Giang",
+        "climate_type": "Hải dương nhiệt đới vịnh Thái Lan",
+        "desc": "Trạm Phú Quốc: Ttb = 27,2°C; Lượng mưa năm = 2.958 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.96,
+          10.22
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Cần Thơ",
+        "avg_temp": "27,0°C",
+        "rainfall": "1.620 mm",
+        "province": "Thành phố Cần Thơ",
+        "climate_type": "Cận xích đạo đồng bằng châu thổ sông Cửu Long",
+        "desc": "Trạm Cần Thơ: Ttb = 27,0°C; Lượng mưa năm = 1.620 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.78,
+          10.03
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Hoàng Sa",
+        "avg_temp": "26,9°C",
+        "rainfall": "1.250 mm",
+        "province": "Thành phố Đà Nẵng",
+        "climate_type": "Hải dương nhiệt đới Biển Đông",
+        "desc": "Trạm Quần đảo Hoàng Sa: Ttb = 26,9°C; Lượng mưa năm = 1.250 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.6,
+          16.53
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Trường Sa",
+        "avg_temp": "27,7°C",
+        "rainfall": "2.540 mm",
+        "province": "Tỉnh Khánh Hoà",
+        "climate_type": "Cận xích đạo hải dương Biển Đông",
+        "desc": "Trạm Quần đảo Trường Sa: Ttb = 27,7°C; Lượng mưa năm = 2.540 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          111.92,
+          8.64
         ]
       }
     }

@@ -1488,139 +1488,206 @@ const AtlasEngine = (function () {
   // ===========================================================================
   // LỚP 3: KHÍ HẬU & THỦY VĂN (Atlat GD, tr.8 & 9) - Mũi tên Gió mùa SVG & Trạm Khí tượng
   // ===========================================================================
-  async function renderClimateLayer() {
+  // LỚP 3: KHÍ HẬU & THỦY VĂN (Atlat GD, tr.8, 9 & 10)
+  // ===========================================================================
+  let currentClimateFilter = "all";
+
+  async function renderClimateLayer(categoryFilter = "all") {
+    currentClimateFilter = categoryFilter;
     if (!geoData.climate) await ensureLayerData("climate");
+    if (!geoData.climate) return;
     layerClimate.clearLayers();
 
-    // 1. Gió mùa Đông Bắc (Tháng 11 - 4): Blue arrows đâm vào Bắc Bộ & Bắc Trung Bộ đến dãy Bạch Mã (16°B)
-    const dongBacCoords = [
-      [[22.8, 107.5], [21.5, 106.0], [20.0, 105.5]],
-      [[22.0, 108.5], [20.5, 107.0], [18.5, 106.0], [16.2, 107.8]],
-      [[21.0, 109.5], [19.0, 107.5], [17.5, 106.8], [16.0, 108.2]]
-    ];
+    const showMonsoonStorm = categoryFilter === "all" || categoryFilter === "monsoon_storm";
 
-    dongBacCoords.forEach((pts) => {
-      const line = L.polyline(pts, {
-        pane: 'climatePane',
-        color: '#2563EB',
-        weight: 3.5,
-        opacity: 0.85,
-        dashArray: '8, 8',
-        className: 'animated-monsoon-line'
+    if (showMonsoonStorm) {
+      // 1. Gió mùa Đông Bắc (Tháng 11 - 4): Blue arrows đâm vào Bắc Bộ & Bắc Trung Bộ đến dãy Bạch Mã (16°B)
+      const dongBacCoords = [
+        [[22.8, 107.5], [21.5, 106.0], [20.0, 105.5]],
+        [[22.0, 108.5], [20.5, 107.0], [18.5, 106.0], [16.2, 107.8]],
+        [[21.0, 109.5], [19.0, 107.5], [17.5, 106.8], [16.0, 108.2]]
+      ];
+
+      dongBacCoords.forEach((pts) => {
+        const line = L.polyline(pts, {
+          pane: 'climatePane',
+          color: '#2563EB',
+          weight: 3.5,
+          opacity: 0.85,
+          dashArray: '8, 8',
+          className: 'animated-monsoon-line'
+        });
+        line.bindTooltip("Gió mùa Đông Bắc (Tháng XI - IV): Lạnh khô đầu mùa, lạnh ẩm cuối mùa. Ngăn lại ở dãy Bạch Mã (16°B).", { permanent: false, sticky: false });
+        layerClimate.addLayer(line);
       });
-      line.bindTooltip("Gió mùa Đông Bắc (Tháng XI - IV): Lạnh khô đầu mùa, lạnh ẩm cuối mùa. Ngăn lại ở dãy Bạch Mã (16°B).", { permanent: false, sticky: false });
-      layerClimate.addLayer(line);
-    });
 
-    // 2. Gió mùa Tây Nam (Tháng 5 - 10): Red arrows thổi qua Tây Nguyên & Nam Bộ
-    const tayNamCoords = [
-      [[8.5, 103.5], [10.5, 105.5], [12.5, 107.5]],
-      [[9.5, 104.5], [11.5, 107.0], [14.0, 108.5]],
-      [[10.0, 106.0], [12.5, 108.0], [15.0, 108.8]]
-    ];
+      // 2. Gió mùa Tây Nam (Tháng 5 - 10): Red arrows thổi qua Tây Nguyên & Nam Bộ
+      const tayNamCoords = [
+        [[8.5, 103.5], [10.5, 105.5], [12.5, 107.5]],
+        [[9.5, 104.5], [11.5, 107.0], [14.0, 108.5]],
+        [[10.0, 106.0], [12.5, 108.0], [15.0, 108.8]]
+      ];
 
-    tayNamCoords.forEach((pts) => {
-      const line = L.polyline(pts, {
-        pane: 'climatePane',
-        color: '#DC2626',
-        weight: 3.5,
-        opacity: 0.85,
-        dashArray: '8, 8',
-        className: 'animated-monsoon-line'
+      tayNamCoords.forEach((pts) => {
+        const line = L.polyline(pts, {
+          pane: 'climatePane',
+          color: '#DC2626',
+          weight: 3.5,
+          opacity: 0.85,
+          dashArray: '8, 8',
+          className: 'animated-monsoon-line'
+        });
+        line.bindTooltip("Gió mùa Tây Nam (Tháng V - X): Nóng ẩm, gây mưa lớn cho Nam Bộ và Tây Nguyên.", { permanent: false, sticky: false });
+        layerClimate.addLayer(line);
       });
-      line.bindTooltip("Gió mùa Tây Nam (Tháng V - X): Nóng ẩm, gây mưa lớn cho Nam Bộ và Tây Nguyên.", { permanent: false, sticky: false });
-      layerClimate.addLayer(line);
-    });
 
-    // 3. Gió tây khô nóng: Orange dashed arrows vượt Trường Sơn Bắc
-    const phonLaoCoords = [
-      [[18.2, 105.2], [18.6, 105.8]],
-      [[17.5, 105.9], [17.8, 106.5]],
-      [[16.8, 106.5], [16.9, 107.2]]
-    ];
+      // 3. Gió tây khô nóng: Orange dashed arrows vượt Trường Sơn Bắc
+      const phonLaoCoords = [
+        [[18.2, 105.2], [18.6, 105.8]],
+        [[17.5, 105.9], [17.8, 106.5]],
+        [[16.8, 106.5], [16.9, 107.2]]
+      ];
 
-    phonLaoCoords.forEach((pts) => {
-      const line = L.polyline(pts, {
-        pane: 'climatePane',
-        color: '#EA580C',
-        weight: 3,
-        opacity: 0.9,
-        dashArray: '4, 4'
+      phonLaoCoords.forEach((pts) => {
+        const line = L.polyline(pts, {
+          pane: 'climatePane',
+          color: '#EA580C',
+          weight: 3,
+          opacity: 0.9,
+          dashArray: '4, 4'
+        });
+        line.bindTooltip("Gió tây khô nóng: Khô nóng gay gắt ven biển miền Trung do hiệu ứng phơn vượt Trường Sơn Bắc (Atlat GD, tr.8 & DHQG, tr.3).", { permanent: false, sticky: false });
+        layerClimate.addLayer(line);
       });
-      line.bindTooltip("Gió tây khô nóng: Khô nóng gay gắt ven biển miền Trung do hiệu ứng phơn vượt Trường Sơn Bắc (Atlat GD, tr.8 & DHQG, tr.3).", { permanent: false, sticky: false });
-      layerClimate.addLayer(line);
-    });
 
-    // 4. Hướng bão đổ bộ
-    const storms = [
-      { pts: [[19.5, 114.0], [20.5, 108.5], [20.8, 106.5]], month: "Tháng VI - VIII (Bắc Bộ)" },
-      { pts: [[16.5, 114.5], [16.8, 109.5], [16.5, 107.5]], month: "Tháng IX - X (Trung Bộ)" },
-      { pts: [[12.0, 114.0], [11.5, 109.5], [10.5, 107.5]], month: "Tháng XI - XII (Nam Bộ)" }
-    ];
+      // 4. Hướng bão đổ bộ
+      const storms = [
+        { pts: [[19.5, 114.0], [20.5, 108.5], [20.8, 106.5]], month: "Tháng VI - VIII (Bắc Bộ)" },
+        { pts: [[16.5, 114.5], [16.8, 109.5], [16.5, 107.5]], month: "Tháng IX - X (Trung Bộ)" },
+        { pts: [[12.0, 114.0], [11.5, 109.5], [10.5, 107.5]], month: "Tháng XI - XII (Nam Bộ)" }
+      ];
 
-    storms.forEach(st => {
-      const line = L.polyline(st.pts, {
-        pane: 'climatePane',
-        color: '#7C3AED',
-        weight: 2.5,
-        dashArray: '6, 6'
+      storms.forEach(st => {
+        const line = L.polyline(st.pts, {
+          pane: 'climatePane',
+          color: '#7C3AED',
+          weight: 2.5,
+          dashArray: '6, 6'
+        });
+        line.bindTooltip(`Tần suất & Hướng bão: ${st.month} (Bão chậm dần từ Bắc vào Nam)`, { permanent: false, sticky: false });
+        layerClimate.addLayer(line);
+
+        const stormMarker = L.marker(st.pts[1], {
+          pane: 'pointMarkerPane',
+          icon: L.divIcon({
+            className: 'storm-marker',
+            html: `<div class="bg-purple-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full shadow-xs">🌀 ${st.month.split(' ')[0]} ${st.month.split(' ')[1]}</div>`,
+            iconSize: [80, 20],
+            iconAnchor: [40, 10]
+          })
+        });
+        layerClimate.addLayer(stormMarker);
       });
-      line.bindTooltip(`Tần suất & Hướng bão: ${st.month} (Bão chậm dần từ Bắc vào Nam)`, { permanent: false, sticky: false });
-      layerClimate.addLayer(line);
-
-      const stormMarker = L.marker(st.pts[1], {
-        pane: 'pointMarkerPane',
-        icon: L.divIcon({
-          className: 'storm-marker',
-          html: `<div class="bg-purple-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full shadow-xs">🌀 ${st.month.split(' ')[0]} ${st.month.split(' ')[1]}</div>`,
-          iconSize: [80, 20],
-          iconAnchor: [40, 10]
-        })
-      });
-      layerClimate.addLayer(stormMarker);
-    });
-
-    // 5. Ranh giới Bạch Mã & Các Trạm Khí Tượng Tiêu Biểu
-    if (geoData.climate) {
-      L.geoJSON(geoData.climate, {
-        pane: 'climatePane',
-        pointToLayer: (feature, latlng) => {
-          const p = feature.properties;
-          const icon = L.divIcon({
-            className: "met-station-marker",
-            html: `<div class="bg-blue-600 text-white text-xs p-1 rounded-full shadow-md border border-white hover:scale-125 transition">🌡️</div>`,
-            iconSize: [22, 22],
-            iconAnchor: [11, 11]
-          });
-          return L.marker(latlng, { icon });
-        },
-        style: (feature) => {
-          if (feature.properties.category === "climate_boundary") {
-            return { color: "#7C3AED", weight: 4, dashArray: "4, 6" };
-          }
-          return { color: "#2563EB", weight: 2 };
-        },
-        onEachFeature: (feature, layer) => {
-          const p = feature.properties;
-          if (p.category === "met_station") {
-            layer.bindPopup(`
-              <div class="p-3 bg-white dark:bg-slate-900 rounded-xl min-w-[220px] space-y-1.5">
-                <div class="font-bold text-xs text-blue-600 dark:text-blue-400">🌡️ ${p.name}</div>
-                <div class="text-[11px] grid grid-cols-2 gap-1 text-slate-700 dark:text-slate-200">
-                  <div>Nhiệt độ TB: <strong>${p.avg_temp}</strong></div>
-                  <div>Biên độ nhiệt: <strong>${p.temp_range}</strong></div>
-                  <div class="col-span-2">Tổng lượng mưa: <strong>${p.rainfall}</strong></div>
-                </div>
-                <p class="text-[10px] text-slate-500 italic">${p.climate_type}</p>
-              </div>
-            `);
-          } else {
-            layer.bindTooltip(`<strong>${p.name}</strong><br>${p.desc}`, { permanent: false, sticky: false });
-          }
-          layer.on("click", () => showDetailsPanel(p, "climate"));
-        }
-      }).addTo(layerClimate);
     }
+
+    // 5. Ranh giới Bạch Mã, 15 Trạm Khí Tượng, 12 Trạm Thủy Văn & 15 Hồ Điều Tiết
+    L.geoJSON(geoData.climate, {
+      pane: 'climatePane',
+      filter: (f) => {
+        const p = f.properties || {};
+        if (p.hidden) return false;
+        if (categoryFilter === "all") return true;
+        if (categoryFilter === "met_station") return p.category === "met_station" || p.category === "climate_boundary";
+        if (categoryFilter === "hydro_station") return p.category === "hydro_station";
+        if (categoryFilter === "reservoir_lake") return p.category === "reservoir_lake";
+        if (categoryFilter === "monsoon_storm") return p.category === "climate_boundary";
+        return true;
+      },
+      pointToLayer: (feature, latlng) => {
+        const p = feature.properties || {};
+        let iconHtml = "🌡️";
+        let bgClass = "bg-blue-600 ring-2 ring-blue-300";
+        let title = p.name || "";
+
+        if (p.category === "hydro_station") {
+          iconHtml = "💧";
+          bgClass = "bg-cyan-600 ring-2 ring-cyan-300";
+        } else if (p.category === "reservoir_lake") {
+          iconHtml = "🏞️";
+          bgClass = "bg-teal-600 ring-2 ring-teal-300";
+        }
+
+        const icon = L.divIcon({
+          className: "climate-hydro-marker",
+          html: `<div class="${bgClass} text-white text-xs p-1 rounded-full shadow-md border border-white hover:scale-125 transition flex items-center justify-center w-6 h-6" title="${title}">${iconHtml}</div>`,
+          iconSize: [24, 24],
+          iconAnchor: [12, 12]
+        });
+        return L.marker(latlng, { icon });
+      },
+      style: (feature) => {
+        if (feature.properties.category === "climate_boundary") {
+          return { color: "#7C3AED", weight: 4, dashArray: "4, 6" };
+        }
+        return { color: "#2563EB", weight: 2 };
+      },
+      onEachFeature: (feature, layer) => {
+        const p = feature.properties || {};
+        if (p.category === "met_station") {
+          layer.bindPopup(`
+            <div class="p-3 bg-white dark:bg-slate-900 rounded-xl min-w-[240px] space-y-1.5 shadow-lg border border-slate-200 dark:border-slate-800">
+              <div class="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-800">
+                <span class="font-bold text-xs text-blue-600 dark:text-blue-400">🌡️ ${p.name}</span>
+                <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-semibold">Trạm Khí Tượng</span>
+              </div>
+              <div class="text-[11px] grid grid-cols-2 gap-1 text-slate-700 dark:text-slate-200 py-0.5">
+                <div>Nhiệt độ TB: <strong class="text-blue-600 dark:text-blue-400">${p.avg_temp}</strong></div>
+                <div>Biên độ nhiệt: <strong class="text-amber-600 dark:text-amber-400">${p.temp_range || 'N/A'}</strong></div>
+                <div class="col-span-2">Tổng lượng mưa: <strong class="text-cyan-600 dark:text-cyan-400">${p.rainfall}</strong></div>
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight italic">${p.climate_type || p.desc || ''}</p>
+            </div>
+          `);
+        } else if (p.category === "hydro_station") {
+          layer.bindPopup(`
+            <div class="p-3 bg-white dark:bg-slate-900 rounded-xl min-w-[260px] space-y-1.5 shadow-lg border border-cyan-200 dark:border-cyan-800">
+              <div class="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-800">
+                <span class="font-bold text-xs text-cyan-700 dark:text-cyan-300">💧 ${p.name}</span>
+                <span class="text-[9px] px-1.5 py-0.5 rounded bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-200 font-semibold">Trạm Thủy Văn</span>
+              </div>
+              <div class="text-[11px] space-y-1 text-slate-700 dark:text-slate-200 py-0.5">
+                <div>Hệ thống sông: <strong class="text-blue-600 dark:text-blue-400">${p.river_system}</strong></div>
+                <div class="grid grid-cols-2 gap-1">
+                  <div>Mùa lũ: <strong class="text-rose-600 dark:text-rose-400">${p.flood_season}</strong></div>
+                  <div>Đỉnh lũ: <strong class="text-rose-700 dark:text-rose-300 font-bold">${p.peak_month}</strong></div>
+                  <div>Mùa cạn: <strong class="text-slate-600 dark:text-slate-400">${p.dry_season}</strong></div>
+                  <div>Đỉnh lưu lượng: <strong class="text-cyan-600 font-mono">${p.peak_flow}</strong></div>
+                </div>
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight italic">${p.regime_desc || p.desc || ''}</p>
+            </div>
+          `);
+        } else if (p.category === "reservoir_lake") {
+          layer.bindPopup(`
+            <div class="p-3 bg-white dark:bg-slate-900 rounded-xl min-w-[260px] space-y-1.5 shadow-lg border border-teal-200 dark:border-teal-800">
+              <div class="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-800">
+                <span class="font-bold text-xs text-teal-700 dark:text-teal-300">🏞️ ${p.name}</span>
+                <span class="text-[9px] px-1.5 py-0.5 rounded bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 font-semibold">${p.sub_type === 'lake' ? 'Hồ tự nhiên' : 'Hồ thủy lợi / thủy điện'}</span>
+              </div>
+              <div class="text-[11px] space-y-1 text-slate-700 dark:text-slate-200 py-0.5">
+                <div>Lưu vực: <strong>${p.basin}</strong></div>
+                <div>Dung tích / Diện tích: <strong class="text-emerald-600 font-mono">${p.capacity || p.area_km2 || 'Lớn'}</strong></div>
+                <div>Vai trò thủy văn: <strong>${p.role}</strong></div>
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight italic">${p.desc || ''}</p>
+            </div>
+          `);
+        } else {
+          layer.bindTooltip(`<strong>${p.name}</strong><br>${p.desc}`, { permanent: false, sticky: false });
+        }
+        layer.on("click", () => showDetailsPanel(p, "climate"));
+      }
+    }).addTo(layerClimate);
   }
 
   // ===========================================================================
@@ -2567,7 +2634,7 @@ const AtlasEngine = (function () {
     const normQuery = normalizeVN(rawQuery);
     const isHydroQuery = /thuy dien|nhiet dien|nha may dien|dien gio|dien mat troi/i.test(normQuery);
     const isTopoQuery = /cao nguyen|day nui|dinh nui|nui|deo|song|he thong song/i.test(normQuery);
-    const isClimateQuery = /tram|khi hau|khi tuong/i.test(normQuery);
+    const isClimateQuery = /tram|khi hau|khi tuong|thuy van|luu luong|ho |bien ho/i.test(normQuery);
     const isMineralQuery = /khoang san|mo than|mo dau|mo khi|mo |than|dau mo|khi dot|sat|boxit|bauxite|apatit|titan/i.test(normQuery);
     const isIndustrialQuery = /trung tam cong nghiep|ttcn/i.test(normQuery);
     const isProvinceQuery = /tinh|thanh pho|tp\s+/i.test(normQuery);
@@ -2753,6 +2820,76 @@ const AtlasEngine = (function () {
     }
 
     if (type === "climate") {
+      if (props.category === "hydro_station") {
+        infoContainer.innerHTML = `
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between pb-1.5 border-b border-slate-100 dark:border-slate-800">
+              <h4 class="font-bold text-xs text-cyan-700 dark:text-cyan-300 flex items-center space-x-1.5">
+                <span>💧</span> <span>${props.name}</span>
+              </h4>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300">${props.source || 'Atlat GD, tr.10'}</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-center text-xs">
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-400 block font-bold">Hệ thống sông</span>
+                <span class="font-bold text-blue-600 dark:text-blue-400 text-[11px]">${props.river_system || 'Sông lớn'}</span>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-400 block font-bold">Đỉnh lũ cao nhất</span>
+                <span class="font-bold text-rose-600 dark:text-rose-400 text-[11px]">${props.peak_month || 'N/A'}</span>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-400 block font-bold">Mùa lũ chính</span>
+                <span class="font-bold text-rose-700 dark:text-rose-300 text-[11px]">${props.flood_season || 'N/A'}</span>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-400 block font-bold">Đỉnh lưu lượng</span>
+                <span class="font-bold text-cyan-600 font-mono text-[11px]">${props.peak_flow || 'N/A'}</span>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-cyan-50 dark:bg-cyan-950/40 border border-cyan-200 dark:border-cyan-900/50 space-y-1">
+              <div class="text-[10px] font-bold text-cyan-800 dark:text-cyan-300 flex items-center space-x-1">
+                <span>🌊</span> <span>Chế độ dòng chảy theo Atlat GD tr.10</span>
+              </div>
+              <p class="text-[11px] text-slate-700 dark:text-slate-300 leading-relaxed">${props.regime_desc || props.desc || ''}</p>
+              ${props.monthly_flow_pattern ? `<p class="text-[10px] text-slate-500 dark:text-slate-400 italic">${props.monthly_flow_pattern}</p>` : ''}
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      if (props.category === "reservoir_lake") {
+        infoContainer.innerHTML = `
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between pb-1.5 border-b border-slate-100 dark:border-slate-800">
+              <h4 class="font-bold text-xs text-teal-700 dark:text-teal-300 flex items-center space-x-1.5">
+                <span>🏞️</span> <span>${props.name}</span>
+              </h4>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300">${props.sub_type === 'lake' ? 'Hồ Tự Nhiên' : 'Hồ Điều Tiết Thủy Lợi / Thủy Điện'}</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-center text-xs">
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-400 block font-bold">Lưu vực sông</span>
+                <span class="font-bold text-blue-600 dark:text-blue-400 text-[11px]">${props.basin || 'N/A'}</span>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-400 block font-bold">Dung tích / Quy mô</span>
+                <span class="font-bold text-emerald-600 dark:text-emerald-400 font-mono text-[11px]">${props.capacity || props.area_km2 || 'Lớn'}</span>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-teal-50 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-900/50 space-y-1">
+              <div class="text-[10px] font-bold text-teal-800 dark:text-teal-300 flex items-center space-x-1">
+                <span>🏞️</span> <span>Vai trò điều tiết thủy văn (Atlat GD tr.10)</span>
+              </div>
+              <p class="text-[11px] text-slate-700 dark:text-slate-300 leading-relaxed">${props.role || props.desc || ''}</p>
+            </div>
+            <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed italic">${props.desc || ''}</p>
+          </div>
+        `;
+        return;
+      }
+
       infoContainer.innerHTML = `
         <div class="space-y-2.5">
           <div class="flex items-center justify-between pb-1.5 border-b border-slate-100 dark:border-slate-800">
@@ -2769,7 +2906,7 @@ const AtlasEngine = (function () {
               </div>
               <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                 <span class="text-[9px] text-slate-400 block font-bold">Biên độ nhiệt</span>
-                <span class="font-bold text-amber-600">${props.temp_range}</span>
+                <span class="font-bold text-amber-600">${props.temp_range || 'N/A'}</span>
               </div>
               <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                 <span class="text-[9px] text-slate-400 block font-bold">Lượng mưa</span>
@@ -3115,13 +3252,17 @@ const AtlasEngine = (function () {
       sections.push(`
         <div class="legend-section space-y-1">
           <div class="text-[10px] font-bold uppercase text-blue-700 dark:text-blue-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
-            Gió & Bão (Atlat GD, tr.8)
+            Khí Hậu & Thủy Văn (Atlat GD, tr.8 - 10)
           </div>
           <div class="text-[10px] space-y-0.5">
-            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-blue-600 inline-block"></span> <span>Gió mùa đông</span></div>
-            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-red-600 inline-block"></span> <span>Gió mùa hạ</span></div>
-            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-amber-600 inline-block"></span> <span>Gió Tây khô nóng</span></div>
-            <div class="flex items-center space-x-1.5"><span>🌀</span> <span>Bão (Tháng VI - XII)</span></div>
+            <div class="flex items-center space-x-1.5"><span>🌡️</span> <span>Trạm khí tượng (Nhiệt - Mưa Atlat tr.8)</span></div>
+            <div class="flex items-center space-x-1.5"><span>💧</span> <span>Trạm thủy văn (Lưu lượng nước tr.10)</span></div>
+            <div class="flex items-center space-x-1.5"><span>🏞️</span> <span>Hồ thủy văn & điều tiết lũ/kiệt</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-3 h-0.5 border-t-2 border-dashed border-purple-600 inline-block"></span> <span>Ranh giới Bạch Mã 16°B</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-blue-600 inline-block"></span> <span>Gió mùa Đông Bắc (Tháng XI - IV)</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-red-600 inline-block"></span> <span>Gió mùa Tây Nam (Tháng V - X)</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-amber-600 inline-block"></span> <span>Gió Tây khô nóng (Phơn)</span></div>
+            <div class="flex items-center space-x-1.5"><span>🌀</span> <span>Hướng bão (Tháng VI - XII)</span></div>
           </div>
         </div>
       `);

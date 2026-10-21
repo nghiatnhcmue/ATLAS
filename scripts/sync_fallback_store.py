@@ -13,6 +13,8 @@ def main():
         data['power'] = json.load(f)
     with open('public/data/industrial_centers.geojson', 'r', encoding='utf-8') as f:
         data['industrial'] = json.load(f)
+    with open('public/data/climate_hydro.geojson', 'r', encoding='utf-8') as f:
+        data['climate'] = json.load(f)
     with open('public/data/chart_questions.json', 'r', encoding='utf-8') as f:
         data['chartQuestions'] = json.load(f)
 

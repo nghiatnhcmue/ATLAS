@@ -118,7 +118,7 @@ test("BUG-05", "Quy tắc chấm biểu đồ: 'bar_stacked', Tròn 1-2 năm, Mi
 // BUG-06 (P0): 15 Climate stations on Atlat GD tr.8
 test("BUG-06", "15 Trạm khí tượng chuẩn Atlat GD tr.8 (đã loại bỏ Sa Pa và Đà Nẵng)", () => {
   const climate = JSON.parse(fs.readFileSync("public/data/climate_hydro.geojson", "utf-8"));
-  const stations = climate.features.filter(f => f.geometry && f.geometry.type === "Point");
+  const stations = climate.features.filter(f => f.geometry && f.geometry.type === "Point" && f.properties && f.properties.category === "met_station");
   assert.strictEqual(stations.length, 15, "Must have exactly 15 climate stations per GD tr.8");
 
   const names = stations.map(f => f.properties.name);
