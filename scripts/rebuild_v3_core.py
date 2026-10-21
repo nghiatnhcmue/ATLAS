@@ -248,3 +248,4 @@ with open(trans_file, 'w', encoding='utf-8') as f:
 print("Saved updated transportation.geojson!")
 
 print("=== CORE DATA REBUILD V3 COMPLETED! ===")
+

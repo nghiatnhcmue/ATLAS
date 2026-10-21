@@ -29,7 +29,7 @@ CAPITALS = {
     "Đắk Lắk": [108.038, 12.667],
     "Lâm Đồng": [108.458, 11.940],
     "Tây Ninh": [106.098, 11.310],
-    "Đồng Nai": [106.836, 10.957],
+    "Thành phố Đồng Nai": [106.836, 10.957],
     "Thành phố Hồ Chí Minh": [106.629, 10.823],
     "Vĩnh Long": [105.972, 10.253],
     "Đồng Tháp": [105.631, 10.453],
@@ -40,7 +40,7 @@ CAPITALS = {
 
 # 4 Tiers per Atlat GD tr.18
 TIER_1 = ["Thành phố Hồ Chí Minh", "Hà Nội"]
-TIER_2 = ["Hải Phòng", "Quảng Ninh", "Bắc Ninh", "Đồng Nai", "Hưng Yên", "Ninh Bình", "Đà Nẵng"]
+TIER_2 = ["Hải Phòng", "Quảng Ninh", "Bắc Ninh", "Thành phố Đồng Nai", "Hưng Yên", "Ninh Bình", "Đà Nẵng"]
 TIER_4 = ["Cao Bằng", "Lạng Sơn", "Tuyên Quang", "Lào Cai", "Điện Biên", "Lai Châu", "Sơn La", "Hà Tĩnh", "Quảng Trị"]
 
 # Sector structures per Atlat GD tr.18 (Nông-lâm-thủy sản, Công nghiệp-xây dựng, Dịch vụ, Thuế sản phẩm)
@@ -126,3 +126,4 @@ with open('public/data/industrial_centers.geojson', 'w', encoding='utf-8') as f:
     json.dump(geojson, f, ensure_ascii=False, indent=2)
 
 print(f"Generated {len(features)} economic centers in public/data/industrial_centers.geojson successfully!")
+

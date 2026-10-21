@@ -1092,8 +1092,8 @@
         ]
       },
       "properties": {
-        "name": "TTKT Đồng Nai",
-        "province": "Đồng Nai",
+        "name": "Thành phố Đồng Nai",
+        "province": "Thành phố Đồng Nai",
         "scale_tier": "tier_2",
         "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng (Lớn)",
         "radius_px": 18,

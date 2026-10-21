@@ -226,7 +226,7 @@ const AtlasEngine = (function () {
   // GRDP bình quân đầu người 4 cấp chuẩn Atlat GD, tr.18
   const GRDP_PER_CAPITA_TIERS = {
     // Cấp 1: Từ 125 triệu đồng trở lên
-    "Thành phố Hà Nội": 1, "Thành phố Hồ Chí Minh": 1, "Thành phố Hải Phòng": 1,
+    "Thành phố Hà Nội": 1, "Thành phố Hồ Chí Minh": 1, "Thành phố Hải Phòng": 1, "Thành phố Đồng Nai": 1,
     "Tỉnh Quảng Ninh": 1, "Tỉnh Bắc Ninh": 1, "Tỉnh Đồng Nai": 1,
     "Hà Nội": 1, "TP. Hồ Chí Minh": 1, "Hải Phòng": 1, "Quảng Ninh": 1, "Bắc Ninh": 1, "Đồng Nai": 1, "Bà Rịa - Vũng Tàu": 1, "Bình Dương": 1,
     // Cấp 2: 100 đến dưới 125 triệu đồng
@@ -2870,7 +2870,7 @@ const AtlasEngine = (function () {
 
     // Default: Tỉnh thành
     const is34 = provinceMode === "34" || props.resolution;
-    const isCity = props.administrative_type === "Thành phố trực thuộc Trung ương";
+    const isCity = props.administrative_type === "Thành phố trực thuộc Trung ương" || (props.name && props.name.startsWith("Thành phố"));
     const adminTypeBadge = isCity 
       ? '<span class="text-[10px] px-2 py-0.5 rounded-full bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 font-bold">Thành phố Trực thuộc TW</span>'
       : '<span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 font-bold">Tỉnh</span>';
@@ -2882,7 +2882,9 @@ const AtlasEngine = (function () {
       "Bà Rịa - Vũng Tàu": "Thủ phủ dầu khí ngoài thềm lục địa (mỏ Bạch Hổ, Rồng, Rạng Đông), cụm cảng quốc tế Cái Mép - Thị Vải.",
       "Cà Mau": "Điểm cực Nam của Tổ quốc (Mũi Cà Mau), cụm Khí - Điện - Đạm Cà Mau, diện tích rừng ngập mặn lớn nhất nước.",
       "Đắk Lắk": "Thủ phủ cà phê Việt Nam (Buôn Ma Thuột), đất đỏ bazan màu mỡ diện tích lớn nhất Tây Nguyên.",
-      "Lâm Đồng": "Thế mạnh rau quả và hoa ôn đới, du lịch sinh thái Đà Lạt, tiềm năng thủy điện lớn trên sông Đồng Nai."
+      "Lâm Đồng": "Thế mạnh rau quả và hoa ôn đới, du lịch sinh thái Đà Lạt, tiềm năng thủy điện lớn trên sông Đồng Nai.",
+      "Thành phố Đồng Nai": "Thành phố trực thuộc Trung ương, trung tâm công nghiệp - dịch vụ hiện đại vùng Đông Nam Bộ, sở hữu Cảng hàng không quốc tế Long Thành.",
+      "Đồng Nai": "Thành phố trực thuộc Trung ương, trung tâm công nghiệp - dịch vụ hiện đại vùng Đông Nam Bộ, sở hữu Cảng hàng không quốc tế Long Thành."
     };
 
     const examTip = examTipsMap[props.name] || `Nằm trong ${props.region_name || 'vùng kinh tế trọng điểm'}, có tiềm năng chuyển dịch cơ cấu theo hướng công nghiệp hóa và hiện đại hóa.`;

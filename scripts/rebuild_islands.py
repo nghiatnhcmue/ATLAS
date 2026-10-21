@@ -90,3 +90,4 @@ update_file('public/data/vn_provinces_34.geojson')
 update_file('public/data/vn_provinces_63.geojson')
 update_file('public/data/vn_provinces.geojson')
 print("Island update complete!")
+

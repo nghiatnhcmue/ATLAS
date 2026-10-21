@@ -66,7 +66,7 @@ PROVINCES_34_STATS = {
 
     # 5. Đông Nam Bộ (3)
     "Tỉnh Tây Ninh": {"area": 8536.5, "pop": 2959.0, "type": "Tỉnh", "region": "Đông Nam Bộ", "merged_from": ["Tây Ninh", "Long An"]},
-    "Tỉnh Đồng Nai": {"area": 12737.2, "pop": 4427.7, "type": "Tỉnh", "region": "Đông Nam Bộ", "merged_from": ["Đồng Nai", "Bình Phước"]},
+    "Thành phố Đồng Nai": {"area": 12737.2, "pop": 4427.7, "type": "Thành phố trực thuộc Trung ương", "region": "Đông Nam Bộ", "merged_from": ["Đồng Nai", "Bình Phước"]},
     "Thành phố Hồ Chí Minh": {"area": 6772.6, "pop": 13608.8, "type": "Thành phố trực thuộc Trung ương", "region": "Đông Nam Bộ", "merged_from": ["TP. Hồ Chí Minh", "Bình Dương", "Bà Rịa - Vũng Tàu"]},
 
     # 6. Đồng bằng sông Cửu Long (5)

@@ -47213,8 +47213,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Đồng Nai",
-        "administrative_type": "Tỉnh",
+        "name": "Thành phố Đồng Nai",
+        "administrative_type": "Thành phố trực thuộc Trung ương",
         "region_name": "Đông Nam Bộ",
         "region": "Đông Nam Bộ",
         "area": 12737.2,
@@ -47228,7 +47228,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "type": "Thành phố trực thuộc Trung ương"
       },
       "geometry": {
         "type": "Polygon",

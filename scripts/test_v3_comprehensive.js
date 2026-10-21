@@ -193,6 +193,17 @@ check("BUG-39", "Nhãn 'Lựa chọn các đối tượng tiêu biểu phục v�
   assert(html.includes("Lựa chọn các đối tượng tiêu biểu phục vụ ôn thi tốt nghiệp THPT theo chuẩn Atlat GD"), "Exam focus banner present in index.html");
 });
 
+// 14. BUG-41: Thành phố Đồng Nai là Thành phố trực thuộc Trung ương
+check("BUG-41", "Thành phố Đồng Nai chuẩn hoá thành Thành phố trực thuộc Trung ương", () => {
+  const p34 = JSON.parse(fs.readFileSync("public/data/vn_provinces_34.geojson", "utf-8"));
+  const dn = p34.features.find(f => f.properties.name === "Thành phố Đồng Nai");
+  assert(dn, "Thành phố Đồng Nai exists in vn_provinces_34");
+  assert.strictEqual(dn.properties.administrative_type, "Thành phố trực thuộc Trung ương", "Đồng Nai is Thành phố trực thuộc Trung ương");
+
+  const calc = fs.readFileSync("js/geo-calculator.js", "utf-8");
+  assert(calc.includes("Thành phố Đồng Nai"), "geo-calculator.js uses Thành phố Đồng Nai");
+});
+
 console.log("======================================================================");
 console.log(`  RESULT: ${passed}/${total} TESTS PASSED (${Math.round((passed/total)*100)}%)`);
 console.log("======================================================================");
@@ -204,3 +215,4 @@ if (passed === total) {
   console.error(">>> FAILURE: Some v3 items did not pass! <<<");
   process.exit(1);
 }
+

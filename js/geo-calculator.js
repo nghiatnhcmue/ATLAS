@@ -81,7 +81,7 @@ const GeoCalculator = (function () {
           ["Thành phố Huế", "1.179", "4.947"],
           ["Tỉnh Thanh Hoá", "3.764", "11.115"],
           ["Tỉnh Nghệ An", "3.472", "16.486"],
-          ["Tỉnh Đồng Nai", "4.428", "12.737"],
+          ["Thành phố Đồng Nai", "4.428", "12.737"],
           ["Tỉnh Lâm Đồng", "3.324", "24.233"]
         ]
       },
