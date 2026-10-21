@@ -857,6 +857,9 @@ const AtlasEngine = (function () {
       currentBaseMapTile = null;
     }
 
+    // Đóng toàn bộ popup đang mở dở để không che khuất bản đồ
+    map.closePopup();
+
     // Hiển thị/ẩn chú giải phân tầng độ cao
     const elevLegend = document.getElementById("elevation-legend");
     if (elevLegend) {
@@ -864,16 +867,54 @@ const AtlasEngine = (function () {
       else elevLegend.classList.add("hidden");
     }
 
-    // Tự động kích hoạt layer chuyên đề tương ứng
+    // TẮT TOÀN BỘ CÁC LỚP KHÔNG THUỘC CHUYÊN ĐỀ ĐỂ TRÁNH RÁC VÀ ĐÈ NHAU
+    function setSubLayer(layerObj, chkId, isVis) {
+      if (!layerObj) return;
+      if (isVis) {
+        if (!map.hasLayer(layerObj)) map.addLayer(layerObj);
+      } else {
+        if (map.hasLayer(layerObj)) map.removeLayer(layerObj);
+      }
+      activeLayers[chkId.replace("layer-chk-", "")] = isVis;
+      const chk = document.getElementById(chkId);
+      if (chk) chk.checked = isVis;
+    }
+
     if (theme === "physical") {
+      setSubLayer(layerClimate, "layer-chk-climate", false);
+      setSubLayer(layerIndustrial, "layer-chk-industrial", false);
+      setSubLayer(layerMineralsPower, "layer-chk-minerals_power", false);
+      setSubLayer(layerAgriculture, "layer-chk-agriculture", false);
+      setSubLayer(layerTransportation, "layer-chk-transportation", false);
+      setSubLayer(layerTopography, "layer-chk-topography", true);
       ensureLayerData("topography").then(() => renderTopographyLayer());
     } else if (theme === "climate") {
+      setSubLayer(layerTopography, "layer-chk-topography", false);
+      setSubLayer(layerIndustrial, "layer-chk-industrial", false);
+      setSubLayer(layerMineralsPower, "layer-chk-minerals_power", false);
+      setSubLayer(layerAgriculture, "layer-chk-agriculture", false);
+      setSubLayer(layerTransportation, "layer-chk-transportation", false);
+      setSubLayer(layerClimate, "layer-chk-climate", true);
       ensureLayerData("climate").then(() => renderClimateLayer());
     } else if (theme === "economic") {
+      setSubLayer(layerTopography, "layer-chk-topography", false);
+      setSubLayer(layerClimate, "layer-chk-climate", false);
+      setSubLayer(layerAgriculture, "layer-chk-agriculture", false);
+      setSubLayer(layerTransportation, "layer-chk-transportation", false);
+      setSubLayer(layerIndustrial, "layer-chk-industrial", true);
+      setSubLayer(layerMineralsPower, "layer-chk-minerals_power", true);
       Promise.all([ensureLayerData("industrial"), ensureLayerData("power")]).then(() => {
         renderIndustrialCenters();
         renderMineralsPowerLayer();
       });
+    } else if (theme === "admin") {
+      setSubLayer(layerTopography, "layer-chk-topography", false);
+      setSubLayer(layerClimate, "layer-chk-climate", false);
+      setSubLayer(layerIndustrial, "layer-chk-industrial", false);
+      setSubLayer(layerMineralsPower, "layer-chk-minerals_power", false);
+      setSubLayer(layerAgriculture, "layer-chk-agriculture", false);
+      setSubLayer(layerTransportation, "layer-chk-transportation", false);
+      setSubLayer(layerProvinces, "layer-chk-provinces", true);
     }
 
     // Cập nhật giao diện nút chọn Chuyên đề
@@ -936,10 +977,15 @@ const AtlasEngine = (function () {
     // Hoàng Sa (BUG-08: Chuẩn nhãn Atlat GD tr.4-5, 2 dòng gọn gàng không tràn màn hình)
     const hsIcon = L.divIcon({
       className: "hs-marker-wrapper",
-      html: `<div class="sovereignty-pill"><div>🇻🇳 <strong>Q.Đ. HOÀNG SA</strong></div><div class="text-[9px] text-blue-800/80 dark:text-blue-300 font-semibold">(TP. Đà Nẵng)</div></div>`,
-      iconSize: [160, 36],
-      iconAnchor: [80, 18],
-      popupAnchor: [0, -18]
+      html: `
+        <div class="carto-sovereignty-label cursor-pointer select-none text-center">
+          <div class="font-extrabold text-red-700 dark:text-red-400 tracking-wider text-xs uppercase" style="text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;">Q.Đ. HOÀNG SA</div>
+          <div class="text-[9px] text-blue-900 dark:text-blue-200 font-bold" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">(TP. Đà Nẵng)</div>
+        </div>
+      `,
+      iconSize: [140, 30],
+      iconAnchor: [70, 15],
+      popupAnchor: [0, -15]
     });
     const hs = L.marker([16.5, 112.0], { pane: 'pointMarkerPane', icon: hsIcon }).addTo(map);
     hs.bindPopup(`
@@ -958,10 +1004,15 @@ const AtlasEngine = (function () {
     // Trường Sa (BUG-08: Chuẩn nhãn Atlat GD tr.4-5, 2 dòng gọn gàng không tràn màn hình)
     const tsIcon = L.divIcon({
       className: "ts-marker-wrapper",
-      html: `<div class="sovereignty-pill"><div>🇻🇳 <strong>Q.Đ. TRƯỜNG SA</strong></div><div class="text-[9px] text-blue-800/80 dark:text-blue-300 font-semibold">(T. Khánh Hoà)</div></div>`,
-      iconSize: [160, 36],
-      iconAnchor: [80, 18],
-      popupAnchor: [0, -18]
+      html: `
+        <div class="carto-sovereignty-label cursor-pointer select-none text-center">
+          <div class="font-extrabold text-red-700 dark:text-red-400 tracking-wider text-xs uppercase" style="text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;">Q.Đ. TRƯỜNG SA</div>
+          <div class="text-[9px] text-blue-900 dark:text-blue-200 font-bold" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">(T. Khánh Hoà)</div>
+        </div>
+      `,
+      iconSize: [140, 30],
+      iconAnchor: [70, 15],
+      popupAnchor: [0, -15]
     });
     const ts = L.marker([10.0, 114.2], { pane: 'pointMarkerPane', icon: tsIcon }).addTo(map);
     ts.bindPopup(`
@@ -1004,10 +1055,15 @@ const AtlasEngine = (function () {
         const isDensePoint = codeNum >= 12 && codeNum <= 24;
         const icon = L.divIcon({
           className: `atlat-baseline-point-marker ${isDensePoint ? 'baseline-dense' : ''}`,
-          html: `<div class="baseline-pill font-mono"><span>🔴</span><span class="baseline-label-text">${p.code}</span></div>`,
-          iconSize: isDensePoint ? [14, 14] : [46, 20],
-          iconAnchor: isDensePoint ? [7, 7] : [23, 10],
-          popupAnchor: [0, -10]
+          html: `
+            <div class="carto-baseline-point flex items-center space-x-1 select-none pointer-events-none" style="transform: translate(-3px, -3px);">
+              <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="#ffffff" stroke="#dc2626" stroke-width="1.5"/></svg>
+              <span class="baseline-label-text font-mono text-[9px] font-bold text-red-600" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">${p.code}</span>
+            </div>
+          `,
+          iconSize: isDensePoint ? [10, 10] : [35, 14],
+          iconAnchor: isDensePoint ? [5, 5] : [4, 4],
+          popupAnchor: [0, -6]
         });
         return L.marker(latlng, { icon });
       },
@@ -1293,12 +1349,14 @@ const AtlasEngine = (function () {
         const baseFillOpacity = isChoroplethActive ? 0.85 : ((currentBaseMapMode === "physical" || currentBaseMapMode === "climate") ? 0.8 : (filterRegion === "all" ? currentOpacity : 0.85));
 
         if (isMatch) {
+          const isPhysical = currentBaseMapMode === "physical";
           return {
             fillColor: color,
-            weight: isCity ? 2.2 : (filterRegion !== "all" ? 2 : 1),
-            opacity: 0.95,
-            color: isCity ? "#1d4ed8" : "#ffffff",
-            fillOpacity: baseFillOpacity
+            weight: isPhysical ? 0.75 : (isCity ? 2.2 : (filterRegion !== "all" ? 2 : 1)),
+            opacity: isPhysical ? 0.45 : 0.95,
+            dashArray: isPhysical ? "3, 3" : null,
+            color: isPhysical ? "#475569" : (isCity ? "#1d4ed8" : "#ffffff"),
+            fillOpacity: isPhysical ? 0.55 : baseFillOpacity
           };
         } else {
           // Spotlight Focus: Làm mờ nhẹ vùng không chọn
@@ -1504,26 +1562,30 @@ const AtlasEngine = (function () {
       pointToLayer: (feature, latlng) => {
         const p = feature.properties || {};
         if (p.category === "peak") {
-          // Icon tam giác đỉnh núi
+          // Ký hiệu đỉnh núi chuẩn Atlat GD tr.3 & 7: Tam giác đen nhỏ ▲ kèm số độ cao
           const icon = L.divIcon({
-            className: "peak-marker",
+            className: "peak-carto-marker",
             html: `
-              <div class="flex items-center space-x-1 cursor-pointer hover:scale-125 transition drop-shadow-md">
-                <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="12,2 22,22 2,22" fill="#B45309" stroke="#FFFFFF" stroke-width="1.5"/><polygon points="12,2 15,9 9,9" fill="#FFFFFF"/></svg>
-                <span class="bg-amber-900/90 text-amber-100 text-[9px] font-bold px-1 py-0.2 rounded-xs whitespace-nowrap shadow-xs">${p.elevation_m}m</span>
+              <div class="carto-peak-label select-none cursor-pointer hover:scale-110 transition">
+                <span class="text-black dark:text-white font-black text-[10px] leading-none drop-shadow-xs">▲</span>
+                <span class="text-[10px] font-bold text-slate-900 dark:text-slate-100 font-sans tracking-tight whitespace-nowrap" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff, 0 1px 2px rgba(255,255,255,0.9);">${p.name.replace('Đỉnh ', '')} <span class="font-mono text-[9px] text-amber-950 dark:text-amber-300 font-bold">${p.elevation_m}</span></span>
               </div>
             `,
-            iconSize: [60, 22],
-            iconAnchor: [11, 22]
+            iconSize: [110, 18],
+            iconAnchor: [6, 9]
           });
           return L.marker(latlng, { icon });
         } else if (p.category === "plateau") {
-          // Icon cao nguyên badan
+          // Nhãn cao nguyên chuẩn Atlat GD tr.7: Chữ in đậm màu nâu sẫm thanh lịch, KHÔNG HỘP CHỮ KHÔNG EMOJI
           const icon = L.divIcon({
-            className: "plateau-marker",
-            html: `<div class="bg-amber-800 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-white shadow-xs cursor-pointer hover:scale-110 transition whitespace-nowrap">🟫 ${p.name.replace('Cao nguyên ', '')}</div>`,
-            iconSize: [80, 20],
-            iconAnchor: [40, 10]
+            className: "plateau-carto-marker",
+            html: `
+              <div class="carto-plateau-label cursor-pointer select-none text-[11px] font-bold text-amber-950 dark:text-amber-200 tracking-tight whitespace-nowrap" style="text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff, 0 1px 3px rgba(255,255,255,0.95); font-family: var(--font-sans);">
+                ${p.name.replace('Cao nguyên ', 'Cn. ')}
+              </div>
+            `,
+            iconSize: [110, 18],
+            iconAnchor: [55, 9]
           });
           return L.marker(latlng, { icon });
         }
@@ -1572,18 +1634,29 @@ const AtlasEngine = (function () {
           `);
 
           // Thêm nhãn sông nổi bật trên bản đồ
+          const isMountain = p.category === "mountain_range" || p.category === "mountain_arc";
+          if (isMountain && p.name) {
+            // Nhãn chữ in hoa uốn lượn dọc sống núi theo chuẩn Atlat GD
+            layer.bindTooltip(p.name.toUpperCase(), {
+              permanent: true,
+              direction: "center",
+              className: "carto-mountain-label"
+            });
+          }
+
           const coords = feature.geometry?.coordinates;
           if (coords && coords.length >= 2) {
             const midIdx = Math.floor(coords.length * 0.45);
             const pt = coords[midIdx];
             if (pt && pt.length >= 2) {
+              const shortRiverName = p.name.replace('Hệ thống sông ', 's. ').replace('Hệ thống ', 's. ').replace('Sông ', 's. ');
               const riverMarker = L.marker([pt[1], pt[0]], {
                 pane: 'pointMarkerPane',
                 icon: L.divIcon({
                   className: 'river-label-marker',
-                  html: `<div class="bg-sky-700/90 hover:bg-sky-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full shadow-xs border border-white/90 cursor-pointer flex items-center space-x-0.5 whitespace-nowrap hover:scale-110 transition"><span>🌊</span><span>${p.name.replace('Hệ thống ', '')}</span></div>`,
-                  iconSize: [80, 20],
-                  iconAnchor: [40, 10]
+                  html: `<div class="carto-river-label cursor-pointer select-none text-[10px] font-bold italic text-sky-700 dark:text-sky-300 whitespace-nowrap hover:scale-110 transition" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">${shortRiverName}</div>`,
+                  iconSize: [90, 16],
+                  iconAnchor: [45, 8]
                 })
               });
               riverMarker.bindTooltip(`<strong>${p.name}</strong><br>${p.desc || ''}`, { permanent: false, sticky: false });
@@ -1709,9 +1782,9 @@ const AtlasEngine = (function () {
           pane: 'pointMarkerPane',
           icon: L.divIcon({
             className: 'storm-marker',
-            html: `<div class="bg-purple-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full shadow-xs">🌀 ${st.month.split(' ')[0]} ${st.month.split(' ')[1]}</div>`,
-            iconSize: [80, 20],
-            iconAnchor: [40, 10]
+            html: `<div class="cursor-pointer select-none text-[9.5px] font-bold text-purple-800 dark:text-purple-300 whitespace-nowrap" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">↗ ${st.month}</div>`,
+            iconSize: [80, 16],
+            iconAnchor: [40, 8]
           })
         });
         layerClimate.addLayer(stormMarker);
@@ -1733,23 +1806,47 @@ const AtlasEngine = (function () {
       },
       pointToLayer: (feature, latlng) => {
         const p = feature.properties || {};
-        let iconHtml = "🌡️";
-        let bgClass = "bg-blue-600 ring-2 ring-blue-300";
-        let title = p.name || "";
+        let markerHtml = "";
+        let size = [80, 18];
+        let anchor = [5, 9];
 
-        if (p.category === "hydro_station") {
-          iconHtml = "💧";
-          bgClass = "bg-cyan-600 ring-2 ring-cyan-300";
+        if (p.category === "met_station") {
+          // Trạm khí tượng chuẩn Atlat GD tr.8: Chấm tròn đỏ tâm trắng tinh tế kèm tên trạm
+          markerHtml = `
+            <div class="carto-station-label flex items-center space-x-1 cursor-pointer select-none hover:scale-110 transition">
+              <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4.5" fill="#ffffff" stroke="#dc2626" stroke-width="1.8"/><circle cx="5" cy="5" r="2" fill="#dc2626"/></svg>
+              <span class="text-[9px] font-bold text-slate-900 dark:text-slate-100 whitespace-nowrap" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">${(p.name || '').replace('Trạm khí tượng ', '')}</span>
+            </div>
+          `;
+          size = [80, 18];
+          anchor = [5, 9];
+        } else if (p.category === "hydro_station") {
+          // Trạm thủy văn chuẩn Atlat GD tr.10: Chấm tròn xanh lam viền trắng kèm tên trạm
+          markerHtml = `
+            <div class="carto-station-label flex items-center space-x-1 cursor-pointer select-none hover:scale-110 transition">
+              <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4.5" fill="#ffffff" stroke="#0284c7" stroke-width="1.8"/><circle cx="5" cy="5" r="2" fill="#0284c7"/></svg>
+              <span class="text-[9px] font-bold text-sky-900 dark:text-sky-200 whitespace-nowrap" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">${(p.name || '').replace('Trạm thủy văn ', '')}</span>
+            </div>
+          `;
+          size = [80, 18];
+          anchor = [5, 9];
         } else if (p.category === "reservoir_lake") {
-          iconHtml = "🏞️";
-          bgClass = "bg-teal-600 ring-2 ring-teal-300";
+          // Hồ chứa nước chuẩn Atlat GD tr.10: Biểu tượng hồ biếc thanh lịch
+          markerHtml = `
+            <div class="carto-station-label flex items-center space-x-1 cursor-pointer select-none hover:scale-110 transition">
+              <svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="2" width="8" height="6" rx="2" fill="#0d9488" stroke="#ffffff" stroke-width="1"/></svg>
+              <span class="text-[9px] font-bold text-teal-900 dark:text-teal-200 whitespace-nowrap" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">${(p.name || '').replace('Hồ ', 'h. ')}</span>
+            </div>
+          `;
+          size = [80, 18];
+          anchor = [5, 9];
         }
 
         const icon = L.divIcon({
           className: "climate-hydro-marker",
-          html: `<div class="${bgClass} text-white text-xs p-1 rounded-full shadow-md border border-white hover:scale-125 transition flex items-center justify-center w-6 h-6" title="${title}">${iconHtml}</div>`,
-          iconSize: [24, 24],
-          iconAnchor: [12, 12]
+          html: markerHtml,
+          iconSize: size,
+          iconAnchor: anchor
         });
         return L.marker(latlng, { icon });
       },
@@ -3426,8 +3523,14 @@ const AtlasEngine = (function () {
       if (!mapContainer) return;
       legendEl = document.createElement("div");
       legendEl.id = "atlas-dynamic-legend";
-      legendEl.className = "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[260px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
+      legendEl.className = isLegendCollapsed
+        ? "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2.5 py-1.5 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] pointer-events-auto transition-all"
+        : "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[260px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
       mapContainer.appendChild(legendEl);
+    } else {
+      legendEl.className = isLegendCollapsed
+        ? "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2.5 py-1.5 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] pointer-events-auto transition-all"
+        : "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[260px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
     }
 
     const sections = [];
@@ -3530,10 +3633,10 @@ const AtlasEngine = (function () {
             Địa hình & Sông (Atlat GD, tr.7 & tr.10)
           </div>
           <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-[10px]">
-            <div class="flex items-center space-x-1"><span>⛰️</span> <span>Đỉnh núi cao</span></div>
-            <div class="flex items-center space-x-1"><span>〰️</span> <span>Dãy núi / Cánh cung</span></div>
-            <div class="flex items-center space-x-1"><span>🟫</span> <span>Cao nguyên</span></div>
-            <div class="flex items-center space-x-1"><span class="w-3 h-1 bg-blue-500 inline-block"></span> <span>Sông chính</span></div>
+            <div class="flex items-center space-x-1"><span class="text-black dark:text-white font-black text-[10px]">▲</span> <span>Đỉnh núi cao</span></div>
+            <div class="flex items-center space-x-1"><span class="w-4 h-0.5 border-t-2 border-dashed border-amber-800 inline-block"></span> <span>Dãy núi / Cánh cung</span></div>
+            <div class="flex items-center space-x-1"><span class="w-3 h-2 bg-amber-800 rounded-xs inline-block"></span> <span>Cao nguyên badan</span></div>
+            <div class="flex items-center space-x-1"><span class="w-3 h-1 bg-sky-600 inline-block"></span> <span>Sông chính</span></div>
           </div>
         </div>
       `);
@@ -3546,14 +3649,14 @@ const AtlasEngine = (function () {
             Khí Hậu & Thủy Văn (Atlat GD, tr.8 - 10)
           </div>
           <div class="text-[10px] space-y-0.5">
-            <div class="flex items-center space-x-1.5"><span>🌡️</span> <span>Trạm khí tượng (Nhiệt - Mưa Atlat tr.8)</span></div>
-            <div class="flex items-center space-x-1.5"><span>💧</span> <span>Trạm thủy văn (Lưu lượng nước tr.10)</span></div>
-            <div class="flex items-center space-x-1.5"><span>🏞️</span> <span>Hồ thủy văn & điều tiết lũ/kiệt</span></div>
+            <div class="flex items-center space-x-1.5"><svg width="8" height="8" viewBox="0 0 10 10" class="shrink-0"><circle cx="5" cy="5" r="4.5" fill="#ffffff" stroke="#dc2626" stroke-width="2"/><circle cx="5" cy="5" r="2" fill="#dc2626"/></svg> <span>Trạm khí tượng (Nhiệt - Mưa Atlat tr.8)</span></div>
+            <div class="flex items-center space-x-1.5"><svg width="8" height="8" viewBox="0 0 10 10" class="shrink-0"><circle cx="5" cy="5" r="4.5" fill="#ffffff" stroke="#0284c7" stroke-width="2"/><circle cx="5" cy="5" r="2" fill="#0284c7"/></svg> <span>Trạm thủy văn (Lưu lượng nước tr.10)</span></div>
+            <div class="flex items-center space-x-1.5"><svg width="8" height="8" viewBox="0 0 10 10" class="shrink-0"><rect x="1" y="2" width="8" height="6" rx="2" fill="#0d9488"/></svg> <span>Hồ thủy văn & điều tiết lũ/kiệt</span></div>
             <div class="flex items-center space-x-1.5"><span class="w-3 h-0.5 border-t-2 border-dashed border-purple-600 inline-block"></span> <span>Ranh giới Bạch Mã 16°B</span></div>
             <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-blue-600 inline-block"></span> <span>Gió mùa Đông Bắc (Tháng XI - IV)</span></div>
             <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-red-600 inline-block"></span> <span>Gió mùa Tây Nam (Tháng V - X)</span></div>
             <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-amber-600 inline-block"></span> <span>Gió Tây khô nóng (Phơn)</span></div>
-            <div class="flex items-center space-x-1.5"><span>🌀</span> <span>Hướng bão (Tháng VI - XII)</span></div>
+            <div class="flex items-center space-x-1.5"><span class="font-bold text-purple-700">↗</span> <span>Hướng bão (Tháng VI - XII)</span></div>
           </div>
         </div>
       `);
@@ -3588,16 +3691,16 @@ const AtlasEngine = (function () {
 
     legendEl.innerHTML = `
       <div class="space-y-1.5">
-        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-1 cursor-pointer" onclick="AtlasEngine.toggleLegendCollapse()">
+        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-1 cursor-pointer select-none" onclick="AtlasEngine.toggleLegendCollapse()">
           <span class="font-bold text-[11px] uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center space-x-1">
             <span>📖</span> <span>Chú Giải Atlat</span>
           </span>
           <div class="flex items-center space-x-1">
             <span class="text-[9px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-1.5 py-0.2 rounded-full">THPT</span>
-            <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold leading-none px-1">▲</button>
+            <button id="btn-legend-collapse" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold leading-none px-1">${isLegendCollapsed ? "▼" : "▲"}</button>
           </div>
         </div>
-        <div id="atlas-dynamic-legend-body" class="space-y-2 pt-0.5">
+        <div id="atlas-dynamic-legend-body" class="space-y-2 pt-0.5 ${isLegendCollapsed ? "hidden" : ""}">
           ${sections.join("")}
         </div>
       </div>
@@ -3607,6 +3710,7 @@ const AtlasEngine = (function () {
   let isLegendCollapsed = false;
   function toggleLegendCollapse() {
     isLegendCollapsed = !isLegendCollapsed;
+    const legendEl = document.getElementById("atlas-dynamic-legend");
     const body = document.getElementById("atlas-dynamic-legend-body") || document.getElementById("atlas-legend-body");
     const btn = document.getElementById("btn-legend-collapse");
     if (body) {
@@ -3614,6 +3718,13 @@ const AtlasEngine = (function () {
     }
     if (btn) {
       btn.innerText = isLegendCollapsed ? "▼" : "▲";
+    }
+    if (legendEl) {
+      if (isLegendCollapsed) {
+        legendEl.className = "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2.5 py-1.5 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] pointer-events-auto transition-all";
+      } else {
+        legendEl.className = "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[260px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
+      }
     }
   }
 
@@ -3699,21 +3810,21 @@ const AtlasEngine = (function () {
   // ===========================================================================
   let atlasViewMode = "gis"; // "gis" | "book" | "split"
   const DEFAULT_ATLAT_PAGES_MANIFEST = [
-    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "/public/data/atlat_pages/page_01.jpg?v=2026.3.2" },
-    { page: 3, title: "Trang 3: Kí hiệu chung", file: "/public/data/atlat_pages/page_03.jpg?v=2026.3.2" },
-    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "/public/data/atlat_pages/page_04.jpg?v=2026.3.2" },
-    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "/public/data/atlat_pages/page_05.jpg?v=2026.3.2" },
-    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "/public/data/atlat_pages/page_06.jpg?v=2026.3.2" },
-    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "/public/data/atlat_pages/page_07.jpg?v=2026.3.2" },
-    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "/public/data/atlat_pages/page_08.jpg?v=2026.3.2" },
-    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "/public/data/atlat_pages/page_09.jpg?v=2026.3.2" },
-    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "/public/data/atlat_pages/page_10.jpg?v=2026.3.2" },
-    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "/public/data/atlat_pages/page_13.jpg?v=2026.3.2" },
-    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "/public/data/atlat_pages/page_18.jpg?v=2026.3.2" },
-    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "/public/data/atlat_pages/page_19.jpg?v=2026.3.2" },
-    { page: 21, title: "Trang 21: Công nghiệp chung", file: "/public/data/atlat_pages/page_21.jpg?v=2026.3.2" },
-    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "/public/data/atlat_pages/page_22.jpg?v=2026.3.2" },
-    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "/public/data/atlat_pages/page_23.jpg?v=2026.3.2" }
+    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "/public/data/atlat_pages/page_01.jpg?v=2026.3.3" },
+    { page: 3, title: "Trang 3: Kí hiệu chung", file: "/public/data/atlat_pages/page_03.jpg?v=2026.3.3" },
+    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "/public/data/atlat_pages/page_04.jpg?v=2026.3.3" },
+    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "/public/data/atlat_pages/page_05.jpg?v=2026.3.3" },
+    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "/public/data/atlat_pages/page_06.jpg?v=2026.3.3" },
+    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "/public/data/atlat_pages/page_07.jpg?v=2026.3.3" },
+    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "/public/data/atlat_pages/page_08.jpg?v=2026.3.3" },
+    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "/public/data/atlat_pages/page_09.jpg?v=2026.3.3" },
+    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "/public/data/atlat_pages/page_10.jpg?v=2026.3.3" },
+    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "/public/data/atlat_pages/page_13.jpg?v=2026.3.3" },
+    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "/public/data/atlat_pages/page_18.jpg?v=2026.3.3" },
+    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "/public/data/atlat_pages/page_19.jpg?v=2026.3.3" },
+    { page: 21, title: "Trang 21: Công nghiệp chung", file: "/public/data/atlat_pages/page_21.jpg?v=2026.3.3" },
+    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "/public/data/atlat_pages/page_22.jpg?v=2026.3.3" },
+    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "/public/data/atlat_pages/page_23.jpg?v=2026.3.3" }
   ];
   let atlatPagesManifest = [...DEFAULT_ATLAT_PAGES_MANIFEST];
   let currentAtlatPageNumber = 4;
@@ -4139,7 +4250,7 @@ const AtlasEngine = (function () {
     const titleEl = document.getElementById("atlat-book-page-title");
     const selectEl = document.getElementById("atlat-book-page-select");
 
-    const pageFile = `/public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.2`;
+    const pageFile = `/public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.3`;
     if (imgEl) {
       imgEl.alt = displayTitle;
       imgEl.onerror = () => {
@@ -4262,17 +4373,37 @@ const AtlasEngine = (function () {
     const guide = ATLAT_PAGE_STUDY_GUIDE[num];
     if (!guide) return;
 
-    if (guide.theme && typeof setAtlatTheme === "function") {
-      setAtlatTheme(guide.theme);
-    }
+    if (map) map.closePopup();
 
-    if (guide.recommendedLayer && typeof toggleLayer === "function") {
-      const chkId = `layer-chk-${guide.recommendedLayer}`;
-      const chk = document.getElementById(chkId);
-      if (chk && !chk.checked) {
-        chk.checked = true;
-        toggleLayer(guide.recommendedLayer, true);
-      }
+    if (num === 4 || num === 5 || num === 1) {
+      setAtlatTheme('admin');
+    } else if (num === 6 || num === 7) {
+      setAtlatTheme('physical');
+    } else if (num === 8 || num === 9) {
+      setAtlatTheme('climate');
+    } else if (num === 10) {
+      setAtlatTheme('physical');
+      renderTopographyLayer("rivers");
+    } else if (num === 13) {
+      setAtlatTheme('admin');
+      if (layerMineralsPower && !map.hasLayer(layerMineralsPower)) map.addLayer(layerMineralsPower);
+      renderMineralsPowerLayer("minerals");
+    } else if (num === 18) {
+      setAtlatTheme('economic');
+    } else if (num === 19) {
+      setAtlatTheme('admin');
+      if (layerAgriculture && !map.hasLayer(layerAgriculture)) map.addLayer(layerAgriculture);
+      renderAgricultureLayer();
+    } else if (num === 21 || num === 22) {
+      setAtlatTheme('economic');
+      if (layerMineralsPower && !map.hasLayer(layerMineralsPower)) map.addLayer(layerMineralsPower);
+      renderMineralsPowerLayer("power");
+    } else if (num === 23) {
+      setAtlatTheme('admin');
+      if (layerTransportation && !map.hasLayer(layerTransportation)) map.addLayer(layerTransportation);
+      renderTransportationLayer();
+    } else if (guide.theme && typeof setAtlatTheme === "function") {
+      setAtlatTheme(guide.theme);
     }
   }
 
@@ -4357,7 +4488,9 @@ const AtlasEngine = (function () {
           fitVietnamBounds();
         }
       }, 150);
+      isLegendCollapsed = true;
       syncGisWithAtlatPage(currentAtlatPageNumber);
+      updateDynamicLegend();
     }
   }
 

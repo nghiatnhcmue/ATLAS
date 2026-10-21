@@ -565,3 +565,55 @@ html, body {
   font-size: 0.6875rem;
   font-weight: 700;
 }
+
+
+/* ==========================================================================
+   QUY CHUẨN BẢN ĐỒ HỌC ATLAT GIẤY (CARTOGRAPHIC STANDARDS)
+   ========================================================================== */
+.carto-peak-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+.carto-plateau-label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  color: #451a03;
+  text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;
+}
+.carto-mountain-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #78350f !important;
+  font-weight: 800 !important;
+  font-size: 10px !important;
+  letter-spacing: 0.12em !important;
+  text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff !important;
+  font-family: var(--font-sans) !important;
+  pointer-events: none !important;
+}
+.carto-river-label {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #0284c7 !important;
+  font-style: italic !important;
+  font-weight: 700 !important;
+  font-size: 9.5px !important;
+  text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff !important;
+  font-family: var(--font-sans) !important;
+  pointer-events: none !important;
+}
+.carto-baseline-point {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.carto-sovereignty-label {
+  display: inline-block;
+  text-align: center;
+  text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;
+}
