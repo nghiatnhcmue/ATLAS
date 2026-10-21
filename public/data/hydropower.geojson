@@ -84,7 +84,7 @@
       "type": "Feature",
       "properties": {
         "id": "POW_04",
-        "name": "Thủy điện Yaly",
+        "name": "Thủy điện Ialy",
         "type": "Thủy điện",
         "plant_type": "Thủy điện",
         "symbol_type": "star_blue",
@@ -95,7 +95,10 @@
         "capacity_tier": "Dưới 1.000 MW",
         "scale_tier": "Dưới 1.000 MW",
         "capacity_class": "below_1000mw",
-        "capacity_group": "Dưới 1.000 MW"
+        "capacity_group": "Dưới 1.000 MW",
+        "aliases": [
+          "Thủy điện Yaly"
+        ]
       },
       "geometry": {
         "type": "Point",
@@ -270,7 +273,8 @@
         "capacity_tier": "Trên 1.000 MW",
         "scale_tier": "Trên 1.000 MW",
         "capacity_class": "above_1000mw",
-        "capacity_group": "Trên 1.000 MW"
+        "capacity_group": "Trên 1.000 MW",
+        "desc": "Trung tâm nhiệt điện Vĩnh Tân (Lâm Đồng - Atlat GD tr.23)."
       },
       "geometry": {
         "type": "Point",
@@ -389,13 +393,14 @@
         "plant_type": "Điện gió",
         "symbol_type": "fan_green",
         "river_fuel": "Năng lượng gió",
-        "province": "Tỉnh Lâm Đồng",
+        "province": "Tỉnh Khánh Hoà",
         "atlat_page": 23,
         "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
         "capacity_tier": "Dưới 1.000 MW",
         "scale_tier": "Dưới 1.000 MW",
         "capacity_class": "below_1000mw",
-        "capacity_group": "Dưới 1.000 MW"
+        "capacity_group": "Dưới 1.000 MW",
+        "desc": "Nhà máy điện năng lượng tái tạo (Khánh Hoà - Atlat GD tr.23)."
       },
       "geometry": {
         "type": "Point",
@@ -464,13 +469,14 @@
         "plant_type": "Điện mặt trời",
         "symbol_type": "sun_yellow",
         "river_fuel": "Bức xạ mặt trời",
-        "province": "Tỉnh Lâm Đồng",
+        "province": "Tỉnh Khánh Hoà",
         "atlat_page": 23,
         "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
         "capacity_tier": "Dưới 1.000 MW",
         "scale_tier": "Dưới 1.000 MW",
         "capacity_class": "below_1000mw",
-        "capacity_group": "Dưới 1.000 MW"
+        "capacity_group": "Dưới 1.000 MW",
+        "desc": "Nhà máy điện năng lượng tái tạo (Khánh Hoà - Atlat GD tr.23)."
       },
       "geometry": {
         "type": "Point",

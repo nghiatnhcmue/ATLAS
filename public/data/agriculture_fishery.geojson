@@ -17,14 +17,14 @@
       },
       "properties": {
         "id": "AGRI_01",
-        "name": "Vựa lúa lớn nhất: Đồng bằng sông Cửu Long",
+        "name": "Vùng sản xuất lúa hàng đầu: Đồng bằng sông Cửu Long",
         "category": "crop_specialized",
         "crop_type": "Lúa gạo",
         "symbol": "rice",
         "icon_emoji": "🌾",
-        "desc": "Chiếm trên 50% diện tích và sản lượng lúa cả nước, đóng góp trên 90% lượng gạo xuất khẩu.",
+        "desc": "Vùng trọng điểm sản xuất lúa và nông sản hàng hóa lớn nhất cả nước, dẫn đầu về diện tích gieo trồng và sản lượng lúa.",
         "atlat_page": 19,
-        "source": "Atlat GD, tr.19 & tr.20"
+        "source": "Atlat GD, tr.19 (Nông nghiệp chung)"
       }
     },
     {
@@ -38,14 +38,14 @@
       },
       "properties": {
         "id": "AGRI_02",
-        "name": "Vựa lúa lớn thứ hai: Đồng bằng sông Hồng",
+        "name": "Vùng thâm canh lúa: Đồng bằng sông Hồng",
         "category": "crop_specialized",
         "crop_type": "Lúa gạo",
         "symbol": "rice",
         "icon_emoji": "🌾",
-        "desc": "Trình độ thâm canh cao nhất cả nước, năng suất lúa dẫn đầu toàn quốc (Thái Bình, Nam Định).",
+        "desc": "Vùng có trình độ thâm canh lúa cao, năng suất lúa bình quân dẫn đầu cả nước trên đất phù sa sông Hồng và sông Thái Bình.",
         "atlat_page": 19,
-        "source": "Atlat GD, tr.19 & tr.20"
+        "source": "Atlat GD, tr.19 (Nông nghiệp chung)"
       }
     },
     {
@@ -59,14 +59,14 @@
       },
       "properties": {
         "id": "AGRI_03",
-        "name": "Vùng chuyên canh Cà phê lớn nhất: Tây Nguyên",
+        "name": "Vùng chuyên canh Cà phê & Hồ tiêu: Tây Nguyên",
         "category": "crop_specialized",
         "crop_type": "Cà phê & Hồ tiêu",
         "symbol": "coffee",
         "icon_emoji": "☕",
-        "desc": "Tây Nguyên dẫn đầu cả nước về diện tích và sản lượng cà phê vối (robusta) và hồ tiêu (Đắk Lắk, Gia Lai).",
+        "desc": "Địa bàn tập trung diện tích và sản lượng cà phê vối (robusta) và hồ tiêu lớn nhất cả nước trên các cao nguyên đất đỏ badan màu mỡ (Đắk Lắk, Gia Lai, Lâm Đồng).",
         "atlat_page": 19,
-        "source": "Atlat GD, tr.19 & tr.20"
+        "source": "Atlat GD, tr.19 & tr.20 (Cây công nghiệp)"
       }
     },
     {
@@ -80,14 +80,14 @@
       },
       "properties": {
         "id": "AGRI_04",
-        "name": "Vùng chuyên canh Cao su lớn nhất: Đông Nam Bộ",
+        "name": "Vùng chuyên canh Cao su & Điều: Đông Nam Bộ",
         "category": "crop_specialized",
         "crop_type": "Cao su",
         "symbol": "rubber",
-        "icon_emoji": "🌲",
-        "desc": "Đông Nam Bộ là thủ phủ cao su Việt Nam (Bình Phước, Bình Dương, Tây Ninh) trên đất badan và xám phù sa cổ.",
+        "icon_emoji": "🌳",
+        "desc": "Vùng chuyên canh cây cao su và điều lớn nhất Việt Nam, gắn với đất badan và đất xám phù sa cổ địa hình lượn sóng.",
         "atlat_page": 19,
-        "source": "Atlat GD, tr.19 & tr.20"
+        "source": "Atlat GD, tr.19 & tr.20 (Cây công nghiệp)"
       }
     },
     {
@@ -101,14 +101,14 @@
       },
       "properties": {
         "id": "AGRI_05",
-        "name": "Vùng chuyên canh Chè lớn nhất: Trung du & MN Bắc Bộ",
+        "name": "Vùng chuyên canh Chè: Trung du và miền núi phía Bắc",
         "category": "crop_specialized",
         "crop_type": "Chè",
         "symbol": "tea",
         "icon_emoji": "🍵",
-        "desc": "Thái Nguyên, Phú Thọ, Yên Bái dẫn đầu cả nước về diện tích và sản lượng chè búp nổi tiếng.",
+        "desc": "Vùng có diện tích và sản lượng chè búp lớn nhất cả nước, phát triển mạnh ở vùng đồi trung du và cao nguyên khí hậu cận nhiệt (Thái Nguyên, Phú Thọ).",
         "atlat_page": 19,
-        "source": "Atlat GD, tr.19 & tr.20"
+        "source": "Atlat GD, tr.19 & tr.20 (Cây công nghiệp)"
       }
     },
     {
@@ -122,14 +122,14 @@
       },
       "properties": {
         "id": "AGRI_06",
-        "name": "Vùng Cây ăn quả lớn nhất: Đồng bằng sông Cửu Long",
+        "name": "Vùng Cây ăn quả nhiệt đới: Đồng bằng sông Cửu Long",
         "category": "crop_specialized",
         "crop_type": "Cây ăn quả",
         "symbol": "fruit",
         "icon_emoji": "🍊",
-        "desc": "Tiền Giang, Bến Tre, Vĩnh Long chiếm diện tích cây ăn trái nhiệt đới lớn nhất nước (xoài, sầu riêng, bưởi, chôm chôm).",
+        "desc": "Vùng chuyên canh cây ăn quả nhiệt đới lớn nhất cả nước với các chủng loại nổi tiếng: xoài, bưởi, sầu riêng, cam, chôm chôm.",
         "atlat_page": 19,
-        "source": "Atlat GD, tr.19 & tr.20"
+        "source": "Atlat GD, tr.19 (Nông nghiệp chung)"
       }
     },
     {
@@ -145,11 +145,12 @@
         "id": "FISH_01",
         "name": "Ngư trường Hải Phòng - Quảng Ninh",
         "category": "fishing_ground",
-        "desc": "Ngư trường trọng điểm vịnh Bắc Bộ, tập trung trữ lượng cá đáy và hải sản xuất khẩu phong phú.",
+        "desc": "Ngư trường trọng điểm vịnh Bắc Bộ, tập trung trữ lượng cá đáy, cá nổi và hải sản xuất khẩu phong phú của miền Bắc.",
         "atlat_page": 21,
-        "source": "Atlat GD, tr.21",
+        "source": "Atlat GD, tr.21 (Thủy sản)",
         "status": "missing",
-        "hidden": true
+        "hidden": true,
+        "icon_emoji": "🐟"
       }
     },
     {
@@ -163,13 +164,14 @@
       },
       "properties": {
         "id": "FISH_02",
-        "name": "Ngư trường Ninh Thuận - Bình Thuận - Bà Rịa Vũng Tàu",
+        "name": "Ngư trường Ninh Thuận - Bình Thuận - Bà Rịa - Vũng Tàu",
         "category": "fishing_ground",
-        "desc": "Ngư trường có năng suất khai thác cao nhất cả nước, nguồn lợi cá nục, cá thu, mực nang dồi dào.",
+        "desc": "Ngư trường trọng điểm Nam Trung Bộ và Đông Nam Bộ có năng suất đánh bắt cao, nguồn lợi hải sản cá nục, cá thu, mực phong phú.",
         "atlat_page": 21,
-        "source": "Atlat GD, tr.21",
+        "source": "Atlat GD, tr.21 (Thủy sản)",
         "status": "missing",
-        "hidden": true
+        "hidden": true,
+        "icon_emoji": "🐟"
       }
     },
     {
@@ -185,11 +187,12 @@
         "id": "FISH_03",
         "name": "Ngư trường Cà Mau - Kiên Giang",
         "category": "fishing_ground",
-        "desc": "Ngư trường vịnh Thái Lan biển ấm nông, trữ lượng tôm cá biển lớn nhất cả nước.",
+        "desc": "Ngư trường trọng điểm vịnh Thái Lan vùng biển nông ấm, giàu nguồn lợi tôm, cua biển và các loại cá tầng mặt, tầng đáy.",
         "atlat_page": 21,
-        "source": "Atlat GD, tr.21",
+        "source": "Atlat GD, tr.21 (Thủy sản)",
         "status": "missing",
-        "hidden": true
+        "hidden": true,
+        "icon_emoji": "🦐"
       }
     },
     {
@@ -205,11 +208,12 @@
         "id": "FISH_04",
         "name": "Ngư trường Quần đảo Hoàng Sa - Quần đảo Trường Sa",
         "category": "fishing_ground",
-        "desc": "Ngư trường biển xa bờ giàu tiềm năng cá ngừ đại dương, cá thu và khẳng định chủ quyền thiêng liêng Tổ quốc.",
+        "desc": "Ngư trường xa bờ giàu tiềm năng khai thác cá ngừ đại dương, cá thu và khẳng định chủ quyền biển đảo thiêng liêng của Tổ quốc.",
         "atlat_page": 21,
-        "source": "Atlat GD, tr.21",
+        "source": "Atlat GD, tr.21 (Thủy sản)",
         "status": "missing",
-        "hidden": true
+        "hidden": true,
+        "icon_emoji": "🇻🇳"
       }
     }
   ]

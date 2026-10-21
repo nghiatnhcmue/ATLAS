@@ -121,13 +121,14 @@
         "group": "Nhiên liệu",
         "atlat_page": 13,
         "source": "Atlat GD, tr.13",
-        "province": "Thành phố Hồ Chí Minh"
+        "province": "Thành phố Hồ Chí Minh",
+        "desc": "Mỏ dầu Hồng Ngọc (Thềm lục địa Nam Bộ, Atlat GD tr.13)."
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.05,
-          10.12
+          108.6,
+          10.55
         ]
       }
     },
@@ -142,13 +143,14 @@
         "group": "Nhiên liệu",
         "atlat_page": 13,
         "source": "Atlat GD, tr.13",
-        "province": "Thành phố Hồ Chí Minh"
+        "province": "Thành phố Hồ Chí Minh",
+        "desc": "Mỏ dầu Rạng Đông (Bể Cửu Long, Atlat GD tr.13)."
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.15,
-          9.95
+          108.28,
+          10.06
         ]
       }
     },
@@ -163,13 +165,14 @@
         "group": "Nhiên liệu",
         "atlat_page": 13,
         "source": "Atlat GD, tr.13",
-        "province": "Thành phố Hồ Chí Minh"
+        "province": "Thành phố Hồ Chí Minh",
+        "desc": "Mỏ dầu Bạch Hổ (Bể Cửu Long, Atlat GD tr.13)."
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           107.98,
-          9.78
+          9.8
         ]
       }
     },
@@ -184,13 +187,14 @@
         "group": "Nhiên liệu",
         "atlat_page": 13,
         "source": "Atlat GD, tr.13",
-        "province": "Thành phố Hồ Chí Minh"
+        "province": "Thành phố Hồ Chí Minh",
+        "desc": "Mỏ dầu Rồng (Bể Cửu Long, Atlat GD tr.13)."
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          107.88,
-          9.62
+          107.9,
+          9.7
         ]
       }
     },
@@ -205,12 +209,13 @@
         "group": "Nhiên liệu",
         "atlat_page": 13,
         "source": "Atlat GD, tr.13",
-        "province": "Thành phố Hồ Chí Minh"
+        "province": "Thành phố Hồ Chí Minh",
+        "desc": "Mỏ dầu Đại Hùng (Bể Nam Côn Sơn, Atlat GD tr.13)."
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.62,
+          108.72,
           8.48
         ]
       }
@@ -247,13 +252,14 @@
         "group": "Nhiên liệu",
         "atlat_page": 13,
         "source": "Atlat GD, tr.13",
-        "province": "Thành phố Hồ Chí Minh"
+        "province": "Thành phố Hồ Chí Minh",
+        "desc": "Mỏ khí Lan Tây (Bể Nam Côn Sơn, Atlat GD tr.13)."
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.88,
-          7.9
+          108.85,
+          7.51
         ]
       }
     },
@@ -268,13 +274,14 @@
         "group": "Nhiên liệu",
         "atlat_page": 13,
         "source": "Atlat GD, tr.13",
-        "province": "Thành phố Hồ Chí Minh"
+        "province": "Thành phố Hồ Chí Minh",
+        "desc": "Mỏ khí Lan Đỏ (Bể Nam Côn Sơn, Atlat GD tr.13)."
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          109.02,
-          7.78
+          109.1,
+          7.58
         ]
       }
     },
@@ -373,7 +380,8 @@
         "group": "Kim loại",
         "atlat_page": 13,
         "source": "Atlat GD, tr.13",
-        "province": "Tỉnh Đắk Lắk"
+        "province": "Tỉnh Lâm Đồng",
+        "desc": "Mỏ bôxit Nhân Cơ (Lâm Đồng - Atlat GD tr.13)."
       },
       "geometry": {
         "type": "Point",
@@ -492,14 +500,19 @@
       "type": "Feature",
       "properties": {
         "id": "MIN_24",
-        "name": "Mỏ titan Kỳ Anh",
+        "name": "Mỏ titan Cẩm Xuyên",
         "symbol_type": "ti_symbol",
         "mineral_code": "titan",
         "mineral_type": "Titan",
         "group": "Kim loại",
         "atlat_page": 13,
         "source": "Atlat GD, tr.13",
-        "province": "Hà Tĩnh"
+        "province": "Hà Tĩnh",
+        "desc": "Mỏ titan Cẩm Xuyên (Hà Tĩnh, Atlat GD tr.13).",
+        "aliases": [
+          "Titan Kỳ Anh",
+          "Titan Cẩm Xuyên"
+        ]
       },
       "geometry": {
         "type": "Point",
@@ -541,7 +554,8 @@
         "group": "Kim loại",
         "atlat_page": 13,
         "source": "Atlat GD, tr.13",
-        "province": "Tỉnh Quảng Ngãi"
+        "province": "Tỉnh Gia Lai",
+        "desc": "Mỏ titan Phù Cát (Gia Lai - Atlat GD tr.13)."
       },
       "geometry": {
         "type": "Point",

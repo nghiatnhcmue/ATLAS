@@ -1,698 +1,1365 @@
 {
   "type": "FeatureCollection",
-  "metadata": {
-    "title": "Lớp Kinh tế & Công nghiệp - Quy mô và Cơ cấu GRDP (Atlat GD, tr.18 & tr.22)",
-    "count": 15
-  },
+  "name": "industrial_centers_34",
   "features": [
     {
       "type": "Feature",
-      "properties": {
-        "id": "IND_01",
-        "name": "TP. Hồ Chí Minh",
-        "scale_tier": "very_large",
-        "scale_desc": "Từ 1 000 nghìn tỉ đồng trở lên",
-        "radius_px": 28,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "TP. Hồ Chí Minh",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 1,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 24,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 65,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 10,
-            "color": "#0284C7"
-          }
-        ]
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          106.66,
-          10.76
+          106.257,
+          22.666
         ]
+      },
+      "properties": {
+        "name": "TTKT Cao Bằng",
+        "province": "Cao Bằng",
+        "scale_tier": "tier_4",
+        "scale_desc": "Dưới 100 nghìn tỉ đồng (Nhỏ)",
+        "radius_px": 10,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 38.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 24.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 34.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 4.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     },
     {
       "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.215,
+          21.823
+        ]
+      },
       "properties": {
-        "id": "IND_02",
-        "name": "Hà Nội",
-        "scale_tier": "very_large",
-        "scale_desc": "Từ 1 000 nghìn tỉ đồng trở lên",
-        "radius_px": 28,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
+        "name": "TTKT Tuyên Quang",
+        "province": "Tuyên Quang",
+        "scale_tier": "tier_4",
+        "scale_desc": "Dưới 100 nghìn tỉ đồng (Nhỏ)",
+        "radius_px": 10,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 38.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 24.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 34.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 4.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.966,
+          22.485
+        ]
+      },
+      "properties": {
+        "name": "TTKT Lào Cai",
+        "province": "Lào Cai",
+        "scale_tier": "tier_4",
+        "scale_desc": "Dưới 100 nghìn tỉ đồng (Nhỏ)",
+        "radius_px": 10,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 38.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 24.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 34.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 4.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.844,
+          21.594
+        ]
+      },
+      "properties": {
+        "name": "TTKT Thái Nguyên",
+        "province": "Thái Nguyên",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.761,
+          21.853
+        ]
+      },
+      "properties": {
+        "name": "TTKT Lạng Sơn",
+        "province": "Lạng Sơn",
+        "scale_tier": "tier_4",
+        "scale_desc": "Dưới 100 nghìn tỉ đồng (Nhỏ)",
+        "radius_px": 10,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 38.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 24.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 34.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 4.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.398,
+          21.322
+        ]
+      },
+      "properties": {
+        "name": "TTKT Phú Thọ",
+        "province": "Phú Thọ",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.016,
+          21.385
+        ]
+      },
+      "properties": {
+        "name": "TTKT Điện Biên",
+        "province": "Điện Biên",
+        "scale_tier": "tier_4",
+        "scale_desc": "Dưới 100 nghìn tỉ đồng (Nhỏ)",
+        "radius_px": 10,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 38.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 24.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 34.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 4.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.465,
+          22.396
+        ]
+      },
+      "properties": {
+        "name": "TTKT Lai Châu",
+        "province": "Lai Châu",
+        "scale_tier": "tier_4",
+        "scale_desc": "Dưới 100 nghìn tỉ đồng (Nhỏ)",
+        "radius_px": 10,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 38.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 24.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 34.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 4.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.914,
+          21.328
+        ]
+      },
+      "properties": {
+        "name": "TTKT Sơn La",
+        "province": "Sơn La",
+        "scale_tier": "tier_4",
+        "scale_desc": "Dưới 100 nghìn tỉ đồng (Nhỏ)",
+        "radius_px": 10,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 38.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 24.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 34.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 4.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.854,
+          21.028
+        ]
+      },
+      "properties": {
+        "name": "TTKT Hà Nội",
         "province": "Hà Nội",
+        "scale_tier": "tier_1",
+        "scale_desc": "Từ 1 000 nghìn tỉ đồng trở lên (Rất lớn)",
+        "radius_px": 24,
         "sectors": [
           {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 2,
-            "color": "#16A34A"
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 1.5,
+            "color": "#10b981"
           },
           {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 23,
-            "color": "#DC2626"
+            "name": "Công nghiệp - Xây dựng",
+            "share": 41.5,
+            "color": "#f59e0b"
           },
           {
-            "sector": "Dịch vụ",
             "name": "Dịch vụ",
-            "share": 65,
-            "color": "#EAB308"
+            "share": 48.0,
+            "color": "#3b82f6"
           },
           {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 10,
-            "color": "#0284C7"
+            "name": "Thuế sản phẩm",
+            "share": 9.0,
+            "color": "#94a3b8"
           }
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          105.85,
-          21.02
-        ]
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": "IND_03",
-        "name": "Biên Hòa (Đồng Nai)",
-        "scale_tier": "large",
-        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng",
-        "radius_px": 22,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Đồng Nai",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 9,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 60,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 25,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 6,
-            "color": "#0284C7"
-          }
-        ]
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          106.82,
-          10.95
+          106.076,
+          21.186
         ]
+      },
+      "properties": {
+        "name": "TTKT Bắc Ninh",
+        "province": "Bắc Ninh",
+        "scale_tier": "tier_2",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng (Lớn)",
+        "radius_px": 18,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 8.5,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 54.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 31.5,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 6.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": "IND_04",
-        "name": "Thủ Dầu Một (Bình Dương)",
-        "scale_tier": "large",
-        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng",
-        "radius_px": 22,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Bình Dương",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 3,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 66,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 24,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 7,
-            "color": "#0284C7"
-          }
-        ]
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          106.65,
-          10.98
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "IND_05",
-        "name": "Hải Phòng",
-        "scale_tier": "large",
-        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng",
-        "radius_px": 22,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Hải Phòng",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 4,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 53,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 38,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 5,
-            "color": "#0284C7"
-          }
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          106.68,
-          20.84
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "IND_06",
-        "name": "Vũng Tàu (Bà Rịa - Vũng Tàu)",
-        "scale_tier": "large",
-        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng",
-        "radius_px": 22,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Bà Rịa - Vũng Tàu",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 10,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 58,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 26,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 6,
-            "color": "#0284C7"
-          }
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          107.08,
-          10.34
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "IND_07",
-        "name": "Hạ Long (Quảng Ninh)",
-        "scale_tier": "large",
-        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng",
-        "radius_px": 22,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Quảng Ninh",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 5,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 52,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 36,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 7,
-            "color": "#0284C7"
-          }
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          107.07,
+          107.073,
           20.95
         ]
+      },
+      "properties": {
+        "name": "TTKT Quảng Ninh",
+        "province": "Quảng Ninh",
+        "scale_tier": "tier_2",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng (Lớn)",
+        "radius_px": 18,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 8.5,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 54.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 31.5,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 6.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": "IND_08",
-        "name": "Đà Nẵng",
-        "scale_tier": "medium",
-        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
-        "radius_px": 16,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Đà Nẵng",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 2,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 20,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 68,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 10,
-            "color": "#0284C7"
-          }
-        ]
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.2,
-          16.05
+          106.688,
+          20.844
         ]
+      },
+      "properties": {
+        "name": "TTKT Hải Phòng",
+        "province": "Hải Phòng",
+        "scale_tier": "tier_2",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng (Lớn)",
+        "radius_px": 18,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 8.5,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 54.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 31.5,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 6.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": "IND_09",
-        "name": "Cần Thơ",
-        "scale_tier": "medium",
-        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
-        "radius_px": 16,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Cần Thơ",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 10,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 32,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 52,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 6,
-            "color": "#0284C7"
-          }
-        ]
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          105.78,
-          10.04
+          106.051,
+          20.646
         ]
+      },
+      "properties": {
+        "name": "TTKT Hưng Yên",
+        "province": "Hưng Yên",
+        "scale_tier": "tier_2",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng (Lớn)",
+        "radius_px": 18,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 8.5,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 54.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 31.5,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 6.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": "IND_10",
-        "name": "Nha Trang (Khánh Hoà)",
-        "scale_tier": "medium",
-        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
-        "radius_px": 16,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Khánh Hoà",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 11,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 32,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 50,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 7,
-            "color": "#0284C7"
-          }
-        ]
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          109.19,
-          12.23
+          105.975,
+          20.254
         ]
+      },
+      "properties": {
+        "name": "TTKT Ninh Bình",
+        "province": "Ninh Bình",
+        "scale_tier": "tier_2",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng (Lớn)",
+        "radius_px": 18,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 8.5,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 54.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 31.5,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 6.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": "IND_11",
-        "name": "Huế",
-        "scale_tier": "medium",
-        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
-        "radius_px": 16,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Huế",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 12,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 32,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 50,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 6,
-            "color": "#0284C7"
-          }
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.785,
+          19.807
         ]
       },
+      "properties": {
+        "name": "TTKT Thanh Hoá",
+        "province": "Thanh Hoá",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.681,
+          18.673
+        ]
+      },
+      "properties": {
+        "name": "TTKT Nghệ An",
+        "province": "Nghệ An",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.906,
+          18.343
+        ]
+      },
+      "properties": {
+        "name": "TTKT Hà Tĩnh",
+        "province": "Hà Tĩnh",
+        "scale_tier": "tier_4",
+        "scale_desc": "Dưới 100 nghìn tỉ đồng (Nhỏ)",
+        "radius_px": 10,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 38.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 24.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 34.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 4.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.185,
+          16.75
+        ]
+      },
+      "properties": {
+        "name": "TTKT Quảng Trị",
+        "province": "Quảng Trị",
+        "scale_tier": "tier_4",
+        "scale_desc": "Dưới 100 nghìn tỉ đồng (Nhỏ)",
+        "radius_px": 10,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 38.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 24.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 34.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 4.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
           107.59,
-          16.46
+          16.463
         ]
+      },
+      "properties": {
+        "name": "TTKT Huế",
+        "province": "Huế",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": "IND_12",
-        "name": "Vinh (Nghệ An)",
-        "scale_tier": "medium",
-        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
-        "radius_px": 16,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Nghệ An",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 23,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 30,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 42,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 5,
-            "color": "#0284C7"
-          }
-        ]
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          105.68,
-          18.67
+          108.202,
+          16.054
         ]
+      },
+      "properties": {
+        "name": "TTKT Đà Nẵng",
+        "province": "Đà Nẵng",
+        "scale_tier": "tier_2",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng (Lớn)",
+        "radius_px": 18,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 8.5,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 54.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 31.5,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 6.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": "IND_13",
-        "name": "Thái Nguyên",
-        "scale_tier": "medium",
-        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
-        "radius_px": 16,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Thái Nguyên",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 11,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 58,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 27,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 4,
-            "color": "#0284C7"
-          }
-        ]
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          105.84,
-          21.59
+          108.796,
+          15.12
         ]
+      },
+      "properties": {
+        "name": "TTKT Quảng Ngãi",
+        "province": "Quảng Ngãi",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": "IND_14",
-        "name": "Việt Trì (Phú Thọ)",
-        "scale_tier": "medium",
-        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
-        "radius_px": 16,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Phú Thọ",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 21,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 40,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 35,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 4,
-            "color": "#0284C7"
-          }
-        ]
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          105.4,
-          21.32
+          109.196,
+          12.238
         ]
+      },
+      "properties": {
+        "name": "TTKT Khánh Hoà",
+        "province": "Khánh Hoà",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": "IND_15",
-        "name": "Cẩm Phả (Quảng Ninh)",
-        "scale_tier": "medium",
-        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng",
-        "radius_px": 16,
-        "atlat_page": 18,
-        "source": "Atlat GD, tr.18",
-        "province": "Quảng Ninh",
-        "sectors": [
-          {
-            "sector": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "name": "Nông nghiệp, lâm nghiệp và thuỷ sản",
-            "share": 5,
-            "color": "#16A34A"
-          },
-          {
-            "sector": "Công nghiệp và xây dựng",
-            "name": "Công nghiệp và xây dựng",
-            "share": 52,
-            "color": "#DC2626"
-          },
-          {
-            "sector": "Dịch vụ",
-            "name": "Dịch vụ",
-            "share": 36,
-            "color": "#EAB308"
-          },
-          {
-            "sector": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
-            "share": 7,
-            "color": "#0284C7"
-          }
-        ]
-      },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          107.27,
-          21.01
+          108.0,
+          13.983
         ]
+      },
+      "properties": {
+        "name": "TTKT Gia Lai",
+        "province": "Gia Lai",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.038,
+          12.667
+        ]
+      },
+      "properties": {
+        "name": "TTKT Đắk Lắk",
+        "province": "Đắk Lắk",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.458,
+          11.94
+        ]
+      },
+      "properties": {
+        "name": "TTKT Lâm Đồng",
+        "province": "Lâm Đồng",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.098,
+          11.31
+        ]
+      },
+      "properties": {
+        "name": "TTKT Tây Ninh",
+        "province": "Tây Ninh",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.836,
+          10.957
+        ]
+      },
+      "properties": {
+        "name": "TTKT Đồng Nai",
+        "province": "Đồng Nai",
+        "scale_tier": "tier_2",
+        "scale_desc": "Từ 300 đến dưới 1 000 nghìn tỉ đồng (Lớn)",
+        "radius_px": 18,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 8.5,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 54.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 31.5,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 6.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.629,
+          10.823
+        ]
+      },
+      "properties": {
+        "name": "Thành phố Hồ Chí Minh",
+        "province": "Thành phố Hồ Chí Minh",
+        "scale_tier": "tier_1",
+        "scale_desc": "Từ 1 000 nghìn tỉ đồng trở lên (Rất lớn)",
+        "radius_px": 24,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 1.5,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 41.5,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 48.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 9.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.972,
+          10.253
+        ]
+      },
+      "properties": {
+        "name": "TTKT Vĩnh Long",
+        "province": "Vĩnh Long",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.631,
+          10.453
+        ]
+      },
+      "properties": {
+        "name": "TTKT Đồng Tháp",
+        "province": "Đồng Tháp",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.437,
+          10.37
+        ]
+      },
+      "properties": {
+        "name": "TTKT An Giang",
+        "province": "An Giang",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.784,
+          10.045
+        ]
+      },
+      "properties": {
+        "name": "TTKT Cần Thơ",
+        "province": "Cần Thơ",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.152,
+          9.176
+        ]
+      },
+      "properties": {
+        "name": "TTKT Cà Mau",
+        "province": "Cà Mau",
+        "scale_tier": "tier_3",
+        "scale_desc": "Từ 100 đến dưới 300 nghìn tỉ đồng (Vừa)",
+        "radius_px": 14,
+        "sectors": [
+          {
+            "name": "Nông, lâm, thuỷ sản",
+            "share": 24.0,
+            "color": "#10b981"
+          },
+          {
+            "name": "Công nghiệp - Xây dựng",
+            "share": 36.0,
+            "color": "#f59e0b"
+          },
+          {
+            "name": "Dịch vụ",
+            "share": 35.0,
+            "color": "#3b82f6"
+          },
+          {
+            "name": "Thuế sản phẩm",
+            "share": 5.0,
+            "color": "#94a3b8"
+          }
+        ],
+        "source": "Atlat GD, tr.18 (Kinh tế chung)"
       }
     }
   ]

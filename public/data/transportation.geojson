@@ -153,8 +153,8 @@
         "start_point": "Cửa khẩu Hữu Nghị (Lạng Sơn)",
         "end_point": "Huyện Năm Căn (Cà Mau)",
         "desc": "Tuyến giao thông đường bộ huyết mạch nối liền 31 tỉnh thành từ Bắc vào Nam, đóng vai trò phát triển kinh tế - xã hội và an ninh quốc phòng.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -245,8 +245,8 @@
         "start_point": "Pác Bó (Cao Bằng)",
         "end_point": "Đất Mũi (Cà Mau)",
         "desc": "Tuyến giao thông chiến lược thứ hai chạy dọc sườn Tây Tổ quốc qua Trường Sơn và Tây Nguyên, phá thế độc đạo của QL1A.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -341,8 +341,8 @@
         "start_point": "Ga Hà Nội",
         "end_point": "Ga Sài Gòn (TP.HCM)",
         "desc": "Tuyến đường sắt huyết mạch xương sống dài nhất Việt Nam, kết nối hai đầu cầu kinh tế Bắc - Nam.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -362,8 +362,8 @@
         "province": "Hà Nội",
         "code": "HAN",
         "desc": "Cửa ngõ hàng không quốc tế lớn nhất miền Bắc, trung tâm vận tải hàng không Vùng Thủ đô.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -383,8 +383,8 @@
         "province": "TP. Hồ Chí Minh",
         "code": "SGN",
         "desc": "Sân bay có sản lượng hành khách và hàng hóa lớn nhất cả nước.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -404,8 +404,8 @@
         "province": "Đà Nẵng",
         "code": "DAD",
         "desc": "Cửa ngõ hàng không quốc tế miền Trung và đầu mối Hành lang kinh tế Đông - Tây.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -425,8 +425,8 @@
         "province": "Khánh Hoà",
         "code": "CXR",
         "desc": "Sân bay quốc tế trọng điểm phục vụ du lịch Nam Trung Bộ và Tây Nguyên.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -446,8 +446,8 @@
         "province": "Hải Phòng",
         "code": "HPH",
         "desc": "Cửa ngõ hàng không của Vùng Duyên hải Bắc Bộ.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -467,8 +467,8 @@
         "province": "Cần Thơ",
         "code": "VCA",
         "desc": "Sân bay quốc tế trung tâm vùng Đồng bằng sông Cửu Long.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -488,8 +488,8 @@
         "province": "Kiên Giang",
         "code": "PQC",
         "desc": "Cảng hàng không quốc tế đảo ngọc phục vụ phát triển kinh tế biển đảo.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -509,8 +509,8 @@
         "province": "Điện Biên",
         "code": "DIN",
         "desc": "Cảng hàng không trọng yếu vùng Tây Bắc nối Thủ đô Hà Nội và TP.HCM.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -530,8 +530,8 @@
         "province": "Đắk Lắk",
         "code": "BMV",
         "desc": "Đầu mối hàng không quan trọng của vùng Tây Nguyên.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -550,8 +550,8 @@
         "category": "seaport_special",
         "province": "Hải Phòng",
         "desc": "Cảng biển nước sâu loại đặc biệt lớn nhất miền Bắc, tiếp nhận tàu trọng tải trên 100.000 DWT đi thẳng châu Mỹ, châu Âu.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -568,10 +568,13 @@
         "name": "Cụm Cảng biển nước sâu Cái Mép - Thị Vải",
         "short_name": "Cảng Cái Mép - Thị Vải",
         "category": "seaport_special",
-        "province": "Bà Rịa - Vũng Tàu",
+        "province": "Thành phố Hồ Chí Minh",
         "desc": "Cụm cảng nước sâu loại đặc biệt lớn nhất Đông Nam Bộ, thuộc nhóm cảng có tốc độ tăng trưởng nhanh nhất thế giới.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)",
+        "aliases": [
+          "Cảng Cái Mép - Thị Vải (Bà Rịa - Vũng Tàu cũ)"
+        ]
       }
     },
     {
@@ -590,8 +593,8 @@
         "category": "seaport_major",
         "province": "TP. Hồ Chí Minh",
         "desc": "Cảng container có sản lượng hàng hóa thông qua lớn nhất Việt Nam (chiếm trên 50% thị phần container cả nước).",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -610,8 +613,8 @@
         "category": "seaport_major",
         "province": "Đà Nẵng",
         "desc": "Cảng biển tổng hợp quốc gia loại 1, cửa ngõ biển chính của Hành lang kinh tế Đông - Tây.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -630,8 +633,8 @@
         "category": "seaport_major",
         "province": "Thanh Hoá",
         "desc": "Cảng chuyên dùng nước sâu phục vụ Khu kinh tế Nghi Sơn và liên hợp lọc hóa dầu.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -650,8 +653,8 @@
         "category": "seaport_major",
         "province": "Quảng Ngãi",
         "desc": "Cảng nước sâu gắn liền Khu kinh tế Dung Quất và Nhà máy Lọc dầu Dung Quất đầu tiên của Việt Nam.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     },
     {
@@ -670,8 +673,8 @@
         "category": "seaport_major",
         "province": "Bình Định",
         "desc": "Cửa ngõ ra Biển Đông quan trọng nhất của vùng Tây Nguyên và Nam Lào.",
-        "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (DHQG, tr.19)"
+        "atlat_page": 24,
+        "source": "Atlat GD, tr.24 (Giao thông vận tải)"
       }
     }
   ]

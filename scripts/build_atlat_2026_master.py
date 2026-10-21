@@ -56,13 +56,13 @@ PROVINCES_34_STATS = {
     "Tỉnh Quảng Trị": {"area": 12700.0, "pop": 1584.0, "type": "Tỉnh", "region": "Bắc Trung Bộ", "merged_from": ["Quảng Trị", "Quảng Bình"]},
     "Thành phố Huế": {"area": 4947.1, "pop": 1178.6, "type": "Thành phố trực thuộc Trung ương", "region": "Bắc Trung Bộ", "merged_from": ["Thừa Thiên Huế"]},
 
-    # 4. Duyên hải Nam Trung Bộ và Tây Nguyên (6)
-    "Thành phố Đà Nẵng": {"area": 11859.6, "pop": 2819.9, "type": "Thành phố trực thuộc Trung ương", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Đà Nẵng", "Quảng Nam"]},
-    "Tỉnh Quảng Ngãi": {"area": 14832.6, "pop": 1861.7, "type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Quảng Ngãi", "Bình Định"]},
-    "Tỉnh Khánh Hoà": {"area": 8555.9, "pop": 1882.0, "type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ", "merged_from": ["Khánh Hoà", "Phú Yên"]},
-    "Tỉnh Gia Lai": {"area": 21576.5, "pop": 3153.4, "type": "Tỉnh", "region": "Tây Nguyên", "merged_from": ["Gia Lai", "Kon Tum"]},
-    "Tỉnh Đắk Lắk": {"area": 18096.4, "pop": 2831.4, "type": "Tỉnh", "region": "Tây Nguyên", "merged_from": ["Đắk Lắk", "Đắk Nông"]},
-    "Tỉnh Lâm Đồng": {"area": 24233.1, "pop": 3324.4, "type": "Tỉnh", "region": "Tây Nguyên", "merged_from": ["Lâm Đồng", "Ninh Thuận", "Bình Thuận"]},
+    # 4. Duyên hải Nam Trung Bộ và Tây Nguyên (6) - Chuẩn Nghị quyết 202/2025/QH15 & Atlat GD tr.5
+    "Thành phố Đà Nẵng": {"area": 11859.6, "pop": 2819.9, "type": "Thành phố trực thuộc Trung ương", "region": "Duyên hải Nam Trung Bộ và Tây Nguyên", "merged_from": ["Đà Nẵng", "Quảng Nam"]},
+    "Tỉnh Quảng Ngãi": {"area": 14832.6, "pop": 1861.1, "type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ và Tây Nguyên", "merged_from": ["Kon Tum", "Quảng Ngãi"]},
+    "Tỉnh Khánh Hoà": {"area": 8555.9, "pop": 1892.4, "type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ và Tây Nguyên", "merged_from": ["Ninh Thuận", "Khánh Hoà"]},
+    "Tỉnh Gia Lai": {"area": 21576.5, "pop": 3245.6, "type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ và Tây Nguyên", "merged_from": ["Bình Định", "Gia Lai"]},
+    "Tỉnh Đắk Lắk": {"area": 18096.4, "pop": 2784.8, "type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ và Tây Nguyên", "merged_from": ["Phú Yên", "Đắk Lắk"]},
+    "Tỉnh Lâm Đồng": {"area": 24233.1, "pop": 3376.8, "type": "Tỉnh", "region": "Duyên hải Nam Trung Bộ và Tây Nguyên", "merged_from": ["Đắk Nông", "Bình Thuận", "Lâm Đồng"]},
 
     # 5. Đông Nam Bộ (3)
     "Tỉnh Tây Ninh": {"area": 8536.5, "pop": 2959.0, "type": "Tỉnh", "region": "Đông Nam Bộ", "merged_from": ["Tây Ninh", "Long An"]},

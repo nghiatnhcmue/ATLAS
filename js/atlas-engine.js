@@ -223,32 +223,48 @@ const AtlasEngine = (function () {
   };
 
   // Bảng phân hạng tô màu Choropleth Heatmap (Upgrade 1)
+  // GRDP bình quân đầu người 4 cấp chuẩn Atlat GD, tr.18
+  const GRDP_PER_CAPITA_TIERS = {
+    // Cấp 1: Từ 125 triệu đồng trở lên
+    "Thành phố Hà Nội": 1, "Thành phố Hồ Chí Minh": 1, "Thành phố Hải Phòng": 1,
+    "Tỉnh Quảng Ninh": 1, "Tỉnh Bắc Ninh": 1, "Tỉnh Đồng Nai": 1,
+    "Hà Nội": 1, "TP. Hồ Chí Minh": 1, "Hải Phòng": 1, "Quảng Ninh": 1, "Bắc Ninh": 1, "Đồng Nai": 1, "Bà Rịa - Vũng Tàu": 1, "Bình Dương": 1,
+    // Cấp 2: 100 đến dưới 125 triệu đồng
+    "Thành phố Đà Nẵng": 2, "Tỉnh Hưng Yên": 2, "Tỉnh Ninh Bình": 2, "Tỉnh Vĩnh Long": 2, "Thành phố Cần Thơ": 2, "Tỉnh Tây Ninh": 2, "Tỉnh Khánh Hoà": 2,
+    "Đà Nẵng": 2, "Hưng Yên": 2, "Ninh Bình": 2, "Vĩnh Long": 2, "Cần Thơ": 2, "Tây Ninh": 2, "Khánh Hoà": 2,
+    // Cấp 3: 75 đến dưới 100 triệu đồng
+    "Tỉnh Thái Nguyên": 3, "Tỉnh Phú Thọ": 3, "Tỉnh Thanh Hoá": 3, "Tỉnh Nghệ An": 3, "Thành phố Huế": 3, "Tỉnh Quảng Ngãi": 3, "Tỉnh Gia Lai": 3, "Tỉnh Đắk Lắk": 3, "Tỉnh Lâm Đồng": 3, "Tỉnh Đồng Tháp": 3, "Tỉnh An Giang": 3, "Tỉnh Cà Mau": 3,
+    "Thái Nguyên": 3, "Phú Thọ": 3, "Thanh Hoá": 3, "Nghệ An": 3, "Huế": 3, "Thừa Thiên Huế": 3, "Quảng Ngãi": 3, "Gia Lai": 3, "Đắk Lắk": 3, "Lâm Đồng": 3, "Đồng Tháp": 3, "An Giang": 3, "Cà Mau": 3, "Bình Định": 3, "Phú Yên": 3, "Ninh Thuận": 3, "Bình Thuận": 3, "Đắk Nông": 3, "Kon Tum": 3,
+    // Cấp 4: Dưới 75 triệu đồng
+    "Tỉnh Cao Bằng": 4, "Tỉnh Lạng Sơn": 4, "Tỉnh Tuyên Quang": 4, "Tỉnh Lào Cai": 4, "Tỉnh Điện Biên": 4, "Tỉnh Lai Châu": 4, "Tỉnh Sơn La": 4, "Tỉnh Hà Tĩnh": 4, "Tỉnh Quảng Trị": 4,
+    "Cao Bằng": 4, "Lạng Sơn": 4, "Tuyên Quang": 4, "Lào Cai": 4, "Điện Biên": 4, "Lai Châu": 4, "Sơn La": 4, "Hà Tĩnh": 4, "Quảng Trị": 4, "Hà Giang": 4, "Bắc Kạn": 4, "Yên Bái": 4, "Hòa Bình": 4, "Quảng Bình": 4
+  };
+
   const CHOROPLETH_PALETTES = {
     density: {
       id: "density",
       title: "Mật độ dân số (người/km²)",
-      source: "Atlat GD, tr.15 (Dân số)",
+      source: "Atlat GD, tr.17 (Dân số và Mật độ dân số)",
       ranges: [
-        { max: 50, color: "#fef9c3", label: "< 50 ng/km² (Rất thấp - Miền núi Tây Bắc, Tây Nguyên)" },
-        { max: 250, color: "#fde047", label: "50 - 250 ng/km² (Thấp - Trung du Bắc Bộ)" },
-        { max: 500, color: "#fb923c", label: "250 - 500 ng/km² (Trung bình - Duyên hải)" },
-        { max: 1000, color: "#ea580c", label: "500 - 1000 ng/km² (Cao - ĐBSH, ĐBSCL)" },
-        { max: Infinity, color: "#991b1b", label: "> 1000 ng/km² (Rất cao - Hà Nội, TP.HCM, Hải Phòng)" }
+        { max: 99.99, color: "#ffffcc", label: "Dưới 100 ng/km²" },
+        { max: 199.99, color: "#fed976", label: "100 đến dưới 200 ng/km²" },
+        { max: 499.99, color: "#feb24c", label: "200 đến dưới 500 ng/km²" },
+        { max: 999.99, color: "#fd8d3c", label: "500 đến dưới 1.000 ng/km²" },
+        { max: Infinity, color: "#e31a1c", label: "Từ 1.000 ng/km² trở lên" }
       ],
       getValue: (p) => Number(p.density) || 0
     },
     grdp: {
       id: "grdp",
-      title: "Quy mô GRDP (nghìn tỉ đồng)",
+      title: "GRDP bình quân đầu người (triệu đồng)",
       source: "Atlat GD, tr.18 (Kinh tế chung)",
       ranges: [
-        { max: 50, color: "#d1fae5", label: "< 50 nghìn tỉ" },
-        { max: 100, color: "#6ee7b7", label: "50 - 100 nghìn tỉ" },
-        { max: 250, color: "#10b981", label: "100 - 250 nghìn tỉ" },
-        { max: 500, color: "#047857", label: "250 - 500 nghìn tỉ" },
-        { max: Infinity, color: "#064e3b", label: "> 500 nghìn tỉ (Hà Nội, TP.HCM)" }
+        { max: 1, color: "#1e3a8a", label: "Từ 125 triệu đồng trở lên" },
+        { max: 2, color: "#2563eb", label: "100 đến dưới 125 triệu đồng" },
+        { max: 3, color: "#f59e0b", label: "75 đến dưới 100 triệu đồng" },
+        { max: 4, color: "#fef08a", label: "Dưới 75 triệu đồng" }
       ],
-      getValue: (p) => Number(p.grdp) || (GRDP_LOOKUP[p.name] || 50)
+      getValue: (p) => GRDP_PER_CAPITA_TIERS[p.name] || 3
     },
     area: {
       id: "area",
@@ -519,11 +535,12 @@ const AtlasEngine = (function () {
   };
 
   // Ký hiệu Khoáng sản chuẩn Atlat GD, tr.13
+  // Ký hiệu Khoáng sản chuẩn Atlat GD, tr.3 & tr.13
   function getMineralSvg(symbolType) {
     switch (symbolType) {
       case "coal":
       case "square_black":
-        return `<svg width="20" height="20" viewBox="0 0 20 20" class="atlat-vector-icon"><rect x="2.5" y="2.5" width="15" height="15" fill="#0F172A" stroke="#FFFFFF" stroke-width="1.5"/></svg>`;
+        return `<svg width="20" height="20" viewBox="0 0 20 20" class="atlat-vector-icon"><rect x="2" y="2" width="16" height="16" fill="#0F172A" stroke="#FFFFFF" stroke-width="1.5"/></svg>`;
       case "oil":
       case "trapezoid_black":
         return `<svg width="22" height="22" viewBox="0 0 24 24" class="atlat-vector-icon"><polygon points="6,20 18,20 15,6 9,6" fill="#0F172A" stroke="#FFFFFF" stroke-width="1.5"/></svg>`;
@@ -534,39 +551,48 @@ const AtlasEngine = (function () {
       case "triangle_black":
         return `<svg width="20" height="20" viewBox="0 0 20 20" class="atlat-vector-icon"><polygon points="10,2 19,18 1,18" fill="#0F172A" stroke="#FFFFFF" stroke-width="1.5"/></svg>`;
       case "apatite":
+      case "square_a":
       case "inverted_v":
-        return `<svg width="22" height="22" viewBox="0 0 24 24" class="atlat-vector-icon"><path d="M4 20 L12 4 L20 20" fill="none" stroke="#0284C7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 20 L12 4 L20 20" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        // Atlat GD tr.3: Hình vuông viền đen chữ A
+        return `<svg width="20" height="20" viewBox="0 0 20 20" class="atlat-vector-icon"><rect x="2" y="2" width="16" height="16" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.8"/><text x="10" y="15" font-size="12" font-weight="900" text-anchor="middle" fill="#0F172A" font-family="sans-serif">A</text></svg>`;
       case "bauxite":
+      case "square_al":
       case "al_symbol":
-        return `<svg width="22" height="22" viewBox="0 0 24 24" class="atlat-vector-icon"><polygon points="12,2 22,12 12,22 2,12" fill="#EA580C" stroke="#FFFFFF" stroke-width="1.5"/><text x="12" y="15" font-size="8" font-weight="900" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif">Al</text></svg>`;
+        // Atlat GD tr.3: Hình vuông viền đen chữ Al
+        return `<svg width="20" height="20" viewBox="0 0 20 20" class="atlat-vector-icon"><rect x="2" y="2" width="16" height="16" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.8"/><text x="10" y="14" font-size="9.5" font-weight="900" text-anchor="middle" fill="#0F172A" font-family="sans-serif">Al</text></svg>`;
       case "tin":
+      case "rhombus_black_flat":
       case "sn_symbol":
-        return `<svg width="20" height="20" viewBox="0 0 20 20" class="atlat-vector-icon"><rect x="2.5" y="2.5" width="15" height="15" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5"/><line x1="2.5" y1="2.5" x2="17.5" y2="17.5" stroke="#0F172A" stroke-width="1.5"/><line x1="17.5" y1="2.5" x2="2.5" y2="17.5" stroke="#0F172A" stroke-width="1.5"/></svg>`;
+        // Atlat GD tr.3: Hình thoi đen dẹt
+        return `<svg width="22" height="20" viewBox="0 0 22 20" class="atlat-vector-icon"><polygon points="11,4 21,10 11,16 1,10" fill="#0F172A" stroke="#FFFFFF" stroke-width="1.2"/></svg>`;
       case "chromium":
+      case "square_hourglass":
       case "cr_symbol":
-        return `<svg width="20" height="20" viewBox="0 0 20 20" class="atlat-vector-icon"><circle cx="10" cy="10" r="8" fill="#334155" stroke="#FFFFFF" stroke-width="1.5"/><polygon points="10,4 12,8 16,8 13,11 14,15 10,12 6,15 7,11 4,8 8,8" fill="#FFFFFF"/></svg>`;
+        // Atlat GD tr.3: Hình vuông có hình đồng hồ cát
+        return `<svg width="20" height="20" viewBox="0 0 20 20" class="atlat-vector-icon"><rect x="2" y="2" width="16" height="16" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.8"/><polygon points="3,3 17,17 3,17 17,3" fill="#0F172A"/></svg>`;
       case "titan":
+      case "rhombus_half":
       case "ti_symbol":
-        return `<svg width="20" height="20" viewBox="0 0 20 20" class="atlat-vector-icon"><circle cx="10" cy="10" r="8" fill="#475569" stroke="#FFFFFF" stroke-width="1.5"/><text x="10" y="14" font-size="9" font-weight="bold" text-anchor="middle" fill="#FFFFFF">Ti</text></svg>`;
+        // Atlat GD tr.3: Hình thoi nửa trắng nửa đen
+        return `<svg width="20" height="20" viewBox="0 0 20 20" class="atlat-vector-icon"><polygon points="10,2 18,10 10,18 2,10" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.8"/><polygon points="2,10 10,2 18,10" fill="#0F172A"/></svg>`;
       default:
         return `<svg width="18" height="18" viewBox="0 0 20 20" class="atlat-vector-icon"><circle cx="10" cy="10" r="7" fill="#64748B" stroke="#FFFFFF" stroke-width="1.5"/></svg>`;
     }
   }
 
-  // Ký hiệu Năng lượng chuẩn Atlat GD, tr.18 & 23
-  function getPowerSvg(plantType, mw) {
-    if (plantType.includes("gió")) {
-      return `<div class="bg-teal-600 text-white text-xs p-1 rounded-full shadow-md border border-white hover:scale-125 transition">🌀</div>`;
-    }
-    if (plantType.includes("mặt trời")) {
-      return `<div class="bg-amber-500 text-white text-xs p-1 rounded-full shadow-md border border-white hover:scale-125 transition">☀️</div>`;
-    }
-    const isHydro = plantType.includes("Thủy");
-    const color = isHydro ? "#0284C7" : "#DC2626";
-    const size = (mw || 500) >= 1000 ? 26 : 20;
+  // Ký hiệu Năng lượng chuẩn Atlat GD, tr.3 & tr.23: Ngôi sao (Đỏ: Nhiệt điện, Xanh lam: Thủy điện, Xanh lá: Gió, Cam: Mặt trời)
+  function getPowerSvg(plantType, capacityGroup) {
+    let color = "#0284C7"; // Mặc định Thủy điện: Xanh lam
+    if (plantType.includes("Nhiệt")) color = "#DC2626"; // Đỏ
+    else if (plantType.includes("gió")) color = "#16A34A"; // Xanh lá
+    else if (plantType.includes("mặt trời")) color = "#EA580C"; // Cam
+
+    const isLarge = (capacityGroup === "Trên 1.000 MW" || (typeof capacityGroup === "number" && capacityGroup >= 1000));
+    const size = isLarge ? 26 : 18;
+
     return `
       <svg width="${size}" height="${size}" viewBox="0 0 24 24" class="atlat-vector-icon">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="${color}" stroke="#FFFFFF" stroke-width="1.5"/>
+        <polygon points="12,1 15.3,8.3 23.3,9.2 17.3,14.6 19.1,22.5 12,18.4 4.9,22.5 6.7,14.6 0.7,9.2 8.7,8.3" fill="${color}" stroke="#FFFFFF" stroke-width="1.5"/>
       </svg>
     `;
   }
@@ -842,7 +868,7 @@ const AtlasEngine = (function () {
       ensureLayerData("climate").then(() => renderClimateLayer());
     } else if (theme === "economic") {
       Promise.all([ensureLayerData("industrial"), ensureLayerData("power")]).then(() => {
-        renderIndustrialLayer();
+        renderIndustrialCenters();
         renderMineralsPowerLayer();
       });
     }
@@ -1791,7 +1817,8 @@ const AtlasEngine = (function () {
       layerTransportation = L.featureGroup().addTo(map);
     }
     layerTransportation.clearLayers();
-    const data = await fetchLayerData("transportation");
+    await ensureLayerData("transportation");
+    const data = geoData.transportation;
     if (!data || !data.features) return;
 
     L.geoJSON(data, {
@@ -2077,50 +2104,66 @@ const AtlasEngine = (function () {
     {
       id: "SYM_05",
       symbol_svg: getMineralSvg("bauxite"),
-      prompt: "Ký hiệu hình thoi màu cam có chữ 'Al' tập trung chủ yếu ở Tây Nguyên là mỏ:",
+      prompt: "Ký hiệu hình vuông viền đen có chữ 'Al' (Atlat GD tr.3 & 13) là mỏ khoáng sản nào?",
       options: ["Bôxit (quặng nhôm)", "Đồng", "Thiếc", "Crôm"],
       correct: "Bôxit (quặng nhôm)",
-      explanation: "Ký hiệu hình thoi chữ Al là Bôxit (quặng nhôm, Atlat GD tr.13). Tập trung diện tích lớn tại Đắk Nông, Lâm Đồng, Gia Lai."
+      explanation: "Hình vuông chữ Al là Bôxit (quặng nhôm, Atlat GD tr.3 & tr.13). Tập trung diện tích lớn tại Lâm Đồng, Đắk Lắk, Gia Lai."
     },
     {
       id: "SYM_06",
       symbol_svg: getMineralSvg("apatite"),
-      prompt: "Ký hiệu chữ V ngược kép màu xanh lam chỉ xuất hiện ở Lào Cai là khoáng sản:",
+      prompt: "Ký hiệu hình vuông viền đen có chữ 'A' (Atlat GD tr.3 & 13) là mỏ khoáng sản:",
       options: ["Apatit", "Đá quý", "Sét cao lanh", "Thạch anh"],
       correct: "Apatit",
-      explanation: "Ký hiệu chữ V ngược kép là mỏ Apatit Cam Đường (Lào Cai, Atlat GD tr.13), nguyên liệu sản xuất phân bón lân cho nông nghiệp."
+      explanation: "Hình vuông chữ A là mỏ Apatit Cam Đường (Lào Cai, Atlat GD tr.3 & tr.13), nguyên liệu quý sản xuất phân bón lân cho nông nghiệp."
     },
     {
       id: "SYM_07",
-      symbol_svg: getPowerSvg("Thủy điện", 1920),
-      prompt: "Ký hiệu ngôi sao tia chớp màu xanh lam trên bản đồ Năng lượng (Trang 22-23) thể hiện:",
+      symbol_svg: getPowerSvg("Thủy điện", "Trên 1.000 MW"),
+      prompt: "Ký hiệu ngôi sao màu xanh lam trên bản đồ Năng lượng (Atlat GD tr.23) thể hiện:",
       options: ["Nhà máy Thủy điện", "Nhà máy Nhiệt điện", "Trạm biến áp 500kV", "Điện gió"],
       correct: "Nhà máy Thủy điện",
-      explanation: "Tia chớp màu xanh lam là Thủy điện (Hòa Bình, Sơn La trên sông Đà; Yaly trên sông Sê San; Trị An trên sông Đồng Nai, Atlat GD tr.23)."
+      explanation: "Ngôi sao màu xanh lam là Thủy điện (Hòa Bình, Sơn La trên sông Đà; Ialy trên sông Sê San; Trị An trên sông Đồng Nai, Atlat GD tr.23)."
     },
     {
       id: "SYM_08",
-      symbol_svg: getPowerSvg("Nhiệt điện", 1500),
-      prompt: "Ký hiệu tia chớp màu đỏ trên bản đồ Công nghiệp & Năng lượng (Trang 22-23) thể hiện:",
+      symbol_svg: getPowerSvg("Nhiệt điện", "Trên 1.000 MW"),
+      prompt: "Ký hiệu ngôi sao màu đỏ trên bản đồ Công nghiệp & Năng lượng (Atlat GD tr.23) thể hiện:",
       options: ["Nhà máy Nhiệt điện", "Nhà máy Thủy điện", "Điện mặt trời", "Mỏ than"],
       correct: "Nhà máy Nhiệt điện",
-      explanation: "Tia chớp đỏ là Nhiệt điện (Phú Mỹ, Cà Mau chạy bằng khí; Phả Lại, Uông Bí, Ninh Bình chạy bằng than, Atlat GD tr.22 & 23)."
+      explanation: "Ngôi sao đỏ là Nhiệt điện (Phú Mỹ, Cà Mau chạy bằng khí; Phả Lại, Ninh Bình chạy bằng than, Atlat GD tr.23)."
     },
     {
       id: "SYM_09",
       symbol_svg: `<div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-base font-bold shadow">✈️</div>`,
-      prompt: "Cảng hàng không quốc tế có lưu lượng hành khách lớn nhất miền Bắc (Atlat Trang 23) là:",
+      prompt: "Cảng hàng không quốc tế có lưu lượng hành khách lớn nhất miền Bắc (Atlat GD tr.24) là:",
       options: ["Nội Bài (Hà Nội)", "Cát Bi (Hải Phòng)", "Vân Đồn (Quảng Ninh)", "Điện Biên"],
       correct: "Nội Bài (Hà Nội)",
-      explanation: "Sân bay quốc tế Nội Bài (Hà Nội) là cửa ngõ hàng không quốc tế lớn nhất miền Bắc và lớn thứ 2 toàn quốc (Atlat GD, tr.23)."
+      explanation: "Sân bay quốc tế Nội Bài (Hà Nội) là cảng hàng không quốc tế lớn nhất miền Bắc (Atlat GD, tr.24)."
     },
     {
       id: "SYM_10",
       symbol_svg: `<div class="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-white text-base font-bold shadow">⚓</div>`,
-      prompt: "Cụm cảng biển nước sâu cửa ngõ quốc tế lớn nhất miền Nam có khả năng đón tàu mẹ đi Mỹ - Âu là:",
-      options: ["Cái Mép - Thị Vải (BR-VT)", "Cảng Sài Gòn", "Cảng Quy Nhơn", "Cảng Tiên Sa (Đà Nẵng)"],
-      correct: "Cái Mép - Thị Vải (BR-VT)",
-      explanation: "Cụm cảng nước sâu Cái Mép - Thị Vải (tỉnh Bà Rịa - Vũng Tàu, Atlat GD tr.23) là cảng biển loại đặc biệt của Việt Nam."
+      prompt: "Cụm cảng biển nước sâu cửa ngõ quốc tế lớn nhất miền Nam có khả năng đón tàu mẹ đi Mỹ - Âu (Atlat GD tr.24) là:",
+      options: ["Cái Mép - Thị Vải (TP.HCM / BR-VT)", "Cảng Sài Gòn", "Cảng Quy Nhơn", "Cảng Tiên Sa (Đà Nẵng)"],
+      correct: "Cái Mép - Thị Vải (TP.HCM / BR-VT)",
+      explanation: "Cụm cảng nước sâu Cái Mép - Thị Vải (Atlat GD tr.24) là cảng biển loại đặc biệt của Việt Nam."
+    },
+    {
+      id: "SYM_11",
+      symbol_svg: getMineralSvg("tin"),
+      prompt: "Ký hiệu hình thoi màu đen dẹt trên bản đồ Kí hiệu chung (Trang 3) là khoáng sản gì?",
+      options: ["Thiếc", "Titan", "Crôm", "Đồng"],
+      correct: "Thiếc",
+      explanation: "Hình thoi đen dẹt là ký hiệu Thiếc (mỏ Tĩnh Túc - Cao Bằng, Quỳ Hợp - Nghệ An, Atlat GD tr.3 & tr.13)."
+    },
+    {
+      id: "SYM_12",
+      symbol_svg: getMineralSvg("titan"),
+      prompt: "Ký hiệu hình thoi chia nửa đen trắng dọc bờ biển miền Trung là:",
+      options: ["Titan", "Cát trắng", "Muối", "Than bùn"],
+      correct: "Titan",
+      explanation: "Hình thoi nửa đen nửa trắng là quặng Titan sa khoáng ven biển (Cẩm Xuyên - Hà Tĩnh, Phù Cát - Gia Lai/Bình Định cũ, Atlat GD tr.3 & tr.13)."
     }
   ];
 
@@ -2864,42 +2907,35 @@ const AtlasEngine = (function () {
       </div>
     `;
 
-    // Upgrade 5: Drill-down cấp Quận/Huyện/Thị xã
-    const districtData = PROVINCE_DISTRICTS[props.name];
-    let districtHtml = '';
-    if (districtData) {
-      const typeBadgeClass = (t) => {
-        if (t === "Quận") return "bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 border-blue-200 dark:border-blue-800";
-        if (t === "Thị xã") return "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border-amber-200 dark:border-amber-800";
-        if (t === "Thành phố" || t === "Thành phố đảo") return "bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300 border-purple-200 dark:border-purple-800";
-        if (t.includes("Huyện đảo")) return "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 border-red-200 dark:border-red-800";
-        return "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border-slate-200 dark:border-slate-700";
-      };
+    const grdpTier = GRDP_PER_CAPITA_TIERS[props.name] || 3;
+    const grdpTierLabels = {
+      1: "Từ 125 triệu đồng/người trở lên",
+      2: "100 đến dưới 125 triệu đồng/người",
+      3: "75 đến dưới 100 triệu đồng/người",
+      4: "Dưới 75 triệu đồng/người"
+    };
 
-      const chips = districtData.units.map(u => `
-        <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium border ${typeBadgeClass(u.type)}">
-          <span class="mr-1 opacity-70">${u.type === 'Quận' ? '🏙️' : (u.type === 'Thị xã' ? '🏘️' : (u.type.includes('Thành phố') ? '🏛️' : (u.type.includes('đảo') ? '🏝️' : '🌾')))}</span>
-          ${u.name}
-        </span>
-      `).join(" ");
+    const isIslandSpecial = props.is_special_island || props.name.includes("Hoàng Sa") || props.name.includes("Trường Sa");
 
-      districtHtml = `
-        <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center space-x-1">
-              <span>🏛️</span>
-              <span>Đơn vị hành chính trực thuộc (${districtData.total}):</span>
-            </span>
-            <span class="text-[9px] font-semibold text-slate-500">${districtData.desc}</span>
+    if (isIslandSpecial) {
+      infoContainer.innerHTML = `
+        <div class="space-y-3">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+            <div class="flex items-center space-x-2">
+              <span class="text-lg">🇻🇳</span>
+              <h4 class="font-bold text-sm text-red-600 dark:text-red-400">${props.name}</h4>
+            </div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300">Chủ Quyền Quốc Gia</span>
           </div>
-          <div class="flex flex-wrap gap-1 max-h-36 overflow-y-auto pr-1">
-            ${chips}
+          <div class="p-3 rounded-xl bg-red-50/60 dark:bg-red-950/30 border border-red-200 dark:border-red-900/60 space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+            <div>Đơn vị quản lý: <strong>${props.name.includes('Hoàng Sa') ? 'Đặc khu Hoàng Sa, trực thuộc UBND TP. Đà Nẵng' : 'Đặc khu Trường Sa, trực thuộc UBND Tỉnh Khánh Hoà'}</strong></div>
+            <div>Vị trí chiến lược: <strong>Vùng biển đảo thiêng liêng tiền tiêu của Tổ quốc trên Biển Đông</strong></div>
+            <div class="text-[10px] text-blue-600 dark:text-blue-400 font-bold mt-1">Căn cứ pháp lý: Nghị quyết Quốc hội & Tuyên bố Chính phủ 12/11/1982 • Atlat GD tr.4-5</div>
           </div>
         </div>
       `;
+      return;
     }
-
-    const grdpVal = props.grdp || GRDP_LOOKUP[props.name] || 'N/A';
 
     infoContainer.innerHTML = `
       <div class="space-y-3">
@@ -2916,34 +2952,25 @@ const AtlasEngine = (function () {
 
         ${mergedBlock}
 
-        <div class="grid grid-cols-4 gap-1.5 text-center text-xs">
-          <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
-            <span class="text-[9px] text-slate-400 block uppercase font-medium">Diện tích</span>
+        <div class="grid grid-cols-3 gap-1.5 text-center text-xs">
+          <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
+            <span class="text-[9px] text-slate-400 block uppercase font-medium">Diện tích (tr.5)</span>
             <span class="font-bold tabular-nums text-slate-800 dark:text-slate-100 text-[11px]">${formatVNNum(props.area)} km²</span>
           </div>
-          <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
-            <span class="text-[9px] text-slate-400 block uppercase font-medium">Dân số</span>
-            <span class="font-bold tabular-nums text-slate-800 dark:text-slate-100 text-[11px]">${formatVNNum(props.pop)} k</span>
+          <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
+            <span class="text-[9px] text-slate-400 block uppercase font-medium">Dân số (tr.5)</span>
+            <span class="font-bold tabular-nums text-slate-800 dark:text-slate-100 text-[11px]">${formatVNNum(props.pop)} k người</span>
           </div>
-          <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
-            <span class="text-[9px] text-slate-400 block uppercase font-medium">Mật độ</span>
+          <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
+            <span class="text-[9px] text-slate-400 block uppercase font-medium">Mật độ (tr.17)</span>
             <span class="font-bold text-blue-600 dark:text-blue-400 tabular-nums text-[11px]">${formatVNNum(props.density)} ng/km²</span>
-          </div>
-          <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
-            <span class="text-[9px] text-slate-400 block uppercase font-medium">GRDP</span>
-            <span class="font-bold text-emerald-600 dark:text-emerald-400 tabular-nums text-[11px]">${typeof grdpVal === 'number' ? grdpVal.toLocaleString() : grdpVal} k tỷ</span>
           </div>
         </div>
 
-        ${districtHtml}
-
-        <!-- Thẻ Mẹo Thi & Trọng Tâm Ôn Tập -->
-        <div class="p-2.5 rounded-lg bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/60 space-y-1">
-          <div class="text-[10px] font-bold uppercase text-emerald-800 dark:text-emerald-300 flex items-center space-x-1">
-            <span>💡</span>
-            <span>Trọng Tâm Ôn Thi THPT (Chuẩn 2026):</span>
-          </div>
-          <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-relaxed">${examTip}</p>
+        <!-- Cấp GRDP bình quân đầu người theo Atlat GD tr.18 -->
+        <div class="p-2.5 rounded-lg bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/60 flex items-center justify-between text-xs">
+          <span class="text-slate-600 dark:text-slate-400 text-[11px]">GRDP bình quân đầu người:</span>
+          <span class="font-bold text-blue-700 dark:text-blue-300 text-[11px]">${grdpTierLabels[grdpTier]}</span>
         </div>
       </div>
     `;
@@ -2957,129 +2984,85 @@ const AtlasEngine = (function () {
       if (!mapContainer) return;
       legendEl = document.createElement("div");
       legendEl.id = "atlas-dynamic-legend";
-      legendEl.className = "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[220px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
+      legendEl.className = "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[260px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
       mapContainer.appendChild(legendEl);
     }
 
     const sections = [];
 
-    // Lớp 2: Địa hình
-    if (activeLayers.topography) {
+    // Chú giải Chuyên đề Nền (Base Theme hoặc Choropleth Heatmap)
+    if (currentChoroplethMode === "density") {
+      const pal = CHOROPLETH_PALETTES.density;
+      sections.push(`
+        <div class="legend-section space-y-1">
+          <div class="text-[10px] font-bold uppercase text-rose-700 dark:text-rose-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
+            ${pal.title} (${pal.source})
+          </div>
+          <div class="space-y-0.5 text-[10px]">
+            ${pal.ranges.map(r => `<div class="flex items-center space-x-1.5"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:${r.color}; border: 1px solid rgba(0,0,0,0.1)"></span><span>${r.label}</span></div>`).join("")}
+          </div>
+        </div>
+      `);
+    } else if (currentChoroplethMode === "grdp") {
+      const pal = CHOROPLETH_PALETTES.grdp;
+      sections.push(`
+        <div class="legend-section space-y-1">
+          <div class="text-[10px] font-bold uppercase text-indigo-700 dark:text-indigo-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
+            ${pal.title} (${pal.source})
+          </div>
+          <div class="space-y-0.5 text-[10px]">
+            ${pal.ranges.map(r => `<div class="flex items-center space-x-1.5"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:${r.color}; border: 1px solid rgba(0,0,0,0.1)"></span><span>${r.label}</span></div>`).join("")}
+          </div>
+        </div>
+      `);
+    } else if (currentBaseMapMode === "physical") {
       sections.push(`
         <div class="legend-section space-y-1">
           <div class="text-[10px] font-bold uppercase text-amber-700 dark:text-amber-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
-            Địa hình & Sông ngòi (Atlat GD, tr.7 & tr.10)
+            Phân Tầng Độ Cao (Atlat GD, tr.3 & tr.7)
           </div>
-          <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-[11px]">
-            <div class="flex items-center space-x-1"><span>⛰️</span> <span>Đỉnh núi cao</span></div>
-            <div class="flex items-center space-x-1"><span>〰️</span> <span>Dãy núi / Cánh cung</span></div>
-            <div class="flex items-center space-x-1"><span>🟫</span> <span>Cao nguyên badan</span></div>
-            <div class="flex items-center space-x-1"><span class="w-3 h-1 bg-blue-500 inline-block"></span> <span>Sông ngòi chính</span></div>
+          <div class="grid grid-cols-2 gap-1 text-[10px]">
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#86efac"></span><span>< 50 m</span></div>
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#bef264"></span><span>50 - 200 m</span></div>
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#fde047"></span><span>200 - 500 m</span></div>
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#fb923c"></span><span>500 - 1000 m</span></div>
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#ea580c"></span><span>1000 - 1500 m</span></div>
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#9a3412"></span><span>> 1500 m</span></div>
           </div>
         </div>
       `);
-    }
-
-    // Lớp 3: Khí hậu
-    if (activeLayers.climate) {
+    } else if (currentBaseMapMode === "climate") {
       sections.push(`
         <div class="legend-section space-y-1">
           <div class="text-[10px] font-bold uppercase text-blue-700 dark:text-blue-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
-            Khí Hậu & Thủy Văn (Atlat GD, tr.8 & tr.9)
+            2 Miền & 7 Vùng Khí Hậu (Atlat GD, tr.8)
           </div>
-          <div class="text-[10px] space-y-0.5">
-            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-blue-600 inline-block"></span> <span>Gió mùa Đông Bắc (lạnh)</span></div>
-            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-red-600 inline-block"></span> <span>Gió mùa Tây Nam (nóng ẩm)</span></div>
-            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-amber-600 inline-block"></span> <span>Gió tây khô nóng</span></div>
-            <div class="flex items-center space-x-1.5"><span>🌀</span> <span>Đường di chuyển bão</span></div>
-            <div class="flex items-center space-x-1.5"><span>🌡️</span> <span>Trạm khí tượng</span></div>
-          </div>
-        </div>
-      `);
-    }
-
-    // Lớp 4: Nông nghiệp & Ngư trường
-    if (activeLayers.agriculture) {
-      sections.push(`
-        <div class="legend-section space-y-1">
-          <div class="text-[10px] font-bold uppercase text-emerald-700 dark:text-emerald-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
-            Nông Nghiệp & Thủy Sản (Atlat GD, tr.19 - 21)
-          </div>
-          <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-[11px]">
-            <div class="flex items-center space-x-1"><span>🌾</span> <span>Lúa gạo</span></div>
-            <div class="flex items-center space-x-1"><span>☕</span> <span>Cà phê / Tiêu</span></div>
-            <div class="flex items-center space-x-1"><span>🌲</span> <span>Cao su</span></div>
-            <div class="flex items-center space-x-1"><span>🍵</span> <span>Chè</span></div>
-            <div class="flex items-center space-x-1"><span>🍊</span> <span>Cây ăn quả</span></div>
-            <div class="flex items-center space-x-1"><span>🐟</span> <span>Ngư trường lớn</span></div>
+          <div class="grid grid-cols-2 gap-x-2 gap-y-0.5 text-[10px]">
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#a7f3d0"></span><span class="truncate">Tây Bắc</span></div>
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#6ee7b7"></span><span class="truncate">Đông Bắc</span></div>
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#93c5fd"></span><span class="truncate">ĐB Bắc Bộ</span></div>
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#38bdf8"></span><span class="truncate">Bắc Trung Bộ</span></div>
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#fde047"></span><span class="truncate">Nam Trung Bộ</span></div>
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#fb923c"></span><span class="truncate">Tây Nguyên</span></div>
+            <div class="flex items-center space-x-1"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#f472b6"></span><span class="truncate">Nam Bộ</span></div>
           </div>
         </div>
       `);
-    }
-
-    // Lớp 5: Khoáng sản & Năng lượng
-    if (activeLayers.minerals_power) {
-      sections.push(`
-        <div class="legend-section space-y-1">
-          <div class="text-[10px] font-bold uppercase text-slate-700 dark:text-slate-300 pb-0.5 border-b border-slate-100 dark:border-slate-800">
-            Khoáng Sản & Năng Lượng (Atlat GD, tr.13 & tr.23)
-          </div>
-          <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-[10px]">
-            <div class="flex items-center space-x-1">${getMineralSvg("coal")} <span>Than</span></div>
-            <div class="flex items-center space-x-1">${getMineralSvg("oil")} <span>Dầu</span></div>
-            <div class="flex items-center space-x-1">${getMineralSvg("gas")} <span>Khí</span></div>
-            <div class="flex items-center space-x-1">${getMineralSvg("iron")} <span>Sắt</span></div>
-            <div class="flex items-center space-x-1">${getMineralSvg("bauxite")} <span>Bôxit</span></div>
-            <div class="flex items-center space-x-1">${getMineralSvg("titan")} <span>Titan</span></div>
-            <div class="flex items-center space-x-1">${getPowerSvg("Thủy điện", 500)} <span>Thủy điện</span></div>
-            <div class="flex items-center space-x-1">${getPowerSvg("Nhiệt điện", 500)} <span>Nhiệt điện</span></div>
-            <div class="flex items-center space-x-1"><span>🌀</span> <span>Điện gió</span></div>
-            <div class="flex items-center space-x-1"><span>☀️</span> <span>Mặt trời</span></div>
-          </div>
-        </div>
-      `);
-    }
-
-    // Lớp 6: Kinh tế & Công nghiệp (Atlat GD, tr.18 & tr.22)
-    if (activeLayers.industrial) {
+    } else if (currentBaseMapMode === "economic") {
       sections.push(`
         <div class="legend-section space-y-1">
           <div class="text-[10px] font-bold uppercase text-purple-700 dark:text-purple-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
-            Kinh tế & Công nghiệp (Atlat GD, tr.18 & tr.22)
-          </div>
-          <div class="text-[10px] text-slate-600 dark:text-slate-300">
-            Cơ cấu GRDP 4 khu vực kinh tế:
-          </div>
-          <div class="space-y-0.5 text-[9px]">
-            <div class="flex items-center space-x-1.5"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#16A34A"></span><span class="truncate">Nông, lâm & thuỷ sản</span></div>
-            <div class="flex items-center space-x-1.5"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#DC2626"></span><span class="truncate">Công nghiệp & xây dựng</span></div>
-            <div class="flex items-center space-x-1.5"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#EAB308"></span><span class="truncate">Dịch vụ</span></div>
-            <div class="flex items-center space-x-1.5"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#0284C7"></span><span class="truncate">Thuế sản phẩm trừ trợ cấp</span></div>
-          </div>
-        </div>
-      `);
-    }
-
-    // Lớp 7: Giao thông vận tải (Atlat GD, tr.23)
-    if (activeLayers.transportation) {
-      sections.push(`
-        <div class="legend-section space-y-1">
-          <div class="text-[10px] font-bold uppercase text-red-600 dark:text-red-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
-            Giao Thông Vận Tải (Atlat GD, tr.23)
+            Quy Mô GRDP Tỉnh (Atlat GD, tr.18)
           </div>
           <div class="space-y-0.5 text-[10px]">
-            <div class="flex items-center space-x-1.5"><span class="w-3.5 h-1 bg-red-600 inline-block"></span> <span>Quốc lộ 1A (Lạng Sơn - Cà Mau)</span></div>
-            <div class="flex items-center space-x-1.5"><span class="w-3.5 h-1 bg-green-600 inline-block"></span> <span>Đường Hồ Chí Minh</span></div>
-            <div class="flex items-center space-x-1.5"><span class="w-3.5 h-1 border-t-2 border-dashed border-slate-900 dark:border-slate-100 inline-block"></span> <span>Đường sắt Thống Nhất</span></div>
-            <div class="flex items-center space-x-1.5"><span>✈️</span> <span>9 Cảng hàng không</span></div>
-            <div class="flex items-center space-x-1.5"><span>⚓</span> <span>7 Cụm Cảng biển lớn</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-3.5 h-3.5 rounded-full border border-purple-600 inline-block shrink-0"></span><span>≥ 1 000 nghìn tỉ</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-3 h-3 rounded-full border border-purple-600 inline-block shrink-0"></span><span>300 - < 1 000 nghìn tỉ</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-2.5 h-2.5 rounded-full border border-purple-600 inline-block shrink-0"></span><span>100 - < 300 nghìn tỉ</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-2 h-2 rounded-full border border-purple-600 inline-block shrink-0"></span><span>< 100 nghìn tỉ</span></div>
           </div>
         </div>
       `);
-    }
-
-    // Lớp 1: Ranh giới & 6 Vùng kinh tế (Atlat GD, tr.4-5 & tr.18)
-    if (activeLayers.provinces) {
+    } else if (activeLayers.provinces) {
       sections.push(`
         <div class="legend-section space-y-1">
           <div class="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
@@ -3092,6 +3075,61 @@ const AtlasEngine = (function () {
             <div class="flex items-center space-x-1.5"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#f59e0b"></span><span class="truncate">IV. Duyên hải Nam Trung Bộ & Tây Nguyên</span></div>
             <div class="flex items-center space-x-1.5"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#ec4899"></span><span class="truncate">V. Đông Nam Bộ</span></div>
             <div class="flex items-center space-x-1.5"><span class="w-2.5 h-2.5 rounded-xs shrink-0" style="background:#8b5cf6"></span><span class="truncate">VI. Đồng bằng sông Cửu Long</span></div>
+          </div>
+        </div>
+      `);
+    }
+
+    // Các lớp chuyên đề bật kèm
+    if (activeLayers.topography) {
+      sections.push(`
+        <div class="legend-section space-y-1">
+          <div class="text-[10px] font-bold uppercase text-amber-700 dark:text-amber-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
+            Địa hình & Sông (Atlat GD, tr.7 & tr.10)
+          </div>
+          <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-[10px]">
+            <div class="flex items-center space-x-1"><span>⛰️</span> <span>Đỉnh núi cao</span></div>
+            <div class="flex items-center space-x-1"><span>〰️</span> <span>Dãy núi / Cánh cung</span></div>
+            <div class="flex items-center space-x-1"><span>🟫</span> <span>Cao nguyên</span></div>
+            <div class="flex items-center space-x-1"><span class="w-3 h-1 bg-blue-500 inline-block"></span> <span>Sông chính</span></div>
+          </div>
+        </div>
+      `);
+    }
+
+    if (activeLayers.climate) {
+      sections.push(`
+        <div class="legend-section space-y-1">
+          <div class="text-[10px] font-bold uppercase text-blue-700 dark:text-blue-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
+            Gió & Bão (Atlat GD, tr.8)
+          </div>
+          <div class="text-[10px] space-y-0.5">
+            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-blue-600 inline-block"></span> <span>Gió mùa đông</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-red-600 inline-block"></span> <span>Gió mùa hạ</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-3 h-1 bg-amber-600 inline-block"></span> <span>Gió Tây khô nóng</span></div>
+            <div class="flex items-center space-x-1.5"><span>🌀</span> <span>Bão (Tháng VI - XII)</span></div>
+          </div>
+        </div>
+      `);
+    }
+
+    if (activeLayers.minerals_power) {
+      sections.push(`
+        <div class="legend-section space-y-1">
+          <div class="text-[10px] font-bold uppercase text-slate-700 dark:text-slate-300 pb-0.5 border-b border-slate-100 dark:border-slate-800">
+            Ký hiệu Khoáng Sản & Điện (Tr.3, 13, 23)
+          </div>
+          <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-[10px]">
+            <div class="flex items-center space-x-1">${getMineralSvg("coal")} <span>Than</span></div>
+            <div class="flex items-center space-x-1">${getMineralSvg("oil")} <span>Dầu mỏ</span></div>
+            <div class="flex items-center space-x-1">${getMineralSvg("gas")} <span>Khí đốt</span></div>
+            <div class="flex items-center space-x-1">${getMineralSvg("iron")} <span>Sắt (Fe)</span></div>
+            <div class="flex items-center space-x-1">${getMineralSvg("bauxite")} <span>Bôxit (Al)</span></div>
+            <div class="flex items-center space-x-1">${getMineralSvg("apatite")} <span>Apatit (A)</span></div>
+            <div class="flex items-center space-x-1">${getMineralSvg("tin")} <span>Thiếc (Sn)</span></div>
+            <div class="flex items-center space-x-1">${getMineralSvg("titan")} <span>Titan (Ti)</span></div>
+            <div class="flex items-center space-x-1">${getPowerSvg("Thủy điện", 1000)} <span>Thủy điện</span></div>
+            <div class="flex items-center space-x-1">${getPowerSvg("Nhiệt điện", 1000)} <span>Nhiệt điện</span></div>
           </div>
         </div>
       `);
@@ -3110,14 +3148,27 @@ const AtlasEngine = (function () {
           </span>
           <div class="flex items-center space-x-1">
             <span class="text-[9px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-1.5 py-0.2 rounded-full">THPT</span>
-            <button id="btn-legend-collapse" class="text-[10px] text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 px-1 font-bold">▲</button>
+            <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold leading-none px-1">▲</button>
           </div>
         </div>
-        <div id="atlas-legend-body" class="${isLegendCollapsed ? 'hidden' : 'space-y-2'}">
+        <div id="atlas-dynamic-legend-body" class="space-y-2 pt-0.5">
           ${sections.join("")}
         </div>
       </div>
     `;
+  }
+
+  let isLegendCollapsed = false;
+  function toggleLegendCollapse() {
+    isLegendCollapsed = !isLegendCollapsed;
+    const body = document.getElementById("atlas-dynamic-legend-body") || document.getElementById("atlas-legend-body");
+    const btn = document.getElementById("btn-legend-collapse");
+    if (body) {
+      body.classList.toggle("hidden", isLegendCollapsed);
+    }
+    if (btn) {
+      btn.innerText = isLegendCollapsed ? "▼" : "▲";
+    }
   }
 
   // Bật/tắt lớp độc lập
@@ -3126,7 +3177,7 @@ const AtlasEngine = (function () {
     activeLayers[name] = !!visible;
 
     const chk = document.getElementById(`layer-chk-${name}`);
-    if (chk && chk.checked !== !!visible) {
+    if (chk && chk.checked !== !visible) {
       chk.checked = !!visible;
     }
 
@@ -3211,22 +3262,6 @@ const AtlasEngine = (function () {
   let atlatTouchStartDist = 0;
   let atlatTouchStartZoom = 1;
   let atlatViewerListenersAttached = false;
-  let isLegendCollapsed = false;
-
-  function toggleLegendCollapse() {
-    isLegendCollapsed = !isLegendCollapsed;
-    const body = document.getElementById("atlas-legend-body");
-    const btn = document.getElementById("btn-legend-collapse");
-    if (body) {
-      if (isLegendCollapsed) {
-        body.classList.add("hidden");
-        if (btn) btn.innerText = "▼";
-      } else {
-        body.classList.remove("hidden");
-        if (btn) btn.innerText = "▲";
-      }
-    }
-  }
 
   async function initAtlatPages() {
     try {
@@ -3442,6 +3477,7 @@ const AtlasEngine = (function () {
     renderTransportationLayer,
     renderBaselineLayer,
     updateDynamicLegend,
+    toggleLegendCollapse,
     toggleLayer,
     searchAndFlyTo,
     toggleMeasureTool,
@@ -3466,7 +3502,6 @@ const AtlasEngine = (function () {
     fitAtlatPageWidth,
     prevAtlatPage,
     nextAtlatPage,
-    toggleLegendCollapse,
     resetView: () => fitVietnamBounds({ duration: 1.2 }),
     fitVietnamBounds,
     getMap: () => map

@@ -128,14 +128,18 @@
       },
       "properties": {
         "id": "PEAK_06",
-        "name": "Đỉnh Langbiang (2.167m)",
+        "name": "Đỉnh Lang Biang",
         "category": "peak",
         "elevation_m": 2167,
         "mountain_range": "Cao nguyên Lâm Viên",
         "province": "Lâm Đồng",
-        "desc": "Biểu tượng nóc nhà Đà Lạt, cảnh quan thiên nhiên và du lịch sinh thái nổi tiếng.",
+        "desc": "Đỉnh Lang Biang (2.167 m, Lâm Đồng - Atlat GD tr.15).",
         "atlat_page": 7,
-        "source": "Atlat GD, tr.7"
+        "source": "Atlat GD, tr.7",
+        "aliases": [
+          "Langbiang",
+          "Đỉnh Lâm Viên"
+        ]
       }
     },
     {
@@ -264,16 +268,24 @@
         "type": "LineString",
         "coordinates": [
           [
-            107,
-            21.8
+            106.5,
+            21.1
+          ],
+          [
+            106.8,
+            21.15
           ],
           [
             107.1,
-            21.4
+            21.22
           ],
           [
-            106.7,
-            21.1
+            107.45,
+            21.35
+          ],
+          [
+            107.75,
+            21.5
           ]
         ]
       },
@@ -284,7 +296,8 @@
         "direction": "Cánh cung ven biển Đông Bắc",
         "desc": "Cánh cung Đông Triều ôm trọn vùng than Quảng Ninh và danh thắng Yên Tử.",
         "atlat_page": 7,
-        "source": "Atlat GD, tr.7"
+        "source": "Atlat GD, tr.7",
+        "note": "Cánh cung Đông Triều chạy vòng cung Tây - Đông (Atlat GD, tr.14)."
       }
     },
     {
@@ -293,20 +306,28 @@
         "type": "LineString",
         "coordinates": [
           [
-            105.3,
+            104.9,
             19.3
           ],
           [
-            105.8,
+            105.3,
+            18.7
+          ],
+          [
+            105.6,
             18.2
           ],
           [
-            106.2,
-            17.5
+            106.0,
+            17.8
           ],
           [
-            107.2,
-            16.3
+            106.3,
+            17.2
+          ],
+          [
+            106.7,
+            16.8
           ]
         ]
       },
@@ -317,7 +338,8 @@
         "direction": "Tây Bắc - Đông Nam",
         "desc": "Từ nam sông Cả tới dãy Bạch Mã, sườn Đông dốc hẹp ăn lan ra biển.",
         "atlat_page": 7,
-        "source": "Atlat GD, tr.7"
+        "source": "Atlat GD, tr.7",
+        "note": "Dãy Trường Sơn Bắc chạy dọc biên giới Việt - Lào (Atlat GD, tr.14)."
       }
     },
     {
@@ -326,19 +348,31 @@
         "type": "LineString",
         "coordinates": [
           [
-            108,
-            15.2
-          ],
-          [
-            108.5,
-            14
+            107.9,
+            16.0
           ],
           [
             108.3,
-            12.5
+            15.3
           ],
           [
-            107.8,
+            108.7,
+            14.8
+          ],
+          [
+            108.9,
+            14.0
+          ],
+          [
+            109.0,
+            13.0
+          ],
+          [
+            108.9,
+            12.2
+          ],
+          [
+            108.6,
             11.5
           ]
         ]
@@ -350,7 +384,8 @@
         "direction": "Vòng cung lồi ra biển Đông",
         "desc": "Khối núi Kon Tum và các cao nguyên badan xếp tầng màu mỡ.",
         "atlat_page": 7,
-        "source": "Atlat GD, tr.7"
+        "source": "Atlat GD, tr.7",
+        "note": "Dãy Trường Sơn Nam chạy theo dải núi phía đông (Atlat GD, tr.14)."
       }
     },
     {
