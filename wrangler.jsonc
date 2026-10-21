@@ -4,6 +4,15 @@
   "compatibility_date": "2024-11-01",
   "assets": {
     "directory": ".",
+    "exclude": [
+      ".git/**",
+      ".github/**",
+      "node_modules/**",
+      ".wrangler/**",
+      "docs/**",
+      "scripts/**",
+      "tools/**"
+    ],
     "not_found_handling": "single-page-application"
   }
 }

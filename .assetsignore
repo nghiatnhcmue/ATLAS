@@ -1,7 +1,11 @@
-# Ignore build/dev scripts and internal docs from static upload
-docs/
-scripts/
-tools/
+.git
+.git/**
+.github/**
+.wrangler/**
+node_modules/**
+docs/**
+scripts/**
+tools/**
 *.py
 *.bat
 *.ps1
