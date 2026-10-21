@@ -3,50 +3,38 @@
 # Bugfix BUG-23: Safe Caching - Revalidates immediately upon code updates
 # ==============================================================================
 
-# 1. Dữ liệu bản đồ GeoJSON & JSON: Cache ngắn (1 giờ) kèm must-revalidate
-/public/data/*
-  Cache-Control: public, max-age=3600, must-revalidate
-  Access-Control-Allow-Origin: *
-  Access-Control-Allow-Methods: GET, OPTIONS
-  X-Content-Type-Options: nosniff
-
-# 1b. Anh quet Atlat goc
+# 1. Ảnh quét Atlat gốc: Cache 1 ngày
 /public/data/atlat_pages/*
   Cache-Control: public, max-age=86400, must-revalidate
   Access-Control-Allow-Origin: *
   Access-Control-Allow-Methods: GET, OPTIONS
 
-# 2. Mã nguồn JS và CSS: Luôn revalidate hoặc cache ngắn 5 phút để cập nhật tức thì
+# 2. Dữ liệu bản đồ GeoJSON & JSON khác: Cache ngắn (1 giờ)
+/public/data/*
+  Cache-Control: public, max-age=3600, must-revalidate
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, OPTIONS
+
+# 3. Mã nguồn JS và CSS: Cache ngắn 5 phút để cập nhật tức thì
 /js/*
   Cache-Control: public, max-age=300, must-revalidate
   Access-Control-Allow-Origin: *
-  X-Content-Type-Options: nosniff
 
 /css/*
   Cache-Control: public, max-age=300, must-revalidate
   Access-Control-Allow-Origin: *
-  X-Content-Type-Options: nosniff
 
-# 3. HTML chính (Single-Page Application): Tuyệt đối không cache để tải bản mới ngay lập tức
+# 4. HTML chính (Single-Page Application): Tuyệt đối không cache
 /
   Cache-Control: no-cache, no-store, must-revalidate
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
-  Referrer-Policy: strict-origin-when-cross-origin
 
 /index.html
   Cache-Control: no-cache, no-store, must-revalidate
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
-  Referrer-Policy: strict-origin-when-cross-origin
 
 /200.html
   Cache-Control: no-cache, no-store, must-revalidate
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
-  Referrer-Policy: strict-origin-when-cross-origin
 
-# 4. Fallback mặc định
+# 5. Global Security Headers (Khai báo duy nhất 1 lần cho mọi route, chống duplicate)
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN

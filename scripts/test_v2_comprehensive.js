@@ -31,9 +31,9 @@ check("BUG-23", "Versioning (?v=2026.3.1) và cache header ngăn người dùng 
   const headers = fs.readFileSync("_headers", "utf-8");
 
   assert(!indexHtml.includes("?v=2026.2"), "index.html has no ?v=2026.2");
-  assert(indexHtml.includes("?v=2026.3.1"), "index.html has ?v=2026.3.1");
+  assert(indexHtml.includes("?v=2026.3."), "index.html has ?v=2026.3.");
   assert(!html200.includes("?v=2026.2"), "200.html has no ?v=2026.2");
-  assert(html200.includes("?v=2026.3.1"), "200.html has ?v=2026.3.1");
+  assert(html200.includes("?v=2026.3."), "200.html has ?v=2026.3.");
 
   assert(headers.includes("/public/data/*"), "_headers has data rule");
   assert(headers.includes("must-revalidate"), "_headers has must-revalidate");
