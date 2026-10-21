@@ -371,8 +371,17 @@
               </label>
               <span class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400">Atlat GD, tr.19 - 21</span>
             </div>
+            <!-- Bộ lọc chuyên sâu Nông - Lâm - Thủy sản 62 đối tượng toàn quốc -->
+            <select id="agri-filter-select" onchange="AtlasEngine.renderAgricultureLayer(this.value)" class="w-full text-[11px] p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 font-medium">
+              <option value="all">-- Tất cả Nông, Lâm, Thủy sản (62 đối tượng) --</option>
+              <option value="industrial_crops">Cây công nghiệp (Cà phê, cao su, chè, tiêu, điều, mía, dừa...)</option>
+              <option value="food_crops">Cây lương thực & Cây ăn quả (Lúa, ngô, hoa quả...)</option>
+              <option value="livestock">Chăn nuôi gia súc & gia cầm (Trâu, bò thịt, bò sữa, lợn, gia cầm)</option>
+              <option value="fishery">Thủy sản & Ngư trường (4 Ngư trường, nuôi tôm, cá tra, bãi cá)</option>
+              <option value="forestry">Lâm nghiệp (Rừng ngập mặn Cà Mau, Cần Giờ, vùng khai thác gỗ)</option>
+            </select>
             <p class="text-[10px] text-slate-500 dark:text-slate-400">
-              Vùng chuyên canh Lúa gạo 🌾, Cà phê ☕, Cao su 🌲, Chè 🍵, Cây ăn quả 🍊 & Thủy sản (Đồng bằng sông Cửu Long, Duyên hải Nam Trung Bộ).
+              62 đối tượng toàn diện chuẩn Atlat GD tr.19-21: Cây công nghiệp ☕, Lúa & hoa quả 🌾, Chăn nuôi 🐂, Thủy sản 🐟, Rừng 🌲.
             </p>
           </div>
 

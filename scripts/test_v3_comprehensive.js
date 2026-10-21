@@ -141,7 +141,7 @@ check("BUG-33", "Hoàng Sa & Trường Sa đảo thực tế tỉ lệ chuẩn, 
 // 8. BUG-34 (P0): Nông nghiệp chuẩn GD tr.19-21
 check("BUG-34", "Lớp nông nghiệp chuẩn Atlat GD tr.19-21, không số % tự sinh, không đơn vị cũ", () => {
   const agri = JSON.parse(fs.readFileSync("public/data/agriculture_fishery.geojson", "utf-8"));
-  assert.strictEqual(agri.features.length, 10, "10 key agricultural zones & fishing grounds");
+  assert(agri.features.length >= 50, "Full comprehensive agricultural zones & fishing grounds >= 50");
   for (const feat of agri.features) {
     const p = feat.properties;
     assert(p.source.includes("Atlat GD"), "Source cites Atlat GD");

@@ -1,72 +1,25 @@
 {
   "type": "FeatureCollection",
-  "metadata": {
-    "title": "Bản đồ Nông, Lâm, Thủy sản & Ngư trường Việt Nam (Atlat GD, tr.19 - 21)",
-    "count": 10,
-    "standard": "Atlat Địa lí Việt Nam & SGK THPT"
-  },
+  "name": "agriculture_fishery_full",
   "features": [
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [
-          105.5,
-          10.3
-        ]
-      },
-      "properties": {
-        "id": "AGRI_01",
-        "name": "Vùng sản xuất lúa hàng đầu: Đồng bằng sông Cửu Long",
-        "category": "crop_specialized",
-        "crop_type": "Lúa gạo",
-        "symbol": "rice",
-        "icon_emoji": "🌾",
-        "desc": "Vùng trọng điểm sản xuất lúa và nông sản hàng hóa lớn nhất cả nước, dẫn đầu về diện tích gieo trồng và sản lượng lúa.",
-        "atlat_page": 19,
-        "source": "Atlat GD, tr.19 (Nông nghiệp chung)"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          106.3,
-          20.6
-        ]
-      },
-      "properties": {
-        "id": "AGRI_02",
-        "name": "Vùng thâm canh lúa: Đồng bằng sông Hồng",
-        "category": "crop_specialized",
-        "crop_type": "Lúa gạo",
-        "symbol": "rice",
-        "icon_emoji": "🌾",
-        "desc": "Vùng có trình độ thâm canh lúa cao, năng suất lúa bình quân dẫn đầu cả nước trên đất phù sa sông Hồng và sông Thái Bình.",
-        "atlat_page": 19,
-        "source": "Atlat GD, tr.19 (Nông nghiệp chung)"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          108.04,
+          108.05,
           12.67
         ]
       },
       "properties": {
-        "id": "AGRI_03",
-        "name": "Vùng chuyên canh Cà phê & Hồ tiêu: Tây Nguyên",
-        "category": "crop_specialized",
-        "crop_type": "Cà phê & Hồ tiêu",
-        "symbol": "coffee",
+        "name": "Vùng cà phê Buôn Ma Thuột",
+        "category": "industrial_crops",
+        "crop_type": "Cà phê vối (Robusta)",
         "icon_emoji": "☕",
-        "desc": "Địa bàn tập trung diện tích và sản lượng cà phê vối (robusta) và hồ tiêu lớn nhất cả nước trên các cao nguyên đất đỏ badan màu mỡ (Đắk Lắk, Gia Lai, Lâm Đồng).",
-        "atlat_page": 19,
-        "source": "Atlat GD, tr.19 & tr.20 (Cây công nghiệp)"
+        "province": "Đắk Lắk",
+        "region": "Tây Nguyên",
+        "desc": "Thủ phủ cà phê Việt Nam trên cao nguyên đất đỏ bazan màu mỡ. Đắk Lắk dẫn đầu cả nước về diện tích và sản lượng cà phê xuất khẩu.",
+        "source": "Atlat GD, tr.19 & tr.20"
       }
     },
     {
@@ -74,20 +27,179 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          106.85,
-          11.75
+          107.98,
+          11.55
         ]
       },
       "properties": {
-        "id": "AGRI_04",
-        "name": "Vùng chuyên canh Cao su & Điều: Đông Nam Bộ",
-        "category": "crop_specialized",
+        "name": "Vùng cà phê Di Linh - Bảo Lộc",
+        "category": "industrial_crops",
+        "crop_type": "Cà phê",
+        "icon_emoji": "☕",
+        "province": "Lâm Đồng",
+        "region": "Tây Nguyên",
+        "desc": "Vùng chuyên canh cà phê lớn thứ hai cả nước trên cao nguyên Di Linh lượn sóng.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.0,
+          13.98
+        ]
+      },
+      "properties": {
+        "name": "Vùng cà phê Pleiku",
+        "category": "industrial_crops",
+        "crop_type": "Cà phê",
+        "icon_emoji": "☕",
+        "province": "Gia Lai",
+        "region": "Tây Nguyên",
+        "desc": "Vùng chuyên canh cà phê trọng điểm Bắc Tây Nguyên trên cao nguyên Pleiku.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.62,
+          12.45
+        ]
+      },
+      "properties": {
+        "name": "Vùng cà phê Đắk Mil",
+        "category": "industrial_crops",
+        "crop_type": "Cà phê",
+        "icon_emoji": "☕",
+        "province": "Lâm Đồng",
+        "region": "Tây Nguyên",
+        "desc": "Vùng cà phê chất lượng cao trên cao nguyên Mơ Nông khí hậu cận xích đạo.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.95,
+          21.2
+        ]
+      },
+      "properties": {
+        "name": "Vùng cà phê chè Mai Sơn",
+        "category": "industrial_crops",
+        "crop_type": "Cà phê chè (Arabica)",
+        "icon_emoji": "☕",
+        "province": "Sơn La",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Vùng cà phê arabica nổi tiếng miền núi Tây Bắc với khí hậu cận nhiệt đới trên núi cao.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.73,
+          16.68
+        ]
+      },
+      "properties": {
+        "name": "Vùng cà phê Khe Sanh - Hướng Hóa",
+        "category": "industrial_crops",
+        "crop_type": "Cà phê chè (Arabica)",
+        "icon_emoji": "☕",
+        "province": "Quảng Trị",
+        "region": "Bắc Trung Bộ",
+        "desc": "Vùng cà phê chè Khe Sanh trên đất bazan Hướng Hóa, thương hiệu cà phê đặc sản miền Trung.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.88,
+          11.52
+        ]
+      },
+      "properties": {
+        "name": "Thủ phủ cao su Bình Phước",
+        "category": "industrial_crops",
         "crop_type": "Cao su",
-        "symbol": "rubber",
         "icon_emoji": "🌳",
-        "desc": "Vùng chuyên canh cây cao su và điều lớn nhất Việt Nam, gắn với đất badan và đất xám phù sa cổ địa hình lượn sóng.",
-        "atlat_page": 19,
-        "source": "Atlat GD, tr.19 & tr.20 (Cây công nghiệp)"
+        "province": "Thành phố Đồng Nai",
+        "region": "Đông Nam Bộ",
+        "desc": "Vùng chuyên canh cây cao su có diện tích và sản lượng lớn nhất cả nước, gắn với đất xám bạc màu và đất bazan lượn sóng.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.38,
+          11.32
+        ]
+      },
+      "properties": {
+        "name": "Nông trường cao su Dầu Tiếng",
+        "category": "industrial_crops",
+        "crop_type": "Cao su",
+        "icon_emoji": "🌳",
+        "province": "Tây Ninh",
+        "region": "Đông Nam Bộ",
+        "desc": "Vùng cao su truyền thống quy mô đại nông trường lâu đời nhất vùng Đông Nam Bộ.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.02,
+          13.65
+        ]
+      },
+      "properties": {
+        "name": "Vùng cao su Chư Sê - Đức Cơ",
+        "category": "industrial_crops",
+        "crop_type": "Cao su",
+        "icon_emoji": "🌳",
+        "province": "Gia Lai",
+        "region": "Tây Nguyên",
+        "desc": "Vùng cao su đại ngàn trọng điểm Tây Nguyên phát triển mạnh từ thập niên 1980.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.55,
+          11.15
+        ]
+      },
+      "properties": {
+        "name": "Vùng cao su Đức Linh",
+        "category": "industrial_crops",
+        "crop_type": "Cao su",
+        "icon_emoji": "🌳",
+        "province": "Lâm Đồng",
+        "region": "Đông Nam Bộ",
+        "desc": "Vùng cao su liên kết giữa Đông Nam Bộ và Duyên hải Nam Trung Bộ.",
+        "source": "Atlat GD, tr.19 & tr.20"
       }
     },
     {
@@ -96,19 +208,18 @@
         "type": "Point",
         "coordinates": [
           105.8,
-          21.65
+          21.55
         ]
       },
       "properties": {
-        "id": "AGRI_05",
-        "name": "Vùng chuyên canh Chè: Trung du và miền núi phía Bắc",
-        "category": "crop_specialized",
-        "crop_type": "Chè",
-        "symbol": "tea",
+        "name": "Vùng chè Tân Cương",
+        "category": "industrial_crops",
+        "crop_type": "Chè búp",
         "icon_emoji": "🍵",
-        "desc": "Vùng có diện tích và sản lượng chè búp lớn nhất cả nước, phát triển mạnh ở vùng đồi trung du và cao nguyên khí hậu cận nhiệt (Thái Nguyên, Phú Thọ).",
-        "atlat_page": 19,
-        "source": "Atlat GD, tr.19 & tr.20 (Cây công nghiệp)"
+        "province": "Thái Nguyên",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "'Đệ nhất danh trà' Thái Nguyên. Tỉnh Thái Nguyên dẫn đầu cả nước về diện tích và sản lượng chè búp.",
+        "source": "Atlat GD, tr.19 & tr.20"
       }
     },
     {
@@ -116,20 +227,19 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          106.35,
-          10.35
+          105.2,
+          21.42
         ]
       },
       "properties": {
-        "id": "AGRI_06",
-        "name": "Vùng Cây ăn quả nhiệt đới: Đồng bằng sông Cửu Long",
-        "category": "crop_specialized",
-        "crop_type": "Cây ăn quả",
-        "symbol": "fruit",
-        "icon_emoji": "🍊",
-        "desc": "Vùng chuyên canh cây ăn quả nhiệt đới lớn nhất cả nước với các chủng loại nổi tiếng: xoài, bưởi, sầu riêng, cam, chôm chôm.",
-        "atlat_page": 19,
-        "source": "Atlat GD, tr.19 (Nông nghiệp chung)"
+        "name": "Vùng chè Thanh Ba - Cẩm Khê",
+        "category": "industrial_crops",
+        "crop_type": "Chè búp",
+        "icon_emoji": "🍵",
+        "province": "Phú Thọ",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Vùng chè đồi trung du truyền thống của đất Tổ Phú Thọ, diện tích chè lớn thứ 3 cả nước.",
+        "source": "Atlat GD, tr.19 & tr.20"
       }
     },
     {
@@ -137,20 +247,699 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          107.5,
+          104.65,
+          20.85
+        ]
+      },
+      "properties": {
+        "name": "Vùng chè cao nguyên Mộc Châu",
+        "category": "industrial_crops",
+        "crop_type": "Chè Shan tuyết & Ô long",
+        "icon_emoji": "🍵",
+        "province": "Sơn La",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Vùng chè shan tuyết và chè ô long trên cao nguyên đá vôi Mộc Châu độ cao trên 1.000m.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8,
+          11.54
+        ]
+      },
+      "properties": {
+        "name": "Vùng chè Bảo Lộc",
+        "category": "industrial_crops",
+        "crop_type": "Chè",
+        "icon_emoji": "🍵",
+        "province": "Lâm Đồng",
+        "region": "Tây Nguyên",
+        "desc": "Thủ phủ chè phía Nam, vùng chuyên canh chè lớn nhất miền Trung và Tây Nguyên.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.15,
+          12.55
+        ]
+      },
+      "properties": {
+        "name": "Vùng hồ tiêu Cư Kuin",
+        "category": "industrial_crops",
+        "crop_type": "Hồ tiêu",
+        "icon_emoji": "🌶️",
+        "province": "Đắk Lắk",
+        "region": "Tây Nguyên",
+        "desc": "Vùng chuyên canh hồ tiêu xuất khẩu trọng điểm Tây Nguyên trên đất đỏ bazan.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.0,
+          10.25
+        ]
+      },
+      "properties": {
+        "name": "Hồ tiêu đảo Phú Quốc",
+        "category": "industrial_crops",
+        "crop_type": "Hồ tiêu",
+        "icon_emoji": "🌶️",
+        "province": "An Giang",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Đặc sản tiêu Phú Quốc cay nồng nổi tiếng, phát triển trên đất đồi đảo ngọc.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.9,
+          11.6
+        ]
+      },
+      "properties": {
+        "name": "Thủ phủ điều Bù Đăng - Đồng Phú",
+        "category": "industrial_crops",
+        "crop_type": "Cây điều",
+        "icon_emoji": "🥜",
+        "province": "Thành phố Đồng Nai",
+        "region": "Đông Nam Bộ",
+        "desc": "Vùng trồng điều lớn nhất Việt Nam, nguyên liệu cho ngành chế biến hạt điều xuất khẩu số 1 thế giới.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.4,
+          19.9
+        ]
+      },
+      "properties": {
+        "name": "Vùng mía đường Lam Sơn",
+        "category": "industrial_crops",
+        "crop_type": "Mía đường",
+        "icon_emoji": "🎋",
+        "province": "Thanh Hoá",
+        "region": "Bắc Trung Bộ",
+        "desc": "Vùng nguyên liệu mía đường lớn nhất miền Bắc trên vùng đồi gò Thanh Hoá.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.82,
+          9.8
+        ]
+      },
+      "properties": {
+        "name": "Vùng mía đường Phụng Hiệp",
+        "category": "industrial_crops",
+        "crop_type": "Mía đường",
+        "icon_emoji": "🎋",
+        "province": "Thành phố Cần Thơ",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Vùng mía ĐBSCL ven mạng lưới kênh rạch trù phú tây sông Hậu.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.6,
+          18.9
+        ]
+      },
+      "properties": {
+        "name": "Vùng lạc Diễn Châu - Nghi Lộc",
+        "category": "industrial_crops",
+        "crop_type": "Lạc (Đậu phộng)",
+        "icon_emoji": "🥜",
+        "province": "Nghệ An",
+        "region": "Bắc Trung Bộ",
+        "desc": "Vùng trồng lạc lớn nhất cả nước trên đất cát pha ven biển Bắc Trung Bộ.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.75,
+          21.85
+        ]
+      },
+      "properties": {
+        "name": "Vùng thuốc lá Lạng Sơn",
+        "category": "industrial_crops",
+        "crop_type": "Cây thuốc lá",
+        "icon_emoji": "🍂",
+        "province": "Lạng Sơn",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Vùng chuyên canh thuốc lá vàng sấy lớn nhất miền núi Đông Bắc.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.4,
+          10.2
+        ]
+      },
+      "properties": {
+        "name": "Xứ dừa Giồng Trôm - Châu Thành",
+        "category": "industrial_crops",
+        "crop_type": "Cây dừa",
+        "icon_emoji": "🥥",
+        "province": "Đồng Tháp",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Thủ phủ dừa Bến Tre lớn nhất Việt Nam, chiếm trên 40% diện tích dừa cả nước.",
+        "source": "Atlat GD, tr.19 & tr.20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.3,
           20.5
         ]
       },
       "properties": {
-        "id": "FISH_01",
+        "name": "Vùng thâm canh lúa Đồng bằng sông Hồng",
+        "category": "food_crops",
+        "crop_type": "Lúa gạo",
+        "icon_emoji": "🌾",
+        "province": "Hưng Yên",
+        "region": "Đồng bằng sông Hồng",
+        "desc": "Vùng có trình độ thâm canh lúa cao nhất nước, năng suất lúa bình quân dẫn đầu toàn quốc.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.15,
+          10.35
+        ]
+      },
+      "properties": {
+        "name": "Vựa lúa Tứ giác Long Xuyên",
+        "category": "food_crops",
+        "crop_type": "Lúa gạo",
+        "icon_emoji": "🌾",
+        "province": "An Giang",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Trọng điểm sản xuất lúa và nông sản hàng hóa xuất khẩu lớn nhất ĐBSCL.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.75,
+          10.6
+        ]
+      },
+      "properties": {
+        "name": "Vựa lúa Đồng Tháp Mười",
+        "category": "food_crops",
+        "crop_type": "Lúa gạo",
+        "icon_emoji": "🌾",
+        "province": "Đồng Tháp",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Vùng thâm canh lúa năng suất cao sau khi được thau chua rửa mặn thành công.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.02,
+          21.38
+        ]
+      },
+      "properties": {
+        "name": "Cánh đồng lúa Mường Thanh",
+        "category": "food_crops",
+        "crop_type": "Lúa gạo",
+        "icon_emoji": "🌾",
+        "province": "Điện Biên",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Cánh đồng lúa thung lũng lòng chảo lớn nhất miền Tây Bắc ('nhất Thanh, nhì Lò, tam Than, tứ Tấc').",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.7,
+          21.95
+        ]
+      },
+      "properties": {
+        "name": "Cánh đồng lúa Than Uyên",
+        "category": "food_crops",
+        "crop_type": "Lúa gạo",
+        "icon_emoji": "🌾",
+        "province": "Lai Châu",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Cánh đồng lúa phì nhiêu lớn thứ ba vùng Tây Bắc đón nguồn nước sông Nậm Mu.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.0,
+          22.8
+        ]
+      },
+      "properties": {
+        "name": "Vùng ngô cao nguyên đá Đồng Văn",
+        "category": "food_crops",
+        "crop_type": "Cây ngô",
+        "icon_emoji": "🌽",
+        "province": "Tuyên Quang",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Cây lương thực hoa màu thích ứng thổ nhưỡng hốc đá vôi vùng cao cực Bắc.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.05,
+          21.15
+        ]
+      },
+      "properties": {
+        "name": "Vùng ngô lai Sơn La",
+        "category": "food_crops",
+        "crop_type": "Cây ngô",
+        "icon_emoji": "🌽",
+        "province": "Sơn La",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Vùng sản xuất ngô thương phẩm quy mô lớn cung cấp nguyên liệu chế biến thức ăn chăn nuôi.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.6,
+          21.35
+        ]
+      },
+      "properties": {
+        "name": "Vải thiều Lục Ngạn",
+        "category": "food_crops",
+        "crop_type": "Vải thiều",
+        "icon_emoji": "🍓",
+        "province": "Bắc Ninh",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Thương hiệu vải thiều xuất khẩu lớn nhất Việt Nam trên đồi đất dốc Bắc Giang.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.05,
+          20.65
+        ]
+      },
+      "properties": {
+        "name": "Nhãn lồng Hưng Yên",
+        "category": "food_crops",
+        "crop_type": "Nhãn lồng",
+        "icon_emoji": "🍇",
+        "province": "Hưng Yên",
+        "region": "Đồng bằng sông Hồng",
+        "desc": "Đặc sản trái cây nhiệt đới nổi tiếng đất phù sa châu thổ sông Hồng.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.9,
+          10.35
+        ]
+      },
+      "properties": {
+        "name": "Xoài cát Hòa Lộc",
+        "category": "food_crops",
+        "crop_type": "Xoài cát",
+        "icon_emoji": "🥭",
+        "province": "Đồng Tháp",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Vùng chuyên canh xoài xuất khẩu chất lượng cao ven sông Tiền.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.05,
+          11.0
+        ]
+      },
+      "properties": {
+        "name": "Thanh long Hàm Thuận",
+        "category": "food_crops",
+        "crop_type": "Thanh long",
+        "icon_emoji": "🐉",
+        "province": "Lâm Đồng",
+        "region": "Duyên hải Nam Trung Bộ",
+        "desc": "Vùng chuyên canh thanh long xuất khẩu lớn nhất nước trên đất cát pha ven biển khô hạn.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.12,
+          10.4
+        ]
+      },
+      "properties": {
+        "name": "Sầu riêng Cái Lậy",
+        "category": "food_crops",
+        "crop_type": "Sầu riêng",
+        "icon_emoji": "🍈",
+        "province": "Đồng Tháp",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Vùng cây ăn trái nhiệt đới giá trị kinh tế cao trên đất phù sa ngọt bồi đắp hàng năm.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.2,
+          22.1
+        ]
+      },
+      "properties": {
+        "name": "Đàn trâu Đông Bắc (Tuyên Quang - Hà Giang)",
+        "category": "livestock",
+        "crop_type": "Đàn trâu",
+        "icon_emoji": "🐃",
+        "province": "Tuyên Quang",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Vùng có số lượng trâu lớn nhất nước (chiếm trên 50% đàn trâu cả nước) do trâu ưa ẩm, chịu rét giỏi và thích nghi sườn dốc.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.5,
+          21.5
+        ]
+      },
+      "properties": {
+        "name": "Đàn trâu Tây Bắc (Điện Biên - Sơn La)",
+        "category": "livestock",
+        "crop_type": "Đàn trâu",
+        "icon_emoji": "🐃",
+        "province": "Sơn La",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Vùng chăn thả gia súc lớn vùng cao, cung cấp sức kéo và thịt.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.5,
+          19.3
+        ]
+      },
+      "properties": {
+        "name": "Đàn trâu Bắc Trung Bộ (Nghệ An - Thanh Hoá)",
+        "category": "livestock",
+        "crop_type": "Đàn trâu",
+        "icon_emoji": "🐃",
+        "province": "Thanh Hoá",
+        "region": "Bắc Trung Bộ",
+        "desc": "Vùng tập trung đàn trâu lớn thứ hai cả nước trên các vùng đồi trước núi.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.45,
+          18.7
+        ]
+      },
+      "properties": {
+        "name": "Đàn bò thịt Nghệ An - Hà Tĩnh",
+        "category": "livestock",
+        "crop_type": "Đàn bò thịt",
+        "icon_emoji": "🐂",
+        "province": "Nghệ An",
+        "region": "Bắc Trung Bộ",
+        "desc": "Tỉnh Nghệ An dẫn đầu cả nước về số lượng đàn bò thịt nhờ diện tích đồng cỏ đồi gò rộng lớn.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.8,
+          14.3
+        ]
+      },
+      "properties": {
+        "name": "Đàn bò thịt Duyên hải Nam Trung Bộ",
+        "category": "livestock",
+        "crop_type": "Đàn bò thịt",
+        "icon_emoji": "🐂",
+        "province": "Gia Lai",
+        "region": "Duyên hải Nam Trung Bộ",
+        "desc": "Vùng chăn nuôi bò thịt truyền thống có quy mô lớn dựa trên đồng cỏ khô hạn ven biển.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.2,
+          13.5
+        ]
+      },
+      "properties": {
+        "name": "Đàn bò thịt cao nguyên Gia Lai - Đắk Lắk",
+        "category": "livestock",
+        "crop_type": "Đàn bò thịt",
+        "icon_emoji": "🐂",
+        "province": "Đắk Lắk",
+        "region": "Tây Nguyên",
+        "desc": "Chăn nuôi bò thịt quy mô trang trại trên các đồng cỏ cao nguyên bazan rộng lớn.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.7,
+          20.83
+        ]
+      },
+      "properties": {
+        "name": "Đàn bò sữa Mộc Châu",
+        "category": "livestock",
+        "crop_type": "Bò sữa",
+        "icon_emoji": "🐄",
+        "province": "Sơn La",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Trung tâm chăn nuôi bò sữa ôn đới lâu đời và hiện đại nhất miền Bắc trên cao nguyên Mộc Châu.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.4,
+          21.1
+        ]
+      },
+      "properties": {
+        "name": "Đàn bò sữa Ba Vì",
+        "category": "livestock",
+        "crop_type": "Bò sữa",
+        "icon_emoji": "🐄",
+        "province": "Thành phố Hà Nội",
+        "region": "Đồng bằng sông Hồng",
+        "desc": "Vành đai chăn nuôi bò sữa thâm canh ven đô cung cấp sữa tươi cho Thủ đô và miền Bắc.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.4,
+          11.75
+        ]
+      },
+      "properties": {
+        "name": "Đàn bò sữa công nghệ cao Đức Trọng",
+        "category": "livestock",
+        "crop_type": "Bò sữa",
+        "icon_emoji": "🐄",
+        "province": "Lâm Đồng",
+        "region": "Tây Nguyên",
+        "desc": "Trung tâm bò sữa công nghệ cao lớn nhất Tây Nguyên với các trang trại chuẩn quốc tế.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.95,
+          20.9
+        ]
+      },
+      "properties": {
+        "name": "Đàn lợn Đồng bằng sông Hồng",
+        "category": "livestock",
+        "crop_type": "Đàn lợn",
+        "icon_emoji": "🐖",
+        "province": "Hưng Yên",
+        "region": "Đồng bằng sông Hồng",
+        "desc": "Vùng chăn nuôi lợn thâm canh lớn nhất cả nước dựa trên nguồn hoa màu dồi dào và thị trường tiêu thụ lớn.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.1,
+          11.05
+        ]
+      },
+      "properties": {
+        "name": "Thủ phủ chăn nuôi lợn Thành phố Đồng Nai",
+        "category": "livestock",
+        "crop_type": "Đàn lợn công nghiệp",
+        "icon_emoji": "🐖",
+        "province": "Thành phố Đồng Nai",
+        "region": "Đông Nam Bộ",
+        "desc": "Địa phương dẫn đầu cả nước về chăn nuôi lợn công nghiệp và trang trại khép kín quy mô lớn.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.7,
+          10.2
+        ]
+      },
+      "properties": {
+        "name": "Đàn gia cầm Đồng bằng sông Cửu Long",
+        "category": "livestock",
+        "crop_type": "Gia cầm (Vịt đàn)",
+        "icon_emoji": "🦆",
+        "province": "Đồng Tháp",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Vùng nuôi vịt đàn lớn nhất cả nước gắn liền với mạng lưới sông ngòi và mùa lũ đồng bằng.",
+        "source": "Atlat GD, tr.19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8,
+          20.5
+        ]
+      },
+      "properties": {
         "name": "Ngư trường Hải Phòng - Quảng Ninh",
-        "category": "fishing_ground",
-        "desc": "Ngư trường trọng điểm vịnh Bắc Bộ, tập trung trữ lượng cá đáy, cá nổi và hải sản xuất khẩu phong phú của miền Bắc.",
-        "atlat_page": 21,
-        "source": "Atlat GD, tr.21 (Thủy sản)",
-        "status": "missing",
-        "hidden": true,
-        "icon_emoji": "🐟"
+        "category": "fishery",
+        "crop_type": "Ngư trường trọng điểm",
+        "icon_emoji": "🐟",
+        "province": "Thành phố Hải Phòng",
+        "region": "Đồng bằng sông Hồng",
+        "desc": "Ngư trường trọng điểm vịnh Bắc Bộ với trữ lượng hải sản cá nổi, cá đáy và đảo Bạch Long Vĩ tiền tiêu.",
+        "source": "Atlat GD, tr.21"
       }
     },
     {
@@ -159,19 +948,18 @@
         "type": "Point",
         "coordinates": [
           109.2,
-          10.8
+          10.5
         ]
       },
       "properties": {
-        "id": "FISH_02",
         "name": "Ngư trường Ninh Thuận - Bình Thuận - Bà Rịa - Vũng Tàu",
-        "category": "fishing_ground",
-        "desc": "Ngư trường trọng điểm Nam Trung Bộ và Đông Nam Bộ có năng suất đánh bắt cao, nguồn lợi hải sản cá nục, cá thu, mực phong phú.",
-        "atlat_page": 21,
-        "source": "Atlat GD, tr.21 (Thủy sản)",
-        "status": "missing",
-        "hidden": true,
-        "icon_emoji": "🐟"
+        "category": "fishery",
+        "crop_type": "Ngư trường trọng điểm",
+        "icon_emoji": "🐟",
+        "province": "Lâm Đồng",
+        "region": "Đông Nam Bộ",
+        "desc": "Ngư trường có năng suất đánh bắt cao nhất cả nước, nguồn lợi cá nục, cá thu, cá trích, mực dồi dào.",
+        "source": "Atlat GD, tr.21"
       }
     },
     {
@@ -180,19 +968,18 @@
         "type": "Point",
         "coordinates": [
           104.2,
-          9.5
+          9.0
         ]
       },
       "properties": {
-        "id": "FISH_03",
         "name": "Ngư trường Cà Mau - Kiên Giang",
-        "category": "fishing_ground",
-        "desc": "Ngư trường trọng điểm vịnh Thái Lan vùng biển nông ấm, giàu nguồn lợi tôm, cua biển và các loại cá tầng mặt, tầng đáy.",
-        "atlat_page": 21,
-        "source": "Atlat GD, tr.21 (Thủy sản)",
-        "status": "missing",
-        "hidden": true,
-        "icon_emoji": "🦐"
+        "category": "fishery",
+        "crop_type": "Ngư trường trọng điểm",
+        "icon_emoji": "🦐",
+        "province": "Tỉnh Cà Mau",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Ngư trường vịnh Thái Lan vùng biển nông ấm, giàu nguồn lợi tôm, cua biển và cá đáy lớn nhất nước.",
+        "source": "Atlat GD, tr.21"
       }
     },
     {
@@ -200,20 +987,259 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          112.5,
+          113.5,
+          13.0
+        ]
+      },
+      "properties": {
+        "name": "Ngư trường Quần đảo Hoàng Sa - Quần đảo Trường Sa",
+        "category": "fishery",
+        "crop_type": "Ngư trường xa bờ",
+        "icon_emoji": "🇻🇳",
+        "province": "Thành phố Đà Nẵng",
+        "region": "Duyên hải Nam Trung Bộ",
+        "desc": "Ngư trường biển xa bờ giàu tiềm năng khai thác cá ngừ đại dương, cá thu và khẳng định chủ quyền biển đảo thiêng liêng Tổ quốc.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.0,
+          8.75
+        ]
+      },
+      "properties": {
+        "name": "Thủ phủ nuôi tôm Cà Mau (Năm Căn - Đầm Dơi)",
+        "category": "fishery",
+        "crop_type": "Nuôi tôm nước lợ",
+        "icon_emoji": "🦐",
+        "province": "Tỉnh Cà Mau",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Tỉnh dẫn đầu cả nước về diện tích và sản lượng tôm nuôi (tôm sú, tôm thẻ chân trắng) xuất khẩu toàn cầu.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.65,
+          9.35
+        ]
+      },
+      "properties": {
+        "name": "Vùng nuôi tôm Bạc Liêu - Sóc Trăng",
+        "category": "fishery",
+        "crop_type": "Nuôi tôm công nghiệp",
+        "icon_emoji": "🦐",
+        "province": "Tỉnh Cà Mau",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Vùng nuôi tôm thâm canh và siêu thâm canh công nghệ cao dẫn đầu ĐBSCL.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.6,
+          9.9
+        ]
+      },
+      "properties": {
+        "name": "Vùng nuôi tôm Bến Tre - Trà Vinh",
+        "category": "fishery",
+        "crop_type": "Nuôi tôm ven biển",
+        "icon_emoji": "🦐",
+        "province": "Tỉnh Vĩnh Long",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Vùng nuôi trồng thủy sản nước lợ và mặn tại các bãi triều rừng ngập mặn ven biển.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.2,
+          10.65
+        ]
+      },
+      "properties": {
+        "name": "Thủ phủ cá tra An Giang",
+        "category": "fishery",
+        "crop_type": "Nuôi cá tra, ba sa",
+        "icon_emoji": "🐟",
+        "province": "Tỉnh An Giang",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Vùng nuôi cá tra, cá ba sa xuất khẩu số 1 thế giới ven sông Tiền và sông Hậu.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.5,
+          10.7
+        ]
+      },
+      "properties": {
+        "name": "Vùng nuôi cá tra Đồng Tháp",
+        "category": "fishery",
+        "crop_type": "Nuôi cá tra",
+        "icon_emoji": "🐟",
+        "province": "Tỉnh Đồng Tháp",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Vùng nuôi cá ao công nghiệp và bè cá lớn nhất ĐBSCL dọc sông Tiền.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.25,
+          13.78
+        ]
+      },
+      "properties": {
+        "name": "Cảng cá & Đánh bắt cá ngừ Quy Nhơn",
+        "category": "fishery",
+        "crop_type": "Khai thác cá xa bờ",
+        "icon_emoji": "🐟",
+        "province": "Tỉnh Gia Lai",
+        "region": "Duyên hải Nam Trung Bộ",
+        "desc": "Đội tàu đánh bắt xa bờ câu cá ngừ đại dương lớn nhất duyên hải miền Trung.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.1,
+          10.92
+        ]
+      },
+      "properties": {
+        "name": "Cảng cá Phan Thiết",
+        "category": "fishery",
+        "crop_type": "Khai thác cá biển",
+        "icon_emoji": "🐟",
+        "province": "Tỉnh Lâm Đồng",
+        "region": "Duyên hải Nam Trung Bộ",
+        "desc": "Trung tâm chế biến nước mắm truyền thống và khai thác cá nổi lớn nhất Nam Trung Bộ.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.08,
+          10.02
+        ]
+      },
+      "properties": {
+        "name": "Cảng cá Rạch Giá - Phú Quốc",
+        "category": "fishery",
+        "crop_type": "Khai thác hải sản",
+        "icon_emoji": "🐟",
+        "province": "Tỉnh An Giang",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Tỉnh dẫn đầu cả nước về sản lượng khai thác hải sản biển.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.75,
+          8.62
+        ]
+      },
+      "properties": {
+        "name": "Rừng ngập mặn Mũi Cà Mau",
+        "category": "forestry",
+        "crop_type": "Rừng ngập mặn",
+        "icon_emoji": "🌲",
+        "province": "Tỉnh Cà Mau",
+        "region": "Đồng bằng sông Cửu Long",
+        "desc": "Khu dự trữ sinh quyển thế giới Mũi Cà Mau, diện tích rừng ngập mặn lớn nhất nước có vai trò chắn sóng và lấn biển.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.9,
+          10.45
+        ]
+      },
+      "properties": {
+        "name": "Rừng ngập mặn Cần Giờ",
+        "category": "forestry",
+        "crop_type": "Rừng phòng hộ ngập mặn",
+        "icon_emoji": "🌲",
+        "province": "Thành phố Hồ Chí Minh",
+        "region": "Đông Nam Bộ",
+        "desc": "Khu dự trữ sinh quyển thế giới Cần Giờ - 'lá phổi xanh' bảo vệ cửa sông Sài Gòn - Đồng Nai.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.7,
+          21.6
+        ]
+      },
+      "properties": {
+        "name": "Vùng lâm sản Tây Bắc",
+        "category": "forestry",
+        "crop_type": "Rừng phòng hộ đầu nguồn",
+        "icon_emoji": "🌲",
+        "province": "Tỉnh Sơn La",
+        "region": "Trung du và miền núi Bắc Bộ",
+        "desc": "Rừng phòng hộ đầu nguồn sông Đà và sông Mã có vai trò bảo vệ hồ chứa thủy điện Hòa Bình, Sơn La.",
+        "source": "Atlat GD, tr.21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.85,
           14.5
         ]
       },
       "properties": {
-        "id": "FISH_04",
-        "name": "Ngư trường Quần đảo Hoàng Sa - Quần đảo Trường Sa",
-        "category": "fishing_ground",
-        "desc": "Ngư trường xa bờ giàu tiềm năng khai thác cá ngừ đại dương, cá thu và khẳng định chủ quyền biển đảo thiêng liêng của Tổ quốc.",
-        "atlat_page": 21,
-        "source": "Atlat GD, tr.21 (Thủy sản)",
-        "status": "missing",
-        "hidden": true,
-        "icon_emoji": "🇻🇳"
+        "name": "Vùng lâm nghiệp Tây Nguyên",
+        "category": "forestry",
+        "crop_type": "Rừng sản xuất & Gỗ",
+        "icon_emoji": "🌲",
+        "province": "Tỉnh Quảng Ngãi",
+        "region": "Tây Nguyên",
+        "desc": "Vùng có độ che phủ rừng cao nhất cả nước, giàu tiềm năng gỗ lớn, tre nứa và lâm sản quý.",
+        "source": "Atlat GD, tr.21"
       }
     }
   ]

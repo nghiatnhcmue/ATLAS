@@ -1406,7 +1406,7 @@ const AtlasEngine = (function () {
   function updateProvinceLabelsVisibility() {
     if (!map || !layerProvinceLabels) return;
     const currentZoom = map.getZoom();
-    if (currentZoom >= 7) {
+    if (currentZoom >= 5) {
       if (!map.hasLayer(layerProvinceLabels)) map.addLayer(layerProvinceLabels);
     } else {
       if (map.hasLayer(layerProvinceLabels)) map.removeLayer(layerProvinceLabels);
@@ -1626,49 +1626,61 @@ const AtlasEngine = (function () {
   // ===========================================================================
   // LỚP 4: NÔNG, LÂM, THỦY SẢN & NGƯ TRƯỜNG (Atlat GD, tr.19 - 21)
   // ===========================================================================
-  async function renderAgricultureLayer() {
+  async function renderAgricultureLayer(categoryFilter = "all") {
     if (!geoData.agriculture) await ensureLayerData("agriculture");
     if (!geoData.agriculture) return;
 
     layerAgriculture.clearLayers();
 
+    const categoryBadgeStyles = {
+      industrial_crops: "bg-amber-600 border-amber-300 text-white",
+      food_crops: "bg-emerald-600 border-emerald-300 text-white",
+      livestock: "bg-rose-600 border-rose-300 text-white",
+      fishery: "bg-cyan-600 border-cyan-300 text-white",
+      forestry: "bg-teal-700 border-teal-300 text-white"
+    };
+
     L.geoJSON(geoData.agriculture, {
       pane: 'agriculturePane',
       filter: (f) => {
         const p = f.properties || {};
-        return !p.hidden && p.category !== "fishing_ground" && p.status !== "missing";
+        if (p.hidden || p.status === "missing") return false;
+        if (categoryFilter === "all") return true;
+        return p.category === categoryFilter;
       },
       pointToLayer: (feature, latlng) => {
         const p = feature.properties;
-        if (p.category === "fishing_ground") {
-          const icon = L.divIcon({
-            className: "fishing-ground-marker",
-            html: `<div class="bg-cyan-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full border border-white shadow-md hover:scale-110 transition whitespace-nowrap">🐟 ${p.name.replace('Ngư trường ', '')}</div>`,
-            iconSize: [120, 22],
-            iconAnchor: [60, 11]
-          });
-          return L.marker(latlng, { icon });
-        } else {
-          const icon = L.divIcon({
-            className: "agri-crop-marker",
-            html: `
-              <div class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-xl border border-white shadow-md hover:scale-110 transition flex items-center space-x-1 whitespace-nowrap">
-                <span>${p.icon_emoji || '🌾'}</span>
-                <span>${p.crop_type}</span>
-              </div>
-            `,
-            iconSize: [100, 22],
-            iconAnchor: [50, 11]
-          });
-          return L.marker(latlng, { icon });
-        }
+        const badgeStyle = categoryBadgeStyles[p.category] || "bg-emerald-600 border-emerald-300 text-white";
+        const shortName = p.crop_type || p.name.replace(/^Vùng\s*/i, '').replace(/^Thủ phủ\s*/i, '');
+
+        const icon = L.divIcon({
+          className: "agri-clean-marker",
+          html: `
+            <div class="${badgeStyle} text-[10px] font-bold px-2 py-0.5 rounded-full border shadow-sm hover:scale-110 hover:shadow-md transition flex items-center space-x-1 whitespace-nowrap cursor-pointer">
+              <span>${p.icon_emoji || '🌾'}</span>
+              <span class="truncate max-w-[130px]">${shortName}</span>
+            </div>
+          `,
+          iconSize: [120, 22],
+          iconAnchor: [60, 11]
+        });
+        return L.marker(latlng, { icon });
       },
       onEachFeature: (feature, layer) => {
         const p = feature.properties;
         layer.bindTooltip(`
-          <div class="p-1 text-left">
-            <div class="font-bold text-xs text-slate-900 dark:text-white">${p.name}</div>
-            <div class="text-[10px] text-slate-500">${p.desc || ''}</div>
+          <div class="p-1.5 text-left font-sans min-w-[210px]">
+            <div class="font-bold text-xs text-slate-900 dark:text-white flex items-center space-x-1 mb-0.5">
+              <span>${p.icon_emoji || '🌾'}</span>
+              <span>${p.name}</span>
+            </div>
+            <div class="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold mb-1">
+              ${p.crop_type} • ${p.province || ''}
+            </div>
+            <div class="text-[11px] text-slate-600 dark:text-slate-300 leading-snug border-t border-slate-100 dark:border-slate-800 pt-1">
+              ${p.desc || ''}
+            </div>
+            <div class="text-[9px] text-slate-400 mt-1 font-mono">${p.source || 'Atlat GD, tr.19-21'}</div>
           </div>
         `, { permanent: false, sticky: false });
 
