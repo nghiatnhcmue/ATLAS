@@ -58,63 +58,63 @@
   <link rel="stylesheet" href="./css/styles.css?v=2026.2">
 </head>
 
-<body class="h-[100dvh] overflow-hidden flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased select-none">
+<body class="min-h-[100dvh] lg:h-[100dvh] overflow-x-hidden lg:overflow-hidden flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased select-none">
 
   <!-- ====================================================================== -->
-  <!-- TOP HEADER (HEIGHT: 64px / h-16, FIXED & Z-INDEX: 2000)                -->
+  <!-- TOP HEADER (HEIGHT: 56px/64px, RESPONSIVE & Z-INDEX: 2000)             -->
   <!-- ====================================================================== -->
-  <header class="h-16 shrink-0 app-header bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 flex items-center justify-between shadow-xs">
+  <header class="h-14 sm:h-16 shrink-0 app-header bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-2.5 sm:px-6 flex items-center justify-between shadow-xs gap-2">
     
     <!-- Brand Identity -->
-    <div class="flex items-center space-x-3">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-lg font-bold shadow-sm ring-2 ring-blue-500/20">
+    <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
+      <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-base sm:text-lg font-bold shadow-sm ring-2 ring-blue-500/20">
         🌏
       </div>
       <div>
-        <div class="flex items-center space-x-2">
-          <span class="font-bold text-sm sm:text-base tracking-tight text-slate-900 dark:text-white">
-            GeoAtlas Interactive
+        <div class="flex items-center space-x-1.5 sm:space-x-2">
+          <span class="font-bold text-xs sm:text-base tracking-tight text-slate-900 dark:text-white">
+            GeoAtlas <span class="hidden xs:inline">Interactive</span>
           </span>
-          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300 border border-blue-200 dark:border-blue-900 hidden lg:inline-flex">
+          <span class="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300 border border-blue-200 dark:border-blue-900 hidden lg:inline-flex">
             Chuẩn Thi THPT 2026 • GDPT 2018
           </span>
         </div>
-        <p class="text-[11px] text-slate-500 hidden sm:block">Kỹ năng Atlat &bull; Nhận dạng Biểu đồ &bull; Máy tính Địa lý</p>
+        <p class="text-[10px] sm:text-[11px] text-slate-500 hidden md:block">Kỹ năng Atlat &bull; Nhận dạng Biểu đồ &bull; Máy tính Địa lý</p>
       </div>
     </div>
 
     <!-- Center: 3 Segmented Pill Controls (Responsive on Mobile) -->
-    <nav class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 shadow-inner overflow-x-auto no-scrollbar shrink-0">
+    <nav class="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 sm:p-1 rounded-xl border border-slate-200 dark:border-slate-700 shadow-inner overflow-x-auto no-scrollbar shrink-0">
       <button 
         data-tab-target="mode-atlas" 
-        class="mode-nav-btn segmented-pill-btn px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 bg-blue-600 text-white shadow-xs shrink-0"
+        class="mode-nav-btn segmented-pill-btn px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 bg-blue-600 text-white shadow-xs shrink-0"
       >
         <span>🗺️</span>
         <span class="hidden md:inline">1. Atlas Số Thông Minh</span>
-        <span class="md:hidden">Atlas</span>
+        <span class="md:hidden text-[11px]">Atlas</span>
       </button>
 
       <button 
         data-tab-target="mode-charts" 
-        class="mode-nav-btn segmented-pill-btn px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white shrink-0"
+        class="mode-nav-btn segmented-pill-btn px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white shrink-0"
       >
         <span>📊</span>
         <span class="hidden md:inline">2. Nhận Dạng Biểu Đồ</span>
-        <span class="md:hidden">Biểu Đồ</span>
+        <span class="md:hidden text-[11px]">Biểu Đồ</span>
       </button>
 
       <button 
         data-tab-target="mode-calc" 
-        class="mode-nav-btn segmented-pill-btn px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white shrink-0"
+        class="mode-nav-btn segmented-pill-btn px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white shrink-0"
       >
         <span>🧮</span>
         <span class="hidden md:inline">3. Máy Tính & Công Thức</span>
-        <span class="md:hidden">Máy Tính</span>
+        <span class="md:hidden text-[11px]">Máy Tính</span>
       </button>
     </nav>
 
     <!-- Right: National Sovereignty Tag, Symbol Handbook & Theme Toggle -->
-    <div class="flex items-center space-x-2">
+    <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
       <div class="hidden xl:flex items-center space-x-1.5 text-xs px-3 py-1.5 rounded-full bg-red-50 text-red-700 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900 font-semibold shadow-xs">
         <span>🇻🇳</span>
         <span>Hoàng Sa & Trường Sa: Chủ quyền Việt Nam</span>
@@ -123,16 +123,16 @@
       <button 
         onclick="AtlasEngine.openSymbolHandbook()"
         title="Mở Sổ Tay Ký Hiệu & Cẩm Nang Atlat Chuẩn THPT"
-        class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-semibold shadow-xs transition"
+        class="flex items-center space-x-1 px-2 sm:px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-semibold shadow-xs transition"
       >
         <span>📖</span>
-        <span class="hidden sm:inline">Sổ Tay Ký Hiệu</span>
+        <span class="hidden sm:inline">Sổ Tay</span>
       </button>
 
       <button 
         id="theme-toggle-btn"
         title="Chuyển chế độ Sáng / Tối"
-        class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs shadow-xs transition"
+        class="p-1.5 sm:p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs shadow-xs transition"
       >
         <span class="dark:hidden">🌙</span>
         <span class="hidden dark:inline">☀️</span>
@@ -141,73 +141,86 @@
   </header>
 
   <!-- ====================================================================== -->
-  <!-- MAIN WORKSPACE: VIEWPORT LOCK (100vh - 64px)                           -->
+  <!-- MAIN WORKSPACE: RESPONSIVE AUTO-SCROLL (MOBILE) & VIEWPORT LOCK (PC)    -->
   <!-- ====================================================================== -->
-  <main class="flex-1 lg:h-[calc(100vh-4rem)] relative overflow-hidden bg-slate-50 dark:bg-slate-950">
+  <main class="flex-1 w-full relative overflow-y-auto lg:overflow-hidden bg-slate-50 dark:bg-slate-950">
 
     <!-- ==================================================================== -->
     <!-- PHÂN HỆ 1: ATLAS SỐ THÔNG MINH (GRID 12 CỘT: 7 TRÁI / 5 PHẢI)         -->
     <!-- ==================================================================== -->
-    <div id="mode-atlas" class="mode-view grid grid-cols-12 gap-4 p-4 h-full">
+    <div id="mode-atlas" class="mode-view grid grid-cols-12 gap-3 lg:gap-4 p-2 sm:p-4 min-h-full lg:h-full">
       <!-- Khung Trái (7 Cột): Bản đồ Leaflet chuẩn GIS -->
-      <div class="col-span-12 lg:col-span-7 h-full min-h-[420px] rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
+      <div class="col-span-12 lg:col-span-7 h-[50vh] sm:h-[60vh] lg:h-full min-h-[320px] lg:min-h-0 rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
         <div id="atlas-map-container" class="w-full h-full relative">
           <div id="atlas-map" class="w-full h-full"></div>
 
           <!-- Bộ chuyển đổi 4 Chuyên Đề Atlat Tự Vẽ (100% Offline Vector từ Data - Tuyệt Đối Không Dùng API Ngoài) -->
-          <div class="absolute top-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-1 text-[11px]">
-            <button id="btn-bm-admin" onclick="AtlasEngine.setAtlatTheme('admin')" class="px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-xs" title="Tự vẽ 6 Vùng kinh tế & Tỉnh thành (Atlat GD, tr.4-5 & 18)">🏛️ Hành Chính</button>
-            <button id="btn-bm-physical" onclick="AtlasEngine.setAtlatTheme('physical')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium" title="Tự vẽ phân tầng độ cao địa hình, đỉnh núi, sông ngòi (Atlat GD, tr.6-7)">⛰️ Địa Hình</button>
-            <button id="btn-bm-climate" onclick="AtlasEngine.setAtlatTheme('climate')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium" title="Tự vẽ 2 miền khí hậu, gió mùa, trạm khí tượng (Atlat GD, tr.8-9)">🌤️ Khí Hậu</button>
-            <button id="btn-bm-economic" onclick="AtlasEngine.setAtlatTheme('economic')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium" title="Tự vẽ quy mô GRDP 4 cấp & trung tâm công nghiệp (Atlat GD, tr.18-22)">🏭 Kinh Tế</button>
+          <div class="absolute top-2 sm:top-3 left-2 sm:left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-0.5 sm:space-x-1 text-[10px] sm:text-[11px] max-w-[calc(100%-120px)] sm:max-w-none overflow-x-auto no-scrollbar">
+            <button id="btn-bm-admin" onclick="AtlasEngine.setAtlatTheme('admin')" class="px-1.5 sm:px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-xs flex items-center space-x-1 shrink-0" title="Tự vẽ 6 Vùng kinh tế & Tỉnh thành (Atlat GD, tr.4-5 & 18)">
+              <span>🏛️</span>
+              <span class="hidden sm:inline">Hành Chính</span>
+              <span class="sm:hidden">HC</span>
+            </button>
+            <button id="btn-bm-physical" onclick="AtlasEngine.setAtlatTheme('physical')" class="px-1.5 sm:px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1 shrink-0" title="Tự vẽ phân tầng độ cao địa hình, đỉnh núi, sông ngòi (Atlat GD, tr.6-7)">
+              <span>⛰️</span>
+              <span class="hidden sm:inline">Địa Hình</span>
+              <span class="sm:hidden">ĐH</span>
+            </button>
+            <button id="btn-bm-climate" onclick="AtlasEngine.setAtlatTheme('climate')" class="px-1.5 sm:px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1 shrink-0" title="Tự vẽ 2 miền khí hậu, gió mùa, trạm khí tượng (Atlat GD, tr.8-9)">
+              <span>🌤️</span>
+              <span class="hidden sm:inline">Khí Hậu</span>
+              <span class="sm:hidden">KH</span>
+            </button>
+            <button id="btn-bm-economic" onclick="AtlasEngine.setAtlatTheme('economic')" class="px-1.5 sm:px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1 shrink-0" title="Tự vẽ quy mô GRDP 4 cấp & trung tâm công nghiệp (Atlat GD, tr.18-22)">
+              <span>🏭</span>
+              <span class="hidden sm:inline">Kinh Tế</span>
+              <span class="sm:hidden">KT</span>
+            </button>
           </div>
 
           <!-- Bảng chú giải phân tầng độ cao tự vẽ (Tự động hiển thị khi chọn Địa Hình Tr.6-7) -->
-          <div id="elevation-legend" class="absolute bottom-8 left-3 z-[890] hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-2.5 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 text-[10px] font-sans">
-            <div class="font-bold text-[11px] text-slate-800 dark:text-slate-200 mb-1.5 flex items-center space-x-1">
+          <div id="elevation-legend" class="absolute bottom-8 left-2 sm:left-3 z-[890] hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-2 sm:p-2.5 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 text-[9px] sm:text-[10px] font-sans max-w-[220px] sm:max-w-none">
+            <div class="font-bold text-[10px] sm:text-[11px] text-slate-800 dark:text-slate-200 mb-1 sm:mb-1.5 flex items-center space-x-1">
               <span>⛰️</span><span>Phân Tầng Độ Cao (Atlat GD, tr.6-7)</span>
             </div>
-            <div class="space-y-1">
-              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#86efac"></span><span>&lt; 50m: Đồng bằng châu thổ thấp</span></div>
-              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#bef264"></span><span>50 - 200m: Đồng bằng cao &amp; duyên hải</span></div>
-              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#fde047"></span><span>200 - 500m: Đồi trung du &amp; bán bình nguyên</span></div>
-              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#fb923c"></span><span>500 - 1000m: Cao nguyên bazan</span></div>
-              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#ea580c"></span><span>1000 - 1500m: Vùng núi trung bình</span></div>
-              <div class="flex items-center space-x-2"><span class="w-3.5 h-3 rounded-xs inline-block" style="background:#9a3412"></span><span>&gt; 1500m: Vùng núi cao (Hoàng Liên Sơn, Ngọc Linh)</span></div>
+            <div class="space-y-0.5 sm:space-y-1">
+              <div class="flex items-center space-x-1.5 sm:space-x-2"><span class="w-3 h-2.5 sm:w-3.5 sm:h-3 rounded-xs inline-block" style="background:#86efac"></span><span>&lt; 50m: Đồng bằng châu thổ</span></div>
+              <div class="flex items-center space-x-1.5 sm:space-x-2"><span class="w-3 h-2.5 sm:w-3.5 sm:h-3 rounded-xs inline-block" style="background:#bef264"></span><span>50 - 200m: Đồi & duyên hải</span></div>
+              <div class="flex items-center space-x-1.5 sm:space-x-2"><span class="w-3 h-2.5 sm:w-3.5 sm:h-3 rounded-xs inline-block" style="background:#fde047"></span><span>200 - 500m: Bán bình nguyên</span></div>
+              <div class="flex items-center space-x-1.5 sm:space-x-2"><span class="w-3 h-2.5 sm:w-3.5 sm:h-3 rounded-xs inline-block" style="background:#fb923c"></span><span>500 - 1000m: Cao nguyên bazan</span></div>
+              <div class="flex items-center space-x-1.5 sm:space-x-2"><span class="w-3 h-2.5 sm:w-3.5 sm:h-3 rounded-xs inline-block" style="background:#ea580c"></span><span>1000 - 1500m: Núi trung bình</span></div>
+              <div class="flex items-center space-x-1.5 sm:space-x-2"><span class="w-3 h-2.5 sm:w-3.5 sm:h-3 rounded-xs inline-block" style="background:#9a3412"></span><span>&gt; 1500m: Núi cao</span></div>
             </div>
           </div>
 
           <!-- Floating GIS Toolbar (Reset View, SGK Original Map, Measure Tool, Compare Mode, Mini-Game, Symbol Handbook) -->
-          <div class="absolute top-3 right-14 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-1 text-[11px]">
-            <button onclick="AtlasEngine.resetView()" title="Toàn cảnh Việt Nam" class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
-              <span>🧭</span><span class="hidden sm:inline">Toàn cảnh</span>
+          <div class="absolute top-2 sm:top-3 right-2 sm:right-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-0.5 sm:space-x-1 text-[10px] sm:text-[11px]">
+            <button onclick="AtlasEngine.resetView()" title="Toàn cảnh Việt Nam" class="p-1 sm:px-2 sm:py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
+              <span>🧭</span><span class="hidden md:inline">Toàn cảnh</span>
             </button>
-            <button onclick="AtlasEngine.openAtlatPagesModal()" title="Xem trang bản đồ gốc Atlat 2026 (Scan Sách Giáo Khoa 100% Offline từ Data)" class="px-2 py-1 rounded-md bg-amber-500 hover:bg-amber-600 text-white font-bold transition shadow-xs flex items-center space-x-1">
-              <span>📖</span><span class="hidden sm:inline">Bản Đồ Gốc SGK</span>
+            <button onclick="AtlasEngine.openAtlatPagesModal()" title="Xem trang bản đồ gốc Atlat 2026 (Scan Sách Giáo Khoa 100% Offline từ Data)" class="px-1.5 sm:px-2 py-1 rounded-md bg-amber-500 hover:bg-amber-600 text-white font-bold transition shadow-xs flex items-center space-x-1">
+              <span>📖</span><span class="hidden sm:inline">Bản Đồ Gốc</span><span class="sm:hidden">Atlat</span>
             </button>
-            <button id="btn-tool-measure" onclick="AtlasEngine.toggleMeasureTool()" title="Thước đo khoảng cách thực tế & tỷ lệ Atlat" class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
-              <span>📐</span><span class="hidden sm:inline">Thước đo</span>
+            <button id="btn-tool-measure" onclick="AtlasEngine.toggleMeasureTool()" title="Thước đo khoảng cách thực tế & tỷ lệ Atlat" class="p-1 sm:px-2 sm:py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
+              <span>📐</span><span class="hidden lg:inline">Thước đo</span>
             </button>
-            <button onclick="AtlasEngine.openCompareModal()" title="So sánh 2 Tỉnh thành hoặc Vùng kinh tế" class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
-              <span>⚖️</span><span class="hidden sm:inline">So sánh</span>
+            <button onclick="AtlasEngine.openCompareModal()" title="So sánh 2 Tỉnh thành hoặc Vùng kinh tế" class="p-1 sm:px-2 sm:py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
+              <span>⚖️</span><span class="hidden lg:inline">So sánh</span>
             </button>
-            <button onclick="AtlasEngine.openSymbolHandbook()" title="Tra cứu nhanh Ký hiệu Atlat" class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
-              <span>🔖</span><span class="hidden sm:inline">Ký hiệu</span>
-            </button>
-            <button onclick="AtlasEngine.startMiniGame()" title="Mini-game 15 giây định vị nhanh Atlat" class="px-2 py-1 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-400 hover:bg-amber-500/20 transition font-bold flex items-center space-x-1">
-              <span>🎮</span><span class="hidden sm:inline">Định vị</span>
+            <button onclick="AtlasEngine.startMiniGame()" title="Mini-game 15 giây định vị nhanh Atlat" class="p-1 sm:px-2 sm:py-1 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-400 hover:bg-amber-500/20 transition font-bold flex items-center space-x-1">
+              <span>🎮</span><span class="hidden lg:inline">Định vị</span>
             </button>
           </div>
           
           <!-- Tọa độ con trỏ chuột thời gian thực -->
-          <div class="absolute bottom-3 right-3 floating-map-ctrl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2.5 py-1.5 rounded-lg text-[11px] font-mono text-slate-600 dark:text-slate-300 shadow-sm border border-slate-200 dark:border-slate-700 pointer-events-none">
+          <div class="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 floating-map-ctrl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-[11px] font-mono text-slate-600 dark:text-slate-300 shadow-sm border border-slate-200 dark:border-slate-700 pointer-events-none hidden sm:block">
             📍 Tọa độ: <span id="cursor-coords" class="font-bold text-blue-600 dark:text-blue-400">16.0000°B, 107.5000°Đ</span>
           </div>
         </div>
       </div>
 
       <!-- Khung Phải (5 Cột): Bảng điều khiển bộ lọc & Tra cứu Atlat -->
-      <div class="col-span-12 lg:col-span-5 h-full overflow-y-auto pr-1 space-y-4">
+      <div class="col-span-12 lg:col-span-5 h-auto lg:h-full lg:overflow-y-auto pr-0 lg:pr-1 space-y-3 sm:space-y-4">
         
         <!-- Thanh tìm kiếm thông minh -->
         <div class="bg-white dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
@@ -421,34 +434,34 @@
     <!-- ==================================================================== -->
     <!-- PHÂN HỆ 2: NHẬN DẠNG BIỂU ĐỒ (GRID 12 CỘT: 7 TRÁI / 5 PHẢI)          -->
     <!-- ==================================================================== -->
-    <div id="mode-charts" class="mode-view hidden grid grid-cols-12 gap-4 p-4 h-full">
-      <!-- Khung Trái (7 Cột): Khung trực quan hóa Apache ECharts -->
-      <div class="col-span-12 lg:col-span-7 h-full min-h-[420px] rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 p-4 flex flex-col">
-        <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 shrink-0">
-          <div class="flex items-center space-x-2">
+    <div id="mode-charts" class="mode-view hidden grid grid-cols-12 gap-3 lg:gap-4 p-2 sm:p-4 min-h-full lg:h-full">
+      <!-- Khung Trực quan hóa Apache ECharts (Order 2 trên Mobile, Order 1 trên PC) -->
+      <div class="col-span-12 lg:col-span-7 order-2 lg:order-1 h-[320px] sm:h-[400px] lg:h-full rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 p-3 sm:p-4 flex flex-col">
+        <div class="flex items-center justify-between pb-2 sm:pb-3 border-b border-slate-100 dark:border-slate-800 shrink-0">
+          <div class="flex items-center space-x-1.5 sm:space-x-2">
             <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-              Khung Trực Quan Hóa (Apache ECharts)
+              Khung Trực Quan Hóa
             </span>
-            <span class="text-[10px] text-slate-400 font-medium hidden sm:inline">Tự động co giãn Responsive</span>
+            <span class="text-[10px] text-slate-400 font-medium hidden sm:inline">ECharts Responsive</span>
           </div>
-          <div class="flex items-center space-x-1.5">
-            <button onclick="ChartTrainer.exportChartPng()" title="Tải ảnh PNG chất lượng cao (2x DPI)" class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1 transition shadow-2xs">
-              <span>📸</span> <span class="hidden md:inline">Tải ảnh PNG</span>
+          <div class="flex items-center space-x-1 sm:space-x-1.5">
+            <button onclick="ChartTrainer.exportChartPng()" title="Tải ảnh PNG chất lượng cao (2x DPI)" class="px-2 sm:px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[10px] sm:text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1 transition shadow-2xs">
+              <span>📸</span> <span class="hidden md:inline">Tải ảnh</span>
             </button>
-            <button onclick="ChartTrainer.resetChartZoom()" title="Đặt lại góc nhìn biểu đồ" class="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1 transition shadow-2xs">
+            <button onclick="ChartTrainer.resetChartZoom()" title="Đặt lại góc nhìn biểu đồ" class="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[10px] sm:text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1 transition shadow-2xs">
               <span>🔄</span> <span class="hidden md:inline">Đặt lại</span>
             </button>
-            <button onclick="ChartTrainer.randomQuestion()" title="Làm câu hỏi ngẫu nhiên" class="px-2 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-[11px] font-bold text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900 flex items-center space-x-1 transition shadow-2xs">
+            <button onclick="ChartTrainer.randomQuestion()" title="Làm câu hỏi ngẫu nhiên" class="px-2 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-[10px] sm:text-[11px] font-bold text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900 flex items-center space-x-1 transition shadow-2xs">
               <span>🔀</span> <span class="hidden sm:inline">Ngẫu nhiên</span>
             </button>
           </div>
         </div>
         <!-- Vùng vẽ biểu đồ ECharts -->
-        <div id="chart-visual-canvas" class="flex-1 w-full min-h-[350px] mt-2"></div>
+        <div id="chart-visual-canvas" class="flex-1 w-full min-h-[240px] sm:min-h-[320px] mt-2"></div>
       </div>
 
-      <!-- Khung Phải (5 Cột): Bảng điều khiển bóc tách, đề bài & 5 nút Thử & Sai -->
-      <div class="col-span-12 lg:col-span-5 h-full overflow-y-auto pr-1" id="chart-control-panel">
+      <!-- Khung Đề bài, Phân tích & 6 Nút Thử/Sai (Order 1 trên Mobile, Order 2 trên PC) -->
+      <div class="col-span-12 lg:col-span-5 order-1 lg:order-2 h-auto lg:h-full lg:overflow-y-auto pr-0 lg:pr-1 space-y-3 sm:space-y-4" id="chart-control-panel">
         <!-- Rendered by js/chart-trainer.js -->
       </div>
     </div>
@@ -456,21 +469,21 @@
     <!-- ==================================================================== -->
     <!-- PHÂN HỆ 3: MÁY TÍNH & CÔNG THỨC ĐỊA LÝ (GRID 12 CỘT: 7 TRÁI / 5 PHẢI) -->
     <!-- ==================================================================== -->
-    <div id="mode-calc" class="mode-view hidden grid grid-cols-12 gap-4 p-4 h-full">
-      <!-- Khung Trái (7 Cột): Bảng số liệu mẫu Click-to-Bind & Công thức KaTeX -->
-      <div class="col-span-12 lg:col-span-7 h-full min-h-[420px] rounded-xl overflow-y-auto relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 p-5 space-y-4">
-        <div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+    <div id="mode-calc" class="mode-view hidden grid grid-cols-12 gap-3 lg:gap-4 p-2 sm:p-4 min-h-full lg:h-full">
+      <!-- Khung Bảng số liệu mẫu & Công thức KaTeX (Order 2 trên Mobile, Order 1 trên PC) -->
+      <div class="col-span-12 lg:col-span-7 order-2 lg:order-1 h-auto lg:h-full min-h-[300px] lg:min-h-0 rounded-xl overflow-y-auto relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900 p-3.5 sm:p-5 space-y-3 sm:space-y-4">
+        <div class="bg-slate-50 dark:bg-slate-800/50 p-3 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
           <span class="text-[10px] font-bold uppercase text-slate-400 block mb-1">Mô Hình Toán Học Chuẩn Sư Phạm</span>
-          <div id="calc-katex-formula" class="katex-formula-box text-sm sm:text-base py-1 overflow-x-auto"></div>
+          <div id="calc-katex-formula" class="katex-formula-box text-xs sm:text-base py-1 overflow-x-auto"></div>
         </div>
 
         <!-- Bảng số liệu mẫu có cơ chế Click-to-Bind -->
         <div id="calc-table-display"></div>
       </div>
 
-      <!-- Khung Phải (5 Cột): Bộ chọn công thức, Unit Normalizer & Lời giải từng bước -->
-      <div class="col-span-12 lg:col-span-5 h-full overflow-y-auto pr-1 space-y-4">
-        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-1.5">
+      <!-- Khung Bộ chọn công thức, Nhập liệu & Lời giải (Order 1 trên Mobile, Order 2 trên PC) -->
+      <div class="col-span-12 lg:col-span-5 order-1 lg:order-2 h-auto lg:h-full lg:overflow-y-auto pr-0 lg:pr-1 space-y-3 sm:space-y-4">
+        <div class="bg-white dark:bg-slate-900 p-3.5 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-1.5">
           <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">Chọn 1 trong 10 công thức trọng tâm THPT:</label>
           <select id="calc-formula-select" class="w-full p-2.5 text-xs font-bold rounded-xl border border-blue-300 dark:border-blue-700 bg-blue-50/50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
             <!-- Populated by geo-calculator.js -->
@@ -478,7 +491,7 @@
         </div>
 
         <!-- Các ô nhập liệu có Unit Normalizer -->
-        <div id="calc-inputs-container" class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3"></div>
+        <div id="calc-inputs-container" class="bg-white dark:bg-slate-900 p-3.5 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3"></div>
 
         <!-- Kết quả tính toán & Các bước giải KaTeX với hệ số nhân rõ ràng -->
         <div id="calc-result-display"></div>
@@ -882,73 +895,93 @@
   </div>
 
   <!-- Modal Tra Cứu Trang Bản Đồ Gốc Atlat 2026 (Scan Sách Giáo Khoa 100% Offline từ Data) -->
-  <div id="modal-atlat-pages" class="fixed inset-0 z-[2000] hidden items-center justify-center bg-slate-950/85 backdrop-blur-sm p-2 sm:p-4 animate-fade-in font-sans">
-    <div class="bg-white dark:bg-slate-900 w-full max-w-5xl h-[92vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-slate-200 dark:border-slate-800">
+  <div id="modal-atlat-pages" class="fixed inset-0 z-[2000] hidden items-center justify-center bg-slate-950/85 backdrop-blur-sm p-1 sm:p-3 md:p-4 animate-fade-in font-sans">
+    <div class="bg-white dark:bg-slate-900 w-full max-w-6xl h-[96vh] sm:h-[94vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-slate-200 dark:border-slate-800">
       
-      <!-- Header -->
-      <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-800/60 flex-wrap gap-2">
-        <div class="flex items-center space-x-2.5">
-          <span class="text-xl">📖</span>
-          <div>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white flex items-center gap-2">
-              <span>Bản Đồ Gốc Atlat Địa lí Việt Nam 2026</span>
-              <span class="text-[9px] bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 font-bold px-2 py-0.5 rounded-full border border-amber-300 dark:border-amber-800">Offline Scan SGK</span>
-            </h3>
-            <p id="atlat-page-viewer-title" class="text-[11px] text-blue-600 dark:text-blue-400 font-semibold truncate max-w-[280px] sm:max-w-md">Trang 4: Hành chính (Bắc Bộ &amp; Bắc Trung Bộ)</p>
+      <!-- Responsive Header (Tier 1 & Tier 2) -->
+      <div class="px-3 sm:px-4 py-2 sm:py-2.5 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 flex flex-col gap-2 shrink-0">
+        <!-- Tier 1: Title, Page Subtitle & Close -->
+        <div class="flex items-center justify-between w-full">
+          <div class="flex items-center space-x-2">
+            <span class="text-lg sm:text-xl">📖</span>
+            <div>
+              <h3 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white flex items-center gap-1.5 sm:gap-2">
+                <span>Bản Đồ Gốc Atlat Địa lí Việt Nam 2026</span>
+                <span class="text-[9px] bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 font-bold px-1.5 py-0.5 rounded-full border border-amber-300 dark:border-amber-800">Offline Scan SGK</span>
+              </h3>
+              <p id="atlat-page-viewer-title" class="text-[10px] sm:text-[11px] text-blue-600 dark:text-blue-400 font-semibold truncate max-w-[240px] sm:max-w-md">Trang 4: Hành chính (Bắc Bộ &amp; Bắc Trung Bộ)</p>
+            </div>
           </div>
+
+          <button onclick="AtlasEngine.closeAtlatPagesModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-red-500 hover:text-white transition flex items-center justify-center text-sm font-bold shrink-0" title="Đóng">✕</button>
         </div>
 
-        <!-- Controls: Select Page, Prev/Next, Zoom, Close -->
-        <div class="flex items-center space-x-1.5 sm:space-x-2">
-          <select id="atlat-page-select" onchange="AtlasEngine.selectAtlatPage(this.value)" class="text-xs px-2 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold focus:outline-hidden">
-            <option value="1">Trang 1: Bìa sách Atlat 2026</option>
-            <option value="2">Trang 2: Ký hiệu chung</option>
-            <option value="3">Trang 3: Hình thể Việt Nam</option>
-            <option value="4" selected>Trang 4: Hành chính (Phía Bắc)</option>
-            <option value="5">Trang 5: Hành chính (Phía Nam)</option>
-            <option value="6">Trang 6: Địa hình &amp; Địa chất (Phía Bắc)</option>
-            <option value="7">Trang 7: Địa hình &amp; Khoáng sản (Phía Nam)</option>
-            <option value="8">Trang 8: Khí hậu chung</option>
-            <option value="9">Trang 9: Các miền &amp; vùng khí hậu</option>
-            <option value="10">Trang 10: Các hệ thống sông ngòi</option>
-            <option value="13">Trang 13: Địa chất &amp; Khoáng sản</option>
-            <option value="18">Trang 18: Kinh tế chung &amp; Các vùng kinh tế</option>
-            <option value="19">Trang 19: Nông nghiệp chung</option>
-            <option value="21">Trang 21: Công nghiệp chung</option>
-            <option value="22">Trang 22: Các ngành công nghiệp trọng điểm</option>
-            <option value="23">Trang 23: Giao thông &amp; Thương mại</option>
-          </select>
-
-          <div class="flex items-center space-x-1 bg-slate-200 dark:bg-slate-700 p-0.5 rounded-lg text-xs">
-            <button onclick="AtlasEngine.zoomAtlatPage(-0.2)" class="px-2 py-1 rounded-md hover:bg-white dark:hover:bg-slate-800 transition font-bold" title="Thu nhỏ">🔍-</button>
-            <span id="atlat-page-zoom-val" class="px-1.5 font-mono text-[10px] font-bold">100%</span>
-            <button onclick="AtlasEngine.zoomAtlatPage(0.2)" class="px-2 py-1 rounded-md hover:bg-white dark:hover:bg-slate-800 transition font-bold" title="Phóng to">🔍+</button>
+        <!-- Tier 2: Page Selector, Quick Fit, Zoom Controls, Prev/Next -->
+        <div class="flex items-center justify-between flex-wrap gap-1.5 sm:gap-2">
+          <!-- Page Selector & Prev/Next -->
+          <div class="flex items-center space-x-1 sm:space-x-1.5 flex-1 max-w-full sm:max-w-md">
+            <button onclick="AtlasEngine.prevAtlatPage()" class="p-1.5 sm:px-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-bold shrink-0" title="Trang trước">◀</button>
+            <select id="atlat-page-select" onchange="AtlasEngine.selectAtlatPage(this.value)" class="text-xs px-2 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold focus:outline-hidden flex-1 min-w-[140px] truncate">
+              <option value="1">Trang 1: Bìa sách Atlat 2026</option>
+              <option value="2">Trang 2: Ký hiệu chung</option>
+              <option value="3">Trang 3: Hình thể Việt Nam</option>
+              <option value="4" selected>Trang 4: Hành chính (Phía Bắc)</option>
+              <option value="5">Trang 5: Hành chính (Phía Nam)</option>
+              <option value="6">Trang 6: Địa hình &amp; Địa chất (Phía Bắc)</option>
+              <option value="7">Trang 7: Địa hình &amp; Khoáng sản (Phía Nam)</option>
+              <option value="8">Trang 8: Khí hậu chung</option>
+              <option value="9">Trang 9: Các miền &amp; vùng khí hậu</option>
+              <option value="10">Trang 10: Các hệ thống sông ngòi</option>
+              <option value="13">Trang 13: Địa chất &amp; Khoáng sản</option>
+              <option value="18">Trang 18: Kinh tế chung &amp; Các vùng kinh tế</option>
+              <option value="19">Trang 19: Nông nghiệp chung</option>
+              <option value="21">Trang 21: Công nghiệp chung</option>
+              <option value="22">Trang 22: Các ngành công nghiệp trọng điểm</option>
+              <option value="23">Trang 23: Giao thông &amp; Thương mại</option>
+            </select>
+            <button onclick="AtlasEngine.nextAtlatPage()" class="p-1.5 sm:px-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-bold shrink-0" title="Trang sau">▶</button>
           </div>
 
-          <button onclick="AtlasEngine.prevAtlatPage()" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold" title="Trang trước">◀</button>
-          <button onclick="AtlasEngine.nextAtlatPage()" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold" title="Trang sau">▶</button>
+          <!-- View Presets & Zoom Tool -->
+          <div class="flex items-center space-x-1 sm:space-x-1.5 shrink-0">
+            <!-- Fit Width & Fit Page buttons -->
+            <button onclick="AtlasEngine.fitAtlatPageWidth()" class="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 text-[11px] font-semibold text-slate-700 dark:text-slate-300" title="Vừa chiều ngang màn hình">
+              ↔ <span class="hidden sm:inline">Vừa ngang</span>
+            </button>
+            <button onclick="AtlasEngine.resetAtlatPageZoom()" class="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 text-[11px] font-semibold text-slate-700 dark:text-slate-300" title="Toàn trang vừa khung nhìn">
+              ↕ <span class="hidden sm:inline">Toàn trang</span>
+            </button>
 
-          <button onclick="AtlasEngine.closeAtlatPagesModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-red-500 hover:text-white transition flex items-center justify-center text-sm font-bold">✕</button>
+            <!-- Zoom +/- Controls -->
+            <div class="flex items-center space-x-0.5 sm:space-x-1 bg-slate-200 dark:bg-slate-700 p-0.5 rounded-lg text-xs">
+              <button onclick="AtlasEngine.zoomAtlatPage(-0.2)" class="px-1.5 sm:px-2 py-1 rounded-md hover:bg-white dark:hover:bg-slate-800 transition font-bold" title="Thu nhỏ">🔍-</button>
+              <span id="atlat-page-zoom-val" class="px-1 font-mono text-[10px] font-bold">100%</span>
+              <button onclick="AtlasEngine.zoomAtlatPage(0.2)" class="px-1.5 sm:px-2 py-1 rounded-md hover:bg-white dark:hover:bg-slate-800 transition font-bold" title="Phóng to">🔍+</button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Main Viewer Body with Pan/Scroll -->
-      <div class="flex-1 bg-slate-950 overflow-auto flex items-center justify-center p-3 sm:p-5 relative select-none">
-        <img 
-          id="atlat-page-viewer-img" 
-          src="public/data/atlat_pages/page_04.jpg" 
-          alt="Trang Atlat Địa lí Việt Nam 2026" 
-          class="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-transform duration-150 origin-center"
-        />
+      <!-- Main Viewer Canvas with Mouse Drag, Wheel Zoom & Touch Support -->
+      <div id="atlat-viewer-container" class="flex-1 bg-slate-950 overflow-hidden flex items-center justify-center relative select-none atlat-viewer-canvas">
+        <div id="atlat-img-wrapper" class="transition-transform duration-75 origin-center flex items-center justify-center">
+          <img 
+            id="atlat-page-viewer-img" 
+            src="public/data/atlat_pages/page_04.jpg" 
+            alt="Trang Atlat Địa lí Việt Nam 2026" 
+            class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl atlat-viewer-img pointer-events-none"
+          />
+        </div>
       </div>
 
-      <!-- Footer Exam Tip -->
-      <div class="px-4 py-2 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 text-xs flex items-center justify-between text-slate-500 dark:text-slate-400">
-        <span class="flex items-center space-x-1.5">
+      <!-- Footer Exam Tip & Touch Instructions -->
+      <div class="px-3 sm:px-4 py-1.5 sm:py-2 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 text-xs flex items-center justify-between text-slate-500 dark:text-slate-400 shrink-0">
+        <span class="flex items-center space-x-1.5 text-[10px] sm:text-xs">
           <span>💡</span>
-          <span>Dùng phím cuộn chuột hoặc nút <strong>🔍+</strong> để phóng to xem rõ nét chữ, địa danh và ký hiệu khai thác khoáng sản.</span>
+          <span class="hidden sm:inline">Kéo chuột/chạm tay để rê bản đồ &bull; Lăn chuột hoặc véo ngón tay để phóng to nét chữ và ký hiệu.</span>
+          <span class="sm:hidden">Rê hoặc véo ngón tay để phóng to/thu nhỏ.</span>
         </span>
-        <span class="text-[11px] font-mono hidden sm:inline">Nguồn: Atlat Địa lí Việt Nam 2026 (Thầy Lê Huỳnh) - NXB Giáo dục Việt Nam</span>
+        <span class="text-[10px] sm:text-[11px] font-mono hidden md:inline">Nguồn: Atlat Địa lí Việt Nam 2026 (Thầy Lê Huỳnh) - NXB Giáo dục Việt Nam</span>
       </div>
 
     </div>

@@ -3049,14 +3049,19 @@ const AtlasEngine = (function () {
     }
 
     legendEl.innerHTML = `
-      <div class="space-y-2">
-        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-1">
+      <div class="space-y-1.5">
+        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-1 cursor-pointer" onclick="AtlasEngine.toggleLegendCollapse()">
           <span class="font-bold text-[11px] uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center space-x-1">
             <span>📖</span> <span>Chú Giải Atlat</span>
           </span>
-          <span class="text-[9px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-1.5 py-0.2 rounded-full">THPT</span>
+          <div class="flex items-center space-x-1">
+            <span class="text-[9px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-1.5 py-0.2 rounded-full">THPT</span>
+            <button id="btn-legend-collapse" class="text-[10px] text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 px-1 font-bold">▲</button>
+          </div>
         </div>
-        ${sections.join("")}
+        <div id="atlas-legend-body" class="${isLegendCollapsed ? 'hidden' : 'space-y-2'}">
+          ${sections.join("")}
+        </div>
       </div>
     `;
   }
@@ -3139,11 +3144,35 @@ const AtlasEngine = (function () {
   }
 
   // ===========================================================================
-  // TRA CỨU BẢN ĐỒ GỐC ATLAT 2026 (SCAN CHUẨN TỪ FILE PDF TRONG DATA)
+  // TRA CỨU BẢN ĐỒ GỐC ATLAT 2026 (PAN & ZOOM ĐA NỀN TẢNG CHO MỌI TỈ LỆ MÀN HÌNH)
   // ===========================================================================
   let atlatPagesManifest = [];
   let currentAtlatPageIndex = 3; // Mặc định Trang 4 Hành chính
   let atlatPageZoom = 1;
+  let atlatPanX = 0;
+  let atlatPanY = 0;
+  let isAtlatDragging = false;
+  let atlatDragStartX = 0;
+  let atlatDragStartY = 0;
+  let atlatTouchStartDist = 0;
+  let atlatTouchStartZoom = 1;
+  let atlatViewerListenersAttached = false;
+  let isLegendCollapsed = false;
+
+  function toggleLegendCollapse() {
+    isLegendCollapsed = !isLegendCollapsed;
+    const body = document.getElementById("atlas-legend-body");
+    const btn = document.getElementById("btn-legend-collapse");
+    if (body) {
+      if (isLegendCollapsed) {
+        body.classList.add("hidden");
+        if (btn) btn.innerText = "▼";
+      } else {
+        body.classList.remove("hidden");
+        if (btn) btn.innerText = "▲";
+      }
+    }
+  }
 
   async function initAtlatPages() {
     try {
@@ -3156,11 +3185,136 @@ const AtlasEngine = (function () {
     }
   }
 
+  function applyAtlatTransform() {
+    const wrapper = document.getElementById("atlat-img-wrapper");
+    const zoomTextEl = document.getElementById("atlat-page-zoom-val");
+    if (wrapper) {
+      wrapper.style.transform = `translate(${atlatPanX}px, ${atlatPanY}px) scale(${atlatPageZoom})`;
+    }
+    if (zoomTextEl) {
+      zoomTextEl.innerText = `${Math.round(atlatPageZoom * 100)}%`;
+    }
+  }
+
+  function resetAtlatPageZoom() {
+    atlatPageZoom = 1;
+    atlatPanX = 0;
+    atlatPanY = 0;
+    applyAtlatTransform();
+  }
+
+  function fitAtlatPageWidth() {
+    const container = document.getElementById("atlat-viewer-container");
+    const img = document.getElementById("atlat-page-viewer-img");
+    if (container && img && img.naturalWidth) {
+      const containerW = container.clientWidth - 24;
+      const scale = Math.max(0.7, Math.min(3.5, (containerW / img.naturalWidth) * 1.35));
+      atlatPageZoom = scale;
+      atlatPanX = 0;
+      atlatPanY = 0;
+      applyAtlatTransform();
+    } else {
+      atlatPageZoom = 1.6;
+      atlatPanX = 0;
+      atlatPanY = 0;
+      applyAtlatTransform();
+    }
+  }
+
+  function zoomAtlatPage(delta) {
+    atlatPageZoom = Math.min(4.0, Math.max(0.4, atlatPageZoom + delta));
+    applyAtlatTransform();
+  }
+
+  function attachAtlatViewerGestures() {
+    if (atlatViewerListenersAttached) return;
+    const container = document.getElementById("atlat-viewer-container");
+    if (!container) return;
+
+    // Chuột: Kéo để di chuyển (Pan)
+    container.addEventListener("mousedown", (e) => {
+      if (e.button !== 0) return;
+      isAtlatDragging = true;
+      atlatDragStartX = e.clientX - atlatPanX;
+      atlatDragStartY = e.clientY - atlatPanY;
+      container.style.cursor = "grabbing";
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!isAtlatDragging) return;
+      atlatPanX = e.clientX - atlatDragStartX;
+      atlatPanY = e.clientY - atlatDragStartY;
+      applyAtlatTransform();
+    });
+
+    window.addEventListener("mouseup", () => {
+      if (isAtlatDragging) {
+        isAtlatDragging = false;
+        if (container) container.style.cursor = "grab";
+      }
+    });
+
+    // Cuộn chuột: Phóng to / Thu nhỏ mượt mà
+    container.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      const delta = e.deltaY < 0 ? 0.15 : -0.15;
+      zoomAtlatPage(delta);
+    }, { passive: false });
+
+    // Nháy đúp: Chuyển đổi nhanh giữa 100% và 200%
+    container.addEventListener("dblclick", () => {
+      if (atlatPageZoom > 1.2) {
+        resetAtlatPageZoom();
+      } else {
+        atlatPageZoom = 2.0;
+        applyAtlatTransform();
+      }
+    });
+
+    // Cảm ứng (Touch - Mobile & Tablet): Véo để phóng to và vuốt 1 ngón để rê
+    container.addEventListener("touchstart", (e) => {
+      if (e.touches.length === 1) {
+        isAtlatDragging = true;
+        atlatDragStartX = e.touches[0].clientX - atlatPanX;
+        atlatDragStartY = e.touches[0].clientY - atlatPanY;
+      } else if (e.touches.length === 2) {
+        isAtlatDragging = false;
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        atlatTouchStartDist = Math.hypot(dx, dy);
+        atlatTouchStartZoom = atlatPageZoom;
+      }
+    }, { passive: true });
+
+    container.addEventListener("touchmove", (e) => {
+      if (e.touches.length === 1 && isAtlatDragging) {
+        atlatPanX = e.touches[0].clientX - atlatDragStartX;
+        atlatPanY = e.touches[0].clientY - atlatDragStartY;
+        applyAtlatTransform();
+      } else if (e.touches.length === 2 && atlatTouchStartDist > 0) {
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        const dist = Math.hypot(dx, dy);
+        const factor = dist / atlatTouchStartDist;
+        atlatPageZoom = Math.min(4.0, Math.max(0.4, atlatTouchStartZoom * factor));
+        applyAtlatTransform();
+      }
+    }, { passive: true });
+
+    container.addEventListener("touchend", () => {
+      isAtlatDragging = false;
+      atlatTouchStartDist = 0;
+    }, { passive: true });
+
+    atlatViewerListenersAttached = true;
+  }
+
   function openAtlatPagesModal(targetPage = 4) {
     const modal = document.getElementById("modal-atlat-pages");
     if (!modal) return;
     modal.classList.remove("hidden");
     modal.classList.add("flex");
+    attachAtlatViewerGestures();
     selectAtlatPage(targetPage);
   }
 
@@ -3169,7 +3323,7 @@ const AtlasEngine = (function () {
     if (!modal) return;
     modal.classList.add("hidden");
     modal.classList.remove("flex");
-    atlatPageZoom = 1;
+    resetAtlatPageZoom();
   }
 
   function selectAtlatPage(pageNumber) {
@@ -3178,32 +3332,23 @@ const AtlasEngine = (function () {
       const titleEl = document.getElementById("atlat-page-viewer-title");
       if (imgEl) imgEl.src = `public/data/atlat_pages/page_${String(pageNumber).padStart(2, '0')}.jpg`;
       if (titleEl) titleEl.innerText = `Bản đồ Atlat Địa lí Việt Nam - Trang ${pageNumber}`;
+      resetAtlatPageZoom();
       return;
     }
     const item = atlatPagesManifest.find(p => p.page === Number(pageNumber)) || atlatPagesManifest[0];
     currentAtlatPageIndex = atlatPagesManifest.indexOf(item);
-    atlatPageZoom = 1;
 
     const imgEl = document.getElementById("atlat-page-viewer-img");
     const titleEl = document.getElementById("atlat-page-viewer-title");
     const selectEl = document.getElementById("atlat-page-select");
-    const zoomTextEl = document.getElementById("atlat-page-zoom-val");
 
     if (imgEl) {
       imgEl.src = item.file;
-      imgEl.style.transform = `scale(${atlatPageZoom})`;
     }
     if (titleEl) titleEl.innerText = item.title;
     if (selectEl) selectEl.value = item.page;
-    if (zoomTextEl) zoomTextEl.innerText = `${Math.round(atlatPageZoom * 100)}%`;
-  }
 
-  function zoomAtlatPage(delta) {
-    atlatPageZoom = Math.min(3.0, Math.max(0.5, atlatPageZoom + delta));
-    const imgEl = document.getElementById("atlat-page-viewer-img");
-    const zoomTextEl = document.getElementById("atlat-page-zoom-val");
-    if (imgEl) imgEl.style.transform = `scale(${atlatPageZoom})`;
-    if (zoomTextEl) zoomTextEl.innerText = `${Math.round(atlatPageZoom * 100)}%`;
+    resetAtlatPageZoom();
   }
 
   function prevAtlatPage() {
@@ -3263,8 +3408,11 @@ const AtlasEngine = (function () {
     closeAtlatPagesModal,
     selectAtlatPage,
     zoomAtlatPage,
+    resetAtlatPageZoom,
+    fitAtlatPageWidth,
     prevAtlatPage,
     nextAtlatPage,
+    toggleLegendCollapse,
     resetView: () => fitVietnamBounds({ duration: 1.2 }),
     fitVietnamBounds,
     getMap: () => map
