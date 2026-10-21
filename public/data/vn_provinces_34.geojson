@@ -13,8 +13,8 @@
       "properties": {
         "name": "Tỉnh Cao Bằng",
         "administrative_type": "Tỉnh",
-        "region_name": "Trung du và miền núi Bắc Bộ",
-        "region": "Trung du và miền núi Bắc Bộ",
+        "region_name": "Trung du và miền núi phía Bắc",
+        "region": "Trung du và miền núi phía Bắc",
         "area": 6700.4,
         "pop": 558.5,
         "density": 83,
@@ -25,7 +25,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -1352,8 +1353,8 @@
       "properties": {
         "name": "Tỉnh Tuyên Quang",
         "administrative_type": "Tỉnh",
-        "region_name": "Trung du và miền núi Bắc Bộ",
-        "region": "Trung du và miền núi Bắc Bộ",
+        "region_name": "Trung du và miền núi phía Bắc",
+        "region": "Trung du và miền núi phía Bắc",
         "area": 13795.6,
         "pop": 1731.7,
         "density": 126,
@@ -1365,7 +1366,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -3760,8 +3762,8 @@
       "properties": {
         "name": "Tỉnh Lào Cai",
         "administrative_type": "Tỉnh",
-        "region_name": "Trung du và miền núi Bắc Bộ",
-        "region": "Trung du và miền núi Bắc Bộ",
+        "region_name": "Trung du và miền núi phía Bắc",
+        "region": "Trung du và miền núi phía Bắc",
         "area": 13257.0,
         "pop": 1656.6,
         "density": 125,
@@ -3773,7 +3775,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -6152,8 +6155,8 @@
       "properties": {
         "name": "Tỉnh Thái Nguyên",
         "administrative_type": "Tỉnh",
-        "region_name": "Trung du và miền núi Bắc Bộ",
-        "region": "Trung du và miền núi Bắc Bộ",
+        "region_name": "Trung du và miền núi phía Bắc",
+        "region": "Trung du và miền núi phía Bắc",
         "area": 8375.3,
         "pop": 1694.5,
         "density": 202,
@@ -6165,7 +6168,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -7784,8 +7788,8 @@
       "properties": {
         "name": "Tỉnh Lạng Sơn",
         "administrative_type": "Tỉnh",
-        "region_name": "Trung du và miền núi Bắc Bộ",
-        "region": "Trung du và miền núi Bắc Bộ",
+        "region_name": "Trung du và miền núi phía Bắc",
+        "region": "Trung du và miền núi phía Bắc",
         "area": 8310.2,
         "pop": 814.0,
         "density": 98,
@@ -7796,7 +7800,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -9555,8 +9560,8 @@
       "properties": {
         "name": "Tỉnh Phú Thọ",
         "administrative_type": "Tỉnh",
-        "region_name": "Trung du và miền núi Bắc Bộ",
-        "region": "Trung du và miền núi Bắc Bộ",
+        "region_name": "Trung du và miền núi phía Bắc",
+        "region": "Trung du và miền núi phía Bắc",
         "area": 9361.4,
         "pop": 3663.7,
         "density": 391,
@@ -9569,7 +9574,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -11712,8 +11718,8 @@
       "properties": {
         "name": "Tỉnh Điện Biên",
         "administrative_type": "Tỉnh",
-        "region_name": "Trung du và miền núi Bắc Bộ",
-        "region": "Trung du và miền núi Bắc Bộ",
+        "region_name": "Trung du và miền núi phía Bắc",
+        "region": "Trung du và miền núi phía Bắc",
         "area": 9539.9,
         "pop": 656.7,
         "density": 69,
@@ -11724,7 +11730,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -14087,8 +14094,8 @@
       "properties": {
         "name": "Tỉnh Lai Châu",
         "administrative_type": "Tỉnh",
-        "region_name": "Trung du và miền núi Bắc Bộ",
-        "region": "Trung du và miền núi Bắc Bộ",
+        "region_name": "Trung du và miền núi phía Bắc",
+        "region": "Trung du và miền núi phía Bắc",
         "area": 9068.7,
         "pop": 495.5,
         "density": 55,
@@ -14099,7 +14106,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -16114,8 +16122,8 @@
       "properties": {
         "name": "Tỉnh Sơn La",
         "administrative_type": "Tỉnh",
-        "region_name": "Trung du và miền núi Bắc Bộ",
-        "region": "Trung du và miền núi Bắc Bộ",
+        "region_name": "Trung du và miền núi phía Bắc",
+        "region": "Trung du và miền núi phía Bắc",
         "area": 14108.9,
         "pop": 1330.6,
         "density": 94,
@@ -16126,7 +16134,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -18293,7 +18302,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "2"
       },
       "geometry": {
         "type": "Polygon",
@@ -19569,7 +19579,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "2"
       },
       "geometry": {
         "type": "Polygon",
@@ -20880,7 +20891,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "2"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -22886,7 +22898,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "2"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -24028,7 +24041,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "2"
       },
       "geometry": {
         "type": "Polygon",
@@ -25009,7 +25023,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "2"
       },
       "geometry": {
         "type": "Polygon",
@@ -26132,7 +26147,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "3"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -27837,7 +27853,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "3"
       },
       "geometry": {
         "type": "Polygon",
@@ -29924,7 +29941,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "3"
       },
       "geometry": {
         "type": "Polygon",
@@ -31252,7 +31270,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "3"
       },
       "geometry": {
         "type": "Polygon",
@@ -33315,7 +33334,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "3"
       },
       "geometry": {
         "type": "Polygon",
@@ -34526,8 +34546,8 @@
       "properties": {
         "name": "Thành phố Đà Nẵng",
         "administrative_type": "Thành phố trực thuộc Trung ương",
-        "region_name": "Duyên hải Nam Trung Bộ",
-        "region": "Duyên hải Nam Trung Bộ",
+        "region_name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+        "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
         "area": 11859.6,
         "pop": 2819.9,
         "density": 238,
@@ -34539,7 +34559,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "4"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -36008,8 +36029,8 @@
       "properties": {
         "name": "Tỉnh Quảng Ngãi",
         "administrative_type": "Tỉnh",
-        "region_name": "IV. Duyên hải Nam Trung Bộ & Tây Nguyên",
-        "region": "Duyên hải Nam Trung Bộ",
+        "region_name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+        "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
         "area": 14832.6,
         "pop": 1861.1,
         "density": 125.5,
@@ -36017,13 +36038,13 @@
           "Quảng Ngãi",
           "Kon Tum"
         ],
-        "merged_from_desc": "Gồm: Quảng Ngãi, Bình Định",
+        "merged_from_desc": "Gồm: Quảng Ngãi, Kon Tum",
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
         "grdp": 100.0,
         "capital": "Thành phố Quảng Ngãi",
-        "region_id": 4
+        "region_id": "4"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -37868,8 +37889,8 @@
       "properties": {
         "name": "Tỉnh Khánh Hoà",
         "administrative_type": "Tỉnh",
-        "region_name": "IV. Duyên hải Nam Trung Bộ & Tây Nguyên",
-        "region": "Duyên hải Nam Trung Bộ",
+        "region_name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+        "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
         "area": 8555.9,
         "pop": 1892.4,
         "density": 221.2,
@@ -37877,13 +37898,13 @@
           "Khánh Hoà",
           "Ninh Thuận"
         ],
-        "merged_from_desc": "Gồm: Khánh Hoà, Phú Yên",
+        "merged_from_desc": "Gồm: Khánh Hoà, Ninh Thuận",
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
         "grdp": 100.0,
         "capital": "Thành phố Nha Trang",
-        "region_id": 4
+        "region_id": "4"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -39772,8 +39793,8 @@
       "properties": {
         "name": "Tỉnh Gia Lai",
         "administrative_type": "Tỉnh",
-        "region_name": "IV. Duyên hải Nam Trung Bộ & Tây Nguyên",
-        "region": "Tây Nguyên",
+        "region_name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+        "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
         "area": 21576.5,
         "pop": 3245.6,
         "density": 150.4,
@@ -39781,13 +39802,13 @@
           "Gia Lai",
           "Bình Định"
         ],
-        "merged_from_desc": "Gồm: Gia Lai, Kon Tum",
+        "merged_from_desc": "Gồm: Gia Lai, Bình Định",
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
         "grdp": 100.0,
         "capital": "Thành phố Pleiku",
-        "region_id": 4
+        "region_id": "4"
       },
       "geometry": {
         "type": "Polygon",
@@ -41610,8 +41631,8 @@
       "properties": {
         "name": "Tỉnh Đắk Lắk",
         "administrative_type": "Tỉnh",
-        "region_name": "IV. Duyên hải Nam Trung Bộ & Tây Nguyên",
-        "region": "Tây Nguyên",
+        "region_name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+        "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
         "area": 18096.4,
         "pop": 2784.8,
         "density": 153.9,
@@ -41619,13 +41640,13 @@
           "Đắk Lắk",
           "Phú Yên"
         ],
-        "merged_from_desc": "Gồm: Đắk Lắk, Đắk Nông",
+        "merged_from_desc": "Gồm: Đắk Lắk, Phú Yên",
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
         "grdp": 100.0,
         "capital": "Thành phố Buôn Ma Thuột",
-        "region_id": 4
+        "region_id": "4"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -43842,8 +43863,8 @@
       "properties": {
         "name": "Tỉnh Lâm Đồng",
         "administrative_type": "Tỉnh",
-        "region_name": "IV. Duyên hải Nam Trung Bộ & Tây Nguyên",
-        "region": "Tây Nguyên",
+        "region_name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+        "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
         "area": 24233.1,
         "pop": 3376.8,
         "density": 139.3,
@@ -43852,13 +43873,13 @@
           "Bình Thuận",
           "Đắk Nông"
         ],
-        "merged_from_desc": "Gồm: Lâm Đồng, Ninh Thuận, Bình Thuận",
+        "merged_from_desc": "Gồm: Lâm Đồng, Bình Thuận, Đắk Nông",
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
         "grdp": 100.0,
         "capital": "Thành phố Đà Lạt",
-        "region_id": 4
+        "region_id": "4"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -46028,7 +46049,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -47229,7 +47251,8 @@
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
         "grdp": 100.0,
-        "type": "Thành phố trực thuộc Trung ương"
+        "type": "Thành phố trực thuộc Trung ương",
+        "region_id": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -48818,7 +48841,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "5"
       },
       "geometry": {
         "type": "Polygon",
@@ -49963,7 +49987,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "6"
       },
       "geometry": {
         "type": "Polygon",
@@ -50521,7 +50546,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "6"
       },
       "geometry": {
         "type": "Polygon",
@@ -51413,7 +51439,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "6"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -52856,7 +52883,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "6"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -53518,7 +53546,8 @@
         "resolution": "Nghị quyết số 202/2025/QH15",
         "is_special_island": false,
         "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
-        "grdp": 100.0
+        "grdp": 100.0,
+        "region_id": "6"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -54165,7 +54194,8 @@
         "grdp": 1.2,
         "desc": "Quần đảo Hoàng Sa (Huyện đảo Hoàng Sa, TP. Đà Nẵng) gồm 12 đảo và bãi san hô chính.",
         "sovereignty": "Chủ quyền bất khả xâm phạm của Việt Nam - Trực thuộc TP. Đà Nẵng (Atlat GD, tr.4-5)",
-        "islands_count": 10
+        "islands_count": 10,
+        "region_id": "4"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -54588,7 +54618,8 @@
         "grdp": 2.5,
         "desc": "Quần đảo Trường Sa (Huyện đảo Trường Sa, Tỉnh Khánh Hoà) gồm 22 đảo và bãi san hô chính.",
         "sovereignty": "Chủ quyền bất khả xâm phạm của Việt Nam - Trực thuộc Tỉnh Khánh Hoà (Atlat GD, tr.4-5)",
-        "islands_count": 20
+        "islands_count": 20,
+        "region_id": "4"
       },
       "geometry": {
         "type": "MultiPolygon",

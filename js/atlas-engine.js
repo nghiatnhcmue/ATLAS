@@ -142,7 +142,7 @@ const AtlasEngine = (function () {
     "Tỉnh Quảng Trị": "plain_high", "Thành phố Huế": "plain_high", "Thành phố Đà Nẵng": "plain_high",
     "Tỉnh Quảng Ngãi": "plain_high", "Tỉnh Khánh Hoà": "plain_high", "Tỉnh Gia Lai": "plateau",
     "Tỉnh Đắk Lắk": "plateau", "Tỉnh Lâm Đồng": "mountain_high", "Tỉnh Tây Ninh": "plain_high",
-    "Tỉnh Đồng Nai": "hill", "Thành phố Hồ Chí Minh": "plain_high", "Tỉnh Vĩnh Long": "plain_low",
+    "Tỉnh Đồng Nai": "hill", "Thành phố Đồng Nai": "hill", "Thành phố Hồ Chí Minh": "plain_high", "Tỉnh Vĩnh Long": "plain_low",
     "Tỉnh Đồng Tháp": "plain_low", "Tỉnh An Giang": "plain_low", "Thành phố Cần Thơ": "plain_low",
     "Tỉnh Cà Mau": "plain_low"
   };
@@ -200,6 +200,9 @@ const AtlasEngine = (function () {
     "Trung du và miền núi Bắc Bộ": "#10b981",
     "Duyên hải Nam Trung Bộ": "#f59e0b",
     "Tây Nguyên": "#f59e0b",
+    "IV. Duyên hải Nam Trung Bộ & Tây Nguyên": "#f59e0b",
+    "IV. Duyên hải Nam Trung Bộ và Tây Nguyên": "#f59e0b",
+    "Duyên hải Nam Trung Bộ & Tây Nguyên": "#f59e0b",
     "Bắc Trung Bộ và Duyên hải miền Trung": "#0891b2",
     "Khác": "#94a3b8"
   };
@@ -1193,6 +1196,56 @@ const AtlasEngine = (function () {
     `;
   }
 
+  function isProvinceInRegion(p, filterRegion) {
+    if (!filterRegion || filterRegion === "all") return true;
+
+    const regName = p.region_name || p.region || "";
+    const regId = String(p.region_id || "");
+
+    // 1. So sánh chính xác
+    if (regName === filterRegion) return true;
+
+    // 2. Chuẩn hoá chuỗi đối sánh (loại bỏ I., IV., ký tự &, khoảng trắng)
+    const normFilter = normalizeVN(filterRegion).replace(/^[ivx]+\.\s*/i, "").replace(/&/g, "va").trim();
+    const normReg = normalizeVN(regName).replace(/^[ivx]+\.\s*/i, "").replace(/&/g, "va").trim();
+
+    if (normFilter === normReg) return true;
+
+    // VÙNG I: Trung du và miền núi phía Bắc / Bắc Bộ
+    if (normFilter.includes("trung du") && (normReg.includes("trung du") || regId === "1")) return true;
+
+    // VÙNG II: Đồng bằng sông Hồng
+    if (normFilter.includes("song hong") && (normReg.includes("song hong") || regId === "2")) return true;
+
+    // VÙNG III: Bắc Trung Bộ
+    if (normFilter === "bac trung bo" && (normReg === "bac trung bo" || regId === "3")) return true;
+
+    // VÙNG IV: Duyên hải Nam Trung Bộ và Tây Nguyên (Atlat GD, tr.4-5 & tr.18)
+    const isFilterVung4 = normFilter.includes("duyen hai nam trung bo va tay nguyen") || 
+                          normFilter.includes("duyen hai nam trung bo & tay nguyen") ||
+                          normFilter === "duyen hai nam trung bo" || 
+                          normFilter === "tay nguyen" ||
+                          normFilter.includes("nam trung bo") ||
+                          filterRegion.includes("IV.");
+
+    if (isFilterVung4) {
+      if (regId === "4") return true;
+      if (normReg.includes("nam trung bo") || normReg.includes("tay nguyen")) return true;
+      if (["Đà Nẵng", "Quảng Ngãi", "Gia Lai", "Đắk Lắk", "Khánh Hoà", "Lâm Đồng", "Hoàng Sa", "Trường Sa"].some(k => (p.name || "").includes(k))) return true;
+    }
+
+    // VÙNG V: Đông Nam Bộ
+    if (normFilter.includes("dong nam bo") && (normReg.includes("dong nam bo") || regId === "5")) return true;
+
+    // VÙNG VI: Đồng bằng sông Cửu Long
+    if (normFilter.includes("cuu long") && (normReg.includes("cuu long") || regId === "6")) return true;
+
+    // Hỗ trợ trường hợp gộp Bắc Trung Bộ & Duyên hải miền Trung
+    if (normFilter.includes("duyen hai mien trung") && (normReg.includes("bac trung bo") || normReg.includes("nam trung bo"))) return true;
+
+    return false;
+  }
+
   function renderProvinces(filterRegion = "all") {
     if (!geoData.provinces) return;
     currentRegionFilter = filterRegion;
@@ -1234,11 +1287,7 @@ const AtlasEngine = (function () {
         }
 
         const isCity = p.administrative_type === "Thành phố trực thuộc Trung ương";
-        const isMatch = filterRegion === "all" || 
-          p.region_name === filterRegion ||
-          (filterRegion === "Trung du và miền núi phía Bắc" && p.region_name === "Trung du và miền núi Bắc Bộ") ||
-          (filterRegion === "Duyên hải Nam Trung Bộ và Tây Nguyên" && (p.region_name === "Duyên hải Nam Trung Bộ" || p.region_name === "Tây Nguyên")) ||
-          (filterRegion === "Bắc Trung Bộ và Duyên hải miền Trung" && (p.region_name === "Bắc Trung Bộ" || p.region_name === "Duyên hải Nam Trung Bộ"));
+        const isMatch = isProvinceInRegion(p, filterRegion);
 
         const isChoroplethActive = currentChoroplethMode !== "none";
         const baseFillOpacity = isChoroplethActive ? 0.85 : ((currentBaseMapMode === "physical" || currentBaseMapMode === "climate") ? 0.8 : (filterRegion === "all" ? currentOpacity : 0.85));
@@ -1264,9 +1313,7 @@ const AtlasEngine = (function () {
       },
       onEachFeature: (feature, layer) => {
         const p = feature.properties;
-        const isMatch = filterRegion === "all" || 
-          p.region_name === filterRegion ||
-          (filterRegion === "Bắc Trung Bộ và Duyên hải miền Trung" && (p.region_name === "Bắc Trung Bộ" || p.region_name === "Duyên hải Nam Trung Bộ"));
+        const isMatch = isProvinceInRegion(p, filterRegion);
 
         if (isMatch) {
           matchedLayers.push(layer);
