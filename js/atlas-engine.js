@@ -949,7 +949,7 @@ const AtlasEngine = (function () {
     // Biển Đông
     const seaIcon = L.divIcon({
       className: "sea-label",
-      html: `<div class="text-blue-900/40 dark:text-blue-200/30 font-bold text-sm tracking-widest uppercase select-none pointer-events-none font-serif">BIỂN ĐÔNG</div>`,
+      html: `<div class="text-blue-900/40 dark:text-blue-200/30 font-bold text-sm select-none pointer-events-none" style="font-family: var(--font-sans); letter-spacing: 0;">BIỂN ĐÔNG</div>`,
       iconSize: [180, 24],
       iconAnchor: [90, 12]
     });
@@ -979,8 +979,8 @@ const AtlasEngine = (function () {
       className: "hs-marker-wrapper",
       html: `
         <div class="carto-sovereignty-label cursor-pointer select-none text-center">
-          <div class="font-extrabold text-red-700 dark:text-red-400 tracking-wider text-xs uppercase" style="text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;">Q.Đ. HOÀNG SA</div>
-          <div class="text-[9px] text-blue-900 dark:text-blue-200 font-bold" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">(TP. Đà Nẵng)</div>
+          <div class="font-bold text-red-700 dark:text-red-400 text-xs" style="font-family: var(--font-sans); letter-spacing: 0; text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;">Q.Đ. HOÀNG SA</div>
+          <div class="text-[9px] text-blue-900 dark:text-blue-200 font-bold" style="font-family: var(--font-sans); letter-spacing: 0; text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">(TP. Đà Nẵng)</div>
         </div>
       `,
       iconSize: [140, 30],
@@ -1006,8 +1006,8 @@ const AtlasEngine = (function () {
       className: "ts-marker-wrapper",
       html: `
         <div class="carto-sovereignty-label cursor-pointer select-none text-center">
-          <div class="font-extrabold text-red-700 dark:text-red-400 tracking-wider text-xs uppercase" style="text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;">Q.Đ. TRƯỜNG SA</div>
-          <div class="text-[9px] text-blue-900 dark:text-blue-200 font-bold" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">(T. Khánh Hoà)</div>
+          <div class="font-bold text-red-700 dark:text-red-400 text-xs" style="font-family: var(--font-sans); letter-spacing: 0; text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;">Q.Đ. TRƯỜNG SA</div>
+          <div class="text-[9px] text-blue-900 dark:text-blue-200 font-bold" style="font-family: var(--font-sans); letter-spacing: 0; text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff;">(T. Khánh Hoà)</div>
         </div>
       `,
       iconSize: [140, 30],
@@ -3810,21 +3810,21 @@ const AtlasEngine = (function () {
   // ===========================================================================
   let atlasViewMode = "gis"; // "gis" | "book" | "split"
   const DEFAULT_ATLAT_PAGES_MANIFEST = [
-    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "/public/data/atlat_pages/page_01.jpg?v=2026.3.3" },
-    { page: 3, title: "Trang 3: Kí hiệu chung", file: "/public/data/atlat_pages/page_03.jpg?v=2026.3.3" },
-    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "/public/data/atlat_pages/page_04.jpg?v=2026.3.3" },
-    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "/public/data/atlat_pages/page_05.jpg?v=2026.3.3" },
-    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "/public/data/atlat_pages/page_06.jpg?v=2026.3.3" },
-    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "/public/data/atlat_pages/page_07.jpg?v=2026.3.3" },
-    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "/public/data/atlat_pages/page_08.jpg?v=2026.3.3" },
-    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "/public/data/atlat_pages/page_09.jpg?v=2026.3.3" },
-    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "/public/data/atlat_pages/page_10.jpg?v=2026.3.3" },
-    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "/public/data/atlat_pages/page_13.jpg?v=2026.3.3" },
-    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "/public/data/atlat_pages/page_18.jpg?v=2026.3.3" },
-    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "/public/data/atlat_pages/page_19.jpg?v=2026.3.3" },
-    { page: 21, title: "Trang 21: Công nghiệp chung", file: "/public/data/atlat_pages/page_21.jpg?v=2026.3.3" },
-    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "/public/data/atlat_pages/page_22.jpg?v=2026.3.3" },
-    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "/public/data/atlat_pages/page_23.jpg?v=2026.3.3" }
+    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "/public/data/atlat_pages/page_01.jpg?v=2026.3.4" },
+    { page: 3, title: "Trang 3: Kí hiệu chung", file: "/public/data/atlat_pages/page_03.jpg?v=2026.3.4" },
+    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "/public/data/atlat_pages/page_04.jpg?v=2026.3.4" },
+    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "/public/data/atlat_pages/page_05.jpg?v=2026.3.4" },
+    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "/public/data/atlat_pages/page_06.jpg?v=2026.3.4" },
+    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "/public/data/atlat_pages/page_07.jpg?v=2026.3.4" },
+    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "/public/data/atlat_pages/page_08.jpg?v=2026.3.4" },
+    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "/public/data/atlat_pages/page_09.jpg?v=2026.3.4" },
+    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "/public/data/atlat_pages/page_10.jpg?v=2026.3.4" },
+    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "/public/data/atlat_pages/page_13.jpg?v=2026.3.4" },
+    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "/public/data/atlat_pages/page_18.jpg?v=2026.3.4" },
+    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "/public/data/atlat_pages/page_19.jpg?v=2026.3.4" },
+    { page: 21, title: "Trang 21: Công nghiệp chung", file: "/public/data/atlat_pages/page_21.jpg?v=2026.3.4" },
+    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "/public/data/atlat_pages/page_22.jpg?v=2026.3.4" },
+    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "/public/data/atlat_pages/page_23.jpg?v=2026.3.4" }
   ];
   let atlatPagesManifest = [...DEFAULT_ATLAT_PAGES_MANIFEST];
   let currentAtlatPageNumber = 4;
@@ -4250,7 +4250,7 @@ const AtlasEngine = (function () {
     const titleEl = document.getElementById("atlat-book-page-title");
     const selectEl = document.getElementById("atlat-book-page-select");
 
-    const pageFile = `/public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.3`;
+    const pageFile = `/public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.4`;
     if (imgEl) {
       imgEl.alt = displayTitle;
       imgEl.onerror = () => {

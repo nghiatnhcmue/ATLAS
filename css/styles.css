@@ -570,16 +570,28 @@ html, body {
 /* ==========================================================================
    QUY CHUẨN BẢN ĐỒ HỌC ATLAT GIẤY (CARTOGRAPHIC STANDARDS)
    ========================================================================== */
+.leaflet-container,
+.leaflet-container *,
+.leaflet-popup,
+.leaflet-tooltip,
+.leaflet-control {
+  font-family: var(--font-sans) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .carto-peak-label {
   display: inline-flex;
   align-items: center;
   gap: 3px;
-  font-family: var(--font-sans);
+  font-family: var(--font-sans) !important;
+  letter-spacing: normal !important;
   cursor: pointer;
 }
 .carto-plateau-label {
-  font-family: var(--font-sans);
-  font-weight: 700;
+  font-family: var(--font-sans) !important;
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
   color: #451a03;
   text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;
 }
@@ -588,9 +600,10 @@ html, body {
   border: none !important;
   box-shadow: none !important;
   color: #78350f !important;
-  font-weight: 800 !important;
+  font-weight: 700 !important;
   font-size: 10px !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
   text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff !important;
   font-family: var(--font-sans) !important;
   pointer-events: none !important;
@@ -603,6 +616,7 @@ html, body {
   font-style: italic !important;
   font-weight: 700 !important;
   font-size: 9.5px !important;
+  letter-spacing: normal !important;
   text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff !important;
   font-family: var(--font-sans) !important;
   pointer-events: none !important;
@@ -611,9 +625,23 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 2px;
+  font-family: var(--font-sans) !important;
+  letter-spacing: normal !important;
+}
+.carto-station-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-sans) !important;
+  letter-spacing: normal !important;
+  cursor: pointer;
 }
 .carto-sovereignty-label {
   display: inline-block;
   text-align: center;
+  font-family: var(--font-sans) !important;
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
   text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;
 }
