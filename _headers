@@ -1,38 +1,47 @@
 # ==============================================================================
-# Cloudflare Pages & Netlify - Production HTTP Headers Configuration
-# Optimized for High Traffic (10,000+ Concurrent Users) & Zero-Cost Serverless
+# Cloudflare Pages / Workers - Production HTTP Headers Configuration
+# Bugfix BUG-23: Safe Caching - Revalidates immediately upon code updates
 # ==============================================================================
 
-# 1. Dữ liệu bản đồ GeoJSON & JSON: Lưu cache trình duyệt 1 năm (31,536,000s)
-# Cloudflare Edge CDN tự động nén Brotli / Gzip giảm 85% dung lượng truyền tải
+# 1. Dữ liệu bản đồ GeoJSON & JSON: Cache ngắn (1 giờ) kèm must-revalidate
 /public/data/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=3600, must-revalidate
   Access-Control-Allow-Origin: *
   Access-Control-Allow-Methods: GET, OPTIONS
   X-Content-Type-Options: nosniff
 
-# 2. Mã nguồn JS và CSS: Lưu cache 30 ngày kèm cơ chế stale-while-revalidate
+# 2. Mã nguồn JS và CSS: Luôn revalidate hoặc cache ngắn 5 phút để cập nhật tức thì
 /js/*
-  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+  Cache-Control: public, max-age=300, must-revalidate
   Access-Control-Allow-Origin: *
   X-Content-Type-Options: nosniff
 
 /css/*
-  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+  Cache-Control: public, max-age=300, must-revalidate
   Access-Control-Allow-Origin: *
   X-Content-Type-Options: nosniff
 
-# 3. HTML chính (Single-Page Application): Luôn revalidate để học sinh nhận cập nhật mới nhất
-/index.html
-  Cache-Control: public, max-age=0, must-revalidate
+# 3. HTML chính (Single-Page Application): Tuyệt đối không cache để tải bản mới ngay lập tức
+/
+  Cache-Control: no-cache, no-store, must-revalidate
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), camera=(), microphone=()
 
-# 4. Fallback mặc định cho toàn bộ trang
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/200.html
+  Cache-Control: no-cache, no-store, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# 4. Fallback mặc định
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
-

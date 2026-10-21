@@ -507,242 +507,381 @@
     },
     {
       "type": "Feature",
+      "properties": {
+        "id": "RIV_01",
+        "category": "river_system",
+        "name": "Hệ thống sông Hồng",
+        "aliases": [
+          "Sông Hồng",
+          "Sông Thao"
+        ],
+        "length_in_vn_km": 510,
+        "total_length_km": 1126,
+        "basin_area_vn_km2": 72700,
+        "flow_volume_bil_m3": 120.0,
+        "method": "schematic",
+        "confidence": "low",
+        "desc": "Hệ thống sông Hồng: Chiều dài trong nước 510 km, diện tích lưu vực trong nước 72.700 km², tổng lượng dòng chảy 120 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
+        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            103.95,
+            103.8,
             22.5
           ],
           [
-            104.9,
-            21.7
+            104.3,
+            22.0
           ],
           [
-            105.35,
-            21.3
+            105.0,
+            21.4
           ],
           [
             105.85,
             21.05
           ],
           [
-            106.35,
+            106.5,
             20.3
           ]
         ]
-      },
-      "properties": {
-        "id": "RIV_01",
-        "name": "Sông Hồng",
-        "category": "river",
-        "desc": "Dòng sông bồi đắp đồng bằng sông Hồng trù phú, dài 1.149km (đoạn VN dài 510km).",
-        "atlat_page": 10,
-        "source": "Atlat GD, tr.10"
       }
     },
     {
       "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            102.85,
-            22.4
-          ],
-          [
-            103.99,
-            21.49
-          ],
-          [
-            105.32,
-            20.81
-          ],
-          [
-            105.35,
-            21.3
-          ]
-        ]
-      },
       "properties": {
         "id": "RIV_02",
-        "name": "Sông Đà",
-        "category": "river",
-        "desc": "Phụ lưu lớn nhất của sông Hồng, giàu tiềm năng thủy điện bậc nhất với chuỗi Lai Châu, Sơn La, Hòa Bình.",
-        "atlat_page": 10,
-        "source": "Atlat GD, tr.10"
-      }
-    },
-    {
-      "type": "Feature",
+        "category": "river_system",
+        "name": "Hệ thống sông Thái Bình",
+        "aliases": [
+          "Sông Thái Bình",
+          "Sông Cầu",
+          "Sông Thương",
+          "Sông Lục Nam"
+        ],
+        "length_in_vn_km": 104,
+        "total_length_km": 1650,
+        "basin_area_vn_km2": 15180,
+        "flow_volume_bil_m3": 9.28,
+        "method": "schematic",
+        "confidence": "low",
+        "desc": "Hệ thống sông Thái Bình: Sông chính 104 km, diện tích lưu vực 15.180 km², tổng lượng dòng chảy 9,28 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
+        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            103,
+            106.1,
+            21.4
+          ],
+          [
+            106.25,
+            21.15
+          ],
+          [
+            106.45,
+            20.9
+          ],
+          [
+            106.6,
+            20.65
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "RIV_03",
+        "category": "river_system",
+        "name": "Hệ thống sông Kỳ Cùng – Bằng Giang",
+        "aliases": [
+          "Sông Kỳ Cùng",
+          "Sông Bằng Giang"
+        ],
+        "length_in_vn_km": 243,
+        "total_length_km": 243,
+        "basin_area_vn_km2": 11220,
+        "flow_volume_bil_m3": 8.36,
+        "method": "schematic",
+        "confidence": "low",
+        "desc": "Hệ thống sông Kỳ Cùng – Bằng Giang: Chiều dài trong nước 243 km, diện tích lưu vực 11.220 km², dòng chảy hướng Tây Bắc - Đông Nam sang Trung Quốc (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
+        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            106.2,
+            22.7
+          ],
+          [
+            106.7,
+            22.3
+          ],
+          [
+            106.85,
+            21.9
+          ],
+          [
+            107.05,
+            21.75
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "RIV_04",
+        "category": "river_system",
+        "name": "Hệ thống sông Mã",
+        "aliases": [
+          "Sông Mã",
+          "Sông Chu"
+        ],
+        "length_in_vn_km": 410,
+        "total_length_km": 512,
+        "basin_area_vn_km2": 17600,
+        "flow_volume_bil_m3": 17.2,
+        "method": "schematic",
+        "confidence": "low",
+        "desc": "Hệ thống sông Mã: Chiều dài trong nước 410 km, diện tích lưu vực trong nước 17.600 km², tổng lượng dòng chảy 17,2 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
+        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.4,
             21.3
           ],
           [
-            104.5,
+            104.2,
             20.8
           ],
           [
-            105.9,
+            105.1,
+            20.3
+          ],
+          [
+            105.85,
             19.8
           ]
         ]
-      },
-      "properties": {
-        "id": "RIV_03",
-        "name": "Sông Mã",
-        "category": "river",
-        "desc": "Bồi đắp đồng bằng Thanh Hóa rộng lớn.",
-        "atlat_page": 10,
-        "source": "Atlat GD, tr.10"
       }
     },
     {
       "type": "Feature",
+      "properties": {
+        "id": "RIV_05",
+        "category": "river_system",
+        "name": "Hệ thống sông Cả (Sông Lam)",
+        "aliases": [
+          "Sông Cả",
+          "Sông Lam"
+        ],
+        "length_in_vn_km": 361,
+        "total_length_km": 531,
+        "basin_area_vn_km2": 17730,
+        "flow_volume_bil_m3": 21.9,
+        "method": "schematic",
+        "confidence": "low",
+        "desc": "Hệ thống sông Cả: Chiều dài trong nước 361 km, diện tích lưu vực trong nước 17.730 km², tổng lượng dòng chảy 21,9 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
+        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            104.2,
+            104.5,
             19.5
           ],
           [
-            105,
-            19
+            105.0,
+            19.0
           ],
           [
-            105.7,
+            105.5,
             18.7
+          ],
+          [
+            105.75,
+            18.6
           ]
         ]
-      },
-      "properties": {
-        "id": "RIV_04",
-        "name": "Sông Cả (Sông Lam)",
-        "category": "river",
-        "desc": "Dòng sông mẹ của xứ Nghệ, bồi đắp đồng bằng Nghệ An - Hà Tĩnh.",
-        "atlat_page": 10,
-        "source": "Atlat GD, tr.10"
       }
     },
     {
       "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            107.6,
-            15.8
-          ],
-          [
-            108.2,
-            15.8
-          ],
-          [
-            108.4,
-            15.9
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RIV_05",
-        "name": "Sông Thu Bồn - Vu Gia",
-        "category": "river",
-        "desc": "Hệ thống sông huyết mạch của vùng đất Quảng Nam - Đà Nẵng, cửa biển Hội An.",
-        "atlat_page": 10,
-        "source": "Atlat GD, tr.10"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            108.4,
-            11.8
-          ],
-          [
-            107.5,
-            11.3
-          ],
-          [
-            106.8,
-            10.9
-          ],
-          [
-            106.8,
-            10.5
-          ]
-        ]
-      },
       "properties": {
         "id": "RIV_06",
-        "name": "Sông Đồng Nai",
-        "category": "river",
-        "desc": "Lưu vực sông nội địa lớn nhất Việt Nam, cung cấp nước ngọt và thủy điện cho Đông Nam Bộ.",
-        "atlat_page": 10,
-        "source": "Atlat GD, tr.10"
+        "category": "river_system",
+        "name": "Hệ thống sông Thu Bồn",
+        "aliases": [
+          "Sông Thu Bồn",
+          "Sông Vu Gia"
+        ],
+        "length_in_vn_km": 198,
+        "total_length_km": 198,
+        "basin_area_vn_km2": 10350,
+        "flow_volume_bil_m3": 17.9,
+        "method": "schematic",
+        "confidence": "low",
+        "desc": "Hệ thống sông Thu Bồn – Vu Gia: Chiều dài 198 km, diện tích lưu vực 10.350 km², lượng dòng chảy dồi dào 17,9 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
+        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            107.8,
+            15.6
+          ],
+          [
+            108.1,
+            15.75
+          ],
+          [
+            108.35,
+            15.88
+          ]
+        ]
       }
     },
     {
       "type": "Feature",
+      "properties": {
+        "id": "RIV_07",
+        "category": "river_system",
+        "name": "Hệ thống sông Ba (Đà Rằng)",
+        "aliases": [
+          "Sông Ba",
+          "Sông Đà Rằng"
+        ],
+        "length_in_vn_km": 374,
+        "total_length_km": 374,
+        "basin_area_vn_km2": 13900,
+        "flow_volume_bil_m3": 9.45,
+        "method": "schematic",
+        "confidence": "low",
+        "desc": "Hệ thống sông Ba (Đà Rằng): Hệ thống sông lớn nhất Duyên hải Nam Trung Bộ, dài 374 km, lưu vực 13.900 km² (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
+        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            108.4,
+            14.5
+          ],
+          [
+            108.7,
+            13.8
+          ],
+          [
+            109.1,
+            13.2
+          ],
+          [
+            109.3,
+            13.08
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "RIV_08",
+        "category": "river_system",
+        "name": "Hệ thống sông Đồng Nai",
+        "aliases": [
+          "Sông Đồng Nai",
+          "Sông Bé",
+          "Sông Sài Gòn"
+        ],
+        "length_in_vn_km": 586,
+        "total_length_km": 586,
+        "basin_area_vn_km2": 42600,
+        "flow_volume_bil_m3": 36.4,
+        "method": "schematic",
+        "confidence": "low",
+        "desc": "Hệ thống sông Đồng Nai: Dài 586 km, diện tích lưu vực 42.600 km², dòng chảy 36,4 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
+        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            108.3,
+            11.9
+          ],
+          [
+            107.6,
+            11.4
+          ],
+          [
+            106.9,
+            11.0
+          ],
+          [
+            106.75,
+            10.6
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "RIV_09",
+        "category": "river_system",
+        "name": "Hệ thống sông Mê Công (Sông Tiền & Sông Hậu)",
+        "aliases": [
+          "Sông Mê Công",
+          "Sông Cửu Long",
+          "Sông Tiền",
+          "Sông Hậu"
+        ],
+        "length_in_vn_km": 230,
+        "total_length_km": 4350,
+        "basin_area_vn_km2": 71000,
+        "flow_volume_bil_m3": 507.0,
+        "method": "schematic",
+        "confidence": "low",
+        "desc": "Hệ thống sông Mê Công: Chảy vào Việt Nam chia thành 2 nhánh chính là sông Tiền và sông Hậu, lưu lượng khổng lồ 507 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
+        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
+      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
             105.15,
-            10.8
+            10.85
           ],
           [
-            105.8,
+            105.7,
             10.3
           ],
           [
             106.4,
-            10.2
+            10.05
           ]
         ]
-      },
-      "properties": {
-        "id": "RIV_07",
-        "name": "Sông Tiền",
-        "category": "river",
-        "desc": "Nhánh chính phía Bắc sông Mê Kông đổ ra biển Đông qua nhiều cửa sông (Cửa Tiểu, Đại, Ba Lai...).",
-        "atlat_page": 10,
-        "source": "Atlat GD, tr.10"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            105.1,
-            10.7
-          ],
-          [
-            105.65,
-            10.1
-          ],
-          [
-            106.35,
-            9.6
-          ]
-        ]
-      },
-      "properties": {
-        "id": "RIV_08",
-        "name": "Sông Hậu",
-        "category": "river",
-        "desc": "Nhánh chính phía Nam sông Mê Kông chảy qua Cần Thơ, đổ ra biển qua cửa Định An, Trần Đề.",
-        "atlat_page": 10,
-        "source": "Atlat GD, tr.10"
       }
     }
   ]

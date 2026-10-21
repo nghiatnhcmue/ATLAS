@@ -13,12 +13,14 @@
         "type": "Thủy điện",
         "plant_type": "Thủy điện",
         "symbol_type": "star_blue",
-        "capacity_mw": 2400,
         "river_fuel": "Sông Đà",
         "province": "Sơn La",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Trên 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Trên 1.000 MW",
+        "scale_tier": "Trên 1.000 MW",
+        "capacity_class": "above_1000mw",
+        "capacity_group": "Trên 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -36,12 +38,14 @@
         "type": "Thủy điện",
         "plant_type": "Thủy điện",
         "symbol_type": "star_blue",
-        "capacity_mw": 1920,
         "river_fuel": "Sông Đà",
         "province": "Tỉnh Phú Thọ",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Trên 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Trên 1.000 MW",
+        "scale_tier": "Trên 1.000 MW",
+        "capacity_class": "above_1000mw",
+        "capacity_group": "Trên 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -59,12 +63,14 @@
         "type": "Thủy điện",
         "plant_type": "Thủy điện",
         "symbol_type": "star_blue",
-        "capacity_mw": 1200,
         "river_fuel": "Sông Đà",
         "province": "Lai Châu",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Trên 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Trên 1.000 MW",
+        "scale_tier": "Trên 1.000 MW",
+        "capacity_class": "above_1000mw",
+        "capacity_group": "Trên 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -82,12 +88,14 @@
         "type": "Thủy điện",
         "plant_type": "Thủy điện",
         "symbol_type": "star_blue",
-        "capacity_mw": 720,
         "river_fuel": "Sông Sê San",
         "province": "Gia Lai",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -105,12 +113,14 @@
         "type": "Thủy điện",
         "plant_type": "Thủy điện",
         "symbol_type": "star_blue",
-        "capacity_mw": 400,
         "river_fuel": "Sông Đồng Nai",
         "province": "Đồng Nai",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -128,12 +138,14 @@
         "type": "Thủy điện",
         "plant_type": "Thủy điện",
         "symbol_type": "star_blue",
-        "capacity_mw": 342,
         "river_fuel": "Sông Gâm",
         "province": "Tuyên Quang",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -151,12 +163,14 @@
         "type": "Thủy điện",
         "plant_type": "Thủy điện",
         "symbol_type": "star_blue",
-        "capacity_mw": 160,
         "river_fuel": "Sông Đa Nhim",
         "province": "Lâm Đồng",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -174,12 +188,14 @@
         "type": "Thủy điện",
         "plant_type": "Thủy điện",
         "symbol_type": "star_blue",
-        "capacity_mw": 475,
         "river_fuel": "Sông La Ngà",
         "province": "Tỉnh Lâm Đồng",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -197,12 +213,14 @@
         "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
-        "capacity_mw": 3900,
         "river_fuel": "Khí Nam Côn Sơn",
         "province": "Thành phố Hồ Chí Minh",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Trên 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Trên 1.000 MW",
+        "scale_tier": "Trên 1.000 MW",
+        "capacity_class": "above_1000mw",
+        "capacity_group": "Trên 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -220,12 +238,14 @@
         "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
-        "capacity_mw": 1500,
         "river_fuel": "Khí PM3",
         "province": "Cà Mau",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Trên 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Trên 1.000 MW",
+        "scale_tier": "Trên 1.000 MW",
+        "capacity_class": "above_1000mw",
+        "capacity_group": "Trên 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -243,12 +263,14 @@
         "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
-        "capacity_mw": 4244,
         "river_fuel": "Than",
         "province": "Tỉnh Lâm Đồng",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Trên 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Trên 1.000 MW",
+        "scale_tier": "Trên 1.000 MW",
+        "capacity_class": "above_1000mw",
+        "capacity_group": "Trên 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -266,12 +288,14 @@
         "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
-        "capacity_mw": 3178,
         "river_fuel": "Than",
         "province": "Tỉnh Vĩnh Long",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Trên 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Trên 1.000 MW",
+        "scale_tier": "Trên 1.000 MW",
+        "capacity_class": "above_1000mw",
+        "capacity_group": "Trên 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -289,12 +313,14 @@
         "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
-        "capacity_mw": 1040,
         "river_fuel": "Than",
         "province": "Thành phố Hải Phòng",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Trên 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Trên 1.000 MW",
+        "scale_tier": "Trên 1.000 MW",
+        "capacity_class": "above_1000mw",
+        "capacity_group": "Trên 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -312,12 +338,14 @@
         "type": "Nhiệt điện",
         "plant_type": "Nhiệt điện",
         "symbol_type": "star_red",
-        "capacity_mw": 630,
         "river_fuel": "Than",
         "province": "Quảng Ninh",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -335,12 +363,14 @@
         "type": "Điện gió",
         "plant_type": "Điện gió",
         "symbol_type": "fan_green",
-        "capacity_mw": 99,
         "river_fuel": "Năng lượng gió ven biển",
         "province": "Tỉnh Cà Mau",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -358,12 +388,14 @@
         "type": "Điện gió",
         "plant_type": "Điện gió",
         "symbol_type": "fan_green",
-        "capacity_mw": 152,
         "river_fuel": "Năng lượng gió",
         "province": "Tỉnh Lâm Đồng",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -381,12 +413,14 @@
         "type": "Điện gió",
         "plant_type": "Điện gió",
         "symbol_type": "fan_green",
-        "capacity_mw": 120,
         "river_fuel": "Gió đèo Lao Bảo",
         "province": "Quảng Trị",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -404,12 +438,14 @@
         "type": "Điện mặt trời",
         "plant_type": "Điện mặt trời",
         "symbol_type": "sun_yellow",
-        "capacity_mw": 420,
         "river_fuel": "Bức xạ mặt trời",
         "province": "Tây Ninh",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -427,12 +463,14 @@
         "type": "Điện mặt trời",
         "plant_type": "Điện mặt trời",
         "symbol_type": "sun_yellow",
-        "capacity_mw": 450,
         "river_fuel": "Bức xạ mặt trời",
         "province": "Tỉnh Lâm Đồng",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",
@@ -450,12 +488,14 @@
         "type": "Điện mặt trời",
         "plant_type": "Điện mặt trời",
         "symbol_type": "sun_yellow",
-        "capacity_mw": 600,
         "river_fuel": "Bức xạ mặt trời",
         "province": "Đắk Lắk",
         "atlat_page": 23,
-        "source": "Atlat GD, tr.23 (Năng lượng)",
-        "capacity_tier": "Dưới 1 000 MW"
+        "source": "Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)",
+        "capacity_tier": "Dưới 1.000 MW",
+        "scale_tier": "Dưới 1.000 MW",
+        "capacity_class": "below_1000mw",
+        "capacity_group": "Dưới 1.000 MW"
       },
       "geometry": {
         "type": "Point",

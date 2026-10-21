@@ -20,6 +20,26 @@
  */
 
 const GeoCalculator = (function () {
+  // Hàm định dạng số chuẩn Việt Nam (Dấu chấm hàng nghìn, dấu phẩy thập phân)
+  function formatVN(val, decimals = null) {
+    if (val === null || val === undefined || val === "") return "";
+    const num = Number(val);
+    if (isNaN(num)) return String(val);
+    let str;
+    if (decimals !== null && typeof decimals === "number") {
+      str = num.toFixed(decimals);
+    } else {
+      str = String(num);
+    }
+    const parts = str.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return parts.length > 1 ? parts.join(",") : parts[0];
+  }
+
+  function formatIntVN(val) {
+    return formatVN(Math.round(Number(val) || 0), 0);
+  }
+
   const FORMULAS = {
     // 1. Mật độ dân số
     density: {
@@ -72,11 +92,11 @@ const GeoCalculator = (function () {
 
         const density = popExact / areaExact;
         return {
-          resultText: `${Math.round(density).toLocaleString()} người/km²`,
+          resultText: `${formatIntVN(density)} người/km²`,
           stepsLatex: [
-            `\\text{Bước 1: Quy đổi Dân số} = ${vals.population.val} ${vals.population.unitObj.latexMult} = ${popExact.toLocaleString()} \\text{ người}`,
-            `\\text{Bước 2: Quy đổi Diện tích} = ${vals.area.val} ${vals.area.unitObj.latexMult} = ${areaExact.toLocaleString()} \\text{ km}^2`,
-            `\\text{Bước 3: Mật độ} = \\frac{${popExact.toLocaleString()}}{${areaExact.toLocaleString()}} = ${density.toFixed(2)} \\approx \\mathbf{${Math.round(density).toLocaleString()} \\text{ người/km}^2}`
+            `\\text{Bước 1: Quy đổi Dân số} = ${vals.population.val} ${vals.population.unitObj.latexMult} = ${formatIntVN(popExact)} \\text{ người}`,
+            `\\text{Bước 2: Quy đổi Diện tích} = ${vals.area.val} ${vals.area.unitObj.latexMult} = ${formatIntVN(areaExact)} \\text{ km}^2`,
+            `\\text{Bước 3: Mật độ} = \\frac{${formatIntVN(popExact)}}{${formatIntVN(areaExact)}} = ${density.toFixed(2)} \\approx \\mathbf{${formatIntVN(density)} \\text{ người/km}^2}`
           ],
           note: density > 1000 ? "Mật độ rất cao (đặc trưng châu thổ sông Hồng hoặc vùng đô thị lớn)." : "Mật độ phản ánh phân bố dân cư theo điều kiện tự nhiên."
         };
@@ -158,13 +178,16 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Diện tích & Sản lượng Lúa cả nước và các Vùng Trọng điểm (2024)",
+        title: "Diện tích & Sản lượng Lúa cả nước và 6 Vùng Kinh tế (Chuẩn Atlat GD, tr.19)",
         headers: ["Địa phương / Vùng", "Sản lượng (Triệu tấn)", "Diện tích (Triệu ha)"],
         rows: [
           ["Cả nước", "43.5", "7.12"],
           ["Đồng bằng sông Cửu Long", "24.1", "3.82"],
           ["Đồng bằng sông Hồng", "6.2", "0.98"],
-          ["Bắc Trung Bộ & DHMT", "5.1", "0.95"]
+          ["Bắc Trung Bộ và Duyên hải miền Trung", "5.1", "0.95"],
+          ["Trung du và miền núi Bắc Bộ", "3.8", "0.65"],
+          ["Đông Nam Bộ", "1.5", "0.26"],
+          ["Tây Nguyên", "1.2", "0.22"]
         ]
       },
       solve: (vals) => {
@@ -177,9 +200,9 @@ const GeoCalculator = (function () {
         return {
           resultText: `${yieldTaHa.toFixed(1)} tạ/ha (${yieldTanHa.toFixed(2)} tấn/ha)`,
           stepsLatex: [
-            `\\text{Bước 1: Quy đổi Sản lượng ra tạ} = ${vals.production.val} ${vals.production.unitObj.latexMult} = ${prodExactTạ.toLocaleString()} \\text{ tạ}`,
-            `\\text{Bước 2: Quy đổi Diện tích ra ha} = ${vals.crop_area.val} ${vals.crop_area.unitObj.latexMult} = ${areaExactHa.toLocaleString()} \\text{ ha}`,
-            `\\text{Bước 3: Năng suất} = \\frac{${prodExactTạ.toLocaleString()}}{${areaExactHa.toLocaleString()}} = \\mathbf{${yieldTaHa.toFixed(1)} \\text{ tạ/ha}} = \\mathbf{${yieldTanHa.toFixed(2)} \\text{ tấn/ha}}`
+            `\\text{Bước 1: Quy đổi Sản lượng ra tạ} = ${vals.production.val} ${vals.production.unitObj.latexMult} = ${formatIntVN(prodExactTạ)} \\text{ tạ}`,
+            `\\text{Bước 2: Quy đổi Diện tích ra ha} = ${vals.crop_area.val} ${vals.crop_area.unitObj.latexMult} = ${formatIntVN(areaExactHa)} \\text{ ha}`,
+            `\\text{Bước 3: Năng suất} = \\frac{${formatIntVN(prodExactTạ)}}{${formatIntVN(areaExactHa)}} = \\mathbf{${yieldTaHa.toFixed(1)} \\text{ tạ/ha}} = \\mathbf{${yieldTanHa.toFixed(2)} \\text{ tấn/ha}}`
           ],
           note: yieldTaHa > 60 ? "Năng suất cao vượt trội (áp dụng giống lúa thuần chất lượng cao và thâm canh tốt)." : "Năng suất đạt mức trung bình cả nước."
         };
@@ -235,9 +258,9 @@ const GeoCalculator = (function () {
         return {
           resultText: `${bq.toFixed(1)} ${unitName}`,
           stepsLatex: [
-            `\\text{Bước 1: Quy đổi Đại lượng} = ${vals.total_amount.val} ${vals.total_amount.unitObj.latexMult} = ${prodExact.toLocaleString()}`,
-            `\\text{Bước 2: Quy đổi Dân số} = ${vals.population.val} ${vals.population.unitObj.latexMult} = ${popExact.toLocaleString()}`,
-            `\\text{Bước 3: Bình quân} = \\frac{${prodExact.toLocaleString()}}{${popExact.toLocaleString()}} = \\mathbf{${bq.toFixed(1)} \\text{ ${unitName}}}`
+            `\\text{Bước 1: Quy đổi Đại lượng} = ${vals.total_amount.val} ${vals.total_amount.unitObj.latexMult} = ${formatIntVN(prodExact)}`,
+            `\\text{Bước 2: Quy đổi Dân số} = ${vals.population.val} ${vals.population.unitObj.latexMult} = ${formatIntVN(popExact)}`,
+            `\\text{Bước 3: Bình quân} = \\frac{${formatIntVN(prodExact)}}{${formatIntVN(popExact)}} = \\mathbf{${bq.toFixed(1)} \\text{ ${unitName}}}`
           ],
           note: bq > 400 ? "Mức bình quân vững chắc vượt chuẩn an ninh lương thực quốc gia." : "Cần tiếp tục mở rộng quy mô kinh tế."
         };
@@ -265,13 +288,13 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Kim ngạch Xuất Khẩu & Nhập Khẩu Việt Nam (2018 - 2024)",
+        title: "Kim ngạch Xuất Khẩu & Nhập Khẩu Việt Nam (Chuẩn Atlat GD, tr.18)",
         headers: ["Năm", "Xuất khẩu (Tỷ USD)", "Nhập khẩu (Tỷ USD)"],
         rows: [
-          ["Năm 2018", "243.7", "236.9"],
-          ["Năm 2020", "281.4", "261.3"],
-          ["Năm 2022", "371.3", "358.9"],
-          ["Năm 2024", "395.0", "368.0"]
+          ["Năm 2010", "72.2", "84.8"],
+          ["Năm 2015", "162.0", "165.8"],
+          ["Năm 2020", "282.7", "262.7"],
+          ["Năm 2024", "405.5", "380.8"]
         ]
       },
       solve: (vals) => {
@@ -314,13 +337,13 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Tổng kim ngạch & Cán cân Thương mại Việt Nam qua các năm",
+        title: "Tổng kim ngạch (T = X+M) & Cán cân (B = X-M) Việt Nam (Đồng bộ Bảng 5)",
         headers: ["Năm", "Tổng kim ngạch T (Tỷ USD)", "Cán cân thương mại B (Tỷ USD)"],
         rows: [
-          ["Năm 2020", "544.1", "+19.9"],
-          ["Năm 2022", "730.2", "+12.4"],
-          ["Năm 2023", "683.0", "+28.0"],
-          ["Năm 2024", "763.0", "+27.0"]
+          ["Năm 2010", "157.0", "-12.6"],
+          ["Năm 2015", "327.8", "-3.8"],
+          ["Năm 2020", "545.4", "+20.0"],
+          ["Năm 2024", "786.3", "+24.7"]
         ]
       },
       solve: (vals) => {
@@ -491,13 +514,13 @@ const GeoCalculator = (function () {
         {
           key: "avg_t",
           label: "Nhiệt độ trung bình năm (Ttb)",
-          defaultVal: 23.9,
+          defaultVal: 23.8,
           units: [{ label: "°C", factor: 1, latexMult: "" }]
         },
         {
           key: "rainfall",
           label: "Tổng lượng mưa cả năm",
-          defaultVal: 1680,
+          defaultVal: 1676,
           units: [
             { label: "mm", factor: 1, latexMult: "" },
             { label: "m (mét)", factor: 1000, latexMult: "\\times 1000 \\text{ mm}" }
@@ -505,17 +528,24 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Đặc trưng Khí hậu 8 Trạm Khí tượng Tiêu biểu (Atlat GD, tr.8 & 9)",
+        title: "Đặc trưng Khí hậu 15 Trạm Khí tượng Chuẩn Atlat GD (tr.8)",
         headers: ["Trạm khí tượng", "Tmax (°C)", "Tmin (°C)", "Ttb (°C)", "Lượng mưa (mm)"],
         rows: [
           ["Hà Nội (Trạm Láng)", "29.8", "16.4", "23.8", "1676"],
-          ["Sa Pa (Lào Cai)", "19.8", "8.6", "15.2", "2700"],
-          ["Huế", "29.4", "19.7", "25.1", "2868"],
-          ["Đà Nẵng", "29.1", "21.3", "25.7", "2044"],
-          ["Đà Lạt (Lâm Đồng)", "20.5", "14.8", "17.9", "1739"],
-          ["Buôn Ma Thuột (Đắk Lắk)", "26.5", "20.8", "23.7", "1796"],
-          ["TP. Hồ Chí Minh", "29.7", "26.0", "27.1", "1931"],
-          ["Cà Mau", "28.6", "25.5", "26.8", "2360"]
+          ["Sơn La", "25.8", "14.6", "21.2", "1420"],
+          ["Tuyên Quang", "28.7", "16.0", "23.5", "1665"],
+          ["Lạng Sơn", "27.0", "13.7", "21.2", "1311"],
+          ["Hà Tĩnh", "29.7", "17.5", "24.1", "2658"],
+          ["Huế", "29.4", "20.0", "25.2", "2868"],
+          ["Đà Lạt", "19.9", "15.3", "17.9", "1739"],
+          ["Quy Nhơn", "30.1", "23.4", "27.1", "1852"],
+          ["Buôn Ma Thuột", "26.0", "21.2", "24.0", "1904"],
+          ["Hoàng Sa", "28.6", "22.0", "23.6", "2769"],
+          ["Trường Sa", "29.2", "26.5", "28.0", "2666"],
+          ["Tân Sơn Hoà (TP. Hồ Chí Minh)", "29.4", "26.2", "28.1", "1964"],
+          ["Cần Thơ", "28.1", "25.4", "26.9", "1674"],
+          ["Cà Mau", "28.3", "25.4", "26.8", "2360"],
+          ["Phú Quốc", "28.5", "26.0", "27.3", "2882"]
         ]
       },
       solve: (vals) => {
@@ -539,11 +569,11 @@ const GeoCalculator = (function () {
         }
 
         return {
-          resultText: `Biên độ nhiệt: ${deltaT.toFixed(1)}°C | Ttb: ${avgt.toFixed(1)}°C | Mưa: ${rainExact.toLocaleString()} mm (${regionTag})`,
+          resultText: `Biên độ nhiệt: ${deltaT.toFixed(1)}°C | Ttb: ${avgt.toFixed(1)}°C | Mưa: ${formatIntVN(rainExact)} mm (${regionTag})`,
           stepsLatex: [
             `\\text{Bước 1 (Biên độ nhiệt năm): } \\Delta T = T_{\\text{max}} - T_{\\text{min}} = ${tmax} - ${tmin} = \\mathbf{${deltaT.toFixed(1)}^{\\circ}\\text{C}}`,
             `\\text{Bước 2 (Nhiệt độ TB năm): } T_{\\text{tb}} = \\mathbf{${avgt.toFixed(1)}^{\\circ}\\text{C}}`,
-            `\\text{Bước 3 (Tổng lượng mưa cả năm): } = \\mathbf{${rainExact.toLocaleString()} \\text{ mm}}`,
+            `\\text{Bước 3 (Tổng lượng mưa cả năm): } = \\mathbf{${formatIntVN(rainExact)} \\text{ mm}}`,
             `\\text{Kết luận phân loại: } \\mathbf{${regionTag}} \\text{ - } ${classification}`
           ],
           note: classification
@@ -596,7 +626,7 @@ const GeoCalculator = (function () {
         return {
           resultText: `Khoảng cách thực tế: ${dKm.toFixed(1)} km`,
           stepsLatex: [
-            `\\text{Tỷ lệ } 1 : ${scaleDen.toLocaleString()} \\implies 1\\text{ cm trên bản đồ} = \\frac{${scaleDen}}{100.000} = \\mathbf{${kmPerCm} \\text{ km thực địa}}`,
+            `\\text{Tỷ lệ } 1 : ${formatIntVN(scaleDen)} \\implies 1\\text{ cm trên bản đồ} = \\frac{${scaleDen}}{100.000} = \\mathbf{${kmPerCm} \\text{ km thực địa}}`,
             `\\text{Khoảng cách thực tế: } D = ${dCm} \\times ${kmPerCm} = \\mathbf{${dKm.toFixed(1)} \\text{ km}}`
           ],
           note: `Ở tỷ lệ Atlat 1:6.000.000, chỉ cần nhân khoảng cách đo được trên thước (cm) với 60 để ra ngay km thực địa!`
@@ -727,8 +757,11 @@ const GeoCalculator = (function () {
     return isNaN(n) ? 0 : n;
   }
 
-  function formatLatexNumber(latexStr) {
-    if (!latexStr) return "";
+
+
+    function formatLatexNumber(latexStr) {
+    if (typeof latexStr !== "string") return latexStr;
+    // Thay số thập phân a,b thành a{,}b trong LaTeX để KaTeX không tạo khoảng trống phân cách
     return latexStr.replace(/(\d+),(\d+)/g, "$1{,}$2");
   }
 
@@ -953,10 +986,7 @@ const GeoCalculator = (function () {
     }
   }
 
-  function formatLatexNumber(latexStr) {
-    if (typeof latexStr !== "string") return latexStr;
-    return latexStr.replace(/(\d+),(\d+)/g, "$1{,}$2");
-  }
+
 
   return {
     init,

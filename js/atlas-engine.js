@@ -18,6 +18,17 @@
  */
 
 const AtlasEngine = (function () {
+  // Hàm định dạng số chuẩn Việt Nam (Dấu chấm hàng nghìn, dấu phẩy thập phân)
+  function formatVNNum(val, decimals = null) {
+    if (val === null || val === undefined || val === "") return "N/A";
+    const num = Number(val);
+    if (isNaN(num)) return String(val);
+    let str = (decimals !== null && typeof decimals === "number") ? num.toFixed(decimals) : String(num);
+    const parts = str.split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return parts.length > 1 ? parts.join(",") : parts[0];
+  }
+
   let map = null;
 
   // 7 Lớp chuyên đề (Lớp 1-6 + Lớp 7 Giao thông Huyết mạch)
@@ -709,6 +720,13 @@ const AtlasEngine = (function () {
     // Khẳng định chủ quyền biển đảo (duy nhất 1 nhãn sạch cho mỗi quần đảo)
     addSovereigntyDemarcation();
     renderBaselineLayer();
+    // Cập nhật lớp nhãn đường cơ sở theo mức zoom (A12-A24 chỉ hiện nhãn chữ khi zoom >= 8)
+    map.on("zoomend", () => {
+      const container = map.getContainer();
+      if (container) {
+        container.classList.toggle("zoom-dense-baseline", map.getZoom() >= 8);
+      }
+    });
 
     // Tọa độ con trỏ chuột thời gian thực & bắt sự kiện đo đạc / mini-game
     map.on("mousemove", (e) => {
@@ -886,20 +904,20 @@ const AtlasEngine = (function () {
       interactive: false
     }).addTo(map);
 
-    // Hoàng Sa (BUG-08: Chuẩn nhãn nguyên văn Atlat)
+    // Hoàng Sa (BUG-08: Chuẩn nhãn Atlat GD tr.4-5, 2 dòng gọn gàng không tràn màn hình)
     const hsIcon = L.divIcon({
       className: "hs-marker-wrapper",
-      html: `<div class="sovereignty-pill"><span>🇻🇳</span><span>quần đảo Hoàng Sa (Đặc khu Hoàng Sa - TP. Đà Nẵng - Việt Nam)</span></div>`,
-      iconSize: [320, 24],
-      iconAnchor: [160, 12],
-      popupAnchor: [0, -12]
+      html: `<div class="sovereignty-pill"><div>🇻🇳 <strong>Q.Đ. HOÀNG SA</strong></div><div class="text-[9px] text-blue-800/80 dark:text-blue-300 font-semibold">(TP. Đà Nẵng)</div></div>`,
+      iconSize: [160, 36],
+      iconAnchor: [80, 18],
+      popupAnchor: [0, -18]
     });
     const hs = L.marker([16.5, 112.0], { pane: 'pointMarkerPane', icon: hsIcon }).addTo(map);
     hs.bindPopup(`
       <div class="p-3 bg-white dark:bg-slate-900 rounded-xl min-w-[260px]">
         <div class="flex items-center space-x-2 text-red-600 font-bold text-xs mb-1">
           <span>🇻🇳</span>
-          <h4>quần đảo Hoàng Sa (Đặc khu Hoàng Sa - TP. Đà Nẵng - Việt Nam)</h4>
+          <h4>Quần đảo Hoàng Sa (Đặc khu Hoàng Sa - TP. Đà Nẵng - Việt Nam)</h4>
         </div>
         <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
           Đơn vị hành chính: <strong>Đặc khu Hoàng Sa, TP. Đà Nẵng</strong>. Vùng biển có vị trí chiến lược và tiềm năng ngư trường lớn của Tổ quốc.
@@ -908,20 +926,20 @@ const AtlasEngine = (function () {
       </div>
     `);
 
-    // Trường Sa (BUG-08: Chuẩn nhãn nguyên văn Atlat)
+    // Trường Sa (BUG-08: Chuẩn nhãn Atlat GD tr.4-5, 2 dòng gọn gàng không tràn màn hình)
     const tsIcon = L.divIcon({
       className: "ts-marker-wrapper",
-      html: `<div class="sovereignty-pill"><span>🇻🇳</span><span>quần đảo Trường Sa (Đặc khu Trường Sa - Tỉnh Khánh Hoà - Việt Nam)</span></div>`,
-      iconSize: [330, 24],
-      iconAnchor: [165, 12],
-      popupAnchor: [0, -12]
+      html: `<div class="sovereignty-pill"><div>🇻🇳 <strong>Q.Đ. TRƯỜNG SA</strong></div><div class="text-[9px] text-blue-800/80 dark:text-blue-300 font-semibold">(T. Khánh Hoà)</div></div>`,
+      iconSize: [160, 36],
+      iconAnchor: [80, 18],
+      popupAnchor: [0, -18]
     });
     const ts = L.marker([10.0, 114.2], { pane: 'pointMarkerPane', icon: tsIcon }).addTo(map);
     ts.bindPopup(`
       <div class="p-3 bg-white dark:bg-slate-900 rounded-xl min-w-[260px]">
         <div class="flex items-center space-x-2 text-red-600 font-bold text-xs mb-1">
           <span>🇻🇳</span>
-          <h4>quần đảo Trường Sa (Đặc khu Trường Sa - Tỉnh Khánh Hoà - Việt Nam)</h4>
+          <h4>Quần đảo Trường Sa (Đặc khu Trường Sa - Tỉnh Khánh Hoà - Việt Nam)</h4>
         </div>
         <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
           Đơn vị hành chính: <strong>Đặc khu Trường Sa, Tỉnh Khánh Hoà</strong>. Điểm tựa vững chắc phát triển kinh tế biển đảo của Tổ quốc.
@@ -953,11 +971,13 @@ const AtlasEngine = (function () {
       },
       pointToLayer: (feature, latlng) => {
         const p = feature.properties;
+        const codeNum = parseInt(String(p.code || "").replace(/\D/g, "")) || 0;
+        const isDensePoint = codeNum >= 12 && codeNum <= 24;
         const icon = L.divIcon({
-          className: 'atlat-baseline-point-marker',
-          html: `<div class="baseline-pill font-mono"><span>🔴</span><span>${p.code}</span></div>`,
-          iconSize: [46, 20],
-          iconAnchor: [23, 10],
+          className: `atlat-baseline-point-marker ${isDensePoint ? 'baseline-dense' : ''}`,
+          html: `<div class="baseline-pill font-mono"><span>🔴</span><span class="baseline-label-text">${p.code}</span></div>`,
+          iconSize: isDensePoint ? [14, 14] : [46, 20],
+          iconAnchor: isDensePoint ? [7, 7] : [23, 10],
           popupAnchor: [0, -10]
         });
         return L.marker(latlng, { icon });
@@ -1992,18 +2012,18 @@ const AtlasEngine = (function () {
           </tr>
           <tr>
             <td class="p-2.5 font-semibold text-slate-600 dark:text-slate-400">Diện tích (km²)</td>
-            <td class="p-2.5 text-center font-mono font-bold">${pA.area ? pA.area.toLocaleString() : 'N/A'}</td>
-            <td class="p-2.5 text-center font-mono font-bold">${pB.area ? pB.area.toLocaleString() : 'N/A'}</td>
+            <td class="p-2.5 text-center font-mono font-bold">${formatVNNum(pA.area)}</td>
+            <td class="p-2.5 text-center font-mono font-bold">${formatVNNum(pB.area)}</td>
           </tr>
           <tr>
             <td class="p-2.5 font-semibold text-slate-600 dark:text-slate-400">Dân số (nghìn người)</td>
-            <td class="p-2.5 text-center font-mono font-bold">${pA.pop ? pA.pop.toLocaleString() : 'N/A'}</td>
-            <td class="p-2.5 text-center font-mono font-bold">${pB.pop ? pB.pop.toLocaleString() : 'N/A'}</td>
+            <td class="p-2.5 text-center font-mono font-bold">${formatVNNum(pA.pop)}</td>
+            <td class="p-2.5 text-center font-mono font-bold">${formatVNNum(pB.pop)}</td>
           </tr>
           <tr>
             <td class="p-2.5 font-semibold text-slate-600 dark:text-slate-400">Mật độ dân số (người/km²)</td>
-            <td class="p-2.5 text-center font-mono font-bold text-blue-600">${pA.density ? pA.density.toLocaleString() : 'N/A'}</td>
-            <td class="p-2.5 text-center font-mono font-bold text-indigo-600">${pB.density ? pB.density.toLocaleString() : 'N/A'}</td>
+            <td class="p-2.5 text-center font-mono font-bold text-blue-600">${formatVNNum(pA.density)}</td>
+            <td class="p-2.5 text-center font-mono font-bold text-indigo-600">${formatVNNum(pB.density)}</td>
           </tr>
           <tr>
             <td class="p-2.5 font-semibold text-slate-600 dark:text-slate-400">Sắp xếp theo NQ 202/2025</td>
@@ -2473,141 +2493,175 @@ const AtlasEngine = (function () {
   // THANH TÌM KIẾM THÔNG MINH TOÀN DIỆN (Nhiệm vụ 2.7 & BUG-12)
   // ===========================================================================
   async function searchAndFlyTo(keyword) {
-    if (!keyword) return;
-    const variants = expandSearchVariants(keyword);
+    if (!keyword || !keyword.trim()) return;
+    const rawQuery = keyword.trim();
+    const variants = expandSearchVariants(rawQuery);
     if (variants.length === 0) return;
 
-    // ƯU TIÊN 1 (BUG-12): Tìm trong Lớp 1: Tỉnh thành & Quần đảo Hoàng Sa, Trường Sa
-    if (!geoData.provinces) await ensureLayerData("provinces");
-    if (geoData.provinces) {
-      const match = geoData.provinces.features.find(f => {
-        const p = f.properties || {};
-        return matchesSearch(p.name, variants) || 
-          (p.aliases && p.aliases.some(a => matchesSearch(a, variants))) ||
-          matchesSearch(p.region_name, variants) ||
-          (p.merged_from && p.merged_from.some(m => matchesSearch(m, variants))) ||
-          (p.merged_into && matchesSearch(p.merged_into, variants));
-      });
-      if (match) {
-        await toggleLayer("provinces", true);
-        const layer = L.geoJSON(match);
-        map.fitBounds(layer.getBounds(), { padding: [50, 50], duration: 1.2 });
-        showDetailsPanel(match.properties, "province");
-        return;
-      }
-    }
+    // Tải trước dữ liệu các lớp cần thiết nếu chưa nạp
+    await Promise.all([
+      ensureLayerData("provinces"),
+      ensureLayerData("topography"),
+      ensureLayerData("power"),
+      ensureLayerData("minerals"),
+      ensureLayerData("climate"),
+      ensureLayerData("industrial"),
+      ensureLayerData("agriculture")
+    ]);
 
-    // ƯU TIÊN 2: Tìm đối tượng địa lý cụ thể theo tên (KHÔNG so sánh p.province để tránh nhảy nhầm)
-    // 2.1 Địa hình & Sông ngòi (Đỉnh Phanxipăng, dãy núi, cao nguyên, sông)
-    if (!geoData.topography) await ensureLayerData("topography");
-    if (geoData.topography) {
-      const match = geoData.topography.features.find(f => {
-        const p = f.properties || {};
-        return matchesSearch(p.name, variants) || 
-          (p.aliases && p.aliases.some(a => matchesSearch(a, variants))) ||
-          matchesSearch(p.mountain_range, variants);
-      });
-      if (match) {
-        await toggleLayer("topography", true);
-        if (match.geometry.type === "Point") {
-          const [lng, lat] = match.geometry.coordinates;
-          map.flyTo([lat, lng], 11, { duration: 1.2 });
-        } else {
-          const layer = L.geoJSON(match);
-          map.fitBounds(layer.getBounds(), { padding: [50, 50], duration: 1.2 });
+    const normQuery = normalizeVN(rawQuery);
+    const isHydroQuery = /thuy dien|nhiet dien|nha may dien|dien gio|dien mat troi/i.test(normQuery);
+    const isTopoQuery = /cao nguyen|day nui|dinh nui|nui|deo|song|he thong song/i.test(normQuery);
+    const isClimateQuery = /tram|khi hau|khi tuong/i.test(normQuery);
+    const isMineralQuery = /khoang san|mo than|mo dau|mo khi|mo |than|dau mo|khi dot|sat|boxit|bauxite|apatit|titan/i.test(normQuery);
+    const isIndustrialQuery = /trung tam cong nghiep|ttcn/i.test(normQuery);
+    const isProvinceQuery = /tinh|thanh pho|tp\s+/i.test(normQuery);
+
+    function scoreCandidate(feature, layerType) {
+      const p = feature.properties || {};
+      const nameNorm = normalizeVN(p.name || "");
+      let score = 0;
+
+      // Ưu tiên theo loại đối tượng người dùng tìm kiếm
+      if (isHydroQuery && (layerType === "power" || p.category === "hydropower" || p.category === "thermal_power")) score += 70;
+      if (isTopoQuery && layerType === "topography") score += 70;
+      if (isClimateQuery && layerType === "climate") score += 70;
+      if (isMineralQuery && layerType === "minerals") score += 70;
+      if (isIndustrialQuery && layerType === "industrial") score += 70;
+      if (isProvinceQuery && layerType === "provinces") score += 70;
+
+      // Khớp tuyệt đối tên đối tượng
+      if (nameNorm === normQuery) {
+        score += 100;
+      } else if (nameNorm.includes(normQuery)) {
+        score += 80;
+      } else if (normQuery.includes(nameNorm) && nameNorm.length >= 3) {
+        score += 75;
+      }
+
+      // Khớp biến thể tìm kiếm
+      for (const v of variants) {
+        if (nameNorm === v) { score += 90; break; }
+        if (nameNorm.includes(v)) { score += 60; break; }
+      }
+
+      // Khớp bí danh (aliases)
+      if (p.aliases && Array.isArray(p.aliases)) {
+        for (const a of p.aliases) {
+          const aNorm = normalizeVN(a);
+          if (aNorm === normQuery) { score += 85; break; }
+          if (aNorm.includes(normQuery)) { score += 55; break; }
         }
-        showDetailsPanel(match.properties, "topography");
-        return;
       }
-    }
 
-    // 2.2 Trạm khí tượng (Lớp 3)
-    if (!geoData.climate) await ensureLayerData("climate");
-    if (geoData.climate) {
-      const match = geoData.climate.features.find(f => {
-        const p = f.properties || {};
-        return matchesSearch(p.name, variants) || (p.aliases && p.aliases.some(a => matchesSearch(a, variants)));
-      });
-      if (match) {
-        await toggleLayer("climate", true);
-        if (match.geometry.type === "Point") {
-          const [lng, lat] = match.geometry.coordinates;
-          map.flyTo([lat, lng], 11, { duration: 1.2 });
+      // Khớp đặc tính địa lý
+      if (p.mountain_range && normalizeVN(p.mountain_range).includes(normQuery)) score += 50;
+      if (p.mineral_type && normalizeVN(p.mineral_type).includes(normQuery)) score += 45;
+      if (p.plant_type && normalizeVN(p.plant_type).includes(normQuery)) score += 45;
+
+      // Xử lý tỉnh sáp nhập (merged_from): Điểm RẤT THẤP và tuyệt đối KHÔNG cộng điểm nếu đang tìm thủy điện/cao nguyên
+      if (layerType === "provinces") {
+        if (p.merged_from && Array.isArray(p.merged_from) && !isHydroQuery && !isTopoQuery) {
+          for (const m of p.merged_from) {
+            const mNorm = normalizeVN(m);
+            if (mNorm === normQuery) { score += 25; break; }
+            if (normQuery.includes(mNorm)) { score += 10; break; }
+          }
         }
-        showDetailsPanel(match.properties, "climate");
-        return;
+        if (p.region_name && normalizeVN(p.region_name).includes(normQuery) && !isTopoQuery && !isHydroQuery) {
+          score += 5;
+        }
+      }
+
+      return score;
+    }
+
+    const candidatePool = [];
+
+    // Thu thập ứng viên từ tất cả các lớp
+    if (geoData.power?.features) {
+      for (const f of geoData.power.features) {
+        const sc = scoreCandidate(f, "power");
+        if (sc > 0) candidatePool.push({ feature: f, type: "power", score: sc, layerKey: "minerals_power" });
       }
     }
 
-    // 2.3 Khoáng sản & Năng lượng (Lớp 5)
-    if (!geoData.minerals) await ensureLayerData("minerals");
-    if (geoData.minerals) {
-      const match = geoData.minerals.features.find(f => {
-        const p = f.properties || {};
-        return matchesSearch(p.name, variants) || matchesSearch(p.mineral_type, variants);
-      });
-      if (match) {
-        await toggleLayer("minerals_power", true);
-        const [lng, lat] = match.geometry.coordinates;
-        map.flyTo([lat, lng], 11, { duration: 1.2 });
-        showDetailsPanel(match.properties, "mineral");
-        return;
+    if (geoData.topography?.features) {
+      for (const f of geoData.topography.features) {
+        const sc = scoreCandidate(f, "topography");
+        if (sc > 0) candidatePool.push({ feature: f, type: "topography", score: sc, layerKey: "topography" });
       }
     }
 
-    if (!geoData.power) await ensureLayerData("power");
-    if (geoData.power) {
-      const match = geoData.power.features.find(f => {
-        const p = f.properties || {};
-        return matchesSearch(p.name, variants) || matchesSearch(p.plant_type, variants);
-      });
-      if (match) {
-        await toggleLayer("minerals_power", true);
-        const [lng, lat] = match.geometry.coordinates;
-        map.flyTo([lat, lng], 11, { duration: 1.2 });
-        showDetailsPanel(match.properties, "power");
-        return;
+    if (geoData.climate?.features) {
+      for (const f of geoData.climate.features) {
+        const sc = scoreCandidate(f, "climate");
+        if (sc > 0) candidatePool.push({ feature: f, type: "climate", layerKey: "climate", score: sc });
       }
     }
 
-    // 2.4 Trung tâm công nghiệp & GRDP (Lớp 6)
-    if (!geoData.industrial) await ensureLayerData("industrial");
-    if (geoData.industrial) {
-      const match = geoData.industrial.features.find(f => {
-        const p = f.properties || {};
-        return matchesSearch(p.name, variants);
-      });
-      if (match) {
-        await toggleLayer("industrial", true);
-        const [lng, lat] = match.geometry.coordinates;
-        map.flyTo([lat, lng], 10, { duration: 1.2 });
-        showDetailsPanel(match.properties, "industrial");
-        return;
+    if (geoData.minerals?.features) {
+      for (const f of geoData.minerals.features) {
+        const sc = scoreCandidate(f, "minerals");
+        if (sc > 0) candidatePool.push({ feature: f, type: "mineral", layerKey: "minerals_power", score: sc });
       }
     }
 
-    // 2.5 Nông nghiệp (Lớp 4 - ẩn ngư trường)
-    if (!geoData.agriculture) await ensureLayerData("agriculture");
-    if (geoData.agriculture) {
-      const match = geoData.agriculture.features.find(f => {
-        const p = f.properties || {};
-        return !p.hidden && p.category !== "fishing_ground" && (matchesSearch(p.name, variants) || matchesSearch(p.crop_type, variants));
-      });
-      if (match) {
-        await toggleLayer("agriculture", true);
-        const [lng, lat] = match.geometry.coordinates;
-        map.flyTo([lat, lng], 10, { duration: 1.2 });
-        showDetailsPanel(match.properties, "agriculture");
-        return;
+    if (geoData.industrial?.features) {
+      for (const f of geoData.industrial.features) {
+        const sc = scoreCandidate(f, "industrial");
+        if (sc > 0) candidatePool.push({ feature: f, type: "industrial", layerKey: "industrial", score: sc });
       }
     }
 
-    if (typeof window.showAppToast === 'function') {
-      window.showAppToast(`🔍 Không tìm thấy kết quả phù hợp cho "${keyword}". Hãy thử tìm: Phanxipăng, Hà Nội, Than Cẩm Phả...`);
+    if (geoData.agriculture?.features) {
+      for (const f of geoData.agriculture.features) {
+        if (f.properties?.hidden || f.properties?.category === "fishing_ground") continue;
+        const sc = scoreCandidate(f, "agriculture");
+        if (sc > 0) candidatePool.push({ feature: f, type: "agriculture", layerKey: "agriculture", score: sc });
+      }
+    }
+
+    if (geoData.provinces?.features) {
+      for (const f of geoData.provinces.features) {
+        const sc = scoreCandidate(f, "provinces");
+        if (sc > 0) candidatePool.push({ feature: f, type: "province", layerKey: "provinces", score: sc });
+      }
+    }
+
+    // Sắp xếp theo điểm số giảm dần
+    candidatePool.sort((a, b) => b.score - a.score);
+
+    if (candidatePool.length === 0 || candidatePool[0].score < 15) {
+      if (typeof window.showAppToast === 'function') {
+        window.showAppToast(`🔍 Không tìm thấy kết quả phù hợp cho "${keyword}". Thử: Thủy điện Hòa Bình, Cao nguyên Sơn La, Phanxipăng, Hà Nội...`);
+      }
+      return;
+    }
+
+    const winner = candidatePool[0];
+    const match = winner.feature;
+
+    // Bật layer tương ứng nếu chưa bật
+    await toggleLayer(winner.layerKey, true);
+
+    // Di chuyển bản đồ và hiển thị thẻ thông tin
+    if (winner.type === "province") {
+      const layer = L.geoJSON(match);
+      map.fitBounds(layer.getBounds(), { padding: [50, 50], duration: 1.2 });
+      showDetailsPanel(match.properties, "province");
+    } else if (match.geometry?.type === "Point") {
+      const [lng, lat] = match.geometry.coordinates;
+      const targetZoom = (winner.type === "topography" || winner.type === "power") ? 11 : 10;
+      map.flyTo([lat, lng], targetZoom, { duration: 1.2 });
+      showDetailsPanel(match.properties, winner.type);
+    } else {
+      const layer = L.geoJSON(match);
+      map.fitBounds(layer.getBounds(), { padding: [50, 50], duration: 1.2 });
+      showDetailsPanel(match.properties, winner.type);
     }
   }
 
-  // Thẻ Thông Tin Tri Thức & Mẹo Thi THPT 2026
   function showDetailsPanel(props, type) {
     const infoContainer = document.getElementById("atlas-info-card");
     if (!infoContainer) return;
@@ -2734,7 +2788,7 @@ const AtlasEngine = (function () {
           </div>
           <div class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
             <div>Loại năng lượng: <strong>${props.plant_type || props.type}</strong></div>
-            <div>Công suất: <strong class="text-blue-600 font-mono">${props.capacity_mw ? props.capacity_mw.toLocaleString() + ' MW' : 'Đang cập nhật'}</strong></div>
+            <div>Quy mô công suất: <strong class="text-blue-600 font-semibold">${props.capacity_group || (props.capacity_mw ? (props.capacity_mw >= 1000 ? 'Trên 1.000 MW' : 'Dưới 1.000 MW') : 'Chuẩn Atlat GD, tr.23')}</strong></div>
             <div>Nguồn nhiên liệu / Sông: <strong>${props.river_fuel || 'N/A'}</strong> (Tỉnh ${props.province})</div>
           </div>
         </div>
@@ -2757,7 +2811,7 @@ const AtlasEngine = (function () {
           </div>
           <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1.5 text-[11px]">
             <div><strong>Phân loại:</strong> ${props.type || 'Hạ tầng giao thông huyết mạch'}</div>
-            ${props.length_km ? `<div><strong>Chiều dài:</strong> <span class="font-bold font-mono text-blue-600 dark:text-blue-400">${props.length_km.toLocaleString()} km</span></div>` : ''}
+            ${props.length_km ? `<div><strong>Chiều dài:</strong> <span class="font-bold font-mono text-blue-600 dark:text-blue-400">${formatVNNum(props.length_km)} km</span></div>` : ''}
             ${props.capacity ? `<div><strong>Quy mô / Công suất:</strong> <span class="font-bold text-emerald-600 dark:text-emerald-400">${props.capacity}</span></div>` : ''}
             ${props.pass_provinces ? `<div><strong>Các tỉnh đi qua:</strong> ${props.pass_provinces}</div>` : ''}
             ${props.province ? `<div><strong>Địa bàn:</strong> ${props.province}</div>` : ''}
@@ -2865,15 +2919,15 @@ const AtlasEngine = (function () {
         <div class="grid grid-cols-4 gap-1.5 text-center text-xs">
           <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
             <span class="text-[9px] text-slate-400 block uppercase font-medium">Diện tích</span>
-            <span class="font-bold tabular-nums text-slate-800 dark:text-slate-100 text-[11px]">${props.area ? props.area.toLocaleString() : 'N/A'} km²</span>
+            <span class="font-bold tabular-nums text-slate-800 dark:text-slate-100 text-[11px]">${formatVNNum(props.area)} km²</span>
           </div>
           <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
             <span class="text-[9px] text-slate-400 block uppercase font-medium">Dân số</span>
-            <span class="font-bold tabular-nums text-slate-800 dark:text-slate-100 text-[11px]">${props.pop ? props.pop.toLocaleString() : 'N/A'} k</span>
+            <span class="font-bold tabular-nums text-slate-800 dark:text-slate-100 text-[11px]">${formatVNNum(props.pop)} k</span>
           </div>
           <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
             <span class="text-[9px] text-slate-400 block uppercase font-medium">Mật độ</span>
-            <span class="font-bold text-blue-600 dark:text-blue-400 tabular-nums text-[11px]">${props.density ? props.density.toLocaleString() : 'N/A'} ng/km²</span>
+            <span class="font-bold text-blue-600 dark:text-blue-400 tabular-nums text-[11px]">${formatVNNum(props.density)} ng/km²</span>
           </div>
           <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700">
             <span class="text-[9px] text-slate-400 block uppercase font-medium">GRDP</span>

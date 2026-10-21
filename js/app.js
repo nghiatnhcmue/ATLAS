@@ -28,12 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupSearch();
 
-  // Chạy quy trình Tự Chẩn Đoán Dữ Liệu (Health Check) khi trình duyệt nhàn rỗi (idle) để đạt FCP < 50ms
-  if ("requestIdleCallback" in window) {
-    requestIdleCallback(() => runSystemHealthCheck());
-  } else {
-    setTimeout(runSystemHealthCheck, 2000);
-  }
+
 
   // Tự động co giãn khi đổi kích thước màn hình
   window.addEventListener("resize", () => {
@@ -152,52 +147,6 @@ function setupSearch() {
   }
 }
 
-/**
- * BƯỚC 5: Tự Chẩn Đoán Trực Tiếp (Built-in Health Check)
- * Quét trạng thái 5 tệp dữ liệu, kích hoạt Fallback nếu lỗi, và in báo cáo console.table
- */
-async function runSystemHealthCheck() {
-  const datasets = [
-    { key: "provinces", url: "./public/data/vn_provinces.geojson", fallback: window.GEO_ATLAS_FALLBACK_DATA?.provinces },
-    { key: "minerals", url: "./public/data/minerals.geojson", fallback: window.GEO_ATLAS_FALLBACK_DATA?.minerals },
-    { key: "power", url: "./public/data/hydropower.geojson", fallback: window.GEO_ATLAS_FALLBACK_DATA?.power },
-    { key: "industrial", url: "./public/data/industrial_centers.geojson", fallback: window.GEO_ATLAS_FALLBACK_DATA?.industrial },
-    { key: "chartQuestions", url: "./public/data/chart_questions.json", fallback: window.GEO_ATLAS_FALLBACK_DATA?.chartQuestions }
-  ];
-
-  const results = [];
-  let anyFallbackUsed = false;
-
-  for (const ds of datasets) {
-    let status = "OK (Network)";
-    let count = 0;
-    try {
-      const res = await fetch(ds.url);
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const json = await res.json();
-      count = json.features ? json.features.length : (json.questions ? json.questions.length : 0);
-      if (count === 0) throw new Error("Dữ liệu rỗng");
-    } catch (err) {
-      status = "FALLBACK (Nội tuyến)";
-      anyFallbackUsed = true;
-      count = ds.fallback ? (ds.fallback.features ? ds.fallback.features.length : (Array.isArray(ds.fallback) ? ds.fallback.length : 0)) : 0;
-    }
-
-    results.push({
-      "Tệp / Đối Tượng": ds.key,
-      "Đường Dẫn": ds.url,
-      "Trạng Thái": status,
-      "Số Bản Ghi": count
-    });
-  }
-
-  console.log("%c🏥 GEOATLAS HEALTH CHECK REPORT", "font-weight: bold; font-size: 13px; color: #2563eb;");
-  console.table(results);
-
-  if (anyFallbackUsed && typeof window.showOfflineToast === 'function') {
-    window.showOfflineToast();
-  }
-}
 
 /**
  * Hiển thị thông báo khi hệ thống kích hoạt TẦNG 3 Dữ liệu Hạt giống (CORS / Offline)

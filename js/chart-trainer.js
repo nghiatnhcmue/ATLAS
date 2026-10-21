@@ -705,18 +705,18 @@ const ChartTrainer = (function () {
 
     // 2. Phản biện động theo chuẩn 6 quy tắc của biểu đồ.docx
     if (selectedType === "pie") {
-      if (numYears >= 4) {
-        return `Quy tắc Atlat & GDPT 2018: Chuỗi số liệu có từ 4 năm trở lên (${numYears} năm) tuyệt đối KHÔNG vẽ biểu đồ Tròn. Việc vẽ từ 4 hình tròn trở lên sẽ làm phân tán thị giác, rất khó so sánh sự chuyển dịch cơ cấu. Bắt buộc phải chuyển sang Biểu đồ Miền (Stacked Area)!`;
+      if (numYears >= 3) {
+        return `Quy tắc Atlat & GDPT 2018: Chuỗi số liệu có từ 3 năm trở lên (${numYears} năm) KHÔNG nên vẽ biểu đồ Tròn. Việc vẽ từ 3 hình tròn trở lên làm phân tán thị giác và khó so sánh động thái chuyển dịch. Chuẩn thi THPT quy định: Nếu chỉ có cơ cấu (%) chuyển sang Biểu đồ Miền; nếu có quy mô và cơ cấu chuyển sang Biểu đồ Cột Chồng!`;
       }
       if (units.length > 1) {
         return `Biểu đồ Tròn chỉ thể hiện cơ cấu thành phần (%) của một tổng thể 100% cùng loại đơn vị. Bảng số liệu có ${units.length} đơn vị khác nhau (${units.join(", ")}) nên không thể vẽ biểu đồ Tròn!`;
       }
-      return `Biểu đồ Tròn chỉ tối ưu khi đề bài yêu cầu thể hiện "cơ cấu / tỷ trọng" tại 1 đến tối đa 3 mốc năm. Câu hỏi này không phù hợp với biểu đồ Tròn.`;
+      return `Biểu đồ Tròn chỉ tối ưu khi đề bài yêu cầu thể hiện "cơ cấu / tỷ trọng" tại 1 hoặc tối đa 2 mốc năm. Câu hỏi này không phù hợp với biểu đồ Tròn.`;
     }
 
     if (selectedType === "stacked_area") {
       if (numYears <= 2) {
-        return `Quy tắc Atlat & GDPT 2018: Biểu đồ Miền chỉ áp dụng cho chuỗi thời gian từ 3 năm trở lên (thường là ≥ 4 năm) để tạo thành các diện tích biến động liên tục. Với chỉ ${numYears} mốc năm, các dải miền sẽ cụt lủn và thô cứng, làm sai lệch cấu trúc trực quan. Trường hợp này bắt buộc phải chọn Biểu đồ Tròn!`;
+        return `Quy tắc Atlat & GDPT 2018: Biểu đồ Miền chỉ áp dụng cho chuỗi thời gian từ 3 năm trở lên (≥ 3 năm) để tạo thành các diện tích biến động liên tục. Với chỉ ${numYears} mốc năm, các dải miền sẽ cụt lủn và thô cứng, làm sai lệch trực quan. Trường hợp 1-2 năm này bắt buộc phải chọn Biểu đồ Tròn!`;
       }
       return `Biểu đồ Miền chỉ dùng khi thể hiện "sự thay đổi cơ cấu" / "chuyển dịch cơ cấu" qua chuỗi thời gian dài mà các thành phần có quan hệ tổng thể 100%. Bảng số liệu này không đáp ứng điều kiện đó.`;
     }
@@ -1029,7 +1029,7 @@ const ChartTrainer = (function () {
         name: r.name,
         type: "line",
         data: r.values,
-        smooth: true,
+        smooth: false,
         symbolSize: 8,
         lineStyle: { width: 3 }
       }));
@@ -1123,7 +1123,7 @@ const ChartTrainer = (function () {
         name: r.name,
         type: "line",
         stack: "Total",
-        smooth: true,
+        smooth: false,
         areaStyle: { opacity: 0.8 },
         data: r.values
       }));
@@ -1506,28 +1506,28 @@ const ChartTrainer = (function () {
       confidence = 98;
       explanation = "Yêu cầu đề bài có từ khóa vàng 'tốc độ tăng trưởng' (hoặc năm gốc 100%). Biểu đồ đường là lựa chọn chuẩn xác tuyệt đối để thể hiện tốc độ phát triển.";
     } else if (hasScaleAndStructure) {
-      if (numYears <= 3) {
+      if (numYears <= 2) {
         optimal_chart = "pie";
         chart_name = "Biểu đồ Tròn bán kính khác nhau (Multi-Pie)";
         confidence = 97;
-        explanation = `Đề bài yêu cầu thể hiện 'quy mô và cơ cấu' trong ${numYears} năm (≤ 3 năm). Vẽ biểu đồ tròn với bán kính tỉ lệ thuận theo quy mô tổng số.`;
+        explanation = `Đề bài yêu cầu thể hiện 'quy mô và cơ cấu' trong ${numYears} mốc năm (≤ 2 năm). Vẽ biểu đồ tròn với bán kính tỉ lệ thuận theo quy mô tổng số.`;
       } else {
         optimal_chart = "bar_stacked";
         chart_name = "Biểu đồ Cột Chồng (Stacked Bar)";
         confidence = 96;
-        explanation = `Đề bài yêu cầu 'quy mô và cơ cấu' qua chuỗi ${numYears} năm (≥ 4 năm). Biểu đồ cột chồng thể hiện vừa tổng quy mô (chiều cao cột) vừa cơ cấu các bộ phận.`;
+        explanation = `Đề bài yêu cầu thể hiện 'quy mô và cơ cấu' qua chuỗi ${numYears} mốc năm (≥ 3 năm). Biểu đồ cột chồng thể hiện trực quan cả quy mô tổng (chiều cao cột) lẫn tỷ trọng các bộ phận.`;
       }
     } else if (hasStructure) {
-      if (numYears >= 4 || (numYears >= 3 && /chuyển dịch|thay đổi/i.test(prompt))) {
+      if (numYears >= 3) {
         optimal_chart = "stacked_area";
         chart_name = "Biểu đồ Miền (Stacked Area)";
         confidence = 98;
-        explanation = `Yêu cầu thể hiện cơ cấu / chuyển dịch cơ cấu qua chuỗi thời gian dài ${numYears} mốc năm (≥ 3-4 năm). Biểu đồ miền là chuẩn mực tối ưu.`;
+        explanation = `Yêu cầu thể hiện cơ cấu / chuyển dịch cơ cấu qua chuỗi thời gian ${numYears} mốc năm (≥ 3 năm). Biểu đồ miền là chuẩn mực tối ưu theo quy chuẩn thi THPT và SGK GDPT 2018.`;
       } else {
         optimal_chart = "pie";
         chart_name = "Biểu đồ Tròn (Pie Chart)";
         confidence = 98;
-        explanation = `Yêu cầu thể hiện cơ cấu trong ${numYears} mốc năm (≤ 3 năm). Biểu đồ tròn là lựa chọn tối ưu theo quy chuẩn Atlat và SGK.`;
+        explanation = `Yêu cầu thể hiện cơ cấu trong ${numYears} mốc năm (≤ 2 năm). Biểu đồ tròn là lựa chọn tối ưu theo quy chuẩn Atlat và SGK.`;
       }
     } else {
       optimal_chart = "bar";

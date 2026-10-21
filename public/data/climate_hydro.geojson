@@ -38,12 +38,12 @@
       "properties": {
         "category": "met_station",
         "name": "Hà Nội (Trạm Láng)",
-        "avg_temp": "23,9°C",
-        "rainfall": "1.670 mm",
+        "avg_temp": "23,8°C",
+        "rainfall": "1.676 mm",
         "province": "Thành phố Hà Nội",
         "climate_type": "Nhiệt đới ẩm gió mùa có mùa đông lạnh",
-        "desc": "Trạm Láng (Hà Nội): Ttb = 23,9°C; Lượng mưa năm = 1.670 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+        "desc": "Trạm Láng (Hà Nội): Ttb = 23,8°C; Lượng mưa năm = 1.676 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
       },
       "geometry": {
         "type": "Point",
@@ -57,113 +57,13 @@
       "type": "Feature",
       "properties": {
         "category": "met_station",
-        "name": "Huế",
-        "avg_temp": "25,1°C",
-        "rainfall": "2.926 mm",
-        "province": "Thành phố Huế",
-        "climate_type": "Khí hậu chuyển tiếp Bắc Trung Bộ",
-        "desc": "Trạm Huế: Ttb = 25,1°C; Lượng mưa năm = 2.926 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          107.59,
-          16.46
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "category": "met_station",
-        "name": "Đà Lạt",
-        "avg_temp": "18,1°C",
-        "rainfall": "1.809 mm",
-        "province": "Tỉnh Lâm Đồng",
-        "climate_type": "Cận nhiệt đới vùng núi cao Tây Nguyên",
-        "desc": "Trạm Đà Lạt: Ttb = 18,1°C; Lượng mưa năm = 1.809 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          108.44,
-          11.94
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "category": "met_station",
-        "name": "Cà Mau",
-        "avg_temp": "27,1°C",
-        "rainfall": "2.388 mm",
-        "province": "Tỉnh Cà Mau",
-        "climate_type": "Cực Nam cận xích đạo hải dương",
-        "desc": "Trạm Cà Mau: Ttb = 27,1°C; Lượng mưa năm = 2.388 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          105.15,
-          9.18
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "category": "met_station",
-        "name": "Tân Sơn Hoà (TP. Hồ Chí Minh)",
-        "avg_temp": "27,1°C",
-        "rainfall": "1.964 mm",
-        "province": "Thành phố Hồ Chí Minh",
-        "climate_type": "Cận xích đạo gió mùa Nam Bộ",
-        "desc": "Trạm Tân Sơn Hoà: Ttb = 27,1°C; Lượng mưa năm = 1.964 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          106.66,
-          10.77
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "category": "met_station",
-        "name": "Buôn Ma Thuột",
-        "avg_temp": "23,7°C",
-        "rainfall": "1.796 mm",
-        "province": "Tỉnh Đắk Lắk",
-        "climate_type": "Cận xích đạo cao nguyên Tây Nguyên",
-        "desc": "Trạm Buôn Ma Thuột: Ttb = 23,7°C; Lượng mưa năm = 1.796 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          108.05,
-          12.67
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "category": "met_station",
         "name": "Sơn La",
-        "avg_temp": "21,4°C",
-        "rainfall": "1.448 mm",
+        "avg_temp": "21,2°C",
+        "rainfall": "1.420 mm",
         "province": "Tỉnh Sơn La",
         "climate_type": "Nhiệt đới gió mùa vùng núi Tây Bắc",
-        "desc": "Trạm Sơn La: Ttb = 21,4°C; Lượng mưa năm = 1.448 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+        "desc": "Trạm Sơn La: Ttb = 21,2°C; Lượng mưa năm = 1.420 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
       },
       "geometry": {
         "type": "Point",
@@ -178,12 +78,12 @@
       "properties": {
         "category": "met_station",
         "name": "Tuyên Quang",
-        "avg_temp": "22,9°C",
-        "rainfall": "1.720 mm",
+        "avg_temp": "23,5°C",
+        "rainfall": "1.665 mm",
         "province": "Tỉnh Tuyên Quang",
         "climate_type": "Nhiệt đới ẩm gió mùa Đông Bắc",
-        "desc": "Trạm Tuyên Quang: Ttb = 22,9°C; Lượng mưa năm = 1.720 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+        "desc": "Trạm Tuyên Quang: Ttb = 23,5°C; Lượng mưa năm = 1.665 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
       },
       "geometry": {
         "type": "Point",
@@ -198,12 +98,12 @@
       "properties": {
         "category": "met_station",
         "name": "Lạng Sơn",
-        "avg_temp": "21,5°C",
-        "rainfall": "1.405 mm",
+        "avg_temp": "21,2°C",
+        "rainfall": "1.311 mm",
         "province": "Tỉnh Lạng Sơn",
-        "climate_type": "Cận nhiệt đới gió mùa biên giới Đông Bắc",
-        "desc": "Trạm Lạng Sơn: Ttb = 21,5°C; Lượng mưa năm = 1.405 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+        "climate_type": "Nhiệt đới gió mùa Đông Bắc đón gió",
+        "desc": "Trạm Lạng Sơn: Ttb = 21,2°C; Lượng mưa năm = 1.311 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
       },
       "geometry": {
         "type": "Point",
@@ -218,12 +118,12 @@
       "properties": {
         "category": "met_station",
         "name": "Hà Tĩnh",
-        "avg_temp": "24,0°C",
-        "rainfall": "2.458 mm",
+        "avg_temp": "24,1°C",
+        "rainfall": "2.658 mm",
         "province": "Tỉnh Hà Tĩnh",
-        "climate_type": "Nhiệt đới gió mùa Bắc Trung Bộ",
-        "desc": "Trạm Hà Tĩnh: Ttb = 24,0°C; Lượng mưa năm = 2.458 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+        "climate_type": "Nhiệt đới Bắc Trung Bộ mưa thu đông",
+        "desc": "Trạm Hà Tĩnh: Ttb = 24,1°C; Lượng mưa năm = 2.658 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
       },
       "geometry": {
         "type": "Point",
@@ -237,19 +137,59 @@
       "type": "Feature",
       "properties": {
         "category": "met_station",
+        "name": "Huế",
+        "avg_temp": "25,2°C",
+        "rainfall": "2.868 mm",
+        "province": "Thành phố Huế",
+        "climate_type": "Khí hậu chuyển tiếp Bắc Trung Bộ",
+        "desc": "Trạm Huế: Ttb = 25,2°C; Lượng mưa năm = 2.868 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.59,
+          16.46
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Đà Lạt",
+        "avg_temp": "17,9°C",
+        "rainfall": "1.739 mm",
+        "province": "Tỉnh Lâm Đồng",
+        "climate_type": "Cận nhiệt đới vùng núi cao Tây Nguyên",
+        "desc": "Trạm Đà Lạt: Ttb = 17,9°C; Lượng mưa năm = 1.739 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.44,
+          11.94
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
         "name": "Quy Nhơn",
-        "avg_temp": "26,8°C",
-        "rainfall": "1.695 mm",
+        "avg_temp": "27,1°C",
+        "rainfall": "1.852 mm",
         "province": "Tỉnh Quảng Ngãi",
-        "climate_type": "Duyên hải Nam Trung Bộ",
-        "desc": "Trạm Quy Nhơn: Ttb = 26,8°C; Lượng mưa năm = 1.695 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+        "climate_type": "Nhiệt đới Duyên hải Nam Trung Bộ",
+        "desc": "Trạm Quy Nhơn: Ttb = 27,1°C; Lượng mưa năm = 1.852 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           109.22,
-          13.77
+          13.78
         ]
       }
     },
@@ -257,39 +197,19 @@
       "type": "Feature",
       "properties": {
         "category": "met_station",
-        "name": "Phú Quốc",
-        "avg_temp": "27,2°C",
-        "rainfall": "2.958 mm",
-        "province": "Tỉnh An Giang",
-        "climate_type": "Hải dương nhiệt đới vịnh Thái Lan",
-        "desc": "Trạm Phú Quốc: Ttb = 27,2°C; Lượng mưa năm = 2.958 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+        "name": "Buôn Ma Thuột",
+        "avg_temp": "24,0°C",
+        "rainfall": "1.904 mm",
+        "province": "Tỉnh Đắk Lắk",
+        "climate_type": "Cận xích đạo cao nguyên Tây Nguyên",
+        "desc": "Trạm Buôn Ma Thuột: Ttb = 24,0°C; Lượng mưa năm = 1.904 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.96,
-          10.22
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "category": "met_station",
-        "name": "Cần Thơ",
-        "avg_temp": "27,0°C",
-        "rainfall": "1.620 mm",
-        "province": "Thành phố Cần Thơ",
-        "climate_type": "Cận xích đạo đồng bằng châu thổ sông Cửu Long",
-        "desc": "Trạm Cần Thơ: Ttb = 27,0°C; Lượng mưa năm = 1.620 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          105.78,
-          10.03
+          108.05,
+          12.67
         ]
       }
     },
@@ -298,18 +218,18 @@
       "properties": {
         "category": "met_station",
         "name": "Hoàng Sa",
-        "avg_temp": "26,9°C",
-        "rainfall": "1.250 mm",
+        "avg_temp": "23,6°C",
+        "rainfall": "2.769 mm",
         "province": "Thành phố Đà Nẵng",
-        "climate_type": "Hải dương nhiệt đới Biển Đông",
-        "desc": "Trạm Quần đảo Hoàng Sa: Ttb = 26,9°C; Lượng mưa năm = 1.250 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+        "climate_type": "Nhiệt đới hải đảo Hoàng Sa",
+        "desc": "Trạm Hoàng Sa (Đặc khu Hoàng Sa - TP. Đà Nẵng): Ttb = 23,6°C; Lượng mưa năm = 2.769 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           111.6,
-          16.53
+          16.5
         ]
       }
     },
@@ -318,18 +238,98 @@
       "properties": {
         "category": "met_station",
         "name": "Trường Sa",
-        "avg_temp": "27,7°C",
-        "rainfall": "2.540 mm",
+        "avg_temp": "28,0°C",
+        "rainfall": "2.666 mm",
         "province": "Tỉnh Khánh Hoà",
-        "climate_type": "Cận xích đạo hải dương Biển Đông",
-        "desc": "Trạm Quần đảo Trường Sa: Ttb = 27,7°C; Lượng mưa năm = 2.540 mm (Atlat GD, tr.8).",
-        "source": "Atlat GD, tr.8 (Khí hậu chung)"
+        "climate_type": "Cận xích đạo hải đảo Trường Sa",
+        "desc": "Trạm Trường Sa (Đặc khu Trường Sa - Tỉnh Khánh Hoà): Ttb = 28,0°C; Lượng mưa năm = 2.666 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           111.92,
-          8.64
+          8.65
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Tân Sơn Hoà (TP. Hồ Chí Minh)",
+        "avg_temp": "28,1°C",
+        "rainfall": "1.964 mm",
+        "province": "Thành phố Hồ Chí Minh",
+        "climate_type": "Cận xích đạo gió mùa Nam Bộ",
+        "desc": "Trạm Tân Sơn Hoà: Ttb = 28,1°C; Lượng mưa năm = 1.964 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.66,
+          10.77
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Cần Thơ",
+        "avg_temp": "26,9°C",
+        "rainfall": "1.674 mm",
+        "province": "Thành phố Cần Thơ",
+        "climate_type": "Cận xích đạo châu thổ sông Cửu Long",
+        "desc": "Trạm Cần Thơ: Ttb = 26,9°C; Lượng mưa năm = 1.674 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.78,
+          10.04
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Cà Mau",
+        "avg_temp": "26,8°C",
+        "rainfall": "2.360 mm",
+        "province": "Tỉnh Cà Mau",
+        "climate_type": "Cực Nam cận xích đạo hải dương",
+        "desc": "Trạm Cà Mau: Ttb = 26,8°C; Lượng mưa năm = 2.360 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.15,
+          9.18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "met_station",
+        "name": "Phú Quốc",
+        "avg_temp": "27,3°C",
+        "rainfall": "2.882 mm",
+        "province": "Tỉnh An Giang",
+        "climate_type": "Hải đảo cực Tây Nam",
+        "desc": "Trạm Phú Quốc: Ttb = 27,3°C; Lượng mưa năm = 2.882 mm (Atlat GD, tr.8).",
+        "source": "Atlat GD, tr.8 (Khí hậu chung - 450 dpi)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.96,
+          10.22
         ]
       }
     }

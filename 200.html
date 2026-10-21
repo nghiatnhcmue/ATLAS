@@ -55,7 +55,7 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Custom Stylesheet (with cache-buster) -->
-  <link rel="stylesheet" href="./css/styles.css?v=2026.2">
+  <link rel="stylesheet" href="./css/styles.css?v=2026.3.1">
 </head>
 
 <body class="min-h-[100dvh] lg:h-[100dvh] overflow-x-hidden lg:overflow-hidden flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased select-none">
@@ -197,9 +197,6 @@
           <div class="absolute top-2 sm:top-3 right-2 sm:right-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-0.5 sm:space-x-1 text-[10px] sm:text-[11px]">
             <button onclick="AtlasEngine.resetView()" title="Toàn cảnh Việt Nam" class="p-1 sm:px-2 sm:py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
               <span>🧭</span><span class="hidden md:inline">Toàn cảnh</span>
-            </button>
-            <button onclick="AtlasEngine.openAtlatPagesModal()" title="Xem trang bản đồ gốc Atlat 2026 (Scan Sách Giáo Khoa 100% Offline từ Data)" class="px-1.5 sm:px-2 py-1 rounded-md bg-amber-500 hover:bg-amber-600 text-white font-bold transition shadow-xs flex items-center space-x-1">
-              <span>📖</span><span class="hidden sm:inline">Bản Đồ Gốc</span><span class="sm:hidden">Atlat</span>
             </button>
             <button id="btn-tool-measure" onclick="AtlasEngine.toggleMeasureTool()" title="Thước đo khoảng cách thực tế & tỷ lệ Atlat" class="p-1 sm:px-2 sm:py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
               <span>📐</span><span class="hidden lg:inline">Thước đo</span>
@@ -894,106 +891,13 @@
     </div>
   </div>
 
-  <!-- Modal Tra Cứu Trang Bản Đồ Gốc Atlat 2026 (Scan Sách Giáo Khoa 100% Offline từ Data) -->
-  <div id="modal-atlat-pages" class="fixed inset-0 z-[2000] hidden items-center justify-center bg-slate-950/85 backdrop-blur-sm p-1 sm:p-3 md:p-4 animate-fade-in font-sans">
-    <div class="bg-white dark:bg-slate-900 w-full max-w-6xl h-[96vh] sm:h-[94vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-slate-200 dark:border-slate-800">
-      
-      <!-- Responsive Header (Tier 1 & Tier 2) -->
-      <div class="px-3 sm:px-4 py-2 sm:py-2.5 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 flex flex-col gap-2 shrink-0">
-        <!-- Tier 1: Title, Page Subtitle & Close -->
-        <div class="flex items-center justify-between w-full">
-          <div class="flex items-center space-x-2">
-            <span class="text-lg sm:text-xl">📖</span>
-            <div>
-              <h3 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white flex items-center gap-1.5 sm:gap-2">
-                <span>Bản Đồ Gốc Atlat Địa lí Việt Nam 2026</span>
-                <span class="text-[9px] bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 font-bold px-1.5 py-0.5 rounded-full border border-amber-300 dark:border-amber-800">Offline Scan SGK</span>
-              </h3>
-              <p id="atlat-page-viewer-title" class="text-[10px] sm:text-[11px] text-blue-600 dark:text-blue-400 font-semibold truncate max-w-[240px] sm:max-w-md">Trang 4: Hành chính (Bắc Bộ &amp; Bắc Trung Bộ)</p>
-            </div>
-          </div>
-
-          <button onclick="AtlasEngine.closeAtlatPagesModal()" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-red-500 hover:text-white transition flex items-center justify-center text-sm font-bold shrink-0" title="Đóng">✕</button>
-        </div>
-
-        <!-- Tier 2: Page Selector, Quick Fit, Zoom Controls, Prev/Next -->
-        <div class="flex items-center justify-between flex-wrap gap-1.5 sm:gap-2">
-          <!-- Page Selector & Prev/Next -->
-          <div class="flex items-center space-x-1 sm:space-x-1.5 flex-1 max-w-full sm:max-w-md">
-            <button onclick="AtlasEngine.prevAtlatPage()" class="p-1.5 sm:px-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-bold shrink-0" title="Trang trước">◀</button>
-            <select id="atlat-page-select" onchange="AtlasEngine.selectAtlatPage(this.value)" class="text-xs px-2 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold focus:outline-hidden flex-1 min-w-[140px] truncate">
-              <option value="1">Trang 1: Bìa sách Atlat 2026</option>
-              <option value="2">Trang 2: Ký hiệu chung</option>
-              <option value="3">Trang 3: Hình thể Việt Nam</option>
-              <option value="4" selected>Trang 4: Hành chính (Phía Bắc)</option>
-              <option value="5">Trang 5: Hành chính (Phía Nam)</option>
-              <option value="6">Trang 6: Địa hình &amp; Địa chất (Phía Bắc)</option>
-              <option value="7">Trang 7: Địa hình &amp; Khoáng sản (Phía Nam)</option>
-              <option value="8">Trang 8: Khí hậu chung</option>
-              <option value="9">Trang 9: Các miền &amp; vùng khí hậu</option>
-              <option value="10">Trang 10: Các hệ thống sông ngòi</option>
-              <option value="13">Trang 13: Địa chất &amp; Khoáng sản</option>
-              <option value="18">Trang 18: Kinh tế chung &amp; Các vùng kinh tế</option>
-              <option value="19">Trang 19: Nông nghiệp chung</option>
-              <option value="21">Trang 21: Công nghiệp chung</option>
-              <option value="22">Trang 22: Các ngành công nghiệp trọng điểm</option>
-              <option value="23">Trang 23: Giao thông &amp; Thương mại</option>
-            </select>
-            <button onclick="AtlasEngine.nextAtlatPage()" class="p-1.5 sm:px-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-bold shrink-0" title="Trang sau">▶</button>
-          </div>
-
-          <!-- View Presets & Zoom Tool -->
-          <div class="flex items-center space-x-1 sm:space-x-1.5 shrink-0">
-            <!-- Fit Width & Fit Page buttons -->
-            <button onclick="AtlasEngine.fitAtlatPageWidth()" class="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 text-[11px] font-semibold text-slate-700 dark:text-slate-300" title="Vừa chiều ngang màn hình">
-              ↔ <span class="hidden sm:inline">Vừa ngang</span>
-            </button>
-            <button onclick="AtlasEngine.resetAtlatPageZoom()" class="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 text-[11px] font-semibold text-slate-700 dark:text-slate-300" title="Toàn trang vừa khung nhìn">
-              ↕ <span class="hidden sm:inline">Toàn trang</span>
-            </button>
-
-            <!-- Zoom +/- Controls -->
-            <div class="flex items-center space-x-0.5 sm:space-x-1 bg-slate-200 dark:bg-slate-700 p-0.5 rounded-lg text-xs">
-              <button onclick="AtlasEngine.zoomAtlatPage(-0.2)" class="px-1.5 sm:px-2 py-1 rounded-md hover:bg-white dark:hover:bg-slate-800 transition font-bold" title="Thu nhỏ">🔍-</button>
-              <span id="atlat-page-zoom-val" class="px-1 font-mono text-[10px] font-bold">100%</span>
-              <button onclick="AtlasEngine.zoomAtlatPage(0.2)" class="px-1.5 sm:px-2 py-1 rounded-md hover:bg-white dark:hover:bg-slate-800 transition font-bold" title="Phóng to">🔍+</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Main Viewer Canvas with Mouse Drag, Wheel Zoom & Touch Support -->
-      <div id="atlat-viewer-container" class="flex-1 bg-slate-950 overflow-hidden flex items-center justify-center relative select-none atlat-viewer-canvas">
-        <div id="atlat-img-wrapper" class="transition-transform duration-75 origin-center flex items-center justify-center">
-          <img 
-            id="atlat-page-viewer-img" 
-            src="public/data/atlat_pages/page_04.jpg" 
-            alt="Trang Atlat Địa lí Việt Nam 2026" 
-            class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl atlat-viewer-img pointer-events-none"
-          />
-        </div>
-      </div>
-
-      <!-- Footer Exam Tip & Touch Instructions -->
-      <div class="px-3 sm:px-4 py-1.5 sm:py-2 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 text-xs flex items-center justify-between text-slate-500 dark:text-slate-400 shrink-0">
-        <span class="flex items-center space-x-1.5 text-[10px] sm:text-xs">
-          <span>💡</span>
-          <span class="hidden sm:inline">Kéo chuột/chạm tay để rê bản đồ &bull; Lăn chuột hoặc véo ngón tay để phóng to nét chữ và ký hiệu.</span>
-          <span class="sm:hidden">Rê hoặc véo ngón tay để phóng to/thu nhỏ.</span>
-        </span>
-        <span class="text-[10px] sm:text-[11px] font-mono hidden md:inline">Nguồn: Atlat Địa lí Việt Nam 2026 (Thầy Lê Huỳnh) - NXB Giáo dục Việt Nam</span>
-      </div>
-
-    </div>
-  </div>
-
   <!-- Core JavaScript Modules (Master Embedded Atlat Data first) with Cache-Buster -->
-  <script src="./js/fallback-store.js?v=2026.2"></script>
-  <script src="./js/atlat-data.js?v=2026.2"></script>
-  <script src="./js/atlas-engine.js?v=2026.2"></script>
-  <script src="./js/chart-trainer.js?v=2026.2"></script>
-  <script src="./js/geo-calculator.js?v=2026.2"></script>
-  <script src="./js/app.js?v=2026.2"></script>
+  <script src="./js/fallback-store.js?v=2026.3.1"></script>
+  <script src="./js/atlat-data.js?v=2026.3.1"></script>
+  <script src="./js/atlas-engine.js?v=2026.3.1"></script>
+  <script src="./js/chart-trainer.js?v=2026.3.1"></script>
+  <script src="./js/geo-calculator.js?v=2026.3.1"></script>
+  <script src="./js/app.js?v=2026.3.1"></script>
 
 
 </body>
