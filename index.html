@@ -343,8 +343,16 @@
               </label>
               <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400">Atlat GD, tr.7 & tr.10</span>
             </div>
+            <!-- Bộ lọc chuyên sâu Địa hình & Sông ngòi -->
+            <select id="topo-filter-select" onchange="AtlasEngine.renderTopographyLayer(this.value)" class="w-full text-[11px] p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-amber-500 font-medium">
+              <option value="all">-- Tất cả Địa hình & Sông ngòi (41 đối tượng) --</option>
+              <option value="rivers">Hệ thống Sông ngòi tiêu biểu (20 dòng sông Atlat tr.10) 🌊</option>
+              <option value="peaks">Đỉnh núi cao tiêu biểu (Phanxipăng, Ngọc Linh, Bạch Mã...) ⛰️</option>
+              <option value="mountains">Dãy núi & Cánh cung Đông Bắc (Hoàng Liên Sơn, Trường Sơn...) 🏔️</option>
+              <option value="plateaus">Các Cao nguyên badan (Lâm Viên, Di Linh, Pleiku, Đắk Lắk...) 🟫</option>
+            </select>
             <p class="text-[10px] text-slate-500 dark:text-slate-400">
-              Đỉnh Phanxipăng 3.147m ⛰️, Ngọc Linh, Bạch Mã; 4 cánh cung Đông Bắc; Cao nguyên badan 🟫 & Sông lớn 🌊 (Sông Hồng, Mê Kông).
+              Đỉnh núi ⛰️, Cánh cung Đông Bắc & Dãy núi 🏔️, Cao nguyên badan 🟫, 20 Dòng sông chính & phụ lưu 🌊 (Sông Hồng, Mê Kông, Sông Đà, Đồng Nai...).
             </p>
           </div>
 

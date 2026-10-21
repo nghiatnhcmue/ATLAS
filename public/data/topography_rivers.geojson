@@ -1,9 +1,14 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "title": "Bản đồ Địa hình & Hệ thống Sông ngòi Việt Nam (Atlat Trang 6-7, 10)",
-    "count": 29,
-    "standard": "Atlat Địa lí Việt Nam & SGK THPT"
+    "title": "Bản đồ Địa hình & Hệ thống Sông ngòi Việt Nam (Atlat GD, tr.7 & tr.10)",
+    "peaks_count": 6,
+    "mountain_ranges_count": 7,
+    "plateaus_count": 8,
+    "river_systems_count": 9,
+    "rivers_count": 11,
+    "total_features": 41,
+    "source": "Atlat Địa lí Việt Nam (NXB Giáo dục Việt Nam, tr.7, 10, 14, 15)"
   },
   "features": [
     {
@@ -11,26 +16,20 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.7753,
-          22.3033
+          103.78,
+          22.3
         ]
       },
       "properties": {
         "id": "PEAK_01",
-        "name": "Đỉnh Phanxipăng (3.147m)",
         "category": "peak",
+        "name": "Đỉnh Phanxipăng (3.147m)",
         "elevation_m": 3147,
         "mountain_range": "Dãy Hoàng Liên Sơn",
-        "province": "Lào Cai",
-        "desc": "Nóc nhà Đông Dương, đỉnh núi cao nhất Việt Nam và toàn bán đảo Đông Dương.",
+        "province": "Tỉnh Lào Cai",
+        "desc": "Nóc nhà Đông Dương, đỉnh núi cao nhất Việt Nam (3.147m) nằm trên dãy Hoàng Liên Sơn hùng vĩ (Atlat GD, tr.7).",
         "atlat_page": 7,
-        "source": "Atlat GD, tr.14 (N. Phanxipăng 3 147)",
-        "aliases": [
-          "Fansipan",
-          "Phanxipang",
-          "Phan xi păng",
-          "N. Phanxipăng"
-        ]
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -38,18 +37,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          102.8028,
-          22.6283
+          102.79,
+          22.63
         ]
       },
       "properties": {
         "id": "PEAK_02",
-        "name": "Đỉnh Pu Si Lung (3.076m)",
         "category": "peak",
+        "name": "Đỉnh Pu Si Lung (3.076m)",
         "elevation_m": 3076,
         "mountain_range": "Biên giới Việt - Trung",
-        "province": "Lai Châu",
-        "desc": "Đỉnh núi cao thứ hai Việt Nam, địa hình hiểm trở vùng biên cương.",
+        "province": "Tỉnh Lai Châu",
+        "desc": "Đỉnh núi cao thứ hai Việt Nam (3.076m) trên vùng biên giới Tây Bắc (Atlat GD, tr.7).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -60,17 +59,17 @@
         "type": "Point",
         "coordinates": [
           107.85,
-          16.195
+          16.2
         ]
       },
       "properties": {
         "id": "PEAK_03",
-        "name": "Đỉnh Bạch Mã (1.444m)",
         "category": "peak",
+        "name": "Đỉnh Bạch Mã (1.444m)",
         "elevation_m": 1444,
         "mountain_range": "Dãy Bạch Mã",
         "province": "Thành phố Huế",
-        "desc": "Ranh giới tự nhiên giữa miền khí hậu phía Bắc và phía Nam (vĩ tuyến 16°B), bức tường chắn gió mùa Đông Bắc.",
+        "desc": "Đỉnh Bạch Mã (1.444m): Ranh giới tự nhiên giữa hai miền khí hậu phía Bắc và phía Nam (Atlat GD, tr.7 & 8).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -86,12 +85,12 @@
       },
       "properties": {
         "id": "PEAK_04",
-        "name": "Đỉnh Ngọc Linh (2.598m)",
         "category": "peak",
+        "name": "Đỉnh Ngọc Linh (2.598m)",
         "elevation_m": 2598,
-        "mountain_range": "Khối núi Kon Tum / Nam Trường Sơn",
-        "province": "Tỉnh Gia Lai",
-        "desc": "Đỉnh cao nhất vùng Trường Sơn Nam, thủ phủ sâm Ngọc Linh quý hiếm.",
+        "mountain_range": "Khối núi Ngọc Linh (Trường Sơn Nam)",
+        "province": "Tỉnh Quảng Ngãi",
+        "desc": "Đỉnh núi cao nhất Tây Nguyên và Nam Trung Bộ (2.598m), quê hương của loài Sâm Ngọc Linh quý hiếm (Atlat GD, tr.7).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -107,12 +106,12 @@
       },
       "properties": {
         "id": "PEAK_05",
-        "name": "Đỉnh Chư Yang Sin (2.405m)",
         "category": "peak",
+        "name": "Đỉnh Chư Yang Sin (2.405m)",
         "elevation_m": 2405,
-        "mountain_range": "Khối núi Nam Tây Nguyên",
-        "province": "Đắk Lắk",
-        "desc": "Đỉnh núi cao nhất vùng Đắk Lắk, thuộc Vườn quốc gia Chư Yang Sin.",
+        "mountain_range": "Dãy Chư Yang Sin (Trường Sơn Nam)",
+        "province": "Tỉnh Đắk Lắk",
+        "desc": "Đỉnh Chư Yang Sin (2.405m): Nóc nhà của cao nguyên Đắk Lắk, thuộc Vườn quốc gia Chư Yang Sin (Atlat GD, tr.7).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -128,18 +127,18 @@
       },
       "properties": {
         "id": "PEAK_06",
-        "name": "Đỉnh Lang Biang",
         "category": "peak",
-        "elevation_m": 2167,
-        "mountain_range": "Cao nguyên Lâm Viên",
-        "province": "Lâm Đồng",
-        "desc": "Đỉnh Lang Biang (2.167 m, Lâm Đồng - Atlat GD tr.15).",
-        "atlat_page": 7,
-        "source": "Atlat GD, tr.7",
+        "name": "Đỉnh Lang Biang",
         "aliases": [
           "Langbiang",
           "Đỉnh Lâm Viên"
-        ]
+        ],
+        "elevation_m": 2167,
+        "mountain_range": "Cao nguyên Lâm Viên",
+        "province": "Tỉnh Lâm Đồng",
+        "desc": "Đỉnh Lang Biang (2.167 m, Lâm Đồng - Atlat GD tr.15).",
+        "atlat_page": 7,
+        "source": "Atlat GD, tr.7 & tr.15"
       }
     },
     {
@@ -152,7 +151,7 @@
             22.6
           ],
           [
-            103.8,
+            103.78,
             22.3
           ],
           [
@@ -167,10 +166,9 @@
       },
       "properties": {
         "id": "RANGE_01",
-        "name": "Dãy Hoàng Liên Sơn",
         "category": "mountain_range",
-        "direction": "Tây Bắc - Đông Nam",
-        "desc": "Dãy núi cao và đồ sộ nhất Việt Nam chạy theo hướng Tây Bắc - Đông Nam.",
+        "name": "Dãy Hoàng Liên Sơn",
+        "desc": "Dãy núi cao và đồ sộ nhất Việt Nam, chạy theo hướng Tây Bắc - Đông Nam từ Phong Thổ đến Hòa Bình (Atlat GD, tr.7 & tr.14).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -182,24 +180,27 @@
         "coordinates": [
           [
             105.1,
-            23.2
+            22.8
           ],
           [
-            105.4,
-            22.6
+            105.3,
+            22.4
           ],
           [
-            105.6,
-            21.8
+            105.45,
+            21.9
+          ],
+          [
+            105.5,
+            21.5
           ]
         ]
       },
       "properties": {
-        "id": "RANGE_02",
-        "name": "Cánh cung Sông Gâm",
+        "id": "ARC_01",
         "category": "mountain_arc",
-        "direction": "Cánh cung chụm đầu ở Tam Đảo",
-        "desc": "Cánh cung núi thuộc vùng Đông Bắc, đón gió mùa Đông Bắc lạnh.",
+        "name": "Cánh cung Sông Gâm",
+        "desc": "Cánh cung núi thuộc vùng núi Đông Bắc quy tụ về Tam Đảo (Atlat GD, tr.7 & tr.14).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -214,21 +215,24 @@
             22.7
           ],
           [
-            106,
-            22.2
+            106.0,
+            22.3
           ],
           [
             106.1,
-            21.6
+            21.8
+          ],
+          [
+            105.9,
+            21.4
           ]
         ]
       },
       "properties": {
-        "id": "RANGE_03",
-        "name": "Cánh cung Ngân Sơn",
+        "id": "ARC_02",
         "category": "mountain_arc",
-        "direction": "Cánh cung mở rộng về phía Bắc",
-        "desc": "Cánh cung Ngân Sơn vùng Đông Bắc, địa hình núi đón gió mùa.",
+        "name": "Cánh cung Ngân Sơn",
+        "desc": "Cánh cung núi Đông Bắc đón gió mùa Đông Bắc (Atlat GD, tr.7 & tr.14).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -239,25 +243,28 @@
         "type": "LineString",
         "coordinates": [
           [
-            106.3,
+            106.5,
             22.4
           ],
           [
-            106.5,
-            21.9
+            106.65,
+            22.0
           ],
           [
-            106.4,
-            21.5
+            106.6,
+            21.6
+          ],
+          [
+            106.25,
+            21.35
           ]
         ]
       },
       "properties": {
-        "id": "RANGE_04",
-        "name": "Cánh cung Bắc Sơn",
+        "id": "ARC_03",
         "category": "mountain_arc",
-        "direction": "Cánh cung đá vôi",
-        "desc": "Cánh cung Bắc Sơn nổi tiếng với thung lũng đá vôi và văn hóa Bắc Sơn.",
+        "name": "Cánh cung Bắc Sơn",
+        "desc": "Cánh cung núi đá vôi nổi tiếng của vùng Đông Bắc (Atlat GD, tr.7 & tr.14).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -290,14 +297,13 @@
         ]
       },
       "properties": {
-        "id": "RANGE_05",
-        "name": "Cánh cung Đông Triều",
+        "id": "ARC_04",
         "category": "mountain_arc",
-        "direction": "Cánh cung ven biển Đông Bắc",
-        "desc": "Cánh cung Đông Triều ôm trọn vùng than Quảng Ninh và danh thắng Yên Tử.",
+        "name": "Cánh cung Đông Triều",
+        "desc": "Cánh cung ngoài cùng phía đông của vùng Đông Bắc, chạy sát bờ biển vịnh Bắc Bộ (Atlat GD, tr.7 & tr.14).",
+        "note": "Cánh cung Đông Triều chạy vòng cung Tây - Đông (Atlat GD, tr.14).",
         "atlat_page": 7,
-        "source": "Atlat GD, tr.7",
-        "note": "Cánh cung Đông Triều chạy vòng cung Tây - Đông (Atlat GD, tr.14)."
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -332,14 +338,13 @@
         ]
       },
       "properties": {
-        "id": "RANGE_06",
-        "name": "Dãy Trường Sơn Bắc",
+        "id": "RANGE_02",
         "category": "mountain_range",
-        "direction": "Tây Bắc - Đông Nam",
-        "desc": "Từ nam sông Cả tới dãy Bạch Mã, sườn Đông dốc hẹp ăn lan ra biển.",
+        "name": "Dãy Trường Sơn Bắc",
+        "desc": "Dãy Trường Sơn Bắc chạy dài dọc biên giới Việt - Lào từ phía nam sông Cả đến dãy Bạch Mã (Atlat GD, tr.7 & tr.14).",
+        "note": "Dãy Trường Sơn Bắc chạy dọc biên giới Việt - Lào (Atlat GD, tr.14).",
         "atlat_page": 7,
-        "source": "Atlat GD, tr.7",
-        "note": "Dãy Trường Sơn Bắc chạy dọc biên giới Việt - Lào (Atlat GD, tr.14)."
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -378,14 +383,13 @@
         ]
       },
       "properties": {
-        "id": "RANGE_07",
-        "name": "Dãy Trường Sơn Nam",
+        "id": "RANGE_03",
         "category": "mountain_range",
-        "direction": "Vòng cung lồi ra biển Đông",
-        "desc": "Khối núi Kon Tum và các cao nguyên badan xếp tầng màu mỡ.",
+        "name": "Dãy Trường Sơn Nam",
+        "desc": "Khối núi và cao nguyên đồ sộ gồm các khối núi Kon Tum, Nam Trung Bộ ôm bọc các cao nguyên badan Tây Nguyên (Atlat GD, tr.7 & tr.15).",
+        "note": "Dãy Trường Sơn Nam chạy theo dải núi phía đông (Atlat GD, tr.14).",
         "atlat_page": 7,
-        "source": "Atlat GD, tr.7",
-        "note": "Dãy Trường Sơn Nam chạy theo dải núi phía đông (Atlat GD, tr.14)."
+        "source": "Atlat GD, tr.7"
       }
     },
     {
@@ -394,15 +398,14 @@
         "type": "Point",
         "coordinates": [
           103.9,
-          21.32
+          21.3
         ]
       },
       "properties": {
         "id": "PLA_01",
-        "name": "Cao nguyên Sơn La",
         "category": "plateau",
-        "province": "Sơn La",
-        "desc": "Cao nguyên đá vôi và đất feralit vùng Tây Bắc, trồng ngô, chè, cây ăn quả ôn đới.",
+        "name": "Cao nguyên Sơn La",
+        "desc": "Cao nguyên đá vôi lượn sóng vùng Tây Bắc, độ cao trung bình 600m (Atlat GD, tr.7).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -412,16 +415,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          104.64,
-          20.84
+          104.6,
+          20.8
         ]
       },
       "properties": {
         "id": "PLA_02",
-        "name": "Cao nguyên Mộc Châu",
         "category": "plateau",
-        "province": "Sơn La",
-        "desc": "Khí hậu mát mẻ, nổi tiếng chăn nuôi bò sữa, trồng chè shan tuyết và mận.",
+        "name": "Cao nguyên Mộc Châu",
+        "desc": "Cao nguyên khí hậu cận nhiệt đới vùng núi, nổi tiếng về chăn nuôi bò sữa và trồng chè (Atlat GD, tr.7).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -431,16 +433,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108,
-          14.35
+          108.0,
+          14.5
         ]
       },
       "properties": {
         "id": "PLA_03",
-        "name": "Cao nguyên Kon Tum",
         "category": "plateau",
-        "province": "Tỉnh Gia Lai",
-        "desc": "Cao nguyên phía bắc Tây Nguyên, độ cao ~500m, trồng cà phê, cao su.",
+        "name": "Cao nguyên Kon Tum",
+        "desc": "Cao nguyên lượn sóng phía bắc Tây Nguyên, độ cao trung bình 500m (Atlat GD, tr.7).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -450,16 +451,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108,
-          13.98
+          108.0,
+          13.9
         ]
       },
       "properties": {
         "id": "PLA_04",
-        "name": "Cao nguyên Pleiku",
         "category": "plateau",
-        "province": "Gia Lai",
-        "desc": "Đất đỏ bazan màu mỡ, vùng chuyên canh cà phê, hồ tiêu, chè lớn.",
+        "name": "Cao nguyên Pleiku",
+        "desc": "Cao nguyên đất đỏ badan màu mỡ, vùng chuyên canh cà phê, hồ tiêu, cao su lớn của Gia Lai (Atlat GD, tr.7).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -469,16 +469,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.04,
-          12.67
+          108.2,
+          12.7
         ]
       },
       "properties": {
         "id": "PLA_05",
-        "name": "Cao nguyên Đắk Lắk",
         "category": "plateau",
-        "province": "Đắk Lắk",
-        "desc": "Cao nguyên bazan diện tích rộng lớn và bằng phẳng nhất, thủ phủ cà phê Buôn Ma Thuột.",
+        "name": "Cao nguyên Đắk Lắk",
+        "desc": "Cao nguyên badan bằng phẳng rộng lớn, thủ phủ cà phê Robusta số 1 Việt Nam (Atlat GD, tr.7).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -489,15 +488,14 @@
         "type": "Point",
         "coordinates": [
           107.6,
-          12.25
+          12.1
         ]
       },
       "properties": {
         "id": "PLA_06",
-        "name": "Cao nguyên Mơ Nông",
         "category": "plateau",
-        "province": "Tỉnh Đắk Lắk",
-        "desc": "Địa hình gợn sóng lượn, giàu khoáng sản bôxit nhôm và cây công nghiệp lâu năm.",
+        "name": "Cao nguyên Mơ Nông",
+        "desc": "Cao nguyên phía tây nam Tây Nguyên với trữ lượng quặng bôxít lớn nhất cả nước (Atlat GD, tr.7).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -507,16 +505,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.45,
-          11.95
+          108.5,
+          11.9
         ]
       },
       "properties": {
         "id": "PLA_07",
-        "name": "Cao nguyên Lâm Viên",
         "category": "plateau",
-        "province": "Lâm Đồng",
-        "desc": "Độ cao ~1.500m, khí hậu ôn đới quanh năm, trung tâm rau hoa quả cận nhiệt Đà Lạt.",
+        "name": "Cao nguyên Lâm Viên",
+        "desc": "Cao nguyên cao nhất Tây Nguyên (1.500m), khí hậu ôn đới mát mẻ quanh năm, gắn liền TP. Đà Lạt (Atlat GD, tr.7).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
@@ -526,22 +523,74 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.08,
-          11.53
+          108.1,
+          11.5
         ]
       },
       "properties": {
         "id": "PLA_08",
-        "name": "Cao nguyên Di Linh",
         "category": "plateau",
-        "province": "Lâm Đồng",
-        "desc": "Độ cao ~1.000m, đất bazan màu mỡ, vùng chuyên canh chè và cà phê robusta.",
+        "name": "Cao nguyên Di Linh",
+        "desc": "Cao nguyên chuyển tiếp về phía nam Tây Nguyên, đất badan màu mỡ chuyên canh chè và cà phê (Atlat GD, tr.7).",
         "atlat_page": 7,
         "source": "Atlat GD, tr.7"
       }
     },
     {
       "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.85,
+            22.52
+          ],
+          [
+            103.97,
+            22.48
+          ],
+          [
+            104.22,
+            22.25
+          ],
+          [
+            104.45,
+            22.05
+          ],
+          [
+            104.88,
+            21.72
+          ],
+          [
+            105.15,
+            21.45
+          ],
+          [
+            105.35,
+            21.31
+          ],
+          [
+            105.5,
+            21.14
+          ],
+          [
+            105.86,
+            21.03
+          ],
+          [
+            106.05,
+            20.75
+          ],
+          [
+            106.28,
+            20.52
+          ],
+          [
+            106.52,
+            20.3
+          ]
+        ]
+      },
       "properties": {
         "id": "RIV_01",
         "category": "river_system",
@@ -554,40 +603,38 @@
         "total_length_km": 1126,
         "basin_area_vn_km2": 72700,
         "flow_volume_bil_m3": 120.0,
-        "method": "schematic",
-        "confidence": "low",
         "desc": "Hệ thống sông Hồng: Chiều dài trong nước 510 km, diện tích lưu vực trong nước 72.700 km², tổng lượng dòng chảy 120 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
         "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
         "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            103.8,
-            22.5
-          ],
-          [
-            104.3,
-            22.0
-          ],
-          [
-            105.0,
-            21.4
-          ],
-          [
-            105.85,
-            21.05
-          ],
-          [
-            106.5,
-            20.3
-          ]
-        ]
       }
     },
     {
       "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            106.3,
+            21.12
+          ],
+          [
+            106.32,
+            21.0
+          ],
+          [
+            106.45,
+            20.85
+          ],
+          [
+            106.58,
+            20.7
+          ],
+          [
+            106.62,
+            20.6
+          ]
+        ]
+      },
       "properties": {
         "id": "RIV_02",
         "category": "river_system",
@@ -598,40 +645,42 @@
           "Sông Thương",
           "Sông Lục Nam"
         ],
-        "length_in_vn_km": 104,
-        "total_length_km": 1650,
+        "length_in_vn_km": 385,
+        "total_length_km": 385,
         "basin_area_vn_km2": 15180,
-        "flow_volume_bil_m3": 9.28,
-        "method": "schematic",
-        "confidence": "low",
-        "desc": "Hệ thống sông Thái Bình: Sông chính 104 km, diện tích lưu vực 15.180 km², tổng lượng dòng chảy 9,28 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "flow_volume_bil_m3": 9.2,
+        "desc": "Hệ thống sông Thái Bình: Hợp lưu bởi 3 sông chính (Sông Cầu, Sông Thương, Sông Lục Nam) tại Phả Lại, diện tích lưu vực 15.180 km² (Atlat GD, tr.10). Sơ đồ minh họa.",
         "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
         "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            106.1,
-            21.4
-          ],
-          [
-            106.25,
-            21.15
-          ],
-          [
-            106.45,
-            20.9
-          ],
-          [
-            106.6,
-            20.65
-          ]
-        ]
       }
     },
     {
       "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            107.05,
+            21.52
+          ],
+          [
+            106.9,
+            21.75
+          ],
+          [
+            106.76,
+            21.85
+          ],
+          [
+            106.5,
+            22.15
+          ],
+          [
+            106.4,
+            22.28
+          ]
+        ]
+      },
       "properties": {
         "id": "RIV_03",
         "category": "river_system",
@@ -643,37 +692,51 @@
         "length_in_vn_km": 243,
         "total_length_km": 243,
         "basin_area_vn_km2": 11220,
-        "flow_volume_bil_m3": 8.36,
-        "method": "schematic",
-        "confidence": "low",
-        "desc": "Hệ thống sông Kỳ Cùng – Bằng Giang: Chiều dài trong nước 243 km, diện tích lưu vực 11.220 km², dòng chảy hướng Tây Bắc - Đông Nam sang Trung Quốc (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "flow_volume_bil_m3": 8.5,
+        "desc": "Hệ thống sông Kỳ Cùng – Bằng Giang: Hướng chảy độc đáo Đông Nam – Tây Bắc sang lưu vực sông Tây Giang (Trung Quốc) (Atlat GD, tr.10). Sơ đồ minh họa.",
         "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
         "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            106.2,
-            22.7
-          ],
-          [
-            106.7,
-            22.3
-          ],
-          [
-            106.85,
-            21.9
-          ],
-          [
-            107.05,
-            21.75
-          ]
-        ]
       }
     },
     {
       "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.35,
+            21.3
+          ],
+          [
+            103.7,
+            21.05
+          ],
+          [
+            104.1,
+            20.8
+          ],
+          [
+            104.75,
+            20.5
+          ],
+          [
+            105.15,
+            20.3
+          ],
+          [
+            105.46,
+            20.21
+          ],
+          [
+            105.78,
+            19.85
+          ],
+          [
+            105.9,
+            19.78
+          ]
+        ]
+      },
       "properties": {
         "id": "RIV_04",
         "category": "river_system",
@@ -685,37 +748,47 @@
         "length_in_vn_km": 410,
         "total_length_km": 512,
         "basin_area_vn_km2": 17600,
-        "flow_volume_bil_m3": 17.2,
-        "method": "schematic",
-        "confidence": "low",
-        "desc": "Hệ thống sông Mã: Chiều dài trong nước 410 km, diện tích lưu vực trong nước 17.600 km², tổng lượng dòng chảy 17,2 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "flow_volume_bil_m3": 19.5,
+        "desc": "Hệ thống sông Mã: Bắt nguồn từ vùng núi Tây Bắc, nhận nước sông Chu tại Thiệu Hóa rồi đổ ra biển Đông tại Lạch Trào (Atlat GD, tr.10). Sơ đồ minh họa.",
         "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
         "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            103.4,
-            21.3
-          ],
-          [
-            104.2,
-            20.8
-          ],
-          [
-            105.1,
-            20.3
-          ],
-          [
-            105.85,
-            19.8
-          ]
-        ]
       }
     },
     {
       "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            104.4,
+            19.65
+          ],
+          [
+            104.7,
+            19.3
+          ],
+          [
+            105.0,
+            19.1
+          ],
+          [
+            105.28,
+            18.98
+          ],
+          [
+            105.45,
+            18.75
+          ],
+          [
+            105.68,
+            18.66
+          ],
+          [
+            105.78,
+            18.62
+          ]
+        ]
+      },
       "properties": {
         "id": "RIV_05",
         "category": "river_system",
@@ -728,36 +801,38 @@
         "total_length_km": 531,
         "basin_area_vn_km2": 17730,
         "flow_volume_bil_m3": 21.9,
-        "method": "schematic",
-        "confidence": "low",
-        "desc": "Hệ thống sông Cả: Chiều dài trong nước 361 km, diện tích lưu vực trong nước 17.730 km², tổng lượng dòng chảy 21,9 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "desc": "Hệ thống sông Cả: Dòng sông chính của xứ Nghệ, lưu vực trong nước 17.730 km², lũ lùi sâu về thu đông (Atlat GD, tr.10). Sơ đồ minh họa.",
         "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
         "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            104.5,
-            19.5
-          ],
-          [
-            105.0,
-            19.0
-          ],
-          [
-            105.5,
-            18.7
-          ],
-          [
-            105.75,
-            18.6
-          ]
-        ]
       }
     },
     {
       "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            107.95,
+            15.35
+          ],
+          [
+            108.01,
+            15.68
+          ],
+          [
+            108.15,
+            15.82
+          ],
+          [
+            108.3,
+            15.88
+          ],
+          [
+            108.4,
+            15.88
+          ]
+        ]
+      },
       "properties": {
         "id": "RIV_06",
         "category": "river_system",
@@ -766,36 +841,46 @@
           "Sông Thu Bồn",
           "Sông Vu Gia"
         ],
-        "length_in_vn_km": 198,
-        "total_length_km": 198,
+        "length_in_vn_km": 205,
+        "total_length_km": 205,
         "basin_area_vn_km2": 10350,
-        "flow_volume_bil_m3": 17.9,
-        "method": "schematic",
-        "confidence": "low",
-        "desc": "Hệ thống sông Thu Bồn – Vu Gia: Chiều dài 198 km, diện tích lưu vực 10.350 km², lượng dòng chảy dồi dào 17,9 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "flow_volume_bil_m3": 17.8,
+        "desc": "Hệ thống sông Thu Bồn: Bắt nguồn từ vùng núi Ngọc Linh, sông ngắn dốc, lũ lên nhanh đột ngột, đổ ra Cửa Đại (Hội An) (Atlat GD, tr.10). Sơ đồ minh họa.",
         "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
         "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            107.8,
-            15.6
-          ],
-          [
-            108.1,
-            15.75
-          ],
-          [
-            108.35,
-            15.88
-          ]
-        ]
       }
     },
     {
       "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            108.35,
+            14.5
+          ],
+          [
+            108.65,
+            14.0
+          ],
+          [
+            108.75,
+            13.7
+          ],
+          [
+            108.97,
+            13.06
+          ],
+          [
+            109.15,
+            13.02
+          ],
+          [
+            109.32,
+            13.08
+          ]
+        ]
+      },
       "properties": {
         "id": "RIV_07",
         "category": "river_system",
@@ -807,100 +892,67 @@
         "length_in_vn_km": 374,
         "total_length_km": 374,
         "basin_area_vn_km2": 13900,
-        "flow_volume_bil_m3": 9.45,
-        "method": "schematic",
-        "confidence": "low",
-        "desc": "Hệ thống sông Ba (Đà Rằng): Hệ thống sông lớn nhất Duyên hải Nam Trung Bộ, dài 374 km, lưu vực 13.900 km² (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "flow_volume_bil_m3": 13.8,
+        "desc": "Hệ thống sông Ba: Con sông dài nhất Nam Trung Bộ, nối cao nguyên Kon Tum - Gia Lai xuống đồng bằng Tuy Hòa (Phú Yên) (Atlat GD, tr.10). Sơ đồ minh họa.",
         "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
         "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
-      },
+      }
+    },
+    {
+      "type": "Feature",
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
             108.4,
-            14.5
-          ],
-          [
-            108.7,
-            13.8
-          ],
-          [
-            109.1,
-            13.2
-          ],
-          [
-            109.3,
-            13.08
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "RIV_08",
-        "category": "river_system",
-        "name": "Hệ thống sông Đồng Nai",
-        "aliases": [
-          "Sông Đồng Nai",
-          "Sông Bé",
-          "Sông Sài Gòn"
-        ],
-        "length_in_vn_km": 586,
-        "total_length_km": 586,
-        "basin_area_vn_km2": 42600,
-        "flow_volume_bil_m3": 36.4,
-        "method": "schematic",
-        "confidence": "low",
-        "desc": "Hệ thống sông Đồng Nai: Dài 586 km, diện tích lưu vực 42.600 km², dòng chảy 36,4 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
-        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
-        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            108.3,
             11.9
           ],
           [
-            107.6,
-            11.4
+            107.85,
+            11.6
           ],
           [
-            106.9,
-            11.0
+            107.35,
+            11.41
+          ],
+          [
+            107.03,
+            11.13
+          ],
+          [
+            106.85,
+            10.95
+          ],
+          [
+            106.8,
+            10.75
           ],
           [
             106.75,
             10.6
           ]
         ]
+      },
+      "properties": {
+        "id": "RIV_08",
+        "category": "river_system",
+        "name": "Hệ thống sông Đồng Nai",
+        "aliases": [
+          "Sông Đồng Nai",
+          "Sông Sài Gòn",
+          "Sông Bé"
+        ],
+        "length_in_vn_km": 586,
+        "total_length_km": 586,
+        "basin_area_vn_km2": 37400,
+        "flow_volume_bil_m3": 36.4,
+        "desc": "Hệ thống sông Đồng Nai: Con sông nội địa dài nhất Việt Nam (586 km), nguồn cung cấp nước sống còn cho toàn vùng kinh tế Đông Nam Bộ (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
+        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
       }
     },
     {
       "type": "Feature",
-      "properties": {
-        "id": "RIV_09",
-        "category": "river_system",
-        "name": "Hệ thống sông Mê Công (Sông Tiền & Sông Hậu)",
-        "aliases": [
-          "Sông Mê Công",
-          "Sông Cửu Long",
-          "Sông Tiền",
-          "Sông Hậu"
-        ],
-        "length_in_vn_km": 230,
-        "total_length_km": 4350,
-        "basin_area_vn_km2": 71000,
-        "flow_volume_bil_m3": 507.0,
-        "method": "schematic",
-        "confidence": "low",
-        "desc": "Hệ thống sông Mê Công: Chảy vào Việt Nam chia thành 2 nhánh chính là sông Tiền và sông Hậu, lưu lượng khổng lồ 507 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
-        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
-        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
-      },
       "geometry": {
         "type": "LineString",
         "coordinates": [
@@ -909,14 +961,522 @@
             10.85
           ],
           [
-            105.7,
-            10.3
+            105.4,
+            10.55
           ],
           [
-            106.4,
-            10.05
+            105.78,
+            10.04
+          ],
+          [
+            106.2,
+            9.8
+          ],
+          [
+            106.5,
+            9.6
           ]
         ]
+      },
+      "properties": {
+        "id": "RIV_09",
+        "category": "river_system",
+        "name": "Hệ thống sông Mê Công (Sông Tiền & Sông Hậu)",
+        "aliases": [
+          "Sông Cửu Long",
+          "Sông Tiền",
+          "Sông Hậu"
+        ],
+        "length_in_vn_km": 230,
+        "total_length_km": 4350,
+        "basin_area_vn_km2": 71000,
+        "flow_volume_bil_m3": 507.0,
+        "desc": "Hệ thống sông Mê Công (Cửu Long): Lưu lượng nước khổng lồ 507 tỉ m³, bồi đắp đồng bằng châu thổ trù phú bậc nhất Đông Nam Á (Atlat GD, tr.10). Sơ đồ minh họa.",
+        "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
+        "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            102.75,
+            22.4
+          ],
+          [
+            103.05,
+            22.15
+          ],
+          [
+            103.18,
+            21.95
+          ],
+          [
+            103.6,
+            21.7
+          ],
+          [
+            103.95,
+            21.45
+          ],
+          [
+            104.5,
+            21.15
+          ],
+          [
+            105.15,
+            20.88
+          ],
+          [
+            105.33,
+            20.82
+          ],
+          [
+            105.38,
+            21.22
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_DA",
+        "category": "river",
+        "name": "Sông Đà",
+        "aliases": [
+          "Sông Đà (Sông Bờ)"
+        ],
+        "length_in_vn_km": 543,
+        "total_length_km": 910,
+        "basin_area_vn_km2": 26800,
+        "desc": "Phụ lưu lớn nhất của sông Hồng (chiếm 53% lượng nước), tiềm năng thủy điện lớn nhất nước với bậc thang Lai Châu, Sơn La, Hòa Bình (Atlat GD, tr.10 & 23).",
+        "source": "Atlat GD, tr.10 & tr.23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            104.98,
+            22.82
+          ],
+          [
+            104.92,
+            22.45
+          ],
+          [
+            105.21,
+            21.82
+          ],
+          [
+            105.2,
+            21.6
+          ],
+          [
+            105.35,
+            21.36
+          ],
+          [
+            105.42,
+            21.3
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_LO",
+        "category": "river",
+        "name": "Sông Lô",
+        "aliases": [
+          "Sông Lô"
+        ],
+        "length_in_vn_km": 274,
+        "total_length_km": 470,
+        "basin_area_vn_km2": 39000,
+        "desc": "Phụ lưu tả ngạn lớn nhất của sông Hồng, nhận nước từ sông Gâm và sông Chảy trước khi đổ vào ngã ba Hạc (Việt Trì) (Atlat GD, tr.10).",
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            104.3,
+            22.4
+          ],
+          [
+            104.55,
+            22.1
+          ],
+          [
+            104.85,
+            21.85
+          ],
+          [
+            104.98,
+            21.75
+          ],
+          [
+            105.18,
+            21.62
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_CHAY",
+        "category": "river",
+        "name": "Sông Chảy",
+        "aliases": [
+          "Sông Chảy"
+        ],
+        "length_in_vn_km": 319,
+        "total_length_km": 319,
+        "basin_area_vn_km2": 4530,
+        "desc": "Phụ lưu lớn của sông Lô, chảy qua hồ thủy điện Thác Bà (Yên Bái) trước khi đổ vào sông Lô tại Đoan Hùng (Phú Thọ) (Atlat GD, tr.10 & 23).",
+        "source": "Atlat GD, tr.10 & tr.23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            105.75,
+            22.15
+          ],
+          [
+            105.85,
+            21.8
+          ],
+          [
+            105.84,
+            21.58
+          ],
+          [
+            106.0,
+            21.3
+          ],
+          [
+            106.18,
+            21.2
+          ],
+          [
+            106.3,
+            21.12
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_CAU",
+        "category": "river",
+        "name": "Sông Cầu",
+        "aliases": [
+          "Sông Cầu",
+          "Sông Như Nguyệt"
+        ],
+        "length_in_vn_km": 288,
+        "total_length_km": 288,
+        "basin_area_vn_km2": 6030,
+        "desc": "Dòng sông lịch sử (phòng tuyến Như Nguyệt), bắt nguồn từ núi Phia Boóc (Bắc Kạn), là dòng chính của hệ thống sông Thái Bình (Atlat GD, tr.10).",
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            104.9,
+            20.05
+          ],
+          [
+            105.1,
+            19.95
+          ],
+          [
+            105.27,
+            19.88
+          ],
+          [
+            105.55,
+            19.85
+          ],
+          [
+            105.75,
+            19.84
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_CHU",
+        "category": "river",
+        "name": "Sông Chu",
+        "aliases": [
+          "Sông Chu",
+          "Sông Nậm Sam"
+        ],
+        "length_in_vn_km": 165,
+        "total_length_km": 325,
+        "basin_area_vn_km2": 7580,
+        "desc": "Phụ lưu hữu ngạn lớn nhất của sông Mã, điều hòa bởi hồ thủy lợi - thủy điện Cửa Đạt lớn nhất Bắc Trung Bộ (Atlat GD, tr.10).",
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            105.9,
+            17.85
+          ],
+          [
+            106.15,
+            17.78
+          ],
+          [
+            106.3,
+            17.72
+          ],
+          [
+            106.48,
+            17.7
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_GIANH",
+        "category": "river",
+        "name": "Sông Gianh",
+        "aliases": [
+          "Sông Gianh",
+          "Linh Giang"
+        ],
+        "length_in_vn_km": 160,
+        "total_length_km": 160,
+        "basin_area_vn_km2": 4680,
+        "desc": "Dòng sông lịch sử phân định Đàng Trong - Đàng Ngoài thời Trịnh - Nguyễn phân tranh, sông lớn nhất tỉnh Quảng Bình (Atlat GD, tr.10).",
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            107.6,
+            16.3
+          ],
+          [
+            107.57,
+            16.42
+          ],
+          [
+            107.59,
+            16.46
+          ],
+          [
+            107.65,
+            16.55
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_HUONG",
+        "category": "river",
+        "name": "Sông Hương",
+        "aliases": [
+          "Sông Hương",
+          "Hương Giang"
+        ],
+        "length_in_vn_km": 104,
+        "total_length_km": 104,
+        "basin_area_vn_km2": 2830,
+        "desc": "Dòng sông biểu tượng thơ mộng của Cố đô Huế, hợp lưu từ nhánh Tả Trạch và Hữu Trạch tại ngã ba Tuần đổ ra phá Tam Giang (Atlat GD, tr.10).",
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            108.45,
+            15.0
+          ],
+          [
+            108.65,
+            15.1
+          ],
+          [
+            108.8,
+            15.12
+          ],
+          [
+            108.88,
+            15.14
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_TRAKHUC",
+        "category": "river",
+        "name": "Sông Trà Khúc",
+        "aliases": [
+          "Sông Trà Khúc",
+          "Trà Giang"
+        ],
+        "length_in_vn_km": 150,
+        "total_length_km": 150,
+        "basin_area_vn_km2": 3240,
+        "desc": "Dòng sông lớn nhất tỉnh Quảng Ngãi, bắt nguồn từ vùng núi Đắk Tơ Lơ đổ ra Cửa Đại, gắn với hình ảnh bờ xe nước nổi tiếng (Atlat GD, tr.10).",
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            106.35,
+            11.65
+          ],
+          [
+            106.35,
+            11.32
+          ],
+          [
+            106.55,
+            11.05
+          ],
+          [
+            106.66,
+            10.82
+          ],
+          [
+            106.72,
+            10.75
+          ],
+          [
+            106.75,
+            10.65
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_SAIGON",
+        "category": "river",
+        "name": "Sông Sài Gòn",
+        "aliases": [
+          "Sông Sài Gòn"
+        ],
+        "length_in_vn_km": 256,
+        "total_length_km": 256,
+        "basin_area_vn_km2": 4710,
+        "desc": "Bắt nguồn từ Bình Phước, điều tiết qua hồ Dầu Tiếng, uốn lượn qua trung tâm TP. Hồ Chí Minh trước khi nhập vào sông Đồng Nai tại Nhà Bè (Atlat GD, tr.10).",
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            105.24,
+            10.8
+          ],
+          [
+            105.45,
+            10.5
+          ],
+          [
+            105.65,
+            10.35
+          ],
+          [
+            105.95,
+            10.25
+          ],
+          [
+            106.35,
+            10.35
+          ],
+          [
+            106.6,
+            10.3
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_TIEN",
+        "category": "river",
+        "name": "Sông Tiền",
+        "aliases": [
+          "Sông Tiền",
+          "Tiền Giang"
+        ],
+        "length_in_vn_km": 215,
+        "total_length_km": 215,
+        "basin_area_vn_km2": 35000,
+        "desc": "Nhánh phân lưu chính phía đông của dòng Mê Công, nhận hơn 80% lưu lượng nước, chia thành các nhánh đổ ra 6 cửa sông Cửu Long (Atlat GD, tr.10).",
+        "source": "Atlat GD, tr.10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            105.12,
+            10.7
+          ],
+          [
+            105.42,
+            10.38
+          ],
+          [
+            105.78,
+            10.04
+          ],
+          [
+            105.95,
+            9.85
+          ],
+          [
+            106.2,
+            9.6
+          ],
+          [
+            106.35,
+            9.5
+          ]
+        ]
+      },
+      "properties": {
+        "id": "RIV_HAU",
+        "category": "river",
+        "name": "Sông Hậu",
+        "aliases": [
+          "Sông Hậu",
+          "Hậu Giang",
+          "Sông Bassac"
+        ],
+        "length_in_vn_km": 200,
+        "total_length_km": 200,
+        "basin_area_vn_km2": 36000,
+        "desc": "Nhánh phân lưu phía tây của dòng Mê Công (sông Bassac), chảy qua Châu Đốc, Long Xuyên, Cần Thơ rồi đổ ra biển qua cửa Định An và Trần Đề (Atlat GD, tr.10).",
+        "source": "Atlat GD, tr.10"
       }
     }
   ]

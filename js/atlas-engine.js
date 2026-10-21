@@ -1426,16 +1426,36 @@ const AtlasEngine = (function () {
   // ===========================================================================
   // LỚP 2: ĐỊA HÌNH & SÔNG NGÒI (Atlat GD, tr.7 & tr.10)
   // ===========================================================================
-  async function renderTopographyLayer() {
+  let currentTopoFilter = "all";
+
+  async function renderTopographyLayer(categoryFilter = "all") {
+    currentTopoFilter = categoryFilter;
     if (!geoData.topography) await ensureLayerData("topography");
     if (!geoData.topography) return;
+
+    if (map && !map.hasLayer(layerTopography)) {
+      map.addLayer(layerTopography);
+      activeLayers["topography"] = true;
+      const chk = document.getElementById("layer-chk-topography");
+      if (chk) chk.checked = true;
+    }
 
     layerTopography.clearLayers();
 
     L.geoJSON(geoData.topography, {
       pane: 'topographyPane',
+      filter: (f) => {
+        const p = f.properties || {};
+        if (p.hidden) return false;
+        if (categoryFilter === "all") return true;
+        if (categoryFilter === "rivers") return p.category === "river_system" || p.category === "river";
+        if (categoryFilter === "peaks") return p.category === "peak";
+        if (categoryFilter === "mountains") return p.category === "mountain_range" || p.category === "mountain_arc";
+        if (categoryFilter === "plateaus") return p.category === "plateau";
+        return true;
+      },
       pointToLayer: (feature, latlng) => {
-        const p = feature.properties;
+        const p = feature.properties || {};
         if (p.category === "peak") {
           // Icon tam giác đỉnh núi
           const icon = L.divIcon({
@@ -1463,22 +1483,75 @@ const AtlasEngine = (function () {
         return L.marker(latlng);
       },
       style: (feature) => {
-        const p = feature.properties;
-        if (p.category === "river") {
-          return { color: "#0284C7", weight: 3.5, opacity: 0.85 };
+        const p = feature.properties || {};
+        if (p.category === "river" || p.category === "river_system") {
+          return {
+            color: "#0284C7", // Sông chính: Xanh lam nước chuẩn Atlat tr.10
+            weight: 3.5,
+            opacity: 0.9,
+            lineCap: "round",
+            lineJoin: "round"
+          };
         } else if (p.category === "mountain_range" || p.category === "mountain_arc") {
-          return { color: "#78350F", weight: 3.5, opacity: 0.8, dashArray: "6, 4" };
+          return {
+            color: "#78350F",
+            weight: 3.5,
+            opacity: 0.8,
+            dashArray: "6, 4"
+          };
         }
         return { color: "#B45309", weight: 2 };
       },
       onEachFeature: (feature, layer) => {
-        const p = feature.properties;
-        layer.bindTooltip(`
-          <div class="p-1 text-left">
-            <div class="font-bold text-xs text-slate-900 dark:text-white">${p.name}</div>
-            <div class="text-[10px] text-slate-500">${p.desc || ''}</div>
-          </div>
-        `, { permanent: false, sticky: false });
+        const p = feature.properties || {};
+        const isRiver = p.category === "river" || p.category === "river_system";
+
+        if (isRiver) {
+          layer.bindPopup(`
+            <div class="p-3 bg-white dark:bg-slate-900 rounded-xl min-w-[250px] space-y-1.5 shadow-lg border border-sky-200 dark:border-sky-800">
+              <div class="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-800">
+                <span class="font-bold text-xs text-sky-700 dark:text-sky-300 flex items-center space-x-1">
+                  <span>🌊</span> <span>${p.name}</span>
+                </span>
+                <span class="text-[9px] px-1.5 py-0.5 rounded bg-sky-100 dark:bg-sky-900 text-sky-800 dark:text-sky-200 font-semibold">Sông chính</span>
+              </div>
+              <div class="text-[11px] space-y-1 text-slate-700 dark:text-slate-200 py-0.5">
+                ${p.length_in_vn_km ? `<div>Chiều dài ở VN: <strong class="text-sky-600 font-mono">${p.length_in_vn_km} km</strong></div>` : ''}
+                ${p.basin_area_vn_km2 ? `<div>Diện tích lưu vực ở VN: <strong class="text-blue-600 font-mono">${p.basin_area_vn_km2} km²</strong></div>` : ''}
+                ${p.flow_volume_bil_m3 ? `<div>Tổng lượng dòng chảy: <strong class="text-cyan-600 font-mono">${p.flow_volume_bil_m3} tỉ m³</strong></div>` : ''}
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight italic">${p.desc || ''}</p>
+            </div>
+          `);
+
+          // Thêm nhãn sông nổi bật trên bản đồ
+          const coords = feature.geometry?.coordinates;
+          if (coords && coords.length >= 2) {
+            const midIdx = Math.floor(coords.length * 0.45);
+            const pt = coords[midIdx];
+            if (pt && pt.length >= 2) {
+              const riverMarker = L.marker([pt[1], pt[0]], {
+                pane: 'pointMarkerPane',
+                icon: L.divIcon({
+                  className: 'river-label-marker',
+                  html: `<div class="bg-sky-700/90 hover:bg-sky-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full shadow-xs border border-white/90 cursor-pointer flex items-center space-x-0.5 whitespace-nowrap hover:scale-110 transition"><span>🌊</span><span>${p.name.replace('Hệ thống ', '')}</span></div>`,
+                  iconSize: [80, 20],
+                  iconAnchor: [40, 10]
+                })
+              });
+              riverMarker.bindTooltip(`<strong>${p.name}</strong><br>${p.desc || ''}`, { permanent: false, sticky: false });
+              riverMarker.on("click", () => showDetailsPanel(p, "topography"));
+              layerTopography.addLayer(riverMarker);
+            }
+          }
+        } else {
+          layer.bindTooltip(`
+            <div class="p-1 text-left">
+              <div class="font-bold text-xs text-slate-900 dark:text-white">${p.name}</div>
+              <div class="text-[10px] text-slate-500">${p.desc || ''}</div>
+            </div>
+          `, { permanent: false, sticky: false });
+        }
 
         layer.on("click", () => showDetailsPanel(p, "topography"));
       }
@@ -1496,6 +1569,14 @@ const AtlasEngine = (function () {
     currentClimateFilter = categoryFilter;
     if (!geoData.climate) await ensureLayerData("climate");
     if (!geoData.climate) return;
+
+    if (map && !map.hasLayer(layerClimate)) {
+      map.addLayer(layerClimate);
+      activeLayers["climate"] = true;
+      const chk = document.getElementById("layer-chk-climate");
+      if (chk) chk.checked = true;
+    }
+
     layerClimate.clearLayers();
 
     const showMonsoonStorm = categoryFilter === "all" || categoryFilter === "monsoon_storm";
@@ -2789,6 +2870,45 @@ const AtlasEngine = (function () {
     if (!infoContainer) return;
 
     if (type === "topography") {
+      const isRiver = props.category === "river" || props.category === "river_system";
+      if (isRiver) {
+        infoContainer.innerHTML = `
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between pb-1.5 border-b border-slate-100 dark:border-slate-800">
+              <h4 class="font-bold text-xs text-sky-700 dark:text-sky-300 flex items-center space-x-1.5">
+                <span>🌊</span> <span>${props.name}</span>
+              </h4>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300">Sông chính (Atlat GD, tr.10)</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-center text-xs">
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-400 block font-bold">Chiều dài ở VN</span>
+                <span class="font-bold text-sky-600 dark:text-sky-400 text-[11px] font-mono">${props.length_in_vn_km ? props.length_in_vn_km + ' km' : 'N/A'}</span>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-400 block font-bold">Diện tích lưu vực</span>
+                <span class="font-bold text-blue-600 dark:text-blue-400 text-[11px] font-mono">${props.basin_area_vn_km2 ? props.basin_area_vn_km2 + ' km²' : 'N/A'}</span>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-400 block font-bold">Lượng dòng chảy</span>
+                <span class="font-bold text-cyan-600 dark:text-cyan-400 text-[11px] font-mono">${props.flow_volume_bil_m3 ? props.flow_volume_bil_m3 + ' tỉ m³' : 'N/A'}</span>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <span class="text-[9px] text-slate-400 block font-bold">Tổng chiều dài</span>
+                <span class="font-bold text-slate-700 dark:text-slate-300 text-[11px] font-mono">${props.total_length_km ? props.total_length_km + ' km' : 'N/A'}</span>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-900/50 space-y-1">
+              <div class="text-[10px] font-bold text-sky-800 dark:text-sky-300 flex items-center space-x-1">
+                <span>📘</span> <span>Kiến thức địa lí trọng tâm</span>
+              </div>
+              <p class="text-[11px] text-slate-700 dark:text-slate-300 leading-relaxed">${props.desc || ''}</p>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
       infoContainer.innerHTML = `
         <div class="space-y-2.5">
           <div class="flex items-center justify-between pb-1.5 border-b border-slate-100 dark:border-slate-800">
@@ -2798,7 +2918,7 @@ const AtlasEngine = (function () {
             <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">${props.source || 'Atlat GD, tr.7 & tr.10'}</span>
           </div>
           <div class="text-[11px] text-slate-700 dark:text-slate-300 leading-relaxed">${props.desc || ''}</div>
-          ${props.elevation_m ? `<div class="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-xs">Độ cao tuyệt đối: <strong>${props.elevation_m.toLocaleString()} m</strong> • Dãy: <strong>${props.mountain_range || ''}</strong></div>` : ''}
+          ${props.elevation_m ? `<div class="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-xs">Độ cao tuyệt đối: <strong>${props.elevation_m} m</strong> • Dãy: <strong>${props.mountain_range || ''}</strong></div>` : ''}
         </div>
       `;
       return;
