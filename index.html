@@ -149,8 +149,66 @@
     <!-- PHÂN HỆ 1: ATLAS SỐ THÔNG MINH (GRID 12 CỘT: 7 TRÁI / 5 PHẢI)         -->
     <!-- ==================================================================== -->
     <div id="mode-atlas" class="mode-view grid grid-cols-12 gap-3 lg:gap-4 p-2 sm:p-4 min-h-full lg:h-full">
+      <!-- ==================================================================== -->
+      <!-- THANH ĐIỀU HƯỚNG HỆ SINH THÁI ATLAT KÉP (GIS / ATLAT GIẤY / SONG SONG) -->
+      <!-- ==================================================================== -->
+      <div id="atlat-mode-nav-banner" class="col-span-12 flex flex-wrap items-center justify-between gap-2.5 bg-white dark:bg-slate-900 px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs">
+        <!-- Trái: 3 Chế độ tương tác -->
+        <div class="flex items-center space-x-1 sm:space-x-1.5 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl text-xs font-semibold">
+          <button 
+            id="btn-view-gis" 
+            onclick="AtlasEngine.setAtlasViewMode('gis')" 
+            class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-blue-600 text-white font-bold transition flex items-center space-x-1.5 shadow-2xs"
+            title="Bản đồ số GIS 34 tỉnh tương tác vector & 7 lớp chuyên đề"
+          >
+            <span>🗺️</span>
+            <span class="hidden sm:inline">Bản Đồ Số GIS (34 Tỉnh)</span>
+            <span class="sm:hidden">GIS 34 Tỉnh</span>
+          </button>
+          <button 
+            id="btn-view-book" 
+            onclick="AtlasEngine.setAtlasViewMode('book')" 
+            class="px-2.5 sm:px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center space-x-1.5 font-semibold"
+            title="Lật trang Atlat Địa lí Việt Nam bản in quét siêu nét với cẩm nang ôn thi THPT"
+          >
+            <span>📖</span>
+            <span class="hidden sm:inline">Atlat Giấy Siêu Nét</span>
+            <span class="sm:hidden">Atlat Giấy</span>
+          </button>
+          <button 
+            id="btn-view-split" 
+            onclick="AtlasEngine.setAtlasViewMode('split')" 
+            class="px-2.5 sm:px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center space-x-1.5 font-semibold"
+            title="Chế độ giảng dạy & ôn thi: Đối chiếu song song Atlat Giấy 50:50 với Bản đồ GIS"
+          >
+            <span>⚡</span>
+            <span class="hidden sm:inline">Đối Chiếu Song Song</span>
+            <span class="sm:hidden">Song Song</span>
+          </button>
+        </div>
+
+        <!-- Phải: Atlat Book Toolbar (Lật trang, Phóng to/Thu nhỏ) -->
+        <div id="atlat-book-toolbar" class="hidden flex items-center space-x-1 sm:space-x-2 text-xs">
+          <div class="flex items-center space-x-1 bg-slate-100 dark:bg-slate-800/80 p-0.5 rounded-lg">
+            <button onclick="AtlasEngine.prevAtlatBookPage()" title="Trang trước" class="p-1 sm:px-2 rounded-md hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold transition">◀</button>
+            <select id="atlat-book-page-select" onchange="AtlasEngine.selectAtlatBookPage(this.value)" class="text-xs font-semibold py-1 px-2 rounded-md border-0 bg-transparent text-slate-800 dark:text-slate-100 max-w-[180px] sm:max-w-[260px] truncate focus:ring-1 focus:ring-blue-500">
+              <!-- Populated by atlas-engine.js from manifest.json -->
+            </select>
+            <button onclick="AtlasEngine.nextAtlatBookPage()" title="Trang tiếp" class="p-1 sm:px-2 rounded-md hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold transition">▶</button>
+          </div>
+          <div class="h-4 w-[1px] bg-slate-200 dark:bg-slate-700 hidden sm:block"></div>
+          <div class="hidden sm:flex items-center space-x-1">
+            <button onclick="AtlasEngine.zoomAtlatBook(-0.2)" title="Thu nhỏ" class="w-7 h-7 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 font-bold text-xs">-</button>
+            <span id="atlat-book-zoom-val" class="font-mono text-[11px] font-bold text-slate-600 dark:text-slate-300 w-10 text-center">100%</span>
+            <button onclick="AtlasEngine.zoomAtlatBook(0.2)" title="Phóng to" class="w-7 h-7 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 font-bold text-xs">+</button>
+            <button onclick="AtlasEngine.fitAtlatBookWidth()" title="Vừa chiều rộng trang" class="px-2 py-1 text-[11px] font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition">↔ Vừa</button>
+            <button onclick="AtlasEngine.resetAtlatBookZoom()" title="Đặt lại phóng to 100%" class="px-2 py-1 text-[11px] font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition">1:1</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Khung Trái (7 Cột): Bản đồ Leaflet chuẩn GIS -->
-      <div class="col-span-12 lg:col-span-7 h-[50vh] sm:h-[60vh] lg:h-full min-h-[320px] lg:min-h-0 rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
+      <div id="gis-map-col" class="col-span-12 lg:col-span-7 h-[50vh] sm:h-[60vh] lg:h-full min-h-[320px] lg:min-h-0 rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-white dark:bg-slate-900">
         <div id="atlas-map-container" class="w-full h-full relative">
           <div id="atlas-map" class="w-full h-full"></div>
 
@@ -217,7 +275,7 @@
       </div>
 
       <!-- Khung Phải (5 Cột): Bảng điều khiển bộ lọc & Tra cứu Atlat -->
-      <div class="col-span-12 lg:col-span-5 h-auto lg:h-full lg:overflow-y-auto pr-0 lg:pr-1 space-y-3 sm:space-y-4">
+      <div id="gis-controls-col" class="col-span-12 lg:col-span-5 h-auto lg:h-full lg:overflow-y-auto pr-0 lg:pr-1 space-y-3 sm:space-y-4">
         
         <!-- Thanh tìm kiếm thông minh -->
         <div class="bg-white dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
@@ -462,6 +520,34 @@
           <div class="text-center text-slate-400 py-3">
             Bấm vào bất kỳ tỉnh thành, mỏ khoáng sản, nhà máy năng lượng hoặc cơ cấu kinh tế trên bản đồ để xem chi tiết.
           </div>
+        </div>
+      </div>
+
+      <!-- Khung Hiển Thị Trang Atlat Giấy Gốc Siêu Nét (Book & Split Mode) -->
+      <div id="atlat-book-col" class="hidden col-span-12 lg:col-span-8 h-[55vh] sm:h-[65vh] lg:h-full min-h-[340px] lg:min-h-0 rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-slate-950 select-none flex flex-col">
+        <!-- Viewport kéo rê / zoom / pan -->
+        <div id="atlat-book-viewport" class="flex-1 w-full h-full relative overflow-hidden flex items-center justify-center cursor-grab" style="touch-action: none;">
+          <div id="atlat-book-wrapper" class="relative inline-block origin-center will-change-transform">
+            <img id="atlat-book-page-img" src="public/data/atlat_pages/page_04.jpg" alt="Trang Atlat Địa lí Việt Nam" class="max-w-none shadow-2xl rounded-sm pointer-events-none select-none" />
+          </div>
+        </div>
+        
+        <!-- Thanh thông tin đáy trang Atlat -->
+        <div class="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 z-10 flex items-center justify-between pointer-events-none">
+          <div class="bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-700/80 text-[11px] text-white font-bold shadow-lg pointer-events-auto flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span id="atlat-book-page-title">Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)</span>
+          </div>
+          <div class="bg-slate-900/90 backdrop-blur-md px-2.5 py-1.5 rounded-lg border border-slate-700/80 text-[10px] text-slate-300 font-mono shadow-lg pointer-events-auto hidden sm:flex items-center space-x-1.5">
+            <span>🖱️ Kéo để rê • Cuộn chuột zoom • Phím ◀ ▶ lật trang</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Khung Cẩm Nang Ôn Thi & Trọng Tâm Theo Từng Trang Atlat (Book Mode) -->
+      <div id="atlat-notes-col" class="hidden col-span-12 lg:col-span-4 h-auto lg:h-full lg:overflow-y-auto pr-0 lg:pr-1 space-y-3 sm:space-y-4">
+        <div id="atlat-page-guide-card" class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3.5">
+          <!-- Populated dynamically by AtlasEngine.renderAtlatPageStudyGuide() -->
         </div>
       </div>
     </div>

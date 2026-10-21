@@ -3695,19 +3695,242 @@ const AtlasEngine = (function () {
   }
 
   // ===========================================================================
-  // TRA CỨU BẢN ĐỒ GỐC ATLAT 2026 (PAN & ZOOM ĐA NỀN TẢNG CHO MỌI TỈ LỆ MÀN HÌNH)
+  // HỆ SINH THÁI ATLAT KÉP: LẬT TRANG ATLAT GIẤY GỐC & BẢN ĐỒ SỐ GIS 34 TỈNH
   // ===========================================================================
+  let atlasViewMode = "gis"; // "gis" | "book" | "split"
   let atlatPagesManifest = [];
-  let currentAtlatPageIndex = 3; // Mặc định Trang 4 Hành chính
-  let atlatPageZoom = 1;
-  let atlatPanX = 0;
-  let atlatPanY = 0;
-  let isAtlatDragging = false;
-  let atlatDragStartX = 0;
-  let atlatDragStartY = 0;
-  let atlatTouchStartDist = 0;
-  let atlatTouchStartZoom = 1;
-  let atlatViewerListenersAttached = false;
+  let currentAtlatPageNumber = 4;
+  let currentAtlatPageIndex = 2; // Trang 4 Hành chính Bắc
+  let atlatBookZoom = 1.0;
+  let atlatBookPanX = 0;
+  let atlatBookPanY = 0;
+  let isAtlatBookDragging = false;
+  let atlatBookDragStartX = 0;
+  let atlatBookDragStartY = 0;
+  let atlatBookTouchDist = 0;
+  let atlatBookTouchZoom = 1.0;
+  let atlatBookGesturesAttached = false;
+
+  // Cẩm nang sư phạm & Trọng tâm thi tốt nghiệp THPT theo từng trang Atlat GD
+  const ATLAT_PAGE_STUDY_GUIDE = {
+    1: {
+      page: 1,
+      title: "Bìa Atlat Địa lí Việt Nam",
+      badge: "Ấn bản GD 2026",
+      theme: "admin",
+      target: "Nhận biết cấu trúc tổng thể 32 trang chuyên đề Atlat Địa lí Việt Nam phục vụ học tập và thi tốt nghiệp THPT.",
+      keyFeatures: [
+        "Nhà xuất bản Giáo dục Việt Nam - Đơn vị ấn hành chính thức chuẩn mực.",
+        "Phân bổ khoa học 4 nhóm phân hệ: Tự nhiên (Tr.6-14), Dân cư (Tr.15-17), Kinh tế chung & Ngành (Tr.18-25), Vùng kinh tế (Tr.26-32)."
+      ],
+      examTraps: "Quan sát kĩ số trang và tên bản đồ được nêu trong câu hỏi trắc nghiệm để lật chính xác trang Atlat.",
+      recommendedLayer: "provinces"
+    },
+    3: {
+      page: 3,
+      title: "Kí hiệu chung",
+      badge: "Nền Tảng Bắt Buộc",
+      theme: "admin",
+      target: "Nhận biết 100% hệ thống kí hiệu quy ước: địa hình, khoáng sản, thủy văn, động thực vật, nông lâm ngư nghiệp và công nghiệp.",
+      keyFeatures: [
+        "Khoáng sản nhiên liệu: Than đá (vuông đen), Than nâu (vuông sọc), Dầu mỏ (thang đen), Khí tự nhiên (thang trắng).",
+        "Khoáng sản kim loại & phi kim: Sắt (tam giác đen), Bôxit (chữ nhật/thang màu tím chữ Al), Apatit (chữ nhật sọc chéo chữ A), Titan (tròn đen viền tia).",
+        "Năng lượng: Nhà máy thủy điện (ngôi sao màu xanh), Nhà máy nhiệt điện (ngôi sao màu đỏ)."
+      ],
+      examTraps: "Bẫy phân biệt Than (vuông đen) vs Bôxit (chữ Al) vs Apatit (chữ A); Thủy điện (sao xanh) vs Nhiệt điện (sao đỏ).",
+      recommendedLayer: "minerals_power"
+    },
+    4: {
+      page: 4,
+      title: "Hành chính (Phía Bắc & Bắc Trung Bộ)",
+      badge: "Vùng I, II, III",
+      theme: "admin",
+      target: "Xác định vị trí địa lí, phạm vi lãnh thổ, tiếp giáp biên giới Việt - Trung, Việt - Lào; các tỉnh giáp biển và hải đảo phía Bắc.",
+      keyFeatures: [
+        "Điểm cực Bắc: Xã Lũng Cú, huyện Đồng Văn, tỉnh Hà Giang (vĩ độ 23°23'B).",
+        "Điểm cực Tây: Xã Sín Thầu, huyện Mường Nhé, tỉnh Điện Biên (ngã ba biên giới Việt - Trung - Lào A Pa Chải, kinh độ 102°09'Đ).",
+        "Tỉnh vừa giáp biển vừa giáp Trung Quốc: Tỉnh Quảng Ninh.",
+        "7 tỉnh biên giới phía Bắc giáp Trung Quốc: Quảng Ninh, Lạng Sơn, Cao Bằng, Hà Giang, Lào Cai, Lai Châu, Điện Biên."
+      ],
+      examTraps: "Điện Biên giáp cả Lào và Trung Quốc tại ngã ba A Pa Chải (không chỉ giáp Lào).",
+      recommendedLayer: "provinces"
+    },
+    5: {
+      page: 5,
+      title: "Hành chính (Phía Nam) & Bảng 34 đơn vị",
+      badge: "Vùng IV, V, VI & Biển Đảo",
+      theme: "admin",
+      target: "Khai thác chuẩn xác bảng diện tích, dân số 34 đơn vị hành chính cấp tỉnh (Nghị quyết 202/2025/QH15); vị trí Hoàng Sa, Trường Sa và biển đảo Tổ quốc.",
+      keyFeatures: [
+        "Điểm cực Nam: Xã Đất Mũi, huyện Ngọc Hiển, tỉnh Cà Mau (8°34'B).",
+        "Điểm cực Đông (đất liền): Mũi Đôi, xã Vạn Thạnh, Vạn Ninh, tỉnh Khánh Hoà (109°28'Đ).",
+        "Hai quần đảo chiến lược: Quần đảo Hoàng Sa (TP. Đà Nẵng) và Quần đảo Trường Sa (Tỉnh Khánh Hoà).",
+        "Bảng số liệu 34 tỉnh: Nghệ An có diện tích lớn nhất (16.486,5 km²), Bắc Ninh nhỏ nhất (822,7 km²); TP. Hồ Chí Minh đông dân nhất."
+      ],
+      examTraps: "So sánh diện tích hoặc dân số tỉnh thành: luôn đọc chuẩn xác số liệu in tại bảng tr.5 Atlat GD.",
+      recommendedLayer: "provinces"
+    },
+    6: {
+      page: 6,
+      title: "Hình thể & Địa hình (Phía Bắc)",
+      badge: "Miền Bắc & Đông Bắc Bắc Bộ",
+      theme: "physical",
+      target: "Đặc điểm địa hình miền Bắc: Hướng núi Tây Bắc - Đông Nam và Hướng Vòng Cung; các bậc phân tầng độ cao từ đồng bằng lên núi cao.",
+      keyFeatures: [
+        "4 Cánh cung Đông Bắc quy tụ tại Tam Đảo: Cánh cung Sông Gâm, Cánh cung Ngân Sơn, Cánh cung Bắc Sơn, Cánh cung Đông Triều.",
+        "Dãy Hoàng Liên Sơn: Hướng Tây Bắc - Đông Nam, có đỉnh Phanxipăng 3.143 m (nóc nhà Đông Dương).",
+        "Các cao nguyên đá vôi Tây Bắc: Mộc Châu, Sơn La, Tà Phình, Sín Chải."
+      ],
+      examTraps: "Cánh cung Đông Triều chạy từ Tây sang Đông và nhô ra sát biển vịnh Bắc Bộ (hướng vòng cung lồi ra biển).",
+      recommendedLayer: "topography"
+    },
+    7: {
+      page: 7,
+      title: "Hình thể (Phía Nam) - Mốc toạ độ & Đường cơ sở",
+      badge: "Trường Sơn Nam & Đường Cơ Sở",
+      theme: "physical",
+      target: "Đặc điểm hình thể miền Nam: Dãy Bạch Mã, khối núi Kon Tum, đỉnh Ngọc Linh (2.598 m), các cao nguyên badan xếp tầng và 11 mốc đường cơ sở ven bờ.",
+      keyFeatures: [
+        "Dãy Bạch Mã: Đâm ngang ra biển tại vĩ độ 16°B, là ranh giới tự nhiên ngăn cản gió mùa Đông Bắc tràn sâu xuống phía Nam.",
+        "Hệ thống cao nguyên badan Tây Nguyên: Kon Tum, Pleiku, Đắk Lắk, Mơ Nông, Lâm Viên, Di Linh (địa hình phân bậc từ 500m đến 1.500m).",
+        "Hệ thống 11 mốc đường cơ sở ven bờ (A1 Hòn Nhạn đến A11 Đảo Cồn Cỏ) xác định đường cơ sở thẳng để tính chiều rộng lãnh hải 12 hải lý."
+      ],
+      examTraps: "Điểm A1 ở Hòn Nhạn (Thổ Chu, Kiên Giang), không phải ở Mũi Cà Mau; Điểm A11 ở Đảo Cồn Cỏ (Quảng Trị).",
+      recommendedLayer: "topography"
+    },
+    8: {
+      page: 8,
+      title: "Khí hậu chung & 15 Trạm khí tượng",
+      badge: "Khí Tượng & Nhiệt Ẩm",
+      theme: "climate",
+      target: "Khai thác biểu đồ khí hậu của 15 trạm khí tượng tiêu biểu: nhiệt độ trung bình năm, biên độ nhiệt, tổng lượng mưa và tháng mưa cực đại.",
+      keyFeatures: [
+        "Ranh giới khí hậu: Dãy Bạch Mã phân chia miền khí hậu phía Bắc (có mùa đông lạnh, biên độ nhiệt lớn) và phía Nam (cận xích đạo, 2 mùa mưa - khô rõ rệt).",
+        "Trạm có biên độ nhiệt năm cao nhất: Lạng Sơn (biên độ > 13°C), Hà Nội (biên độ ~ 12,5°C).",
+        "Trạm có biên độ nhiệt năm thấp nhất: Cà Mau, TP. Hồ Chí Minh (< 3,5°C).",
+        "Mùa mưa lệch sang thu - đông: Trạm Huế (tháng cực đại X - XI) và Đà Nẵng."
+      ],
+      examTraps: "Trạm có nhiệt độ tháng lạnh nhất dưới 18°C chỉ có ở miền Bắc (Lạng Sơn, Hà Nội, Sơn La). Miền Nam nhiệt độ quanh năm luôn trên 25°C.",
+      recommendedLayer: "climate"
+    },
+    9: {
+      page: 9,
+      title: "Các miền khí hậu & Lượng mưa, nhiệt độ",
+      badge: "Gió Mùa & Tần Suất Bão",
+      theme: "climate",
+      target: "Quy luật hoàn lưu gió mùa: Gió mùa Đông Bắc, Gió mùa Tây Nam, gió phơn khô nóng; tần suất bão di chuyển từ Bắc vào Nam theo các tháng.",
+      keyFeatures: [
+        "Gió mùa Đông Bắc (tháng XI - IV): Nửa đầu mùa lạnh khô, nửa sau mùa lạnh ẩm gây mưa phùn ven biển và đồng bằng Bắc Bộ.",
+        "Gió mùa Tây Nam (tháng V - X): Gây mưa lớn cho Nam Bộ và Tây Nguyên; vượt dãy Trường Sơn gây gió phơn Tây Nam khô nóng cho Bắc Trung Bộ.",
+        "Mùa bão: Bắt đầu tháng VI ở miền Bắc, chậm dần vào miền Trung (tháng IX - X tần suất lớn nhất) và đến tháng XII ở Nam Bộ."
+      ],
+      examTraps: "Tháng bão đổ bộ lớn nhất vào miền Trung là tháng IX và X (không phải tháng VI hay VII).",
+      recommendedLayer: "climate"
+    },
+    10: {
+      page: 10,
+      title: "Các hệ thống sông ngòi Việt Nam",
+      badge: "9 Hệ Thống Sông Lớn",
+      theme: "physical",
+      target: "9 hệ thống sông lớn; hình thái mạng lưới sông, chế độ dòng chảy theo mùa và các trạm thủy văn quan trắc.",
+      keyFeatures: [
+        "Hệ thống sông Hồng & Thái Bình: Mạng lưới hình nan quạt, mùa lũ kéo dài 5 tháng (VI - X), tháng đỉnh lũ là tháng VIII.",
+        "Hệ thống sông miền Trung (Thu Bồn, Ba): Ngắn, dốc, lưu vực hẹp, mùa lũ lệch sang thu - đông (tháng IX - XII), lũ lên rất nhanh.",
+        "Hệ thống sông Mê Kông (Tiền & Hậu): Điều hòa nước nhờ Biển Hồ, mùa lũ từ tháng VII đến XI, đỉnh lũ tháng X (mùa nước nổi hiền hòa)."
+      ],
+      examTraps: "Sông Đà là phụ lưu bên hữu ngạn (bên phải theo chiều dòng chảy), sông Lô ở tả ngạn sông Hồng.",
+      recommendedLayer: "topography"
+    },
+    13: {
+      page: 13,
+      title: "Địa chất & Khoáng sản",
+      badge: "Tài Nguyên Khoáng Sản",
+      theme: "admin",
+      target: "Phân bố các mỏ khoáng sản nhiên liệu, kim loại và phi kim loại trên bản đồ địa chất và các bồn trũng trầm tích dầu khí.",
+      keyFeatures: [
+        "Than đá: Bể than lớn nhất ở Quảng Ninh (Cẩm Phả, Hòn Gai, Mạo Khê). Than nâu ở Đồng bằng sông Hồng. Than bùn ở U Minh.",
+        "Dầu mỏ & Khí tự nhiên: Bể trầm tích Cửu Long (Bạch Hổ, Rồng, Rạng Đông, Hồng Ngọc), Bể Nam Côn Sơn (Lan Tây, Lan Đỏ, Đại Hùng).",
+        "Bôxit: Phân bố tập trung trữ lượng lớn trên cao nguyên badan Tây Nguyên (Đắk Nông, Lâm Đồng, Gia Lai).",
+        "Apatit: Phân bố duy nhất tại Lào Cai (Cam Đường)."
+      ],
+      examTraps: "Mỏ sắt lớn nhất miền Trung là Thạch Khê (Hà Tĩnh); Apatit chỉ có ở Lào Cai; Bôxit tập trung ở Tây Nguyên.",
+      recommendedLayer: "minerals_power"
+    },
+    18: {
+      page: 18,
+      title: "Kinh tế chung - 6 Vùng & Quy mô GRDP",
+      badge: "6 Vùng Kinh Tế & GRDP",
+      theme: "economic",
+      target: "Khai thác 6 vùng kinh tế - xã hội; 4 cấp phân loại quy mô GRDP cấp tỉnh và các trung tâm kinh tế đầu tàu.",
+      keyFeatures: [
+        "6 Vùng kinh tế: I. Trung du và miền núi phía Bắc; II. Đồng bằng sông Hồng; III. Bắc Trung Bộ; IV. Duyên hải Nam Trung Bộ và Tây Nguyên; V. Đông Nam Bộ; VI. Đồng bằng sông Cửu Long.",
+        "Quy mô GRDP từ 1.000 nghìn tỉ đồng trở lên: TP. Hồ Chí Minh và Thủ đô Hà Nội.",
+        "Quy mô GRDP từ 300 đến dưới 1.000 nghìn tỉ: Hải Phòng, Biên Hòa, Bình Dương, Đồng Nai, Quảng Ninh...",
+        "Hai vùng kinh tế trọng điểm đầu tàu cả nước: Đông Nam Bộ và Đồng bằng sông Hồng."
+      ],
+      examTraps: "Vùng Duyên hải Nam Trung Bộ và Tây Nguyên (Vùng IV) hợp nhất Tây Nguyên và duyên hải Nam Trung Bộ; Đông Nam Bộ dẫn đầu về GRDP bình quân đầu người.",
+      recommendedLayer: "industrial"
+    },
+    19: {
+      page: 19,
+      title: "Nông nghiệp chung",
+      badge: "Nông - Lâm - Thủy Sản",
+      theme: "admin",
+      target: "Xác định các vùng sản xuất nông nghiệp, vùng chuyên canh lúa, cây công nghiệp lâu năm và các ngư trường thủy sản lớn.",
+      keyFeatures: [
+        "Vùng trọng điểm lúa lớn nhất: Đồng bằng sông Cửu Long (> 50% diện tích & sản lượng lúa cả nước), thứ hai là Đồng bằng sông Hồng.",
+        "Vùng cây công nghiệp lâu năm lớn nhất: Đông Nam Bộ (cao su, điều, hồ tiêu) và Tây Nguyên (cà phê số 1 cả nước, cao su, hồ tiêu).",
+        "Chăn nuôi gia súc lớn: Trâu nhiều nhất ở Trung du và miền núi phía Bắc; Bò thịt/bò sữa ở Bắc Trung Bộ, Duyên hải Nam Trung Bộ, ĐBSH.",
+        "Thủy sản nuôi trồng & đánh bắt: ĐBSCL là vùng dẫn đầu cả nước về cả nuôi trồng và đánh bắt (cá tra, tôm nước lợ)."
+      ],
+      examTraps: "Cà phê trồng nhiều nhất ở Tây Nguyên; Cao su và Điều nhiều nhất ở Đông Nam Bộ; Chè nhiều nhất ở Trung du miền núi phía Bắc.",
+      recommendedLayer: "agriculture"
+    },
+    21: {
+      page: 21,
+      title: "Công nghiệp chung",
+      badge: "Trung Tâm Công Nghiệp",
+      theme: "economic",
+      target: "Phân loại quy mô trung tâm công nghiệp (rất lớn, lớn, trung bình, nhỏ) và cơ cấu ngành của từng trung tâm.",
+      keyFeatures: [
+        "Trung tâm quy mô rất lớn (> 120 nghìn tỉ đồng): TP. Hồ Chí Minh, Hà Nội.",
+        "Trung tâm quy mô lớn (40 - 120 nghìn tỉ đồng): Hải Phòng, Biên Hòa, Thủ Dầu Một, Vũng Tàu, Đà Nẵng, Cần Thơ.",
+        "Hướng chuyên môn hóa công nghiệp: Dọc quốc lộ 18 (Hà Nội - Bắc Ninh - Hải Dương - Hạ Long); Dọc quốc lộ 1A."
+      ],
+      examTraps: "Đọc đúng cơ cấu ngành qua các biểu tượng ngành xung quanh vòng tròn quy mô của từng thành phố.",
+      recommendedLayer: "industrial"
+    },
+    22: {
+      page: 22,
+      title: "Các ngành công nghiệp trọng điểm",
+      badge: "Năng Lượng & Chế Biến",
+      theme: "admin",
+      target: "Phân bố công nghiệp năng lượng (thủy điện, nhiệt điện) và công nghiệp chế biến lương thực thực phẩm.",
+      keyFeatures: [
+        "Thủy điện trên 1.000 MW: Sơn La (2.400 MW - lớn nhất Đông Nam Á), Hòa Bình (1.920 MW), Lai Châu (1.200 MW) trên sông Đà; Yaly (720 MW) trên sông Xê Xan.",
+        "Nhiệt điện than: Phả Lại, Uông Bí, Cẩm Phả, Mông Dương, Duyên Hải, Vĩnh Tân.",
+        "Nhiệt điện khí: Cụm Phú Mỹ (Bà Rịa - Vũng Tàu), Cà Mau, Nhơn Trạch (chạy bằng khí tự nhiên thềm lục địa)."
+      ],
+      examTraps: "Sơn La và Hòa Bình nằm trên sông Đà (hữu ngạn sông Hồng); Thác Bà trên sông Chảy; Tuyên Quang trên sông Gâm; Trị An trên sông Đồng Nai.",
+      recommendedLayer: "minerals_power"
+    },
+    23: {
+      page: 23,
+      title: "Giao thông vận tải & Thương mại",
+      badge: "Hạ Tầng Huyết Mạch",
+      theme: "admin",
+      target: "Các tuyến huyết mạch đường bộ (QL1A, Đường Hồ Chí Minh), đường sắt Thống Nhất, hệ thống cảng biển nước sâu và sân bay quốc tế.",
+      keyFeatures: [
+        "Quốc lộ 1A: Tuyến đường bộ xương sống chạy dài từ Cửa khẩu Hữu Nghị (Lạng Sơn) đến Năm Căn (Cà Mau), dài 2.395 km.",
+        "Đường Hồ Chí Minh: Đi qua dải núi phía Tây, thúc đẩy phát triển kinh tế dải đất miền Tây Tổ quốc.",
+        "Đường sắt Thống Nhất: Tuyến huyết mạch Bắc - Nam từ ga Hà Nội đến ga Sài Gòn (dài 1.726 km).",
+        "Cụm cảng biển đặc biệt & quốc tế: Cảng Hải Phòng (Lạch Huyện), Cảng Cái Mép - Thị Vải (cảng nước sâu quốc tế đón tàu mẹ đi thẳng Âu - Mỹ).",
+        "Sân bay quốc tế cửa ngõ: Nội Bài, Tân Sơn Nhất, Đà Nẵng, Cam Ranh, Phú Quốc, Cát Bi."
+      ],
+      examTraps: "Cảng Cái Mép - Thị Vải là cụm cảng nước sâu lớn nhất phía Nam; Đường sắt Thống Nhất song song với Quốc lộ 1A trên phần lớn chiều dài đất nước.",
+      recommendedLayer: "transportation"
+    }
+  };
 
   async function initAtlatPages() {
     try {
@@ -3718,189 +3941,388 @@ const AtlasEngine = (function () {
     } catch (e) {
       console.warn("Could not load atlat_pages manifest:", e);
     }
+
+    // Populate dropdown #atlat-book-page-select
+    const selectEl = document.getElementById("atlat-book-page-select");
+    if (selectEl && atlatPagesManifest && atlatPagesManifest.length > 0) {
+      selectEl.innerHTML = atlatPagesManifest.map(p => 
+        `<option value="${p.page}">Trang ${p.page}: ${p.title.replace(/^Trang\s+\d+:\s*/, '')}</option>`
+      ).join('');
+    }
+
+    // Default select page 4 (Hành chính Bắc)
+    selectAtlatBookPage(4);
   }
 
-  function applyAtlatTransform() {
-    const wrapper = document.getElementById("atlat-img-wrapper");
-    const zoomTextEl = document.getElementById("atlat-page-zoom-val");
+  function applyAtlatBookTransform() {
+    const wrapper = document.getElementById("atlat-book-wrapper");
+    const zoomTextEl = document.getElementById("atlat-book-zoom-val");
     if (wrapper) {
-      wrapper.style.transform = `translate(${atlatPanX}px, ${atlatPanY}px) scale(${atlatPageZoom})`;
+      wrapper.style.transform = `translate(${atlatBookPanX}px, ${atlatBookPanY}px) scale(${atlatBookZoom})`;
     }
     if (zoomTextEl) {
-      zoomTextEl.innerText = `${Math.round(atlatPageZoom * 100)}%`;
+      zoomTextEl.innerText = `${Math.round(atlatBookZoom * 100)}%`;
     }
   }
 
-  function resetAtlatPageZoom() {
-    atlatPageZoom = 1;
-    atlatPanX = 0;
-    atlatPanY = 0;
-    applyAtlatTransform();
+  function resetAtlatBookZoom() {
+    atlatBookZoom = 1.0;
+    atlatBookPanX = 0;
+    atlatBookPanY = 0;
+    applyAtlatBookTransform();
   }
 
-  function fitAtlatPageWidth() {
-    const container = document.getElementById("atlat-viewer-container");
-    const img = document.getElementById("atlat-page-viewer-img");
+  function fitAtlatBookWidth() {
+    const container = document.getElementById("atlat-book-viewport");
+    const img = document.getElementById("atlat-book-page-img");
     if (container && img && img.naturalWidth) {
       const containerW = container.clientWidth - 24;
-      const scale = Math.max(0.7, Math.min(3.5, (containerW / img.naturalWidth) * 1.35));
-      atlatPageZoom = scale;
-      atlatPanX = 0;
-      atlatPanY = 0;
-      applyAtlatTransform();
+      const scale = Math.max(0.5, Math.min(3.5, (containerW / img.naturalWidth) * 1.2));
+      atlatBookZoom = scale;
+      atlatBookPanX = 0;
+      atlatBookPanY = 0;
+      applyAtlatBookTransform();
     } else {
-      atlatPageZoom = 1.6;
-      atlatPanX = 0;
-      atlatPanY = 0;
-      applyAtlatTransform();
+      atlatBookZoom = 1.4;
+      atlatBookPanX = 0;
+      atlatBookPanY = 0;
+      applyAtlatBookTransform();
     }
   }
 
-  function zoomAtlatPage(delta) {
-    atlatPageZoom = Math.min(4.0, Math.max(0.4, atlatPageZoom + delta));
-    applyAtlatTransform();
+  function zoomAtlatBook(delta) {
+    atlatBookZoom = Math.min(4.0, Math.max(0.4, atlatBookZoom + delta));
+    applyAtlatBookTransform();
   }
 
-  function attachAtlatViewerGestures() {
-    if (atlatViewerListenersAttached) return;
-    const container = document.getElementById("atlat-viewer-container");
-    if (!container) return;
+  function prevAtlatBookPage() {
+    if (atlatPagesManifest && atlatPagesManifest.length > 0) {
+      if (currentAtlatPageIndex > 0) {
+        currentAtlatPageIndex--;
+        selectAtlatBookPage(atlatPagesManifest[currentAtlatPageIndex].page);
+      }
+    }
+  }
 
-    // Chuột: Kéo để di chuyển (Pan)
-    container.addEventListener("mousedown", (e) => {
+  function nextAtlatBookPage() {
+    if (atlatPagesManifest && atlatPagesManifest.length > 0) {
+      if (currentAtlatPageIndex < atlatPagesManifest.length - 1) {
+        currentAtlatPageIndex++;
+        selectAtlatBookPage(atlatPagesManifest[currentAtlatPageIndex].page);
+      }
+    }
+  }
+
+  function attachAtlatBookGestures() {
+    if (atlatBookGesturesAttached) return;
+    const viewport = document.getElementById("atlat-book-viewport");
+    if (!viewport) return;
+
+    viewport.addEventListener("mousedown", (e) => {
       if (e.button !== 0) return;
-      isAtlatDragging = true;
-      atlatDragStartX = e.clientX - atlatPanX;
-      atlatDragStartY = e.clientY - atlatPanY;
-      container.style.cursor = "grabbing";
+      isAtlatBookDragging = true;
+      atlatBookDragStartX = e.clientX - atlatBookPanX;
+      atlatBookDragStartY = e.clientY - atlatBookPanY;
+      viewport.style.cursor = "grabbing";
     });
 
     window.addEventListener("mousemove", (e) => {
-      if (!isAtlatDragging) return;
-      atlatPanX = e.clientX - atlatDragStartX;
-      atlatPanY = e.clientY - atlatDragStartY;
-      applyAtlatTransform();
+      if (!isAtlatBookDragging) return;
+      atlatBookPanX = e.clientX - atlatBookDragStartX;
+      atlatBookPanY = e.clientY - atlatBookDragStartY;
+      applyAtlatBookTransform();
     });
 
     window.addEventListener("mouseup", () => {
-      if (isAtlatDragging) {
-        isAtlatDragging = false;
-        if (container) container.style.cursor = "grab";
+      if (isAtlatBookDragging) {
+        isAtlatBookDragging = false;
+        if (viewport) viewport.style.cursor = "grab";
       }
     });
 
     // Cuộn chuột: Phóng to / Thu nhỏ mượt mà
-    container.addEventListener("wheel", (e) => {
+    viewport.addEventListener("wheel", (e) => {
       e.preventDefault();
       const delta = e.deltaY < 0 ? 0.15 : -0.15;
-      zoomAtlatPage(delta);
+      zoomAtlatBook(delta);
     }, { passive: false });
 
-    // Nháy đúp: Chuyển đổi nhanh giữa 100% và 200%
-    container.addEventListener("dblclick", () => {
-      if (atlatPageZoom > 1.2) {
-        resetAtlatPageZoom();
+    // Nháy đúp: Đổi giữa 100% và 200%
+    viewport.addEventListener("dblclick", () => {
+      if (atlatBookZoom > 1.2) {
+        resetAtlatBookZoom();
       } else {
-        atlatPageZoom = 2.0;
-        applyAtlatTransform();
+        atlatBookZoom = 2.0;
+        applyAtlatBookTransform();
       }
     });
 
-    // Cảm ứng (Touch - Mobile & Tablet): Véo để phóng to và vuốt 1 ngón để rê
-    container.addEventListener("touchstart", (e) => {
+    // Touch
+    viewport.addEventListener("touchstart", (e) => {
       if (e.touches.length === 1) {
-        isAtlatDragging = true;
-        atlatDragStartX = e.touches[0].clientX - atlatPanX;
-        atlatDragStartY = e.touches[0].clientY - atlatPanY;
+        isAtlatBookDragging = true;
+        atlatBookDragStartX = e.touches[0].clientX - atlatBookPanX;
+        atlatBookDragStartY = e.touches[0].clientY - atlatBookPanY;
       } else if (e.touches.length === 2) {
-        isAtlatDragging = false;
+        isAtlatBookDragging = false;
         const dx = e.touches[0].clientX - e.touches[1].clientX;
         const dy = e.touches[0].clientY - e.touches[1].clientY;
-        atlatTouchStartDist = Math.hypot(dx, dy);
-        atlatTouchStartZoom = atlatPageZoom;
+        atlatBookTouchDist = Math.hypot(dx, dy);
+        atlatBookTouchZoom = atlatBookZoom;
       }
     }, { passive: true });
 
-    container.addEventListener("touchmove", (e) => {
-      if (e.touches.length === 1 && isAtlatDragging) {
-        atlatPanX = e.touches[0].clientX - atlatDragStartX;
-        atlatPanY = e.touches[0].clientY - atlatDragStartY;
-        applyAtlatTransform();
-      } else if (e.touches.length === 2 && atlatTouchStartDist > 0) {
+    viewport.addEventListener("touchmove", (e) => {
+      if (e.touches.length === 1 && isAtlatBookDragging) {
+        atlatBookPanX = e.touches[0].clientX - atlatBookDragStartX;
+        atlatBookPanY = e.touches[0].clientY - atlatBookDragStartY;
+        applyAtlatBookTransform();
+      } else if (e.touches.length === 2 && atlatBookTouchDist > 0) {
         const dx = e.touches[0].clientX - e.touches[1].clientX;
         const dy = e.touches[0].clientY - e.touches[1].clientY;
         const dist = Math.hypot(dx, dy);
-        const factor = dist / atlatTouchStartDist;
-        atlatPageZoom = Math.min(4.0, Math.max(0.4, atlatTouchStartZoom * factor));
-        applyAtlatTransform();
+        const factor = dist / atlatBookTouchDist;
+        atlatBookZoom = Math.min(4.0, Math.max(0.4, atlatBookTouchZoom * factor));
+        applyAtlatBookTransform();
       }
     }, { passive: true });
 
-    container.addEventListener("touchend", () => {
-      isAtlatDragging = false;
-      atlatTouchStartDist = 0;
+    viewport.addEventListener("touchend", () => {
+      isAtlatBookDragging = false;
+      atlatBookTouchDist = 0;
     }, { passive: true });
 
-    atlatViewerListenersAttached = true;
+    // Phím mũi tên lật trang
+    window.addEventListener("keydown", (e) => {
+      if (atlasViewMode === "gis") return;
+      if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.tagName === "SELECT")) return;
+      if (e.key === "ArrowLeft") {
+        prevAtlatBookPage();
+      } else if (e.key === "ArrowRight") {
+        nextAtlatBookPage();
+      }
+    });
+
+    atlatBookGesturesAttached = true;
   }
 
-  function openAtlatPagesModal(targetPage = 4) {
-    const modal = document.getElementById("modal-atlat-pages");
-    if (!modal) return;
-    modal.classList.remove("hidden");
-    modal.classList.add("flex");
-    attachAtlatViewerGestures();
-    selectAtlatPage(targetPage);
-  }
+  function selectAtlatBookPage(pageNumber) {
+    const num = Number(pageNumber);
+    currentAtlatPageNumber = num;
 
-  function closeAtlatPagesModal() {
-    const modal = document.getElementById("modal-atlat-pages");
-    if (!modal) return;
-    modal.classList.add("hidden");
-    modal.classList.remove("flex");
-    resetAtlatPageZoom();
-  }
-
-  function selectAtlatPage(pageNumber) {
-    if (!atlatPagesManifest || atlatPagesManifest.length === 0) {
-      const imgEl = document.getElementById("atlat-page-viewer-img");
-      const titleEl = document.getElementById("atlat-page-viewer-title");
-      if (imgEl) imgEl.src = `public/data/atlat_pages/page_${String(pageNumber).padStart(2, '0')}.jpg`;
-      if (titleEl) titleEl.innerText = `Bản đồ Atlat Địa lí Việt Nam - Trang ${pageNumber}`;
-      resetAtlatPageZoom();
-      return;
-    }
-    const item = atlatPagesManifest.find(p => p.page === Number(pageNumber)) || atlatPagesManifest[0];
-    currentAtlatPageIndex = atlatPagesManifest.indexOf(item);
-
-    const imgEl = document.getElementById("atlat-page-viewer-img");
-    const titleEl = document.getElementById("atlat-page-viewer-title");
-    const selectEl = document.getElementById("atlat-page-select");
-
-    if (imgEl) {
-      imgEl.src = item.file;
-    }
-    if (titleEl) titleEl.innerText = item.title;
-    if (selectEl) selectEl.value = item.page;
-
-    resetAtlatPageZoom();
-  }
-
-  function prevAtlatPage() {
     if (atlatPagesManifest && atlatPagesManifest.length > 0) {
-      if (currentAtlatPageIndex > 0) {
-        currentAtlatPageIndex--;
-        selectAtlatPage(atlatPagesManifest[currentAtlatPageIndex].page);
+      const idx = atlatPagesManifest.findIndex(p => p.page === num);
+      if (idx !== -1) currentAtlatPageIndex = idx;
+    }
+
+    const imgEl = document.getElementById("atlat-book-page-img");
+    const titleEl = document.getElementById("atlat-book-page-title");
+    const selectEl = document.getElementById("atlat-book-page-select");
+
+    const pageFile = `public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg`;
+    if (imgEl) imgEl.src = pageFile;
+
+    const guide = ATLAT_PAGE_STUDY_GUIDE[num];
+    const displayTitle = guide ? `Trang ${num}: ${guide.title}` : `Bản đồ Atlat Địa lí Việt Nam - Trang ${num}`;
+    if (titleEl) titleEl.innerText = displayTitle;
+    if (selectEl) selectEl.value = num;
+
+    resetAtlatBookZoom();
+    renderAtlatPageStudyGuide(num);
+
+    if (atlasViewMode === "split") {
+      syncGisWithAtlatPage(num);
+    }
+  }
+
+  function renderAtlatPageStudyGuide(pageNumber) {
+    const cardEl = document.getElementById("atlat-page-guide-card");
+    if (!cardEl) return;
+
+    const num = Number(pageNumber);
+    const guide = ATLAT_PAGE_STUDY_GUIDE[num] || {
+      page: num,
+      title: `Trang ${num}`,
+      badge: "Chuẩn Atlat GD",
+      target: "Khai thác thông tin không gian và số liệu trên bản đồ theo yêu cầu đề thi.",
+      keyFeatures: ["Đối chiếu các đối tượng địa lí tự nhiên, dân cư và kinh tế xã hội trên trang bản đồ."],
+      examTraps: "Quan sát kĩ chú giải và tỉ lệ bản đồ để nhận định chính xác.",
+      recommendedLayer: "provinces"
+    };
+
+    const featuresHtml = guide.keyFeatures.map(f => `
+      <li class="flex items-start space-x-2 text-[11px] text-slate-700 dark:text-slate-300">
+        <span class="text-blue-500 font-bold shrink-0 mt-0.5">•</span>
+        <span>${f}</span>
+      </li>
+    `).join('');
+
+    cardEl.innerHTML = `
+      <div class="flex items-center justify-between pb-2.5 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center space-x-2">
+          <span class="text-base">📖</span>
+          <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
+            Trang ${guide.page}: ${guide.title}
+          </h4>
+        </div>
+        <span class="atlat-page-guide-badge bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+          ${guide.badge}
+        </span>
+      </div>
+
+      <!-- Trọng tâm thi THPT -->
+      <div class="space-y-1.5 bg-blue-50/60 dark:bg-blue-950/30 p-2.5 rounded-xl border border-blue-100 dark:border-blue-900/40">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300 flex items-center space-x-1">
+          <span>🎯</span>
+          <span>Trọng tâm thi tốt nghiệp THPT:</span>
+        </span>
+        <p class="text-[11px] text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+          ${guide.target}
+        </p>
+      </div>
+
+      <!-- Điểm then chốt cần nhận dạng -->
+      <div class="space-y-1.5">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center space-x-1">
+          <span>🔍</span>
+          <span>Đối tượng cốt lõi & Cách đọc:</span>
+        </span>
+        <ul class="space-y-1.5 pl-1">
+          ${featuresHtml}
+        </ul>
+      </div>
+
+      <!-- Bẫy đề thi kinh điển -->
+      <div class="space-y-1 bg-amber-50 dark:bg-amber-950/40 p-2.5 rounded-xl border border-amber-200 dark:border-amber-900/60">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 flex items-center space-x-1">
+          <span>⚠️</span>
+          <span>Bẫy đề thi & Dễ nhầm lẫn:</span>
+        </span>
+        <p class="text-[11px] text-amber-900 dark:text-amber-200 leading-relaxed">
+          ${guide.examTraps}
+        </p>
+      </div>
+
+      <!-- Nút hành động tương tác -->
+      <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center space-x-2">
+        <button 
+          onclick="AtlasEngine.setAtlasViewMode('split')" 
+          class="flex-1 py-2 px-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-xs"
+          title="Mở đối chiếu song song Atlat Giấy và Bản đồ số GIS"
+        >
+          <span>⚡</span>
+          <span>Đối Chiếu Song Song (50:50)</span>
+        </button>
+        <button 
+          onclick="AtlasEngine.syncGisWithAtlatPage(${guide.page}); AtlasEngine.setAtlasViewMode('gis');" 
+          class="py-2 px-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold transition flex items-center space-x-1"
+          title="Mở lớp GIS này trên bản đồ số toàn màn hình"
+        >
+          <span>🗺️</span>
+          <span>Lớp GIS</span>
+        </button>
+      </div>
+    `;
+  }
+
+  function syncGisWithAtlatPage(pageNumber) {
+    const num = Number(pageNumber);
+    const guide = ATLAT_PAGE_STUDY_GUIDE[num];
+    if (!guide) return;
+
+    if (guide.theme && typeof setAtlatTheme === "function") {
+      setAtlatTheme(guide.theme);
+    }
+
+    if (guide.recommendedLayer && typeof toggleLayer === "function") {
+      const chkId = `layer-chk-${guide.recommendedLayer}`;
+      const chk = document.getElementById(chkId);
+      if (chk && !chk.checked) {
+        chk.checked = true;
+        toggleLayer(guide.recommendedLayer, true);
       }
     }
   }
 
-  function nextAtlatPage() {
-    if (atlatPagesManifest && atlatPagesManifest.length > 0) {
-      if (currentAtlatPageIndex < atlatPagesManifest.length - 1) {
-        currentAtlatPageIndex++;
-        selectAtlatPage(atlatPagesManifest[currentAtlatPageIndex].page);
+  function setAtlasViewMode(mode) {
+    atlasViewMode = mode;
+    const gisMapCol = document.getElementById("gis-map-col");
+    const gisControlsCol = document.getElementById("gis-controls-col");
+    const atlatBookCol = document.getElementById("atlat-book-col");
+    const atlatNotesCol = document.getElementById("atlat-notes-col");
+    const atlatToolbar = document.getElementById("atlat-book-toolbar");
+
+    const btnGis = document.getElementById("btn-view-gis");
+    const btnBook = document.getElementById("btn-view-book");
+    const btnSplit = document.getElementById("btn-view-split");
+
+    const activeClasses = ["bg-blue-600", "text-white", "font-bold", "shadow-2xs"];
+    const inactiveClasses = ["text-slate-600", "dark:text-slate-300", "hover:bg-slate-200", "dark:hover:bg-slate-700", "font-semibold"];
+
+    function setBtnStyle(btn, isActive) {
+      if (!btn) return;
+      if (isActive) {
+        btn.classList.add(...activeClasses);
+        btn.classList.remove(...inactiveClasses);
+      } else {
+        btn.classList.remove(...activeClasses);
+        btn.classList.add(...inactiveClasses);
       }
+    }
+
+    setBtnStyle(btnGis, mode === "gis");
+    setBtnStyle(btnBook, mode === "book");
+    setBtnStyle(btnSplit, mode === "split");
+
+    if (mode === "gis") {
+      if (gisMapCol) {
+        gisMapCol.classList.remove("hidden", "lg:col-span-6");
+        gisMapCol.classList.add("col-span-12", "lg:col-span-7");
+      }
+      if (gisControlsCol) {
+        gisControlsCol.classList.remove("hidden");
+      }
+      if (atlatBookCol) atlatBookCol.classList.add("hidden");
+      if (atlatNotesCol) atlatNotesCol.classList.add("hidden");
+      if (atlatToolbar) atlatToolbar.classList.add("hidden");
+
+      setTimeout(() => { if (map) map.invalidateSize(); }, 150);
+    } else if (mode === "book") {
+      if (gisMapCol) gisMapCol.classList.add("hidden");
+      if (gisControlsCol) gisControlsCol.classList.add("hidden");
+      if (atlatBookCol) {
+        atlatBookCol.classList.remove("hidden", "lg:col-span-6");
+        atlatBookCol.classList.add("col-span-12", "lg:col-span-8");
+      }
+      if (atlatNotesCol) {
+        atlatNotesCol.classList.remove("hidden");
+        atlatNotesCol.classList.add("col-span-12", "lg:col-span-4");
+      }
+      if (atlatToolbar) atlatToolbar.classList.remove("hidden");
+
+      attachAtlatBookGestures();
+      renderAtlatPageStudyGuide(currentAtlatPageNumber);
+    } else if (mode === "split") {
+      if (atlatBookCol) {
+        atlatBookCol.classList.remove("hidden", "lg:col-span-8");
+        atlatBookCol.classList.add("col-span-12", "lg:col-span-6");
+      }
+      if (gisMapCol) {
+        gisMapCol.classList.remove("hidden", "lg:col-span-7");
+        gisMapCol.classList.add("col-span-12", "lg:col-span-6");
+      }
+      if (gisControlsCol) gisControlsCol.classList.add("hidden");
+      if (atlatNotesCol) atlatNotesCol.classList.add("hidden");
+      if (atlatToolbar) atlatToolbar.classList.remove("hidden");
+
+      attachAtlatBookGestures();
+      setTimeout(() => {
+        if (map) {
+          map.invalidateSize();
+          fitVietnamBounds();
+        }
+      }, 150);
+      syncGisWithAtlatPage(currentAtlatPageNumber);
     }
   }
 
@@ -3940,14 +4362,24 @@ const AtlasEngine = (function () {
     openSymbolHandbook,
     closeSymbolHandbook,
     setSymbolHandbookTab,
-    openAtlatPagesModal,
-    closeAtlatPagesModal,
-    selectAtlatPage,
-    zoomAtlatPage,
-    resetAtlatPageZoom,
-    fitAtlatPageWidth,
-    prevAtlatPage,
-    nextAtlatPage,
+    setAtlasViewMode,
+    getAtlasViewMode: () => atlasViewMode,
+    selectAtlatBookPage,
+    zoomAtlatBook,
+    resetAtlatBookZoom,
+    fitAtlatBookWidth,
+    prevAtlatBookPage,
+    nextAtlatBookPage,
+    syncGisWithAtlatPage,
+    renderAtlatPageStudyGuide,
+    openAtlatPagesModal: (p = 4) => { setAtlasViewMode('book'); selectAtlatBookPage(p); },
+    closeAtlatPagesModal: () => setAtlasViewMode('gis'),
+    selectAtlatPage: selectAtlatBookPage,
+    zoomAtlatPage: zoomAtlatBook,
+    resetAtlatPageZoom: resetAtlatBookZoom,
+    fitAtlatPageWidth: fitAtlatBookWidth,
+    prevAtlatPage: prevAtlatBookPage,
+    nextAtlatPage: nextAtlatBookPage,
     resetView: () => fitVietnamBounds({ duration: 1.2 }),
     fitVietnamBounds,
     getMap: () => map
