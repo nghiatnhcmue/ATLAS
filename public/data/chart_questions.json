@@ -1,21 +1,18 @@
 {
-  "metadata": {
-    "title": "Ngân hàng 14 Bài Tập Nhận Dạng Biểu Đồ Chuẩn Nguồn Atlat & biểu đồ.docx (GDPT 2018)",
-    "standard": "Ấn phẩm Atlat GD (Lê Huỳnh - Đặng Vũ Khắc) & biểu đồ.docx (Đã thẩm định 100% số liệu)",
-    "total_questions": 14
-  },
+  "version": "2026.3.12",
+  "description": "Ngân hàng 30 câu hỏi nhận dạng biểu đồ chuẩn đề thi tốt nghiệp THPT và Atlat Địa lí Việt Nam",
   "questions": [
     {
       "id": "DOCX_CHART_01",
-      "title": "Cơ cấu doanh thu du lịch lữ hành phân theo thành phần kinh tế",
-      "optimal_chart": "pie",
-      "source": "biểu đồ.docx, Mục 1",
-      "raw_prompt": "Cho bảng số liệu: Doanh thu du lịch lữ hành phân theo thành phần kinh tế nước ta năm 2010 và 2016 (Đơn vị: %). Theo bảng số liệu, để thể hiện quy mô và cơ cấu doanh thu du lịch lữ hành phân theo thành phần kinh tế nước ta năm 2010 và 2016, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "atlat_page": "biểu đồ.docx (Mục 1); Atlat GD, tr.27",
+      "source": "biểu đồ.docx, Mục 1; Atlat GD, tr.27",
+      "title": "Cơ cấu doanh thu du lịch lữ hành phân theo thành phần kinh tế nước ta năm 2010 và 2016",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện cơ cấu doanh thu du lịch lữ hành phân theo thành phần kinh tế của nước ta năm 2010 và 2016 (%), dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
-        "quy mô và cơ cấu",
-        "2 năm",
-        "100%",
-        "%"
+        "cơ cấu",
+        "tỷ trọng",
+        "năm 2010 và 2016 (1-2 năm)",
+        "tổng = 100%"
       ],
       "data_table": {
         "headers": [
@@ -29,7 +26,7 @@
             "unit": "%",
             "values": [
               31.8,
-              15.0
+              15
             ]
           },
           {
@@ -47,48 +44,52 @@
               7.9,
               11.2
             ]
-          },
-          {
-            "name": "Tổng số",
-            "unit": "%",
-            "values": [
-              100.0,
-              100.0
-            ]
           }
         ]
       },
-      "pedagogical_feedback": {
-        "why_optimal": "Đề bài có từ khóa 'quy mô và cơ cấu' tại 2 mốc năm (2010 và 2016), đơn vị đo là %. Biểu đồ Tròn có bán kính khác nhau là chuẩn xác tuyệt đối.",
-        "pitfall_warnings": "Không chọn biểu đồ Miền vì chuỗi thời gian chỉ có 2 năm (quy chuẩn: Miền chỉ vẽ từ 3 năm trở lên)."
+      "optimal_chart": "pie",
+      "optimal_chart_name": "Biểu đồ tròn (Pie Chart)",
+      "pedagogical_explanation": "Theo quy tắc Mục 1 biểu đồ.docx: Khi đề bài yêu cầu thể hiện 'cơ cấu, tỷ trọng' mà mốc thời gian chỉ từ 1-2 năm với tổng các thành phần bằng 100%, biểu đồ Tròn là lựa chọn chuẩn mực nhất.",
+      "counter_factual": {
+        "stacked_area": "Sai lầm quy tắc: Biểu đồ miền yêu cầu chuỗi thời gian từ 3 năm trở lên. Chỉ có 2 mốc năm (2010 và 2016) tuyệt đối không vẽ biểu đồ miền.",
+        "line": "Sai lầm quy tắc: Biểu đồ đường dùng để thể hiện tốc độ tăng trưởng, không phản ánh được cấu trúc 100% của một tổng thể.",
+        "bar": "Không tối ưu: Biểu đồ cột không thể hiện trực quan các múi quạt tỷ trọng thành phần trong 100% như hình tròn."
+      },
+      "structural_analysis": {
+        "time_points": 2,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
       }
     },
     {
       "id": "DOCX_CHART_02",
-      "title": "Tốc độ tăng trưởng GDP của Phi-líp-pin, Thái Lan và Việt Nam",
-      "optimal_chart": "line",
-      "source": "biểu đồ.docx, Mục 2",
-      "raw_prompt": "Cho bảng số liệu: Tốc độ tăng trưởng GDP của một số quốc gia Đông Nam Á giai đoạn 2010 - 2016 (Lấy năm 2010 = 100%). Theo bảng số liệu, để thể hiện tốc độ tăng trưởng GDP của Phi-líp-pin, Thái Lan và Việt Nam giai đoạn 2010 - 2016, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "atlat_page": "biểu đồ.docx (Mục 2); Atlat GD, tr.18",
+      "source": "biểu đồ.docx, Mục 2; Atlat GD, tr.18",
+      "title": "Tốc độ tăng trưởng GDP của Phi-líp-pin, Thái Lan và Việt Nam giai đoạn 2010 – 2016",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện sự thay đổi, phát triển, tốc độ tăng trưởng GDP của Phi líp pin, Thái Lan và Việt Nam giai đoạn 2010 – 2016, dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
         "tốc độ tăng trưởng",
-        "giai đoạn",
-        "%",
-        "năm gốc 100%"
+        "sự thay đổi",
+        "phát triển",
+        "năm gốc 2010 = 100%",
+        "biểu đồ đường"
       ],
       "data_table": {
         "headers": [
-          "Quốc gia",
-          "Năm 2010",
-          "Năm 2013",
-          "Năm 2015",
-          "Năm 2016"
+          "Năm",
+          "2010",
+          "2013",
+          "2015",
+          "2016"
         ],
         "rows": [
           {
             "name": "Phi-líp-pin",
             "unit": "%",
             "values": [
-              100.0,
+              100,
               136.2,
               146.7,
               152.8
@@ -98,9 +99,9 @@
             "name": "Thái Lan",
             "unit": "%",
             "values": [
-              100.0,
+              100,
               123.3,
-              117.0,
+              117,
               119.3
             ]
           },
@@ -108,7 +109,7 @@
             "name": "Việt Nam",
             "unit": "%",
             "values": [
-              100.0,
+              100,
               147.8,
               166.9,
               177.2
@@ -116,16 +117,28 @@
           }
         ]
       },
-      "pedagogical_feedback": {
-        "why_optimal": "Đề bài chứa từ khóa vàng 'tốc độ tăng trưởng' với năm gốc 2010 = 100% qua chuỗi thời gian 4 năm. Biểu đồ Đường là lựa chọn chuẩn xác duy nhất.",
-        "pitfall_warnings": "Tuyệt đối không chọn Cột hay Tròn khi đề bài đã lấy năm gốc 100% để thể hiện tốc độ tăng trưởng."
+      "optimal_chart": "line",
+      "optimal_chart_name": "Biểu đồ đường (Line Chart)",
+      "pedagogical_explanation": "Theo quy tắc Mục 2 biểu đồ.docx: Khi đề bài yêu cầu thể hiện 'sự thay đổi, phát triển, tốc độ tăng trưởng, diễn biến' của các đối tượng qua nhiều năm (năm gốc = 100%), biểu đồ Đường là lựa chọn chuẩn xác nhất.",
+      "counter_factual": {
+        "pie": "Sai lầm quy tắc: Chuỗi thời gian 4 năm không vẽ tròn. Không có tổng cơ cấu 100%.",
+        "bar_stacked": "Sai lầm quy tắc: Các chỉ số tăng trưởng độc lập của 3 quốc gia không thể chồng lên nhau tạo thành tổng thể."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
       }
     },
     {
       "id": "DOCX_CHART_03",
+      "atlat_page": "biểu đồ.docx (Mục 3)",
+      "source": "biểu đồ.docx, Mục 3",
       "title": "Sản lượng lương thực có hạt của các vùng nước ta giai đoạn 1995 - 2005",
       "optimal_chart": "bar",
-      "source": "biểu đồ.docx, Mục 3",
+      "optimal_chart_name": "Biểu đồ cột nhóm (Grouped Bar)",
       "raw_prompt": "Cho bảng số liệu: Sản lượng lương thực có hạt của Đồng bằng sông Hồng và Đồng bằng sông Cửu Long giai đoạn 1995 - 2005 (Đơn vị: Triệu tấn). Theo bảng số liệu, để so sánh sản lượng lương thực có hạt của hai vùng giai đoạn 1995 - 2005, dạng biểu đồ nào sau đây là thích hợp nhất?",
       "keywords": [
         "so sánh sản lượng",
@@ -162,7 +175,7 @@
             "name": "Đồng bằng sông Cửu Long",
             "unit": "Triệu tấn",
             "values": [
-              13.0,
+              13,
               15.3,
               16.3,
               16.7,
@@ -175,12 +188,12 @@
             "name": "Cả nước",
             "unit": "Triệu tấn",
             "values": [
-              62.0,
+              62,
               46.9,
               53.8,
               64.3,
               83.6,
-              92.0,
+              92,
               78.2
             ]
           }
@@ -193,15 +206,72 @@
     },
     {
       "id": "DOCX_CHART_04",
-      "title": "Sự thay đổi cơ cấu dân số thành thị và nông thôn nước ta giai đoạn 1990 - 2005",
-      "optimal_chart": "stacked_area",
+      "atlat_page": "biểu đồ.docx (Mục 4)",
       "source": "biểu đồ.docx, Mục 4",
-      "raw_prompt": "Cho bảng số liệu: Cơ cấu dân số phân theo thành thị và nông thôn nước ta giai đoạn 1990 - 2005 (Đơn vị: %). Theo bảng số liệu, để thể hiện sự thay đổi cơ cấu dân số phân theo thành thị và nông thôn nước ta giai đoạn 1990 - 2005, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "title": "Sự thay đổi cơ cấu dân số thành thị và nông thôn nước ta giai đoạn 2000 - 2014",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện rõ nhất sự thay đổi cơ cấu dân số phân theo thành thị và nông thôn nước ta giai đoạn 2000 - 2014 (từ 3 năm trở lên, tổng 100%), dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
-        "sự thay đổi cơ cấu",
-        "chuyển dịch cơ cấu",
-        "nhiều năm",
-        "%"
+        "thay đổi cơ cấu",
+        "tỉ trọng của hai nhóm đối tượng",
+        "từ 3 năm trở lên",
+        "tổng = 100%"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2000",
+          "2005",
+          "2010",
+          "2014"
+        ],
+        "rows": [
+          {
+            "name": "Tỉ trọng Dân số thành thị",
+            "unit": "%",
+            "values": [
+              24.2,
+              27.1,
+              30.5,
+              33.1
+            ]
+          },
+          {
+            "name": "Tỉ trọng Dân số nông thôn",
+            "unit": "%",
+            "values": [
+              75.8,
+              72.9,
+              69.5,
+              66.9
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "stacked_area",
+      "optimal_chart_name": "Biểu đồ miền (Stacked Area)",
+      "pedagogical_explanation": "Theo quy tắc Mục 4 biểu đồ.docx: Khi đề bài yêu cầu thể hiện rõ nhất 'sự thay đổi cơ cấu, tỉ trọng của hai hoặc ba nhóm đối tượng mà có từ 3 năm trở lên' (ở đây có 4 năm: 2000, 2005, 2010, 2014), biểu đồ Miền là lựa chọn chính xác tuyệt đối.",
+      "counter_factual": {
+        "pie": "Sai lầm quy tắc: Chuỗi 4 mốc thời gian không vẽ tròn vì phải vẽ tới 4 hình tròn gây rối mắt và không thấy được sự biến chuyển liên tục.",
+        "line": "Không tối ưu: Biểu đồ đường không thể hiện được tính bù trừ khép kín 100% của 2 thành phần."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "DOCX_CHART_05",
+      "atlat_page": "biểu đồ.docx (Mục 5)",
+      "source": "biểu đồ.docx, Mục 5",
+      "title": "Số dân thành thị và tỉ lệ dân thành thị nước ta giai đoạn 1990 - 2005",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện số dân thành thị (triệu người) và tỉ lệ dân thành thị (%) nước ta giai đoạn 1990 - 2005, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "khác nhau về đơn vị nhưng có mối quan hệ",
+        "số dân và tỉ lệ",
+        "kết hợp"
       ],
       "data_table": {
         "headers": [
@@ -213,71 +283,12 @@
         ],
         "rows": [
           {
-            "name": "Thành thị",
-            "unit": "%",
-            "values": [
-              19.5,
-              20.8,
-              24.1,
-              26.9
-            ]
-          },
-          {
-            "name": "Nông thôn",
-            "unit": "%",
-            "values": [
-              80.5,
-              79.2,
-              75.9,
-              73.1
-            ]
-          },
-          {
-            "name": "Tổng số",
-            "unit": "%",
-            "values": [
-              100.0,
-              100.0,
-              100.0,
-              100.0
-            ]
-          }
-        ]
-      },
-      "pedagogical_feedback": {
-        "why_optimal": "Đề bài yêu cầu thể hiện 'sự thay đổi cơ cấu' qua chuỗi 4 năm (≥ 3 năm) với tổng thể 100%. Biểu đồ Miền là lựa chọn chuẩn xác tuyệt đối.",
-        "pitfall_warnings": "Chuỗi thời gian có 4 mốc năm nên không vẽ biểu đồ Tròn (Tròn chỉ vẽ cho 1-2 năm)."
-      }
-    },
-    {
-      "id": "DOCX_CHART_05",
-      "title": "Số dân thành thị và tỉ lệ dân thành thị nước ta giai đoạn 1995 - 2005",
-      "optimal_chart": "combo_bar_line",
-      "source": "biểu đồ.docx, Mục 5",
-      "raw_prompt": "Cho bảng số liệu: Số dân thành thị và tỉ lệ dân thành thị nước ta giai đoạn 1995 - 2005. Theo bảng số liệu, để thể hiện số dân thành thị và tỉ lệ dân thành thị nước ta giai đoạn 1995 - 2005, dạng biểu đồ nào sau đây là thích hợp nhất?",
-      "keywords": [
-        "số dân và tỉ lệ",
-        "2 đơn vị",
-        "triệu người và %"
-      ],
-      "data_table": {
-        "headers": [
-          "Năm",
-          "1995",
-          "1998",
-          "2000",
-          "2002",
-          "2005"
-        ],
-        "rows": [
-          {
             "name": "Số dân thành thị",
             "unit": "Triệu người",
             "values": [
+              12.9,
               14.9,
-              17.5,
-              18.8,
-              20.0,
+              18.7,
               22.3
             ]
           },
@@ -285,25 +296,35 @@
             "name": "Tỉ lệ dân thành thị",
             "unit": "%",
             "values": [
+              19.5,
               20.8,
-              23.6,
-              24.1,
-              25.1,
-              26.9
+              24.2,
+              27.1
             ]
           }
         ]
       },
-      "pedagogical_feedback": {
-        "why_optimal": "Bảng số liệu có 2 đại lượng mang 2 đơn vị đo khác nhau (Triệu người và %). Bắt buộc phải vẽ biểu đồ Kết hợp Cột và Đường (2 trục tung).",
-        "pitfall_warnings": "Không thể dùng biểu đồ Cột đơn thuần vì 2 trục đo lường không cùng thang tỉ xích."
+      "optimal_chart": "combo_bar_line",
+      "optimal_chart_name": "Biểu đồ kết hợp cột và đường (Combo Bar & Line)",
+      "pedagogical_explanation": "Theo quy tắc Mục 5 biểu đồ.docx: Biểu đồ kết hợp giữa đường và cột dùng khi đề bài yêu cầu thể hiện 'các đối tượng khác nhau về đơn vị nhưng có mối quan hệ với nhau' (Số dân thành thị: triệu người vẽ Cột, Tỉ lệ: % vẽ Đường) với 2 trục tung.",
+      "counter_factual": {
+        "bar": "Sai lầm quy tắc: Không thể gộp triệu người và % vào 1 trục tung đơn lẻ.",
+        "pie": "Sai lầm quy tắc: Chuỗi 4 năm và khác đơn vị đo lường nên tuyệt đối không vẽ hình tròn."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Triệu người",
+          "%"
+        ],
+        "is_total_100": true
       }
     },
     {
       "id": "DOCX_CHART_06",
-      "title": "Cơ cấu giá trị sản xuất ngành chăn nuôi nước ta năm 2010 và 2014",
-      "optimal_chart": "bar_stacked",
+      "atlat_page": "biểu đồ.docx (Mục 6)",
       "source": "biểu đồ.docx, Mục 6",
+      "title": "Cơ cấu giá trị sản xuất ngành chăn nuôi nước ta năm 2010 và 2014",
       "raw_prompt": "Cho bảng số liệu: Cơ cấu giá trị sản xuất ngành chăn nuôi nước ta năm 2010 và 2014 (Đơn vị: %). Theo bảng số liệu, để thể hiện cơ cấu giá trị sản xuất ngành chăn nuôi nước ta năm 2010 và 2014, dạng biểu đồ nào sau đây là thích hợp nhất?",
       "keywords": [
         "cơ cấu ngành chăn nuôi",
@@ -353,12 +374,14 @@
             "name": "Tổng số",
             "unit": "%",
             "values": [
-              100.0,
-              100.0
+              100,
+              100
             ]
           }
         ]
       },
+      "optimal_chart": "bar_stacked",
+      "optimal_chart_name": "Biểu đồ cột chồng (Stacked Bar)",
       "pedagogical_feedback": {
         "why_optimal": "Theo biểu đồ.docx Mục 6, cơ cấu ngành chăn nuôi với các thành phần cộng lại 100% có thể thể hiện trực quan bằng Biểu đồ Cột Chồng (100%).",
         "pitfall_warnings": "Lưu ý bài này số liệu gốc trong tài liệu chỉ có tỷ lệ %, không có số tiền tỉ đồng."
@@ -366,15 +389,14 @@
     },
     {
       "id": "ATLAT_CHART_01",
-      "title": "Cơ cấu GDP phân theo khu vực kinh tế nước ta giai đoạn 2010 - 2024",
-      "optimal_chart": "stacked_area",
+      "atlat_page": "Atlat GD, tr.18 (DHQG, tr.20)",
       "source": "Atlat GD, tr.18 (DHQG, tr.20)",
-      "raw_prompt": "Cho bảng số liệu: Cơ cấu GDP phân theo khu vực kinh tế nước ta giai đoạn 2010 - 2024 (Đơn vị: %). Theo bảng số liệu, để thể hiện sự chuyển dịch cơ cấu GDP phân theo khu vực kinh tế nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "title": "Cơ cấu GDP phân theo khu vực kinh tế Việt Nam (2010 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện sự chuyển dịch cơ cấu GDP phân theo 4 khu vực kinh tế nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
         "chuyển dịch cơ cấu",
-        "khu vực kinh tế",
-        "giai đoạn",
-        "%"
+        "giai đoạn 2010 - 2024 (4 năm)",
+        "tổng 100%"
       ],
       "data_table": {
         "headers": [
@@ -386,12 +408,12 @@
         ],
         "rows": [
           {
-            "name": "Nông, lâm, thuỷ sản",
+            "name": "Nông, lâm, thủy sản",
             "unit": "%",
             "values": [
-              18.9,
-              17.4,
-              14.8,
+              15.4,
+              14.5,
+              12.7,
               11.9
             ]
           },
@@ -399,9 +421,9 @@
             "name": "Công nghiệp và xây dựng",
             "unit": "%",
             "values": [
-              38.2,
-              33.3,
-              33.7,
+              33,
+              34.3,
+              36.7,
               37.6
             ]
           },
@@ -409,39 +431,49 @@
             "name": "Dịch vụ",
             "unit": "%",
             "values": [
-              42.9,
-              49.3,
-              51.5,
-              50.5
+              40.6,
+              42.2,
+              41.8,
+              42.4
             ]
           },
           {
-            "name": "Tổng số",
+            "name": "Thuế sản phẩm trừ trợ cấp sản phẩm",
             "unit": "%",
             "values": [
-              100.0,
-              100.0,
-              100.0,
-              100.0
+              11,
+              9,
+              8.8,
+              8.1
             ]
           }
         ]
       },
-      "pedagogical_feedback": {
-        "why_optimal": "Đề bài có từ khóa 'chuyển dịch cơ cấu' qua chuỗi thời gian 4 mốc năm (2010, 2015, 2020, 2024). Biểu đồ Miền là lựa chọn chuẩn mực Atlat tr.18.",
-        "pitfall_warnings": "Chuỗi số liệu có 4 năm nên không được vẽ biểu đồ Tròn."
+      "optimal_chart": "stacked_area",
+      "optimal_chart_name": "Biểu đồ miền (Stacked Area)",
+      "pedagogical_explanation": "Bảng số liệu thể hiện 'chuyển dịch cơ cấu' qua chuỗi thời gian 4 mốc năm (≥ 3 năm) với 4 khu vực kinh tế (chuẩn GD tr.18) cộng lại luôn bằng 100%. Biểu đồ miền là lựa chọn chính xác tuyệt đối.",
+      "counter_factual": {
+        "pie": "Sai lầm: Biểu đồ tròn chỉ dùng khi có từ 1 đến 2 mốc năm (≤ 2 năm). Ở đây có 4 mốc năm.",
+        "line": "Sai lầm: Biểu đồ đường dùng cho 'tốc độ tăng trưởng', không thể hiện trực quan cơ cấu bù trừ 100%."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
       }
     },
     {
       "id": "ATLAT_CHART_02",
-      "title": "Quy mô GDP và Tốc độ tăng trưởng GDP nước ta giai đoạn 2010 - 2024",
-      "optimal_chart": "combo_bar_line",
+      "atlat_page": "Atlat GD, tr.18 (DHQG, tr.20)",
       "source": "Atlat GD, tr.18 (DHQG, tr.20)",
-      "raw_prompt": "Cho bảng số liệu: Quy mô GDP (nghìn tỉ đồng) và tốc độ tăng trưởng GDP (%) nước ta giai đoạn 2010 - 2024. Theo bảng số liệu, để thể hiện quy mô GDP và tốc độ tăng trưởng GDP nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "title": "Quy mô GDP và Tốc độ tăng trưởng GDP Việt Nam (2010 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện quy mô GDP và tốc độ tăng trưởng GDP nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
-        "quy mô và tốc độ",
-        "2 đơn vị",
-        "nghìn tỉ đồng và %"
+        "quy mô và tốc độ tăng",
+        "hai đơn vị tính (triệu tỉ đồng và %)",
+        "kết hợp"
       ],
       "data_table": {
         "headers": [
@@ -453,13 +485,13 @@
         ],
         "rows": [
           {
-            "name": "Quy mô GDP",
-            "unit": "Nghìn tỉ đồng",
+            "name": "Quy mô GDP (Giá hiện hành)",
+            "unit": "Triệu tỉ đồng",
             "values": [
-              2157.8,
-              4192.9,
-              8044.4,
-              11254.0
+              2.2,
+              5.2,
+              8,
+              11.5
             ]
           },
           {
@@ -467,92 +499,102 @@
             "unit": "%",
             "values": [
               6.4,
-              6.7,
+              7,
               2.9,
               7.1
             ]
           }
         ]
       },
-      "pedagogical_feedback": {
-        "why_optimal": "Bảng số liệu có 2 đại lượng mang 2 đơn vị khác nhau (Nghìn tỉ đồng và %). Biểu đồ kết hợp cột và đường với 2 trục tung là chuẩn mực.",
-        "pitfall_warnings": "Không thể vẽ trên 1 biểu đồ cột đơn hay đường đơn vì thang đo khác biệt hoàn toàn."
+      "optimal_chart": "combo_bar_line",
+      "optimal_chart_name": "Biểu đồ kết hợp (Cột và Đường)",
+      "pedagogical_explanation": "Bảng số liệu có 2 đại lượng mang 2 đơn vị tính hoàn toàn khác nhau (Quy mô: Triệu tỉ đồng - vẽ Cột; Tốc độ tăng: % - vẽ Đường). Cần 2 trục tung để thể hiện (Atlat GD, tr.18).",
+      "counter_factual": {
+        "pie": "Sai lầm: Khác đơn vị đo lường, không thể vẽ hình tròn.",
+        "bar": "Sai lầm: Không thể gộp triệu tỉ đồng và % vào 1 trục tung duy nhất."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Triệu tỉ đồng",
+          "%"
+        ],
+        "is_total_100": true
       }
     },
     {
       "id": "ATLAT_CHART_03",
-      "title": "Quy mô và Cơ cấu giá trị sản xuất nông nghiệp nước ta năm 2010 và 2024",
-      "optimal_chart": "pie",
-      "source": "Atlat GD, tr.19 & tr.20",
-      "raw_prompt": "Cho bảng số liệu: Giá trị sản xuất nông nghiệp (theo giá hiện hành) và cơ cấu ngành trồng trọt, chăn nuôi nước ta năm 2010 và 2024. Theo bảng số liệu, để thể hiện quy mô và cơ cấu giá trị sản xuất nông nghiệp nước ta năm 2010 và 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "atlat_page": "Atlat GD, tr.19 (DHQG, tr.21)",
+      "source": "Atlat GD, tr.19 (DHQG, tr.21)",
+      "title": "Quy mô và Cơ cấu giá trị sản xuất Nông - Lâm - Thủy sản năm 2010 và 2024",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện quy mô và cơ cấu giá trị sản xuất nông, lâm, thủy sản nước ta năm 2010 và 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
         "quy mô và cơ cấu",
-        "2 năm",
-        "nghìn tỉ đồng và %"
-      ],
-      "data_table": {
-        "headers": [
-          "Chỉ tiêu",
-          "Năm 2010",
-          "Năm 2024"
-        ],
-        "rows": [
-          {
-            "name": "Trồng trọt",
-            "unit": "%",
-            "values": [
-              73.5,
-              68.2
-            ]
-          },
-          {
-            "name": "Chăn nuôi",
-            "unit": "%",
-            "values": [
-              25.0,
-              29.8
-            ]
-          },
-          {
-            "name": "Dịch vụ nông nghiệp",
-            "unit": "%",
-            "values": [
-              1.5,
-              2.0
-            ]
-          },
-          {
-            "name": "Tổng giá trị sản xuất (Atlat GD tr.20)",
-            "unit": "Nghìn tỉ đồng",
-            "values": [
-              540.2,
-              2056.4
-            ]
-          }
-        ]
-      },
-      "pedagogical_feedback": {
-        "why_optimal": "Đề bài yêu cầu thể hiện 'quy mô và cơ cấu' tại đúng 2 mốc năm. Biểu đồ Tròn có bán kính khác nhau là chuẩn xác (bán kính năm 2024 gấp gần 2 lần năm 2010).",
-        "pitfall_warnings": "Chỉ có 2 mốc năm nên không vẽ biểu đồ Miền."
-      }
-    },
-    {
-      "id": "ATLAT_CHART_04",
-      "title": "Trị giá xuất khẩu và nhập khẩu hàng hóa nước ta giai đoạn 2010 - 2024",
-      "optimal_chart": "bar",
-      "source": "Atlat GD, tr.26 (DHQG, tr.27)",
-      "conflict": "Nhập khẩu 2015: Atlat GD ghi 165,8 tỉ USD; Atlat ĐHQG ghi 165,7 tỉ USD",
-      "raw_prompt": "Cho bảng số liệu: Trị giá xuất khẩu và nhập khẩu hàng hóa của nước ta giai đoạn 2010 - 2024 (Đơn vị: Tỉ USD). Theo bảng số liệu, để so sánh trị giá xuất khẩu và nhập khẩu hàng hóa của nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
-      "keywords": [
-        "so sánh xuất nhập khẩu",
-        "trị giá",
-        "tỉ USD",
-        "cột nhóm"
+        "2 năm (2010 và 2024)",
+        "bán kính khác nhau"
       ],
       "data_table": {
         "headers": [
           "Năm",
           "2010",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Nông nghiệp",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              675.4,
+              2055.5
+            ]
+          },
+          {
+            "name": "Lâm nghiệp",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              22.8,
+              82.9
+            ]
+          },
+          {
+            "name": "Thủy sản",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              177.8,
+              624.4
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "pie",
+      "optimal_chart_name": "Biểu đồ tròn (Pie Chart - Bán kính khác nhau)",
+      "pedagogical_explanation": "Yêu cầu thể hiện 'quy mô và cơ cấu' trong 2 mốc năm (Tổng: 2010 = 876,0 nghìn tỉ; 2024 = 2.762,8 nghìn tỉ đồng theo GD tr.19). Vẽ 2 biểu đồ tròn với bán kính năm 2024 lớn hơn năm 2010 tương ứng với quy mô tổng số.",
+      "counter_factual": {
+        "stacked_area": "Sai lầm: Biểu đồ miền yêu cầu chuỗi thời gian từ 3 năm trở lên.",
+        "line": "Sai lầm: Không thể hiện được cơ cấu bộ phận của một tổng thể."
+      },
+      "structural_analysis": {
+        "time_points": 2,
+        "units": [
+          "Nghìn tỉ đồng"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "ATLAT_CHART_04",
+      "atlat_page": "Atlat GD, tr.26 (DHQG, tr.27)",
+      "source": "Atlat GD, tr.26 (DHQG, tr.27)",
+      "title": "Trị giá xuất khẩu và nhập khẩu hàng hóa nước ta (2015 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để so sánh trị giá xuất khẩu và nhập khẩu hàng hóa nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "so sánh xuất khẩu và nhập khẩu",
+        "cùng đơn vị (tỉ USD)",
+        "cột ghép"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
           "2015",
           "2020",
           "2024"
@@ -562,8 +604,7 @@
             "name": "Xuất khẩu",
             "unit": "Tỉ USD",
             "values": [
-              72.2,
-              162.0,
+              162,
               282.6,
               405.9
             ]
@@ -572,30 +613,38 @@
             "name": "Nhập khẩu",
             "unit": "Tỉ USD",
             "values": [
-              84.8,
-              165.8,
+              165.7,
               262.8,
-              381.0
+              381
             ]
           }
         ]
       },
-      "pedagogical_feedback": {
-        "why_optimal": "Đề bài yêu cầu 'so sánh trị giá xuất khẩu và nhập khẩu' cùng đơn vị tỉ USD qua các năm. Biểu đồ Cột nhóm đôi là lựa chọn trực quan và chuẩn mực.",
-        "pitfall_warnings": "Không chọn biểu đồ đường vì đề bài nhấn mạnh so sánh độ lớn trị giá, không phải tốc độ tăng trưởng."
+      "optimal_chart": "bar",
+      "optimal_chart_name": "Biểu đồ cột ghép (Grouped Bar)",
+      "pedagogical_explanation": "So sánh 2 đại lượng Xuất khẩu và Nhập khẩu cùng chung đơn vị tính (tỉ USD) qua 3 mốc năm (số liệu in chuẩn DHQG tr.27 & GD tr.26). Biểu đồ cột ghép đặt cạnh nhau là dạng biểu đồ trực quan nhất.",
+      "counter_factual": {
+        "pie": "Sai lầm: Không có yêu cầu cơ cấu 100%.",
+        "stacked_area": "Sai lầm: Xuất khẩu và Nhập khẩu không phải là các thành phần cộng lại bằng 100%."
+      },
+      "structural_analysis": {
+        "time_points": 3,
+        "units": [
+          "Tỉ USD"
+        ],
+        "is_total_100": false
       }
     },
     {
       "id": "ATLAT_CHART_05",
-      "title": "Tốc độ tăng trưởng sản lượng than, dầu thô và khí tự nhiên nước ta",
-      "optimal_chart": "line",
-      "source": "Atlat GD, tr.23 (Tính chỉ số từ số tuyệt đối)",
-      "raw_prompt": "Cho bảng số liệu: Tốc độ tăng trưởng sản lượng than, dầu thô và khí đốt của nước ta giai đoạn 2010 - 2024 (Lấy năm 2010 = 100%). Theo bảng số liệu, để thể hiện tốc độ tăng trưởng sản lượng than, dầu thô và khí đốt nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "atlat_page": "Atlat GD, tr.23 (DHQG, tr.25)",
+      "source": "Atlat GD, tr.23 (DHQG, tr.25)",
+      "title": "Tốc độ tăng trưởng sản lượng than, dầu thô và khí tự nhiên (2010 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện tốc độ tăng trưởng sản lượng than sạch, dầu thô và khí tự nhiên nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
         "tốc độ tăng trưởng",
-        "chỉ số",
-        "%",
-        "năm gốc 100%"
+        "năm gốc 2010 = 100%",
+        "biểu đồ đường"
       ],
       "data_table": {
         "headers": [
@@ -610,49 +659,59 @@
             "name": "Than sạch",
             "unit": "%",
             "values": [
-              100.0,
-              93.1,
-              99.6,
-              101.1
+              100,
+              93.5,
+              108.4,
+              115.2
             ]
           },
           {
             "name": "Dầu thô",
             "unit": "%",
             "values": [
-              100.0,
-              124.7,
-              76.7,
-              66.0
+              100,
+              125.8,
+              65.2,
+              54.6
             ]
           },
           {
-            "name": "Khí đốt",
+            "name": "Khí tự nhiên",
             "unit": "%",
             "values": [
-              100.0,
-              112.8,
-              97.9,
-              68.1
+              100,
+              112.4,
+              102.8,
+              88.5
             ]
           }
         ]
       },
-      "pedagogical_feedback": {
-        "why_optimal": "Dữ liệu thể hiện tốc độ tăng trưởng chỉ số với mốc gốc 2010 = 100%. Biểu đồ Đường với 3 đường biểu diễn là chuẩn mực duy nhất.",
-        "pitfall_warnings": "Không chọn biểu đồ cột khi dữ liệu đã chuẩn hóa về năm gốc 100%."
+      "optimal_chart": "line",
+      "optimal_chart_name": "Biểu đồ đường (Line Chart)",
+      "pedagogical_explanation": "Từ khóa vàng 'tốc độ tăng trưởng' kết hợp đơn vị % với năm gốc 2010 = 100% xuất phát từ cùng một gốc là dấu hiệu nhận biết chuẩn mực của Biểu đồ đường.",
+      "counter_factual": {
+        "pie": "Sai lầm: Biểu đồ tròn không thể hiện tốc độ tăng trưởng qua các năm.",
+        "bar_stacked": "Sai lầm: Không thể chồng các chỉ số tăng trưởng độc lập lên nhau."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
       }
     },
     {
       "id": "ATLAT_CHART_06",
+      "atlat_page": "Atlat GD, tr.17 (DHQG, tr.18)",
+      "source": "Atlat GD, tr.17 (DHQG, tr.18)",
       "title": "Dân số thành thị và nông thôn nước ta giai đoạn 2010 - 2024",
-      "optimal_chart": "bar_stacked",
-      "source": "Atlat DHQG, tr.18 & Atlat GD, tr.17",
-      "raw_prompt": "Cho bảng số liệu: Dân số thành thị và nông thôn nước ta giai đoạn 2010 - 2024 (Đơn vị: Triệu người). Theo bảng số liệu, để thể hiện quy mô dân số và cơ cấu dân số thành thị, nông thôn nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện quy mô và cơ cấu dân số phân theo thành thị và nông thôn nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
-        "quy mô và cơ cấu",
-        "cộng lại bằng tổng số",
-        "triệu người"
+        "quy mô và cơ cấu dân số",
+        "thành thị + nông thôn = tổng dân số",
+        "cột chồng"
       ],
       "data_table": {
         "headers": [
@@ -667,49 +726,367 @@
             "name": "Dân số thành thị",
             "unit": "Triệu người",
             "values": [
-              26.46,
-              30.88,
-              35.86,
-              38.99
+              26.5,
+              31.1,
+              35.9,
+              39.5
             ]
           },
           {
             "name": "Dân số nông thôn",
             "unit": "Triệu người",
             "values": [
-              60.6,
-              61.34,
-              61.71,
-              62.33
-            ]
-          },
-          {
-            "name": "Tổng dân số",
-            "unit": "Triệu người",
-            "values": [
-              87.06,
-              92.22,
-              97.57,
-              101.32
+              60.4,
+              60.7,
+              61.6,
+              60.8
             ]
           }
         ]
       },
-      "pedagogical_feedback": {
-        "why_optimal": "Thành thị và nông thôn cộng lại bằng tổng dân số cả nước, đề bài yêu cầu thể hiện cả quy mô tổng số và cơ cấu 2 bộ phận. Biểu đồ Cột Chồng là lựa chọn tối ưu theo SGK.",
-        "pitfall_warnings": "Nếu đề bài yêu cầu chỉ thể hiện cơ cấu (%) thì vẽ biểu đồ Miền, nhưng đề bài có số tuyệt đối (Triệu người) thì biểu đồ Cột Chồng là tối ưu."
+      "optimal_chart": "bar_stacked",
+      "optimal_chart_name": "Biểu đồ cột chồng (Stacked Bar)",
+      "pedagogical_explanation": "Hai bộ phận Thành thị và Nông thôn cộng lại đúng bằng Tổng dân số cả nước. Biểu đồ cột chồng vừa thể hiện được tổng quy mô dân số (độ cao cột), vừa thể hiện được cơ cấu thành thị - nông thôn.",
+      "counter_factual": {
+        "pie": "Sai lầm: Chuỗi thời gian 4 năm không nên vẽ nhiều biểu đồ tròn gây rối.",
+        "line": "Không tối ưu: Không thấy rõ tổng quy mô dân số cả nước bằng hình học cột chồng."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Triệu người"
+        ],
+        "is_total_100": true
+      }
+    },
+    {
+      "id": "ATLAT_CHART_07",
+      "atlat_page": "Atlat GD, tr.19 (DHQG, tr.21)",
+      "source": "Atlat GD, tr.19 (DHQG, tr.21)",
+      "title": "Diện tích và sản lượng lúa cả năm của Việt Nam (2015 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện diện tích và sản lượng lúa cả năm của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "diện tích và sản lượng",
+        "khác đơn vị (nghìn ha và triệu tấn)",
+        "kết hợp"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2015",
+          "2018",
+          "2020",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Diện tích lúa",
+            "unit": "Nghìn ha",
+            "values": [
+              7828,
+              7570.4,
+              7279,
+              7120
+            ]
+          },
+          {
+            "name": "Sản lượng lúa",
+            "unit": "Triệu tấn",
+            "values": [
+              45.1,
+              44,
+              42.8,
+              43.5
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "combo_bar_line",
+      "optimal_chart_name": "Biểu đồ kết hợp (Cột và Đường)",
+      "pedagogical_explanation": "Diện tích (nghìn ha - vẽ Cột) và Sản lượng (triệu tấn - vẽ Đường) mang 2 đơn vị tính khác nhau. Bắt buộc vẽ biểu đồ kết hợp cột và đường với 2 trục tung.",
+      "counter_factual": {
+        "bar": "Sai lầm: Không thể gộp nghìn ha và triệu tấn vào cùng một trục số.",
+        "pie": "Sai lầm: Chuỗi 4 năm và hai đại lượng khác đơn vị đo lường."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Nghìn ha",
+          "Triệu tấn"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "ATLAT_CHART_08",
+      "atlat_page": "Atlat GD, tr.22 (DHQG, tr.24)",
+      "source": "Atlat GD, tr.22 (DHQG, tr.24)",
+      "title": "Giá trị sản xuất công nghiệp phân theo 6 Vùng Kinh tế - Xã hội năm 2024",
+      "raw_prompt": "Theo bảng số liệu, để so sánh giá trị sản xuất công nghiệp giữa 6 Vùng Kinh tế - Xã hội nước ta năm 2024 (tổng cả nước: 16 929,7 nghìn tỉ đồng), dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "so sánh giữa các vùng",
+        "năm 2024 duy nhất",
+        "tên vùng dài"
+      ],
+      "data_table": {
+        "headers": [
+          "Vùng Kinh tế - Xã hội",
+          "Giá trị sản xuất (Nghìn tỉ đồng)"
+        ],
+        "rows": [
+          {
+            "name": "Đông Nam Bộ",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              5580.4
+            ]
+          },
+          {
+            "name": "Đồng bằng sông Hồng",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              5120.6
+            ]
+          },
+          {
+            "name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              2890.5
+            ]
+          },
+          {
+            "name": "Đồng bằng sông Cửu Long",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              1650.8
+            ]
+          },
+          {
+            "name": "Trung du và miền núi phía Bắc",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              1120.2
+            ]
+          },
+          {
+            "name": "Bắc Trung Bộ",
+            "unit": "Nghìn tỉ đồng",
+            "values": [
+              567.2
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar",
+      "optimal_chart_name": "Biểu đồ thanh ngang (Horizontal Bar)",
+      "pedagogical_explanation": "So sánh quy mô một chỉ tiêu kinh tế giữa 6 vùng kinh tế - xã hội chuẩn Atlat GD tr.18 & tr.22 có tên địa danh dài tại một mốc thời gian. Biểu đồ thanh ngang giúp nhãn chữ nằm ngang rõ ràng không bị đè chữ.",
+      "counter_factual": {
+        "line": "Sai lầm: Các vùng độc lập không tạo thành chuỗi thời gian liên tục.",
+        "stacked_area": "Sai lầm: 1 năm duy nhất không thể vẽ biểu đồ miền."
+      },
+      "structural_analysis": {
+        "time_points": 1,
+        "units": [
+          "Nghìn tỉ đồng"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "ATLAT_CHART_09",
+      "atlat_page": "Atlat GD, tr.23 (DHQG, tr.25)",
+      "source": "Atlat GD, tr.23 (DHQG, tr.25)",
+      "title": "Sản lượng điện phát ra của nước ta qua các năm (2015 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện tình hình phát triển sản lượng điện phát ra của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "tình hình phát triển",
+        "1 đại lượng duy nhất",
+        "cột đơn"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2015",
+          "2018",
+          "2020",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Sản lượng điện",
+            "unit": "Tỉ kWh",
+            "values": [
+              159.4,
+              212.9,
+              235.4,
+              275.9
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar",
+      "optimal_chart_name": "Biểu đồ cột đơn (Single Bar)",
+      "pedagogical_explanation": "Đề bài yêu cầu thể hiện quy mô, tình hình phát triển của một đối tượng duy nhất (sản lượng điện - tỉ kWh) qua các năm. Biểu đồ cột đơn là phù hợp nhất.",
+      "counter_factual": {
+        "pie": "Sai lầm: Có 4 mốc năm và không có cơ cấu các nguồn điện thành phần.",
+        "bar_stacked": "Sai lầm: Chỉ có 1 đối tượng duy nhất nên không dùng cột chồng."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Tỉ kWh"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "ATLAT_CHART_10",
+      "atlat_page": "Atlat GD, tr.26 (DHQG, tr.27)",
+      "source": "Atlat GD, tr.26 (DHQG, tr.27)",
+      "title": "Cơ cấu thị trường xuất khẩu hàng hóa Việt Nam năm 2024",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện cơ cấu thị trường xuất khẩu hàng hóa của nước ta năm 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "cơ cấu thị trường",
+        "năm 2024 duy nhất (1 năm)",
+        "tổng cộng 100%"
+      ],
+      "data_table": {
+        "headers": [
+          "Thị trường xuất khẩu",
+          "Tỉ trọng (%)"
+        ],
+        "rows": [
+          {
+            "name": "Hoa Kỳ",
+            "unit": "%",
+            "values": [
+              28.5
+            ]
+          },
+          {
+            "name": "Trung Quốc",
+            "unit": "%",
+            "values": [
+              16.8
+            ]
+          },
+          {
+            "name": "EU",
+            "unit": "%",
+            "values": [
+              12.6
+            ]
+          },
+          {
+            "name": "ASEAN",
+            "unit": "%",
+            "values": [
+              9.1
+            ]
+          },
+          {
+            "name": "Hàn Quốc",
+            "unit": "%",
+            "values": [
+              6.8
+            ]
+          },
+          {
+            "name": "Nhật Bản",
+            "unit": "%",
+            "values": [
+              6.5
+            ]
+          },
+          {
+            "name": "Các thị trường khác",
+            "unit": "%",
+            "values": [
+              19.7
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "pie",
+      "optimal_chart_name": "Biểu đồ tròn (Pie Chart)",
+      "pedagogical_explanation": "Yêu cầu 'cơ cấu thị trường' trong duy nhất 1 mốc năm 2024 với tổng tỉ trọng bằng 100%. Biểu đồ tròn là lựa chọn tiêu chuẩn theo Mục 1 biểu đồ.docx.",
+      "counter_factual": {
+        "stacked_area": "Sai lầm: Biểu đồ miền cần ít nhất 3-4 năm.",
+        "line": "Sai lầm: Các thị trường là đối tượng phân loại không gian, không có trục thời gian."
+      },
+      "structural_analysis": {
+        "time_points": 1,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
       }
     },
     {
       "id": "ATLAT_CHART_11",
-      "title": "Sản lượng thủy sản khai thác và nuôi trồng nước ta giai đoạn 2010 - 2024",
-      "optimal_chart": "bar",
+      "atlat_page": "Atlat GD, tr.21 (DHQG, tr.23)",
       "source": "Atlat GD, tr.21 (DHQG, tr.23)",
-      "raw_prompt": "Cho bảng số liệu: Sản lượng thủy sản khai thác và nuôi trồng của nước ta giai đoạn 2010 - 2024 (Đơn vị: Nghìn tấn). Theo bảng số liệu, để so sánh sản lượng thủy sản khai thác và nuôi trồng của nước ta qua các năm, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "title": "Sản lượng thủy sản khai thác và nuôi trồng nước ta (2015 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để so sánh sản lượng thủy sản khai thác và nuôi trồng nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
-        "so sánh sản lượng",
-        "nghìn tấn",
-        "cột nhóm đôi"
+        "so sánh khai thác và nuôi trồng",
+        "cùng đơn vị (nghìn tấn)",
+        "cột ghép"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2015",
+          "2020",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Nuôi trồng",
+            "unit": "Nghìn tấn",
+            "values": [
+              3550.7,
+              4739.2,
+              5812.3
+            ]
+          },
+          {
+            "name": "Khai thác",
+            "unit": "Nghìn tấn",
+            "values": [
+              3176.5,
+              3896.5,
+              3863.9
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar",
+      "optimal_chart_name": "Biểu đồ cột ghép (Grouped Bar)",
+      "pedagogical_explanation": "So sánh 2 ngành Khai thác và Nuôi trồng có cùng đơn vị tính (nghìn tấn) qua các năm (số liệu in chuẩn DHQG tr.23). Biểu đồ cột ghép phản ánh trực quan sự bứt phá của ngành nuôi trồng.",
+      "counter_factual": {
+        "pie": "Sai lầm: Chuỗi 3 năm không vẽ tròn. Không có tổng cơ cấu 100%.",
+        "combo_bar_line": "Không phù hợp: Cùng 1 đơn vị tính (nghìn tấn) thì không cần 2 trục tung."
+      },
+      "structural_analysis": {
+        "time_points": 3,
+        "units": [
+          "Nghìn tấn"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "ATLAT_CHART_12",
+      "atlat_page": "Atlat GD, tr.20 (DHQG, tr.22)",
+      "source": "Atlat GD, tr.20 (DHQG, tr.22)",
+      "title": "Chuyển dịch cơ cấu diện tích cây công nghiệp nước ta (2010 - 2024)",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện sự chuyển dịch cơ cấu diện tích cây công nghiệp phân theo hàng năm và lâu năm nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "chuyển dịch cơ cấu diện tích",
+        "giai đoạn 2010 - 2024 (4 năm)",
+        "biểu đồ miền"
       ],
       "data_table": {
         "headers": [
@@ -721,66 +1098,791 @@
         ],
         "rows": [
           {
-            "name": "Thủy sản khai thác",
-            "unit": "Nghìn tấn",
+            "name": "Cây công nghiệp lâu năm",
+            "unit": "%",
             "values": [
-              2414.4,
-              3036.4,
-              3854.0,
-              3960.0
+              72.4,
+              75.8,
+              79.2,
+              81.5
             ]
           },
           {
-            "name": "Thủy sản nuôi trồng",
-            "unit": "Nghìn tấn",
+            "name": "Cây công nghiệp hàng năm",
+            "unit": "%",
             "values": [
-              2728.3,
-              3513.6,
-              4615.0,
-              5450.0
+              27.6,
+              24.2,
+              20.8,
+              18.5
             ]
           }
         ]
       },
-      "pedagogical_feedback": {
-        "why_optimal": "Đề bài yêu cầu so sánh quy mô sản lượng của 2 phân ngành cùng đơn vị đo (Nghìn tấn). Biểu đồ Cột nhóm là lựa chọn tối ưu.",
-        "pitfall_warnings": "Không chọn biểu đồ Tròn vì chuỗi số liệu có 4 năm."
+      "optimal_chart": "stacked_area",
+      "optimal_chart_name": "Biểu đồ miền (Stacked Area)",
+      "pedagogical_explanation": "Cơ cấu diện tích 2 nhóm cây cộng lại bằng 100% biến thiên qua chuỗi 4 mốc năm (≥ 3 năm). Biểu đồ miền thể hiện rõ xu thế chuyển dịch tăng nhanh của cây lâu năm (cà phê, cao su, hồ tiêu).",
+      "counter_factual": {
+        "pie": "Sai lầm: 4 năm vượt quá giới hạn vẽ tròn (chỉ từ 1-2 năm).",
+        "line": "Không tối ưu: Không làm nổi bật được tính bù trừ của 2 nhóm cây trong diện tích chung 100%."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "%"
+        ],
+        "is_total_100": true
       }
     },
     {
-      "id": "ATLAT_CHART_14",
-      "title": "Cán cân thương mại hàng hóa nước ta giai đoạn 2015 - 2024",
-      "optimal_chart": "bar",
-      "source": "Atlat GD, tr.26 (Tính từ Xuất khẩu - Nhập khẩu)",
-      "conflict": "2015: Atlat GD tính ra -3,8 tỉ USD; Atlat ĐHQG ghi -3,7 tỉ USD",
-      "raw_prompt": "Cho bảng số liệu: Cán cân thương mại hàng hóa của nước ta các năm 2015, 2020 và 2024 (Đơn vị: Tỉ USD). Theo bảng số liệu, để thể hiện sự biến động cán cân thương mại hàng hóa nước ta qua các năm, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "id": "ATLAT_CHART_13",
+      "atlat_page": "Atlat GD, tr.23 (DHQG, tr.25)",
+      "source": "Atlat GD, tr.23 (DHQG, tr.25)",
+      "title": "Sản lượng dầu thô khai thác của nước ta giai đoạn 2015 - 2024",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện diễn biến sản lượng dầu thô khai thác nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
       "keywords": [
-        "cán cân thương mại",
-        "có giá trị âm và dương",
-        "tỉ USD"
+        "diễn biến sản lượng",
+        "1 chỉ tiêu duy nhất",
+        "cột đơn"
       ],
       "data_table": {
         "headers": [
           "Năm",
           "2015",
+          "2018",
           "2020",
           "2024"
         ],
         "rows": [
           {
-            "name": "Cán cân thương mại (X - M)",
+            "name": "Dầu thô khai thác",
+            "unit": "Triệu tấn",
+            "values": [
+              18.7,
+              14,
+              9.7,
+              8.2
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar",
+      "optimal_chart_name": "Biểu đồ cột đơn (Single Bar)",
+      "pedagogical_explanation": "Thể hiện diễn biến giảm dần của sản lượng dầu thô khai thác (1 đối tượng duy nhất) qua các năm. Biểu đồ cột đơn là phù hợp nhất.",
+      "counter_factual": {
+        "pie": "Sai lầm: 4 mốc thời gian không vẽ tròn.",
+        "combo_bar_line": "Không phù hợp: Chỉ có 1 đối tượng nghiên cứu duy nhất."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": [
+          "Triệu tấn"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "ATLAT_CHART_14",
+      "atlat_page": "Atlat GD, tr.26 (DHQG, tr.27)",
+      "source": "Atlat GD, tr.26 (DHQG, tr.27)",
+      "title": "Cán cân thương mại hàng hóa nước ta giai đoạn 2015 - 2024",
+      "raw_prompt": "Theo bảng số liệu, để thể hiện cán cân thương mại hàng hóa của nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "cán cân thương mại",
+        "thặng dư / thâm hụt (có giá trị âm/dương)",
+        "cột"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "2015",
+          "2018",
+          "2020",
+          "2022",
+          "2024"
+        ],
+        "rows": [
+          {
+            "name": "Cán cân thương mại",
             "unit": "Tỉ USD",
             "values": [
-              -3.8,
-              19.8,
-              24.9
+              -3.7,
+              6.8,
+              19.9,
+              12.4,
+              27
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar",
+      "optimal_chart_name": "Biểu đồ cột (Single Bar - Trục đối xứng 0)",
+      "pedagogical_explanation": "Cán cân thương mại có giá trị âm (nhập siêu năm 2015: -3,7 tỉ USD theo DHQG tr.27) và giá trị dương (xuất siêu các năm sau). Biểu đồ cột có trục số 0 đối xứng là chuẩn mực nhất.",
+      "counter_factual": {
+        "pie": "Sai lầm: Số liệu có giá trị âm không thể vẽ biểu đồ tròn.",
+        "stacked_area": "Sai lầm: Số liệu âm không thể xếp chồng miền."
+      },
+      "structural_analysis": {
+        "time_points": 5,
+        "units": [
+          "Tỉ USD"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "ATLAT_CHART_15",
+      "atlat_page": "Atlat GD, tr.23 (DHQG, tr.25)",
+      "source": "Atlat GD, tr.23 (DHQG, tr.25)",
+      "title": "Công suất lắp máy một số nhà máy thủy điện lớn ở nước ta",
+      "raw_prompt": "Theo bảng số liệu, để so sánh công suất lắp máy của một số nhà máy thủy điện lớn ở nước ta, dạng biểu đồ nào sau đây thích hợp nhất?",
+      "keywords": [
+        "so sánh công suất",
+        "nhiều đối tượng địa danh",
+        "thanh ngang"
+      ],
+      "data_table": {
+        "headers": [
+          "Nhà máy thủy điện",
+          "Công suất (MW)"
+        ],
+        "rows": [
+          {
+            "name": "Sơn La (Sông Đà)",
+            "unit": "MW",
+            "values": [
+              2400
+            ]
+          },
+          {
+            "name": "Hòa Bình (Sông Đà)",
+            "unit": "MW",
+            "values": [
+              1920
+            ]
+          },
+          {
+            "name": "Lai Châu (Sông Đà)",
+            "unit": "MW",
+            "values": [
+              1200
+            ]
+          },
+          {
+            "name": "Yaly (Sông Sê San)",
+            "unit": "MW",
+            "values": [
+              720
+            ]
+          },
+          {
+            "name": "Huội Quảng (Sông Nậm Mu)",
+            "unit": "MW",
+            "values": [
+              520
+            ]
+          },
+          {
+            "name": "Trị An (Sông Đồng Nai)",
+            "unit": "MW",
+            "values": [
+              400
+            ]
+          }
+        ]
+      },
+      "optimal_chart": "bar",
+      "optimal_chart_name": "Biểu đồ thanh ngang (Horizontal Bar)",
+      "pedagogical_explanation": "So sánh 1 chỉ tiêu duy nhất (công suất MW) giữa các nhà máy độc lập có tên riêng dài. Biểu đồ thanh ngang là tối ưu nhất.",
+      "counter_factual": {
+        "line": "Sai lầm: Các nhà máy độc lập không liên tục theo thời gian.",
+        "pie": "Không tối ưu: Khó so sánh độ chênh lệch công suất chính xác như thanh ngang."
+      },
+      "structural_analysis": {
+        "time_points": 1,
+        "units": [
+          "MW"
+        ],
+        "is_total_100": false
+      }
+    },
+    {
+      "id": "ATLAT_CHART_16",
+      "title": "Quy mô và cơ cấu giá trị sản xuất công nghiệp phân theo thành phần kinh tế năm 2015 và 2024",
+      "optimal_chart": "pie",
+      "source": "Atlat GD, tr.21; Niên giám thống kê",
+      "atlat_page": "Atlat GD, tr.21",
+      "raw_prompt": "Cho bảng số liệu: Giá trị sản xuất công nghiệp nước ta phân theo thành phần kinh tế năm 2015 và 2024 (Đơn vị: nghìn tỷ đồng). Theo bảng số liệu, để thể hiện quy mô và cơ cấu giá trị sản xuất công nghiệp phân theo thành phần kinh tế nước ta năm 2015 và 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "quy mô và cơ cấu",
+        "2 năm",
+        "thành phần kinh tế"
+      ],
+      "data_table": {
+        "headers": [
+          "Thành phần kinh tế",
+          "Năm 2015",
+          "Năm 2024"
+        ],
+        "rows": [
+          {
+            "name": "Khu vực Nhà nước",
+            "unit": "nghìn tỷ đồng",
+            "values": [
+              342.5,
+              580.4
+            ]
+          },
+          {
+            "name": "Khu vực Ngoài nhà nước",
+            "unit": "nghìn tỷ đồng",
+            "values": [
+              612.8,
+              1425.6
+            ]
+          },
+          {
+            "name": "Khu vực có vốn đầu tư nước ngoài (FDI)",
+            "unit": "nghìn tỷ đồng",
+            "values": [
+              895.2,
+              2450.8
+            ]
+          },
+          {
+            "name": "Tổng số",
+            "unit": "nghìn tỷ đồng",
+            "values": [
+              1850.5,
+              4456.8
             ]
           }
         ]
       },
       "pedagogical_feedback": {
-        "why_optimal": "Cán cân thương mại có cả giá trị âm (nhập siêu năm 2015) và giá trị dương (xuất siêu 2020, 2024). Biểu đồ Cột với trục hoành nằm ở mức 0 là trực quan và chính xác nhất.",
-        "pitfall_warnings": "Tuyệt đối không vẽ biểu đồ Tròn hoặc Miền cho đại lượng có giá trị âm."
+        "why_optimal": "Đề bài có từ khóa 'quy mô và cơ cấu' tại 2 mốc năm (2015 và 2024) với số liệu tuyệt đối có tổng số. Biểu đồ Tròn 2 bán kính (bán kính R2024 > R2015) là chuẩn mực sư phạm.",
+        "pitfall_warnings": "Không chọn biểu đồ Miền vì chỉ có 2 mốc năm (Miền phải từ 3 năm trở lên). Không chọn Cột đơn vì đề bài yêu cầu thể hiện 'cơ cấu'."
+      }
+    },
+    {
+      "id": "ATLAT_CHART_17",
+      "title": "Chuyển dịch cơ cấu lao động từ 15 tuổi trở lên phân theo khu vực kinh tế (2010 - 2024)",
+      "optimal_chart": "stacked_area",
+      "source": "Atlat GD, tr.17; Niên giám thống kê",
+      "atlat_page": "Atlat GD, tr.17",
+      "raw_prompt": "Cho bảng số liệu: Cơ cấu lao động từ 15 tuổi trở lên đang làm việc phân theo khu vực kinh tế nước ta giai đoạn 2010 - 2024 (Đơn vị: %). Theo bảng số liệu, để thể hiện sự chuyển dịch cơ cấu lao động phân theo khu vực kinh tế nước ta giai đoạn 2010 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "chuyển dịch cơ cấu",
+        "sự thay đổi cơ cấu",
+        "4 năm",
+        "%"
+      ],
+      "data_table": {
+        "headers": [
+          "Khu vực kinh tế",
+          "Năm 2010",
+          "Năm 2015",
+          "Năm 2020",
+          "Năm 2024"
+        ],
+        "rows": [
+          {
+            "name": "Nông, lâm, thủy sản (Khu vực I)",
+            "unit": "%",
+            "values": [
+              49.5,
+              43.6,
+              33.1,
+              27.2
+            ]
+          },
+          {
+            "name": "Công nghiệp - Xây dựng (Khu vực II)",
+            "unit": "%",
+            "values": [
+              20.9,
+              22.8,
+              30.8,
+              33.5
+            ]
+          },
+          {
+            "name": "Dịch vụ (Khu vực III)",
+            "unit": "%",
+            "values": [
+              29.6,
+              33.6,
+              36.1,
+              39.3
+            ]
+          },
+          {
+            "name": "Tổng số",
+            "unit": "%",
+            "values": [
+              100,
+              100,
+              100,
+              100
+            ]
+          }
+        ]
+      },
+      "pedagogical_feedback": {
+        "why_optimal": "Đề bài có từ khóa 'chuyển dịch cơ cấu', đơn vị là %, chuỗi thời gian 4 năm (2010, 2015, 2020, 2024) và tổng các năm đều bằng 100%. Biểu đồ Miền thể hiện động thái chuyển dịch cơ cấu liên tục trực quan nhất.",
+        "pitfall_warnings": "Tránh vẽ 4 biểu đồ tròn vì vẽ 4 hình tròn vừa tốn diện tích vừa khó so sánh xu hướng liên tục (SGK Địa lí quy ước: từ 3-4 năm trở lên ưu tiên biểu đồ Miền)."
+      }
+    },
+    {
+      "id": "ATLAT_CHART_18",
+      "title": "Tốc độ tăng trưởng kim ngạch xuất khẩu một số mặt hàng chủ lực nước ta giai đoạn 2015 - 2024",
+      "optimal_chart": "line",
+      "source": "Atlat GD, tr.26; Niên giám thống kê",
+      "atlat_page": "Atlat GD, tr.26",
+      "raw_prompt": "Cho bảng số liệu: Tốc độ tăng trưởng kim ngạch xuất khẩu một số mặt hàng chủ lực nước ta giai đoạn 2015 - 2024 (Đơn vị: %, lấy năm 2015 = 100%). Theo bảng số liệu, để thể hiện tốc độ tăng trưởng kim ngạch xuất khẩu các mặt hàng trên giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "tốc độ tăng trưởng",
+        "nhiều năm",
+        "100%",
+        "đường"
+      ],
+      "data_table": {
+        "headers": [
+          "Mặt hàng",
+          "Năm 2015",
+          "Năm 2018",
+          "Năm 2021",
+          "Năm 2024"
+        ],
+        "rows": [
+          {
+            "name": "Điện tử, máy tính và linh kiện",
+            "unit": "%",
+            "values": [
+              100,
+              189.5,
+              321.4,
+              452.8
+            ]
+          },
+          {
+            "name": "Hàng dệt, may",
+            "unit": "%",
+            "values": [
+              100,
+              133.4,
+              142.1,
+              168.5
+            ]
+          },
+          {
+            "name": "Giày dép các loại",
+            "unit": "%",
+            "values": [
+              100,
+              135.2,
+              148.6,
+              172.4
+            ]
+          },
+          {
+            "name": "Thủy sản",
+            "unit": "%",
+            "values": [
+              100,
+              132.8,
+              134.5,
+              155.2
+            ]
+          }
+        ]
+      },
+      "pedagogical_feedback": {
+        "why_optimal": "Đề bài có từ khóa 'tốc độ tăng trưởng', năm gốc 2015 bằng 100% và chuỗi thời gian 4 năm. Biểu đồ Đường với các đường xuất phát từ mốc 100% tại trục tung là quy tắc vàng bất di bất dịch.",
+        "pitfall_warnings": "Tuyệt đối không chọn biểu đồ Cột khi đề bài đã ghi rõ từ khóa 'tốc độ tăng trưởng' với năm gốc 100%."
+      }
+    },
+    {
+      "id": "ATLAT_CHART_19",
+      "title": "Diện tích gieo trồng cây công nghiệp lâu năm của Tây Nguyên và Đông Nam Bộ năm 2024",
+      "optimal_chart": "bar",
+      "source": "Atlat GD, tr.19, tr.20; Niên giám thống kê",
+      "atlat_page": "Atlat GD, tr.19",
+      "raw_prompt": "Cho bảng số liệu: Diện tích gieo trồng cây công nghiệp lâu năm phân theo loại cây của Tây Nguyên và Đông Nam Bộ năm 2024 (Đơn vị: nghìn ha). Theo bảng số liệu, để so sánh diện tích các loại cây công nghiệp lâu năm giữa hai vùng trong năm 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "so sánh",
+        "trong một năm",
+        "nghìn ha",
+        "cột ghép"
+      ],
+      "data_table": {
+        "headers": [
+          "Loại cây",
+          "Tây Nguyên",
+          "Đông Nam Bộ"
+        ],
+        "rows": [
+          {
+            "name": "Cà phê",
+            "unit": "nghìn ha",
+            "values": [
+              655.8,
+              42.5
+            ]
+          },
+          {
+            "name": "Cao su",
+            "unit": "nghìn ha",
+            "values": [
+              252.4,
+              385.6
+            ]
+          },
+          {
+            "name": "Hồ tiêu",
+            "unit": "nghìn ha",
+            "values": [
+              88.5,
+              36.2
+            ]
+          },
+          {
+            "name": "Điều",
+            "unit": "nghìn ha",
+            "values": [
+              32.1,
+              192.4
+            ]
+          }
+        ]
+      },
+      "pedagogical_feedback": {
+        "why_optimal": "Đề bài yêu cầu 'so sánh các đối tượng cùng đơn vị (nghìn ha) trong một năm (2024)'. Biểu đồ Cột ghép (mỗi loại cây có 2 cột đại diện 2 vùng) là lựa chọn tối ưu.",
+        "pitfall_warnings": "Không chọn biểu đồ Tròn vì số liệu đơn vị là nghìn ha (số lượng tuyệt đối), không có tổng số để tính cơ cấu 100%."
+      }
+    },
+    {
+      "id": "ATLAT_CHART_20",
+      "title": "Khối lượng vận chuyển và luân chuyển hàng hóa nước ta giai đoạn 2015 - 2024",
+      "optimal_chart": "combo_bar_line",
+      "source": "Atlat GD, tr.24; Niên giám thống kê",
+      "atlat_page": "Atlat GD, tr.24",
+      "raw_prompt": "Cho bảng số liệu: Khối lượng vận chuyển và luân chuyển hàng hóa nước ta giai đoạn 2015 - 2024 (Vận chuyển: triệu tấn; Luân chuyển: tỷ tấn.km). Theo bảng số liệu, để thể hiện khối lượng vận chuyển và luân chuyển hàng hóa nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "hai đại lượng khác đơn vị",
+        "triệu tấn",
+        "tỷ tấn.km",
+        "kết hợp"
+      ],
+      "data_table": {
+        "headers": [
+          "Năm",
+          "Khối lượng vận chuyển (Triệu tấn)",
+          "Khối lượng luân chuyển (Tỷ tấn.km)"
+        ],
+        "rows": [
+          {
+            "name": "Năm 2015",
+            "unit": "hỗn hợp",
+            "values": [
+              1139.4,
+              218.3
+            ]
+          },
+          {
+            "name": "Năm 2018",
+            "unit": "hỗn hợp",
+            "values": [
+              1528.2,
+              298.5
+            ]
+          },
+          {
+            "name": "Năm 2021",
+            "unit": "hỗn hợp",
+            "values": [
+              1621.5,
+              335.2
+            ]
+          },
+          {
+            "name": "Năm 2024",
+            "unit": "hỗn hợp",
+            "values": [
+              2350,
+              510.4
+            ]
+          }
+        ]
+      },
+      "pedagogical_feedback": {
+        "why_optimal": "Đề bài yêu cầu thể hiện 2 đại lượng khác nhau về đơn vị (Khối lượng vận chuyển tính bằng 'triệu tấn', Luân chuyển tính bằng 'tỷ tấn.km') nhưng có mối quan hệ trực tiếp về dịch vụ vận tải. Biểu đồ Kết hợp Cột (vận chuyển) và Đường (luân chuyển) với 2 trục tung là chuẩn xác.",
+        "pitfall_warnings": "Không thể dùng biểu đồ Cột đơn/ghép chung 1 trục tung vì hai đại lượng chênh lệch về đơn vị đo và ý nghĩa vật lý."
+      }
+    },
+    {
+      "id": "ATLAT_CHART_21",
+      "title": "Quy mô và cơ cấu diện tích rừng nước ta giai đoạn 2015 - 2024",
+      "optimal_chart": "bar_stacked",
+      "source": "Atlat GD, tr.20; Niên giám thống kê",
+      "atlat_page": "Atlat GD, tr.20",
+      "raw_prompt": "Cho bảng số liệu: Diện tích rừng tự nhiên và rừng trồng nước ta giai đoạn 2015 - 2024 (Đơn vị: nghìn ha). Theo bảng số liệu, để thể hiện tốt nhất quy mô và cơ cấu diện tích rừng nước ta giai đoạn 2015 - 2024 theo giá trị tuyệt đối, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "quy mô và cơ cấu",
+        "giá trị tuyệt đối",
+        "cột chồng",
+        "nghìn ha"
+      ],
+      "data_table": {
+        "headers": [
+          "Loại rừng",
+          "Năm 2015",
+          "Năm 2018",
+          "Năm 2021",
+          "Năm 2024"
+        ],
+        "rows": [
+          {
+            "name": "Rừng tự nhiên",
+            "unit": "nghìn ha",
+            "values": [
+              10176.2,
+              10255.5,
+              10171.7,
+              10129.8
+            ]
+          },
+          {
+            "name": "Rừng trồng",
+            "unit": "nghìn ha",
+            "values": [
+              3886.3,
+              4236.1,
+              4574,
+              4735.6
+            ]
+          },
+          {
+            "name": "Tổng diện tích rừng",
+            "unit": "nghìn ha",
+            "values": [
+              14062.5,
+              14491.6,
+              14745.7,
+              14865.4
+            ]
+          }
+        ]
+      },
+      "pedagogical_feedback": {
+        "why_optimal": "Đề bài yêu cầu thể hiện 'quy mô và cơ cấu' của đối tượng qua chuỗi 4 năm theo giá trị tuyệt đối (nghìn ha). Biểu đồ Cột Chồng (chiều cao cột là tổng diện tích rừng, bên trong chia 2 đoạn rừng tự nhiên và rừng trồng) là chuẩn xác nhất theo quy tắc biểu đồ.docx mục 6.",
+        "pitfall_warnings": "Nếu đề bài yêu cầu cơ cấu theo tỉ lệ % thì vẽ Miền; nhưng đề bài yêu cầu 'quy mô và cơ cấu theo giá trị tuyệt đối' thì Cột Chồng là lựa chọn tối ưu."
+      }
+    },
+    {
+      "id": "ATLAT_CHART_22",
+      "title": "So sánh GRDP bình quân đầu người của 6 Vùng kinh tế - xã hội nước ta năm 2024",
+      "optimal_chart": "bar",
+      "source": "Atlat GD, tr.18; Niên giám thống kê",
+      "atlat_page": "Atlat GD, tr.18",
+      "raw_prompt": "Cho bảng số liệu: GRDP bình quân đầu người phân theo 6 Vùng kinh tế - xã hội nước ta năm 2024 (Đơn vị: triệu đồng/người/năm). Theo bảng số liệu, để so sánh mức sống và trình độ phát triển giữa các vùng năm 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "so sánh",
+        "6 vùng",
+        "trong một năm",
+        "cột thanh ngang"
+      ],
+      "data_table": {
+        "headers": [
+          "Vùng kinh tế - xã hội",
+          "GRDP bình quân (Triệu đồng/người)"
+        ],
+        "rows": [
+          {
+            "name": "Đông Nam Bộ",
+            "unit": "triệu đồng/người",
+            "values": [
+              178.5
+            ]
+          },
+          {
+            "name": "Đồng bằng sông Hồng",
+            "unit": "triệu đồng/người",
+            "values": [
+              142.6
+            ]
+          },
+          {
+            "name": "Bắc Trung Bộ và Duyên hải miền Trung",
+            "unit": "triệu đồng/người",
+            "values": [
+              82.4
+            ]
+          },
+          {
+            "name": "Đồng bằng sông Cửu Long",
+            "unit": "triệu đồng/người",
+            "values": [
+              79.8
+            ]
+          },
+          {
+            "name": "Tây Nguyên",
+            "unit": "triệu đồng/người",
+            "values": [
+              68.5
+            ]
+          },
+          {
+            "name": "Trung du và miền núi phía Bắc",
+            "unit": "triệu đồng/người",
+            "values": [
+              65.2
+            ]
+          }
+        ]
+      },
+      "pedagogical_feedback": {
+        "why_optimal": "Đề bài yêu cầu 'so sánh các đối tượng có cùng đơn vị trong một năm (2024)'. Biểu đồ Cột đơn (hoặc Cột thanh ngang khi tên các vùng dài) thể hiện khoảng cách phát triển giữa vùng dẫn đầu (Đông Nam Bộ) và vùng miền núi rõ nét nhất.",
+        "pitfall_warnings": "Không chọn biểu đồ Tròn vì GRDP bình quân là chỉ số bình quân, không phải thành phần cộng dồn thành 100%."
+      }
+    },
+    {
+      "id": "ATLAT_CHART_23",
+      "title": "Chuyển dịch cơ cấu sản lượng điện phát ra phân theo nguồn năng lượng giai đoạn 2015 - 2024",
+      "optimal_chart": "stacked_area",
+      "source": "Atlat GD, tr.23; Tập đoàn Điện lực Việt Nam (EVN)",
+      "atlat_page": "Atlat GD, tr.23",
+      "raw_prompt": "Cho bảng số liệu: Cơ cấu sản lượng điện phát ra phân theo nguồn năng lượng nước ta giai đoạn 2015 - 2024 (Đơn vị: %). Theo bảng số liệu, để thể hiện sự chuyển dịch cơ cấu sản lượng điện phân theo nguồn năng lượng nước ta giai đoạn 2015 - 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "chuyển dịch cơ cấu",
+        "4 năm",
+        "%",
+        "năng lượng tái tạo"
+      ],
+      "data_table": {
+        "headers": [
+          "Nguồn năng lượng",
+          "Năm 2015",
+          "Năm 2018",
+          "Năm 2021",
+          "Năm 2024"
+        ],
+        "rows": [
+          {
+            "name": "Thủy điện",
+            "unit": "%",
+            "values": [
+              35.8,
+              38.5,
+              30.6,
+              28.5
+            ]
+          },
+          {
+            "name": "Nhiệt điện than",
+            "unit": "%",
+            "values": [
+              33.4,
+              40.2,
+              46.2,
+              47.8
+            ]
+          },
+          {
+            "name": "Nhiệt điện khí",
+            "unit": "%",
+            "values": [
+              29.8,
+              20.1,
+              10.4,
+              8.2
+            ]
+          },
+          {
+            "name": "Năng lượng tái tạo (gió, mặt trời)",
+            "unit": "%",
+            "values": [
+              1,
+              1.2,
+              12.8,
+              15.5
+            ]
+          },
+          {
+            "name": "Tổng số",
+            "unit": "%",
+            "values": [
+              100,
+              100,
+              100,
+              100
+            ]
+          }
+        ]
+      },
+      "pedagogical_feedback": {
+        "why_optimal": "Đề bài có từ khóa 'chuyển dịch cơ cấu', đơn vị là %, chuỗi thời gian 4 năm (2015, 2018, 2021, 2024), tổng các thành phần bằng 100%. Biểu đồ Miền thể hiện sự bứt phá mạnh mẽ của năng lượng tái tạo từ sau năm 2018 trực quan nhất.",
+        "pitfall_warnings": "Tránh chọn biểu đồ Đường vì biểu đồ đường không lột tả được tính chất cộng gộp đủ 100% của cơ cấu hệ thống điện quốc gia."
+      }
+    },
+    {
+      "id": "ATLAT_CHART_24",
+      "title": "Cơ cấu diện tích đất có rừng nước ta phân theo mục đích sử dụng năm 2024",
+      "optimal_chart": "pie",
+      "source": "Atlat GD, tr.20; Cục Lâm nghiệp",
+      "atlat_page": "Atlat GD, tr.20",
+      "raw_prompt": "Cho bảng số liệu: Diện tích đất có rừng nước ta phân theo mục đích sử dụng năm 2024 (Đơn vị: nghìn ha). Theo bảng số liệu, để thể hiện cơ cấu diện tích đất có rừng nước ta phân theo mục đích sử dụng năm 2024, dạng biểu đồ nào sau đây là thích hợp nhất?",
+      "keywords": [
+        "cơ cấu",
+        "trong một năm",
+        "1 năm",
+        "rừng phòng hộ"
+      ],
+      "data_table": {
+        "headers": [
+          "Mục đích sử dụng rừng",
+          "Diện tích (Nghìn ha)",
+          "Tỉ trọng (%)"
+        ],
+        "rows": [
+          {
+            "name": "Rừng sản xuất",
+            "unit": "nghìn ha",
+            "values": [
+              7850.4,
+              52.8
+            ]
+          },
+          {
+            "name": "Rừng phòng hộ",
+            "unit": "nghìn ha",
+            "values": [
+              4680.2,
+              31.5
+            ]
+          },
+          {
+            "name": "Rừng đặc dụng",
+            "unit": "nghìn ha",
+            "values": [
+              2334.8,
+              15.7
+            ]
+          },
+          {
+            "name": "Tổng số",
+            "unit": "nghìn ha",
+            "values": [
+              14865.4,
+              100
+            ]
+          }
+        ]
+      },
+      "pedagogical_feedback": {
+        "why_optimal": "Đề bài yêu cầu thể hiện 'cơ cấu' của đối tượng chỉ trong duy nhất 1 mốc năm (2024). Biểu đồ Tròn (1 hình tròn chia thành 3 nan quạt) là lựa chọn duy nhất đúng tuyệt đối theo quy tắc biểu đồ.docx.",
+        "pitfall_warnings": "Tuyệt đối không chọn biểu đồ Miền vì Miền chỉ vẽ khi có chuỗi thời gian từ 3 năm trở lên. 1 mốc năm bắt buộc phải vẽ biểu đồ Tròn."
       }
     }
   ]

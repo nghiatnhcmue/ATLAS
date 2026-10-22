@@ -29,7 +29,13 @@
         "province": "Tỉnh Lào Cai",
         "desc": "Nóc nhà Đông Dương, đỉnh núi cao nhất Việt Nam (3.147m) nằm trên dãy Hoàng Liên Sơn hùng vĩ (Atlat GD, tr.7).",
         "atlat_page": 7,
-        "source": "Atlat GD, tr.7"
+        "source": "Atlat GD, tr.7",
+        "aliases": [
+          "Fansipan",
+          "Phan Xi Păng",
+          "Phan-xi-păng",
+          "Phanxipan"
+        ]
       }
     },
     {
@@ -215,7 +221,7 @@
             22.7
           ],
           [
-            106.0,
+            106,
             22.3
           ],
           [
@@ -248,7 +254,7 @@
           ],
           [
             106.65,
-            22.0
+            22
           ],
           [
             106.6,
@@ -324,7 +330,7 @@
             18.2
           ],
           [
-            106.0,
+            106,
             17.8
           ],
           [
@@ -354,7 +360,7 @@
         "coordinates": [
           [
             107.9,
-            16.0
+            16
           ],
           [
             108.3,
@@ -366,11 +372,11 @@
           ],
           [
             108.9,
-            14.0
+            14
           ],
           [
-            109.0,
-            13.0
+            109,
+            13
           ],
           [
             108.9,
@@ -433,7 +439,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.0,
+          108,
           14.5
         ]
       },
@@ -451,7 +457,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          108.0,
+          108,
           13.9
         ]
       },
@@ -602,7 +608,7 @@
         "length_in_vn_km": 510,
         "total_length_km": 1126,
         "basin_area_vn_km2": 72700,
-        "flow_volume_bil_m3": 120.0,
+        "flow_volume_bil_m3": 120,
         "desc": "Hệ thống sông Hồng: Chiều dài trong nước 510 km, diện tích lưu vực trong nước 72.700 km², tổng lượng dòng chảy 120 tỉ m³ (Atlat GD, tr.10). Sơ đồ minh họa.",
         "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
         "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
@@ -619,7 +625,7 @@
           ],
           [
             106.32,
-            21.0
+            21
           ],
           [
             106.45,
@@ -768,7 +774,7 @@
             19.3
           ],
           [
-            105.0,
+            105,
             19.1
           ],
           [
@@ -861,7 +867,7 @@
           ],
           [
             108.65,
-            14.0
+            14
           ],
           [
             108.75,
@@ -990,7 +996,7 @@
         "length_in_vn_km": 230,
         "total_length_km": 4350,
         "basin_area_vn_km2": 71000,
-        "flow_volume_bil_m3": 507.0,
+        "flow_volume_bil_m3": 507,
         "desc": "Hệ thống sông Mê Công (Cửu Long): Lưu lượng nước khổng lồ 507 tỉ m³, bồi đắp đồng bằng châu thổ trù phú bậc nhất Đông Nam Á (Atlat GD, tr.10). Sơ đồ minh họa.",
         "source": "Atlat GD, tr.10 (Sơ đồ minh hoạ các hệ thống sông chính)",
         "note": "Sơ đồ minh hoạ hệ thống sông theo Atlat GD tr.10"
@@ -1157,7 +1163,7 @@
             21.58
           ],
           [
-            106.0,
+            106,
             21.3
           ],
           [
@@ -1310,7 +1316,7 @@
         "coordinates": [
           [
             108.45,
-            15.0
+            15
           ],
           [
             108.65,

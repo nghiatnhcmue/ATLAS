@@ -70,19 +70,32 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Dân số & Diện tích một số Đơn vị Hành chính Tiêu biểu (Chuẩn Atlat GD, tr.5)",
+        title: "Dân số & Diện tích một số Đơn vị Hành chính Tiêu biểu 6 Vùng Kinh tế (Chuẩn Atlat GD 2026, tr.5)",
         headers: ["Tỉnh / Thành phố", "Dân số (Triệu người)", "Diện tích (Nghìn km²)"],
         rows: [
+          ["Cả nước (Năm 2024)", "100.300", "331.344"],
           ["Thành phố Hà Nội", "8.718", "3.360"],
-          ["Thành phố Hồ Chí Minh", "13.609", "6.773"],
-          ["Thành phố Hải Phòng", "4.103", "3.195"],
-          ["Thành phố Đà Nẵng", "2.820", "11.860"],
-          ["Thành phố Cần Thơ", "3.207", "6.361"],
+          ["Thành phố Hồ Chí Minh (ĐNB)", "13.609", "6.773"],
+          ["Tỉnh Bắc Ninh (ĐBSH - Mật độ cao nhất)", "3.509", "0.823"],
+          ["Tỉnh Hưng Yên (ĐBSH)", "3.209", "2.515"],
+          ["Thành phố Hải Phòng (ĐBSH)", "4.103", "3.195"],
+          ["Tỉnh Ninh Bình (ĐBSH)", "3.819", "3.943"],
+          ["Tỉnh Quảng Ninh (ĐBSH)", "1.397", "6.208"],
+          ["Tỉnh Lai Châu (TDMNBB - Mật độ thấp nhất)", "0.496", "9.069"],
+          ["Tỉnh Điện Biên (TDMNBB)", "0.657", "9.540"],
+          ["Tỉnh Sơn La (TDMNBB)", "1.331", "14.109"],
+          ["Tỉnh Cao Bằng (TDMNBB)", "0.559", "6.700"],
+          ["Tỉnh Thanh Hoá (BTB)", "3.764", "11.115"],
+          ["Tỉnh Nghệ An (BTB - Diện tích lớn nhất)", "3.472", "16.486"],
           ["Thành phố Huế", "1.179", "4.947"],
-          ["Tỉnh Thanh Hoá", "3.764", "11.115"],
-          ["Tỉnh Nghệ An", "3.472", "16.486"],
+          ["Thành phố Đà Nẵng (DHNTB)", "2.820", "11.860"],
+          ["Tỉnh Khánh Hoà (DHNTB)", "1.882", "8.556"],
+          ["Tỉnh Đắk Lắk (Tây Nguyên)", "2.831", "18.096"],
+          ["Tỉnh Lâm Đồng (Tây Nguyên)", "3.324", "24.233"],
           ["Thành phố Đồng Nai", "4.428", "12.737"],
-          ["Tỉnh Lâm Đồng", "3.324", "24.233"]
+          ["Thành phố Cần Thơ (ĐBSCL)", "3.207", "6.361"],
+          ["Tỉnh An Giang (ĐBSCL)", "3.679", "9.889"],
+          ["Tỉnh Cà Mau (ĐBSCL - Cực Nam)", "2.141", "7.942"]
         ]
       },
       solve: (vals) => {
@@ -124,13 +137,21 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Tỉ suất Sinh và Tử thô Việt Nam qua các năm",
-        headers: ["Năm", "Tỉ suất sinh thô (‰)", "Tỉ suất tử thô (‰)"],
+        title: "Tỉ suất Sinh và Tử thô Việt Nam qua các Thời kỳ và theo Vùng (Chuẩn Atlat GD, tr.15)",
+        headers: ["Thời kỳ / Vùng kinh tế", "Tỉ suất sinh thô (‰)", "Tỉ suất tử thô (‰)"],
         rows: [
-          ["Năm 2015", "16.2", "6.8"],
-          ["Năm 2018", "15.7", "6.5"],
-          ["Năm 2021", "15.4", "6.3"],
-          ["Năm 2024", "15.2", "6.1"]
+          ["Cả nước Năm 1979 (Bùng nổ dân số)", "32.5", "7.3"],
+          ["Cả nước Năm 1989", "30.1", "6.9"],
+          ["Cả nước Năm 1999 (Kế hoạch hóa gia đình)", "19.9", "5.6"],
+          ["Cả nước Năm 2009", "17.6", "6.8"],
+          ["Cả nước Năm 2015", "16.2", "6.8"],
+          ["Cả nước Năm 2019", "16.3", "6.3"],
+          ["Cả nước Năm 2024 (Hiện nay)", "15.2", "6.1"],
+          ["Vùng Tây Nguyên (Mức sinh cao)", "18.2", "6.4"],
+          ["Vùng Trung du và miền núi Bắc Bộ", "17.5", "6.8"],
+          ["Vùng Đồng bằng sông Hồng", "14.8", "6.2"],
+          ["Vùng Đông Nam Bộ (Mức sinh thấp)", "13.9", "5.8"],
+          ["Vùng Đồng bằng sông Cửu Long", "14.2", "6.0"]
         ]
       },
       solve: (vals) => {
@@ -178,16 +199,23 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Diện tích & Sản lượng Lúa cả nước và 6 Vùng Kinh tế (Chuẩn Atlat GD, tr.19)",
-        headers: ["Địa phương / Vùng", "Sản lượng (Triệu tấn)", "Diện tích (Triệu ha)"],
+        title: "Diện tích & Sản lượng Lúa, Ngô, Cây công nghiệp cả nước và các Vùng (Atlat GD, tr.19)",
+        headers: ["Cây trồng / Vùng", "Sản lượng (Triệu tấn)", "Diện tích (Triệu ha)"],
         rows: [
-          ["Cả nước", "43.5", "7.12"],
-          ["Đồng bằng sông Cửu Long", "24.1", "3.82"],
-          ["Đồng bằng sông Hồng", "6.2", "0.98"],
-          ["Bắc Trung Bộ và Duyên hải miền Trung", "5.1", "0.95"],
-          ["Trung du và miền núi Bắc Bộ", "3.8", "0.65"],
-          ["Đông Nam Bộ", "1.5", "0.26"],
-          ["Tây Nguyên", "1.2", "0.22"]
+          ["Lúa - Cả nước (Năm 2024)", "43.5", "7.12"],
+          ["Lúa - Đồng bằng sông Cửu Long (Vựa lúa số 1)", "24.1", "3.82"],
+          ["Lúa - Đồng bằng sông Hồng (Thâm canh cao)", "6.2", "0.98"],
+          ["Lúa - Bắc Trung Bộ và Duyên hải miền Trung", "5.1", "0.95"],
+          ["Lúa - Trung du và miền núi Bắc Bộ", "3.8", "0.65"],
+          ["Lúa - Đông Nam Bộ", "1.5", "0.26"],
+          ["Lúa - Tây Nguyên", "1.2", "0.22"],
+          ["Ngô - Cả nước", "4.4", "0.88"],
+          ["Ngô - Trung du và miền núi Bắc Bộ", "1.8", "0.39"],
+          ["Ngô - Tây Nguyên", "1.2", "0.21"],
+          ["Cà phê nhân - Cả nước", "1.85", "0.71"],
+          ["Cà phê nhân - Tỉnh Đắk Lắk", "0.55", "0.21"],
+          ["Cà phê nhân - Tỉnh Lâm Đồng (Năng suất cao)", "0.52", "0.17"],
+          ["Chè búp khô - Tỉnh Thái Nguyên", "0.26", "0.022"]
         ]
       },
       solve: (vals) => {
@@ -239,13 +267,23 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Sản lượng Lúa & Dân số Việt Nam qua các năm",
-        headers: ["Năm", "Sản lượng lúa (Triệu tấn)", "Dân số (Triệu người)"],
+        title: "Sản lượng Lúa & GRDP bình quân đầu người theo Vùng và Địa phương (Atlat GD, tr.18-19)",
+        headers: ["Chỉ tiêu / Địa phương", "Sản lượng (Triệu tấn) hoặc GDP (Tỷ USD)", "Dân số (Triệu người)"],
         rows: [
-          ["Năm 2018", "44.0", "94.7"],
-          ["Năm 2020", "42.8", "97.6"],
-          ["Năm 2022", "42.7", "99.5"],
-          ["Năm 2024", "43.5", "100.3"]
+          ["Lương thực cả nước Năm 1995 (Lịch sử)", "26.1", "72.0"],
+          ["Lương thực cả nước Năm 2005", "39.6", "82.4"],
+          ["Lương thực cả nước Năm 2015", "45.1", "91.7"],
+          ["Lương thực cả nước Năm 2024 (Hiện nay)", "43.5", "100.3"],
+          ["Lương thực - Đồng bằng sông Cửu Long (Vựa lúa)", "24.1", "17.5"],
+          ["Lương thực - Đồng bằng sông Hồng", "6.2", "23.4"],
+          ["Lương thực - Trung du và miền núi Bắc Bộ", "3.8", "12.9"],
+          ["Lương thực - Vùng Đông Nam Bộ", "1.5", "18.3"],
+          ["GRDP - Cả nước Năm 2024 (USD/người)", "430.0", "100.3"],
+          ["GRDP - TP. Hồ Chí Minh (Đô thị đặc biệt)", "72.5", "9.50"],
+          ["GRDP - Thủ đô Hà Nội", "55.4", "8.50"],
+          ["GRDP - Thành phố Hải Phòng", "13.5", "2.10"],
+          ["GRDP - Thành phố Đà Nẵng", "6.2", "1.25"],
+          ["GRDP - Tỉnh Lai Châu (Miền núi)", "0.92", "0.496"]
         ]
       },
       solve: (vals) => {
@@ -288,13 +326,23 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Kim ngạch Xuất Khẩu & Nhập Khẩu Việt Nam (Chuẩn Atlat GD, tr.18)",
-        headers: ["Năm", "Xuất khẩu (Tỷ USD)", "Nhập khẩu (Tỷ USD)"],
+        title: "Kim ngạch Xuất Khẩu & Nhập Khẩu Việt Nam và các Đối tác Lớn (Chuẩn Atlat GD, tr.26)",
+        headers: ["Mốc thời gian / Đối tác thương mại", "Xuất khẩu (Tỷ USD)", "Nhập khẩu (Tỷ USD)"],
         rows: [
-          ["Năm 2010", "72.2", "84.8"],
-          ["Năm 2015", "162.0", "165.8"],
-          ["Năm 2020", "282.7", "262.7"],
-          ["Năm 2024", "405.5", "380.8"]
+          ["Cả nước Năm 2000 (Nhập siêu)", "14.5", "15.6"],
+          ["Cả nước Năm 2005", "32.4", "36.8"],
+          ["Cả nước Năm 2010 (Nhập siêu đỉnh điểm)", "72.2", "84.8"],
+          ["Cả nước Năm 2012 (Bắt đầu xuất siêu)", "114.6", "113.8"],
+          ["Cả nước Năm 2015", "162.0", "165.8"],
+          ["Cả nước Năm 2018", "243.7", "236.9"],
+          ["Cả nước Năm 2020 (Thặng dư lớn)", "282.7", "262.7"],
+          ["Cả nước Năm 2024 (Kỷ lục xuất siêu)", "405.5", "380.8"],
+          ["Đối tác: Hoa Kỳ (Xuất siêu lớn nhất)", "115.0", "15.2"],
+          ["Đối tác: Trung Quốc (Nhập siêu lớn nhất)", "61.2", "138.5"],
+          ["Đối tác: Liên minh Châu Âu (EU - Xuất siêu)", "51.5", "17.2"],
+          ["Đối tác: Khối ASEAN (Nhập siêu)", "36.8", "45.2"],
+          ["Đối tác: Hàn Quốc (Nhập siêu linh kiện)", "25.4", "54.8"],
+          ["Đối tác: Nhật Bản (Thương mại cân bằng)", "24.6", "23.8"]
         ]
       },
       solve: (vals) => {
@@ -337,13 +385,22 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Tổng kim ngạch (T = X+M) & Cán cân (B = X-M) Việt Nam (Đồng bộ Bảng 5)",
-        headers: ["Năm", "Tổng kim ngạch T (Tỷ USD)", "Cán cân thương mại B (Tỷ USD)"],
+        title: "Tổng kim ngạch (T = X+M) & Cán cân (B = X-M) Việt Nam và Thị trường (Đồng bộ Bảng 5)",
+        headers: ["Năm / Thị trường", "Tổng kim ngạch T (Tỷ USD)", "Cán cân thương mại B (Tỷ USD)"],
         rows: [
+          ["Năm 2000", "30.1", "-1.1"],
+          ["Năm 2005", "69.2", "-4.4"],
           ["Năm 2010", "157.0", "-12.6"],
+          ["Năm 2012 (Chuyển sang xuất siêu)", "228.4", "+0.8"],
           ["Năm 2015", "327.8", "-3.8"],
+          ["Năm 2018", "480.6", "+6.8"],
           ["Năm 2020", "545.4", "+20.0"],
-          ["Năm 2024", "786.3", "+24.7"]
+          ["Năm 2022", "730.2", "+11.2"],
+          ["Năm 2024 (Hiện nay)", "786.3", "+24.7"],
+          ["Thị trường Hoa Kỳ (Năm 2024)", "130.2", "+99.8"],
+          ["Thị trường Trung Quốc (Năm 2024)", "199.7", "-77.3"],
+          ["Thị trường EU (Năm 2024)", "68.7", "+34.3"],
+          ["Thị trường ASEAN (Năm 2024)", "82.0", "-8.4"]
         ]
       },
       solve: (vals) => {
@@ -397,13 +454,19 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Chuyển dịch Cơ cấu GDP theo Ngành kinh tế Việt Nam (2015 - 2024)",
-        headers: ["Ngành kinh tế", "A1 (Năm 2015)", "T1 (Tổng 2015)", "A2 (Năm 2024)", "T2 (Tổng 2024)"],
+        title: "Chuyển dịch Cơ cấu GDP, Thủy sản, Lao động & Dân số Việt Nam (2015 - 2024)",
+        headers: ["Nội dung chuyển dịch cơ cấu", "A1 (Năm 2015)", "T1 (Tổng 2015)", "A2 (Năm 2024)", "T2 (Tổng 2024)"],
         rows: [
-          ["Công nghiệp & Xây dựng", "63.2", "193.2", "158.4", "430.0"],
-          ["Dịch vụ", "76.8", "193.2", "182.8", "430.0"],
-          ["Nông, lâm, thủy sản", "33.6", "193.2", "50.8", "430.0"],
-          ["Nuôi trồng thủy sản", "3512.4", "5356.7", "3512.4", "5356.7"]
+          ["GDP: Công nghiệp & Xây dựng (Tăng điểm %)", "63.2", "193.2", "158.4", "430.0"],
+          ["GDP: Khu vực Dịch vụ (Tăng điểm %)", "76.8", "193.2", "182.8", "430.0"],
+          ["GDP: Nông, lâm, thủy sản (Giảm điểm %)", "33.6", "193.2", "50.8", "430.0"],
+          ["Thủy sản: Sản lượng nuôi trồng (Tăng mạnh)", "3512.4", "6582.1", "5420.0", "9280.0"],
+          ["Thủy sản: Sản lượng khai thác biển (Giảm tỉ trọng)", "3069.7", "6582.1", "3860.0", "9280.0"],
+          ["Lao động: Khu vực Nông lâm thủy sản (Giảm)", "23.1", "53.0", "14.2", "52.4"],
+          ["Lao động: Khu vực Công nghiệp xây dựng (Tăng)", "12.1", "53.0", "17.5", "52.4"],
+          ["Lao động: Khu vực Dịch vụ (Tăng)", "17.8", "53.0", "20.7", "52.4"],
+          ["Dân số: Dân số Thành thị (Đô thị hóa tăng)", "31.1", "91.7", "38.3", "100.3"],
+          ["Lâm nghiệp: Diện tích Rừng trồng (Tăng)", "3886.3", "14062.5", "4735.6", "14865.4"]
         ]
       },
       solve: (vals) => {
@@ -464,13 +527,25 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Sản lượng Điện phát ra của nước ta qua các năm",
-        headers: ["Năm", "Sản lượng (Tỉ kWh)", "Tốc độ tăng trưởng (%)"],
+        title: "Tốc độ Tăng trưởng Sản lượng Điện, Than, Hàng hóa & Khách Du lịch (Năm gốc 2015 = 100%)",
+        headers: ["Đối tượng / Năm", "Sản lượng thực tế", "Tốc độ tăng trưởng (%)"],
         rows: [
-          ["Năm 2015 (Gốc)", "159.4", "100.0"],
-          ["Năm 2018", "212.9", "133.6"],
-          ["Năm 2020", "235.4", "147.7"],
-          ["Năm 2024", "275.9", "173.1"]
+          ["Điện phát ra Năm 2015 (Gốc: 159.4 tỷ kWh)", "159.4", "100.0"],
+          ["Điện phát ra Năm 2018", "212.9", "133.6"],
+          ["Điện phát ra Năm 2020", "235.4", "147.7"],
+          ["Điện phát ra Năm 2022", "259.6", "162.9"],
+          ["Điện phát ra Năm 2024", "275.9", "173.1"],
+          ["Than sạch Năm 2015 (Gốc: 41.7 triệu tấn)", "41.7", "100.0"],
+          ["Than sạch Năm 2018", "42.4", "101.7"],
+          ["Than sạch Năm 2020", "48.4", "116.1"],
+          ["Than sạch Năm 2024", "49.8", "119.4"],
+          ["Hàng hóa VC Năm 2015 (Gốc: 1139.4 triệu tấn)", "1139.4", "100.0"],
+          ["Hàng hóa VC Năm 2018", "1528.2", "134.1"],
+          ["Hàng hóa VC Năm 2021", "1621.5", "142.3"],
+          ["Hàng hóa VC Năm 2024", "2350.0", "206.2"],
+          ["Khách quốc tế 2015 (Gốc: 7.94 triệu lượt)", "7.94", "100.0"],
+          ["Khách quốc tế Năm 2019", "18.01", "226.8"],
+          ["Khách quốc tế Năm 2024", "17.50", "220.4"]
         ]
       },
       solve: (vals) => {
@@ -528,24 +603,27 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Đặc trưng Khí hậu 15 Trạm Khí tượng Chuẩn Atlat GD (tr.8)",
+        title: "Đặc trưng Khí hậu 15 Trạm Khí tượng Chuẩn Atlat GD (tr.8 - kèm Hoàng Sa & Trường Sa)",
         headers: ["Trạm khí tượng", "Tmax (°C)", "Tmin (°C)", "Ttb (°C)", "Lượng mưa (mm)"],
         rows: [
-          ["Hà Nội (Trạm Láng)", "29.8", "16.4", "23.8", "1676"],
-          ["Sơn La", "25.8", "14.6", "21.2", "1420"],
-          ["Tuyên Quang", "28.7", "16.0", "23.5", "1665"],
-          ["Lạng Sơn", "27.0", "13.7", "21.2", "1311"],
-          ["Hà Tĩnh", "29.7", "17.5", "24.1", "2658"],
-          ["Huế", "29.4", "20.0", "25.2", "2868"],
-          ["Đà Lạt", "19.9", "15.3", "17.9", "1739"],
-          ["Quy Nhơn", "30.1", "23.4", "27.1", "1852"],
-          ["Buôn Ma Thuột", "26.0", "21.2", "24.0", "1904"],
-          ["Hoàng Sa", "28.6", "22.0", "23.6", "2769"],
-          ["Trường Sa", "29.2", "26.5", "28.0", "2666"],
+          ["Hà Nội (Trạm Láng - Miền Bắc)", "29.8", "16.4", "23.8", "1676"],
+          ["Lạng Sơn (Đông Bắc - Mùa đông lạnh)", "27.0", "13.7", "21.2", "1311"],
+          ["Tuyên Quang (Việt Bắc)", "28.7", "16.0", "23.5", "1665"],
+          ["Sơn La (Tây Bắc)", "25.8", "14.6", "21.2", "1420"],
+          ["Điện Biên Phủ (Thung lũng Tây Bắc)", "26.5", "16.2", "22.0", "1530"],
+          ["Hà Tĩnh (Bắc Trung Bộ)", "29.7", "17.5", "24.1", "2658"],
+          ["Huế (Mưa thu đông cực lớn)", "29.4", "20.0", "25.2", "2868"],
+          ["Đà Nẵng (Duyên hải miền Trung)", "29.5", "21.5", "25.9", "2505"],
+          ["Quy Nhơn (Nam Trung Bộ)", "30.1", "23.4", "27.1", "1852"],
+          ["Nha Trang (Khánh Hoà)", "29.0", "24.1", "26.8", "1412"],
+          ["Buôn Ma Thuột (Tây Nguyên)", "26.0", "21.2", "24.0", "1904"],
+          ["Đà Lạt (Khí hậu ôn đới núi cao)", "19.9", "15.3", "17.9", "1739"],
+          ["Hoàng Sa (Biển Đông)", "28.6", "22.0", "23.6", "2769"],
+          ["Trường Sa (Biển Đông - Biên độ nhiệt nhỏ)", "29.2", "26.5", "28.0", "2666"],
           ["Tân Sơn Hoà (TP. Hồ Chí Minh)", "29.4", "26.2", "28.1", "1964"],
-          ["Cần Thơ", "28.1", "25.4", "26.9", "1674"],
-          ["Cà Mau", "28.3", "25.4", "26.8", "2360"],
-          ["Phú Quốc", "28.5", "26.0", "27.3", "2882"]
+          ["Cần Thơ (Đồng bằng sông Cửu Long)", "28.1", "25.4", "26.9", "1674"],
+          ["Cà Mau (Bán đảo Cực Nam)", "28.3", "25.4", "26.8", "2360"],
+          ["Phú Quốc (Vịnh Thái Lan)", "28.5", "26.0", "27.3", "2882"]
         ]
       },
       solve: (vals) => {
@@ -606,13 +684,26 @@ const GeoCalculator = (function () {
         }
       ],
       sampleTable: {
-        title: "Tỷ lệ Bản đồ Atlat & Múi giờ các Thủ đô",
-        headers: ["Tuyến đo / Thành phố", "Khoảng cách trên Atlat (cm)", "Múi giờ quốc tế"],
+        title: "Tỷ lệ Bản đồ Atlat & Múi giờ các Thủ đô Quốc tế (Chuẩn đề thi THPT)",
+        headers: ["Tuyến đo trên Atlat / Thành phố quốc tế", "Khoảng cách đo (cm)", "Múi giờ quốc tế / Chênh lệch"],
         rows: [
-          ["Hà Nội - Hải Phòng", "1.7 cm (1:6.000.000)", "Hà Nội: Múi giờ số 7 (GMT+7)"],
-          ["Hà Nội - TP. Hồ Chí Minh", "19.2 cm (1:6.000.000)", "Tokyo: Múi giờ số 9 (GMT+9)"],
-          ["Đà Nẵng - Quy Nhơn", "4.5 cm (1:6.000.000)", "London: Múi giờ số 0 (GMT+0)"],
-          ["Cần Thơ - Cà Mau", "2.8 cm (1:6.000.000)", "New York: Múi giờ -5 (GMT-5)"]
+          ["Hà Nội - Hải Phòng (Atlat tr.4-5 tỉ lệ 1:6.000.000)", "1.7", "Thực địa: 102 km"],
+          ["Hà Nội - Vinh (Atlat tr.4 tỉ lệ 1:6.000.000)", "4.8", "Thực địa: 288 km"],
+          ["Hà Nội - TP. Hồ Chí Minh (Đường bay chim bay)", "19.2", "Thực địa: 1.152 km"],
+          ["Đà Nẵng - Quy Nhơn (Atlat tr.4-5)", "4.5", "Thực địa: 270 km"],
+          ["TP. Hồ Chí Minh - Cần Thơ (Atlat tr.5)", "2.8", "Thực địa: 168 km"],
+          ["Cần Thơ - Cà Mau (Atlat tr.5)", "2.5", "Thực địa: 150 km"],
+          ["Bán đảo Cà Mau (Bản đồ tr.6 tỉ lệ 1:9.000.000)", "3.2", "Thực địa: 288 km"],
+          ["Quần đảo Trường Sa (Atlat tr.5 tỉ lệ 1:6.000.000)", "7.5", "Thực địa: 450 km"],
+          ["Hà Nội (Thủ đô Việt Nam - Mốc so sánh)", "0.0", "Múi giờ số 7 (GMT+7): 12h00 trưa"],
+          ["Luân Đôn / London (Anh - Múi giờ gốc)", "0.0", "Múi giờ số 0 (GMT+0): 05h00 sáng"],
+          ["Pari / Paris (Pháp) - Béc-lin (Đức)", "0.0", "Múi giờ số 1 (GMT+1): 06h00 sáng"],
+          ["Mát-xcơ-va / Moscow (Nga)", "0.0", "Múi giờ số 3 (GMT+3): 08h00 sáng"],
+          ["Bắc Kinh / Beijing (Trung Quốc) - Singapore", "0.0", "Múi giờ số 8 (GMT+8): 13h00 chiều"],
+          ["Tô-ky-ô / Tokyo (Nhật Bản) - Xơ-un (Hàn Quốc)", "0.0", "Múi giờ số 9 (GMT+9): 14h00 chiều"],
+          ["Xít-ni / Sydney (Úc)", "0.0", "Múi giờ số 10 (GMT+10): 15h00 chiều"],
+          ["Niu Oóc / New York (Hoa Kỳ - Bờ Đông)", "0.0", "Múi giờ số -5 (GMT-5): 00h00 đêm"],
+          ["Lốt An-giơ-lét / Los Angeles (Bờ Tây Hoa Kỳ)", "0.0", "Múi giờ số -8 (GMT-8): 21h00 tối hôm trước"]
         ]
       },
       solve: (vals) => {
@@ -853,7 +944,14 @@ const GeoCalculator = (function () {
       inputValues.part_val_2.val = parseFloat(row[3]) || 0;
       inputValues.total_val_2.val = parseFloat(row[4]) || 0;
     } else if (formulaId === "growth_rate") {
-      inputValues.base_val.val = 159.4;
+      let base = 159.4;
+      const title = String(row[0] || "");
+      if (title.includes("Than")) base = 41.7;
+      else if (title.includes("Hàng hóa")) base = 1139.4;
+      else if (title.includes("Khách")) base = 7.94;
+      else if (title.includes("Điện")) base = 159.4;
+
+      inputValues.base_val.val = base;
       inputValues.current_val.val = parseFloat(row[1]) || 0;
     } else if (formulaId === "climate_stats") {
       inputValues.max_t.val = parseFloat(row[1]) || 0;
@@ -861,7 +959,15 @@ const GeoCalculator = (function () {
       inputValues.avg_t.val = parseFloat(row[3]) || 0;
       inputValues.rainfall.val = parseFloat(row[4]) || 0;
     } else if (formulaId === "map_scale_timezone") {
-      inputValues.map_distance_cm.val = parseFloat(row[1]) || 4.5;
+      const d = parseFloat(row[1]) || 0;
+      if (d > 0) {
+        inputValues.map_distance_cm.val = d;
+        if (String(row[0]).includes("1:9.000.000")) {
+          inputValues.map_scale_den.val = 9000000;
+        } else {
+          inputValues.map_scale_den.val = 6000000;
+        }
+      }
     }
 
     renderInputs(formula);

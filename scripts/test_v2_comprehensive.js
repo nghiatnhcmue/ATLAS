@@ -116,9 +116,9 @@ check("BUG-20", "Bảng mẫu Máy tính: 6 vùng kinh tế, XNK 2010/2015/2020/
 });
 
 // 5. BUG-04: Chuẩn hoá bài luyện biểu đồ
-check("BUG-04", "14 bài luyện biểu đồ đã kiểm chứng nguồn; Câu 6 chỉ có %; Câu 3 đủ 7 năm", () => {
+check("BUG-04", "Bài luyện biểu đồ đã kiểm chứng nguồn; Câu 6 chỉ có %; Câu 3 đủ 7 năm", () => {
   const chartData = JSON.parse(fs.readFileSync("public/data/chart_questions.json", "utf-8"));
-  assert.strictEqual(chartData.questions.length, 14, `Must have 14 verified questions, got ${chartData.questions.length}`);
+  assert(chartData.questions.length >= 14, `Must have at least 14 verified questions, got ${chartData.questions.length}`);
 
   // Question 6 (DOCX_CHART_06): Only %
   const q6 = chartData.questions.find(q => q.id === "DOCX_CHART_06");
