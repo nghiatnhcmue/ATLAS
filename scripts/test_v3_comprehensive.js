@@ -81,6 +81,13 @@ check("BUG-30", "Ký hiệu chuẩn Atlat GD tr.3 & 23 (ngôi sao nhiệt điệ
   // Check mini-game questions
   assert(code.includes("SYM_05"), "Mini-game questions updated with official symbols");
   assert(code.includes("SYM_12"), "Mini-game includes SYM_12");
+
+  // Check handbook in index.html & 200.html has distinct Blue (Hydro) and Red (Thermal) stars
+  const indexHtml = fs.readFileSync("index.html", "utf-8");
+  assert(!indexHtml.includes("<span>⭐</span> Hệ Thống Nhà Máy Thủy Điện"), "Thủy điện must not use generic yellow star");
+  assert(!indexHtml.includes("<span>⭐</span> Hệ Thống Nhà Máy Nhiệt Điện"), "Nhiệt điện must not use generic yellow star");
+  assert(indexHtml.includes("#0284C7"), "Thủy điện uses official blue star (#0284C7)");
+  assert(indexHtml.includes("#DC2626"), "Nhiệt điện uses official red star (#DC2626)");
 });
 
 // 5. BUG-31 (P0): Tọa độ 4 mỏ dầu khí georeferenced GD tr.13 & chuẩn tên địa danh

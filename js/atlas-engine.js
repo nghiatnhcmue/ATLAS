@@ -595,16 +595,18 @@ const AtlasEngine = (function () {
 
   // Ký hiệu Năng lượng chuẩn Atlat GD, tr.3 & tr.23: Ngôi sao (Đỏ: Nhiệt điện, Xanh lam: Thủy điện, Xanh lá: Gió, Cam: Mặt trời)
   function getPowerSvg(plantType, capacityGroup) {
+    const raw = (plantType || "").toString().toLowerCase();
     let color = "#0284C7"; // Mặc định Thủy điện: Xanh lam
-    if (plantType.includes("Nhiệt")) color = "#DC2626"; // Đỏ
-    else if (plantType.includes("gió")) color = "#16A34A"; // Xanh lá
-    else if (plantType.includes("mặt trời")) color = "#EA580C"; // Cam
+    if (raw.includes("nhiệt") || raw.includes("nhiet")) color = "#DC2626"; // Đỏ (Nhiệt điện)
+    else if (raw.includes("gió") || raw.includes("gio")) color = "#16A34A"; // Xanh lá (Điện gió)
+    else if (raw.includes("mặt trời") || raw.includes("mat troi")) color = "#EA580C"; // Cam (Điện mặt trời)
+    else color = "#0284C7"; // Thủy điện: Xanh lam
 
-    const isLarge = (capacityGroup === "Trên 1.000 MW" || (typeof capacityGroup === "number" && capacityGroup >= 1000));
+    const isLarge = (capacityGroup === "Trên 1.000 MW" || capacityGroup === "tren_1000mw" || (typeof capacityGroup === "number" && capacityGroup >= 1000));
     const size = isLarge ? 26 : 18;
 
     return `
-      <svg width="${size}" height="${size}" viewBox="0 0 24 24" class="atlat-vector-icon">
+      <svg width="${size}" height="${size}" viewBox="0 0 24 24" class="atlat-vector-icon inline-block">
         <polygon points="12,1 15.3,8.3 23.3,9.2 17.3,14.6 19.1,22.5 12,18.4 4.9,22.5 6.7,14.6 0.7,9.2 8.7,8.3" fill="${color}" stroke="#FFFFFF" stroke-width="1.5"/>
       </svg>
     `;
@@ -3396,17 +3398,26 @@ const AtlasEngine = (function () {
     }
 
     if (type === "power") {
+      const pType = props.plant_type || props.type || "Thủy điện";
+      const pRaw = pType.toLowerCase();
+      const isThermal = pRaw.includes("nhiệt") || pRaw.includes("nhiet");
+      const isSolar = pRaw.includes("mặt trời") || pRaw.includes("mat troi");
+      const isWind = pRaw.includes("gió") || pRaw.includes("gio");
+      const starColor = isThermal ? "#DC2626" : (isWind ? "#16A34A" : (isSolar ? "#EA580C" : "#0284C7"));
+      const starIcon = `<svg width="20" height="20" viewBox="0 0 24 24" class="inline-block"><polygon points="12,1 15.3,8.3 23.3,9.2 17.3,14.6 19.1,22.5 12,18.4 4.9,22.5 6.7,14.6 0.7,9.2 8.7,8.3" fill="${starColor}" stroke="#FFFFFF" stroke-width="1.5"/></svg>`;
+      const badgeBg = isThermal ? "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300" : "bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300";
+
       infoContainer.innerHTML = `
         <div class="space-y-2.5">
           <div class="flex items-center justify-between pb-1.5 border-b border-slate-100 dark:border-slate-800">
             <h4 class="font-bold text-xs text-slate-900 dark:text-white flex items-center space-x-1.5">
-              <span>⚡</span> <span>${props.name}</span>
+              <span>${starIcon}</span> <span>${props.name}</span>
             </h4>
-            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300">${props.source || 'Atlat GD, tr.23'}</span>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${badgeBg}">${pType} (Atlat tr.23)</span>
           </div>
           <div class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
-            <div>Loại năng lượng: <strong>${props.plant_type || props.type}</strong></div>
-            <div>Quy mô công suất: <strong class="text-blue-600 font-semibold">${props.capacity_group || (props.capacity_mw ? (props.capacity_mw >= 1000 ? 'Trên 1.000 MW' : 'Dưới 1.000 MW') : 'Chuẩn Atlat GD, tr.23')}</strong></div>
+            <div>Loại năng lượng: <strong>${pType}</strong></div>
+            <div>Quy mô công suất: <strong class="${isThermal ? 'text-rose-600' : 'text-blue-600'} font-semibold">${props.capacity_group || (props.capacity_mw ? (props.capacity_mw >= 1000 ? 'Trên 1.000 MW' : 'Dưới 1.000 MW') : 'Chuẩn Atlat GD, tr.23')}</strong></div>
             <div>Nguồn nhiên liệu / Sông: <strong>${props.river_fuel || 'N/A'}</strong> (Tỉnh ${props.province})</div>
           </div>
         </div>
@@ -3849,21 +3860,21 @@ const AtlasEngine = (function () {
   // ===========================================================================
   let atlasViewMode = "gis"; // "gis" | "book" | "split"
   const DEFAULT_ATLAT_PAGES_MANIFEST = [
-    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "/public/data/atlat_pages/page_01.jpg?v=2026.3.8" },
-    { page: 3, title: "Trang 3: Kí hiệu chung", file: "/public/data/atlat_pages/page_03.jpg?v=2026.3.8" },
-    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "/public/data/atlat_pages/page_04.jpg?v=2026.3.8" },
-    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "/public/data/atlat_pages/page_05.jpg?v=2026.3.8" },
-    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "/public/data/atlat_pages/page_06.jpg?v=2026.3.8" },
-    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "/public/data/atlat_pages/page_07.jpg?v=2026.3.8" },
-    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "/public/data/atlat_pages/page_08.jpg?v=2026.3.8" },
-    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "/public/data/atlat_pages/page_09.jpg?v=2026.3.8" },
-    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "/public/data/atlat_pages/page_10.jpg?v=2026.3.8" },
-    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "/public/data/atlat_pages/page_13.jpg?v=2026.3.8" },
-    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "/public/data/atlat_pages/page_18.jpg?v=2026.3.8" },
-    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "/public/data/atlat_pages/page_19.jpg?v=2026.3.8" },
-    { page: 21, title: "Trang 21: Công nghiệp chung", file: "/public/data/atlat_pages/page_21.jpg?v=2026.3.8" },
-    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "/public/data/atlat_pages/page_22.jpg?v=2026.3.8" },
-    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "/public/data/atlat_pages/page_23.jpg?v=2026.3.8" }
+    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "/public/data/atlat_pages/page_01.jpg?v=2026.3.9" },
+    { page: 3, title: "Trang 3: Kí hiệu chung", file: "/public/data/atlat_pages/page_03.jpg?v=2026.3.9" },
+    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "/public/data/atlat_pages/page_04.jpg?v=2026.3.9" },
+    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "/public/data/atlat_pages/page_05.jpg?v=2026.3.9" },
+    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "/public/data/atlat_pages/page_06.jpg?v=2026.3.9" },
+    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "/public/data/atlat_pages/page_07.jpg?v=2026.3.9" },
+    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "/public/data/atlat_pages/page_08.jpg?v=2026.3.9" },
+    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "/public/data/atlat_pages/page_09.jpg?v=2026.3.9" },
+    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "/public/data/atlat_pages/page_10.jpg?v=2026.3.9" },
+    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "/public/data/atlat_pages/page_13.jpg?v=2026.3.9" },
+    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "/public/data/atlat_pages/page_18.jpg?v=2026.3.9" },
+    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "/public/data/atlat_pages/page_19.jpg?v=2026.3.9" },
+    { page: 21, title: "Trang 21: Công nghiệp chung", file: "/public/data/atlat_pages/page_21.jpg?v=2026.3.9" },
+    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "/public/data/atlat_pages/page_22.jpg?v=2026.3.9" },
+    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "/public/data/atlat_pages/page_23.jpg?v=2026.3.9" }
   ];
   let atlatPagesManifest = [...DEFAULT_ATLAT_PAGES_MANIFEST];
   let currentAtlatPageNumber = 4;
@@ -4289,7 +4300,7 @@ const AtlasEngine = (function () {
     const titleEl = document.getElementById("atlat-book-page-title");
     const selectEl = document.getElementById("atlat-book-page-select");
 
-    const pageFile = `/public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.8`;
+    const pageFile = `/public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.9`;
     if (imgEl) {
       imgEl.alt = displayTitle;
       imgEl.onerror = () => {
