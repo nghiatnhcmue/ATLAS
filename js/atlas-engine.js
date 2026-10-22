@@ -2332,13 +2332,15 @@ const AtlasEngine = (function () {
         const isSpecialPort = p.category === "seaport_special";
 
         if (isAirport) {
-          const bgClass = isIntlAirport ? "bg-blue-600" : "bg-sky-500";
           const shortName = p.name.replace(/^Cảng hàng không Quốc tế\s*/i, '').replace(/^Cảng hàng không\s*/i, '');
-          const badgeBg = isIntlAirport ? "bg-blue-900/90 border-blue-400 text-white" : "bg-sky-900/90 border-sky-400 text-white";
+          const planeColor = isIntlAirport ? "#DC2626" : "#0F172A"; // Chuẩn Atlat GD tr.3: Quốc tế màu Đỏ, Nội địa màu Đen
+          const badgeBg = isIntlAirport ? "bg-rose-950/90 border-rose-400 text-rose-200" : "bg-slate-900/90 border-slate-400 text-slate-200";
           const markerHtml = `
             <div class="flex items-center space-x-1 cursor-pointer hover:scale-115 transition drop-shadow-md">
-              <div class="flex items-center justify-center w-6 h-6 rounded-full ${bgClass} text-white shadow-md border-2 border-white shrink-0">
-                <span style="font-size: 12px; line-height: 1;">✈️</span>
+              <div class="flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-md border-2 ${isIntlAirport ? 'border-red-500' : 'border-slate-800'} shrink-0">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="${planeColor}">
+                  <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                </svg>
               </div>
               <span class="${badgeBg} text-[9.5px] font-bold px-1.5 py-0.5 rounded-full border shadow-xs whitespace-nowrap">${shortName}</span>
             </div>
@@ -2352,14 +2354,15 @@ const AtlasEngine = (function () {
             })
           });
         } else {
-          // Cảng biển
-          const bgClass = isSpecialPort ? "bg-amber-600" : "bg-sky-700";
+          // Cảng biển: Chuẩn Atlat GD tr.3 là Mỏ neo màu xanh lam (#0284C7)
           const shortName = p.name.replace(/^Cụm Cảng biển nước sâu\s*/i, '').replace(/^Cụm Cảng biển\s*/i, '').replace(/^Cảng biển\s*/i, '');
-          const badgeBg = isSpecialPort ? "bg-amber-950/90 border-amber-400 text-amber-200" : "bg-slate-900/90 border-sky-400 text-sky-200";
+          const badgeBg = isSpecialPort ? "bg-amber-950/90 border-amber-400 text-amber-200" : "bg-sky-950/90 border-sky-400 text-sky-200";
           const markerHtml = `
             <div class="flex items-center space-x-1 cursor-pointer hover:scale-115 transition drop-shadow-md">
-              <div class="flex items-center justify-center w-6 h-6 rounded-full ${bgClass} text-white shadow-md border-2 border-white shrink-0">
-                <span style="font-size: 11px; line-height: 1;">⚓</span>
+              <div class="flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-md border-2 border-sky-500 shrink-0">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#0284C7">
+                  <path d="M12 2a3 3 0 0 0-3 3c0 1.3.84 2.4 2 2.82V10H9v2h2v7.17A7 7 0 0 1 5 12h-2a9 9 0 0 0 8 8.95V22h2v-1.05A9 9 0 0 0 21 12h-2a7 7 0 0 1-6 7.17V12h2v-2h-2V7.82c1.16-.42 2-1.52 2-2.82a3 3 0 0 0-3-3zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
               </div>
               <span class="${badgeBg} text-[9.5px] font-bold px-1.5 py-0.5 rounded-full border shadow-xs whitespace-nowrap">${shortName}</span>
             </div>
@@ -3811,6 +3814,42 @@ const AtlasEngine = (function () {
             <div class="flex items-center space-x-1">${getMineralSvg("titan")} <span>Titan (Ti)</span></div>
             <div class="flex items-center space-x-1">${getPowerSvg("Thủy điện", 1000)} <span>Thủy điện</span></div>
             <div class="flex items-center space-x-1">${getPowerSvg("Nhiệt điện", 1000)} <span>Nhiệt điện</span></div>
+          </div>
+        </div>
+      `);
+    }
+
+    if (activeLayers.agriculture) {
+      sections.push(`
+        <div class="legend-section space-y-1">
+          <div class="text-[10px] font-bold uppercase text-emerald-700 dark:text-emerald-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
+            Nông, Lâm & Thủy Sản (Atlat GD, tr.3 & tr.19-21)
+          </div>
+          <div class="grid grid-cols-2 gap-x-2 gap-y-0.5 text-[10px]">
+            <div class="flex items-center space-x-1"><span>🌾</span> <span>Lúa & lương thực</span></div>
+            <div class="flex items-center space-x-1"><span>☕</span> <span>Cà phê, cao su, chè</span></div>
+            <div class="flex items-center space-x-1"><span>🐃</span> <span>Trâu, bò</span></div>
+            <div class="flex items-center space-x-1"><span>🐖</span> <span>Lợn & gia cầm</span></div>
+            <div class="flex items-center space-x-1"><span>🐟</span> <span>Thủy sản nuôi & khai thác</span></div>
+            <div class="flex items-center space-x-1"><span>🌲</span> <span>Lâm nghiệp & rừng</span></div>
+          </div>
+        </div>
+      `);
+    }
+
+    if (activeLayers.transportation) {
+      sections.push(`
+        <div class="legend-section space-y-1">
+          <div class="text-[10px] font-bold uppercase text-red-700 dark:text-red-400 pb-0.5 border-b border-slate-100 dark:border-slate-800">
+            Giao Thông Vận Tải (Atlat GD, tr.3 & tr.24)
+          </div>
+          <div class="text-[10px] space-y-0.5">
+            <div class="flex items-center space-x-1.5"><span class="w-4 h-1 bg-red-600 inline-block rounded-full"></span> <span>Quốc lộ 1A (Trục Bắc - Nam)</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-4 h-1 bg-green-600 inline-block rounded-full"></span> <span>Đường Hồ Chí Minh</span></div>
+            <div class="flex items-center space-x-1.5"><span class="w-4 h-0.5 border-t-2 border-dashed border-slate-900 dark:border-slate-100 inline-block"></span> <span>Đường sắt Thống Nhất</span></div>
+            <div class="flex items-center space-x-1.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="#DC2626"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg> <span>Cảng hàng không quốc tế (Đỏ)</span></div>
+            <div class="flex items-center space-x-1.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="#0F172A"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg> <span>Cảng hàng không nội địa (Đen)</span></div>
+            <div class="flex items-center space-x-1.5"><svg width="10" height="10" viewBox="0 0 24 24" fill="#0284C7"><path d="M12 2a3 3 0 0 0-3 3c0 1.3.84 2.4 2 2.82V10H9v2h2v7.17A7 7 0 0 1 5 12h-2a9 9 0 0 0 8 8.95V22h2v-1.05A9 9 0 0 0 21 12h-2a7 7 0 0 1-6 7.17V12h2v-2h-2V7.82c1.16-.42 2-1.52 2-2.82a3 3 0 0 0-3-3zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg> <span>Cảng biển nước sâu / tổng hợp</span></div>
           </div>
         </div>
       `);
