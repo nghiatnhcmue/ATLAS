@@ -2107,8 +2107,27 @@ const AtlasEngine = (function () {
     }
 
     // 2. Năng lượng: Thủy điện, Nhiệt điện, Điện gió, Điện mặt trời (Atlat GD, tr.23)
-    if (geoData.power && (filterType === "all" || filterType === "power")) {
-      L.geoJSON(geoData.power, {
+    const isPowerFilter = filterType === "all" || filterType === "power" || filterType === "hydro" || filterType === "thermal" || filterType === "renewable";
+    if (geoData.power && isPowerFilter) {
+      let powerFeatures = geoData.power.features || [];
+      if (filterType === "hydro") {
+        powerFeatures = powerFeatures.filter(f => {
+          const t = (f.properties.plant_type || f.properties.type || "").toLowerCase();
+          return t.includes("thủy") || t.includes("thuy");
+        });
+      } else if (filterType === "thermal") {
+        powerFeatures = powerFeatures.filter(f => {
+          const t = (f.properties.plant_type || f.properties.type || "").toLowerCase();
+          return t.includes("nhiệt") || t.includes("nhiet");
+        });
+      } else if (filterType === "renewable") {
+        powerFeatures = powerFeatures.filter(f => {
+          const t = (f.properties.plant_type || f.properties.type || "").toLowerCase();
+          return t.includes("gió") || t.includes("gio") || t.includes("mặt trời") || t.includes("mat troi");
+        });
+      }
+
+      L.geoJSON({ type: "FeatureCollection", features: powerFeatures }, {
         pane: 'pointMarkerPane',
         pointToLayer: (feature, latlng) => {
           const p = feature.properties;

@@ -55,7 +55,7 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Custom Stylesheet (with cache-buster) -->
-  <link rel="stylesheet" href="./css/styles.css?v=2026.3.14">
+  <link rel="stylesheet" href="./css/styles.css?v=2026.3.15">
 </head>
 
 <body class="min-h-[100dvh] lg:h-[100dvh] overflow-x-hidden lg:overflow-hidden flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased select-none">
@@ -483,9 +483,12 @@
               <span class="text-[10px] font-semibold text-amber-600 dark:text-amber-400">Atlat GD, tr.13 & tr.23</span>
             </div>
             <select onchange="AtlasEngine.renderMineralsPowerLayer(this.value)" class="w-full text-xs p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none">
-              <option value="all">-- Tất cả khoáng sản & năng lượng --</option>
-              <option value="minerals">Chuyên đề Khoáng sản (Than, Dầu khí, Sắt, Bôxit, Titan... - Tr.13)</option>
-              <option value="power">Chuyên đề Năng lượng (Thủy điện, Nhiệt điện, Điện gió, Mặt trời - Tr.23)</option>
+              <option value="all">-- Tất cả khoáng sản & năng lượng (Tr.13 & 23) --</option>
+              <option value="hydro">Chỉ Thủy điện (Ngôi sao xanh lam - 36 nhà máy) 💧</option>
+              <option value="thermal">Chỉ Nhiệt điện (Ngôi sao đỏ - 18 nhà máy) 🔥</option>
+              <option value="renewable">Điện Gió & Điện Mặt Trời (7 nhà máy) ☀️</option>
+              <option value="power">Tất cả Năng lượng (61 nhà máy) ⚡</option>
+              <option value="minerals">Chuyên đề Khoáng sản (Than, Dầu khí, Sắt, Bôxit... - Tr.13) 💎</option>
             </select>
           </div>
 
@@ -542,7 +545,7 @@
         <!-- Viewport kéo rê / zoom / pan -->
         <div id="atlat-book-viewport" class="flex-1 w-full h-full relative overflow-hidden flex items-center justify-center cursor-grab" style="touch-action: none;">
           <div id="atlat-book-wrapper" class="relative inline-block origin-center will-change-transform">
-            <img id="atlat-book-page-img" src="/public/data/atlat_pages/page_04.jpg?v=2026.3.14" alt="Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)" class="max-w-none shadow-2xl rounded-sm pointer-events-none select-none" />
+            <img id="atlat-book-page-img" src="/public/data/atlat_pages/page_04.jpg?v=2026.3.15" alt="Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)" class="max-w-none shadow-2xl rounded-sm pointer-events-none select-none" />
           </div>
         </div>
         
@@ -1053,13 +1056,123 @@
     </div>
   </div>
 
+
+  <!-- Widget Thống Kê Truy Cập & Điểm Danh (Góc nhỏ xíu bên dưới phía tay trái) -->
+  <div id="visitor-stat-widget" class="fixed bottom-2.5 left-2.5 z-[950] font-sans select-none print:hidden">
+    <div id="visitor-pill" onclick="AtlasVisitorTracker.togglePanel()" class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-white/95 dark:bg-slate-900/95 hover:bg-white dark:hover:bg-slate-900 backdrop-blur-md shadow-md border border-slate-200/90 dark:border-slate-800 text-[10px] text-slate-700 dark:text-slate-300 cursor-pointer transition">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+      </span>
+      <span>Online: <strong id="visitor-online-count" class="text-emerald-600 dark:text-emerald-400 font-bold">--</strong></span>
+      <span class="text-slate-300 dark:text-slate-600">|</span>
+      <span>👁️ <strong id="visitor-total-count" class="text-blue-600 dark:text-blue-400 font-bold">--</strong></span>
+      <span id="visitor-user-badge" class="hidden text-[9px] px-1.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-bold ml-1"></span>
+    </div>
+
+    <!-- Popover Chi Tiết & Điểm Danh -->
+    <div id="visitor-popover" class="hidden absolute bottom-9 left-0 w-80 p-3.5 rounded-2xl bg-white dark:bg-slate-900 shadow-2xl border border-slate-200 dark:border-slate-800 text-xs space-y-3 z-20">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center space-x-1.5 font-bold text-slate-900 dark:text-white">
+          <span>📊</span>
+          <span>Thống Kê & Điểm Danh Học Tập</span>
+        </div>
+        <button onclick="AtlasVisitorTracker.togglePanel()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm">✕</button>
+      </div>
+
+      <!-- Thống kê nhanh -->
+      <div class="grid grid-cols-2 gap-2 text-center">
+        <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/40">
+          <span class="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 block uppercase">Đang Online</span>
+          <span id="visitor-pop-online" class="text-xs font-bold text-slate-800 dark:text-slate-100">-- người</span>
+        </div>
+        <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40">
+          <span class="text-[9px] font-bold text-blue-600 dark:text-blue-400 block uppercase">Tổng Lượt Xem</span>
+          <span id="visitor-pop-total" class="text-xs font-bold text-slate-800 dark:text-slate-100">-- lượt</span>
+        </div>
+      </div>
+
+      <!-- Khu vực Tài Khoản / Điểm Danh Học Sinh -->
+      <div id="visitor-user-card" class="hidden p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1.5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px]">👤</span>
+            <div>
+              <div id="visitor-user-name" class="font-bold text-slate-900 dark:text-white text-xs">...</div>
+              <div id="visitor-user-sub" class="text-[10px] text-slate-500 dark:text-slate-400">...</div>
+            </div>
+          </div>
+          <button onclick="AtlasVisitorTracker.logout()" class="text-[10px] text-rose-600 hover:underline">Đổi tên</button>
+        </div>
+      </div>
+
+      <form id="visitor-guest-form" onsubmit="AtlasVisitorTracker.handleQuickAttendance(event)" class="space-y-2 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700">
+        <div class="font-semibold text-slate-800 dark:text-slate-200 text-[11px] flex items-center justify-between">
+          <span>📝 Điểm Danh Học Viên / Giáo Viên</span>
+          <span class="text-[9px] text-slate-400">Lưu kết quả học tập</span>
+        </div>
+        <div class="grid grid-cols-3 gap-1.5">
+          <input type="text" id="visitor-input-name" placeholder="Họ và tên..." class="col-span-2 text-[11px] px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500" required>
+          <input type="text" id="visitor-input-class" placeholder="Lớp (12A..)" class="text-[11px] px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+        <button type="submit" class="w-full py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-[11px] transition shadow-xs">
+          Xác Nhận Điểm Danh
+        </button>
+      </form>
+
+      <!-- Nhật ký truy cập gần đây -->
+      <div class="space-y-1">
+        <div class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Phiên truy cập gần đây</div>
+        <ul id="visitor-recent-logs" class="text-[10px] max-h-24 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800 pr-1">
+          <!-- Rendered dynamically -->
+        </ul>
+      </div>
+
+      <!-- Cài đặt dành cho Giáo viên -->
+      <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[10px] text-slate-500">
+        <label class="flex items-center space-x-1.5 cursor-pointer">
+          <input type="checkbox" onchange="AtlasVisitorTracker.toggleRequireAuth(this.checked)" class="rounded text-blue-600">
+          <span>Yêu cầu điểm danh khi vào học</span>
+        </label>
+        <span class="text-[9px] text-slate-400">v2026.3.15</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Bắt Buộc Điểm Danh (Nếu Thầy bật chế độ này) -->
+  <div id="mandatory-auth-modal" class="hidden fixed inset-0 z-[9999] bg-slate-900/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="w-full max-w-sm bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 p-5 space-y-4 text-center">
+      <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto text-xl">
+        🎓
+      </div>
+      <div>
+        <h3 class="font-bold text-base text-slate-900 dark:text-white">Điểm Danh Để Tiếp Tục Học</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Giáo viên yêu cầu nhập thông tin học sinh để ghi nhận buổi ôn tập Atlat.</p>
+      </div>
+      <form onsubmit="AtlasVisitorTracker.handleQuickAttendance(event)" class="space-y-2.5 text-left">
+        <div>
+          <label class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 block mb-1">Họ và tên học sinh *</label>
+          <input type="text" id="mandatory-input-name" oninput="document.getElementById('visitor-input-name').value = this.value" placeholder="Ví dụ: Nguyễn Văn An" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div>
+          <label class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 block mb-1">Lớp học / Trường</label>
+          <input type="text" id="mandatory-input-class" oninput="document.getElementById('visitor-input-class').value = this.value" placeholder="Ví dụ: 12A1 - THPT Chuyên" class="w-full text-xs p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition shadow-md">
+          Bắt Đầu Ôn Luyện Atlat 🚀
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- Core JavaScript Modules (Master Embedded Atlat Data first) with Cache-Buster -->
-  <script src="./js/fallback-store.js?v=2026.3.14"></script>
-  <script src="./js/atlat-data.js?v=2026.3.14"></script>
-  <script src="./js/atlas-engine.js?v=2026.3.14"></script>
-  <script src="./js/chart-trainer.js?v=2026.3.14"></script>
-  <script src="./js/geo-calculator.js?v=2026.3.14"></script>
-  <script src="./js/app.js?v=2026.3.14"></script>
+  <script src="./js/fallback-store.js?v=2026.3.15"></script>
+  <script src="./js/atlat-data.js?v=2026.3.15"></script>
+  <script src="./js/atlas-engine.js?v=2026.3.15"></script>
+  <script src="./js/chart-trainer.js?v=2026.3.15"></script>
+  <script src="./js/geo-calculator.js?v=2026.3.15"></script>
+  <script src="./js/visitor-tracker.js?v=2026.3.15"></script>
+  <script src="./js/app.js?v=2026.3.15"></script>
 
 
 </body>
