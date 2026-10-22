@@ -2063,12 +2063,43 @@ const AtlasEngine = (function () {
         },
         onEachFeature: (feature, layer) => {
           const p = feature.properties;
-          layer.bindTooltip(`
-            <div class="p-1 text-left">
-              <div class="font-bold text-xs text-slate-900 dark:text-white">${p.name}</div>
-              <div class="text-[10px] text-slate-500">${p.mineral_type} • ${p.province}</div>
+          let provLabel = (p.province || "").trim();
+          if (provLabel && !provLabel.startsWith("Tỉnh ") && !provLabel.startsWith("Thành phố ") && !provLabel.startsWith("TP.")) {
+            provLabel = "Tỉnh " + provLabel;
+          }
+
+          const minTooltipHtml = `
+            <div class="p-1.5 text-left font-sans min-w-[220px] max-w-[280px] space-y-1.5">
+              <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-700">
+                <div class="font-bold text-xs text-slate-900 dark:text-white flex items-center space-x-1.5">
+                  <span>💎</span>
+                  <span>${p.name}</span>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-200 dark:border-amber-800 shrink-0">Atlat tr.13</span>
+              </div>
+              <div class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <div>Loại khoáng sản: <strong class="text-slate-900 dark:text-white">${p.mineral_type || p.name}</strong></div>
+                ${p.group ? `<div>Nhóm: <strong class="text-slate-900 dark:text-white">${p.group}</strong></div>` : ''}
+                ${provLabel ? `<div>Địa bàn phân bố: <strong class="text-slate-900 dark:text-white">${provLabel}</strong></div>` : ''}
+              </div>
+              <div class="pt-1 border-t border-slate-100 dark:border-slate-800 text-[9px] text-slate-500 dark:text-slate-400 italic">
+                ${p.source || 'Atlat GD, tr.13 (Khoáng sản Việt Nam)'}
+              </div>
             </div>
-          `, { permanent: false, sticky: false });
+          `;
+
+          layer.bindTooltip(minTooltipHtml, {
+            className: "atlat-rich-tooltip",
+            direction: "top",
+            offset: [0, -11],
+            opacity: 1,
+            sticky: false
+          });
+
+          layer.bindPopup(minTooltipHtml, {
+            className: "atlat-rich-popup",
+            offset: [0, -11]
+          });
 
           layer.on("click", () => showDetailsPanel(p, "mineral"));
         }
@@ -2081,9 +2112,11 @@ const AtlasEngine = (function () {
         pane: 'pointMarkerPane',
         pointToLayer: (feature, latlng) => {
           const p = feature.properties;
-          const iconSvg = getPowerSvg(p.plant_type || p.type || "Thủy điện", p.capacity_mw || 500);
+          const capTier = p.capacity_group || p.capacity_tier || "Dưới 1.000 MW";
+          const iconSvg = getPowerSvg(p.plant_type || p.type || "Thủy điện", capTier);
           const isRenewable = (p.plant_type || "").includes("gió") || (p.plant_type || "").includes("mặt trời");
-          const size = isRenewable ? 22 : ((p.capacity_mw || 500) >= 1000 ? 26 : 20);
+          const isLarge = capTier.includes("Trên 1.000 MW");
+          const size = isRenewable ? 22 : (isLarge ? 26 : 20);
           const icon = L.divIcon({
             className: "atlat-power-marker",
             html: iconSvg,
@@ -2095,12 +2128,61 @@ const AtlasEngine = (function () {
         },
         onEachFeature: (feature, layer) => {
           const p = feature.properties;
-          layer.bindTooltip(`
-            <div class="p-1 text-left">
-              <div class="font-bold text-xs text-slate-900 dark:text-white">${p.name}</div>
-              <div class="text-[10px] text-blue-600 dark:text-blue-400 font-bold">${p.plant_type || ''} • ${p.capacity_mw ? p.capacity_mw.toLocaleString() + ' MW' : ''}</div>
+          const pType = p.plant_type || p.type || "Thủy điện";
+          const pRaw = pType.toLowerCase();
+          const isThermal = pRaw.includes("nhiệt") || pRaw.includes("nhiet");
+          const isSolar = pRaw.includes("mặt trời") || pRaw.includes("mat troi");
+          const isWind = pRaw.includes("gió") || pRaw.includes("gio");
+          const starColor = isThermal ? "#DC2626" : (isWind ? "#16A34A" : (isSolar ? "#EA580C" : "#0284C7"));
+          const starIcon = `<svg width="18" height="18" viewBox="0 0 24 24" class="inline-block shrink-0"><polygon points="12,1 15.3,8.3 23.3,9.2 17.3,14.6 19.1,22.5 12,18.4 4.9,22.5 6.7,14.6 0.7,9.2 8.7,8.3" fill="${starColor}" stroke="#FFFFFF" stroke-width="1.5"/></svg>`;
+          const badgeClass = isThermal 
+            ? "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border border-rose-200 dark:border-rose-800" 
+            : (isWind || isSolar ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800" : "bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 border border-sky-200 dark:border-sky-800");
+          
+          const capText = p.capacity_group || p.capacity_tier || "Dưới 1.000 MW";
+          const capColor = isThermal ? "text-rose-600 dark:text-rose-400" : "text-blue-600 dark:text-blue-400";
+          
+          let cleanProv = (p.province || "").trim();
+          if (cleanProv && !cleanProv.startsWith("Tỉnh ") && !cleanProv.startsWith("Thành phố ") && !cleanProv.startsWith("TP.")) {
+            cleanProv = "Tỉnh " + cleanProv;
+          }
+
+          const powerTooltipHtml = `
+            <div class="p-1.5 text-left font-sans min-w-[240px] max-w-[300px] space-y-1.5">
+              <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-700">
+                <div class="font-bold text-xs text-slate-900 dark:text-white flex items-center space-x-1.5">
+                  <span>${starIcon}</span>
+                  <span>${p.name}</span>
+                </div>
+                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-full ${badgeClass} shrink-0">Atlat tr.23</span>
+              </div>
+              <div class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <div>Loại năng lượng: <strong class="text-slate-900 dark:text-white">${pType}</strong></div>
+                <div>Quy mô công suất: <strong class="${capColor} font-bold">${capText}</strong></div>
+                ${p.river_fuel ? `<div>Nguồn nhiên liệu / Sông: <strong class="text-slate-900 dark:text-white">${p.river_fuel}</strong> ${cleanProv ? `<span class="text-slate-500 dark:text-slate-400">(${cleanProv})</span>` : ''}</div>` : (cleanProv ? `<div>Địa bàn: <strong class="text-slate-900 dark:text-white">${cleanProv}</strong></div>` : '')}
+              </div>
+              <div class="pt-1 border-t border-slate-100 dark:border-slate-800 text-[9px] text-slate-500 dark:text-slate-400 leading-tight italic">
+                ${p.source || 'Atlat GD, tr.23 (Công nghiệp năng lượng: Phân cấp > 1000 MW và < 1000 MW)'}
+              </div>
             </div>
-          `, { permanent: false, sticky: false });
+          `;
+
+          const capTierVal = p.capacity_group || p.capacity_tier || "Dưới 1.000 MW";
+          const isLargePlant = capTierVal.includes("Trên 1.000 MW");
+          const plantSize = (isThermal || isRenewable) ? 22 : (isLargePlant ? 26 : 20);
+
+          layer.bindTooltip(powerTooltipHtml, {
+            className: "atlat-rich-tooltip",
+            direction: "top",
+            offset: [0, -plantSize / 2 - 2],
+            opacity: 1,
+            sticky: false
+          });
+
+          layer.bindPopup(powerTooltipHtml, {
+            className: "atlat-rich-popup",
+            offset: [0, -plantSize / 2 - 2]
+          });
 
           layer.on("click", () => showDetailsPanel(p, "power"));
         }
@@ -3418,7 +3500,7 @@ const AtlasEngine = (function () {
           <div class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
             <div>Loại năng lượng: <strong>${pType}</strong></div>
             <div>Quy mô công suất: <strong class="${isThermal ? 'text-rose-600' : 'text-blue-600'} font-semibold">${props.capacity_group || (props.capacity_mw ? (props.capacity_mw >= 1000 ? 'Trên 1.000 MW' : 'Dưới 1.000 MW') : 'Chuẩn Atlat GD, tr.23')}</strong></div>
-            <div>Nguồn nhiên liệu / Sông: <strong>${props.river_fuel || 'N/A'}</strong> (Tỉnh ${props.province})</div>
+            <div>Nguồn nhiên liệu / Sông: <strong>${props.river_fuel || 'N/A'}</strong> ${props.province ? `(${(props.province || '').startsWith('Tỉnh ') || (props.province || '').startsWith('Thành phố ') ? props.province : 'Tỉnh ' + props.province})` : ''}</div>
           </div>
         </div>
       `;
