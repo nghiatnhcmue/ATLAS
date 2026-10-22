@@ -1209,7 +1209,7 @@ const AtlasEngine = (function () {
       if (btn63) btn63.className = "px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-slate-700 text-white shadow-xs";
       if (btn34) btn34.className = "px-2.5 py-1.5 rounded-md font-semibold transition text-center flex items-center justify-center space-x-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800";
       if (badge) {
-        badge.innerText = "63 Tỉnh (Trước 01/7/2025 - Tham khảo)";
+        badge.innerText = "63 Tỉnh / Thành (Trước 01/7/2025 - Tham khảo)";
         badge.className = "text-[9px] font-bold px-2 py-0.5 rounded-full bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-300";
       }
       if (hint) {
@@ -3860,21 +3860,21 @@ const AtlasEngine = (function () {
   // ===========================================================================
   let atlasViewMode = "gis"; // "gis" | "book" | "split"
   const DEFAULT_ATLAT_PAGES_MANIFEST = [
-    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "/public/data/atlat_pages/page_01.jpg?v=2026.3.9" },
-    { page: 3, title: "Trang 3: Kí hiệu chung", file: "/public/data/atlat_pages/page_03.jpg?v=2026.3.9" },
-    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "/public/data/atlat_pages/page_04.jpg?v=2026.3.9" },
-    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "/public/data/atlat_pages/page_05.jpg?v=2026.3.9" },
-    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "/public/data/atlat_pages/page_06.jpg?v=2026.3.9" },
-    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "/public/data/atlat_pages/page_07.jpg?v=2026.3.9" },
-    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "/public/data/atlat_pages/page_08.jpg?v=2026.3.9" },
-    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "/public/data/atlat_pages/page_09.jpg?v=2026.3.9" },
-    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "/public/data/atlat_pages/page_10.jpg?v=2026.3.9" },
-    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "/public/data/atlat_pages/page_13.jpg?v=2026.3.9" },
-    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "/public/data/atlat_pages/page_18.jpg?v=2026.3.9" },
-    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "/public/data/atlat_pages/page_19.jpg?v=2026.3.9" },
-    { page: 21, title: "Trang 21: Công nghiệp chung", file: "/public/data/atlat_pages/page_21.jpg?v=2026.3.9" },
-    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "/public/data/atlat_pages/page_22.jpg?v=2026.3.9" },
-    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "/public/data/atlat_pages/page_23.jpg?v=2026.3.9" }
+    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "/public/data/atlat_pages/page_01.jpg?v=2026.3.10" },
+    { page: 3, title: "Trang 3: Kí hiệu chung", file: "/public/data/atlat_pages/page_03.jpg?v=2026.3.10" },
+    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "/public/data/atlat_pages/page_04.jpg?v=2026.3.10" },
+    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "/public/data/atlat_pages/page_05.jpg?v=2026.3.10" },
+    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "/public/data/atlat_pages/page_06.jpg?v=2026.3.10" },
+    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "/public/data/atlat_pages/page_07.jpg?v=2026.3.10" },
+    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "/public/data/atlat_pages/page_08.jpg?v=2026.3.10" },
+    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "/public/data/atlat_pages/page_09.jpg?v=2026.3.10" },
+    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "/public/data/atlat_pages/page_10.jpg?v=2026.3.10" },
+    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "/public/data/atlat_pages/page_13.jpg?v=2026.3.10" },
+    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "/public/data/atlat_pages/page_18.jpg?v=2026.3.10" },
+    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "/public/data/atlat_pages/page_19.jpg?v=2026.3.10" },
+    { page: 21, title: "Trang 21: Công nghiệp chung", file: "/public/data/atlat_pages/page_21.jpg?v=2026.3.10" },
+    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "/public/data/atlat_pages/page_22.jpg?v=2026.3.10" },
+    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "/public/data/atlat_pages/page_23.jpg?v=2026.3.10" }
   ];
   let atlatPagesManifest = [...DEFAULT_ATLAT_PAGES_MANIFEST];
   let currentAtlatPageNumber = 4;
@@ -4300,7 +4300,7 @@ const AtlasEngine = (function () {
     const titleEl = document.getElementById("atlat-book-page-title");
     const selectEl = document.getElementById("atlat-book-page-select");
 
-    const pageFile = `/public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.9`;
+    const pageFile = `/public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.10`;
     if (imgEl) {
       imgEl.alt = displayTitle;
       imgEl.onerror = () => {

@@ -55,7 +55,7 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Custom Stylesheet (with cache-buster) -->
-  <link rel="stylesheet" href="./css/styles.css?v=2026.3.9">
+  <link rel="stylesheet" href="./css/styles.css?v=2026.3.10">
 </head>
 
 <body class="min-h-[100dvh] lg:h-[100dvh] overflow-x-hidden lg:overflow-hidden flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased select-none">
@@ -90,8 +90,8 @@
         class="mode-nav-btn segmented-pill-btn px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 bg-blue-600 text-white shadow-xs shrink-0"
       >
         <span>🗺️</span>
-        <span class="hidden md:inline">1. Atlas Số Thông Minh</span>
-        <span class="md:hidden text-[11px]">Atlas</span>
+        <span class="hidden md:inline">1. Atlat Số Thông Minh</span>
+        <span class="md:hidden text-[11px]">Atlat Số</span>
       </button>
 
       <button 
@@ -159,27 +159,27 @@
             id="btn-view-gis" 
             onclick="AtlasEngine.setAtlasViewMode('gis')" 
             class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-blue-600 text-white font-bold transition flex items-center space-x-1.5 shadow-2xs"
-            title="Bản đồ số GIS 34 tỉnh tương tác vector & 7 lớp chuyên đề"
+            title="Bản đồ số GIS tương tác đa tầng & 7 lớp chuyên đề"
           >
             <span>🗺️</span>
-            <span class="hidden sm:inline">Bản Đồ Số GIS (34 Tỉnh)</span>
-            <span class="sm:hidden">GIS 34 Tỉnh</span>
+            <span class="hidden sm:inline">Bản Đồ Số (GIS)</span>
+            <span class="sm:hidden">Bản Đồ Số</span>
           </button>
           <button 
             id="btn-view-book" 
             onclick="AtlasEngine.setAtlasViewMode('book')" 
             class="px-2.5 sm:px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center space-x-1.5 font-semibold"
-            title="Lật trang Atlat Địa lí Việt Nam bản in quét siêu nét với cẩm nang ôn thi THPT"
+            title="Lật trang Atlat Địa lí Việt Nam bản in chuẩn NXB Giáo dục Việt Nam"
           >
             <span>📖</span>
-            <span class="hidden sm:inline">Atlat Giấy Siêu Nét</span>
-            <span class="sm:hidden">Atlat Giấy</span>
+            <span class="hidden sm:inline">Atlat Giấy (Bản In)</span>
+            <span class="sm:hidden">Atlat Bản In</span>
           </button>
           <button 
             id="btn-view-split" 
             onclick="AtlasEngine.setAtlasViewMode('split')" 
             class="px-2.5 sm:px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center space-x-1.5 font-semibold"
-            title="Chế độ giảng dạy & ôn thi: Đối chiếu song song Atlat Giấy 50:50 với Bản đồ GIS"
+            title="Chế độ giảng dạy & ôn thi: Đối chiếu song song Atlat Bản In với Bản đồ số GIS"
           >
             <span>⚡</span>
             <span class="hidden sm:inline">Đối Chiếu Song Song</span>
@@ -329,19 +329,19 @@
               id="btn-mode-34" 
               onclick="AtlasEngine.setProvinceMode('34')"
               class="px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-blue-600 text-white shadow-xs"
-              title="34 Đơn vị hành chính cấp tỉnh chuẩn Atlat GD 2026 tr.4-5"
+              title="34 Tỉnh & Thành phố trực thuộc TW chuẩn Atlat GD 2026 tr.4-5"
             >
               <span>🏛️</span>
-              <span class="truncate">34 Tỉnh Mới (Atlat 2026)</span>
+              <span class="truncate">34 Tỉnh / Thành (Atlat 2026)</span>
             </button>
             <button 
               id="btn-mode-63" 
               onclick="AtlasEngine.setProvinceMode('63')"
               class="px-2.5 py-1.5 rounded-md font-semibold transition text-center flex items-center justify-center space-x-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-              title="63 Tỉnh Thành trước 01/7/2025 (Nguồn tham khảo: geoBoundaries CC-BY)"
+              title="63 Tỉnh & Thành phố trước 01/7/2025 (Nguồn tham khảo: geoBoundaries CC-BY)"
             >
               <span>🗺️</span>
-              <span class="truncate">63 Tỉnh (Trước 01/7/2025)</span>
+              <span class="truncate">63 Tỉnh / Thành (Trước 2025)</span>
             </button>
           </div>
           <p id="province-mode-hint" class="text-[10px] text-slate-500 dark:text-slate-400 italic">
@@ -537,7 +537,7 @@
         </div>
       </div>
 
-      <!-- Khung Hiển Thị Trang Atlat Giấy Gốc Siêu Nét (Book & Split Mode) -->
+      <!-- Khung Hiển Thị Trang Atlat Bản In Chuẩn GD (Book & Split Mode) -->
       <div id="atlat-book-col" class="hidden col-span-12 lg:col-span-8 h-[55vh] sm:h-[65vh] lg:h-full min-h-[340px] lg:min-h-0 rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-slate-950 select-none flex flex-col">
         <!-- Viewport kéo rê / zoom / pan -->
         <div id="atlat-book-viewport" class="flex-1 w-full h-full relative overflow-hidden flex items-center justify-center cursor-grab" style="touch-action: none;">
@@ -1054,12 +1054,12 @@
   </div>
 
   <!-- Core JavaScript Modules (Master Embedded Atlat Data first) with Cache-Buster -->
-  <script src="./js/fallback-store.js?v=2026.3.9"></script>
-  <script src="./js/atlat-data.js?v=2026.3.9"></script>
-  <script src="./js/atlas-engine.js?v=2026.3.9"></script>
-  <script src="./js/chart-trainer.js?v=2026.3.9"></script>
-  <script src="./js/geo-calculator.js?v=2026.3.9"></script>
-  <script src="./js/app.js?v=2026.3.9"></script>
+  <script src="./js/fallback-store.js?v=2026.3.10"></script>
+  <script src="./js/atlat-data.js?v=2026.3.10"></script>
+  <script src="./js/atlas-engine.js?v=2026.3.10"></script>
+  <script src="./js/chart-trainer.js?v=2026.3.10"></script>
+  <script src="./js/geo-calculator.js?v=2026.3.10"></script>
+  <script src="./js/app.js?v=2026.3.10"></script>
 
 
 </body>
