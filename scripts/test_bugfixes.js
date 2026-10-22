@@ -284,6 +284,21 @@ test("BUG-19", "Ứng dụng 100% tĩnh offline, index.html và 200.html đồng
   assert.strictEqual(indexHtml, html200, "index.html and 200.html must be 100% strictly identical");
 });
 
+// BUG-43: Sửa triệt để lỗi Thumbnail Trang 3 và TDZ displayTitle trong selectAtlatBookPage
+test("BUG-43", "Thumbnail Trang 3 (Kí hiệu chung) chuẩn tỉ lệ dọc và selectAtlatBookPage không lỗi TDZ", () => {
+  assert(fs.existsSync("thumb_page_03.jpg"), "thumb_page_03.jpg must exist in workspace root");
+  const engineCode = fs.readFileSync("js/atlas-engine.js", "utf-8");
+  
+  // Kiểm tra khai báo displayTitle nằm trước imgEl.alt
+  const funcIdx = engineCode.indexOf("function selectAtlatBookPage(pageNumber)");
+  assert(funcIdx !== -1, "selectAtlatBookPage exists");
+  const funcSlice = engineCode.slice(funcIdx, funcIdx + 1500);
+  const titleDeclIdx = funcSlice.indexOf("const displayTitle =");
+  const altUseIdx = funcSlice.indexOf("imgEl.alt = displayTitle;");
+  assert(titleDeclIdx !== -1 && altUseIdx !== -1, "Both displayTitle declaration and imgEl.alt assignment exist");
+  assert(titleDeclIdx < altUseIdx, "displayTitle must be declared BEFORE imgEl.alt is assigned (Fix TDZ ReferenceError)");
+});
+
 console.log("======================================================================");
 console.log(`  TEST RESULTS: ${passedCount}/${totalCount} BUGS VERIFIED (100%)`);
 console.log("======================================================================");

@@ -138,6 +138,18 @@ check("DUAL-05", "100% trang Atlat quét có mặt trên đĩa và khớp với 
   });
 });
 
+check("DUAL-06", "Thumbnail Trang 3 nguyên vẹn và selectAtlatBookPage không lỗi TDZ ReferenceError", () => {
+  assert(fs.existsSync("thumb_page_03.jpg"), "thumb_page_03.jpg exists");
+  const engineCode = fs.readFileSync(path.join("js", "atlas-engine.js"), "utf-8");
+  const funcIdx = engineCode.indexOf("function selectAtlatBookPage(pageNumber)");
+  assert(funcIdx !== -1, "selectAtlatBookPage exists");
+  const funcSlice = engineCode.slice(funcIdx, funcIdx + 1500);
+  const titleDeclIdx = funcSlice.indexOf("const displayTitle =");
+  const altUseIdx = funcSlice.indexOf("imgEl.alt = displayTitle;");
+  assert(titleDeclIdx !== -1 && altUseIdx !== -1, "Both displayTitle and imgEl.alt exist");
+  assert(titleDeclIdx < altUseIdx, "displayTitle declared before imgEl.alt (No TDZ bug)");
+});
+
 console.log("======================================================================");
 console.log(`  RESULT: ${passed}/${total} TESTS PASSED (${Math.round((passed/total)*100)}%)`);
 console.log("======================================================================");
