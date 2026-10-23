@@ -1,4 +1,4 @@
-/**
+﻿/**
  * GeoAtlas Interactive - Main App Controller
  * Manages Viewport Lock, Segmented Pill Controls, Theme, Engine Sync, and System Health Check
  */
@@ -73,11 +73,11 @@ function setupModes() {
 
       // Cập nhật trạng thái Segmented Pill Button
       modeButtons.forEach(b => {
-        b.classList.remove("bg-blue-600", "text-white", "shadow-xs");
+        b.classList.remove("bg-blue-600", "text-white", "shadow-sm");
         b.classList.add("text-slate-600", "dark:text-slate-400");
       });
       btn.classList.remove("text-slate-600", "dark:text-slate-400");
-      btn.classList.add("bg-blue-600", "text-white", "shadow-xs");
+      btn.classList.add("bg-blue-600", "text-white", "shadow-sm");
 
       // Cập nhật hiển thị view
       modeViews.forEach(v => v.classList.add("hidden"));

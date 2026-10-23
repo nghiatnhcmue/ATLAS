@@ -15,7 +15,7 @@ import urllib.request
 import urllib.error
 
 OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "public", "data")
-OUTPUT_FILE = os.path.join(OUTPUT_DIR, "vn_provinces.geojson")
+OUTPUT_FILE = os.path.join(OUTPUT_DIR, "vn_provinces_63.geojson")
 
 USER_AGENT = "GeoAtlas_VN_Education_App/1.0 (contact: admin@geoatlas.edu.vn)"
 

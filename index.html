@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi" class="h-full">
 <head>
   <meta charset="UTF-8">
@@ -55,7 +55,7 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Custom Stylesheet (with cache-buster) -->
-  <link rel="stylesheet" href="./css/styles.css?v=2026.3.15">
+  <link rel="stylesheet" href="./css/styles.css?v=2026.3.16">
 </head>
 
 <body class="min-h-[100dvh] lg:h-[100dvh] overflow-x-hidden lg:overflow-hidden flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased select-none">
@@ -63,17 +63,17 @@
   <!-- ====================================================================== -->
   <!-- TOP HEADER (HEIGHT: 56px/64px, RESPONSIVE & Z-INDEX: 2000)             -->
   <!-- ====================================================================== -->
-  <header class="h-14 sm:h-16 shrink-0 app-header bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-2.5 sm:px-6 flex items-center justify-between shadow-xs gap-2">
+  <header class="h-14 sm:h-16 shrink-0 app-header bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-2 sm:px-6 flex items-center justify-between shadow-sm gap-1.5 sm:gap-2 max-w-full overflow-hidden">
     
     <!-- Brand Identity -->
     <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
-      <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-base sm:text-lg font-bold shadow-sm ring-2 ring-blue-500/20">
+      <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-base sm:text-lg font-bold shadow-sm ring-2 ring-blue-500/20">
         🌏
       </div>
       <div>
         <div class="flex items-center space-x-1.5 sm:space-x-2">
           <span class="font-bold text-xs sm:text-base tracking-tight text-slate-900 dark:text-white">
-            GeoAtlas <span class="hidden xs:inline">Interactive</span>
+            GeoAtlas <span class="hidden sm:inline">Interactive</span>
           </span>
           <span class="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300 border border-blue-200 dark:border-blue-900 hidden lg:inline-flex">
             Chuẩn Thi THPT 2026 • GDPT 2018
@@ -84,10 +84,10 @@
     </div>
 
     <!-- Center: 3 Segmented Pill Controls (Responsive on Mobile) -->
-    <nav class="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 sm:p-1 rounded-xl border border-slate-200 dark:border-slate-700 shadow-inner overflow-x-auto no-scrollbar shrink-0">
+    <nav class="flex items-center bg-slate-100 dark:bg-slate-800 p-0.5 sm:p-1 rounded-xl border border-slate-200 dark:border-slate-700 shadow-inner overflow-x-auto no-scrollbar min-w-0">
       <button 
         data-tab-target="mode-atlas" 
-        class="mode-nav-btn segmented-pill-btn px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 bg-blue-600 text-white shadow-xs shrink-0"
+        class="mode-nav-btn segmented-pill-btn px-2 sm:px-3.5 py-1 sm:py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1 sm:space-x-1.5 bg-blue-600 text-white shadow-sm shrink-0"
       >
         <span>🗺️</span>
         <span class="hidden md:inline">1. Atlat Số Thông Minh</span>
@@ -115,7 +115,7 @@
 
     <!-- Right: National Sovereignty Tag, Symbol Handbook & Theme Toggle -->
     <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
-      <div class="hidden xl:flex items-center space-x-1.5 text-xs px-3 py-1.5 rounded-full bg-red-50 text-red-700 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900 font-semibold shadow-xs">
+      <div class="hidden xl:flex items-center space-x-1.5 text-xs px-3 py-1.5 rounded-full bg-red-50 text-red-700 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900 font-semibold shadow-sm">
         <span>🇻🇳</span>
         <span>Hoàng Sa & Trường Sa: Chủ quyền Việt Nam</span>
       </div>
@@ -123,7 +123,7 @@
       <button 
         onclick="AtlasEngine.openSymbolHandbook()"
         title="Mở Sổ Tay Ký Hiệu & Cẩm Nang Atlat Chuẩn THPT"
-        class="flex items-center space-x-1 px-2 sm:px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-semibold shadow-xs transition"
+        class="flex items-center space-x-1 px-2 sm:px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-semibold shadow-sm transition"
       >
         <span>📖</span>
         <span class="hidden sm:inline">Sổ Tay</span>
@@ -132,7 +132,7 @@
       <button 
         id="theme-toggle-btn"
         title="Chuyển chế độ Sáng / Tối"
-        class="p-1.5 sm:p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs shadow-xs transition"
+        class="p-1.5 sm:p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs shadow-sm transition"
       >
         <span class="dark:hidden">🌙</span>
         <span class="hidden dark:inline">☀️</span>
@@ -152,13 +152,13 @@
       <!-- ==================================================================== -->
       <!-- THANH ĐIỀU HƯỚNG HỆ SINH THÁI ATLAT KÉP (GIS / ATLAT GIẤY / SONG SONG) -->
       <!-- ==================================================================== -->
-      <div id="atlat-mode-nav-banner" class="col-span-12 flex flex-wrap items-center justify-between gap-2.5 bg-white dark:bg-slate-900 px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-2xs">
+      <div id="atlat-mode-nav-banner" class="col-span-12 flex flex-wrap items-center justify-between gap-2.5 bg-white dark:bg-slate-900 px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
         <!-- Trái: 3 Chế độ tương tác -->
         <div class="flex items-center space-x-1 sm:space-x-1.5 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl text-xs font-semibold">
           <button 
             id="btn-view-gis" 
             onclick="AtlasEngine.setAtlasViewMode('gis')" 
-            class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-blue-600 text-white font-bold transition flex items-center space-x-1.5 shadow-2xs"
+            class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-blue-600 text-white font-bold transition flex items-center space-x-1.5 shadow-sm"
             title="Bản đồ số GIS tương tác đa tầng & 7 lớp chuyên đề"
           >
             <span>🗺️</span>
@@ -227,8 +227,8 @@
           <div id="atlas-map" class="w-full h-full"></div>
 
           <!-- Bộ chuyển đổi 4 Chuyên Đề Atlat Tự Vẽ (100% Offline Vector từ Data - Tuyệt Đối Không Dùng API Ngoài) -->
-          <div class="absolute top-2 sm:top-3 left-2 sm:left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-0.5 sm:space-x-1 text-[10px] sm:text-[11px] max-w-[calc(100%-120px)] sm:max-w-none overflow-x-auto no-scrollbar">
-            <button id="btn-bm-admin" onclick="AtlasEngine.setAtlatTheme('admin')" class="px-1.5 sm:px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-xs flex items-center space-x-1 shrink-0" title="Tự vẽ 6 Vùng kinh tế & Tỉnh thành (Atlat GD, tr.4-5 & 18)">
+          <div class="absolute top-2 sm:top-3 left-2 sm:left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-0.5 sm:space-x-1 text-[10px] sm:text-[11px] max-w-[calc(100%-120px)] sm:max-w-none overflow-x-auto no-scrollbar">
+            <button id="btn-bm-admin" onclick="AtlasEngine.setAtlatTheme('admin')" class="px-1.5 sm:px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-sm flex items-center space-x-1 shrink-0" title="Tự vẽ 6 Vùng kinh tế & Tỉnh thành (Atlat GD, tr.4-5 & 18)">
               <span>🏛️</span>
               <span class="hidden sm:inline">Hành Chính</span>
               <span class="sm:hidden">HC</span>
@@ -251,7 +251,7 @@
           </div>
 
           <!-- Bảng chú giải phân tầng độ cao tự vẽ (Tự động hiển thị khi chọn Địa Hình Tr.6-7) -->
-          <div id="elevation-legend" class="absolute bottom-8 left-2 sm:left-3 z-[890] hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-2 sm:p-2.5 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 text-[9px] sm:text-[10px] font-sans max-w-[220px] sm:max-w-none">
+          <div id="elevation-legend" class="absolute bottom-8 left-2 sm:left-3 z-[890] hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm p-2 sm:p-2.5 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 text-[9px] sm:text-[10px] font-sans max-w-[220px] sm:max-w-none">
             <div class="font-bold text-[10px] sm:text-[11px] text-slate-800 dark:text-slate-200 mb-1 sm:mb-1.5 flex items-center space-x-1">
               <span>⛰️</span><span>Phân Tầng Độ Cao (Atlat GD, tr.6-7)</span>
             </div>
@@ -266,7 +266,7 @@
           </div>
 
           <!-- Floating GIS Toolbar (Reset View, SGK Original Map, Measure Tool, Compare Mode, Mini-Game, Symbol Handbook) -->
-          <div class="absolute top-2 sm:top-3 right-2 sm:right-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-0.5 sm:space-x-1 text-[10px] sm:text-[11px]">
+          <div class="absolute top-2 sm:top-3 right-2 sm:right-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm p-1 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 flex items-center space-x-0.5 sm:space-x-1 text-[10px] sm:text-[11px]">
             <button onclick="AtlasEngine.resetView()" title="Toàn cảnh Việt Nam" class="p-1 sm:px-2 sm:py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium flex items-center space-x-1">
               <span>🧭</span><span class="hidden md:inline">Toàn cảnh</span>
             </button>
@@ -282,7 +282,7 @@
           </div>
           
           <!-- Tọa độ con trỏ chuột thời gian thực -->
-          <div class="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 floating-map-ctrl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-[11px] font-mono text-slate-600 dark:text-slate-300 shadow-sm border border-slate-200 dark:border-slate-700 pointer-events-none hidden sm:block">
+          <div class="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 floating-map-ctrl bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-[11px] font-mono text-slate-600 dark:text-slate-300 shadow-sm border border-slate-200 dark:border-slate-700 pointer-events-none hidden sm:block">
             📍 Tọa độ: <span id="cursor-coords" class="font-bold text-blue-600 dark:text-blue-400">16.0000°B, 107.5000°Đ</span>
           </div>
         </div>
@@ -303,10 +303,10 @@
                 class="w-full pl-8 pr-3 py-2 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
-            <button id="atlas-search-btn" class="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs transition">
+            <button id="atlas-search-btn" class="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-sm transition">
               Tìm
             </button>
-            <button onclick="AtlasEngine.resetView()" title="Toàn cảnh Việt Nam" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 text-xs shadow-xs">
+            <button onclick="AtlasEngine.resetView()" title="Toàn cảnh Việt Nam" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 text-xs shadow-sm">
               🧭
             </button>
           </div>
@@ -328,7 +328,7 @@
             <button 
               id="btn-mode-34" 
               onclick="AtlasEngine.setProvinceMode('34')"
-              class="px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-blue-600 text-white shadow-xs"
+              class="px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-blue-600 text-white shadow-sm"
               title="34 Tỉnh & Thành phố trực thuộc TW chuẩn Atlat GD 2026 tr.4-5"
             >
               <span>🏛️</span>
@@ -545,7 +545,7 @@
         <!-- Viewport kéo rê / zoom / pan -->
         <div id="atlat-book-viewport" class="flex-1 w-full h-full relative overflow-hidden flex items-center justify-center cursor-grab" style="touch-action: none;">
           <div id="atlat-book-wrapper" class="relative inline-block origin-center will-change-transform">
-            <img id="atlat-book-page-img" src="/public/data/atlat_pages/page_04.jpg?v=2026.3.15" alt="Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)" class="max-w-none shadow-2xl rounded-sm pointer-events-none select-none" />
+            <img id="atlat-book-page-img" src="/public/data/atlat_pages/page_04.jpg?v=2026.3.16" alt="Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)" class="max-w-none shadow-2xl rounded-sm pointer-events-none select-none" />
           </div>
         </div>
         
@@ -583,13 +583,13 @@
             <span class="text-[10px] text-slate-400 font-medium hidden sm:inline">ECharts Responsive</span>
           </div>
           <div class="flex items-center space-x-1 sm:space-x-1.5">
-            <button onclick="ChartTrainer.exportChartPng()" title="Tải ảnh PNG chất lượng cao (2x DPI)" class="px-2 sm:px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[10px] sm:text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1 transition shadow-2xs">
+            <button onclick="ChartTrainer.exportChartPng()" title="Tải ảnh PNG chất lượng cao (2x DPI)" class="px-2 sm:px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[10px] sm:text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1 transition shadow-sm">
               <span>📸</span> <span class="hidden md:inline">Tải ảnh</span>
             </button>
-            <button onclick="ChartTrainer.resetChartZoom()" title="Đặt lại góc nhìn biểu đồ" class="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[10px] sm:text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1 transition shadow-2xs">
+            <button onclick="ChartTrainer.resetChartZoom()" title="Đặt lại góc nhìn biểu đồ" class="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[10px] sm:text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1 transition shadow-sm">
               <span>🔄</span> <span class="hidden md:inline">Đặt lại</span>
             </button>
-            <button onclick="ChartTrainer.randomQuestion()" title="Làm câu hỏi ngẫu nhiên" class="px-2 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-[10px] sm:text-[11px] font-bold text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900 flex items-center space-x-1 transition shadow-2xs">
+            <button onclick="ChartTrainer.randomQuestion()" title="Làm câu hỏi ngẫu nhiên" class="px-2 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-[10px] sm:text-[11px] font-bold text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900 flex items-center space-x-1 transition shadow-sm">
               <span>🔀</span> <span class="hidden sm:inline">Ngẫu nhiên</span>
             </button>
           </div>
@@ -639,7 +639,7 @@
   </main>
 
   <!-- Modal So Sánh 2 Thực Thể (Compare Mode Modal) -->
-  <div id="compare-modal" class="fixed inset-0 z-[2000] bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+  <div id="compare-modal" class="fixed inset-0 z-[2000] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full p-5 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
       <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
         <div class="flex items-center space-x-2">
@@ -678,7 +678,7 @@
 
     <!-- 3 Chế độ chơi Tabs -->
     <div class="flex items-center space-x-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg text-[10px]">
-      <button id="game-tab-speed" onclick="AtlasEngine.setGameMode('speed')" class="flex-1 py-1 rounded-md bg-amber-500 text-white font-bold transition text-center shadow-xs">⚡ Định Vị 15s</button>
+      <button id="game-tab-speed" onclick="AtlasEngine.setGameMode('speed')" class="flex-1 py-1 rounded-md bg-amber-500 text-white font-bold transition text-center shadow-sm">⚡ Định Vị 15s</button>
       <button id="game-tab-silhouette" onclick="AtlasEngine.setGameMode('silhouette')" class="flex-1 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition text-center font-medium">👥 Đoán Bóng</button>
       <button id="game-tab-symbols" onclick="AtlasEngine.setGameMode('symbols')" class="flex-1 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition text-center font-medium">💎 Ký Hiệu Mỏ</button>
     </div>
@@ -709,7 +709,7 @@
   </div>
 
   <!-- Modal Sổ Tay Ký Hiệu & Cẩm Nang Phòng Thi Chuẩn THPT -->
-  <div id="symbol-handbook-modal" class="fixed inset-0 z-[2000] bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 hidden">
+  <div id="symbol-handbook-modal" class="fixed inset-0 z-[2000] bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 hidden">
     <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
       <!-- Modal Header -->
       <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/50">
@@ -728,7 +728,7 @@
 
       <!-- Tab Buttons Navigation -->
       <div class="flex items-center space-x-2 px-4 py-2.5 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-x-auto text-xs font-semibold">
-        <button id="hb-tab-btn-minerals" onclick="AtlasEngine.setSymbolHandbookTab('minerals')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-xs transition shrink-0 flex items-center gap-1.5">
+        <button id="hb-tab-btn-minerals" onclick="AtlasEngine.setSymbolHandbookTab('minerals')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-sm transition shrink-0 flex items-center gap-1.5">
           <span>⛏️</span> Khoáng Sản (Atlat GD, tr.13)
         </button>
         <button id="hb-tab-btn-power" onclick="AtlasEngine.setSymbolHandbookTab('power')" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0 flex items-center gap-1.5">
@@ -840,7 +840,7 @@
             <div class="p-3.5 rounded-xl border border-sky-200 dark:border-sky-900/60 bg-sky-50/40 dark:bg-sky-950/20 space-y-2.5">
               <div class="flex items-center justify-between pb-1.5 border-b border-sky-200 dark:border-sky-900/40">
                 <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-xs text-sky-700 dark:text-sky-300">
-                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-md bg-sky-100 dark:bg-sky-900/60 shadow-2xs">
+                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-md bg-sky-100 dark:bg-sky-900/60 shadow-sm">
                     <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12,1 15.3,8.3 23.3,9.2 17.3,14.6 19.1,22.5 12,18.4 4.9,22.5 6.7,14.6 0.7,9.2 8.7,8.3" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5"/></svg>
                   </span>
                   <span>Hệ Thống Nhà Máy Thủy Điện (Tr.23)</span>
@@ -862,7 +862,7 @@
             <div class="p-3.5 rounded-xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/40 dark:bg-rose-950/20 space-y-2.5">
               <div class="flex items-center justify-between pb-1.5 border-b border-rose-200 dark:border-rose-900/40">
                 <h4 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-xs text-rose-700 dark:text-rose-300">
-                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-md bg-rose-100 dark:bg-rose-900/60 shadow-2xs">
+                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-md bg-rose-100 dark:bg-rose-900/60 shadow-sm">
                     <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12,1 15.3,8.3 23.3,9.2 17.3,14.6 19.1,22.5 12,18.4 4.9,22.5 6.7,14.6 0.7,9.2 8.7,8.3" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.5"/></svg>
                   </span>
                   <span>Hệ Thống Nhà Máy Nhiệt Điện (Tr.23)</span>
@@ -1064,7 +1064,7 @@
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
       </span>
-      <span>Online: <strong id="visitor-online-count" class="text-emerald-600 dark:text-emerald-400 font-bold">--</strong></span>
+      <span>Phiên mở: <strong id="visitor-online-count" class="text-emerald-600 dark:text-emerald-400 font-bold">--</strong></span>
       <span class="text-slate-300 dark:text-slate-600">|</span>
       <span>👁️ <strong id="visitor-total-count" class="text-blue-600 dark:text-blue-400 font-bold">--</strong></span>
       <span id="visitor-user-badge" class="hidden text-[9px] px-1.5 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-bold ml-1"></span>
@@ -1083,8 +1083,8 @@
       <!-- Thống kê nhanh -->
       <div class="grid grid-cols-2 gap-2 text-center">
         <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/40">
-          <span class="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 block uppercase">Đang Online</span>
-          <span id="visitor-pop-online" class="text-xs font-bold text-slate-800 dark:text-slate-100">-- người</span>
+          <span class="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 block uppercase">Phiên đang mở</span>
+          <span id="visitor-pop-online" class="text-xs font-bold text-slate-800 dark:text-slate-100">-- phiên</span>
         </div>
         <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40">
           <span class="text-[9px] font-bold text-blue-600 dark:text-blue-400 block uppercase">Tổng Lượt Xem</span>
@@ -1115,7 +1115,7 @@
           <input type="text" id="visitor-input-name" placeholder="Họ và tên..." class="col-span-2 text-[11px] px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500" required>
           <input type="text" id="visitor-input-class" placeholder="Lớp (12A..)" class="text-[11px] px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500">
         </div>
-        <button type="submit" class="w-full py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-[11px] transition shadow-xs">
+        <button type="submit" class="w-full py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-[11px] transition shadow-sm">
           Xác Nhận Điểm Danh
         </button>
       </form>
@@ -1166,13 +1166,12 @@
   </div>
 
   <!-- Core JavaScript Modules (Master Embedded Atlat Data first) with Cache-Buster -->
-  <script src="./js/fallback-store.js?v=2026.3.15"></script>
-  <script src="./js/atlat-data.js?v=2026.3.15"></script>
-  <script src="./js/atlas-engine.js?v=2026.3.15"></script>
-  <script src="./js/chart-trainer.js?v=2026.3.15"></script>
-  <script src="./js/geo-calculator.js?v=2026.3.15"></script>
-  <script src="./js/visitor-tracker.js?v=2026.3.15"></script>
-  <script src="./js/app.js?v=2026.3.15"></script>
+  <script src="./js/atlat-data.js?v=2026.3.16"></script>
+  <script src="./js/atlas-engine.js?v=2026.3.16"></script>
+  <script src="./js/chart-trainer.js?v=2026.3.16"></script>
+  <script src="./js/geo-calculator.js?v=2026.3.16"></script>
+  <script src="./js/visitor-tracker.js?v=2026.3.16"></script>
+  <script src="./js/app.js?v=2026.3.16"></script>
 
 
 </body>

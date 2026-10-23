@@ -11,10 +11,10 @@ Hệ thống số hóa Địa lý học tập và ôn luyện thi tốt nghiệp
    - Ranh giới hành chính 34 tỉnh/thành phố (sau sáp nhập 2025–2026) và 63 tỉnh truyền thống.
    - 6 Vùng kinh tế - xã hội chuẩn Atlat Giáo Dục trang 18.
    - Thể hiện đầy đủ và nổi bật chủ quyền thiêng liêng đối với hai quần đảo **Hoàng Sa** (TP. Đà Nẵng) và **Trường Sa** (Tỉnh Khánh Hoà) kèm đường cơ sở A1–A11.
-   - 6 Lớp chuyên đề: Địa hình - Sông ngòi, Khoáng sản, Khí hậu - Thủy văn, Thủy điện, Trung tâm công nghiệp, Nông - Lâm - Thủy sản.
+   - 7 Lớp chuyên đề: Địa hình - Sông ngòi, Khoáng sản, Khí hậu - Thủy văn, Thủy điện & Năng lượng, Trung tâm công nghiệp & GRDP, Nông - Lâm - Thủy sản, Giao thông vận tải.
 
 2. **Phân hệ 2: Nhận Dạng & Chấm Điểm Biểu Đồ Tự Động**
-   - 21 câu hỏi luyện tập nhận dạng dạng biểu đồ thực chiến (Cột, Đường, Miền, Tròn, Kết hợp).
+   - 30 câu hỏi luyện tập nhận dạng dạng biểu đồ thực chiến (Cột, Đường, Miền, Tròn, Kết hợp).
    - Đánh giá sư phạm chi tiết: giải thích vì sao đúng, vì sao các dạng khác chưa tối ưu.
    - Thuật toán phân tích bảng số liệu độc lập nhận diện từ khóa (cơ cấu, tốc độ tăng trưởng, quy mô...) và ma trận đơn vị.
 
@@ -34,4 +34,6 @@ Dự án là Single Page Application (SPA) thuần túy (HTML5, Vanilla JavaScri
 
 ## 📜 Bản Quyền & Trích Dẫn Nguồn
 - Dữ liệu địa giới và thống kê: Đối chiếu chính xác theo Atlat Địa lý Việt Nam (Lê Huỳnh - Đặng Vũ Khắc, NXB Giáo Dục) và Atlat NXB ĐHQG Hà Nội.
-- Toàn bộ 19 lỗi kỹ thuật và dữ liệu đã được khắc phục và kiểm thử tự động 100%.
+- Rà soát và sửa lỗi liên tục: toàn bộ lỗi đã xác minh được liệt kê và theo dõi tại [`docs/PROJECT_ANALYSIS.md`](docs/PROJECT_ANALYSIS.md) và [`docs/FIX_UPGRADE_PLAN.md`](docs/FIX_UPGRADE_PLAN.md) kèm kiểm chứng runtime.
+- Quy trình dữ liệu một nguồn: `scripts/rebuild_all.py` sinh `public/data/dataset.json` → `js/atlat-data.js` → `js/fallback-store.js`.
+- Kiểm thử: 6 bộ test tĩnh `scripts/test_*.js` + bộ smoke test runtime `scripts/smoke.mjs` (CI qua GitHub Actions).

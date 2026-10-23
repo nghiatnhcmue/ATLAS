@@ -108,5 +108,4 @@ def enrich_file(file_path):
 
 if __name__ == "__main__":
     enrich_file(os.path.join(DATA_DIR, "vn_provinces_63.geojson"))
-    enrich_file(os.path.join(DATA_DIR, "vn_provinces.geojson"))
     enrich_file(os.path.join(DATA_DIR, "vn_provinces_34.geojson"))

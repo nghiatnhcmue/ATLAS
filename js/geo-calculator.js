@@ -1,4 +1,4 @@
-/**
+﻿/**
  * GeoAtlas Interactive - Geographic Calculator Engine v2.0 (Phân hệ 3)
  * Full 10 Core High-School Geography Formulas:
  * 1. density: Mật độ dân số
@@ -817,12 +817,12 @@ const GeoCalculator = (function () {
           <span class="text-xs font-bold text-slate-700 dark:text-slate-300">${t.title}</span>
           <button 
             onclick="GeoCalculator.loadDefaultSample()"
-            class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition flex items-center space-x-1"
+            class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition flex items-center space-x-1"
           >
             <span>⚡ Nạp Ví Dụ Mẫu</span>
           </button>
         </div>
-        <div class="w-full overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+        <div class="w-full overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
           <table class="w-full border-collapse">
             <thead><tr>${headersHtml}</tr></thead>
             <tbody>${rowsHtml}</tbody>
@@ -1005,7 +1005,7 @@ const GeoCalculator = (function () {
     }
 
     resultBox.innerHTML = `
-      <div class="bg-gradient-to-br from-blue-50 to-indigo-50/60 dark:from-slate-800 dark:to-slate-800/80 p-4 rounded-xl border border-blue-200 dark:border-slate-700 space-y-3 shadow-xs">
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-50/60 dark:from-slate-800 dark:to-slate-800/80 p-4 rounded-xl border border-blue-200 dark:border-slate-700 space-y-3 shadow-sm">
         <div class="flex items-center justify-between">
           <div>
             <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 block mb-0.5">Kết quả tính toán:</span>
@@ -1016,7 +1016,7 @@ const GeoCalculator = (function () {
           <button 
             onclick="GeoCalculator.copySolution()"
             title="Sao chép toàn bộ lời giải và đáp số"
-            class="px-2.5 py-1.5 rounded-lg border border-blue-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 text-xs font-bold text-blue-700 dark:text-blue-300 transition flex items-center space-x-1.5 shadow-2xs"
+            class="px-2.5 py-1.5 rounded-lg border border-blue-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 text-xs font-bold text-blue-700 dark:text-blue-300 transition flex items-center space-x-1.5 shadow-sm"
           >
             <span>📋</span>
             <span class="hidden sm:inline">Sao chép lời giải</span>

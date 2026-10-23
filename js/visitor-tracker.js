@@ -1,4 +1,4 @@
-/**
+﻿/**
  * GeoAtlas 2026 - Visitor Tracker & Student Attendance Engine
  * Ghi nhận lượt truy cập thời gian thực & điểm danh học tập (Offline-safe)
  * © 2026 Thầy Nghĩa - THPT Chuyên
@@ -51,6 +51,13 @@
     }
   }
 
+  // B-09: Escape HTML cho dữ liệu người dùng nhập trước khi render (chống stored XSS)
+  function escapeHtml(val) {
+    return String(val == null ? '' : val).replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+
   // 1. Quản lý Đang online (Real-time active presence)
   function getActiveSessions() {
     try {
@@ -90,15 +97,12 @@
 
     const sessions = getActiveSessions();
     const localTabsCount = Math.max(1, Object.keys(sessions).length);
-    
-    // Giờ học cao điểm (7h - 22h) có lượng online tự nhiên 8 - 18 bạn học, ban đêm 3 - 6 bạn
-    const hour = new Date().getHours();
-    const timeFactor = (hour >= 7 && hour <= 22) ? 9 : 3;
-    const minuteHash = Math.floor(new Date().getMinutes() / 5) % 5;
-    const calculatedOnline = localTabsCount + timeFactor + minuteHash;
+
+    // B-08: chỉ đếm số phiên/tab thật (bỏ hằng số "trang trí" theo giờ hệ thống)
+    const calculatedOnline = localTabsCount;
 
     el.textContent = calculatedOnline.toLocaleString('vi-VN');
-    if (popoverEl) popoverEl.textContent = `${calculatedOnline.toLocaleString('vi-VN')} người`;
+    if (popoverEl) popoverEl.textContent = `${calculatedOnline.toLocaleString('vi-VN')} phiên`;
   }
 
   // 2. Quản lý Tổng lượt truy cập & Nhật ký (Total visits & Access logs)
@@ -259,8 +263,8 @@
       listEl.innerHTML = logs.slice(0, 5).map(item => `
         <li class="flex items-center justify-between py-1 border-b border-slate-100 dark:border-slate-800 last:border-0">
           <div class="truncate max-w-[140px]">
-            <span class="font-medium text-slate-800 dark:text-slate-200">${item.user || 'Khách vãng lai'}</span>
-            <span class="block text-[9px] text-slate-400">${item.device}</span>
+            <span class="font-medium text-slate-800 dark:text-slate-200">${escapeHtml(item.user || 'Khách vãng lai')}</span>
+            <span class="block text-[9px] text-slate-400">${escapeHtml(item.device)}</span>
           </div>
           <span class="text-[9px] text-slate-400 font-mono shrink-0">${formatDateTimeVN(item.time)}</span>
         </li>
@@ -338,3 +342,4 @@
     setCurrentUser
   };
 })();
+

@@ -21,25 +21,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 38.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 24.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 34.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 4.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_01"
       }
     },
     {
@@ -61,25 +66,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 38.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 24.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 34.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 4.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_02"
       }
     },
     {
@@ -101,25 +111,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 38.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 24.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 34.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 4.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_03"
       }
     },
     {
@@ -141,25 +156,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_04"
       }
     },
     {
@@ -181,25 +201,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 38.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 24.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 34.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 4.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_05"
       }
     },
     {
@@ -221,25 +246,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_06"
       }
     },
     {
@@ -261,25 +291,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 38.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 24.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 34.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 4.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_07"
       }
     },
     {
@@ -301,25 +336,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 38.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 24.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 34.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 4.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_08"
       }
     },
     {
@@ -341,25 +381,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 38.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 24.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 34.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 4.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_09"
       }
     },
     {
@@ -381,25 +426,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 1.5,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 41.5,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 48.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 9.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_10"
       }
     },
     {
@@ -421,25 +471,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 8.5,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 54.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 31.5,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 6.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_11"
       }
     },
     {
@@ -461,25 +516,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 8.5,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 54.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 31.5,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 6.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_12"
       }
     },
     {
@@ -501,25 +561,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 8.5,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 54.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 31.5,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 6.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_13"
       }
     },
     {
@@ -541,25 +606,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 8.5,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 54.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 31.5,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 6.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_14"
       }
     },
     {
@@ -581,25 +651,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 8.5,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 54.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 31.5,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 6.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_15"
       }
     },
     {
@@ -621,25 +696,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_16"
       }
     },
     {
@@ -661,25 +741,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_17"
       }
     },
     {
@@ -701,25 +786,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 38.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 24.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 34.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 4.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_18"
       }
     },
     {
@@ -741,25 +831,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 38.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 24.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 34.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 4.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_19"
       }
     },
     {
@@ -781,25 +876,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_20"
       }
     },
     {
@@ -821,25 +921,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 8.5,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 54.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 31.5,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 6.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_21"
       }
     },
     {
@@ -861,25 +966,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_22"
       }
     },
     {
@@ -901,25 +1011,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_23"
       }
     },
     {
@@ -941,25 +1056,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_24"
       }
     },
     {
@@ -981,25 +1101,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_25"
       }
     },
     {
@@ -1021,25 +1146,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_26"
       }
     },
     {
@@ -1061,25 +1191,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_27"
       }
     },
     {
@@ -1101,25 +1236,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 8.5,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 54.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 31.5,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 6.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_28"
       }
     },
     {
@@ -1141,25 +1281,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 1.5,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 41.5,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 48.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 9.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_29"
       }
     },
     {
@@ -1181,25 +1326,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_30"
       }
     },
     {
@@ -1221,25 +1371,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_31"
       }
     },
     {
@@ -1261,25 +1416,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_32"
       }
     },
     {
@@ -1301,25 +1461,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_33"
       }
     },
     {
@@ -1341,25 +1506,30 @@
           {
             "name": "Nông, lâm, thuỷ sản",
             "share": 24.0,
-            "color": "#10b981"
+            "color": "#10b981",
+            "sector": "Nông, lâm, thuỷ sản"
           },
           {
             "name": "Công nghiệp - Xây dựng",
             "share": 36.0,
-            "color": "#f59e0b"
+            "color": "#f59e0b",
+            "sector": "Công nghiệp - Xây dựng"
           },
           {
             "name": "Dịch vụ",
             "share": 35.0,
-            "color": "#3b82f6"
+            "color": "#3b82f6",
+            "sector": "Dịch vụ"
           },
           {
             "name": "Thuế sản phẩm",
             "share": 5.0,
-            "color": "#94a3b8"
+            "color": "#94a3b8",
+            "sector": "Thuế sản phẩm"
           }
         ],
-        "source": "Atlat GD, tr.18 (Kinh tế chung)"
+        "source": "Atlat GD, tr.18 (Kinh tế chung)",
+        "id": "IND_34"
       }
     }
   ]

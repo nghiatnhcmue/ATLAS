@@ -1,4 +1,4 @@
-/**
+﻿/**
  * GeoAtlas Interactive - Leaflet Atlas Engine v2.0 (Phân hệ 1)
  * Hoàn thiện 100% 6 Lớp Chuyên Đề Chuẩn Atlat Địa Lí Việt Nam (NXB Giáo Dục):
  * - Lớp 1: Hành chính & Vùng Kinh tế (Atlat GD, tr.4-5)
@@ -162,7 +162,6 @@ const AtlasEngine = (function () {
   };
 
   const LAYER_FILES = {
-    provinces: "./public/data/vn_provinces.geojson",
     provinces63: "./public/data/vn_provinces_63.geojson",
     provinces34: "./public/data/vn_provinces_34.geojson",
     topography: "./public/data/topography_rivers.geojson",
@@ -172,7 +171,7 @@ const AtlasEngine = (function () {
     power: "./public/data/hydropower.geojson",
     industrial: "./public/data/industrial_centers.geojson",
     transportation: "./public/data/transportation.geojson",
-    baseline: "./public/data/atlat_2026_master.json"
+    baseline: "./public/data/baseline.geojson"
   };
 
   const loadingPromises = {};
@@ -224,6 +223,14 @@ const AtlasEngine = (function () {
     "Lai Châu": 28, "Cao Bằng": 26, "Bắc Kạn": 22,
     "Quần đảo Hoàng Sa": 1.2, "Quần đảo Trường Sa": 2.5
   };
+
+  // B-05: Bảng tra cứu GRDP chuẩn hoá tên (bỏ dấu + bỏ tiền tố "Tỉnh "/"Thành phố "/"TP. ")
+  // để khớp cả tên 63 tỉnh cũ lẫn tên 34 đơn vị mới (vd: "Tỉnh Thanh Hoá" → "thanh hoa" → "Thanh Hóa")
+  const stripProvincePrefix = (s) => String(s || "").replace(/^(Tỉnh|Thành phố|TP\.|TT\.)\s+/i, "").trim();
+  const GRDP_NORM_LOOKUP = {};
+  Object.keys(GRDP_LOOKUP).forEach((k) => {
+    GRDP_NORM_LOOKUP[normalizeVN(stripProvincePrefix(k))] = GRDP_LOOKUP[k];
+  });
 
   // Bảng phân hạng tô màu Choropleth Heatmap (Upgrade 1)
   // GRDP bình quân đầu người 4 cấp chuẩn Atlat GD, tr.18
@@ -760,7 +767,8 @@ const AtlasEngine = (function () {
 
     // Khẳng định chủ quyền biển đảo (duy nhất 1 nhãn sạch cho mỗi quần đảo)
     addSovereigntyDemarcation();
-    renderBaselineLayer();
+    // Đường cơ sở A0-A24 nạp từ public/data/baseline.geojson (fetch → fallback lười)
+    ensureLayerData("baseline").then(() => renderBaselineLayer()).catch(() => renderBaselineLayer());
     // Cập nhật lớp nhãn đường cơ sở theo mức zoom (A12-A24 chỉ hiện nhãn chữ khi zoom >= 8)
     map.on("zoomend", () => {
       const container = map.getContainer();
@@ -949,7 +957,7 @@ const AtlasEngine = (function () {
       const btn = document.getElementById(`btn-bm-${k}`);
       if (btn) {
         if (k === theme) {
-          btn.className = "px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-xs";
+          btn.className = "px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold transition shadow-sm";
         } else {
           btn.className = "px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium";
         }
@@ -1168,6 +1176,22 @@ const AtlasEngine = (function () {
         return data;
       } catch (err) {
         console.warn(`[AtlasEngine] Fetch layer '${effectiveName}' thất bại. Sử dụng Seed Fallback:`, err);
+
+        // B-13: bản dự phòng NẠP LƯỜI — chỉ tải khi fetch thật sự thất bại,
+        // không chiếm critical path lúc tải trang ban đầu.
+        if (!window.GEO_ATLAS_FALLBACK_DATA && !window.__fallbackLoading) {
+          window.__fallbackLoading = new Promise((resolve) => {
+            const s = document.createElement("script");
+            s.src = "./js/fallback-store.js";
+            s.onload = () => resolve(true);
+            s.onerror = () => resolve(false);
+            document.head.appendChild(s);
+          });
+        }
+        if (window.__fallbackLoading) {
+          try { await window.__fallbackLoading; } catch (e) { /* bỏ qua */ }
+        }
+
         if (window.GEO_ATLAS_FALLBACK_DATA) {
           const fallbackData = window.GEO_ATLAS_FALLBACK_DATA[effectiveName] || window.GEO_ATLAS_FALLBACK_DATA[name];
           if (fallbackData) {
@@ -1196,7 +1220,7 @@ const AtlasEngine = (function () {
     const hint = document.getElementById("province-mode-hint");
 
     if (mode === "34") {
-      if (btn34) btn34.className = "px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-blue-600 text-white shadow-xs";
+      if (btn34) btn34.className = "px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-blue-600 text-white shadow-sm";
       if (btn63) btn63.className = "px-2.5 py-1.5 rounded-md font-semibold transition text-center flex items-center justify-center space-x-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800";
       if (badge) {
         badge.innerText = "34 Đơn Vị (Chuẩn Atlat GD, tr.4-5)";
@@ -1206,7 +1230,7 @@ const AtlasEngine = (function () {
         hint.innerText = "Chuẩn Atlat GD 2026, tr.4-5 (Bảng diện tích, dân số 34 đơn vị hành chính; ranh giới tổng hợp nội suy).";
       }
     } else {
-      if (btn63) btn63.className = "px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-slate-700 text-white shadow-xs";
+      if (btn63) btn63.className = "px-2.5 py-1.5 rounded-md font-bold transition text-center flex items-center justify-center space-x-1 bg-slate-700 text-white shadow-sm";
       if (btn34) btn34.className = "px-2.5 py-1.5 rounded-md font-semibold transition text-center flex items-center justify-center space-x-1 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800";
       if (badge) {
         badge.innerText = "63 Tỉnh / Thành (Trước 01/7/2025 - Tham khảo)";
@@ -1248,7 +1272,7 @@ const AtlasEngine = (function () {
       if (!mapContainer) return;
       legend = document.createElement("div");
       legend.id = "choropleth-legend";
-      legend.className = "absolute bottom-8 left-3 z-[890] hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-2.5 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 text-[10px] font-sans max-w-[280px]";
+      legend.className = "absolute bottom-8 left-3 z-[890] hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm p-2.5 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 text-[10px] font-sans max-w-[280px]";
       mapContainer.appendChild(legend);
     }
 
@@ -1443,8 +1467,12 @@ const AtlasEngine = (function () {
         if (currentChoroplethMode === "density") {
           choroplethBadge = `<div class="text-[10px] text-rose-600 dark:text-rose-400 font-bold mt-0.5">👥 Mật độ: ${Number(p.density).toLocaleString()} ng/km²</div>`;
         } else if (currentChoroplethMode === "grdp") {
-          const grdpVal = p.grdp || GRDP_LOOKUP[p.name] || 50;
-          choroplethBadge = `<div class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">💰 GRDP: ${Number(grdpVal).toLocaleString()} nghìn tỉ</div>`;
+          // B-05: ưu tiên lookup chuẩn hoá tên; chỉ dùng p.grdp khi là giá trị thật (khác placeholder 100)
+          const rawGrdp = Number(p.grdp);
+          const grdpVal = GRDP_NORM_LOOKUP[normalizeVN(stripProvincePrefix(p.name))] || (rawGrdp > 0 && rawGrdp !== 100 ? rawGrdp : null);
+          choroplethBadge = grdpVal != null
+            ? `<div class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">💰 GRDP: ${formatVNNum(grdpVal)} nghìn tỉ đồng</div>`
+            : `<div class="text-[10px] text-slate-500 dark:text-slate-400 font-bold mt-0.5">💰 GRDP: Chưa có số liệu 34 đơn vị mới</div>`;
         } else if (currentChoroplethMode === "area") {
           choroplethBadge = `<div class="text-[10px] text-purple-600 dark:text-purple-400 font-bold mt-0.5">📐 Diện tích: ${Number(p.area).toLocaleString()} km²</div>`;
         }
@@ -1608,7 +1636,7 @@ const AtlasEngine = (function () {
             className: "peak-carto-marker",
             html: `
               <div class="carto-peak-label select-none cursor-pointer hover:scale-110 transition">
-                <span class="text-black dark:text-white font-black text-[10px] leading-none drop-shadow-xs">▲</span>
+                <span class="text-black dark:text-white font-black text-[10px] leading-none drop-shadow-sm">▲</span>
                 <span class="text-[10px] font-bold text-slate-900 dark:text-slate-100 font-sans tracking-tight whitespace-nowrap" style="text-shadow: 0 0 3px #ffffff, 0 0 6px #ffffff, 0 1px 2px rgba(255,255,255,0.9);">${p.name.replace('Đỉnh ', '')} <span class="font-mono text-[9px] text-amber-950 dark:text-amber-300 font-bold">${p.elevation_m}</span></span>
               </div>
             `,
@@ -2188,7 +2216,7 @@ const AtlasEngine = (function () {
 
           const capTierVal = p.capacity_group || p.capacity_tier || "Dưới 1.000 MW";
           const isLargePlant = capTierVal.includes("Trên 1.000 MW");
-          const plantSize = (isThermal || isRenewable) ? 22 : (isLargePlant ? 26 : 20);
+          const plantSize = (isThermal || isWind || isSolar) ? 22 : (isLargePlant ? 26 : 20);
 
           layer.bindTooltip(powerTooltipHtml, {
             className: "atlat-rich-tooltip",
@@ -2225,12 +2253,21 @@ const AtlasEngine = (function () {
 
     layerIndustrial.clearLayers();
 
+    // B-03: UI gửi very_large/large/medium, dữ liệu dùng tier_1..tier_4 → map sang tier
+    const SCALE_FILTER_MAP = { very_large: "tier_1", large: "tier_2", medium: ["tier_3", "tier_4"] };
+
     const currentZoom = map.getZoom();
     const zoomScale = currentZoom < 6 ? 0.65 : 1.0;
 
     L.geoJSON(geoData.industrial, {
       pane: 'pointMarkerPane',
-      filter: (f) => scaleFilter === "all" || f.properties.scale === scaleFilter || f.properties.scale_tier === scaleFilter,
+      filter: (f) => {
+        if (scaleFilter === "all") return true;
+        const mapped = SCALE_FILTER_MAP[scaleFilter];
+        const tier = f.properties.scale_tier || f.properties.scale;
+        if (Array.isArray(mapped)) return mapped.includes(tier);
+        return mapped === tier || tier === scaleFilter;
+      },
       pointToLayer: (feature, latlng) => {
         const p = feature.properties;
         const baseRadius = p.radius_px || (p.scale_tier === "very_large" ? 28 : p.scale_tier === "large" ? 22 : 16);
@@ -2361,7 +2398,7 @@ const AtlasEngine = (function () {
                   <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
                 </svg>
               </div>
-              <span class="${badgeBg} text-[9.5px] font-bold px-1.5 py-0.5 rounded-full border shadow-xs whitespace-nowrap">${shortName}</span>
+              <span class="${badgeBg} text-[9.5px] font-bold px-1.5 py-0.5 rounded-full border shadow-sm whitespace-nowrap">${shortName}</span>
             </div>
           `;
           return L.marker(latlng, {
@@ -2383,7 +2420,7 @@ const AtlasEngine = (function () {
                   <path d="M12 2a3 3 0 0 0-3 3c0 1.3.84 2.4 2 2.82V10H9v2h2v7.17A7 7 0 0 1 5 12h-2a9 9 0 0 0 8 8.95V22h2v-1.05A9 9 0 0 0 21 12h-2a7 7 0 0 1-6 7.17V12h2v-2h-2V7.82c1.16-.42 2-1.52 2-2.82a3 3 0 0 0-3-3zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                 </svg>
               </div>
-              <span class="${badgeBg} text-[9.5px] font-bold px-1.5 py-0.5 rounded-full border shadow-xs whitespace-nowrap">${shortName}</span>
+              <span class="${badgeBg} text-[9.5px] font-bold px-1.5 py-0.5 rounded-full border shadow-sm whitespace-nowrap">${shortName}</span>
             </div>
           `;
           return L.marker(latlng, {
@@ -2418,7 +2455,7 @@ const AtlasEngine = (function () {
               pane: 'pointMarkerPane',
               icon: L.divIcon({
                 className: "transport-line-badge",
-                html: `<div class="${badgeBg} text-[9px] font-bold px-1.5 py-0.5 rounded-full border border-white/80 shadow-xs whitespace-nowrap">${badgeText}</div>`,
+                html: `<div class="${badgeBg} text-[9px] font-bold px-1.5 py-0.5 rounded-full border border-white/80 shadow-sm whitespace-nowrap">${badgeText}</div>`,
                 iconSize: [80, 20],
                 iconAnchor: [40, 10]
               })
@@ -2746,7 +2783,7 @@ const AtlasEngine = (function () {
       const btn = document.getElementById(`game-tab-${t}`);
       if (btn) {
         if (t === mode) {
-          btn.className = "flex-1 py-1 rounded-md bg-amber-500 text-white font-bold transition text-center shadow-xs";
+          btn.className = "flex-1 py-1 rounded-md bg-amber-500 text-white font-bold transition text-center shadow-sm";
         } else {
           btn.className = "flex-1 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition text-center font-medium";
         }
@@ -3678,13 +3715,13 @@ const AtlasEngine = (function () {
       legendEl = document.createElement("div");
       legendEl.id = "atlas-dynamic-legend";
       legendEl.className = isLegendCollapsed
-        ? "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2.5 py-1.5 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] pointer-events-auto transition-all"
-        : "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[260px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
+        ? "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm px-2.5 py-1.5 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] pointer-events-auto transition-all"
+        : "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[260px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
       mapContainer.appendChild(legendEl);
     } else {
       legendEl.className = isLegendCollapsed
-        ? "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2.5 py-1.5 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] pointer-events-auto transition-all"
-        : "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[260px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
+        ? "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm px-2.5 py-1.5 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] pointer-events-auto transition-all"
+        : "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[260px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
     }
 
     const sections = [];
@@ -3911,9 +3948,9 @@ const AtlasEngine = (function () {
     }
     if (legendEl) {
       if (isLegendCollapsed) {
-        legendEl.className = "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2.5 py-1.5 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] pointer-events-auto transition-all";
+        legendEl.className = "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm px-2.5 py-1.5 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] pointer-events-auto transition-all";
       } else {
-        legendEl.className = "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[260px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
+        legendEl.className = "absolute bottom-3 left-3 z-[900] bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm p-3 rounded-xl text-xs shadow-md border border-slate-200 dark:border-slate-700 max-w-[280px] max-h-[260px] overflow-y-auto space-y-2 pointer-events-auto transition-all";
       }
     }
   }
@@ -3984,7 +4021,7 @@ const AtlasEngine = (function () {
       const pane = document.getElementById(`hb-pane-${t}`);
       if (btn) {
         if (t === tab) {
-          btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-xs transition";
+          btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-sm transition";
         } else {
           btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition";
         }
@@ -4541,7 +4578,7 @@ const AtlasEngine = (function () {
       <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center space-x-2">
         <button 
           onclick="AtlasEngine.setAtlasViewMode('split')" 
-          class="flex-1 py-2 px-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-xs"
+          class="flex-1 py-2 px-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-sm"
           title="Mở đối chiếu song song Atlat Giấy và Bản đồ số GIS"
         >
           <span>⚡</span>
@@ -4610,7 +4647,7 @@ const AtlasEngine = (function () {
     const btnBook = document.getElementById("btn-view-book");
     const btnSplit = document.getElementById("btn-view-split");
 
-    const activeClasses = ["bg-blue-600", "text-white", "font-bold", "shadow-2xs"];
+    const activeClasses = ["bg-blue-600", "text-white", "font-bold", "shadow-sm"];
     const inactiveClasses = ["text-slate-600", "dark:text-slate-300", "hover:bg-slate-200", "dark:hover:bg-slate-700", "font-semibold"];
 
     function setBtnStyle(btn, isActive) {

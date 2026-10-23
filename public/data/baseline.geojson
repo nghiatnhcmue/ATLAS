@@ -1,0 +1,526 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Đường cơ sở bờ biển Việt Nam A1 - A24",
+    "standard": "Atlat Địa lí Việt Nam Trang 4-5, 6-7 & 9"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A1",
+        "name": "Điểm A1: Hòn Nhạn (Quần đảo Thổ Chu)",
+        "province": "Kiên Giang",
+        "desc": "Điểm cơ sở số 1 phía Tây Nam vịnh Thái Lan."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.45,
+          9.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A2",
+        "name": "Điểm A2: Hòn Đá Lẻ",
+        "province": "Cà Mau",
+        "desc": "Điểm cơ sở cực Nam bán đảo Cà Mau."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.87,
+          8.38
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A3",
+        "name": "Điểm A3: Hòn Tài Lớn (Côn Đảo)",
+        "province": "Bà Rịa - Vũng Tàu",
+        "desc": "Điểm cơ sở nhóm đảo Côn Sơn."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.63,
+          8.63
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A4",
+        "name": "Điểm A4: Hòn Bông Lang (Côn Đảo)",
+        "province": "Bà Rịa - Vũng Tàu",
+        "desc": "Điểm cơ sở phía Đông Nam Côn Đảo."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.67,
+          8.65
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A5",
+        "name": "Điểm A5: Hòn Bảy Cạnh (Côn Đảo)",
+        "province": "Bà Rịa - Vũng Tàu",
+        "desc": "Điểm cơ sở phía Đông Côn Đảo."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.7,
+          8.66
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A6",
+        "name": "Điểm A6: Hòn Hải (Nhóm đảo Phú Quý)",
+        "province": "Bình Thuận",
+        "desc": "Điểm cơ sở xa bờ nhất Nam Trung Bộ."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.08,
+          9.97
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A7",
+        "name": "Điểm A7: Hòn Đôi (Bán đảo Hòn Gốm)",
+        "province": "Khánh Hoà",
+        "desc": "Điểm cơ sở gần cực Đông đất liền."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.47,
+          12.65
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A8",
+        "name": "Điểm A8: Mũi Đại Lãnh",
+        "province": "Phú Yên",
+        "desc": "Điểm cơ sở mũi đất đón bình minh sớm nhất đất liền."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.45,
+          12.89
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A9",
+        "name": "Điểm A9: Hòn Ông Căn",
+        "province": "Bình Định",
+        "desc": "Điểm cơ sở bờ biển Bình Định."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.35,
+          13.9
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A10",
+        "name": "Điểm A10: Đảo Lý Sơn",
+        "province": "Quảng Ngãi",
+        "desc": "Điểm cơ sở huyện đảo Lý Sơn."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.15,
+          15.39
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A11",
+        "name": "Điểm A11: Đảo Cồn Cỏ",
+        "province": "Quảng Trị",
+        "desc": "Điểm cơ sở cửa ngõ phía Nam vịnh Bắc Bộ."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.34,
+          17.17
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A12",
+        "name": "Điểm A12: Mũi Ròn",
+        "province": "Hà Tĩnh",
+        "desc": "Mũi Ròn (Kỳ Anh, Hà Tĩnh) cửa ngõ phía Nam vịnh Bắc Bộ."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.6738,
+          17.9134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A13",
+        "name": "Điểm A13: Đảo Sơn Dương",
+        "province": "Hà Tĩnh",
+        "desc": "Đảo Sơn Dương (Kỳ Anh, Hà Tĩnh)."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          106.4899,
+          18.1174
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A14",
+        "name": "Điểm A14: Hòn Mắt",
+        "province": "Nghệ An",
+        "desc": "Đảo Hòn Mắt ngoài khơi Cửa Lò, Nghệ An."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.989,
+          18.7912
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A15",
+        "name": "Điểm A15: Hòn Mê",
+        "province": "Thanh Hoá",
+        "desc": "Quần đảo Hòn Mê ngoài khơi Tĩnh Gia / Nghi Sơn, Thanh Hóa."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.9385,
+          19.3769
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A16",
+        "name": "Điểm A16: Đảo Long Châu",
+        "province": "Hải Phòng",
+        "desc": "Quần đảo Long Châu phía Đông Nam đảo Cát Bà, Hải Phòng."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.2089,
+          20.6133
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A17",
+        "name": "Điểm A17: Hòn Chân Voi",
+        "province": "Quảng Ninh",
+        "desc": "Hòn Chân Voi phía Đông đảo Cô Tô, Quảng Ninh."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4541,
+          20.7163
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A18",
+        "name": "Điểm A18: Hòn Voi Lớn",
+        "province": "Quảng Ninh",
+        "desc": "Hòn Voi Lớn thuộc quần đảo Cô Tô, Quảng Ninh."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4639,
+          20.7226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A19",
+        "name": "Điểm A19: Đảo Vĩnh Thực",
+        "province": "Quảng Ninh",
+        "desc": "Điểm phía Nam đảo Vĩnh Thực, thành phố Móng Cái."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8225,
+          20.984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A20",
+        "name": "Điểm A20: Đảo Vĩnh Thực Đông",
+        "province": "Quảng Ninh",
+        "desc": "Điểm phía Đông Nam đảo Vĩnh Thực."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.8629,
+          21.0239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A21",
+        "name": "Điểm A21: Hòn Miều",
+        "province": "Quảng Ninh",
+        "desc": "Đảo Hòn Miều ngoài khơi Hải Hà, Quảng Ninh."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.0193,
+          21.1888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A22",
+        "name": "Điểm A22: Hòn Miều Đông",
+        "province": "Quảng Ninh",
+        "desc": "Điểm phía Đông Hòn Miều."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.0216,
+          21.1914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A23",
+        "name": "Điểm A23: Mũi Ngọc",
+        "province": "Quảng Ninh",
+        "desc": "Mũi Ngọc, phường Bình Ngọc, thành phố Móng Cái."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.0924,
+          21.4708
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_point",
+        "code": "A24",
+        "name": "Điểm A24: Mũi Trà Cổ",
+        "province": "Quảng Ninh",
+        "desc": "Mũi Trà Cổ (Móng Cái, Quảng Ninh), điểm khởi đầu bờ biển phía Bắc giáp biên giới Việt - Trung."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.1012,
+          21.4701
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "baseline_line",
+        "name": "Đường cơ sở biển Việt Nam A1 - A24",
+        "desc": "Đường cơ sở nối liền các điểm nhô ra ngoài cùng từ Hòn Nhạn (A1, Kiên Giang) qua đảo Cồn Cỏ (A11, Quảng Trị) đến Mũi Trà Cổ (A24, Quảng Ninh)."
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.45,
+            9.25
+          ],
+          [
+            104.87,
+            8.38
+          ],
+          [
+            106.63,
+            8.63
+          ],
+          [
+            106.67,
+            8.65
+          ],
+          [
+            106.7,
+            8.66
+          ],
+          [
+            109.08,
+            9.97
+          ],
+          [
+            109.47,
+            12.65
+          ],
+          [
+            109.45,
+            12.89
+          ],
+          [
+            109.35,
+            13.9
+          ],
+          [
+            109.15,
+            15.39
+          ],
+          [
+            107.34,
+            17.17
+          ],
+          [
+            106.6738,
+            17.9134
+          ],
+          [
+            106.4899,
+            18.1174
+          ],
+          [
+            105.989,
+            18.7912
+          ],
+          [
+            105.9385,
+            19.3769
+          ],
+          [
+            107.2089,
+            20.6133
+          ],
+          [
+            107.4541,
+            20.7163
+          ],
+          [
+            107.4639,
+            20.7226
+          ],
+          [
+            107.8225,
+            20.984
+          ],
+          [
+            107.8629,
+            21.0239
+          ],
+          [
+            108.0193,
+            21.1888
+          ],
+          [
+            108.0216,
+            21.1914
+          ],
+          [
+            108.0924,
+            21.4708
+          ],
+          [
+            108.1012,
+            21.4701
+          ]
+        ]
+      }
+    }
+  ]
+}

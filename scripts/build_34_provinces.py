@@ -17,7 +17,7 @@ if sys.platform == "win32":
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "public", "data")
-OLD_GEOJSON_PATH = os.path.join(DATA_DIR, "vn_provinces.geojson")
+OLD_GEOJSON_PATH = os.path.join(DATA_DIR, "vn_provinces_63.geojson")
 OUT_63_PATH = os.path.join(DATA_DIR, "vn_provinces_63.geojson")
 OUT_34_PATH = os.path.join(DATA_DIR, "vn_provinces_34.geojson")
 
@@ -214,9 +214,7 @@ def main():
         json.dump(data_63, f, ensure_ascii=False)
     print(f"[+] Saved vn_provinces_63.geojson ({len(cleaned_features_63)} features)")
 
-    # Update main vn_provinces.geojson to also be the clean 63 set
-    with open(OLD_GEOJSON_PATH, "w", encoding="utf-8") as f:
-        json.dump(data_63, f, ensure_ascii=False)
+    # Bản 63 tỉnh đã ghi ở OUT_63_PATH — không ghi thêm bản trùng lặp (vn_provinces.geojson đã bỏ)
 
     # 3. Build 34 Administrative Units using Shapely Unary Union
     features_34 = []

@@ -90,8 +90,8 @@ def audit_file(filepath):
     data = sanitize_json_val(data)
     dirty = (nan_count > 0)
 
-    # 1. vn_provinces.geojson
-    if filename == "vn_provinces.geojson":
+    # 1. vn_provinces_63.geojson
+    if filename == "vn_provinces_63.geojson":
         features = data.get("features", [])
         report["records"] = len(features)
         
@@ -146,7 +146,8 @@ def audit_file(filepath):
     elif filename == "hydropower.geojson":
         features = data.get("features", [])
         report["records"] = len(features)
-        required_keys = ["id", "name", "capacity_mw", "river_fuel", "province", "atlat_page"]
+        # BUG-07: Chuẩn Atlat GD tr.23 phân cấp >1000MW & <1000MW, không dùng capacity_mw
+        required_keys = ["id", "name", "capacity_tier", "river_fuel", "province", "atlat_page"]
 
         for i, f in enumerate(features):
             props = f.get("properties", {})
@@ -256,7 +257,7 @@ def main():
     print("=" * 70)
 
     files = [
-        "vn_provinces.geojson",
+        "vn_provinces_63.geojson",
         "minerals.geojson",
         "hydropower.geojson",
         "industrial_centers.geojson",

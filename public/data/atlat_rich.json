@@ -1,0 +1,1471 @@
+{
+  "metadata": {
+    "title": "Bộ Dữ Liệu Gốc Atlat Địa Lí Việt Nam 2026 (GDPT 2018)",
+    "version": "2026.2.0",
+    "published": "2026",
+    "source": "2 Cuốn Atlat Địa lí Việt Nam mới nhất & NQ 202/2025/QH15 & biểu đồ.docx",
+    "offline_embedded": true
+  },
+  "baseline_points": [
+    {
+      "code": "0",
+      "name": "Điểm 0: Ranh giới vùng nước lịch sử VN - Campuchia",
+      "province": "Tỉnh An Giang",
+      "status": "missing_coords",
+      "coords": null,
+      "dms_lat": "Không in toạ độ",
+      "dms_lng": "Không in toạ độ",
+      "desc": "Nằm trên ranh giới phía Tây Nam của vùng nước lịch sử của nước CHXHCN Việt Nam và CHND Campuchia (cả Atlat GD và ĐHQG không in toạ độ số cụ thể)."
+    },
+    {
+      "code": "A1",
+      "name": "Điểm A1: Hòn Nhạn (Quần đảo Thổ Chu)",
+      "province": "Tỉnh An Giang",
+      "coords": [
+        103.45,
+        9.25
+      ],
+      "dms_lat": "9°15'0\"B",
+      "dms_lng": "103°27'0\"Đ",
+      "desc": "Điểm cơ sở số 1 phía Tây Nam vịnh Thái Lan (Kiên Giang cũ)."
+    },
+    {
+      "code": "A2",
+      "name": "Điểm A2: Hòn Đá Lẻ (Hòn Khoai)",
+      "province": "Tỉnh Cà Mau",
+      "coords": [
+        104.8733,
+        8.38
+      ],
+      "dms_lat": "8°22,8'B",
+      "dms_lng": "104°52,4'Đ",
+      "desc": "Điểm cơ sở cực Nam bán đảo Cà Mau (8°22,8'B; 104°52,4'Đ)."
+    },
+    {
+      "code": "A3",
+      "name": "Điểm A3: Hòn Tài Lớn (Côn Đảo)",
+      "province": "Thành phố Hồ Chí Minh",
+      "coords": [
+        106.625,
+        8.63
+      ],
+      "dms_lat": "8°37,8'B",
+      "dms_lng": "106°37,5'Đ",
+      "desc": "Điểm cơ sở nhóm đảo Côn Sơn (8°37,8'B; 106°37,5'Đ)."
+    },
+    {
+      "code": "A4",
+      "name": "Điểm A4: Hòn Bông Lang (Côn Đảo)",
+      "province": "Thành phố Hồ Chí Minh",
+      "coords": [
+        106.6717,
+        8.6483
+      ],
+      "dms_lat": "8°38,9'B",
+      "dms_lng": "106°40,3'Đ",
+      "desc": "Điểm cơ sở phía Đông Nam Côn Đảo (8°38,9'B; 106°40,3'Đ)."
+    },
+    {
+      "code": "A5",
+      "name": "Điểm A5: Hòn Bảy Cạnh (Côn Đảo)",
+      "province": "Thành phố Hồ Chí Minh",
+      "coords": [
+        106.7017,
+        8.6617
+      ],
+      "dms_lat": "8°39,7'B",
+      "dms_lng": "106°42,1'Đ",
+      "desc": "Điểm cơ sở phía Đông Côn Đảo (8°39,7'B; 106°42,1'Đ)."
+    },
+    {
+      "code": "A6",
+      "name": "Điểm A6: Hòn Hải (Nhóm đảo Phú Quý)",
+      "province": "Tỉnh Lâm Đồng",
+      "coords": [
+        109.0833,
+        9.9667
+      ],
+      "dms_lat": "9°58,0'B",
+      "dms_lng": "109°05,0'Đ",
+      "desc": "Điểm cơ sở xa bờ nhất Nam Trung Bộ (Bình Thuận cũ)."
+    },
+    {
+      "code": "A7",
+      "name": "Điểm A7: Hòn Đôi (Bán đảo Hòn Gốm)",
+      "province": "Tỉnh Khánh Hoà",
+      "coords": [
+        109.4667,
+        12.65
+      ],
+      "dms_lat": "12°39,0'B",
+      "dms_lng": "109°28,0'Đ",
+      "desc": "Điểm cơ sở gần cực Đông đất liền."
+    },
+    {
+      "code": "A8",
+      "name": "Điểm A8: Mũi Đại Lãnh",
+      "province": "Tỉnh Khánh Hoà",
+      "coords": [
+        109.4533,
+        12.8967
+      ],
+      "dms_lat": "12°53,8'B",
+      "dms_lng": "109°27,2'Đ",
+      "desc": "Điểm cơ sở mũi đất đón bình minh sớm nhất đất liền (Phú Yên cũ, 12°53,8'B; 109°27,2'Đ)."
+    },
+    {
+      "code": "A9",
+      "name": "Điểm A9: Hòn Ông Căn",
+      "province": "Tỉnh Quảng Ngãi",
+      "coords": [
+        109.35,
+        13.9
+      ],
+      "dms_lat": "13°54,0'B",
+      "dms_lng": "109°21,0'Đ",
+      "desc": "Điểm cơ sở bờ biển Bình Định cũ."
+    },
+    {
+      "code": "A10",
+      "name": "Điểm A10: Đảo Lý Sơn",
+      "province": "Tỉnh Quảng Ngãi",
+      "coords": [
+        109.15,
+        15.385
+      ],
+      "dms_lat": "15°23,1'B",
+      "dms_lng": "109°09,0'Đ",
+      "desc": "Điểm cơ sở huyện đảo Lý Sơn (15°23,1'B; 109°09,0'Đ)."
+    },
+    {
+      "code": "A11",
+      "name": "Điểm A11: Đảo Cồn Cỏ",
+      "province": "Tỉnh Quảng Trị",
+      "coords": [
+        107.3433,
+        17.1667
+      ],
+      "dms_lat": "17°10'00,0\"B",
+      "dms_lng": "107°20'36,0\"Đ",
+      "desc": "Điểm cơ sở cửa ngõ phía Nam vịnh Bắc Bộ (17°10'00,0\"B; 107°20'36,0\"Đ)."
+    },
+    {
+      "code": "A12",
+      "name": "Điểm A12: Mũi Ròn",
+      "province": "Tỉnh Quảng Trị",
+      "coords": [
+        106.6738,
+        17.9134
+      ],
+      "dms_lat": "17°54'48,1\"B",
+      "dms_lng": "106°40'25,8\"Đ",
+      "desc": "Điểm cơ sở phân định vịnh Bắc Bộ (vùng biển Quảng Bình cũ)."
+    },
+    {
+      "code": "A13",
+      "name": "Điểm A13: Đảo Sơn Dương",
+      "province": "Tỉnh Hà Tĩnh",
+      "coords": [
+        106.4899,
+        18.1174
+      ],
+      "dms_lat": "18°07'02,5\"B",
+      "dms_lng": "106°29'23.7\"Đ",
+      "desc": "Điểm cơ sở vùng biển Hà Tĩnh."
+    },
+    {
+      "code": "A14",
+      "name": "Điểm A14: Hòn Mắt",
+      "province": "Tỉnh Nghệ An",
+      "coords": [
+        105.989,
+        18.7912
+      ],
+      "dms_lat": "18°47'28,2\"B",
+      "dms_lng": "105°59'20,5\"Đ",
+      "desc": "Điểm cơ sở vùng biển Nghệ An."
+    },
+    {
+      "code": "A15",
+      "name": "Điểm A15: Hòn Mê",
+      "province": "Tỉnh Thanh Hoá",
+      "coords": [
+        105.9385,
+        19.3769
+      ],
+      "dms_lat": "19°22'36,7\"B",
+      "dms_lng": "105°56'18,6\"Đ",
+      "desc": "Điểm cơ sở vùng biển Thanh Hoá."
+    },
+    {
+      "code": "A16",
+      "name": "Điểm A16: Đảo Long Châu",
+      "province": "Thành phố Hải Phòng",
+      "coords": [
+        107.2089,
+        20.6133
+      ],
+      "dms_lat": "20°36'47,9\"B",
+      "dms_lng": "107°12'32,2\"Đ",
+      "desc": "Điểm cơ sở quần đảo Long Châu, Hải Phòng."
+    },
+    {
+      "code": "A17",
+      "name": "Điểm A17: Hòn Chân Voi",
+      "province": "Tỉnh Quảng Ninh",
+      "coords": [
+        107.4541,
+        20.7163
+      ],
+      "dms_lat": "20°42'58,6\"B",
+      "dms_lng": "107°27'14,9\"Đ",
+      "desc": "Điểm cơ sở vùng biển Quảng Ninh."
+    },
+    {
+      "code": "A18",
+      "name": "Điểm A18: Hòn Voi Lớn",
+      "province": "Tỉnh Quảng Ninh",
+      "coords": [
+        107.4639,
+        20.7226
+      ],
+      "dms_lat": "20°43'21,3\"B",
+      "dms_lng": "107°27'50,2\"Đ",
+      "desc": "Điểm cơ sở vùng biển Quảng Ninh."
+    },
+    {
+      "code": "A19",
+      "name": "Điểm A19: Đảo Vĩnh Thực",
+      "province": "Tỉnh Quảng Ninh",
+      "coords": [
+        107.8225,
+        20.984
+      ],
+      "dms_lat": "20°59'02,3\"B",
+      "dms_lng": "107°49'20,9\"Đ",
+      "desc": "Điểm cơ sở đảo Vĩnh Thực, Quảng Ninh."
+    },
+    {
+      "code": "A20",
+      "name": "Điểm A20: Đảo Vĩnh Thực Đông",
+      "province": "Tỉnh Quảng Ninh",
+      "coords": [
+        107.8629,
+        21.0239
+      ],
+      "dms_lat": "21°01'25,9\"B",
+      "dms_lng": "107°51'46,5\"Đ",
+      "desc": "Điểm cơ sở phía Đông đảo Vĩnh Thực."
+    },
+    {
+      "code": "A21",
+      "name": "Điểm A21: Hòn Miều",
+      "province": "Tỉnh Quảng Ninh",
+      "coords": [
+        108.0193,
+        21.1888
+      ],
+      "dms_lat": "21°11'19,6\"B",
+      "dms_lng": "108°01'09,6\"Đ",
+      "desc": "Điểm cơ sở cụm đảo gần bờ Quảng Ninh."
+    },
+    {
+      "code": "A22",
+      "name": "Điểm A22: Hòn Miều Đông",
+      "province": "Tỉnh Quảng Ninh",
+      "coords": [
+        108.0216,
+        21.1914
+      ],
+      "dms_lat": "21°11'29,2\"B",
+      "dms_lng": "108°01'17,7\"Đ",
+      "desc": "Điểm cơ sở phía Đông Hòn Miều."
+    },
+    {
+      "code": "A23",
+      "name": "Điểm A23: Mũi Ngọc",
+      "province": "Tỉnh Quảng Ninh",
+      "coords": [
+        108.0924,
+        21.4708
+      ],
+      "dms_lat": "21°28'14,9\"B",
+      "dms_lng": "108°05'32,8\"Đ",
+      "desc": "Điểm cơ sở Mũi Ngọc, Móng Cái."
+    },
+    {
+      "code": "A24",
+      "name": "Điểm A24: Mũi Trà Cổ",
+      "province": "Tỉnh Quảng Ninh",
+      "coords": [
+        108.1012,
+        21.4701
+      ],
+      "dms_lat": "21°28'12,5\"B",
+      "dms_lng": "108°06'04,3\"Đ",
+      "conflict": "Atlat ĐHQG in nhầm 107°06'04\"Đ; Atlat GD chuẩn ghi 108°06'04,3\"Đ",
+      "desc": "Điểm cơ sở Mũi Trà Cổ (Điểm đầu đường cơ sở phía Bắc)."
+    }
+  ],
+  "climate_stations": [
+    {
+      "name": "Hà Nội (Trạm Láng)",
+      "coords": [
+        105.8,
+        21.02
+      ],
+      "avg_temp": "23,8°C",
+      "rainfall": "1.676 mm",
+      "province": "Thành phố Hà Nội",
+      "climate_type": "Nhiệt đới ẩm gió mùa có mùa đông lạnh",
+      "desc": "Trạm Láng (Hà Nội): Ttb = 23,8°C; Lượng mưa năm = 1.676 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Sơn La",
+      "coords": [
+        103.9,
+        21.32
+      ],
+      "avg_temp": "21,2°C",
+      "rainfall": "1.420 mm",
+      "province": "Tỉnh Sơn La",
+      "climate_type": "Nhiệt đới gió mùa vùng núi Tây Bắc",
+      "desc": "Trạm Sơn La: Ttb = 21,2°C; Lượng mưa năm = 1.420 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Tuyên Quang",
+      "coords": [
+        105.21,
+        21.82
+      ],
+      "avg_temp": "23,5°C",
+      "rainfall": "1.665 mm",
+      "province": "Tỉnh Tuyên Quang",
+      "climate_type": "Nhiệt đới ẩm gió mùa Đông Bắc",
+      "desc": "Trạm Tuyên Quang: Ttb = 23,5°C; Lượng mưa năm = 1.665 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Lạng Sơn",
+      "coords": [
+        106.76,
+        21.85
+      ],
+      "avg_temp": "21,2°C",
+      "rainfall": "1.311 mm",
+      "province": "Tỉnh Lạng Sơn",
+      "climate_type": "Nhiệt đới gió mùa Đông Bắc đón gió",
+      "desc": "Trạm Lạng Sơn: Ttb = 21,2°C; Lượng mưa năm = 1.311 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Hà Tĩnh",
+      "coords": [
+        105.9,
+        18.34
+      ],
+      "avg_temp": "24,1°C",
+      "rainfall": "2.658 mm",
+      "province": "Tỉnh Hà Tĩnh",
+      "climate_type": "Nhiệt đới Bắc Trung Bộ mưa thu đông",
+      "desc": "Trạm Hà Tĩnh: Ttb = 24,1°C; Lượng mưa năm = 2.658 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Huế",
+      "coords": [
+        107.59,
+        16.46
+      ],
+      "avg_temp": "25,2°C",
+      "rainfall": "2.868 mm",
+      "province": "Thành phố Huế",
+      "climate_type": "Khí hậu chuyển tiếp Bắc Trung Bộ",
+      "desc": "Trạm Huế: Ttb = 25,2°C; Lượng mưa năm = 2.868 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Đà Lạt",
+      "coords": [
+        108.44,
+        11.94
+      ],
+      "avg_temp": "17,9°C",
+      "rainfall": "1.739 mm",
+      "province": "Tỉnh Lâm Đồng",
+      "climate_type": "Cận nhiệt đới vùng núi cao Tây Nguyên",
+      "desc": "Trạm Đà Lạt: Ttb = 17,9°C; Lượng mưa năm = 1.739 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Quy Nhơn",
+      "coords": [
+        109.22,
+        13.78
+      ],
+      "avg_temp": "27,1°C",
+      "rainfall": "1.852 mm",
+      "province": "Tỉnh Quảng Ngãi",
+      "climate_type": "Nhiệt đới Duyên hải Nam Trung Bộ",
+      "desc": "Trạm Quy Nhơn: Ttb = 27,1°C; Lượng mưa năm = 1.852 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Buôn Ma Thuột",
+      "coords": [
+        108.05,
+        12.67
+      ],
+      "avg_temp": "24,0°C",
+      "rainfall": "1.904 mm",
+      "province": "Tỉnh Đắk Lắk",
+      "climate_type": "Cận xích đạo cao nguyên Tây Nguyên",
+      "desc": "Trạm Buôn Ma Thuột: Ttb = 24,0°C; Lượng mưa năm = 1.904 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Hoàng Sa",
+      "coords": [
+        111.6,
+        16.5
+      ],
+      "avg_temp": "23,6°C",
+      "rainfall": "2.769 mm",
+      "province": "Thành phố Đà Nẵng",
+      "climate_type": "Nhiệt đới hải đảo Hoàng Sa",
+      "desc": "Trạm Hoàng Sa (Đặc khu Hoàng Sa - TP. Đà Nẵng): Ttb = 23,6°C; Lượng mưa năm = 2.769 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Trường Sa",
+      "coords": [
+        111.92,
+        8.65
+      ],
+      "avg_temp": "28,0°C",
+      "rainfall": "2.666 mm",
+      "province": "Tỉnh Khánh Hoà",
+      "climate_type": "Cận xích đạo hải đảo Trường Sa",
+      "desc": "Trạm Trường Sa (Đặc khu Trường Sa - Tỉnh Khánh Hoà): Ttb = 28,0°C; Lượng mưa năm = 2.666 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Tân Sơn Hoà (TP. Hồ Chí Minh)",
+      "coords": [
+        106.66,
+        10.77
+      ],
+      "avg_temp": "28,1°C",
+      "rainfall": "1.964 mm",
+      "province": "Thành phố Hồ Chí Minh",
+      "climate_type": "Cận xích đạo gió mùa Nam Bộ",
+      "desc": "Trạm Tân Sơn Hoà: Ttb = 28,1°C; Lượng mưa năm = 1.964 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Cần Thơ",
+      "coords": [
+        105.78,
+        10.04
+      ],
+      "avg_temp": "26,9°C",
+      "rainfall": "1.674 mm",
+      "province": "Thành phố Cần Thơ",
+      "climate_type": "Cận xích đạo châu thổ sông Cửu Long",
+      "desc": "Trạm Cần Thơ: Ttb = 26,9°C; Lượng mưa năm = 1.674 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Cà Mau",
+      "coords": [
+        105.15,
+        9.18
+      ],
+      "avg_temp": "26,8°C",
+      "rainfall": "2.360 mm",
+      "province": "Tỉnh Cà Mau",
+      "climate_type": "Cực Nam cận xích đạo hải dương",
+      "desc": "Trạm Cà Mau: Ttb = 26,8°C; Lượng mưa năm = 2.360 mm (Atlat GD, tr.8)."
+    },
+    {
+      "name": "Phú Quốc",
+      "coords": [
+        103.96,
+        10.22
+      ],
+      "avg_temp": "27,3°C",
+      "rainfall": "2.882 mm",
+      "province": "Tỉnh An Giang",
+      "climate_type": "Hải đảo cực Tây Nam",
+      "desc": "Trạm Phú Quốc: Ttb = 27,3°C; Lượng mưa năm = 2.882 mm (Atlat GD, tr.8)."
+    }
+  ],
+  "hydro_stations": [
+    {
+      "id": "HYDRO_01",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Hà Nội",
+      "river_system": "Hệ thống sông Hồng",
+      "river_name": "Sông Hồng",
+      "province": "Thành phố Hà Nội",
+      "coords": [
+        105.86,
+        21.03
+      ],
+      "flood_season": "Tháng VI - X",
+      "peak_month": "Tháng VIII",
+      "dry_season": "Tháng XI - V",
+      "peak_flow": ">9.100 m³/s",
+      "avg_flow": "2.640 m³/s",
+      "regime_desc": "Mùa lũ kéo dài 5 tháng (VI-X), đỉnh lũ cao vào tháng VIII chiếm trên 50-60% lượng nước năm. Lũ lên nhanh do dạng nan quạt hợp lưu từ sông Đà, sông Thao và sông Lô.",
+      "monthly_flow_pattern": "Thấp nhất tháng III (~1.000 m³/s), cao nhất tháng VIII (~9.100 m³/s). Chế độ lũ được điều tiết mạnh bởi hồ thủy điện Hòa Bình, Thác Bà, Tuyên Quang.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Hà Nội)"
+    },
+    {
+      "id": "HYDRO_02",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Sơn Tây",
+      "river_system": "Hệ thống sông Hồng",
+      "river_name": "Sông Hồng",
+      "province": "Thành phố Hà Nội",
+      "coords": [
+        105.5,
+        21.14
+      ],
+      "flood_season": "Tháng VI - X",
+      "peak_month": "Tháng VIII",
+      "dry_season": "Tháng XI - V",
+      "peak_flow": ">8.800 m³/s",
+      "avg_flow": "2.550 m³/s",
+      "regime_desc": "Nằm ngay ngã ba hợp lưu sông Đà, sông Thao, sông Lô (Việt Trì). Điểm khống chế lưu lượng nước chính đổ vào toàn bộ đồng bằng châu thổ Bắc Bộ.",
+      "monthly_flow_pattern": "Đỉnh lũ tháng VIII, mùa cạn từ tháng XI đến tháng V năm sau.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    },
+    {
+      "id": "HYDRO_03",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Hòa Bình",
+      "river_system": "Hệ thống sông Hồng",
+      "river_name": "Sông Đà",
+      "province": "Tỉnh Phú Thọ",
+      "coords": [
+        105.33,
+        20.82
+      ],
+      "flood_season": "Tháng VI - X",
+      "peak_month": "Tháng VIII",
+      "dry_season": "Tháng XI - V",
+      "peak_flow": ">6.500 m³/s",
+      "avg_flow": "1.780 m³/s",
+      "regime_desc": "Sông Đà đóng góp trên 53% tổng lượng dòng chảy của toàn bộ hệ thống sông Hồng. Trạm thủy văn gắn liền đập và hồ chứa thủy điện Hòa Bình điều tiết chống lũ.",
+      "monthly_flow_pattern": "Lưu lượng dòng chảy dồi dào, điều tiết bởi hồ Hòa Bình và hồ Sơn La.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 & tr.23"
+    },
+    {
+      "id": "HYDRO_04",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Yên Bái",
+      "river_system": "Hệ thống sông Hồng",
+      "river_name": "Sông Thao",
+      "province": "Tỉnh Yên Bái",
+      "coords": [
+        104.88,
+        21.72
+      ],
+      "flood_season": "Tháng VI - X",
+      "peak_month": "Tháng VIII",
+      "dry_season": "Tháng XI - V",
+      "peak_flow": ">3.200 m³/s",
+      "avg_flow": "760 m³/s",
+      "regime_desc": "Quan trắc dòng chảy dòng chính sông Thao từ Vân Nam (Trung Quốc) chảy vào Việt Nam qua cửa khẩu Lào Cai.",
+      "monthly_flow_pattern": "Lượng phù sa đỏ lớn nhất trong các nhánh sông miền Bắc.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    },
+    {
+      "id": "HYDRO_05",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Ghềnh Gà",
+      "river_system": "Hệ thống sông Hồng",
+      "river_name": "Sông Lô",
+      "province": "Tỉnh Phú Thọ",
+      "coords": [
+        105.35,
+        21.36
+      ],
+      "flood_season": "Tháng VI - X",
+      "peak_month": "Tháng VIII",
+      "dry_season": "Tháng XI - V",
+      "peak_flow": ">3.500 m³/s",
+      "avg_flow": "1.050 m³/s",
+      "regime_desc": "Quan trắc lưu lượng sông Lô sau khi nhận tiếp nước từ sông Gâm; điều hòa bởi hồ thủy điện Tuyên Quang và hồ Thác Bà.",
+      "monthly_flow_pattern": "Lũ hè thu dữ dội, mùa cạn kéo dài.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    },
+    {
+      "id": "HYDRO_06",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Cẩm Thủy",
+      "river_system": "Hệ thống sông Mã",
+      "river_name": "Sông Mã",
+      "province": "Tỉnh Thanh Hóa",
+      "coords": [
+        105.46,
+        20.21
+      ],
+      "flood_season": "Tháng VII - X",
+      "peak_month": "Tháng VIII - IX",
+      "dry_season": "Tháng XI - VI",
+      "peak_flow": ">2.600 m³/s",
+      "avg_flow": "430 m³/s",
+      "regime_desc": "Mùa lũ kéo dài 4 tháng (VII-X), đỉnh lũ rơi vào tháng VIII - IX. Địa hình núi dốc đứng làm lũ lên rất nhanh và rút nhanh.",
+      "monthly_flow_pattern": "Thấp nhất vào tháng III - IV (~80 m³/s), cao nhất tháng VIII - IX (~2.600 m³/s).",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Cẩm Thủy)"
+    },
+    {
+      "id": "HYDRO_07",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Dừa",
+      "river_system": "Hệ thống sông Cả (Sông Lam)",
+      "river_name": "Sông Cả",
+      "province": "Tỉnh Nghệ An",
+      "coords": [
+        105.28,
+        18.98
+      ],
+      "flood_season": "Tháng VIII - XI",
+      "peak_month": "Tháng IX - X",
+      "dry_season": "Tháng XII - VII",
+      "peak_flow": ">3.100 m³/s",
+      "avg_flow": "450 m³/s",
+      "regime_desc": "Mùa lũ lệch dần về mùa thu đông (VIII-XI) với đỉnh lũ tháng IX - X trùng mùa mưa bão lớn dải Bắc Trung Bộ.",
+      "monthly_flow_pattern": "Mùa cạn kéo dài từ tháng XII đến tháng VII năm sau; khô hạn sâu sắc khi có gió Lào.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Dừa)"
+    },
+    {
+      "id": "HYDRO_08",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Nông Sơn",
+      "river_system": "Hệ thống sông Thu Bồn",
+      "river_name": "Sông Thu Bồn",
+      "province": "Tỉnh Quảng Nam",
+      "coords": [
+        108.01,
+        15.68
+      ],
+      "flood_season": "Tháng IX - XII",
+      "peak_month": "Tháng X - XI",
+      "dry_season": "Tháng I - VIII",
+      "peak_flow": ">1.250 m³/s",
+      "avg_flow": "290 m³/s",
+      "regime_desc": "Mùa lũ đặc thù thu đông (IX-XII), đỉnh lũ tháng X - XI. Địa hình núi cao sườn đón gió biển ngắn dốc gây ra các đợt lũ quét dữ dội.",
+      "monthly_flow_pattern": "Lượng nước 3 tháng lũ chiếm tới 65-70% tổng dòng chảy cả năm; mùa kiệt lưu lượng hạ rất thấp.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Nông Sơn)"
+    },
+    {
+      "id": "HYDRO_09",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Củng Sơn",
+      "river_system": "Hệ thống sông Ba (Đà Rằng)",
+      "river_name": "Sông Ba",
+      "province": "Tỉnh Đắk Lắk",
+      "coords": [
+        108.97,
+        13.06
+      ],
+      "flood_season": "Tháng IX - XII",
+      "peak_month": "Tháng XI",
+      "dry_season": "Tháng I - VIII",
+      "peak_flow": ">1.650 m³/s",
+      "avg_flow": "310 m³/s",
+      "regime_desc": "Sông Ba là con sông lớn nhất Nam Trung Bộ nối Tây Nguyên xuống biển Đông. Đỉnh lũ trễ nhất vào tháng XI; mùa khô Tây Nguyên làm dòng sông cạn kiệt.",
+      "monthly_flow_pattern": "Chênh lệch lưu lượng giữa mùa lũ và mùa cạn cực lớn; lũ gây ngập úng hạ lưu Tuy Hòa.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Củng Sơn)"
+    },
+    {
+      "id": "HYDRO_10",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Tà Lài",
+      "river_system": "Hệ thống sông Đồng Nai",
+      "river_name": "Sông Đồng Nai",
+      "province": "Thành phố Đồng Nai",
+      "coords": [
+        107.35,
+        11.41
+      ],
+      "flood_season": "Tháng VII - XI",
+      "peak_month": "Tháng VIII - IX",
+      "dry_season": "Tháng XII - VI",
+      "peak_flow": ">1.150 m³/s",
+      "avg_flow": "370 m³/s",
+      "regime_desc": "Mùa lũ kéo dài từ tháng VII đến tháng XI, đỉnh lũ tháng VIII - IX trùng mùa mưa gió Tây Nam. Nguồn nước cấp thiết cho toàn bộ vùng kinh tế Đông Nam Bộ.",
+      "monthly_flow_pattern": "Được điều tiết lớn bởi thảm rừng phòng hộ Nam Cát Tiên và hồ chứa Trị An.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 (Biểu đồ lưu lượng trạm Tà Lài)"
+    },
+    {
+      "id": "HYDRO_11",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Tân Châu",
+      "river_system": "Hệ thống sông Mê Công",
+      "river_name": "Sông Tiền",
+      "province": "Tỉnh An Giang",
+      "coords": [
+        105.24,
+        10.8
+      ],
+      "flood_season": "Tháng VII - XI",
+      "peak_month": "Tháng IX - X",
+      "dry_season": "Tháng XII - VI",
+      "peak_flow": ">25.500 m³/s",
+      "avg_flow": "11.200 m³/s",
+      "regime_desc": "Cửa ngõ chính nhận ~80% lưu lượng sông Mê Công vào Việt Nam. Mùa lũ tháng VII - XI, đỉnh lũ tháng IX - X (mùa nước nổi). Lũ lên chậm và rút chậm nhờ điều hòa Biển Hồ.",
+      "monthly_flow_pattern": "Lưu lượng khổng lồ mang theo hàng trăm triệu tấn phù sa; mùa kiệt tháng III - IV hạ thấp dẫn tới xâm nhập mặn.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 & tr.11"
+    },
+    {
+      "id": "HYDRO_12",
+      "category": "hydro_station",
+      "name": "Trạm Thủy văn Châu Đốc",
+      "river_system": "Hệ thống sông Mê Công",
+      "river_name": "Sông Hậu",
+      "province": "Tỉnh An Giang",
+      "coords": [
+        105.12,
+        10.7
+      ],
+      "flood_season": "Tháng VII - XI",
+      "peak_month": "Tháng IX - X",
+      "peak_flow": ">8.600 m³/s",
+      "avg_flow": "3.800 m³/s",
+      "dry_season": "Tháng XII - VI",
+      "regime_desc": "Cửa ngõ phân lưu chính thứ hai nhận nước từ sông Bassac vào Việt Nam. Trạm đo ngập lụt vùng Tứ giác Long Xuyên và cảnh báo mặn ven biển.",
+      "monthly_flow_pattern": "Mùa nước nổi đem lại nguồn lợi thủy sản tôm cá phong phú và rửa chua phèn đất phù sa.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    }
+  ],
+  "reservoirs_lakes": [
+    {
+      "id": "LAKE_01",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Hòa Bình",
+      "basin": "Lưu vực sông Hồng (Sông Đà)",
+      "province": "Tỉnh Phú Thọ",
+      "coords": [
+        105.32,
+        20.8
+      ],
+      "capacity": "9,45 tỉ m³",
+      "area_km2": "208 km²",
+      "role": "Cắt lũ lịch sử, phát điện (1.920 MW), điều tiết cấp nước mùa kiệt đẩy mặn ngọt hóa cho hạ du Hà Nội và đồng bằng sông Hồng.",
+      "desc": "Công trình thế kỷ trên sông Đà: Dung tích phòng lũ lớn nhất miền Bắc, bảo vệ an toàn tuyệt đối cho thủ đô Hà Nội trong mùa mưa bão.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 & tr.23"
+    },
+    {
+      "id": "LAKE_02",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Thác Bà",
+      "basin": "Lưu vực sông Hồng (Sông Chảy)",
+      "province": "Tỉnh Yên Bái",
+      "coords": [
+        104.98,
+        21.75
+      ],
+      "capacity": "3,9 tỉ m³",
+      "area_km2": "234 km²",
+      "role": "Hồ nhân tạo lớn đầu tiên của miền Bắc, điều tiết dòng chảy sông Chảy đổ vào sông Lô, cấp nước tưới tiêu và phát điện (120 MW).",
+      "desc": "Được ví như 'Hạ Long trên núi' của vùng Tây Bắc, có vai trò điều hòa khí hậu và cân bằng dòng chảy lưu vực sông Chảy.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 & tr.23"
+    },
+    {
+      "id": "LAKE_03",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Tuyên Quang",
+      "basin": "Lưu vực sông Hồng (Sông Gâm)",
+      "province": "Tỉnh Tuyên Quang",
+      "coords": [
+        105.4,
+        22.35
+      ],
+      "capacity": "2,26 tỉ m³",
+      "area_km2": "89 km²",
+      "role": "Cắt lũ cho thành phố Tuyên Quang và hạ lưu sông Lô, bổ sung lưu lượng dòng chảy mùa cạn cho sông Hồng và phát điện (342 MW).",
+      "desc": "Hồ thủy điện lớn trên dòng sông Gâm (Na Hang), đóng vai trò then chốt trong chuỗi hồ bậc thang kiểm soát lũ miền Bắc.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 & tr.23"
+    },
+    {
+      "id": "LAKE_04",
+      "category": "reservoir_lake",
+      "sub_type": "lake",
+      "name": "Hồ Ba Bể",
+      "basin": "Lưu vực sông Cầu / Sông Năng",
+      "province": "Tỉnh Thái Nguyên",
+      "coords": [
+        105.62,
+        22.41
+      ],
+      "capacity": "Tự nhiên karst",
+      "area_km2": "6,5 km²",
+      "role": "Hồ nước ngọt tự nhiên lớn nhất Việt Nam trên núi đá vôi kiến tạo karst, điều hòa dòng chảy sông Năng và bảo tồn sinh học đất ngập nước.",
+      "desc": "Nằm ở độ cao 145m trên mực nước biển, là khu Ramsar bảo tồn sinh quyển quý giá của Đông Bắc.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 & tr.12"
+    },
+    {
+      "id": "LAKE_05",
+      "category": "reservoir_lake",
+      "sub_type": "lake",
+      "name": "Hồ Tây",
+      "basin": "Lưu vực sông Hồng",
+      "province": "Thành phố Hà Nội",
+      "coords": [
+        105.82,
+        21.05
+      ],
+      "capacity": "Tự nhiên khúc uốn",
+      "area_km2": "5,3 km²",
+      "role": "Hồ tự nhiên hình thành từ vết tích khúc uốn cổ (hồ móng ngựa) của sông Hồng khi chuyển dòng; điều hòa vi khí hậu thủ đô Hà Nội.",
+      "desc": "Hồ nước ngọt tự nhiên lớn nhất nội thành Hà Nội, minh chứng lịch sử cho sự biến thiên dòng chảy sông Hồng.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    },
+    {
+      "id": "LAKE_06",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Núi Cốc",
+      "basin": "Lưu vực sông Cầu (Sông Công)",
+      "province": "Tỉnh Thái Nguyên",
+      "coords": [
+        105.7,
+        21.58
+      ],
+      "capacity": "175 triệu m³",
+      "area_km2": "25 km²",
+      "role": "Hồ thủy lợi đa mục tiêu trên sông Công, cấp nước sinh hoạt và sản xuất công nghiệp cho Thái Nguyên, cắt giảm lũ hạ lưu.",
+      "desc": "Công trình thủy lợi quan trọng của vùng Đông Bắc, điều tiết dòng chảy lưu vực sông Cầu.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    },
+    {
+      "id": "LAKE_07",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Cửa Đạt",
+      "basin": "Lưu vực sông Mã (Sông Chu)",
+      "province": "Tỉnh Thanh Hóa",
+      "coords": [
+        105.27,
+        19.88
+      ],
+      "capacity": "1,45 tỉ m³",
+      "area_km2": "31 km²",
+      "role": "Công trình thủy lợi - thủy điện cắt lũ lớn nhất Bắc Trung Bộ, cấp nước tưới cho hơn 86.000 ha đất canh tác đồng bằng sông Mã và sông Chu.",
+      "desc": "Đập đá đổ bản mặt bê tông cao nhất Việt Nam, điều tiết dòng chảy bảo vệ vùng đồng bằng Thanh Hóa khỏi ngập lụt.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    },
+    {
+      "id": "LAKE_08",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Kẻ Gỗ",
+      "basin": "Lưu vực sông Rào Cái",
+      "province": "Tỉnh Hà Tĩnh",
+      "coords": [
+        105.9,
+        18.2
+      ],
+      "capacity": "345 triệu m³",
+      "area_km2": "29 km²",
+      "role": "Hồ thủy lợi nhân tạo lớn nhất Hà Tĩnh, cung cấp nước ngọt phục vụ nông nghiệp và công nghiệp, cắt lũ tiểu mãn cho hạ du Thạch Hà.",
+      "desc": "Nguồn nước sự sống cho cả dải đồng bằng khô hạn Hà Tĩnh khi vào mùa khô gió Lào.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    },
+    {
+      "id": "LAKE_09",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Tả Trạch",
+      "basin": "Lưu vực sông Hương",
+      "province": "Thành phố Huế",
+      "coords": [
+        107.63,
+        16.32
+      ],
+      "capacity": "646 triệu m³",
+      "area_km2": "23 km²",
+      "role": "Cắt giảm đỉnh lũ sông Hương cho thành phố di sản Huế, đẩy mặn và ngọt hóa hệ đầm phá Tam Giang - Cầu Hai.",
+      "desc": "Hồ điều tiết chiến lược trên thượng nguồn sông Hương, giữ an toàn di sản Cố đô trước các trận đại hồng thủy mùa thu đông.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    },
+    {
+      "id": "LAKE_09_ALT",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Phú Ninh",
+      "basin": "Lưu vực sông Tam Kỳ",
+      "province": "Tỉnh Quảng Nam",
+      "coords": [
+        108.45,
+        15.48
+      ],
+      "capacity": "344 triệu m³",
+      "area_km2": "34 km²",
+      "role": "Công trình thủy lợi lớn thứ hai miền Trung, cấp nước tưới cho 23.000 ha ruộng lúa Quảng Nam và chống hạn hán mùa khô.",
+      "desc": "Hồ điều hòa sinh thái nổi tiếng, cung cấp nguồn nước ngọt bền vững cho khu vực Duyên hải Nam Trung Bộ.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    },
+    {
+      "id": "LAKE_10",
+      "category": "reservoir_lake",
+      "sub_type": "lake",
+      "name": "Biển Hồ (Hồ T’Nưng)",
+      "basin": "Lưu vực sông Sê San",
+      "province": "Tỉnh Gia Lai",
+      "coords": [
+        108.0,
+        14.05
+      ],
+      "capacity": "Miệng núi lửa cổ",
+      "area_km2": "2,3 km²",
+      "role": "Hồ tự nhiên hình thành từ miệng núi lửa bazan đã ngừng hoạt động hàng triệu năm; hồ chứa nước ngọt tự nhiên lớn của Pleiku.",
+      "desc": "Được mệnh danh là 'Đôi mắt Pleiku', nguồn cung cấp nước sinh hoạt chính cho thành phố Pleiku trên cao nguyên đất đỏ.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 & tr.14"
+    },
+    {
+      "id": "LAKE_11",
+      "category": "reservoir_lake",
+      "sub_type": "lake",
+      "name": "Hồ Lắk",
+      "basin": "Lưu vực sông Srêpôk",
+      "province": "Tỉnh Đắk Lắk",
+      "coords": [
+        108.18,
+        12.41
+      ],
+      "capacity": "Tự nhiên trũng bồn địa",
+      "area_km2": "6,2 km²",
+      "role": "Hồ nước ngọt tự nhiên lớn nhất Tây Nguyên và lớn thứ hai cả nước, thông với sông Krông Ana, điều hòa dòng chảy sông Srêpôk.",
+      "desc": "Cảnh quan thiên nhiên kỳ vĩ gắn với văn hóa cồng chiêng voi Tây Nguyên của người M'Nông.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    },
+    {
+      "id": "LAKE_12",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Trị An",
+      "basin": "Lưu vực sông Đồng Nai",
+      "province": "Thành phố Đồng Nai",
+      "coords": [
+        107.03,
+        11.13
+      ],
+      "capacity": "2,76 tỉ m³",
+      "area_km2": "323 km²",
+      "role": "Hồ chứa điều tiết thủy văn lớn nhất miền Nam: Cắt lũ, phát điện (400 MW), đẩy mặn ngăn triều cường bảo vệ nước sinh hoạt cho TP.HCM và Đồng Nai.",
+      "desc": "Biển nước nhân tạo lớn nhất miền Nam trên dòng sông Đồng Nai, giữ vai trò sống còn đối với an ninh nguồn nước vùng Đông Nam Bộ.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 & tr.23"
+    },
+    {
+      "id": "LAKE_13",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Dầu Tiếng",
+      "basin": "Lưu vực sông Sài Gòn & Vàm Cỏ Đông",
+      "province": "Tỉnh Tây Ninh",
+      "coords": [
+        106.35,
+        11.32
+      ],
+      "capacity": "1,58 tỉ m³",
+      "area_km2": "270 km²",
+      "role": "Hồ thủy lợi nhân tạo lớn nhất Đông Nam Á, điều tiết nguồn nước ngọt đẩy mặn cho sông Sài Gòn và sông Vàm Cỏ Đông, cấp nước cho hơn 100.000 ha đất canh tác.",
+      "desc": "Công trình thủy lợi kỳ vĩ giáp ba tỉnh Tây Ninh, Bình Dương, Bình Phước, nuôi sống nông nghiệp Đông Nam Bộ.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10"
+    },
+    {
+      "id": "LAKE_14",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Thác Mơ",
+      "basin": "Lưu vực sông Đồng Nai (Sông Bé)",
+      "province": "Tỉnh Bình Phước",
+      "coords": [
+        107.01,
+        11.85
+      ],
+      "capacity": "1,25 tỉ m³",
+      "area_km2": "109 km²",
+      "role": "Hồ thủy điện và thủy lợi trên sông Bé, điều hòa dòng chảy mùa khô, bổ sung nước cho hạ lưu sông Bé và hồ Trị An.",
+      "desc": "Công trình trữ nước trọng điểm vùng biên giới Đông Nam Bộ, phát điện công suất 150 MW.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 & tr.23"
+    },
+    {
+      "id": "LAKE_15",
+      "category": "reservoir_lake",
+      "sub_type": "reservoir",
+      "name": "Hồ Yaly",
+      "basin": "Lưu vực sông Mê Công (Sông Sê San)",
+      "province": "Tỉnh Gia Lai",
+      "coords": [
+        107.82,
+        14.22
+      ],
+      "capacity": "1,03 tỉ m³",
+      "area_km2": "64 km²",
+      "role": "Hồ chứa thủy điện lớn nhất Tây Nguyên (720 MW), kiểm soát dòng chảy lưu vực sông Sê San trước khi đổ sang Campuchia.",
+      "desc": "Bậc thang thủy điện khổng lồ trên dòng Sê San hùng vĩ, điều hòa nguồn nước mặt trên cao nguyên Kon Tum - Gia Lai.",
+      "atlat_page": 10,
+      "source": "Atlat GD, tr.10 & tr.23"
+    }
+  ],
+  "keyword_guide": [
+    {
+      "chart_type": "pie",
+      "chart_name": "1. Biểu đồ Tròn (Pie Chart)",
+      "time_rule": "Mốc thời gian chỉ từ 1 - 2 năm (tối đa ≤ 3 năm)",
+      "golden_keywords": [
+        "cơ cấu",
+        "tỷ trọng",
+        "tỷ lệ",
+        "kết cấu",
+        "quy mô và cơ cấu (1-2 năm)"
+      ],
+      "typical_units": [
+        "% (tổng các thành phần luôn bằng 100%)"
+      ],
+      "critical_traps": "Không vẽ biểu đồ Tròn khi chuỗi thời gian từ 4 năm trở lên (phải chuyển sang Biểu đồ Miền). Không vẽ tròn khi số liệu có giá trị âm.",
+      "example_prompt": "Cơ cấu doanh thu du lịch lữ hành phân theo thành phần kinh tế của nước ta năm 2010 và 2016 (%) (Trích biểu đồ.docx)"
+    },
+    {
+      "chart_type": "line",
+      "chart_name": "2. Biểu đồ Đường (Line Chart)",
+      "time_rule": "Chuỗi thời gian liên tục qua nhiều năm (≥ 3 - 4 năm)",
+      "golden_keywords": [
+        "tốc độ tăng trưởng",
+        "tốc độ phát triển",
+        "sự thay đổi",
+        "phát triển",
+        "diễn biến"
+      ],
+      "typical_units": [
+        "% (năm gốc = 100%)",
+        "đại lượng liên tục qua thời gian"
+      ],
+      "critical_traps": "Không vẽ biểu đồ Đường cho các đối tượng độc lập phân theo không gian (các tỉnh, các nước trong 1 năm tĩnh). Chỉ vẽ khi có chuỗi thời gian liên tục.",
+      "example_prompt": "GDP của Phi líp pin, Thái Lan và Việt Nam giai đoạn 2010 – 2016 (Trích biểu đồ.docx)"
+    },
+    {
+      "chart_type": "bar",
+      "chart_name": "3. Biểu đồ Cột Đơn/Ghép (Bar Chart)",
+      "time_rule": "1 năm hoặc nhiều năm (so sánh theo không gian/thời gian)",
+      "golden_keywords": [
+        "sự biến động của một đối tượng qua nhiều năm",
+        "so sánh các đối tượng khi có cùng đơn vị trong một năm",
+        "tình hình phát triển",
+        "khối lượng"
+      ],
+      "typical_units": [
+        "Cùng 1 đơn vị tính (Triệu tấn, Tỉ kWh, Nghìn ha...)"
+      ],
+      "critical_traps": "Không vẽ biểu đồ Cột khi các đại lượng khác nhau về đơn vị đo lường trên cùng một trục tung. Nếu tên đối tượng dài, ưu tiên biểu đồ Thanh Ngang.",
+      "example_prompt": "So sánh dân số, diện tích của 1 số tỉnh; So sánh sản lượng điện của 1 địa phương qua các năm (Trích biểu đồ.docx)"
+    },
+    {
+      "chart_type": "stacked_area",
+      "chart_name": "4. Biểu đồ Miền (Stacked Area)",
+      "time_rule": "Chuỗi thời gian từ 3 năm trở lên (thường ≥ 4 năm)",
+      "golden_keywords": [
+        "thay đổi cơ cấu",
+        "chuyển dịch cơ cấu",
+        "tỉ trọng của hai hoặc ba nhóm đối tượng từ 3 năm trở lên"
+      ],
+      "typical_units": [
+        "% (tổng các miền chồng luôn bằng 100%)"
+      ],
+      "critical_traps": "Không vẽ biểu đồ Miền khi chỉ có 1-2 mốc năm (phải vẽ Tròn). Không vẽ miền khi số liệu có giá trị âm hoặc tổng các bộ phận không bằng 100%.",
+      "example_prompt": "Tỷ lệ xuất và nhập khẩu; Cán cân xuất nhập khẩu; Cơ cấu GDP phân theo khu vực kinh tế (Trích biểu đồ.docx)"
+    },
+    {
+      "chart_type": "combo_bar_line",
+      "chart_name": "5. Biểu đồ Kết Hợp Cột + Đường (Combo)",
+      "time_rule": "Chuỗi thời gian từ 3 năm trở lên",
+      "golden_keywords": [
+        "khác nhau về đơn vị nhưng có mối quan hệ với nhau",
+        "quy mô và tốc độ tăng trưởng",
+        "diện tích và sản lượng",
+        "từ ba loại số liệu trở lên"
+      ],
+      "typical_units": [
+        "2 loại đơn vị đo lường khác nhau (ví dụ: Nghìn ha và Triệu tấn, Tỉ USD và %)"
+      ],
+      "critical_traps": "Bắt buộc có 2 trục tung (trục trái và trục phải). Nếu các đại lượng có cùng một đơn vị tính thì KHÔNG được vẽ kết hợp 2 trục.",
+      "example_prompt": "Thể hiện sản lượng khai thác, nuôi trồng và giá trị sản xuất của Việt Nam (Trích biểu đồ.docx)"
+    },
+    {
+      "chart_type": "bar_stacked",
+      "chart_name": "6. Biểu đồ Cột Chồng (Stacked Bar)",
+      "time_rule": "Từ 2 đến nhiều năm",
+      "golden_keywords": [
+        "quy mô và cơ cấu của đối tượng (theo tỉ lệ % tuyệt đối)",
+        "thành phần cấu thành tổng thể"
+      ],
+      "typical_units": [
+        "Cùng 1 đơn vị tính (Triệu người, Nghìn tấn hoặc %)"
+      ],
+      "critical_traps": "Các thành phần xếp chồng bắt buộc phải cộng dồn lại đúng bằng tổng số (hoặc bằng 100%). Không xếp chồng các đại lượng độc lập không cùng một chỉnh thể.",
+      "example_prompt": "Dân số thành thị và nông thôn nước ta (cộng lại bằng tổng dân số cả nước) (Trích biểu đồ.docx)"
+    }
+  ],
+  "provinces_34_stats": {
+    "Tỉnh Cao Bằng": {
+      "area": 6700.4,
+      "pop": 558.5,
+      "type": "Tỉnh",
+      "region": "Trung du và miền núi phía Bắc",
+      "merged_from": [
+        "Cao Bằng"
+      ]
+    },
+    "Tỉnh Tuyên Quang": {
+      "area": 13795.6,
+      "pop": 1731.7,
+      "type": "Tỉnh",
+      "region": "Trung du và miền núi phía Bắc",
+      "merged_from": [
+        "Tuyên Quang",
+        "Hà Giang"
+      ]
+    },
+    "Tỉnh Lào Cai": {
+      "area": 13257.0,
+      "pop": 1656.6,
+      "type": "Tỉnh",
+      "region": "Trung du và miền núi phía Bắc",
+      "merged_from": [
+        "Lào Cai",
+        "Yên Bái"
+      ]
+    },
+    "Tỉnh Thái Nguyên": {
+      "area": 8375.3,
+      "pop": 1694.5,
+      "type": "Tỉnh",
+      "region": "Trung du và miền núi phía Bắc",
+      "merged_from": [
+        "Thái Nguyên",
+        "Bắc Kạn"
+      ]
+    },
+    "Tỉnh Lạng Sơn": {
+      "area": 8310.2,
+      "pop": 814.0,
+      "type": "Tỉnh",
+      "region": "Trung du và miền núi phía Bắc",
+      "merged_from": [
+        "Lạng Sơn"
+      ]
+    },
+    "Tỉnh Phú Thọ": {
+      "area": 9361.4,
+      "pop": 3663.7,
+      "type": "Tỉnh",
+      "region": "Trung du và miền núi phía Bắc",
+      "merged_from": [
+        "Phú Thọ",
+        "Vĩnh Phúc",
+        "Hòa Bình"
+      ]
+    },
+    "Tỉnh Điện Biên": {
+      "area": 9539.9,
+      "pop": 656.7,
+      "type": "Tỉnh",
+      "region": "Trung du và miền núi phía Bắc",
+      "merged_from": [
+        "Điện Biên"
+      ]
+    },
+    "Tỉnh Lai Châu": {
+      "area": 9068.7,
+      "pop": 495.5,
+      "type": "Tỉnh",
+      "region": "Trung du và miền núi phía Bắc",
+      "merged_from": [
+        "Lai Châu"
+      ]
+    },
+    "Tỉnh Sơn La": {
+      "area": 14108.9,
+      "pop": 1330.6,
+      "type": "Tỉnh",
+      "region": "Trung du và miền núi phía Bắc",
+      "merged_from": [
+        "Sơn La"
+      ]
+    },
+    "Thành phố Hà Nội": {
+      "area": 3359.8,
+      "pop": 8717.6,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Đồng bằng sông Hồng",
+      "merged_from": [
+        "Hà Nội"
+      ]
+    },
+    "Tỉnh Bắc Ninh": {
+      "area": 4718.6,
+      "pop": 3509.2,
+      "type": "Tỉnh",
+      "region": "Đồng bằng sông Hồng",
+      "merged_from": [
+        "Bắc Ninh",
+        "Bắc Giang"
+      ]
+    },
+    "Tỉnh Quảng Ninh": {
+      "area": 6208.0,
+      "pop": 1396.5,
+      "type": "Tỉnh",
+      "region": "Đồng bằng sông Hồng",
+      "merged_from": [
+        "Quảng Ninh"
+      ]
+    },
+    "Thành phố Hải Phòng": {
+      "area": 3194.7,
+      "pop": 4102.7,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Đồng bằng sông Hồng",
+      "merged_from": [
+        "Hải Phòng",
+        "Hải Dương"
+      ]
+    },
+    "Tỉnh Hưng Yên": {
+      "area": 2514.8,
+      "pop": 3208.5,
+      "type": "Tỉnh",
+      "region": "Đồng bằng sông Hồng",
+      "merged_from": [
+        "Hưng Yên",
+        "Thái Bình"
+      ]
+    },
+    "Tỉnh Ninh Bình": {
+      "area": 3942.6,
+      "pop": 3818.7,
+      "type": "Tỉnh",
+      "region": "Đồng bằng sông Hồng",
+      "merged_from": [
+        "Ninh Bình",
+        "Hà Nam",
+        "Nam Định"
+      ]
+    },
+    "Tỉnh Thanh Hoá": {
+      "area": 11114.7,
+      "pop": 3764.2,
+      "type": "Tỉnh",
+      "region": "Bắc Trung Bộ",
+      "merged_from": [
+        "Thanh Hóa"
+      ]
+    },
+    "Tỉnh Nghệ An": {
+      "area": 16486.5,
+      "pop": 3472.3,
+      "type": "Tỉnh",
+      "region": "Bắc Trung Bộ",
+      "merged_from": [
+        "Nghệ An"
+      ]
+    },
+    "Tỉnh Hà Tĩnh": {
+      "area": 5994.5,
+      "pop": 1329.8,
+      "type": "Tỉnh",
+      "region": "Bắc Trung Bộ",
+      "merged_from": [
+        "Hà Tĩnh"
+      ]
+    },
+    "Tỉnh Quảng Trị": {
+      "area": 12700.0,
+      "pop": 1584.0,
+      "type": "Tỉnh",
+      "region": "Bắc Trung Bộ",
+      "merged_from": [
+        "Quảng Trị",
+        "Quảng Bình"
+      ]
+    },
+    "Thành phố Huế": {
+      "area": 4947.1,
+      "pop": 1178.6,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Bắc Trung Bộ",
+      "merged_from": [
+        "Thừa Thiên Huế"
+      ]
+    },
+    "Thành phố Đà Nẵng": {
+      "area": 11859.6,
+      "pop": 2819.9,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+      "merged_from": [
+        "Đà Nẵng",
+        "Quảng Nam"
+      ]
+    },
+    "Tỉnh Quảng Ngãi": {
+      "area": 14832.6,
+      "pop": 1861.1,
+      "type": "Tỉnh",
+      "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+      "merged_from": [
+        "Quảng Ngãi",
+        "Kon Tum"
+      ]
+    },
+    "Tỉnh Khánh Hoà": {
+      "area": 8555.9,
+      "pop": 1892.4,
+      "type": "Tỉnh",
+      "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+      "merged_from": [
+        "Khánh Hoà",
+        "Ninh Thuận"
+      ]
+    },
+    "Tỉnh Gia Lai": {
+      "area": 21576.5,
+      "pop": 3245.6,
+      "type": "Tỉnh",
+      "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+      "merged_from": [
+        "Gia Lai",
+        "Bình Định"
+      ]
+    },
+    "Tỉnh Đắk Lắk": {
+      "area": 18096.4,
+      "pop": 2784.8,
+      "type": "Tỉnh",
+      "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+      "merged_from": [
+        "Đắk Lắk",
+        "Phú Yên"
+      ]
+    },
+    "Tỉnh Lâm Đồng": {
+      "area": 24233.1,
+      "pop": 3376.8,
+      "type": "Tỉnh",
+      "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
+      "merged_from": [
+        "Lâm Đồng",
+        "Bình Thuận",
+        "Đắk Nông"
+      ]
+    },
+    "Tỉnh Tây Ninh": {
+      "area": 8536.5,
+      "pop": 2959.0,
+      "type": "Tỉnh",
+      "region": "Đông Nam Bộ",
+      "merged_from": [
+        "Tây Ninh",
+        "Long An"
+      ]
+    },
+    "Thành phố Đồng Nai": {
+      "area": 12737.2,
+      "pop": 4427.7,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Đông Nam Bộ",
+      "merged_from": [
+        "Đồng Nai",
+        "Bình Phước"
+      ]
+    },
+    "Thành phố Hồ Chí Minh": {
+      "area": 6772.6,
+      "pop": 13608.8,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Đông Nam Bộ",
+      "merged_from": [
+        "TP. Hồ Chí Minh",
+        "Bình Dương",
+        "Bà Rịa - Vũng Tàu"
+      ]
+    },
+    "Tỉnh Vĩnh Long": {
+      "area": 6296.2,
+      "pop": 3367.5,
+      "type": "Tỉnh",
+      "region": "Đồng bằng sông Cửu Long",
+      "merged_from": [
+        "Vĩnh Long",
+        "Bến Tre",
+        "Trà Vinh"
+      ]
+    },
+    "Tỉnh Đồng Tháp": {
+      "area": 5938.7,
+      "pop": 3397.2,
+      "type": "Tỉnh",
+      "region": "Đồng bằng sông Cửu Long",
+      "merged_from": [
+        "Đồng Tháp",
+        "Tiền Giang"
+      ]
+    },
+    "Tỉnh An Giang": {
+      "area": 9888.9,
+      "pop": 3679.3,
+      "type": "Tỉnh",
+      "region": "Đồng bằng sông Cửu Long",
+      "merged_from": [
+        "An Giang",
+        "Kiên Giang"
+      ]
+    },
+    "Thành phố Cần Thơ": {
+      "area": 6360.8,
+      "pop": 3207.0,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Đồng bằng sông Cửu Long",
+      "merged_from": [
+        "Cần Thơ",
+        "Hậu Giang",
+        "Sóc Trăng"
+      ]
+    },
+    "Tỉnh Cà Mau": {
+      "area": 7942.4,
+      "pop": 2140.7,
+      "type": "Tỉnh",
+      "region": "Đồng bằng sông Cửu Long",
+      "merged_from": [
+        "Cà Mau",
+        "Bạc Liêu"
+      ]
+    }
+  }
+}

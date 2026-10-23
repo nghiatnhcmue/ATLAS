@@ -202,6 +202,15 @@
       "pedagogical_feedback": {
         "why_optimal": "Đề bài yêu cầu 'so sánh sản lượng' giữa các đối tượng qua các năm với 1 đơn vị thống nhất (Triệu tấn). Biểu đồ Cột nhóm là lựa chọn tối ưu.",
         "pitfall_warnings": "Không chọn biểu đồ Tròn hay Miền vì không có yêu cầu thể hiện cơ cấu tỷ trọng."
+      },
+      "pedagogical_explanation": {
+        "why_optimal": "Đề bài yêu cầu 'so sánh sản lượng' giữa các đối tượng qua các năm với 1 đơn vị thống nhất (Triệu tấn). Biểu đồ Cột nhóm là lựa chọn tối ưu.",
+        "pitfall_warnings": "Không chọn biểu đồ Tròn hay Miền vì không có yêu cầu thể hiện cơ cấu tỷ trọng."
+      },
+      "structural_analysis": {
+        "time_points": 7,
+        "units": "%",
+        "is_total_100": false
       }
     },
     {
@@ -385,6 +394,15 @@
       "pedagogical_feedback": {
         "why_optimal": "Theo biểu đồ.docx Mục 6, cơ cấu ngành chăn nuôi với các thành phần cộng lại 100% có thể thể hiện trực quan bằng Biểu đồ Cột Chồng (100%).",
         "pitfall_warnings": "Lưu ý bài này số liệu gốc trong tài liệu chỉ có tỷ lệ %, không có số tiền tỉ đồng."
+      },
+      "pedagogical_explanation": {
+        "why_optimal": "Theo biểu đồ.docx Mục 6, cơ cấu ngành chăn nuôi với các thành phần cộng lại 100% có thể thể hiện trực quan bằng Biểu đồ Cột Chồng (100%).",
+        "pitfall_warnings": "Lưu ý bài này số liệu gốc trong tài liệu chỉ có tỷ lệ %, không có số tiền tỉ đồng."
+      },
+      "structural_analysis": {
+        "time_points": 2,
+        "units": "%",
+        "is_total_100": false
       }
     },
     {
@@ -1362,6 +1380,15 @@
       "pedagogical_feedback": {
         "why_optimal": "Đề bài có từ khóa 'quy mô và cơ cấu' tại 2 mốc năm (2015 và 2024) với số liệu tuyệt đối có tổng số. Biểu đồ Tròn 2 bán kính (bán kính R2024 > R2015) là chuẩn mực sư phạm.",
         "pitfall_warnings": "Không chọn biểu đồ Miền vì chỉ có 2 mốc năm (Miền phải từ 3 năm trở lên). Không chọn Cột đơn vì đề bài yêu cầu thể hiện 'cơ cấu'."
+      },
+      "pedagogical_explanation": {
+        "why_optimal": "Đề bài có từ khóa 'quy mô và cơ cấu' tại 2 mốc năm (2015 và 2024) với số liệu tuyệt đối có tổng số. Biểu đồ Tròn 2 bán kính (bán kính R2024 > R2015) là chuẩn mực sư phạm.",
+        "pitfall_warnings": "Không chọn biểu đồ Miền vì chỉ có 2 mốc năm (Miền phải từ 3 năm trở lên). Không chọn Cột đơn vì đề bài yêu cầu thể hiện 'cơ cấu'."
+      },
+      "structural_analysis": {
+        "time_points": 2,
+        "units": "%",
+        "is_total_100": false
       }
     },
     {
@@ -1431,6 +1458,15 @@
       "pedagogical_feedback": {
         "why_optimal": "Đề bài có từ khóa 'chuyển dịch cơ cấu', đơn vị là %, chuỗi thời gian 4 năm (2010, 2015, 2020, 2024) và tổng các năm đều bằng 100%. Biểu đồ Miền thể hiện động thái chuyển dịch cơ cấu liên tục trực quan nhất.",
         "pitfall_warnings": "Tránh vẽ 4 biểu đồ tròn vì vẽ 4 hình tròn vừa tốn diện tích vừa khó so sánh xu hướng liên tục (SGK Địa lí quy ước: từ 3-4 năm trở lên ưu tiên biểu đồ Miền)."
+      },
+      "pedagogical_explanation": {
+        "why_optimal": "Đề bài có từ khóa 'chuyển dịch cơ cấu', đơn vị là %, chuỗi thời gian 4 năm (2010, 2015, 2020, 2024) và tổng các năm đều bằng 100%. Biểu đồ Miền thể hiện động thái chuyển dịch cơ cấu liên tục trực quan nhất.",
+        "pitfall_warnings": "Tránh vẽ 4 biểu đồ tròn vì vẽ 4 hình tròn vừa tốn diện tích vừa khó so sánh xu hướng liên tục (SGK Địa lí quy ước: từ 3-4 năm trở lên ưu tiên biểu đồ Miền)."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": "%",
+        "is_total_100": false
       }
     },
     {
@@ -1500,6 +1536,15 @@
       "pedagogical_feedback": {
         "why_optimal": "Đề bài có từ khóa 'tốc độ tăng trưởng', năm gốc 2015 bằng 100% và chuỗi thời gian 4 năm. Biểu đồ Đường với các đường xuất phát từ mốc 100% tại trục tung là quy tắc vàng bất di bất dịch.",
         "pitfall_warnings": "Tuyệt đối không chọn biểu đồ Cột khi đề bài đã ghi rõ từ khóa 'tốc độ tăng trưởng' với năm gốc 100%."
+      },
+      "pedagogical_explanation": {
+        "why_optimal": "Đề bài có từ khóa 'tốc độ tăng trưởng', năm gốc 2015 bằng 100% và chuỗi thời gian 4 năm. Biểu đồ Đường với các đường xuất phát từ mốc 100% tại trục tung là quy tắc vàng bất di bất dịch.",
+        "pitfall_warnings": "Tuyệt đối không chọn biểu đồ Cột khi đề bài đã ghi rõ từ khóa 'tốc độ tăng trưởng' với năm gốc 100%."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": "%",
+        "is_total_100": false
       }
     },
     {
@@ -1559,6 +1604,15 @@
       "pedagogical_feedback": {
         "why_optimal": "Đề bài yêu cầu 'so sánh các đối tượng cùng đơn vị (nghìn ha) trong một năm (2024)'. Biểu đồ Cột ghép (mỗi loại cây có 2 cột đại diện 2 vùng) là lựa chọn tối ưu.",
         "pitfall_warnings": "Không chọn biểu đồ Tròn vì số liệu đơn vị là nghìn ha (số lượng tuyệt đối), không có tổng số để tính cơ cấu 100%."
+      },
+      "pedagogical_explanation": {
+        "why_optimal": "Đề bài yêu cầu 'so sánh các đối tượng cùng đơn vị (nghìn ha) trong một năm (2024)'. Biểu đồ Cột ghép (mỗi loại cây có 2 cột đại diện 2 vùng) là lựa chọn tối ưu.",
+        "pitfall_warnings": "Không chọn biểu đồ Tròn vì số liệu đơn vị là nghìn ha (số lượng tuyệt đối), không có tổng số để tính cơ cấu 100%."
+      },
+      "structural_analysis": {
+        "time_points": 2,
+        "units": "%",
+        "is_total_100": false
       }
     },
     {
@@ -1618,6 +1672,15 @@
       "pedagogical_feedback": {
         "why_optimal": "Đề bài yêu cầu thể hiện 2 đại lượng khác nhau về đơn vị (Khối lượng vận chuyển tính bằng 'triệu tấn', Luân chuyển tính bằng 'tỷ tấn.km') nhưng có mối quan hệ trực tiếp về dịch vụ vận tải. Biểu đồ Kết hợp Cột (vận chuyển) và Đường (luân chuyển) với 2 trục tung là chuẩn xác.",
         "pitfall_warnings": "Không thể dùng biểu đồ Cột đơn/ghép chung 1 trục tung vì hai đại lượng chênh lệch về đơn vị đo và ý nghĩa vật lý."
+      },
+      "pedagogical_explanation": {
+        "why_optimal": "Đề bài yêu cầu thể hiện 2 đại lượng khác nhau về đơn vị (Khối lượng vận chuyển tính bằng 'triệu tấn', Luân chuyển tính bằng 'tỷ tấn.km') nhưng có mối quan hệ trực tiếp về dịch vụ vận tải. Biểu đồ Kết hợp Cột (vận chuyển) và Đường (luân chuyển) với 2 trục tung là chuẩn xác.",
+        "pitfall_warnings": "Không thể dùng biểu đồ Cột đơn/ghép chung 1 trục tung vì hai đại lượng chênh lệch về đơn vị đo và ý nghĩa vật lý."
+      },
+      "structural_analysis": {
+        "time_points": 2,
+        "units": "%",
+        "is_total_100": false
       }
     },
     {
@@ -1677,6 +1740,15 @@
       "pedagogical_feedback": {
         "why_optimal": "Đề bài yêu cầu thể hiện 'quy mô và cơ cấu' của đối tượng qua chuỗi 4 năm theo giá trị tuyệt đối (nghìn ha). Biểu đồ Cột Chồng (chiều cao cột là tổng diện tích rừng, bên trong chia 2 đoạn rừng tự nhiên và rừng trồng) là chuẩn xác nhất theo quy tắc biểu đồ.docx mục 6.",
         "pitfall_warnings": "Nếu đề bài yêu cầu cơ cấu theo tỉ lệ % thì vẽ Miền; nhưng đề bài yêu cầu 'quy mô và cơ cấu theo giá trị tuyệt đối' thì Cột Chồng là lựa chọn tối ưu."
+      },
+      "pedagogical_explanation": {
+        "why_optimal": "Đề bài yêu cầu thể hiện 'quy mô và cơ cấu' của đối tượng qua chuỗi 4 năm theo giá trị tuyệt đối (nghìn ha). Biểu đồ Cột Chồng (chiều cao cột là tổng diện tích rừng, bên trong chia 2 đoạn rừng tự nhiên và rừng trồng) là chuẩn xác nhất theo quy tắc biểu đồ.docx mục 6.",
+        "pitfall_warnings": "Nếu đề bài yêu cầu cơ cấu theo tỉ lệ % thì vẽ Miền; nhưng đề bài yêu cầu 'quy mô và cơ cấu theo giá trị tuyệt đối' thì Cột Chồng là lựa chọn tối ưu."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": "%",
+        "is_total_100": false
       }
     },
     {
@@ -1745,6 +1817,15 @@
       "pedagogical_feedback": {
         "why_optimal": "Đề bài yêu cầu 'so sánh các đối tượng có cùng đơn vị trong một năm (2024)'. Biểu đồ Cột đơn (hoặc Cột thanh ngang khi tên các vùng dài) thể hiện khoảng cách phát triển giữa vùng dẫn đầu (Đông Nam Bộ) và vùng miền núi rõ nét nhất.",
         "pitfall_warnings": "Không chọn biểu đồ Tròn vì GRDP bình quân là chỉ số bình quân, không phải thành phần cộng dồn thành 100%."
+      },
+      "pedagogical_explanation": {
+        "why_optimal": "Đề bài yêu cầu 'so sánh các đối tượng có cùng đơn vị trong một năm (2024)'. Biểu đồ Cột đơn (hoặc Cột thanh ngang khi tên các vùng dài) thể hiện khoảng cách phát triển giữa vùng dẫn đầu (Đông Nam Bộ) và vùng miền núi rõ nét nhất.",
+        "pitfall_warnings": "Không chọn biểu đồ Tròn vì GRDP bình quân là chỉ số bình quân, không phải thành phần cộng dồn thành 100%."
+      },
+      "structural_analysis": {
+        "time_points": 1,
+        "units": "%",
+        "is_total_100": false
       }
     },
     {
@@ -1824,6 +1905,15 @@
       "pedagogical_feedback": {
         "why_optimal": "Đề bài có từ khóa 'chuyển dịch cơ cấu', đơn vị là %, chuỗi thời gian 4 năm (2015, 2018, 2021, 2024), tổng các thành phần bằng 100%. Biểu đồ Miền thể hiện sự bứt phá mạnh mẽ của năng lượng tái tạo từ sau năm 2018 trực quan nhất.",
         "pitfall_warnings": "Tránh chọn biểu đồ Đường vì biểu đồ đường không lột tả được tính chất cộng gộp đủ 100% của cơ cấu hệ thống điện quốc gia."
+      },
+      "pedagogical_explanation": {
+        "why_optimal": "Đề bài có từ khóa 'chuyển dịch cơ cấu', đơn vị là %, chuỗi thời gian 4 năm (2015, 2018, 2021, 2024), tổng các thành phần bằng 100%. Biểu đồ Miền thể hiện sự bứt phá mạnh mẽ của năng lượng tái tạo từ sau năm 2018 trực quan nhất.",
+        "pitfall_warnings": "Tránh chọn biểu đồ Đường vì biểu đồ đường không lột tả được tính chất cộng gộp đủ 100% của cơ cấu hệ thống điện quốc gia."
+      },
+      "structural_analysis": {
+        "time_points": 4,
+        "units": "%",
+        "is_total_100": false
       }
     },
     {
@@ -1883,6 +1973,15 @@
       "pedagogical_feedback": {
         "why_optimal": "Đề bài yêu cầu thể hiện 'cơ cấu' của đối tượng chỉ trong duy nhất 1 mốc năm (2024). Biểu đồ Tròn (1 hình tròn chia thành 3 nan quạt) là lựa chọn duy nhất đúng tuyệt đối theo quy tắc biểu đồ.docx.",
         "pitfall_warnings": "Tuyệt đối không chọn biểu đồ Miền vì Miền chỉ vẽ khi có chuỗi thời gian từ 3 năm trở lên. 1 mốc năm bắt buộc phải vẽ biểu đồ Tròn."
+      },
+      "pedagogical_explanation": {
+        "why_optimal": "Đề bài yêu cầu thể hiện 'cơ cấu' của đối tượng chỉ trong duy nhất 1 mốc năm (2024). Biểu đồ Tròn (1 hình tròn chia thành 3 nan quạt) là lựa chọn duy nhất đúng tuyệt đối theo quy tắc biểu đồ.docx.",
+        "pitfall_warnings": "Tuyệt đối không chọn biểu đồ Miền vì Miền chỉ vẽ khi có chuỗi thời gian từ 3 năm trở lên. 1 mốc năm bắt buộc phải vẽ biểu đồ Tròn."
+      },
+      "structural_analysis": {
+        "time_points": 2,
+        "units": "%",
+        "is_total_100": false
       }
     }
   ]
