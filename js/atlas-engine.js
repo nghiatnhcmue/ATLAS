@@ -4865,11 +4865,12 @@ const AtlasEngine = (function () {
 
     if (mode === "gis") {
       if (gisMapCol) {
-        gisMapCol.classList.remove("hidden", "lg:col-span-6");
-        gisMapCol.classList.add("col-span-12", "lg:col-span-7");
+        gisMapCol.classList.remove("hidden", "lg:col-span-6", "lg:col-span-7", "lg:col-span-8");
+        gisMapCol.classList.add("col-span-12", "lg:col-span-5");
       }
       if (gisControlsCol) {
-        gisControlsCol.classList.remove("hidden");
+        gisControlsCol.classList.remove("hidden", "lg:col-span-5", "lg:col-span-6");
+        gisControlsCol.classList.add("col-span-12", "lg:col-span-7");
       }
       if (atlatBookCol) atlatBookCol.classList.add("hidden");
       if (atlatNotesCol) atlatNotesCol.classList.add("hidden");
@@ -4880,12 +4881,12 @@ const AtlasEngine = (function () {
       if (gisMapCol) gisMapCol.classList.add("hidden");
       if (gisControlsCol) gisControlsCol.classList.add("hidden");
       if (atlatBookCol) {
-        atlatBookCol.classList.remove("hidden", "lg:col-span-6");
-        atlatBookCol.classList.add("col-span-12", "lg:col-span-8");
+        atlatBookCol.classList.remove("hidden", "lg:col-span-8", "lg:col-span-7", "lg:col-span-5");
+        atlatBookCol.classList.add("col-span-12", "lg:col-span-6");
       }
       if (atlatNotesCol) {
-        atlatNotesCol.classList.remove("hidden");
-        atlatNotesCol.classList.add("col-span-12", "lg:col-span-4");
+        atlatNotesCol.classList.remove("hidden", "lg:col-span-4", "lg:col-span-5", "lg:col-span-7");
+        atlatNotesCol.classList.add("col-span-12", "lg:col-span-6");
       }
       if (atlatToolbar) atlatToolbar.classList.remove("hidden");
 
@@ -4894,11 +4895,11 @@ const AtlasEngine = (function () {
       setTimeout(() => fitAtlatBookWidth(), 50);
     } else if (mode === "split") {
       if (atlatBookCol) {
-        atlatBookCol.classList.remove("hidden", "lg:col-span-8");
+        atlatBookCol.classList.remove("hidden", "lg:col-span-8", "lg:col-span-7", "lg:col-span-5");
         atlatBookCol.classList.add("col-span-12", "lg:col-span-6");
       }
       if (gisMapCol) {
-        gisMapCol.classList.remove("hidden", "lg:col-span-7");
+        gisMapCol.classList.remove("hidden", "lg:col-span-7", "lg:col-span-8", "lg:col-span-5");
         gisMapCol.classList.add("col-span-12", "lg:col-span-6");
       }
       if (gisControlsCol) gisControlsCol.classList.add("hidden");
