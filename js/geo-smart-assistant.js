@@ -238,6 +238,34 @@ window.GeoSmartAssistant = (function () {
       examTip: "Đề thi hay hỏi: 'Cụm cảng biển nước sâu quan trọng nhất của vùng kinh tế trọng điểm phía Nam là...' $\\rightarrow$ Cụm cảng Cái Mép - Thị Vải."
     },
     {
+      id: "thanh_pho_quang_ninh",
+      name: "Thành phố Quảng Ninh (Trực thuộc Trung ương)",
+      category: "Thành phố trực thuộc Trung ương (NQ 24/8/2026)",
+      lat: 20.9500,
+      lng: 107.0730,
+      zoom: 9,
+      layerKey: "provinces",
+      atlatPage: 4,
+      atlatSubPages: [5, 13, 18, 22],
+      aliases: ["quang ninh", "thanh pho quang ninh", "tp quang ninh", "tinh quang ninh", "ha long", "vinh ha long"],
+      highlights: "Thành phố trực thuộc Trung ương thành lập theo Nghị quyết Quốc hội ngày 24/8/2026. Định hướng chuyển đổi mô hình tăng trưởng xanh, lấy khoa học - công nghệ và đổi mới sáng tạo làm động lực; kiểm soát chặt chẽ hoạt động xây dựng ven bờ và vùng đệm di sản thiên nhiên thế giới Vịnh Hạ Long.",
+      examTip: "Đặc điểm nổi bật: Vừa giáp biển vừa giáp Trung Quốc; bể than đá lớn nhất cả nước; cụm cảng nước sâu Cái Lân; di sản thiên nhiên thế giới Vịnh Hạ Long."
+    },
+    {
+      id: "thanh_pho_bac_ninh",
+      name: "Thành phố Bắc Ninh (Trực thuộc Trung ương)",
+      category: "Thành phố trực thuộc Trung ương (NQ 24/8/2026)",
+      lat: 21.1860,
+      lng: 106.0760,
+      zoom: 10,
+      layerKey: "provinces",
+      atlatPage: 4,
+      atlatSubPages: [5, 18, 21],
+      aliases: ["bac ninh", "thanh pho bac ninh", "tp bac ninh", "tinh bac ninh", "quan ho bac ninh"],
+      highlights: "Thành phố trực thuộc Trung ương thành lập theo Nghị quyết Quốc hội ngày 24/8/2026. Thủ phủ công nghiệp điện tử - bán dẫn công nghệ cao hàng đầu cả nước; định hướng bảo tồn hệ thống di tích quốc gia đặc biệt, làng nghề truyền thống và không gian văn hóa Dân ca Quan họ.",
+      examTip: "Đặc điểm nổi bật: Mật độ dân số cao hàng đầu ĐBSH; trung tâm công nghiệp quy mô lớn trên hành lang kinh tế then chốt miền Bắc."
+    },
+    {
       id: "cam_pha_coal",
       name: "Bể than đá Cẩm Phả - Hòn Gai (Quảng Ninh)",
       category: "Khoáng sản nhiên liệu",
@@ -355,6 +383,35 @@ window.GeoSmartAssistant = (function () {
   // 4. KHO ĐÁP ÁN AI SƯ PHẠM NỘI TUYẾN (OFFLINE PEDAGOGICAL QA BASE)
   // =========================================================================
   const OFFLINE_QA_BASE = [
+    {
+      patterns: [
+        "nghi quyet 24 thang 8 nam 2026",
+        "24 thang 8 nam 2026",
+        "thanh pho truc thuoc trung uong moi",
+        "quang ninh va bac ninh",
+        "bac ninh va quang ninh",
+        "quang ninh len thanh pho truc thuoc trung uong",
+        "bac ninh len thanh pho truc thuoc trung uong",
+        "9 thanh pho truc thuoc trung uong",
+        "cac thanh pho truc thuoc trung uong",
+        "thanh pho truc thuoc trung uong gom nhung thanh pho nao"
+      ],
+      title: "Nghị quyết thành lập hai Thành phố trực thuộc Trung ương: Quảng Ninh và Bắc Ninh (24/8/2026)",
+      atlatPages: [4, 5, 18],
+      content: `
+**Nội dung cơ bản và Ý nghĩa của Nghị quyết Quốc hội ngày 24/8/2026:**
+1. **Thành lập 2 Thành phố trực thuộc Trung ương mới:**
+   - Ngày 24 tháng 8 năm 2026, Quốc hội Việt Nam đã chính thức thông qua Nghị quyết thành lập thêm hai thành phố trực thuộc Trung ương là **Quảng Ninh** và **Bắc Ninh**.
+   - Cả nước hiện có **9 Thành phố trực thuộc Trung ương**: Hà Nội, Hải Phòng, Quảng Ninh, Bắc Ninh, Huế, Đà Nẵng, Đồng Nai, TP. Hồ Chí Minh, Cần Thơ (cùng 25 tỉnh và 2 quần đảo đặc khu Hoàng Sa, Trường Sa).
+
+2. **Định hướng và mục tiêu chiến lược của Chính phủ:**
+   - Chỉ đạo hai địa phương chuyển đổi mô hình tăng trưởng kinh tế, phát triển kinh tế gắn liền với bảo vệ môi trường, lấy khoa học - công nghệ và đổi mới sáng tạo làm động lực phát triển then chốt.
+   - **Đối với Vịnh Hạ Long (Quảng Ninh):** Cần kiểm soát chặt chẽ hoạt động xây dựng ven bờ và vùng đệm di sản thiên nhiên thế giới, phát triển bền vững kinh tế biển, du lịch xanh và dịch vụ chất lượng cao.
+   - **Đối với Bắc Ninh:** Phát triển công nghiệp công nghệ cao, điện tử bán dẫn kết hợp hài hòa với việc bảo tồn hệ thống di tích quốc gia đặc biệt, bảo tồn làng nghề truyền thống và không gian văn hóa Dân ca Quan họ.
+
+*Đối chiếu Atlat Địa lí:* Mở **Trang 4 - 5 (Hành chính 34 đơn vị)**, **Trang 18 (Kinh tế chung & GRDP)** và **Trang 21 (Vùng Đồng bằng sông Hồng)**.
+      `
+    },
     {
       patterns: ["tai sao mien bac co mua dong lanh", "vi sao mien bac co mua dong lanh", "mua dong lanh o mien bac"],
       title: "Giải thích nguyên nhân Miền Bắc nước ta có mùa đông lạnh",

@@ -261,6 +261,36 @@ check("BUG-42", "Hệ thống Thủy văn & Khí hậu đầy đủ (15 trạm K
   assert(html200.includes("climate-filter-select"), "200.html has climate-filter-select dropdown");
 });
 
+// 16. BUG-44: Nghị quyết 24/8/2026: Thành phố Quảng Ninh và Thành phố Bắc Ninh là Thành phố trực thuộc Trung ương
+check("BUG-44", "Thành phố Quảng Ninh & Thành phố Bắc Ninh là TP trực thuộc TW (NQ Quốc hội 24/8/2026)", () => {
+  const p34 = JSON.parse(fs.readFileSync("public/data/vn_provinces_34.geojson", "utf-8"));
+  const qn = p34.features.find(f => f.properties.name === "Thành phố Quảng Ninh");
+  const bn = p34.features.find(f => f.properties.name === "Thành phố Bắc Ninh");
+  assert(qn, "Thành phố Quảng Ninh exists in vn_provinces_34");
+  assert(bn, "Thành phố Bắc Ninh exists in vn_provinces_34");
+  assert.strictEqual(qn.properties.administrative_type, "Thành phố trực thuộc Trung ương", "Quảng Ninh is TP trực thuộc TW in 34");
+  assert.strictEqual(bn.properties.administrative_type, "Thành phố trực thuộc Trung ương", "Bắc Ninh is TP trực thuộc TW in 34");
+
+  const p63 = JSON.parse(fs.readFileSync("public/data/vn_provinces_63.geojson", "utf-8"));
+  const qn63 = p63.features.find(f => f.properties.shapeName === "Quảng Ninh" || f.properties.name === "Thành phố Quảng Ninh");
+  const bn63 = p63.features.find(f => f.properties.shapeName === "Bắc Ninh" || f.properties.name === "Thành phố Bắc Ninh");
+  assert(qn63, "Quảng Ninh exists in 63");
+  assert(bn63, "Bắc Ninh exists in 63");
+  assert.strictEqual(qn63.properties.administrative_type, "Thành phố trực thuộc Trung ương", "Quảng Ninh is TP trực thuộc TW in 63");
+  assert.strictEqual(bn63.properties.administrative_type, "Thành phố trực thuộc Trung ương", "Bắc Ninh is TP trực thuộc TW in 63");
+
+  const atlatData = fs.readFileSync("js/atlat-data.js", "utf-8");
+  assert(atlatData.includes("Thành phố Quảng Ninh"), "atlat-data.js includes Thành phố Quảng Ninh");
+  assert(atlatData.includes("Thành phố Bắc Ninh"), "atlat-data.js includes Thành phố Bắc Ninh");
+
+  const assistant = fs.readFileSync("js/geo-smart-assistant.js", "utf-8");
+  assert(assistant.includes("24 tháng 8 năm 2026") || assistant.includes("24/8/2026"), "geo-smart-assistant.js references NQ 24/8/2026");
+  assert(assistant.includes("thanh_pho_quang_ninh") && assistant.includes("thanh_pho_bac_ninh"), "assistant contains new city entities");
+
+  const engine = fs.readFileSync("js/atlas-engine.js", "utf-8");
+  assert(engine.includes("Thành phố Quảng Ninh") && engine.includes("Thành phố Bắc Ninh"), "atlas-engine.js contains new city profiles");
+});
+
 console.log("======================================================================");
 console.log(`  RESULT: ${passed}/${total} TESTS PASSED (${Math.round((passed/total)*100)}%)`);
 console.log("======================================================================");

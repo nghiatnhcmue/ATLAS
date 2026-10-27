@@ -212,7 +212,7 @@
     {
       "code": "A17",
       "name": "Điểm A17: Hòn Chân Voi",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         107.4541,
         20.7163
@@ -224,7 +224,7 @@
     {
       "code": "A18",
       "name": "Điểm A18: Hòn Voi Lớn",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         107.4639,
         20.7226
@@ -236,7 +236,7 @@
     {
       "code": "A19",
       "name": "Điểm A19: Đảo Vĩnh Thực",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         107.8225,
         20.984
@@ -248,7 +248,7 @@
     {
       "code": "A20",
       "name": "Điểm A20: Đảo Vĩnh Thực Đông",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         107.8629,
         21.0239
@@ -260,7 +260,7 @@
     {
       "code": "A21",
       "name": "Điểm A21: Hòn Miều",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         108.0193,
         21.1888
@@ -272,7 +272,7 @@
     {
       "code": "A22",
       "name": "Điểm A22: Hòn Miều Đông",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         108.0216,
         21.1914
@@ -284,7 +284,7 @@
     {
       "code": "A23",
       "name": "Điểm A23: Mũi Ngọc",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         108.0924,
         21.4708
@@ -296,7 +296,7 @@
     {
       "code": "A24",
       "name": "Điểm A24: Mũi Trà Cổ",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         108.1012,
         21.4701
@@ -1227,25 +1227,6 @@
         "Hà Nội"
       ]
     },
-    "Tỉnh Bắc Ninh": {
-      "area": 4718.6,
-      "pop": 3509.2,
-      "type": "Tỉnh",
-      "region": "Đồng bằng sông Hồng",
-      "merged_from": [
-        "Bắc Ninh",
-        "Bắc Giang"
-      ]
-    },
-    "Tỉnh Quảng Ninh": {
-      "area": 6208.0,
-      "pop": 1396.5,
-      "type": "Tỉnh",
-      "region": "Đồng bằng sông Hồng",
-      "merged_from": [
-        "Quảng Ninh"
-      ]
-    },
     "Thành phố Hải Phòng": {
       "area": 3194.7,
       "pop": 4102.7,
@@ -1465,6 +1446,25 @@
       "merged_from": [
         "Cà Mau",
         "Bạc Liêu"
+      ]
+    },
+    "Thành phố Bắc Ninh": {
+      "area": 4718.6,
+      "pop": 3509.2,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Đồng bằng sông Hồng",
+      "merged_from": [
+        "Bắc Ninh",
+        "Bắc Giang"
+      ]
+    },
+    "Thành phố Quảng Ninh": {
+      "area": 6208.0,
+      "pop": 1396.5,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Đồng bằng sông Hồng",
+      "merged_from": [
+        "Quảng Ninh"
       ]
     }
   }

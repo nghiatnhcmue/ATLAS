@@ -19564,8 +19564,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Bắc Ninh",
-        "administrative_type": "Tỉnh",
+        "name": "Thành phố Bắc Ninh",
+        "administrative_type": "Thành phố trực thuộc Trung ương",
         "region_name": "Đồng bằng sông Hồng",
         "region": "Đồng bằng sông Hồng",
         "area": 4718.6,
@@ -19576,11 +19576,13 @@
           "Bắc Giang"
         ],
         "merged_from_desc": "Gồm: Bắc Ninh, Bắc Giang",
-        "resolution": "Nghị quyết số 202/2025/QH15",
+        "resolution": "Nghị quyết Quốc hội 24/8/2026 & Nghị quyết 202/2025/QH15",
         "is_special_island": false,
-        "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
+        "source": "NQ Quốc hội 24/8/2026 & NQ số 202/2025/QH15 & Atlat GD, tr.4-5",
         "grdp": 100.0,
-        "region_id": "2"
+        "region_id": "2",
+        "type": "Thành phố trực thuộc Trung ương",
+        "note": "Thành phố trực thuộc Trung ương thành lập ngày 24/8/2026. Phát triển kinh tế gắn với bảo vệ môi trường, khoa học công nghệ, bảo tồn di tích quốc gia đặc biệt, làng nghề và văn hóa Quan họ."
       },
       "geometry": {
         "type": "Polygon",
@@ -20877,8 +20879,8 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Quảng Ninh",
-        "administrative_type": "Tỉnh",
+        "name": "Thành phố Quảng Ninh",
+        "administrative_type": "Thành phố trực thuộc Trung ương",
         "region_name": "Đồng bằng sông Hồng",
         "region": "Đồng bằng sông Hồng",
         "area": 6208.0,
@@ -20888,11 +20890,13 @@
           "Quảng Ninh"
         ],
         "merged_from_desc": "Gồm: Quảng Ninh",
-        "resolution": "Nghị quyết số 202/2025/QH15",
+        "resolution": "Nghị quyết Quốc hội 24/8/2026 & Nghị quyết 202/2025/QH15",
         "is_special_island": false,
-        "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
+        "source": "NQ Quốc hội 24/8/2026 & NQ số 202/2025/QH15 & Atlat GD, tr.4-5",
         "grdp": 100.0,
-        "region_id": "2"
+        "region_id": "2",
+        "type": "Thành phố trực thuộc Trung ương",
+        "note": "Thành phố trực thuộc Trung ương thành lập ngày 24/8/2026. Phát triển kinh tế gắn với bảo vệ môi trường, kiểm soát chặt chẽ hoạt động xây dựng ven bờ và vùng đệm Vịnh Hạ Long."
       },
       "geometry": {
         "type": "MultiPolygon",

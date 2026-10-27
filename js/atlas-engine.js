@@ -136,7 +136,7 @@ const AtlasEngine = (function () {
     "Tỉnh Cao Bằng": "mountain_high", "Tỉnh Tuyên Quang": "plateau", "Tỉnh Lào Cai": "mountain_high",
     "Tỉnh Thái Nguyên": "hill", "Tỉnh Lạng Sơn": "plateau", "Tỉnh Phú Thọ": "hill",
     "Tỉnh Điện Biên": "mountain_high", "Tỉnh Lai Châu": "mountain_high", "Tỉnh Sơn La": "mountain_high",
-    "Thành phố Hà Nội": "plain_low", "Tỉnh Bắc Ninh": "plain_high", "Tỉnh Quảng Ninh": "hill",
+    "Thành phố Hà Nội": "plain_low", "Thành phố Bắc Ninh": "plain_high", "Tỉnh Bắc Ninh": "plain_high", "Thành phố Quảng Ninh": "hill", "Tỉnh Quảng Ninh": "hill",
     "Thành phố Hải Phòng": "plain_low", "Tỉnh Hưng Yên": "plain_low", "Tỉnh Ninh Bình": "plain_low",
     "Tỉnh Thanh Hoá": "plain_high", "Tỉnh Nghệ An": "plain_high", "Tỉnh Hà Tĩnh": "plain_high",
     "Tỉnh Quảng Trị": "plain_high", "Thành phố Huế": "plain_high", "Thành phố Đà Nẵng": "plain_high",
@@ -237,7 +237,7 @@ const AtlasEngine = (function () {
   const GRDP_PER_CAPITA_TIERS = {
     // Cấp 1: Từ 125 triệu đồng trở lên
     "Thành phố Hà Nội": 1, "Thành phố Hồ Chí Minh": 1, "Thành phố Hải Phòng": 1, "Thành phố Đồng Nai": 1,
-    "Tỉnh Quảng Ninh": 1, "Tỉnh Bắc Ninh": 1,
+    "Thành phố Quảng Ninh": 1, "Thành phố Bắc Ninh": 1, "Tỉnh Quảng Ninh": 1, "Tỉnh Bắc Ninh": 1,
     "Hà Nội": 1, "TP. Hồ Chí Minh": 1, "Hải Phòng": 1, "Quảng Ninh": 1, "Bắc Ninh": 1, "Đồng Nai": 1, "Bà Rịa - Vũng Tàu": 1, "Bình Dương": 1,
     // Cấp 2: 100 đến dưới 125 triệu đồng
     "Thành phố Đà Nẵng": 2, "Tỉnh Hưng Yên": 2, "Tỉnh Ninh Bình": 2, "Tỉnh Vĩnh Long": 2, "Thành phố Cần Thơ": 2, "Tỉnh Tây Ninh": 2, "Tỉnh Khánh Hoà": 2,
@@ -1356,7 +1356,7 @@ const AtlasEngine = (function () {
   function checkIsCity(p) {
     if (!p) return false;
     return p.administrative_type === "Thành phố trực thuộc Trung ương" || 
-           (p.name && (p.name.startsWith("Thành phố") || p.name === "Đồng Nai" || p.name === "Hà Nội" || p.name === "TP. Hồ Chí Minh" || p.name === "Hải Phòng" || p.name === "Đà Nẵng" || p.name === "Cần Thơ" || p.name === "Huế"));
+           (p.name && (p.name.startsWith("Thành phố") || p.name === "Đồng Nai" || p.name === "Hà Nội" || p.name === "TP. Hồ Chí Minh" || p.name === "Hải Phòng" || p.name === "Đà Nẵng" || p.name === "Cần Thơ" || p.name === "Huế" || p.name === "Quảng Ninh" || p.name === "Bắc Ninh"));
   }
 
   function renderProvinces(filterRegion = "all") {
@@ -3604,7 +3604,10 @@ const AtlasEngine = (function () {
       : '<span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300 font-bold">Tỉnh</span>';
 
     const examTipsMap = {
-      "Quảng Ninh": "Trữ lượng than đá lớn nhất cả nước (bể than Đông Bắc), có cảng nước sâu Cái Lân, đảo Cô Tô và di sản Vịnh Hạ Long.",
+      "Thành phố Quảng Ninh": "Thành phố trực thuộc Trung ương (NQ Quốc hội 24/8/2026). Trữ lượng than đá lớn nhất cả nước (bể than Đông Bắc), có cảng nước sâu Cái Lân, đảo Cô Tô và di sản thiên nhiên thế giới Vịnh Hạ Long (chuyển đổi mô hình tăng trưởng xanh, kiểm soát chặt chẽ hoạt động xây dựng ven bờ và vùng đệm).",
+      "Quảng Ninh": "Thành phố trực thuộc Trung ương (NQ Quốc hội 24/8/2026). Trữ lượng than đá lớn nhất cả nước (bể than Đông Bắc), có cảng nước sâu Cái Lân, đảo Cô Tô và di sản thiên nhiên thế giới Vịnh Hạ Long (chuyển đổi mô hình tăng trưởng xanh, kiểm soát chặt chẽ hoạt động xây dựng ven bờ và vùng đệm).",
+      "Thành phố Bắc Ninh": "Thành phố trực thuộc Trung ương (NQ Quốc hội 24/8/2026). Thủ phủ công nghiệp điện tử - bán dẫn công nghệ cao, bảo tồn hệ thống di tích quốc gia đặc biệt, làng nghề truyền thống và không gian văn hóa Quan họ.",
+      "Bắc Ninh": "Thành phố trực thuộc Trung ương (NQ Quốc hội 24/8/2026). Thủ phủ công nghiệp điện tử - bán dẫn công nghệ cao, bảo tồn hệ thống di tích quốc gia đặc biệt, làng nghề truyền thống và không gian văn hóa Quan họ.",
       "Hà Nội": "Thủ đô, trung tâm kinh tế - văn hóa lớn nhất miền Bắc, trung tâm công nghiệp quy mô rất lớn (Atlat GD, tr.22).",
       "Thành phố Hồ Chí Minh": "Đô thị đặc biệt, đầu tàu kinh tế cả nước, trung tâm công nghiệp quy mô rất lớn, cảng biển có sản lượng container lớn nhất.",
       "Bà Rịa - Vũng Tàu": "Thủ phủ dầu khí ngoài thềm lục địa (mỏ Bạch Hổ, Rồng, Rạng Đông), cụm cảng quốc tế Cái Mép - Thị Vải.",
@@ -4171,7 +4174,7 @@ const AtlasEngine = (function () {
       keyFeatures: [
         "Điểm cực Bắc: Xã Lũng Cú, huyện Đồng Văn, tỉnh Hà Giang (vĩ độ 23°23'B).",
         "Điểm cực Tây: Xã Sín Thầu, huyện Mường Nhé, tỉnh Điện Biên (ngã ba biên giới Việt - Trung - Lào A Pa Chải, kinh độ 102°09'Đ).",
-        "Tỉnh vừa giáp biển vừa giáp Trung Quốc: Tỉnh Quảng Ninh.",
+        "Đơn vị vừa giáp biển vừa giáp Trung Quốc: Thành phố Quảng Ninh (Thành phố trực thuộc Trung ương theo NQ 24/8/2026).",
         "7 tỉnh biên giới phía Bắc giáp Trung Quốc: Quảng Ninh, Lạng Sơn, Cao Bằng, Hà Giang, Lào Cai, Lai Châu, Điện Biên."
       ],
       examTraps: "Điện Biên giáp cả Lào và Trung Quốc tại ngã ba A Pa Chải (không chỉ giáp Lào).",
@@ -4186,8 +4189,9 @@ const AtlasEngine = (function () {
       keyFeatures: [
         "Điểm cực Nam: Xã Đất Mũi, huyện Ngọc Hiển, tỉnh Cà Mau (8°34'B).",
         "Điểm cực Đông (đất liền): Mũi Đôi, xã Vạn Thạnh, Vạn Ninh, tỉnh Khánh Hoà (109°28'Đ).",
+        "9 Thành phố trực thuộc Trung ương: Hà Nội, Hải Phòng, Quảng Ninh, Bắc Ninh, Huế, Đà Nẵng, Đồng Nai, TP. Hồ Chí Minh, Cần Thơ (theo NQ Quốc hội 24/8/2026 & NQ 202/2025/QH15).",
         "Hai quần đảo chiến lược: Quần đảo Hoàng Sa (TP. Đà Nẵng) và Quần đảo Trường Sa (Tỉnh Khánh Hoà).",
-        "Bảng số liệu 34 tỉnh: Nghệ An có diện tích lớn nhất (16.486,5 km²), Bắc Ninh nhỏ nhất (822,7 km²); TP. Hồ Chí Minh đông dân nhất."
+        "Bảng số liệu 34 đơn vị: Nghệ An có diện tích lớn nhất (16.486,5 km²), TP. Bắc Ninh có mật độ dân số cao bậc nhất; TP. Hồ Chí Minh đông dân nhất."
       ],
       examTraps: "So sánh diện tích hoặc dân số tỉnh thành: luôn đọc chuẩn xác số liệu in tại bảng tr.5 Atlat GD.",
       recommendedLayer: "provinces"

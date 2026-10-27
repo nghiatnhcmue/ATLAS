@@ -213,7 +213,7 @@
     {
       "code": "A17",
       "name": "Điểm A17: Hòn Chân Voi",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         107.4541,
         20.7163
@@ -225,7 +225,7 @@
     {
       "code": "A18",
       "name": "Điểm A18: Hòn Voi Lớn",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         107.4639,
         20.7226
@@ -237,7 +237,7 @@
     {
       "code": "A19",
       "name": "Điểm A19: Đảo Vĩnh Thực",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         107.8225,
         20.984
@@ -249,7 +249,7 @@
     {
       "code": "A20",
       "name": "Điểm A20: Đảo Vĩnh Thực Đông",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         107.8629,
         21.0239
@@ -261,7 +261,7 @@
     {
       "code": "A21",
       "name": "Điểm A21: Hòn Miều",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         108.0193,
         21.1888
@@ -273,7 +273,7 @@
     {
       "code": "A22",
       "name": "Điểm A22: Hòn Miều Đông",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         108.0216,
         21.1914
@@ -285,7 +285,7 @@
     {
       "code": "A23",
       "name": "Điểm A23: Mũi Ngọc",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         108.0924,
         21.4708
@@ -297,7 +297,7 @@
     {
       "code": "A24",
       "name": "Điểm A24: Mũi Trà Cổ",
-      "province": "Tỉnh Quảng Ninh",
+      "province": "Thành phố Quảng Ninh",
       "coords": [
         108.1012,
         21.4701
@@ -1228,25 +1228,6 @@
         "Hà Nội"
       ]
     },
-    "Tỉnh Bắc Ninh": {
-      "area": 4718.6,
-      "pop": 3509.2,
-      "type": "Tỉnh",
-      "region": "Đồng bằng sông Hồng",
-      "merged_from": [
-        "Bắc Ninh",
-        "Bắc Giang"
-      ]
-    },
-    "Tỉnh Quảng Ninh": {
-      "area": 6208.0,
-      "pop": 1396.5,
-      "type": "Tỉnh",
-      "region": "Đồng bằng sông Hồng",
-      "merged_from": [
-        "Quảng Ninh"
-      ]
-    },
     "Thành phố Hải Phòng": {
       "area": 3194.7,
       "pop": 4102.7,
@@ -1466,6 +1447,25 @@
       "merged_from": [
         "Cà Mau",
         "Bạc Liêu"
+      ]
+    },
+    "Thành phố Bắc Ninh": {
+      "area": 4718.6,
+      "pop": 3509.2,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Đồng bằng sông Hồng",
+      "merged_from": [
+        "Bắc Ninh",
+        "Bắc Giang"
+      ]
+    },
+    "Thành phố Quảng Ninh": {
+      "area": 6208.0,
+      "pop": 1396.5,
+      "type": "Thành phố trực thuộc Trung ương",
+      "region": "Đồng bằng sông Hồng",
+      "merged_from": [
+        "Quảng Ninh"
       ]
     }
   },
@@ -21035,8 +21035,8 @@
       {
         "type": "Feature",
         "properties": {
-          "name": "Tỉnh Bắc Ninh",
-          "administrative_type": "Tỉnh",
+          "name": "Thành phố Bắc Ninh",
+          "administrative_type": "Thành phố trực thuộc Trung ương",
           "region_name": "Đồng bằng sông Hồng",
           "region": "Đồng bằng sông Hồng",
           "area": 4718.6,
@@ -21047,11 +21047,13 @@
             "Bắc Giang"
           ],
           "merged_from_desc": "Gồm: Bắc Ninh, Bắc Giang",
-          "resolution": "Nghị quyết số 202/2025/QH15",
+          "resolution": "Nghị quyết Quốc hội 24/8/2026 & Nghị quyết 202/2025/QH15",
           "is_special_island": false,
-          "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
+          "source": "NQ Quốc hội 24/8/2026 & NQ số 202/2025/QH15 & Atlat GD, tr.4-5",
           "grdp": 100.0,
-          "region_id": "2"
+          "region_id": "2",
+          "type": "Thành phố trực thuộc Trung ương",
+          "note": "Thành phố trực thuộc Trung ương thành lập ngày 24/8/2026. Phát triển kinh tế gắn với bảo vệ môi trường, khoa học công nghệ, bảo tồn di tích quốc gia đặc biệt, làng nghề và văn hóa Quan họ."
         },
         "geometry": {
           "type": "Polygon",
@@ -22348,8 +22350,8 @@
       {
         "type": "Feature",
         "properties": {
-          "name": "Tỉnh Quảng Ninh",
-          "administrative_type": "Tỉnh",
+          "name": "Thành phố Quảng Ninh",
+          "administrative_type": "Thành phố trực thuộc Trung ương",
           "region_name": "Đồng bằng sông Hồng",
           "region": "Đồng bằng sông Hồng",
           "area": 6208.0,
@@ -22359,11 +22361,13 @@
             "Quảng Ninh"
           ],
           "merged_from_desc": "Gồm: Quảng Ninh",
-          "resolution": "Nghị quyết số 202/2025/QH15",
+          "resolution": "Nghị quyết Quốc hội 24/8/2026 & Nghị quyết 202/2025/QH15",
           "is_special_island": false,
-          "source": "NQ số 202/2025/QH15 & Atlat GD, tr.4-5 (Bảng thống kê diện tích, dân số)",
+          "source": "NQ Quốc hội 24/8/2026 & NQ số 202/2025/QH15 & Atlat GD, tr.4-5",
           "grdp": 100.0,
-          "region_id": "2"
+          "region_id": "2",
+          "type": "Thành phố trực thuộc Trung ương",
+          "note": "Thành phố trực thuộc Trung ương thành lập ngày 24/8/2026. Phát triển kinh tế gắn với bảo vệ môi trường, kiểm soát chặt chẽ hoạt động xây dựng ven bờ và vùng đệm Vịnh Hạ Long."
         },
         "geometry": {
           "type": "MultiPolygon",
@@ -60648,17 +60652,18 @@
           "shapeID": "63759600B40382966221261",
           "shapeGroup": "VNM",
           "shapeType": "ADM1",
-          "name": "Bắc Ninh",
+          "name": "Thành phố Bắc Ninh",
           "region_name": "Đồng bằng sông Hồng",
           "region": "Đồng bằng sông Hồng",
           "country": "Việt Nam",
-          "administrative_type": "Tỉnh",
+          "administrative_type": "Thành phố trực thuộc Trung ương",
           "area": 822.7,
           "pop": 1488.2,
           "density": 1809,
-          "merged_into": "Tỉnh Bắc Ninh",
+          "merged_into": "Thành phố Bắc Ninh",
           "is_special_island": false,
-          "grdp": 250.0
+          "grdp": 250.0,
+          "resolution": "Nghị quyết Quốc hội 24/8/2026"
         },
         "geometry": {
           "type": "Polygon",
@@ -106127,17 +106132,18 @@
           "shapeID": "63759600B48704001246073",
           "shapeGroup": "VNM",
           "shapeType": "ADM1",
-          "name": "Quảng Ninh",
+          "name": "Thành phố Quảng Ninh",
           "region_name": "Trung du và miền núi Bắc Bộ",
           "region": "Trung du và miền núi Bắc Bộ",
           "country": "Việt Nam",
-          "administrative_type": "Tỉnh",
+          "administrative_type": "Thành phố trực thuộc Trung ương",
           "area": 6207.9,
           "pop": 1362.9,
           "density": 220,
-          "merged_into": "Tỉnh Quảng Ninh",
+          "merged_into": "Thành phố Quảng Ninh",
           "is_special_island": false,
-          "grdp": 275.0
+          "grdp": 275.0,
+          "resolution": "Nghị quyết Quốc hội 24/8/2026"
         },
         "geometry": {
           "type": "MultiPolygon",
