@@ -211,6 +211,11 @@
             <button onclick="AtlasEngine.nextAtlatBookPage()" title="Trang tiếp" class="p-1 sm:px-2 rounded-md hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold transition">▶</button>
           </div>
           <div class="h-4 w-[1px] bg-slate-200 dark:bg-slate-700 hidden sm:block"></div>
+          <!-- Bật/Tắt âm thanh lật trang 3D -->
+          <button id="btn-toggle-flip-sound" onclick="AtlasEngine.toggleFlipSound()" title="Bật/Tắt âm thanh lật trang chân thực" class="px-2 py-1 text-[11px] font-semibold rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center space-x-1 text-slate-700 dark:text-slate-200">
+            <span id="flip-sound-icon">🔊</span>
+            <span class="hidden md:inline text-[10px]">Âm lật</span>
+          </button>
           <div class="hidden sm:flex items-center space-x-1">
             <button onclick="AtlasEngine.zoomAtlatBook(-0.2)" title="Thu nhỏ" class="w-7 h-7 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 font-bold text-xs">-</button>
             <span id="atlat-book-zoom-val" class="font-mono text-[11px] font-bold text-slate-600 dark:text-slate-300 w-10 text-center">100%</span>
@@ -542,11 +547,50 @@
 
       <!-- Khung Hiển Thị Trang Atlat Bản In Chuẩn GD (Book & Split Mode) -->
       <div id="atlat-book-col" class="hidden col-span-12 lg:col-span-8 h-[55vh] sm:h-[65vh] lg:h-full min-h-[340px] lg:min-h-0 rounded-xl overflow-hidden relative border border-slate-200 dark:border-slate-800 shadow-sm bg-slate-950 select-none flex flex-col">
-        <!-- Viewport kéo rê / zoom / pan -->
+        <!-- Viewport kéo rê / zoom / pan & lật trang 3D chân thực -->
         <div id="atlat-book-viewport" class="flex-1 w-full h-full relative overflow-hidden flex items-center justify-center cursor-grab" style="touch-action: none;">
-          <div id="atlat-book-wrapper" class="relative inline-block origin-center will-change-transform">
-            <img id="atlat-book-page-img" src="/public/data/atlat_pages/page_04.jpg?v=2026.3.16" alt="Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)" class="max-w-none shadow-2xl rounded-sm pointer-events-none select-none" />
+          <!-- Khối sách 3D chứa các lớp trang (Under layer, Main page, 3D Flip Leaf, Dog-ear corner) -->
+          <div id="atlat-book-wrapper" class="relative inline-block origin-center will-change-transform atlat-book-container">
+            <!-- Lớp trang ngầm bên dưới (Lộ ra khi đang lật trang) -->
+            <div id="atlat-book-under-layer" class="atlat-book-layer atlat-under-layer hidden" aria-hidden="true">
+              <img id="atlat-book-under-img" src="" alt="Trang ngầm" class="max-w-none shadow-2xl rounded-sm pointer-events-none select-none" />
+            </div>
+
+            <!-- Lớp trang chính hiện tại -->
+            <div id="atlat-book-main-layer" class="atlat-book-layer atlat-main-layer">
+              <img id="atlat-book-page-img" src="/public/data/atlat_pages/page_04.jpg?v=2026.3.16" alt="Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)" class="max-w-none shadow-2xl rounded-sm pointer-events-none select-none" />
+              <!-- Đổ bóng gáy sách chuẩn mực -->
+              <div class="atlat-book-spine-shadow"></div>
+            </div>
+
+            <!-- Tờ lật 3D (Flip Leaf) với 2 mặt và đổ bóng uốn cong -->
+            <div id="atlat-book-flip-leaf" class="atlat-flip-leaf hidden" aria-hidden="true">
+              <div class="atlat-flip-card">
+                <div class="atlat-flip-face atlat-flip-front">
+                  <img id="atlat-flip-front-img" src="" alt="" class="max-w-none pointer-events-none select-none" />
+                  <div class="atlat-flip-overlay front-overlay"></div>
+                </div>
+                <div class="atlat-flip-face atlat-flip-back">
+                  <img id="atlat-flip-back-img" src="" alt="" class="max-w-none pointer-events-none select-none" />
+                  <div class="atlat-flip-overlay back-overlay"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Góc gấp lật trang (Dog-ear curl ở góc dưới bên phải) -->
+            <button id="atlat-corner-curl" onclick="AtlasEngine.nextAtlatBookPage()" title="Bấm góc để lật sang trang sau (▶)" class="atlat-corner-curl" aria-label="Lật trang tiếp">
+              <div class="atlat-curl-triangle"></div>
+              <span class="atlat-curl-icon">📖 Lật</span>
+            </button>
           </div>
+
+          <!-- Nút lật nhanh hai bên trang (Left / Right Navigation Paddles) -->
+          <button id="atlat-paddle-prev" onclick="AtlasEngine.prevAtlatBookPage()" title="Lật về trang trước (◀ hoặc vuốt sang phải)" class="atlat-book-paddle paddle-prev" aria-label="Trang trước">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button id="atlat-paddle-next" onclick="AtlasEngine.nextAtlatBookPage()" title="Lật sang trang sau (▶ hoặc vuốt sang trái)" class="atlat-book-paddle paddle-next" aria-label="Trang sau">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
         </div>
         
         <!-- Thanh thông tin đáy trang Atlat -->
@@ -556,7 +600,7 @@
             <span id="atlat-book-page-title">Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)</span>
           </div>
           <div class="bg-slate-900/90 backdrop-blur-md px-2.5 py-1.5 rounded-lg border border-slate-700/80 text-[10px] text-slate-300 font-mono shadow-lg pointer-events-auto hidden sm:flex items-center space-x-1.5">
-            <span>🖱️ Kéo để rê • Cuộn chuột zoom • Phím ◀ ▶ lật trang</span>
+            <span>📖 Lật trang 3D • Kéo vuốt ◀ ▶ • Phím mũi tên • Bấm góc phải</span>
           </div>
         </div>
       </div>

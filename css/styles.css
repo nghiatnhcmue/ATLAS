@@ -592,7 +592,7 @@ html, body {
 
 
 /* ==========================================================================
-   HE SINH THAI ATLAT KEP (DUAL-VIEW & ATLAT BOOK VIEWER)
+   HE SINH THAI ATLAT KEP (DUAL-VIEW & ATLAT BOOK 3D FLIP VIEWER)
    ========================================================================== */
 #atlat-book-viewport {
   cursor: grab;
@@ -600,6 +600,8 @@ html, body {
   -webkit-user-select: none;
   touch-action: none;
   background-color: #020617; /* Slate 950 */
+  perspective: 2200px;
+  perspective-origin: center center;
 }
 #atlat-book-viewport:active {
   cursor: grabbing;
@@ -609,6 +611,8 @@ html, body {
   transition: transform 0.05s ease-out;
   will-change: transform;
   display: inline-block;
+  transform-style: preserve-3d;
+  position: relative;
 }
 #atlat-book-page-img {
   max-width: none !important;
@@ -616,6 +620,242 @@ html, body {
   border-radius: 4px;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
+  display: block;
+}
+
+/* Các lớp trang trong khối sách 3D */
+.atlat-book-layer {
+  position: relative;
+  display: inline-block;
+}
+.atlat-under-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.atlat-under-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+}
+.atlat-main-layer {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
+
+/* Đổ bóng gáy sách (Spine binding shadow) */
+.atlat-book-spine-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.08) 50%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  z-index: 4;
+}
+
+/* Tờ lật 3D (3D Flipping Leaf) */
+.atlat-flip-leaf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 12;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.atlat-flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+.atlat-flip-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65);
+}
+.atlat-flip-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.atlat-flip-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+.atlat-flip-back {
+  transform: rotateY(180deg);
+  background-color: #f1f5f9;
+  z-index: 1;
+}
+
+/* Hiệu ứng đổ bóng động khi uốn cong tờ giấy */
+.atlat-flip-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Keyframes lật trang tới (Flip Next: quay từ 0deg sang -180deg quanh gáy trái) */
+.atlat-flip-leaf.flip-anim-next {
+  transform-origin: left center;
+  animation: atlatFlipForward 0.52s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes atlatFlipForward {
+  0% {
+    transform: perspective(2200px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(2200px) rotateY(-90deg) scale(1.018);
+  }
+  100% {
+    transform: perspective(2200px) rotateY(-180deg);
+  }
+}
+.atlat-flip-leaf.flip-anim-next .front-overlay {
+  animation: atlatOverlayDarken 0.52s ease-in forwards;
+}
+.atlat-flip-leaf.flip-anim-next .back-overlay {
+  animation: atlatOverlayLighten 0.52s ease-out forwards;
+}
+
+/* Keyframes lật trang lùi (Flip Prev: quay từ -180deg về 0deg quanh gáy trái) */
+.atlat-flip-leaf.flip-anim-prev {
+  transform-origin: left center;
+  animation: atlatFlipBackward 0.52s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes atlatFlipBackward {
+  0% {
+    transform: perspective(2200px) rotateY(-180deg);
+  }
+  50% {
+    transform: perspective(2200px) rotateY(-90deg) scale(1.018);
+  }
+  100% {
+    transform: perspective(2200px) rotateY(0deg);
+  }
+}
+.atlat-flip-leaf.flip-anim-prev .front-overlay {
+  animation: atlatOverlayLighten 0.52s ease-out forwards;
+}
+.atlat-flip-leaf.flip-anim-prev .back-overlay {
+  animation: atlatOverlayDarken 0.52s ease-in forwards;
+}
+
+@keyframes atlatOverlayDarken {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 100%);
+  }
+}
+@keyframes atlatOverlayLighten {
+  0% {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 100%);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+
+/* Góc gấp lật trang (Dog-ear corner curl ở góc dưới bên phải) */
+.atlat-corner-curl {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  z-index: 20;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  outline: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.atlat-corner-curl .atlat-curl-triangle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 38px 38px;
+  border-color: transparent transparent #cbd5e1 transparent;
+  filter: drop-shadow(-3px -3px 4px rgba(0, 0, 0, 0.35));
+  transition: all 0.22s ease;
+}
+.atlat-corner-curl:hover .atlat-curl-triangle {
+  border-width: 0 0 48px 48px;
+  border-color: transparent transparent #94a3b8 transparent;
+  filter: drop-shadow(-5px -5px 7px rgba(0, 0, 0, 0.5));
+}
+.atlat-corner-curl .atlat-curl-icon {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #1e293b;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Nút lật nhanh hai bên trang (Left / Right Paddles) */
+.atlat-book-paddle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 25;
+  width: 40px;
+  height: 60px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.65;
+}
+.atlat-book-paddle:hover {
+  opacity: 1;
+  background: rgba(30, 41, 59, 0.95);
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+  border-color: rgba(96, 165, 250, 0.5);
+  color: #60a5fa;
+}
+.atlat-book-paddle.paddle-prev {
+  left: 10px;
+}
+.atlat-book-paddle.paddle-next {
+  right: 10px;
 }
 .atlat-page-guide-badge {
   display: inline-flex;
