@@ -112,6 +112,31 @@ check("ASSIST-08", "Tích hợp giao diện: Header có thanh tra cứu, script 
   assert(indexHtml.includes("geo-smart-assistant.js"), "Script tag present");
 });
 
+check("ASSIST-09", "AI Sư Phạm Nội Tuyến: Trả lời câu hỏi trọng tâm THPT & chỉ dẫn trang Atlat", () => {
+  const res = Assistant.analyzeQuery("vì sao miền Bắc có mùa đông lạnh");
+  assert(res.offlineQA, "Offline QA matched");
+  assert(res.offlineQA.title.includes("Miền Bắc"), "Title matches Northern winter");
+  assert(res.offlineQA.content.includes("Gió mùa Đông Bắc"), "Explains Northeast monsoon");
+  assert(res.atlatPages.includes(8) || res.atlatPages.includes(9), "Refers to Climate pages 8 or 9");
+});
+
+check("ASSIST-10", "AI Tools: Sinh mẫu nhận xét bảng số liệu 4 bước chuẩn Bộ GD&ĐT", () => {
+  const review = Assistant.generateTableReview("Diện tích và sản lượng lúa");
+  assert(review.includes("Bước 1"), "Contains Step 1: xu hướng");
+  assert(review.includes("Bước 2"), "Contains Step 2: độ tăng giảm");
+  assert(review.includes("Bước 3"), "Contains Step 3: so sánh cơ cấu");
+  assert(review.includes("Bước 4"), "Contains Step 4: nguyên nhân");
+});
+
+check("ASSIST-11", "AI Tools: Sinh câu hỏi trắc nghiệm tự động theo trang Atlat", () => {
+  const quiz8 = Assistant.generateAtlatQuiz(8);
+  assert(quiz8.includes("trạm khí tượng"), "Quiz page 8 contains meteorological questions");
+  assert(quiz8.includes("Sa Pa"), "Mentions Sa Pa station");
+
+  const quiz22 = Assistant.generateAtlatQuiz(22);
+  assert(quiz22.includes("thủy điện Hòa Bình"), "Quiz page 22 contains power plant questions");
+});
+
 console.log("======================================================================");
 console.log(`  RESULT: ${passed}/${total} TESTS PASSED (${Math.round((passed/total)*100)}%)`);
 console.log("======================================================================");

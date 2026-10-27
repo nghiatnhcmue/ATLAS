@@ -1,19 +1,61 @@
 /**
  * ===========================================================================
- * GEOATLAS INTERACTIVE - HỘP TÌM KIẾM & HỎI ĐÁP THÔNG MINH
- * (Smart Geo-Search & Exam Expert Assistant)
+ * GEOATLAS INTERACTIVE - HỘP TÌM KIẾM & TRỢ LÍ TRÍ TUỆ NHÂN TẠO (AI) ĐỊA LÍ
+ * (Integrated Smart Geo-Search & AI Expert Assistant)
  * ===========================================================================
- * Ba chức năng hợp nhất trong 1 hộp tìm kiếm thông minh:
- * 1. Giải đáp quy tắc biểu đồ (Nhận dạng bẫy trắc nghiệm, công thức tính toán)
- * 2. Định vị không gian trực tiếp trên Bản đồ GIS (Tự động zoom & mở thông tin chi tiết)
- * 3. Chỉ dẫn trang Atlat Địa lí Việt Nam bản in tương ứng (Lật trang 3D tức thì)
+ * Hệ thống Trí Tuệ Nhân Tạo 3 Tầng:
+ * 1. AI Sư Phạm Nội Tuyến (100% Offline, Zero-Latency, Chuẩn Sư Phạm Bộ GD&ĐT)
+ * 2. AI Trình Duyệt Nội Thiết (On-Device Web AI / Chrome Gemini Nano)
+ * 3. AI Đám Mây Sâu (Google Gemini Free Tier qua API Key cá nhân)
+ *
+ * Tích hợp:
+ * - Chẩn đoán & giải đáp quy tắc biểu đồ (Bẫy trắc nghiệm, công thức)
+ * - Định vị không gian trực tiếp trên Bản đồ số GIS
+ * - Chỉ dẫn & lật trang 3D Atlat Địa lí Việt Nam
+ * - Hướng dẫn nhận xét bảng số liệu 4 bước chuẩn thi
+ * - Tạo câu hỏi trắc nghiệm tự động theo trang Atlat
  */
 
 window.GeoSmartAssistant = (function () {
   "use strict";
 
   // =========================================================================
-  // 1. CƠ SỞ TRI THỨC BIỂU ĐỒ & BẪY TRẮC NGHIỆM ĐỊA LÍ THPT
+  // 1. CẤU HÌNH & LƯU TRỮ CHẾ ĐỘ AI (AI SETTINGS)
+  // =========================================================================
+  let currentAIMode = "offline"; // "offline" | "gemini" | "window_ai"
+  let geminiApiKey = "";
+  let geminiModel = "gemini-1.5-flash";
+
+  try {
+    const savedMode = localStorage.getItem("geoatlas_ai_mode");
+    if (savedMode) currentAIMode = savedMode;
+    const savedKey = localStorage.getItem("geoatlas_gemini_key");
+    if (savedKey) geminiApiKey = savedKey;
+    const savedModel = localStorage.getItem("geoatlas_gemini_model");
+    if (savedModel) geminiModel = savedModel;
+  } catch (e) {}
+
+  function getAIMode() { return currentAIMode; }
+  function setAIMode(mode) {
+    currentAIMode = mode;
+    try { localStorage.setItem("geoatlas_ai_mode", mode); } catch (e) {}
+    updateAIModeUI();
+  }
+
+  function getGeminiApiKey() { return geminiApiKey; }
+  function setGeminiApiKey(key) {
+    geminiApiKey = key.trim();
+    try { localStorage.setItem("geoatlas_gemini_key", geminiApiKey); } catch (e) {}
+  }
+
+  function getGeminiModel() { return geminiModel; }
+  function setGeminiModel(model) {
+    geminiModel = model;
+    try { localStorage.setItem("geoatlas_gemini_model", geminiModel); } catch (e) {}
+  }
+
+  // =========================================================================
+  // 2. CƠ SỞ TRI THỨC BIỂU ĐỒ & BẪY TRẮC NGHIỆM ĐỊA LÍ THPT
   // =========================================================================
   const CHART_KNOWLEDGE_BASE = [
     {
@@ -94,7 +136,7 @@ window.GeoSmartAssistant = (function () {
   ];
 
   // =========================================================================
-  // 2. CƠ SỞ DỮ LIỆU ĐỊA DANH, KHU KINH TẾ & TRANG ATLAT CHUẨN GD
+  // 3. CƠ SỞ DỮ LIỆU ĐỊA DANH, KHU KINH TẾ & TRANG ATLAT CHUẨN GD
   // =========================================================================
   const GEO_ENTITIES_KNOWLEDGE = [
     {
@@ -310,7 +352,79 @@ window.GeoSmartAssistant = (function () {
   ];
 
   // =========================================================================
-  // 3. THUẬT TOÁN PHÂN TÍCH TRUY VẤN TỰ NHIÊN (NLP RULE ENGINE)
+  // 4. KHO ĐÁP ÁN AI SƯ PHẠM NỘI TUYẾN (OFFLINE PEDAGOGICAL QA BASE)
+  // =========================================================================
+  const OFFLINE_QA_BASE = [
+    {
+      patterns: ["tai sao mien bac co mua dong lanh", "vi sao mien bac co mua dong lanh", "mua dong lanh o mien bac"],
+      title: "Giải thích nguyên nhân Miền Bắc nước ta có mùa đông lạnh",
+      atlatPages: [8, 9],
+      content: `
+**Nguyên nhân Miền Bắc có mùa đông lạnh nhất cả nước (Chuẩn thi THPT):**
+1. **Gió mùa Đông Bắc (Khối khí cực đới phương Bắc - NP):** Bắt nguồn từ áp cao Xibia qua lục địa châu Á tràn trực tiếp vào miền Bắc nước ta thành từng đợt, làm nền nhiệt hạ rất sâu.
+2. **Hướng vòng cung của địa hình vùng Đông Bắc:** Bốn cánh cung núi (Sông Gâm, Ngân Sơn, Bắc Sơn, Đông Triều) mở rộng về phía Bắc và quy tụ tại Tam Đảo, tạo thành 'phễu hút gió' đón gió mùa Đông Bắc tràn sâu vào nội địa.
+3. **Vị trí địa lí:** Nằm ở vĩ độ cao nhất cả nước, chịu ảnh hưởng sớm nhất và muộn nhất của gió mùa Đông Bắc (từ tháng 11 đến tháng 4 năm sau).
+*Đối chiếu Atlat:* Mở **Trang 9** xem mũi tên gió mùa Đông Bắc (màu xanh) và biểu đồ nhiệt độ tr.8 của trạm Lạng Sơn, Hà Nội.
+      `
+    },
+    {
+      patterns: ["so sanh dat phu sa", "dat phu sa song hong va song cuu long", "dong bang song hong va dong bang song cuu long"],
+      title: "So sánh đất phù sa Đồng bằng sông Hồng và Đồng bằng sông Cửu Long",
+      atlatPages: [11, 19],
+      content: `
+**So sánh đất phù sa hai đồng bằng lớn (Chuẩn thi THPT):**
+- **Đồng bằng sông Hồng:** Có hệ thống đê chống lũ dài hàng ngàn km ngăn chặn lũ tràn vào đồng ruộng. Vì vậy:
+  - *Đất trong đê:* Không được bồi đắp phù sa hàng năm, qua hàng ngàn năm canh tác đã bị bạc màu, thoái hóa thành đất xám, đất bạc màu.
+  - *Đất ngoài đê:* Được bồi đắp phù sa hàng năm nhưng diện tích nhỏ hẹp.
+- **Đồng bằng sông Cửu Long:** Không có hệ thống đê ngăn lũ biển bao bọc, lũ hàng năm tràn ngập mênh mông:
+  - Có 1,2 triệu ha đất phù sa ngọt màu mỡ ven sông Tiền và sông Hậu được bồi đắp liên tục.
+  - Tuy nhiên, có tới 2,8 triệu ha là đất phèn và đất mặn (chiếm 60% diện tích) do địa hình trũng thấp và 3 mặt giáp biển.
+*Đối chiếu Atlat:* Mở **Trang 11 (Đất)** & **Trang 19 (Nông nghiệp)**.
+      `
+    },
+    {
+      patterns: ["the manh kinh te bien nam trung bo", "kinh te bien duyen hai nam trung bo", "the manh nam trung bo"],
+      title: "Thế mạnh phát triển kinh tế biển vùng Duyên hải Nam Trung Bộ",
+      atlatPages: [18, 23, 25],
+      content: `
+**Bốn thế mạnh kinh tế biển nổi bật của Duyên hải Nam Trung Bộ:**
+1. **Giao thông vận tải biển & Cảng biển nước sâu:** Bờ biển khúc khuỷu nhiều vịnh kín gió nước sâu lý tưởng (Vân Phong, Dung Quất, Cam Ranh, Quy Nhơn) xây dựng cụm cảng trung chuyển quốc tế.
+2. **Khai thác và nuôi trồng hải sản:** Ngư trường trọng điểm cực Nam Trung Bộ (Ninh Thuận - Bình Thuận), biển ấm, nhiều bãi tôm, bãi cá lớn.
+3. **Du lịch biển - đảo:** Khí hậu nhiều nắng, bãi biển đẹp nổi tiếng thế giới (Nha Trang, Mũi Né, Mỹ Khê, Quy Nhơn).
+4. **Nghề làm muối & Khoáng sản biển:** Số giờ nắng cao, ít mưa, độ mặn nước biển cao (vựa muối Cà Ná, Sa Huỳnh); titan ở Bình Định.
+*Đối chiếu Atlat:* Mở **Trang 18 (Kinh tế chung)**, **Trang 23 (Giao thông)**.
+      `
+    },
+    {
+      patterns: ["tai sao tay nguyen trong ca phe", "vung chuyen canh ca phe lon nhat", "ca phe tay nguyen"],
+      title: "Vì sao Tây Nguyên là vùng chuyên canh cà phê lớn nhất nước ta?",
+      atlatPages: [19, 28],
+      content: `
+**Các điều kiện quyết định giúp Tây Nguyên dẫn đầu về cà phê:**
+1. **Đất đai:** Đất đỏ bazan màu mỡ, tầng phong hóa dày, hàm lượng dinh dưỡng cao, phân bố trên các cao nguyên xếp tầng rộng lớn (Pleiku, Đắk Lắk, Di Linh) rất thuận lợi thành lập nông trường quy mô lớn.
+2. **Khí hậu:** Cận xích đạo gió mùa có 2 mùa mưa - khô rõ rệt. Mùa khô kéo dài là điều kiện vàng để thu hoạch, phơi sấy và chế biến cà phê chất lượng cao.
+3. **Địa hình:** Độ cao 500m - 1000m thích hợp tuyệt vời cho cà phê vối (Robusta) - loại cà phê xuất khẩu chủ lực của Việt Nam.
+4. **Chính sách & Thị trường:** Truyền thống canh tác lâu đời của đồng bào, chính sách phát triển cây công nghiệp của Nhà nước và thị trường xuất khẩu mở rộng.
+*Đối chiếu Atlat:* Mở **Trang 19 (Nông nghiệp)** & **Trang 28 (Vùng Tây Nguyên)**.
+      `
+    },
+    {
+      patterns: ["y nghia duong ho chi minh", "duong ho chi minh", "tuyen duong ho chi minh"],
+      title: "Ý nghĩa chiến lược của tuyến đường Hồ Chí Minh đối với nước ta",
+      atlatPages: [23],
+      content: `
+**Ý nghĩa toàn diện của tuyến đường Hồ Chí Minh (Chuẩn đề thi THPT):**
+1. **Kinh tế:** Thúc đẩy sự phát triển kinh tế - xã hội của dải đất rộng lớn phía Tây đất nước; khai thác thế mạnh lâm nghiệp, khoáng sản, cây công nghiệp và du lịch sinh thái.
+2. **Xã hội:** Phân bố lại dân cư, giải quyết việc làm, nâng cao đời sống văn hóa cho đồng bào các dân tộc thiểu số vùng sâu, vùng xa.
+3. **Giao thông:** Giảm tải áp lực cho Quốc lộ 1A; tạo thành trục giao thông xương sống thứ hai chạy dọc Bắc - Nam; kết nối các tuyến giao thông Đông - Tây sang Lào và Campuchia.
+4. **An ninh quốc phòng:** Củng cố thế trận quốc phòng toàn dân và an ninh khu vực biên giới phía Tây Tổ quốc.
+*Đối chiếu Atlat:* Mở **Trang 23 (Giao thông vận tải)**.
+      `
+    }
+  ];
+
+  // =========================================================================
+  // 5. NLP NORMALIZER & QUERY ANALYZER
   // =========================================================================
   function normalizeVN(str) {
     if (!str) return "";
@@ -342,6 +456,7 @@ window.GeoSmartAssistant = (function () {
     let detectedChart = null;
     let detectedGeoEntities = [];
     let referencedAtlatPages = [];
+    let offlineQA = null;
 
     // A. PHÂN TÍCH NHU CẦU BIỂU ĐỒ
     for (const rule of CHART_KNOWLEDGE_BASE) {
@@ -380,8 +495,6 @@ window.GeoSmartAssistant = (function () {
         detectedGeoEntities.push({ ...geo, score });
       }
     }
-
-    // Sắp xếp địa danh điểm cao nhất lên đầu
     detectedGeoEntities.sort((a, b) => b.score - a.score);
 
     // C. TỔNG HỢP TRANG ATLAT CHỈ DẪN
@@ -394,7 +507,6 @@ window.GeoSmartAssistant = (function () {
       }
     }
 
-    // Nhận diện theo từ khóa trang Atlat (ví dụ: "trang 8", "trang 13", "khi hau", "khoang san")
     if (norm.includes("trang 8") || norm.includes("khi hau")) pageSet.add(8);
     if (norm.includes("trang 9") || norm.includes("luong mua")) pageSet.add(9);
     if (norm.includes("trang 10") || norm.includes("song ngoi") || norm.includes("thuy van")) pageSet.add(10);
@@ -406,6 +518,18 @@ window.GeoSmartAssistant = (function () {
     if (norm.includes("trang 23") || norm.includes("giao thong") || norm.includes("cang bien")) pageSet.add(23);
     if (norm.includes("trang 4") || norm.includes("trang 5") || norm.includes("hanh chinh") || norm.includes("34 tinh")) pageSet.add(4);
 
+    // D. KHỚP CÂU HỎI SƯ PHẠM NỘI TUYẾN
+    for (const qa of OFFLINE_QA_BASE) {
+      for (const pat of qa.patterns) {
+        if (norm.includes(pat)) {
+          offlineQA = qa;
+          if (qa.atlatPages) qa.atlatPages.forEach(p => pageSet.add(p));
+          break;
+        }
+      }
+      if (offlineQA) break;
+    }
+
     referencedAtlatPages = Array.from(pageSet).sort((a, b) => a - b);
 
     return {
@@ -413,21 +537,165 @@ window.GeoSmartAssistant = (function () {
       yearsCount,
       chart: detectedChart,
       geoEntities: detectedGeoEntities,
-      atlatPages: referencedAtlatPages
+      atlatPages: referencedAtlatPages,
+      offlineQA: offlineQA
     };
   }
 
   // =========================================================================
-  // 4. GIAO DIỆN HỘP THÔNG MINH (MODAL / COMMAND PALETTE)
+  // 6. GỌI GOOGLE GEMINI API CLOUD (FREE TIER INTEGRATION)
+  // =========================================================================
+  async function callGeminiAPI(userQuery, systemInstruction) {
+    const key = getGeminiApiKey();
+    if (!key) {
+      return {
+        success: false,
+        error: "NO_API_KEY",
+        message: "Chưa cấu hình API Key. Thầy cô hoặc học sinh có thể lấy API Key miễn phí từ Google AI Studio (không cần thẻ tín dụng) hoặc bấm nút chuyển sang '⚡ AI Nội Tuyến' để sử dụng hoàn toàn miễn phí không cần mạng."
+      };
+    }
+
+    const model = getGeminiModel() || "gemini-1.5-flash";
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+
+    const promptText = `Câu hỏi Địa lí của học sinh: "${userQuery}".\nHãy giải đáp chi tiết, nêu rõ căn cứ lý thuyết Địa lí 12 và đối chiếu số trang Atlat Địa lí Việt Nam tương ứng.`;
+
+    const bodyData = {
+      contents: [
+        {
+          role: "user",
+          parts: [{ text: promptText }]
+        }
+      ],
+      systemInstruction: {
+        parts: [
+          {
+            text: systemInstruction || "Bạn là Chuyên gia Trí tuệ Nhân tạo Địa lí THPT Việt Nam (GeoAtlas AI Tutor). Nhiệm vụ của bạn là giải đáp chính xác, sâu sắc các câu hỏi môn Địa lí lớp 12, phân tích biểu đồ, phát hiện bẫy thi trắc nghiệm tốt nghiệp THPT, đối chiếu các trang Atlat Địa lí Việt Nam bản in chuẩn của NXB Giáo dục Việt Nam. Trả lời bằng tiếng Việt sư phạm, súc tích, định dạng Markdown rõ ràng, làm nổi bật từ khóa quan trọng."
+          }
+        ]
+      },
+      generationConfig: {
+        temperature: 0.35,
+        maxOutputTokens: 1200
+      }
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bodyData)
+      });
+
+      if (!response.ok) {
+        const errJson = await response.json().catch(() => ({}));
+        return {
+          success: false,
+          error: "API_ERROR",
+          message: errJson.error?.message || `Lỗi phản hồi Gemini API (${response.status})`
+        };
+      }
+
+      const data = await response.json();
+      const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!answer) {
+        return {
+          success: false,
+          error: "EMPTY_ANSWER",
+          message: "Không nhận được nội dung trả lời từ mô hình AI."
+        };
+      }
+
+      return {
+        success: true,
+        text: answer
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: "NETWORK_ERROR",
+        message: `Lỗi kết nối mạng: ${err.message}. Đã tự động chuyển về AI Nội Tuyến.`
+      };
+    }
+  }
+
+  // =========================================================================
+  // 7. CÔNG CỤ TẠO CÂU HỎI TRẮC NGHIỆM & NHẬN XÉT BẢNG SỐ LIỆU TỰ ĐỘNG
+  // =========================================================================
+  function generateTableReview(dataPrompt) {
+    return `
+### 📝 Hướng Dẫn Nhận Xét Bảng Số Liệu Chuẩn 4 Bước Sư Phạm THPT:
+**Bước 1: Nhận xét tổng quát xu hướng:**
+- Nhìn toàn bộ tiến trình từ năm đầu đến năm cuối: Chỉ số có xu hướng tăng liên tục, giảm, hay biến động qua các năm?
+- *Mẫu câu:* "Giai đoạn [Năm đầu] - [Năm cuối], [Tên đại lượng] nhìn chung có xu hướng [tăng/giảm/biến động], từ [Giá trị năm đầu] lên/xuống [Giá trị năm cuối] (đơn vị)."
+
+**Bước 2: Phân tích độ tăng/giảm cụ thể:**
+- *Tăng tuyệt đối:* Lấy [Năm cuối] - [Năm đầu] = ... (đơn vị).
+- *Tăng tương đối (gấp bao nhiêu lần):* Lấy [Năm cuối] / [Năm đầu] = ... (lần).
+- Chia nhỏ các giai đoạn: Giai đoạn nào tăng nhanh nhất, giai đoạn nào tăng chậm hoặc chững lại?
+
+**Bước 3: So sánh giữa các đối tượng / thành phần:**
+- Đại lượng nào luôn chiếm tỉ trọng lớn nhất?
+- Đại lượng nào có tốc độ tăng trưởng nhanh nhất?
+- Cơ cấu thành phần có sự thay đổi ra sao?
+
+**Bước 4: Giải thích ngắn gọn nguyên nhân cốt lõi:**
+- Do tác động của công nghiệp hóa, hiện đại hóa, đường lối đổi mới kinh tế.
+- Do ứng dụng khoa học kỹ thuật hoặc mở rộng thị trường xuất khẩu.
+    `;
+  }
+
+  function generateAtlatQuiz(pageNumber) {
+    const p = Number(pageNumber) || 4;
+    const quizzes = {
+      4: [
+        { q: "Căn cứ vào Atlat Địa lí Việt Nam trang 4 - 5, tỉnh nào sau đây giáp cả Lào và Campuchia?", a: "Kon Tum", options: ["Kon Tum", "Gia Lai", "Đắk Lắk", "Quảng Trị"] },
+        { q: "Căn cứ vào Atlat trang 4 - 5, điểm cực Bắc phần đất liền nước ta thuộc tỉnh nào?", a: "Hà Giang (xã Lũng Cú)", options: ["Hà Giang (xã Lũng Cú)", "Lào Cai", "Cao Bằng", "Tuyên Quang"] }
+      ],
+      8: [
+        { q: "Căn cứ vào Atlat Địa lí Việt Nam trang 8, trạm khí tượng nào sau đây có nhiệt độ trung bình năm thấp nhất?", a: "Sa Pa", options: ["Sa Pa", "Hà Nội", "Đà Nẵng", "Cần Thơ"] },
+        { q: "Trạm khí tượng Đà Lạt có tháng mưa nhiều nhất vào thời gian nào?", a: "Tháng 9 và 10", options: ["Tháng 9 và 10", "Tháng 1 và 2", "Tháng 4 và 5", "Tháng 12"] }
+      ],
+      13: [
+        { q: "Căn cứ vào Atlat Địa lí Việt Nam trang 13, mỏ sắt Thạch Khê thuộc tỉnh nào sau đây?", a: "Hà Tĩnh", options: ["Hà Tĩnh", "Quảng Bình", "Nghệ An", "Thanh Hóa"] },
+        { q: "Khoáng sản bôxit ở nước ta tập trung trữ lượng lớn nhất ở vùng nào?", a: "Tây Nguyên", options: ["Tây Nguyên", "Trung du miền núi Bắc Bộ", "Bắc Trung Bộ", "Đông Nam Bộ"] }
+      ],
+      22: [
+        { q: "Căn cứ vào Atlat Địa lí Việt Nam trang 22, nhà máy thủy điện Hòa Bình được xây dựng trên dòng sông nào?", a: "Sông Đà", options: ["Sông Đà", "Sông Mã", "Sông Gâm", "Sông Lô"] },
+        { q: "Nhà máy nhiệt điện Phú Mỹ sử dụng nguồn nhiên liệu nào sau đây?", a: "Khí tự nhiên", options: ["Khí tự nhiên", "Than đá", "Dầu thô", "Năng lượng gió"] }
+      ]
+    };
+
+    const list = quizzes[p] || quizzes[4];
+    return list.map((item, idx) => `
+      <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2 text-xs">
+        <div class="font-bold text-slate-900 dark:text-white">Câu ${idx + 1}: ${item.q}</div>
+        <div class="grid grid-cols-2 gap-1.5 pt-1">
+          ${item.options.map(opt => `
+            <button 
+              onclick="this.classList.add('${opt === item.a ? 'bg-emerald-600 text-white font-bold' : 'bg-rose-100 text-rose-800 line-through'}')" 
+              class="p-2 text-left rounded-lg bg-slate-50 dark:bg-slate-700/60 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-600 text-[11px] transition"
+            >
+              ${opt}
+            </button>
+          `).join('')}
+        </div>
+        <div class="text-[10px] text-slate-400 font-mono pt-1">💡 Bấm vào phương án để kiểm tra đáp án đúng.</div>
+      </div>
+    `).join('');
+  }
+
+  // =========================================================================
+  // 8. GIAO DIỆN HỘP THÔNG MINH & POPUP CẤU HÌNH AI
   // =========================================================================
   function ensureModalDOM() {
     if (document.getElementById("smart-assistant-modal")) return;
 
     const modal = document.createElement("div");
     modal.id = "smart-assistant-modal";
-    modal.className = "hidden fixed inset-0 z-[9500] bg-slate-950/70 backdrop-blur-md flex items-start justify-center pt-10 sm:pt-16 p-3 sm:p-4 animate-in fade-in duration-200";
+    modal.className = "hidden fixed inset-0 z-[9500] bg-slate-950/75 backdrop-blur-md flex items-start justify-center pt-8 sm:pt-14 p-3 sm:p-4 animate-in fade-in duration-200";
     modal.innerHTML = `
-      <div class="w-full max-w-2xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col max-h-[85vh]">
+      <div class="w-full max-w-2xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col max-h-[88vh]">
         <!-- Header Thanh Nhập Liệu Thông Minh -->
         <div class="p-3.5 sm:p-4 border-b border-slate-100 dark:border-slate-800 flex items-center space-x-3 bg-slate-50/70 dark:bg-slate-900/70 shrink-0">
           <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-sky-400 flex items-center justify-center text-white text-base shadow-sm shrink-0">
@@ -437,7 +705,7 @@ window.GeoSmartAssistant = (function () {
             <input 
               type="text" 
               id="assistant-modal-input" 
-              placeholder="Dán đề bài biểu đồ hoặc gõ: 'Dung Quất', 'bôxit', 'thủy điện Hòa Bình'..." 
+              placeholder="Dán câu hỏi biểu đồ hoặc gõ: 'Dung Quất', 'bôxit', 'thủy điện Hòa Bình'..." 
               class="w-full pl-3 pr-10 py-2 text-xs sm:text-sm font-semibold rounded-xl border border-indigo-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm"
               autocomplete="off"
             />
@@ -459,6 +727,38 @@ window.GeoSmartAssistant = (function () {
           </button>
         </div>
 
+        <!-- Thanh Chuyển Đổi Chế Độ AI & Cài Đặt API Key -->
+        <div class="px-3.5 sm:px-4 py-2 border-b border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/50 flex flex-wrap items-center justify-between gap-2 text-[11px] shrink-0">
+          <div class="flex items-center space-x-1 bg-white dark:bg-slate-800 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700 shadow-xs">
+            <button 
+              id="ai-mode-btn-offline" 
+              onclick="GeoSmartAssistant.setAIMode('offline')" 
+              class="px-2.5 py-1 rounded-md font-bold text-xs transition flex items-center space-x-1 bg-indigo-600 text-white shadow-xs"
+              title="100% Ngoại tuyến, không cần mạng hay API Key"
+            >
+              <span>⚡</span> <span>AI Nội Tuyến (Offline)</span>
+            </button>
+            <button 
+              id="ai-mode-btn-gemini" 
+              onclick="GeoSmartAssistant.setAIMode('gemini')" 
+              class="px-2.5 py-1 rounded-md font-semibold text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center space-x-1"
+              title="Sử dụng Google Gemini AI đám mây (Hỗ trợ giải đáp mở rộng và chấm bài)"
+            >
+              <span>🧠</span> <span>Gemini AI (Cloud)</span>
+            </button>
+          </div>
+
+          <div class="flex items-center space-x-1.5">
+            <button 
+              onclick="GeoSmartAssistant.openAISettings()" 
+              class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs flex items-center space-x-1 shadow-xs transition"
+              title="Cài đặt API Key miễn phí từ Google AI Studio"
+            >
+              <span>⚙️</span> <span class="hidden sm:inline">Cài đặt API Key</span>
+            </button>
+          </div>
+        </div>
+
         <!-- Các thẻ gợi ý mẫu (Quick Tags) -->
         <div class="px-3.5 sm:px-4 py-2 border-b border-slate-100 dark:border-slate-800/80 bg-white dark:bg-slate-900 flex items-center space-x-1.5 overflow-x-auto no-scrollbar shrink-0 text-[10px] sm:text-[11px]">
           <span class="text-slate-400 font-bold shrink-0">Gợi ý nhanh:</span>
@@ -472,15 +772,22 @@ window.GeoSmartAssistant = (function () {
 
         <!-- Khung kết quả phân tích & Trả lời chuyên gia -->
         <div id="assistant-results-container" class="flex-1 overflow-y-auto p-3.5 sm:p-5 space-y-4">
-          <!-- Hiển thị mặc định khi chưa nhập -->
           <div id="assistant-empty-state" class="text-center py-8 space-y-3">
             <div class="text-4xl">💡</div>
             <div class="font-bold text-sm text-slate-800 dark:text-slate-200">
-              Trợ Lí Địa Lí Thông Minh & Chẩn Đoán Đề Thi THPT
+              Trợ Lí Trí Tuệ Nhân Tạo Địa Lí & Chẩn Đoán Đề Thi THPT
             </div>
             <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
               Dán câu hỏi biểu đồ bất kì hoặc gõ tên địa danh, khoáng sản, khu kinh tế. Hệ thống sẽ giải mã quy tắc thi, định vị trên bản đồ số và chỉ dẫn trang Atlat tương ứng.
             </p>
+            <div class="pt-2 flex flex-wrap items-center justify-center gap-2">
+              <button onclick="GeoSmartAssistant.triggerTableHelper()" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:bg-slate-50 transition shadow-xs flex items-center space-x-1">
+                <span>📝</span> <span>AI Hướng dẫn nhận xét bảng số liệu</span>
+              </button>
+              <button onclick="GeoSmartAssistant.triggerQuizHelper(8)" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:bg-slate-50 transition shadow-xs flex items-center space-x-1">
+                <span>🎯</span> <span>Tạo câu hỏi trắc nghiệm Atlat tr.8</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -500,7 +807,6 @@ window.GeoSmartAssistant = (function () {
       input.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeModal();
         if (e.key === "Enter") {
-          // Nếu có địa danh, tự động bay tới địa danh đầu tiên
           const res = analyzeQuery(input.value);
           if (res && res.geoEntities.length > 0) {
             const first = res.geoEntities[0];
@@ -513,8 +819,136 @@ window.GeoSmartAssistant = (function () {
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeModal();
     });
+
+    updateAIModeUI();
   }
 
+  function updateAIModeUI() {
+    const btnOffline = document.getElementById("ai-mode-btn-offline");
+    const btnGemini = document.getElementById("ai-mode-btn-gemini");
+    if (!btnOffline || !btnGemini) return;
+
+    if (currentAIMode === "gemini") {
+      btnGemini.className = "px-2.5 py-1 rounded-md font-bold text-xs transition flex items-center space-x-1 bg-indigo-600 text-white shadow-xs";
+      btnOffline.className = "px-2.5 py-1 rounded-md font-semibold text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center space-x-1";
+    } else {
+      btnOffline.className = "px-2.5 py-1 rounded-md font-bold text-xs transition flex items-center space-x-1 bg-indigo-600 text-white shadow-xs";
+      btnGemini.className = "px-2.5 py-1 rounded-md font-semibold text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center space-x-1";
+    }
+  }
+
+  // =========================================================================
+  // 9. POPUP CÀI ĐẶT API KEY CHO AI CLOUD (FREE TIER)
+  // =========================================================================
+  function ensureSettingsModalDOM() {
+    if (document.getElementById("ai-settings-modal")) return;
+
+    const modal = document.createElement("div");
+    modal.id = "ai-settings-modal";
+    modal.className = "hidden fixed inset-0 z-[9600] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200";
+    modal.innerHTML = `
+      <div class="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 p-5 space-y-4">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">⚙️</span>
+            <span class="font-bold text-sm text-slate-900 dark:text-white">Cấu Hình Trí Tuệ Nhân Tạo (Gemini AI)</span>
+          </div>
+          <button onclick="GeoSmartAssistant.closeAISettings()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold">✕</button>
+        </div>
+
+        <div class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed space-y-2">
+          <p>
+            Google cung cấp gói <strong>miễn phí hoàn toàn (Free Tier)</strong> cho mô hình <strong>Gemini Flash</strong> qua Google AI Studio không yêu cầu thẻ tín dụng.
+          </p>
+          <div class="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 text-[11px] text-blue-800 dark:text-blue-200">
+            🔒 <strong>Bảo mật riêng tư tuyệt đối:</strong> Khóa API được lưu cục bộ trên trình duyệt máy bạn (localStorage) và chỉ gửi trực tiếp tới máy chủ Google khi bạn yêu cầu.
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Khóa API Google Gemini:</label>
+            <input 
+              type="password" 
+              id="ai-settings-key-input" 
+              placeholder="AIzaSy..." 
+              value="${geminiApiKey}"
+              class="w-full text-xs font-mono p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Phiên bản mô hình:</label>
+            <select id="ai-settings-model-select" class="w-full text-xs p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white">
+              <option value="gemini-1.5-flash" ${geminiModel === 'gemini-1.5-flash' ? 'selected' : ''}>Gemini 1.5 Flash (Gọn nhẹ, phản hồi nhanh, Free Tier)</option>
+              <option value="gemini-2.5-flash" ${geminiModel === 'gemini-2.5-flash' ? 'selected' : ''}>Gemini 2.5 Flash (Thế hệ mới nhất, suy luận sâu)</option>
+            </select>
+          </div>
+
+          <div class="text-[10px] text-slate-500 dark:text-slate-400">
+            👉 Chưa có khóa? Nhận miễn phí trong 30 giây tại: <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="text-indigo-600 dark:text-indigo-400 font-bold underline">Google AI Studio ↗</a>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end space-x-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <button 
+            onclick="GeoSmartAssistant.clearAISettings()" 
+            class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 text-xs font-semibold"
+          >
+            Xóa khóa
+          </button>
+          <button 
+            onclick="GeoSmartAssistant.saveAISettings()" 
+            class="px-4 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-sm transition"
+          >
+            Lưu Cấu Hình
+          </button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+  }
+
+  function openAISettings() {
+    ensureSettingsModalDOM();
+    const modal = document.getElementById("ai-settings-modal");
+    const input = document.getElementById("ai-settings-key-input");
+    if (modal) modal.classList.remove("hidden");
+    if (input) input.value = geminiApiKey;
+  }
+
+  function closeAISettings() {
+    const modal = document.getElementById("ai-settings-modal");
+    if (modal) modal.classList.add("hidden");
+  }
+
+  function saveAISettings() {
+    const input = document.getElementById("ai-settings-key-input");
+    const select = document.getElementById("ai-settings-model-select");
+    if (input) setGeminiApiKey(input.value);
+    if (select) setGeminiModel(select.value);
+    if (input && input.value.trim()) {
+      setAIMode("gemini");
+    }
+    closeAISettings();
+    if (typeof window.showAppToast === "function") {
+      window.showAppToast("✅ Đã lưu cấu hình Google Gemini AI thành công!");
+    }
+  }
+
+  function clearAISettings() {
+    setGeminiApiKey("");
+    setAIMode("offline");
+    closeAISettings();
+    if (typeof window.showAppToast === "function") {
+      window.showAppToast("ℹ️ Đã xóa khóa API và chuyển sang AI Nội Tuyến.");
+    }
+  }
+
+  // =========================================================================
+  // 10. RENDER KẾT QUẢ TỔNG HỢP & XỬ LÝ HỎI ĐÁP AI
+  // =========================================================================
   function openModal(initialQuery = "") {
     ensureModalDOM();
     const modal = document.getElementById("smart-assistant-modal");
@@ -556,9 +990,104 @@ window.GeoSmartAssistant = (function () {
     if (headerInput) headerInput.value = text;
   }
 
-  // =========================================================================
-  // 5. RENDER KẾT QUẢ TRẢ LỜI ĐA TẦNG (CHART + SPATIAL + ATLAT PAGE)
-  // =========================================================================
+  function triggerTableHelper() {
+    const container = document.getElementById("assistant-results-container");
+    if (container) {
+      container.innerHTML = `
+        <div class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-indigo-200 dark:border-indigo-900/60 shadow-sm space-y-3">
+          <div class="font-bold text-sm text-indigo-700 dark:text-indigo-300 flex items-center space-x-1.5">
+            <span>📝</span> <span>Cẩm Nang AI: Viết Nhận Xét Bảng Số Liệu Chuẩn Điểm Tuyệt Đối</span>
+          </div>
+          <div class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+            ${generateTableReview()}
+          </div>
+          <div class="pt-2">
+            <button onclick="GeoSmartAssistant.goToCalcMode('proportion')" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs">
+              🧮 Mở Máy tính để tính nhanh tỉ trọng & tốc độ
+            </button>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  function triggerQuizHelper(pageNum = 8) {
+    const container = document.getElementById("assistant-results-container");
+    if (container) {
+      container.innerHTML = `
+        <div class="space-y-3">
+          <div class="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-800">
+            <div class="font-bold text-xs text-slate-900 dark:text-white flex items-center space-x-1.5">
+              <span>🎯</span> <span>Bộ Câu Hỏi Trắc Nghiệm Tự Động Theo Atlat Trang ${pageNum}:</span>
+            </div>
+            <button onclick="GeoSmartAssistant.flipToAtlatPage(${pageNum})" class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 hover:underline">
+              📖 Lật mở trang ${pageNum}
+            </button>
+          </div>
+          ${generateAtlatQuiz(pageNum)}
+        </div>
+      `;
+    }
+  }
+
+  async function askDeepAI(query) {
+    const container = document.getElementById("assistant-results-container");
+    if (!container) return;
+
+    container.innerHTML = `
+      <div class="p-6 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900 text-center space-y-3">
+        <div class="text-2xl animate-spin">🌀</div>
+        <div class="font-bold text-xs text-indigo-800 dark:text-indigo-200">
+          Đang kết nối Gemini AI & Đối chiếu kiến thức Địa lí THPT...
+        </div>
+        <p class="text-[11px] text-slate-500">Mô hình đang phân tích đề bài, trích xuất căn cứ và tổng hợp lời giải chi tiết.</p>
+      </div>
+    `;
+
+    const res = await callGeminiAPI(query);
+    if (!res.success) {
+      container.innerHTML = `
+        <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-xs text-amber-900 dark:text-amber-200 space-y-2">
+          <div class="font-bold flex items-center space-x-1">
+            <span>⚠️</span> <span>Thông báo từ hệ thống AI:</span>
+          </div>
+          <div>${res.message}</div>
+          <div class="pt-2 flex items-center space-x-2">
+            <button onclick="GeoSmartAssistant.openAISettings()" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-bold text-xs">
+              ⚙️ Nhập API Key miễn phí
+            </button>
+            <button onclick="GeoSmartAssistant.setAIMode('offline'); GeoSmartAssistant.handleSearch('${query.replace(/'/g, "\\'")}')" class="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-semibold">
+              ⚡ Dùng AI Nội Tuyến
+            </button>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="p-4 rounded-xl bg-gradient-to-br from-indigo-50/70 to-slate-50 dark:from-indigo-950/40 dark:to-slate-900 border border-indigo-200 dark:border-indigo-900 shadow-sm space-y-3">
+        <div class="flex items-center justify-between pb-2 border-b border-indigo-100 dark:border-indigo-900/50">
+          <div class="text-xs font-bold text-indigo-700 dark:text-indigo-300 flex items-center space-x-1.5">
+            <span>🧠</span> <span>Lời Giải Chuyên Gia Google Gemini AI</span>
+          </div>
+          <span class="text-[9px] px-2 py-0.5 rounded-full bg-indigo-600 text-white font-mono font-bold">${geminiModel}</span>
+        </div>
+        <div class="text-xs text-slate-800 dark:text-slate-200 leading-relaxed prose prose-sm dark:prose-invert max-w-none space-y-2 whitespace-pre-line">
+          ${res.text}
+        </div>
+        <div class="pt-2 flex items-center space-x-2 border-t border-slate-100 dark:border-slate-800">
+          <button onclick="navigator.clipboard.writeText('${res.text.replace(/'/g, "\\'").replace(/\n/g, "\\n")}'); if(window.showAppToast) window.showAppToast('📋 Đã sao chép câu trả lời AI!');" class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 text-[11px] font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100">
+            📋 Sao chép
+          </button>
+          <button onclick="GeoSmartAssistant.handleSearch('${query.replace(/'/g, "\\'")}')" class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 text-[11px] font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100">
+            🔄 Xem dạng bảng quy tắc
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
   function handleSearch(query) {
     const container = document.getElementById("assistant-results-container");
     if (!container) return;
@@ -568,26 +1097,77 @@ window.GeoSmartAssistant = (function () {
         <div id="assistant-empty-state" class="text-center py-8 space-y-3">
           <div class="text-4xl">💡</div>
           <div class="font-bold text-sm text-slate-800 dark:text-slate-200">
-            Trợ Lí Địa Lí Thông Minh & Chẩn Đoán Đề Thi THPT
+            Trợ Lí Trí Tuệ Nhân Tạo Địa Lí & Chẩn Đoán Đề Thi THPT
           </div>
           <p class="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
             Dán câu hỏi biểu đồ bất kì hoặc gõ tên địa danh, khoáng sản, khu kinh tế. Hệ thống sẽ giải mã quy tắc thi, định vị trên bản đồ số và chỉ dẫn trang Atlat tương ứng.
           </p>
+          <div class="pt-2 flex flex-wrap items-center justify-center gap-2">
+            <button onclick="GeoSmartAssistant.triggerTableHelper()" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:bg-slate-50 transition shadow-xs flex items-center space-x-1">
+              <span>📝</span> <span>AI Hướng dẫn nhận xét bảng số liệu</span>
+            </button>
+            <button onclick="GeoSmartAssistant.triggerQuizHelper(8)" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:bg-slate-50 transition shadow-xs flex items-center space-x-1">
+              <span>🎯</span> <span>Tạo câu hỏi trắc nghiệm Atlat tr.8</span>
+            </button>
+          </div>
         </div>
       `;
       return;
     }
 
+    // Nếu người dùng đang chọn chế độ Gemini Cloud và đã có API key, hỏi sâu trực tiếp
+    if (currentAIMode === "gemini" && geminiApiKey) {
+      askDeepAI(query);
+      return;
+    }
+
     const res = analyzeQuery(query);
-    if (!res || (!res.chart && res.geoEntities.length === 0 && res.atlatPages.length === 0)) {
-      // Fallback: Thử tìm kiếm mờ trên lớp dữ liệu AtlasEngine
+    if (!res || (!res.chart && res.geoEntities.length === 0 && res.atlatPages.length === 0 && !res.offlineQA)) {
       renderFallbackSearch(query, container);
       return;
     }
 
     let html = "";
 
-    // CARD 1: GIẢI ĐÁP QUY TẮC BIỂU ĐỒ & BẪY THI THPT (Nếu phát hiện từ khóa biểu đồ)
+    // Nút kích hoạt Gemini Cloud nếu người dùng muốn suy luận sâu
+    html += `
+      <div class="p-2.5 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900/60 flex items-center justify-between">
+        <div class="flex items-center space-x-2 text-xs text-indigo-900 dark:text-indigo-200">
+          <span>🧠</span>
+          <span>Cần AI phân tích sâu hơn bài làm này?</span>
+        </div>
+        <button 
+          onclick="GeoSmartAssistant.askDeepAI('${query.replace(/'/g, "\\'")}')" 
+          class="px-2.5 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] shadow-xs transition flex items-center space-x-1"
+        >
+          <span>Hỏi sâu với Gemini AI ↗</span>
+        </button>
+      </div>
+    `;
+
+    // CÂU HỎI SƯ PHẠM NỘI TUYẾN (NẾU CÓ)
+    if (res.offlineQA) {
+      const qa = res.offlineQA;
+      html += `
+        <div class="p-4 rounded-xl bg-gradient-to-br from-blue-50/80 to-indigo-50/50 dark:from-blue-950/40 dark:to-slate-900 border border-blue-200 dark:border-blue-900/60 shadow-sm space-y-2.5">
+          <div class="flex items-center justify-between pb-1 border-b border-blue-100 dark:border-blue-900/50">
+            <span class="text-xs font-bold text-blue-700 dark:text-blue-300 uppercase tracking-wider flex items-center space-x-1.5">
+              <span>🎓</span>
+              <span>Kiến Thức Trọng Tâm THPT</span>
+            </span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-600 text-white shadow-xs">
+              AI Sư Phạm Tự Động
+            </span>
+          </div>
+          <div class="font-bold text-xs text-slate-900 dark:text-white">${qa.title}</div>
+          <div class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line bg-white/80 dark:bg-slate-800/80 p-3 rounded-lg border border-blue-100 dark:border-blue-900/40">
+            ${qa.content}
+          </div>
+        </div>
+      `;
+    }
+
+    // CARD 1: GIẢI ĐÁP QUY TẮC BIỂU ĐỒ & BẪY THI THPT
     if (res.chart) {
       const c = res.chart;
       html += `
@@ -642,7 +1222,7 @@ window.GeoSmartAssistant = (function () {
       `;
     }
 
-    // CARD 2: ĐỊNH VỊ KHÔNG GIAN BẢN ĐỒ GIS (Nếu tìm thấy đối tượng địa lí)
+    // CARD 2: ĐỊNH VỊ KHÔNG GIAN BẢN ĐỒ GIS
     if (res.geoEntities.length > 0) {
       const top = res.geoEntities[0];
       html += `
@@ -685,7 +1265,7 @@ window.GeoSmartAssistant = (function () {
       `;
     }
 
-    // CARD 3: CHỈ DẪN TRANG ATLAT GIẤY TƯƠNG ỨNG (LẬT TRANG 3D)
+    // CARD 3: CHỈ DẪN TRANG ATLAT GIẤY TƯƠNG ỨNG
     if (res.atlatPages.length > 0) {
       const primaryPage = res.atlatPages[0];
       html += `
@@ -717,13 +1297,19 @@ window.GeoSmartAssistant = (function () {
             </div>
           </div>
 
-          <div class="pt-1">
+          <div class="pt-1 flex items-center space-x-2">
             <button 
               onclick="GeoSmartAssistant.flipToAtlatPage(${primaryPage})" 
               class="w-full sm:w-auto px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-sm transition"
             >
               <span>📖</span>
               <span>Lật Trang 3D sang Trang ${primaryPage} (Atlat Giấy)</span>
+            </button>
+            <button 
+              onclick="GeoSmartAssistant.triggerQuizHelper(${primaryPage})" 
+              class="px-3 py-2 rounded-lg border border-amber-300 dark:border-amber-800 bg-white dark:bg-slate-800 text-amber-800 dark:text-amber-200 font-bold text-xs hover:bg-amber-50"
+            >
+              🎯 Đố vui Trang ${primaryPage}
             </button>
           </div>
         </div>
@@ -734,25 +1320,32 @@ window.GeoSmartAssistant = (function () {
   }
 
   function renderFallbackSearch(query, container) {
-    // Gọi tìm kiếm tổng thể của AtlasEngine nếu có
     container.innerHTML = `
       <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-center space-y-3">
         <div class="text-2xl">🔍</div>
         <div class="text-xs text-slate-700 dark:text-slate-300">
-          Đang tìm kiếm "<strong>${query}</strong>" trên toàn bộ cơ sở dữ liệu GIS...
+          Chưa tìm thấy mục tra cứu định sẵn cho "<strong>${query}</strong>".
         </div>
-        <button 
-          onclick="GeoSmartAssistant.runGisSearch('${query.replace(/'/g, "\\'")}')" 
-          class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition"
-        >
-          Tìm và bay tới vị trí trên Bản đồ GIS 🧭
-        </button>
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
+          <button 
+            onclick="GeoSmartAssistant.askDeepAI('${query.replace(/'/g, "\\'")}')" 
+            class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm transition flex items-center space-x-1"
+          >
+            <span>🧠</span> <span>Hỏi đáp mở rộng với Google Gemini AI</span>
+          </button>
+          <button 
+            onclick="GeoSmartAssistant.runGisSearch('${query.replace(/'/g, "\\'")}')" 
+            class="px-3.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold text-xs shadow-sm transition"
+          >
+            <span>🧭</span> <span>Quét tìm trên Bản đồ GIS</span>
+          </button>
+        </div>
       </div>
     `;
   }
 
   // =========================================================================
-  // 6. CÁC HÀNH ĐỘNG ĐIỀU HƯỚNG LIÊN PHÂN HỆ (CROSS-TAB ACTIONS)
+  // 11. HÀNH ĐỘNG ĐIỀU HƯỚNG LIÊN PHÂN HỆ
   // =========================================================================
   function flyToGeo(lat, lng, name, layerKey) {
     closeModal();
@@ -761,7 +1354,6 @@ window.GeoSmartAssistant = (function () {
       const map = window.AtlasEngine.getMap();
       if (map) {
         map.flyTo([lat, lng], 11, { duration: 1.2 });
-        // Mở popup hoặc highlight
         setTimeout(() => {
           L.popup()
             .setLatLng([lat, lng])
@@ -816,11 +1408,10 @@ window.GeoSmartAssistant = (function () {
   }
 
   // =========================================================================
-  // 7. KHỞI TẠO BỘ LẮNG NGHE SỰ KIỆN & PHÍM TẮT (CTRL+K)
+  // 12. KHỞI TẠO BỘ LẮNG NGHE SỰ KIỆN & PHÍM TẮT
   // =========================================================================
   function init() {
     if (typeof window !== "undefined" && typeof window.addEventListener === "function") {
-      // Phím tắt toàn cục: Ctrl+K hoặc / để mở hộp tìm kiếm thông minh
       window.addEventListener("keydown", (e) => {
         if ((e.ctrlKey || e.metaKey) && e.key && e.key.toLowerCase() === "k") {
           e.preventDefault();
@@ -834,7 +1425,6 @@ window.GeoSmartAssistant = (function () {
     }
 
     if (typeof document !== "undefined") {
-      // Lắng nghe ô nhập liệu trên header nếu có
       const headerInput = document.getElementById("global-smart-assistant-input");
       if (headerInput && typeof headerInput.addEventListener === "function") {
         headerInput.addEventListener("focus", () => {
@@ -845,15 +1435,13 @@ window.GeoSmartAssistant = (function () {
         });
       }
 
-      // Đồng bộ với ô tìm kiếm trên cột điều khiển GIS
       const atlasSearchInput = document.getElementById("atlas-search-input");
       if (atlasSearchInput && typeof atlasSearchInput.addEventListener === "function") {
         atlasSearchInput.addEventListener("keydown", (e) => {
           if (e.key === "Enter" && !e.isComposing) {
             const val = atlasSearchInput.value.trim();
             const analysis = analyzeQuery(val);
-            // Nếu người dùng nhập câu hỏi biểu đồ vào ô tìm kiếm GIS, mở ngay trợ lí thông minh
-            if (analysis && analysis.chart) {
+            if (analysis && (analysis.chart || analysis.offlineQA)) {
               e.stopPropagation();
               openModal(val);
             }
@@ -876,7 +1464,24 @@ window.GeoSmartAssistant = (function () {
     flipToAtlatPage,
     goToChartMode,
     goToCalcMode,
-    runGisSearch
+    runGisSearch,
+    // AI Specific API
+    getAIMode,
+    setAIMode,
+    getGeminiApiKey,
+    setGeminiApiKey,
+    getGeminiModel,
+    setGeminiModel,
+    openAISettings,
+    closeAISettings,
+    saveAISettings,
+    clearAISettings,
+    callGeminiAPI,
+    askDeepAI,
+    triggerTableHelper,
+    triggerQuizHelper,
+    generateTableReview,
+    generateAtlatQuiz
   };
 })();
 
