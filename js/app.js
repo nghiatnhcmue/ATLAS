@@ -102,8 +102,8 @@ function setupModes() {
 
 function initTheme() {
   const toggleBtn = document.getElementById("theme-toggle-btn");
-  const isDark = localStorage.getItem("geoatlas_theme") === "dark" || 
-                 (!localStorage.getItem("geoatlas_theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  // Mặc định luôn là Light Mode; chỉ chuyển sang Dark Mode khi người dùng chủ động chọn
+  const isDark = localStorage.getItem("geoatlas_theme") === "dark";
 
   if (isDark) {
     document.documentElement.classList.add("dark");
