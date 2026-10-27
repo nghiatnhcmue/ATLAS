@@ -113,8 +113,35 @@
       </button>
     </nav>
 
+    <!-- Hộp Tìm Kiếm & Hỏi Đáp Thông Minh (Smart Geo-Search & Expert Assistant) -->
+    <div class="relative hidden lg:flex items-center w-52 xl:w-72 mx-2">
+      <div class="relative w-full">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-indigo-500 text-xs">✨</span>
+        <input 
+          type="text" 
+          id="global-smart-assistant-input" 
+          onfocus="GeoSmartAssistant.handleInputFocus()"
+          placeholder="Hỏi biểu đồ, Dung Quất, bôxit..." 
+          class="w-full pl-7 pr-14 py-1.5 text-xs rounded-xl border border-indigo-200 dark:border-slate-700 bg-indigo-50/50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white dark:focus:bg-slate-900 shadow-inner transition cursor-pointer"
+          readonly
+        />
+        <div class="absolute inset-y-0 right-0 flex items-center pr-1.5 pointer-events-none">
+          <kbd class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-300 font-bold border border-slate-300 dark:border-slate-600">Ctrl K</kbd>
+        </div>
+      </div>
+    </div>
+
     <!-- Right: National Sovereignty Tag, Symbol Handbook & Theme Toggle -->
     <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
+      <!-- Nút mở Hỏi Đáp trên Mobile & Tablet -->
+      <button 
+        onclick="GeoSmartAssistant.openModal()"
+        title="Mở Hộp Tìm Kiếm & Hỏi Đáp Thông Minh (Ctrl+K)"
+        class="lg:hidden flex items-center space-x-1 px-2.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/60 dark:to-blue-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-bold shadow-sm transition"
+      >
+        <span>✨</span>
+        <span class="hidden sm:inline">Hỏi Đáp</span>
+      </button>
       <div class="hidden xl:flex items-center space-x-1.5 text-xs px-3 py-1.5 rounded-full bg-red-50 text-red-700 dark:bg-red-950/60 dark:text-red-300 border border-red-200 dark:border-red-900 font-semibold shadow-sm">
         <span>🇻🇳</span>
         <span>Hoàng Sa & Trường Sa: Chủ quyền Việt Nam</span>
@@ -1215,6 +1242,7 @@
   <script src="./js/chart-trainer.js?v=2026.3.16"></script>
   <script src="./js/geo-calculator.js?v=2026.3.16"></script>
   <script src="./js/visitor-tracker.js?v=2026.3.16"></script>
+  <script src="./js/geo-smart-assistant.js?v=2026.3.16"></script>
   <script src="./js/app.js?v=2026.3.16"></script>
 
 
