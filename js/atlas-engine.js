@@ -1500,7 +1500,7 @@ const AtlasEngine = (function () {
         // Nhãn tên tỉnh trong suốt khi zoom cao (Decluttered)
         try {
           let center = null;
-          if (p.name === "Tỉnh Khánh Hoà") {
+          if (p.name === "Khánh Hoà" || p.name === "Tỉnh Khánh Hoà") {
             center = L.latLng(12.25, 109.19); // Đặt đúng trung tâm Nha Trang / đất liền Khánh Hòa, không bị trôi ra Trường Sa
           } else if (p.name === "Thành phố Đà Nẵng") {
             center = L.latLng(15.98, 108.05); // Đặt đúng trung tâm đất liền Đà Nẵng - Quảng Nam
@@ -1512,7 +1512,7 @@ const AtlasEngine = (function () {
               pane: 'labelPane',
               icon: L.divIcon({
                 className: 'province-clean-label-marker',
-                html: `<div class="province-clean-label text-[10px] font-bold text-slate-800 dark:text-slate-100 drop-shadow-sm select-none pointer-events-none">${p.name}</div>`,
+                html: `<div class="province-clean-label text-[10px] font-bold text-slate-800 dark:text-slate-100 drop-shadow-sm select-none pointer-events-none">${stripProvincePrefix(p.name)}</div>`,
                 iconSize: [100, 16],
                 iconAnchor: [50, 8]
               }),
@@ -2091,10 +2091,7 @@ const AtlasEngine = (function () {
         },
         onEachFeature: (feature, layer) => {
           const p = feature.properties;
-          let provLabel = (p.province || "").trim();
-          if (provLabel && !provLabel.startsWith("Tỉnh ") && !provLabel.startsWith("Thành phố ") && !provLabel.startsWith("TP.")) {
-            provLabel = "Tỉnh " + provLabel;
-          }
+          let provLabel = String(p.province || "").replace(/^Tỉnh\s+/i, "").trim();
 
           const minTooltipHtml = `
             <div class="p-1.5 text-left font-sans min-w-[220px] max-w-[280px] space-y-1.5">
@@ -2189,10 +2186,7 @@ const AtlasEngine = (function () {
           const capText = p.capacity_group || p.capacity_tier || "Dưới 1.000 MW";
           const capColor = isThermal ? "text-rose-600 dark:text-rose-400" : "text-blue-600 dark:text-blue-400";
           
-          let cleanProv = (p.province || "").trim();
-          if (cleanProv && !cleanProv.startsWith("Tỉnh ") && !cleanProv.startsWith("Thành phố ") && !cleanProv.startsWith("TP.")) {
-            cleanProv = "Tỉnh " + cleanProv;
-          }
+          let cleanProv = String(p.province || "").replace(/^Tỉnh\s+/i, "").trim();
 
           const powerTooltipHtml = `
             <div class="p-1.5 text-left font-sans min-w-[240px] max-w-[300px] space-y-1.5">

@@ -39,7 +39,7 @@ check("BUG-40", "Sáp nhập 5 tỉnh Vùng IV chuẩn Nghị quyết 202/2025/Q
   };
 
   for (const [name, exp] of Object.entries(expected)) {
-    const f = feats.find(feat => feat.properties.name === name);
+    const f = feats.find(feat => feat.properties.name === name || feat.properties.name === name.replace(/^Tỉnh\s+/, "") || feat.properties.name === "Tỉnh " + name);
     assert(f, `Province ${name} must exist in vn_provinces_34.geojson`);
     const p = f.properties;
     assert.strictEqual(p.area, exp.area, `${name} area must be ${exp.area}, got ${p.area}`);

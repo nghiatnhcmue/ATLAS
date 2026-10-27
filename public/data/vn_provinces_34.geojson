@@ -11,7 +11,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Cao Bằng",
+        "name": "Cao Bằng",
         "administrative_type": "Tỉnh",
         "region_name": "Trung du và miền núi phía Bắc",
         "region": "Trung du và miền núi phía Bắc",
@@ -1351,7 +1351,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Tuyên Quang",
+        "name": "Tuyên Quang",
         "administrative_type": "Tỉnh",
         "region_name": "Trung du và miền núi phía Bắc",
         "region": "Trung du và miền núi phía Bắc",
@@ -3760,7 +3760,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Lào Cai",
+        "name": "Lào Cai",
         "administrative_type": "Tỉnh",
         "region_name": "Trung du và miền núi phía Bắc",
         "region": "Trung du và miền núi phía Bắc",
@@ -6153,7 +6153,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Thái Nguyên",
+        "name": "Thái Nguyên",
         "administrative_type": "Tỉnh",
         "region_name": "Trung du và miền núi phía Bắc",
         "region": "Trung du và miền núi phía Bắc",
@@ -7786,7 +7786,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Lạng Sơn",
+        "name": "Lạng Sơn",
         "administrative_type": "Tỉnh",
         "region_name": "Trung du và miền núi phía Bắc",
         "region": "Trung du và miền núi phía Bắc",
@@ -9558,7 +9558,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Phú Thọ",
+        "name": "Phú Thọ",
         "administrative_type": "Tỉnh",
         "region_name": "Trung du và miền núi phía Bắc",
         "region": "Trung du và miền núi phía Bắc",
@@ -11716,7 +11716,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Điện Biên",
+        "name": "Điện Biên",
         "administrative_type": "Tỉnh",
         "region_name": "Trung du và miền núi phía Bắc",
         "region": "Trung du và miền núi phía Bắc",
@@ -14092,7 +14092,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Lai Châu",
+        "name": "Lai Châu",
         "administrative_type": "Tỉnh",
         "region_name": "Trung du và miền núi phía Bắc",
         "region": "Trung du và miền núi phía Bắc",
@@ -16120,7 +16120,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Sơn La",
+        "name": "Sơn La",
         "administrative_type": "Tỉnh",
         "region_name": "Trung du và miền núi phía Bắc",
         "region": "Trung du và miền núi phía Bắc",
@@ -24030,7 +24030,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Hưng Yên",
+        "name": "Hưng Yên",
         "administrative_type": "Tỉnh",
         "region_name": "Đồng bằng sông Hồng",
         "region": "Đồng bằng sông Hồng",
@@ -25011,7 +25011,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Ninh Bình",
+        "name": "Ninh Bình",
         "administrative_type": "Tỉnh",
         "region_name": "Đồng bằng sông Hồng",
         "region": "Đồng bằng sông Hồng",
@@ -26137,7 +26137,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Thanh Hoá",
+        "name": "Thanh Hoá",
         "administrative_type": "Tỉnh",
         "region_name": "Bắc Trung Bộ",
         "region": "Bắc Trung Bộ",
@@ -27843,7 +27843,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Nghệ An",
+        "name": "Nghệ An",
         "administrative_type": "Tỉnh",
         "region_name": "Bắc Trung Bộ",
         "region": "Bắc Trung Bộ",
@@ -29931,7 +29931,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Hà Tĩnh",
+        "name": "Hà Tĩnh",
         "administrative_type": "Tỉnh",
         "region_name": "Bắc Trung Bộ",
         "region": "Bắc Trung Bộ",
@@ -31259,7 +31259,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Quảng Trị",
+        "name": "Quảng Trị",
         "administrative_type": "Tỉnh",
         "region_name": "Bắc Trung Bộ",
         "region": "Bắc Trung Bộ",
@@ -36031,7 +36031,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Quảng Ngãi",
+        "name": "Quảng Ngãi",
         "administrative_type": "Tỉnh",
         "region_name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
         "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
@@ -37891,7 +37891,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Khánh Hoà",
+        "name": "Khánh Hoà",
         "administrative_type": "Tỉnh",
         "region_name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
         "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
@@ -39795,7 +39795,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Gia Lai",
+        "name": "Gia Lai",
         "administrative_type": "Tỉnh",
         "region_name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
         "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
@@ -41633,7 +41633,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Đắk Lắk",
+        "name": "Đắk Lắk",
         "administrative_type": "Tỉnh",
         "region_name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
         "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
@@ -43865,7 +43865,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Lâm Đồng",
+        "name": "Lâm Đồng",
         "administrative_type": "Tỉnh",
         "region_name": "Duyên hải Nam Trung Bộ và Tây Nguyên",
         "region": "Duyên hải Nam Trung Bộ và Tây Nguyên",
@@ -46038,7 +46038,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Tây Ninh",
+        "name": "Tây Ninh",
         "administrative_type": "Tỉnh",
         "region_name": "Đông Nam Bộ",
         "region": "Đông Nam Bộ",
@@ -49975,7 +49975,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Vĩnh Long",
+        "name": "Vĩnh Long",
         "administrative_type": "Tỉnh",
         "region_name": "Đồng bằng sông Cửu Long",
         "region": "Đồng bằng sông Cửu Long",
@@ -50535,7 +50535,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Đồng Tháp",
+        "name": "Đồng Tháp",
         "administrative_type": "Tỉnh",
         "region_name": "Đồng bằng sông Cửu Long",
         "region": "Đồng bằng sông Cửu Long",
@@ -51428,7 +51428,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh An Giang",
+        "name": "An Giang",
         "administrative_type": "Tỉnh",
         "region_name": "Đồng bằng sông Cửu Long",
         "region": "Đồng bằng sông Cửu Long",
@@ -53535,7 +53535,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Tỉnh Cà Mau",
+        "name": "Cà Mau",
         "administrative_type": "Tỉnh",
         "region_name": "Đồng bằng sông Cửu Long",
         "region": "Đồng bằng sông Cửu Long",
