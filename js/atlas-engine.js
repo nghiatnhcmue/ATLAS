@@ -4034,21 +4034,21 @@ const AtlasEngine = (function () {
   // ===========================================================================
   let atlasViewMode = "gis"; // "gis" | "book" | "split"
   const DEFAULT_ATLAT_PAGES_MANIFEST = [
-    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "/public/data/atlat_pages/page_01.jpg?v=2026.3.11" },
-    { page: 3, title: "Trang 3: Kí hiệu chung", file: "/public/data/atlat_pages/page_03.jpg?v=2026.3.11" },
-    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "/public/data/atlat_pages/page_04.jpg?v=2026.3.11" },
-    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "/public/data/atlat_pages/page_05.jpg?v=2026.3.11" },
-    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "/public/data/atlat_pages/page_06.jpg?v=2026.3.11" },
-    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "/public/data/atlat_pages/page_07.jpg?v=2026.3.11" },
-    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "/public/data/atlat_pages/page_08.jpg?v=2026.3.11" },
-    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "/public/data/atlat_pages/page_09.jpg?v=2026.3.11" },
-    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "/public/data/atlat_pages/page_10.jpg?v=2026.3.11" },
-    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "/public/data/atlat_pages/page_13.jpg?v=2026.3.11" },
-    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "/public/data/atlat_pages/page_18.jpg?v=2026.3.11" },
-    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "/public/data/atlat_pages/page_19.jpg?v=2026.3.11" },
-    { page: 21, title: "Trang 21: Công nghiệp chung", file: "/public/data/atlat_pages/page_21.jpg?v=2026.3.11" },
-    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "/public/data/atlat_pages/page_22.jpg?v=2026.3.11" },
-    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "/public/data/atlat_pages/page_23.jpg?v=2026.3.11" }
+    { page: 1, title: "Trang 1: Bìa Atlat Địa lí Việt Nam 2026", file: "./public/data/atlat_pages/page_01.jpg?v=2026.3.11" },
+    { page: 3, title: "Trang 3: Kí hiệu chung", file: "./public/data/atlat_pages/page_03.jpg?v=2026.3.11" },
+    { page: 4, title: "Trang 4: Hành chính (Phía Bắc & Bắc Trung Bộ)", file: "./public/data/atlat_pages/page_04.jpg?v=2026.3.11" },
+    { page: 5, title: "Trang 5: Hành chính (Phía Nam) & Bảng diện tích, dân số 34 đơn vị", file: "./public/data/atlat_pages/page_05.jpg?v=2026.3.11" },
+    { page: 6, title: "Trang 6: Hình thể & Địa hình (Phía Bắc)", file: "./public/data/atlat_pages/page_06.jpg?v=2026.3.11" },
+    { page: 7, title: "Trang 7: Hình thể & Địa hình (Phía Nam) - Mốc toạ độ & Đường cơ sở", file: "./public/data/atlat_pages/page_07.jpg?v=2026.3.11" },
+    { page: 8, title: "Trang 8: Khí hậu chung & 15 Trạm khí tượng", file: "./public/data/atlat_pages/page_08.jpg?v=2026.3.11" },
+    { page: 9, title: "Trang 9: Các miền khí hậu & Lượng mưa, nhiệt độ", file: "./public/data/atlat_pages/page_09.jpg?v=2026.3.11" },
+    { page: 10, title: "Trang 10: Các hệ thống sông ngòi Việt Nam", file: "./public/data/atlat_pages/page_10.jpg?v=2026.3.11" },
+    { page: 13, title: "Trang 13: Địa chất & Khoáng sản", file: "./public/data/atlat_pages/page_13.jpg?v=2026.3.11" },
+    { page: 18, title: "Trang 18: Kinh tế chung - Các vùng kinh tế & Quy mô GRDP", file: "./public/data/atlat_pages/page_18.jpg?v=2026.3.11" },
+    { page: 19, title: "Trang 19: Nông nghiệp chung", file: "./public/data/atlat_pages/page_19.jpg?v=2026.3.11" },
+    { page: 21, title: "Trang 21: Công nghiệp chung", file: "./public/data/atlat_pages/page_21.jpg?v=2026.3.11" },
+    { page: 22, title: "Trang 22: Các ngành công nghiệp trọng điểm", file: "./public/data/atlat_pages/page_22.jpg?v=2026.3.11" },
+    { page: 23, title: "Trang 23: Giao thông vận tải & Thương mại", file: "./public/data/atlat_pages/page_23.jpg?v=2026.3.11" }
   ];
   let atlatPagesManifest = [...DEFAULT_ATLAT_PAGES_MANIFEST];
   let currentAtlatPageNumber = 4;
@@ -4063,6 +4063,8 @@ const AtlasEngine = (function () {
   let atlatBookTouchZoom = 1.0;
   let atlatBookGesturesAttached = false;
   let isPageFlipping = false;
+  let activeFlipTimer = null;
+  let activeFlipCleanup = null;
   let isFlipSoundMuted = false;
   let flipAudioCtx = null;
 
@@ -4582,7 +4584,7 @@ const AtlasEngine = (function () {
 
     const guide = ATLAT_PAGE_STUDY_GUIDE[num];
     const displayTitle = guide ? `Trang ${num}: ${guide.title}` : `Bản đồ Atlat Địa lí Việt Nam - Trang ${num}`;
-    const pageFile = `/public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.16`;
+    const pageFile = `./public/data/atlat_pages/page_${String(num).padStart(2, '0')}.jpg?v=2026.3.16`;
 
     if (imgEl) {
       imgEl.alt = displayTitle;
@@ -4637,10 +4639,15 @@ const AtlasEngine = (function () {
     const backImg = document.getElementById("atlat-flip-back-img");
     const mainLayer = document.getElementById("atlat-book-main-layer");
 
+    // Nếu đang có hoạt ảnh lật dở thì hoàn tất ngay lập tức để chuyển trang mới trơn tru
+    if (activeFlipCleanup) {
+      activeFlipCleanup();
+    }
+
     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Chuyển trang tức thì nếu không yêu cầu hoạt ảnh, hệ thống tắt motion, đang lật dở hoặc cùng trang
-    if (isPageFlipping || prefersReducedMotion || !direction || !leaf || previousPageNumber === num) {
+    // Chuyển trang tức thì nếu không yêu cầu hoạt ảnh, hệ thống tắt motion hoặc cùng trang
+    if (prefersReducedMotion || !direction || !leaf || previousPageNumber === num) {
       if (imgEl) {
         imgEl.alt = displayTitle;
         imgEl.onerror = () => {
@@ -4651,18 +4658,18 @@ const AtlasEngine = (function () {
         };
         imgEl.onload = () => {
           imgEl.dataset.retried = "";
+          if (atlatBookZoom <= 1.2) fitAtlatBookWidth();
         };
         imgEl.src = pageFile;
       }
-      resetAtlatBookZoom();
       return;
     }
 
-    // CHẠY HOẠT ẢNH LẬT TRANG 3D
+    // CHẠY HOẠT ẢNH LẬT TRANG 3D CHÂN THỰC
     isPageFlipping = true;
     playPageFlipSound();
 
-    const prevFile = `/public/data/atlat_pages/page_${String(previousPageNumber).padStart(2, '0')}.jpg?v=2026.3.16`;
+    const prevFile = `./public/data/atlat_pages/page_${String(previousPageNumber).padStart(2, '0')}.jpg?v=2026.3.16`;
 
     if (direction === 'next') {
       if (underImg) underImg.src = pageFile;
@@ -4687,21 +4694,30 @@ const AtlasEngine = (function () {
     }
 
     const cleanupFlip = () => {
-      if (!isPageFlipping) return;
+      if (activeFlipTimer) {
+        clearTimeout(activeFlipTimer);
+        activeFlipTimer = null;
+      }
+      activeFlipCleanup = null;
       if (imgEl) {
         imgEl.alt = displayTitle;
         imgEl.src = pageFile;
       }
       if (mainLayer) mainLayer.style.visibility = "visible";
       if (underLayer) underLayer.classList.add("hidden");
-      leaf.classList.add("hidden");
-      leaf.classList.remove("flip-anim-next", "flip-anim-prev");
+      if (leaf) {
+        leaf.classList.add("hidden");
+        leaf.classList.remove("flip-anim-next", "flip-anim-prev");
+      }
       isPageFlipping = false;
-      resetAtlatBookZoom();
+      if (atlatBookZoom <= 1.2) {
+        fitAtlatBookWidth();
+      }
     };
 
+    activeFlipCleanup = cleanupFlip;
     leaf.addEventListener("animationend", cleanupFlip, { once: true });
-    setTimeout(cleanupFlip, 650);
+    activeFlipTimer = setTimeout(cleanupFlip, 580);
   }
 
   function renderAtlatPageStudyGuide(pageNumber) {

@@ -707,6 +707,9 @@ html, body {
   background-color: #f1f5f9;
   z-index: 1;
 }
+.atlat-flip-back img {
+  transform: scaleX(-1);
+}
 
 /* Hiệu ứng đổ bóng động khi uốn cong tờ giấy */
 .atlat-flip-overlay {
@@ -715,20 +718,38 @@ html, body {
   pointer-events: none;
 }
 
-/* Keyframes lật trang tới (Flip Next: quay từ 0deg sang -180deg quanh gáy trái) */
+#atlat-book-viewport {
+  perspective: 2500px;
+}
+.atlat-book-container {
+  perspective: 2500px;
+  perspective-origin: center center;
+  transform-style: preserve-3d;
+  position: relative;
+  display: inline-block;
+}
+
+/* Keyframes lật trang tới (Flip Next: quay từ 0deg sang -180deg quanh gáy trái mượt mà không vỡ ma trận) */
 .atlat-flip-leaf.flip-anim-next {
   transform-origin: left center;
   animation: atlatFlipForward 0.52s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 @keyframes atlatFlipForward {
   0% {
-    transform: perspective(2200px) rotateY(0deg);
+    transform: rotateY(0deg);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
   }
-  50% {
-    transform: perspective(2200px) rotateY(-90deg) scale(1.018);
+  40% {
+    transform: rotateY(-65deg) scaleY(0.99) skewY(-1.5deg);
+    filter: drop-shadow(-15px 15px 35px rgba(0, 0, 0, 0.45));
+  }
+  80% {
+    transform: rotateY(-135deg) scaleY(0.99) skewY(1deg);
+    filter: drop-shadow(-25px 10px 40px rgba(0, 0, 0, 0.35));
   }
   100% {
-    transform: perspective(2200px) rotateY(-180deg);
+    transform: rotateY(-180deg);
+    filter: drop-shadow(-10px 5px 20px rgba(0, 0, 0, 0.2));
   }
 }
 .atlat-flip-leaf.flip-anim-next .front-overlay {
@@ -745,13 +766,20 @@ html, body {
 }
 @keyframes atlatFlipBackward {
   0% {
-    transform: perspective(2200px) rotateY(-180deg);
+    transform: rotateY(-180deg);
+    filter: drop-shadow(-10px 5px 20px rgba(0, 0, 0, 0.2));
   }
-  50% {
-    transform: perspective(2200px) rotateY(-90deg) scale(1.018);
+  40% {
+    transform: rotateY(-115deg) scaleY(0.99) skewY(1.5deg);
+    filter: drop-shadow(-25px 10px 40px rgba(0, 0, 0, 0.35));
+  }
+  80% {
+    transform: rotateY(-45deg) scaleY(0.99) skewY(-1deg);
+    filter: drop-shadow(-15px 15px 35px rgba(0, 0, 0, 0.45));
   }
   100% {
-    transform: perspective(2200px) rotateY(0deg);
+    transform: rotateY(0deg);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
   }
 }
 .atlat-flip-leaf.flip-anim-prev .front-overlay {
@@ -1099,9 +1127,17 @@ body.split-resizing #chart-visual-canvas {
   pointer-events: none !important;
 }
 
+/* Đảm bảo khi có class .hidden thì các phân hệ luôn ẩn tuyệt đối */
+.mode-view.hidden,
+#mode-atlas.hidden,
+#mode-charts.hidden,
+#mode-calc.hidden {
+  display: none !important;
+}
+
 @media (min-width: 1024px) {
   /* Mode 1: Atlat Grid (Map/Book Left, Resizer Middle, Controls Right) */
-  #mode-atlas {
+  #mode-atlas:not(.hidden) {
     display: grid !important;
     grid-template-columns: var(--atlas-split-left, 68%) 12px minmax(260px, 1fr) !important;
     grid-template-rows: auto minmax(0, 1fr) !important;
@@ -1132,7 +1168,7 @@ body.split-resizing #chart-visual-canvas {
   }
 
   /* Mode 2: Charts Grid (Canvas Left, Resizer Middle, Control Panel Right) */
-  #mode-charts {
+  #mode-charts:not(.hidden) {
     display: grid !important;
     grid-template-columns: var(--charts-split-left, 65%) 12px minmax(280px, 1fr) !important;
     grid-template-rows: minmax(0, 1fr) !important;
@@ -1157,7 +1193,7 @@ body.split-resizing #chart-visual-canvas {
   }
 
   /* Mode 3: Calculator Grid (Math/Table Display Left, Resizer Middle, Form Controls Right) */
-  #mode-calc {
+  #mode-calc:not(.hidden) {
     display: grid !important;
     grid-template-columns: var(--calc-split-left, 60%) 12px minmax(300px, 1fr) !important;
     grid-template-rows: minmax(0, 1fr) !important;
