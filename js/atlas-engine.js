@@ -3921,7 +3921,7 @@ const AtlasEngine = (function () {
           </span>
           <div class="flex items-center space-x-1">
             <span class="text-[9px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-1.5 py-0.2 rounded-full">THPT</span>
-            <button id="btn-legend-collapse" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold leading-none px-1">${isLegendCollapsed ? "▼" : "▲"}</button>
+            <button id="btn-legend-collapse" onclick="AtlasEngine.toggleLegendCollapse(); event.stopPropagation();" title="Thu gọn / Mở rộng bảng chú giải" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold leading-none px-1">${isLegendCollapsed ? "▼" : "▲"}</button>
           </div>
         </div>
         <div id="atlas-dynamic-legend-body" class="space-y-2 pt-0.5 ${isLegendCollapsed ? "hidden" : ""}">

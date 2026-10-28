@@ -730,7 +730,7 @@ window.GeoSmartAssistant = (function () {
         <div class="grid grid-cols-2 gap-1.5 pt-1">
           ${item.options.map(opt => `
             <button 
-              onclick="this.classList.add('${opt === item.a ? 'bg-emerald-600 text-white font-bold' : 'bg-rose-100 text-rose-800 line-through'}')" 
+              onclick="GeoSmartAssistant.handleQuizOption(this, ${opt === item.a})" 
               class="p-2 text-left rounded-lg bg-slate-50 dark:bg-slate-700/60 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-600 text-[11px] transition"
             >
               ${opt}
@@ -740,6 +740,61 @@ window.GeoSmartAssistant = (function () {
         <div class="text-[10px] text-slate-400 font-mono pt-1">💡 Bấm vào phương án để kiểm tra đáp án đúng.</div>
       </div>
     `).join('');
+  }
+
+  function handleQuizOption(btn, isCorrect) {
+    if (!btn) return;
+    const parent = btn.closest('.grid');
+    if (parent) {
+      parent.querySelectorAll('button').forEach(b => {
+        b.disabled = true;
+        b.classList.add('cursor-not-allowed', 'opacity-80');
+      });
+    }
+    if (isCorrect) {
+      btn.classList.remove('bg-slate-50', 'dark:bg-slate-700/60');
+      btn.classList.add('bg-emerald-600', 'text-white', 'font-bold', 'shadow-sm');
+      if (typeof window.showAppToast === 'function') {
+        window.showAppToast('🎉 Chính xác! Đáp án đúng.');
+      }
+    } else {
+      btn.classList.remove('bg-slate-50', 'dark:bg-slate-700/60');
+      btn.classList.add('bg-rose-100', 'text-rose-800', 'line-through', 'border-rose-300');
+      if (typeof window.showAppToast === 'function') {
+        window.showAppToast('❌ Sai rồi! Hãy đối chiếu lại Atlat.');
+      }
+    }
+  }
+
+  function copyAIResponse(btn) {
+    try {
+      const container = btn ? btn.closest('.p-4') : null;
+      const textEl = container ? container.querySelector('.prose') : null;
+      const text = textEl ? textEl.innerText : '';
+      if (text && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          if (typeof window.showAppToast === 'function') window.showAppToast('📋 Đã sao chép câu trả lời AI!');
+        }).catch(() => {
+          fallbackCopyText(text);
+        });
+      } else if (text) {
+        fallbackCopyText(text);
+      }
+    } catch (err) {
+      console.error('Error copying text:', err);
+    }
+  }
+
+  function fallbackCopyText(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (typeof window.showAppToast === 'function') {
+      window.showAppToast('📋 Đã sao chép câu trả lời AI!');
+    }
   }
 
   // =========================================================================
@@ -1088,6 +1143,9 @@ window.GeoSmartAssistant = (function () {
   }
 
   async function askDeepAI(query) {
+    const q = (query && typeof query === "string" && query.trim()) 
+      ? query.trim() 
+      : (currentSearchQuery || (document.getElementById("smart-assistant-input")?.value || "").trim());
     const container = document.getElementById("assistant-results-container");
     if (!container) return;
 
@@ -1101,7 +1159,7 @@ window.GeoSmartAssistant = (function () {
       </div>
     `;
 
-    const res = await callGeminiAPI(query);
+    const res = await callGeminiAPI(q);
     if (!res.success) {
       container.innerHTML = `
         <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-xs text-amber-900 dark:text-amber-200 space-y-2">
@@ -1113,7 +1171,7 @@ window.GeoSmartAssistant = (function () {
             <button onclick="GeoSmartAssistant.openAISettings()" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white font-bold text-xs">
               ⚙️ Nhập API Key miễn phí
             </button>
-            <button onclick="GeoSmartAssistant.setAIMode('offline'); GeoSmartAssistant.handleSearch('${query.replace(/'/g, "\\'")}')" class="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-semibold">
+            <button onclick="GeoSmartAssistant.switchToOfflineMode()" class="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-semibold">
               ⚡ Dùng AI Nội Tuyến
             </button>
           </div>
@@ -1133,11 +1191,11 @@ window.GeoSmartAssistant = (function () {
         <div class="text-xs text-slate-800 dark:text-slate-200 leading-relaxed prose prose-sm dark:prose-invert max-w-none space-y-2 whitespace-pre-line">
           ${res.text}
         </div>
-        <div class="pt-2 flex items-center space-x-2 border-t border-slate-100 dark:border-slate-800">
-          <button onclick="navigator.clipboard.writeText('${res.text.replace(/'/g, "\\'").replace(/\n/g, "\\n")}'); if(window.showAppToast) window.showAppToast('📋 Đã sao chép câu trả lời AI!');" class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 text-[11px] font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100">
+                <div class="pt-2 flex items-center space-x-2 border-t border-slate-100 dark:border-slate-800">
+          <button onclick="GeoSmartAssistant.copyAIResponse(this)" class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 text-[11px] font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100">
             📋 Sao chép
           </button>
-          <button onclick="GeoSmartAssistant.handleSearch('${query.replace(/'/g, "\\'")}')" class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 text-[11px] font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100">
+          <button onclick="GeoSmartAssistant.switchToOfflineRuleTable()" class="px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 text-[11px] font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100">
             🔄 Xem dạng bảng quy tắc
           </button>
         </div>
@@ -1145,7 +1203,19 @@ window.GeoSmartAssistant = (function () {
     `;
   }
 
+  let currentSearchQuery = "";
+
+  function switchToOfflineMode() {
+    setAIMode("offline");
+    handleSearch(currentSearchQuery);
+  }
+
+  function switchToOfflineRuleTable() {
+    handleSearch(currentSearchQuery);
+  }
+
   function handleSearch(query) {
+    currentSearchQuery = typeof query === "string" ? query : (currentSearchQuery || "");
     const container = document.getElementById("assistant-results-container");
     if (!container) return;
 
@@ -1194,7 +1264,7 @@ window.GeoSmartAssistant = (function () {
           <span>Cần AI phân tích sâu hơn bài làm này?</span>
         </div>
         <button 
-          onclick="GeoSmartAssistant.askDeepAI('${query.replace(/'/g, "\\'")}')" 
+          onclick="GeoSmartAssistant.askDeepAI()" 
           class="px-2.5 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] shadow-xs transition flex items-center space-x-1"
         >
           <span>Hỏi sâu với Gemini AI ↗</span>
@@ -1385,13 +1455,13 @@ window.GeoSmartAssistant = (function () {
         </div>
         <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
           <button 
-            onclick="GeoSmartAssistant.askDeepAI('${query.replace(/'/g, "\\'")}')" 
+            onclick="GeoSmartAssistant.askDeepAI()" 
             class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm transition flex items-center space-x-1"
           >
             <span>🧠</span> <span>Hỏi đáp mở rộng với Google Gemini AI</span>
           </button>
           <button 
-            onclick="GeoSmartAssistant.runGisSearch('${query.replace(/'/g, "\\'")}')" 
+            onclick="GeoSmartAssistant.runGisSearch()" 
             class="px-3.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold text-xs shadow-sm transition"
           >
             <span>🧭</span> <span>Quét tìm trên Bản đồ GIS</span>
@@ -1457,10 +1527,13 @@ window.GeoSmartAssistant = (function () {
   }
 
   function runGisSearch(query) {
+    const q = (query && typeof query === "string" && query.trim()) 
+      ? query.trim() 
+      : (currentSearchQuery || (document.getElementById("smart-assistant-input")?.value || "").trim());
     closeModal();
     if (window.AtlasEngine && window.AtlasEngine.searchAndFlyTo) {
       window.AtlasEngine.setAtlasViewMode("gis");
-      window.AtlasEngine.searchAndFlyTo(query);
+      window.AtlasEngine.searchAndFlyTo(q);
     }
   }
 
@@ -1514,6 +1587,12 @@ window.GeoSmartAssistant = (function () {
     closeModal,
     clearInput,
     setSearch,
+    handleSearch,
+    getCurrentQuery: () => currentSearchQuery,
+    switchToOfflineMode,
+    switchToOfflineRuleTable,
+    copyAIResponse,
+    handleQuizOption,
     handleInputChange: (val) => openModal(val),
     handleInputFocus: () => openModal(),
     analyzeQuery,
