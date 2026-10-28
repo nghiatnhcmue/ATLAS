@@ -4865,46 +4865,61 @@ const AtlasEngine = (function () {
 
     if (mode === "gis") {
       if (gisMapCol) {
-        gisMapCol.classList.remove("hidden", "lg:col-span-6", "lg:col-span-7", "lg:col-span-8");
-        gisMapCol.classList.add("col-span-12", "lg:col-span-5");
+        gisMapCol.classList.remove("hidden", "is-split-right", "lg:col-span-5", "lg:col-span-6", "lg:col-span-7");
+        gisMapCol.classList.add("col-span-12", "lg:col-span-8");
       }
       if (gisControlsCol) {
-        gisControlsCol.classList.remove("hidden", "lg:col-span-5", "lg:col-span-6");
-        gisControlsCol.classList.add("col-span-12", "lg:col-span-7");
+        gisControlsCol.classList.remove("hidden", "lg:col-span-7", "lg:col-span-6", "lg:col-span-5");
+        gisControlsCol.classList.add("col-span-12", "lg:col-span-4");
       }
       if (atlatBookCol) atlatBookCol.classList.add("hidden");
       if (atlatNotesCol) atlatNotesCol.classList.add("hidden");
       if (atlatToolbar) atlatToolbar.classList.add("hidden");
 
+      const savedRatio = localStorage.getItem("geoatlas_split_gis") || "68";
+      const atlasModeEl = document.getElementById("mode-atlas");
+      if (atlasModeEl) atlasModeEl.style.setProperty("--atlas-split-left", savedRatio + "%");
+
       setTimeout(() => { if (map) map.invalidateSize(); }, 150);
     } else if (mode === "book") {
-      if (gisMapCol) gisMapCol.classList.add("hidden");
+      if (gisMapCol) {
+        gisMapCol.classList.add("hidden");
+        gisMapCol.classList.remove("is-split-right");
+      }
       if (gisControlsCol) gisControlsCol.classList.add("hidden");
       if (atlatBookCol) {
-        atlatBookCol.classList.remove("hidden", "lg:col-span-8", "lg:col-span-7", "lg:col-span-5");
-        atlatBookCol.classList.add("col-span-12", "lg:col-span-6");
+        atlatBookCol.classList.remove("hidden", "is-split-right", "lg:col-span-5", "lg:col-span-6", "lg:col-span-7");
+        atlatBookCol.classList.add("col-span-12", "lg:col-span-8");
       }
       if (atlatNotesCol) {
-        atlatNotesCol.classList.remove("hidden", "lg:col-span-4", "lg:col-span-5", "lg:col-span-7");
-        atlatNotesCol.classList.add("col-span-12", "lg:col-span-6");
+        atlatNotesCol.classList.remove("hidden", "lg:col-span-7", "lg:col-span-6", "lg:col-span-5");
+        atlatNotesCol.classList.add("col-span-12", "lg:col-span-4");
       }
       if (atlatToolbar) atlatToolbar.classList.remove("hidden");
+
+      const savedRatio = localStorage.getItem("geoatlas_split_book") || "65";
+      const atlasModeEl = document.getElementById("mode-atlas");
+      if (atlasModeEl) atlasModeEl.style.setProperty("--atlas-split-left", savedRatio + "%");
 
       attachAtlatBookGestures();
       selectAtlatBookPage(currentAtlatPageNumber);
       setTimeout(() => fitAtlatBookWidth(), 50);
     } else if (mode === "split") {
       if (atlatBookCol) {
-        atlatBookCol.classList.remove("hidden", "lg:col-span-8", "lg:col-span-7", "lg:col-span-5");
+        atlatBookCol.classList.remove("hidden", "is-split-right", "lg:col-span-8", "lg:col-span-7", "lg:col-span-5", "lg:col-span-4");
         atlatBookCol.classList.add("col-span-12", "lg:col-span-6");
       }
       if (gisMapCol) {
-        gisMapCol.classList.remove("hidden", "lg:col-span-7", "lg:col-span-8", "lg:col-span-5");
-        gisMapCol.classList.add("col-span-12", "lg:col-span-6");
+        gisMapCol.classList.remove("hidden", "lg:col-span-8", "lg:col-span-7", "lg:col-span-5", "lg:col-span-4");
+        gisMapCol.classList.add("col-span-12", "lg:col-span-6", "is-split-right");
       }
       if (gisControlsCol) gisControlsCol.classList.add("hidden");
       if (atlatNotesCol) atlatNotesCol.classList.add("hidden");
       if (atlatToolbar) atlatToolbar.classList.remove("hidden");
+
+      const savedRatio = localStorage.getItem("geoatlas_split_split") || "50";
+      const atlasModeEl = document.getElementById("mode-atlas");
+      if (atlasModeEl) atlasModeEl.style.setProperty("--atlas-split-left", savedRatio + "%");
 
       attachAtlatBookGestures();
       selectAtlatBookPage(currentAtlatPageNumber);

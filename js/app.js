@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   setupSearch();
+  initSplitResizers();
 
 
 
@@ -202,3 +203,147 @@ window.showAppToast = function (msg) {
   }, 4000);
 };
 
+
+
+/**
+ * Trình điều khiển thanh kéo chia đôi ranh giới hai cột (Draggable Split Resizer)
+ * Tự do tùy biến chiều rộng cột Trái / Phải, lưu localStorage, nháy đúp khôi phục mặc định
+ */
+function initSplitResizers() {
+  const configs = [
+    {
+      resizerId: "atlas-split-resizer",
+      containerId: "mode-atlas",
+      cssVar: "--atlas-split-left",
+      getStorageKey: () => "geoatlas_split_" + (typeof AtlasEngine?.getAtlasViewMode === "function" ? AtlasEngine.getAtlasViewMode() : "gis"),
+      getDefault: () => {
+        const sub = typeof AtlasEngine?.getAtlasViewMode === "function" ? AtlasEngine.getAtlasViewMode() : "gis";
+        return sub === "split" ? 50 : (sub === "book" ? 65 : 68);
+      },
+      minPct: 35,
+      maxPct: 80,
+      onResize: () => {
+        const map = typeof AtlasEngine?.getMap === "function" ? AtlasEngine.getMap() : null;
+        if (map) map.invalidateSize();
+        const sub = typeof AtlasEngine?.getAtlasViewMode === "function" ? AtlasEngine.getAtlasViewMode() : "gis";
+        if ((sub === "book" || sub === "split") && typeof AtlasEngine?.fitAtlatBookWidth === "function") {
+          AtlasEngine.fitAtlatBookWidth();
+        }
+      }
+    },
+    {
+      resizerId: "charts-split-resizer",
+      containerId: "mode-charts",
+      cssVar: "--charts-split-left",
+      getStorageKey: () => "geoatlas_split_charts",
+      getDefault: () => 65,
+      minPct: 35,
+      maxPct: 78,
+      onResize: () => {
+        if (typeof ChartTrainer?.resize === "function") ChartTrainer.resize();
+      }
+    },
+    {
+      resizerId: "calc-split-resizer",
+      containerId: "mode-calc",
+      cssVar: "--calc-split-left",
+      getStorageKey: () => "geoatlas_split_calc",
+      getDefault: () => 60,
+      minPct: 35,
+      maxPct: 75,
+      onResize: () => {}
+    }
+  ];
+
+  configs.forEach(cfg => {
+    const resizer = document.getElementById(cfg.resizerId);
+    const container = document.getElementById(cfg.containerId);
+    if (!resizer || !container) return;
+
+    // Thiết lập tỉ lệ ban đầu từ localStorage hoặc mặc định
+    const saved = localStorage.getItem(cfg.getStorageKey());
+    const initPct = saved ? parseFloat(saved) : cfg.getDefault();
+    if (!isNaN(initPct)) {
+      container.style.setProperty(cfg.cssVar, initPct + "%");
+    }
+
+    let isDragging = false;
+    let animFrame = null;
+
+    function updateRatio(clientX) {
+      const rect = container.getBoundingClientRect();
+      if (!rect.width) return;
+      const offset = clientX - rect.left;
+      let pct = (offset / rect.width) * 100;
+      pct = Math.max(cfg.minPct, Math.min(cfg.maxPct, pct));
+
+      container.style.setProperty(cfg.cssVar, pct.toFixed(2) + "%");
+      localStorage.setItem(cfg.getStorageKey(), pct.toFixed(2));
+
+      if (animFrame) cancelAnimationFrame(animFrame);
+      animFrame = requestAnimationFrame(() => {
+        cfg.onResize();
+      });
+    }
+
+    function onPointerMove(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      updateRatio(e.clientX);
+    }
+
+    function onPointerUp(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      resizer.classList.remove("is-dragging");
+      document.body.classList.remove("split-resizing");
+
+      try {
+        if (e && e.pointerId && resizer.releasePointerCapture) {
+          resizer.releasePointerCapture(e.pointerId);
+        }
+      } catch (_) {}
+
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerUp);
+
+      cfg.onResize();
+    }
+
+    function onPointerDown(e) {
+      if (window.innerWidth < 1024) return;
+      if (e.button !== undefined && e.button !== 0) return;
+
+      isDragging = true;
+      resizer.classList.add("is-dragging");
+      document.body.classList.add("split-resizing");
+
+      try {
+        if (e.pointerId && resizer.setPointerCapture) {
+          resizer.setPointerCapture(e.pointerId);
+        }
+      } catch (_) {}
+
+      window.addEventListener("pointermove", onPointerMove, { passive: false });
+      window.addEventListener("pointerup", onPointerUp);
+      window.addEventListener("pointercancel", onPointerUp);
+
+      e.preventDefault();
+    }
+
+    resizer.addEventListener("pointerdown", onPointerDown);
+
+    // Nháy đúp chuột để khôi phục tỉ lệ chuẩn
+    resizer.addEventListener("dblclick", () => {
+      const defPct = cfg.getDefault();
+      container.style.setProperty(cfg.cssVar, defPct + "%");
+      localStorage.removeItem(cfg.getStorageKey());
+      cfg.onResize();
+
+      if (typeof window.showAppToast === "function") {
+        window.showAppToast(`Đã khôi phục kích thước mặc định: ${defPct}% / ${100 - defPct}%`);
+      }
+    });
+  });
+}

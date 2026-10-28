@@ -291,6 +291,42 @@ check("BUG-44", "Thành phố Quảng Ninh & Thành phố Bắc Ninh là TP tr�
   assert(engine.includes("Thành phố Quảng Ninh") && engine.includes("Thành phố Bắc Ninh"), "atlas-engine.js contains new city profiles");
 });
 
+// 17. BUG-45: Bố cục 2 Cột Tùy Biến: Thanh Kéo Resizer, Cột Trái Rộng Rãi & Cột Phải Tinh Gọn
+check("BUG-45", "Bố cục 2 Cột Tùy Biến: Cột Trái rộng rãi, Cột Phải tinh gọn, Thanh kéo ranh giới tương tác", () => {
+  const indexHtml = fs.readFileSync("index.html", "utf-8");
+  const html200 = fs.readFileSync("200.html", "utf-8");
+  assert.strictEqual(indexHtml, html200, "index.html and 200.html must remain 100% strictly identical down to the byte");
+
+  // Check 3 resizers
+  const resizers = ["atlas-split-resizer", "charts-split-resizer", "calc-split-resizer"];
+  resizers.forEach(id => {
+    assert(indexHtml.includes(`id="${id}"`), `Element #${id} must exist in index.html`);
+  });
+
+  // Check column ids
+  assert(indexHtml.includes('id="chart-canvas-col"'), "chart-canvas-col exists in index.html");
+  assert(indexHtml.includes('id="calc-display-col"'), "calc-display-col exists in index.html");
+  assert(indexHtml.includes('id="calc-controls-col"'), "calc-controls-col exists in index.html");
+
+  // Check CSS styles
+  const css = fs.readFileSync("css/styles.css", "utf-8");
+  assert(css.includes(".split-resizer"), "css contains .split-resizer rules");
+  assert(css.includes("body.split-resizing"), "css contains body.split-resizing");
+  assert(css.includes("--atlas-split-left"), "css contains --atlas-split-left");
+  assert(css.includes("--charts-split-left"), "css contains --charts-split-left");
+  assert(css.includes("--calc-split-left"), "css contains --calc-split-left");
+
+  // Check JavaScript implementations
+  const appJs = fs.readFileSync("js/app.js", "utf-8");
+  assert(appJs.includes("function initSplitResizers"), "js/app.js implements initSplitResizers");
+  assert(appJs.includes("initSplitResizers()"), "js/app.js calls initSplitResizers");
+  assert(appJs.includes("dblclick"), "app.js supports double click reset");
+
+  const atlasEngine = fs.readFileSync("js/atlas-engine.js", "utf-8");
+  assert(atlasEngine.includes("--atlas-split-left"), "atlas-engine.js updates --atlas-split-left dynamically");
+  assert(atlasEngine.includes("is-split-right"), "atlas-engine.js uses is-split-right for 50:50 split mode");
+});
+
 console.log("======================================================================");
 console.log(`  RESULT: ${passed}/${total} TESTS PASSED (${Math.round((passed/total)*100)}%)`);
 console.log("======================================================================");

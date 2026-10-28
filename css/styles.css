@@ -990,3 +990,194 @@ html, body {
   transform-origin: center center;
   transition: transform 0.1s ease-out;
 }
+
+
+/* ====================================================================== */
+/* TWO-COLUMN DRAGGABLE SPLIT RESIZER & EXPANSIVE WORKSPACE                */
+/* ====================================================================== */
+.split-resizer {
+  position: relative;
+  width: 12px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 40;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  background: transparent;
+  transition: background-color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.split-resizer:hover,
+.split-resizer.is-dragging {
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.dark .split-resizer:hover,
+.dark .split-resizer.is-dragging {
+  background: rgba(96, 165, 250, 0.12);
+}
+
+.resizer-handle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.resizer-line {
+  flex: 1;
+  width: 2px;
+  background: #cbd5e1; /* slate-300 */
+  border-radius: 9999px;
+  transition: background-color 0.2s ease, width 0.2s ease;
+}
+
+.dark .resizer-line {
+  background: #334155; /* slate-700 */
+}
+
+.split-resizer:hover .resizer-line,
+.split-resizer.is-dragging .resizer-line {
+  background: #3b82f6;
+  width: 3px;
+}
+
+.resizer-pill {
+  width: 16px;
+  height: 42px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.12), 0 1px 4px -1px rgba(0, 0, 0, 0.08);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #64748b;
+  cursor: col-resize;
+}
+
+.dark .resizer-pill {
+  background: #1e293b;
+  border-color: #475569;
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.4);
+  color: #94a3b8;
+}
+
+.split-resizer:hover .resizer-pill,
+.split-resizer.is-dragging .resizer-pill {
+  border-color: #3b82f6;
+  background: #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+  transform: scale(1.08);
+}
+
+/* While resizing, disable pointer-events on map / charts / iframe to prevent event interception */
+body.split-resizing {
+  cursor: col-resize !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+body.split-resizing * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+body.split-resizing #atlas-map,
+body.split-resizing #atlat-book-viewport,
+body.split-resizing #chart-visual-canvas {
+  pointer-events: none !important;
+}
+
+@media (min-width: 1024px) {
+  /* Mode 1: Atlat Grid (Map/Book Left, Resizer Middle, Controls Right) */
+  #mode-atlas {
+    display: grid !important;
+    grid-template-columns: var(--atlas-split-left, 68%) 12px minmax(260px, 1fr) !important;
+    grid-template-rows: auto minmax(0, 1fr) !important;
+    gap: 0 !important;
+    row-gap: 12px !important;
+  }
+  #atlat-mode-nav-banner {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+  }
+  #gis-map-col:not(.is-split-right),
+  #atlat-book-col {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    width: 100% !important;
+  }
+  #atlas-split-resizer {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+  }
+  #gis-controls-col,
+  #atlat-notes-col,
+  #gis-map-col.is-split-right {
+    grid-column: 3 !important;
+    grid-row: 2 !important;
+    padding-left: 8px !important;
+    width: 100% !important;
+  }
+
+  /* Mode 2: Charts Grid (Canvas Left, Resizer Middle, Control Panel Right) */
+  #mode-charts {
+    display: grid !important;
+    grid-template-columns: var(--charts-split-left, 65%) 12px minmax(280px, 1fr) !important;
+    grid-template-rows: minmax(0, 1fr) !important;
+    gap: 0 !important;
+  }
+  #chart-canvas-col {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    order: 1 !important;
+  }
+  #charts-split-resizer {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+  #chart-control-panel {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    padding-left: 8px !important;
+    width: 100% !important;
+    order: 2 !important;
+  }
+
+  /* Mode 3: Calculator Grid (Math/Table Display Left, Resizer Middle, Form Controls Right) */
+  #mode-calc {
+    display: grid !important;
+    grid-template-columns: var(--calc-split-left, 60%) 12px minmax(300px, 1fr) !important;
+    grid-template-rows: minmax(0, 1fr) !important;
+    gap: 0 !important;
+  }
+  #calc-display-col {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    order: 1 !important;
+  }
+  #calc-split-resizer {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+  #calc-controls-col {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    padding-left: 8px !important;
+    width: 100% !important;
+    order: 2 !important;
+  }
+}
