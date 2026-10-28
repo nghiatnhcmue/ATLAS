@@ -27,10 +27,12 @@ const ChartTrainer = (function () {
   let echartInstance = null;
   let activeTab = "trainer"; // 'trainer' | 'guide' | 'custom'
 
-  // Trạng thái AI Table Analyzer (Phân tích bảng tự do)
+  // Trạng thái AI Table Analyzer (Phân tích bảng tự do) & Image OCR Scanner
   let customQuestion = null;
   let customActiveChartType = null;
   let customAnalysisData = null;
+  let currentUploadedImageSrc = null;
+  let currentScanningStatus = null;
 
   // Trạng thái trắc nghiệm Đúng/Sai cho câu hiện tại: { a: null, b: null, c: null, d: null }
   let tfUserAnswers = {};
@@ -119,6 +121,7 @@ const ChartTrainer = (function () {
       questionsData = window.ATLAT_DATA.chart_exercises;
       keywordGuide = window.ATLAT_DATA.keyword_guide || window.GEO_ATLAS_FALLBACK_DATA?.chartQuestions?.keyword_guide || [];
       renderQuestion(0);
+      attachClipboardPaste();
       return;
     }
 
@@ -136,6 +139,7 @@ const ChartTrainer = (function () {
         questionsData = fb.questions || [];
         keywordGuide = fb.keyword_guide || [];
         renderQuestion(0);
+        attachClipboardPaste();
         if (typeof window.showOfflineToast === 'function') {
           window.showOfflineToast();
         }
@@ -409,8 +413,9 @@ const ChartTrainer = (function () {
             <button id="tab-btn-guide" onclick="ChartTrainer.setTab('guide')" class="px-2.5 sm:px-3 py-1 rounded-lg text-xs font-semibold ${activeTab === 'guide' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}">
               📖 Cẩm Nang
             </button>
-            <button id="tab-btn-custom" onclick="ChartTrainer.setTab('custom')" class="px-2.5 sm:px-3 py-1 rounded-lg text-xs font-semibold ${activeTab === 'custom' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}">
-              🧪 Tự Phân Tích
+            <button id="tab-btn-custom" onclick="ChartTrainer.setTab('custom')" class="px-2.5 sm:px-3 py-1 rounded-lg text-xs font-semibold flex items-center space-x-1 ${activeTab === 'custom' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}" title="Tải ảnh bảng biểu đề bài lên để nhận diện hoặc dán số liệu">
+              <span>📷</span>
+              <span>Tải Ảnh / Nhập Bảng</span>
             </button>
           </div>
           <div id="trainer-nav-arrows" class="flex items-center space-x-1 shrink-0 ${activeTab === 'trainer' ? '' : 'hidden'}">
@@ -1631,73 +1636,281 @@ const ChartTrainer = (function () {
     };
   }
 
+  function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
+    const words = String(text || '').split(' ');
+    let line = '';
+    for (let n = 0; n < words.length; n++) {
+      const testLine = line + words[n] + ' ';
+      const metrics = ctx.measureText(testLine);
+      if (metrics.width > maxWidth && n > 0) {
+        ctx.fillText(line, x, y);
+        line = words[n] + ' ';
+        y += lineHeight;
+      } else {
+        line = testLine;
+      }
+    }
+    ctx.fillText(line, x, y);
+  }
+
+  function generateExamTableCanvasImage(sample) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const width = 620;
+    const height = 310;
+    canvas.width = width * 2;
+    canvas.height = height * 2;
+    ctx.scale(2, 2);
+
+    // Nền giấy thi sáng
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, width, height);
+
+    // Khung viền đề thi
+    ctx.strokeStyle = "#cbd5e1";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(8, 8, width - 16, height - 16);
+
+    // Tiêu đề kỳ thi
+    ctx.fillStyle = "#475569";
+    ctx.font = "bold 9.5px 'Be Vietnam Pro', sans-serif";
+    ctx.fillText("BỘ GIÁO DỤC VÀ ĐÀO TẠO • KỲ THI TỐT NGHIỆP THPT QUỐC GIA", 20, 26);
+    ctx.font = "9.5px 'Be Vietnam Pro', sans-serif";
+    ctx.fillText("MÔN: ĐỊA LÍ (MÃ ĐỀ: 204)", width - 155, 26);
+
+    ctx.strokeStyle = "#e2e8f0";
+    ctx.beginPath();
+    ctx.moveTo(20, 32);
+    ctx.lineTo(width - 20, 32);
+    ctx.stroke();
+
+    // Tiêu đề bảng số liệu
+    ctx.fillStyle = "#0f172a";
+    ctx.font = "bold 11px 'Be Vietnam Pro', sans-serif";
+    ctx.fillText("BẢNG SỐ LIỆU: " + sample.title.toUpperCase(), 20, 50);
+
+    // Vẽ bảng số liệu
+    const parsed = parsePastedTable(sample.text);
+    if (parsed) {
+      const tableX = 20;
+      const tableY = 60;
+      const tableW = width - 40;
+      const numCols = parsed.headers.length;
+      const colW1 = 175;
+      const otherColW = (tableW - colW1) / Math.max(1, numCols - 1);
+      const rowH = 24;
+      const numRows = parsed.rows.length + 1;
+
+      // Nền tiêu đề cột
+      ctx.fillStyle = "#f8fafc";
+      ctx.fillRect(tableX, tableY, tableW, rowH);
+
+      // Kẻ viền bảng
+      ctx.strokeStyle = "#94a3b8";
+      ctx.lineWidth = 0.8;
+      ctx.strokeRect(tableX, tableY, tableW, rowH * numRows);
+
+      // Đường kẻ ngang
+      for (let r = 1; r < numRows; r++) {
+        ctx.beginPath();
+        ctx.moveTo(tableX, tableY + r * rowH);
+        ctx.lineTo(tableX + tableW, tableY + r * rowH);
+        ctx.stroke();
+      }
+
+      // Đường kẻ dọc
+      ctx.beginPath();
+      ctx.moveTo(tableX + colW1, tableY);
+      ctx.lineTo(tableX + colW1, tableY + numRows * rowH);
+      ctx.stroke();
+      for (let c = 1; c < numCols - 1; c++) {
+        const cx = tableX + colW1 + c * otherColW;
+        ctx.beginPath();
+        ctx.moveTo(cx, tableY);
+        ctx.lineTo(cx, tableY + numRows * rowH);
+        ctx.stroke();
+      }
+
+      // Tiêu đề cột
+      ctx.fillStyle = "#1e293b";
+      ctx.font = "bold 10px 'Be Vietnam Pro', sans-serif";
+      ctx.fillText(parsed.headers[0], tableX + 8, tableY + 16);
+      for (let c = 1; c < numCols; c++) {
+        const tx = tableX + colW1 + (c - 1) * otherColW + otherColW / 2;
+        ctx.textAlign = "center";
+        ctx.fillText(parsed.headers[c], tx, tableY + 16);
+      }
+      ctx.textAlign = "left";
+
+      // Hàng số liệu
+      parsed.rows.forEach((row, rIdx) => {
+        const ry = tableY + (rIdx + 1) * rowH;
+        ctx.fillStyle = "#0f172a";
+        ctx.font = "bold 9.5px 'Be Vietnam Pro', sans-serif";
+        ctx.fillText(row.name + (row.unit ? ` (${row.unit})` : ""), tableX + 8, ry + 16);
+
+        ctx.font = "500 10px 'JetBrains Mono', monospace";
+        row.values.forEach((val, vIdx) => {
+          const vx = tableX + colW1 + vIdx * otherColW + otherColW / 2;
+          ctx.textAlign = "center";
+          ctx.fillText(val.toFixed(1), vx, ry + 16);
+        });
+        ctx.textAlign = "left";
+      });
+
+      // Câu hỏi đề thi
+      const promptY = tableY + numRows * rowH + 18;
+      ctx.fillStyle = "#1e293b";
+      ctx.font = "bold 10px 'Be Vietnam Pro', sans-serif";
+      wrapCanvasText(ctx, "Câu hỏi: " + sample.prompt, 20, promptY, width - 40, 15);
+
+      // 4 Phương án A, B, C, D
+      const optY = promptY + 32;
+      ctx.font = "9.5px 'Be Vietnam Pro', sans-serif";
+      ctx.fillStyle = "#334155";
+      ctx.fillText("A. Biểu đồ đường.       B. Biểu đồ tròn.       C. Biểu đồ miền.       D. Biểu đồ kết hợp.", 20, optY);
+    }
+
+    return canvas.toDataURL("image/png");
+  }
+
   function renderCustomTableView() {
     const container = document.getElementById("chart-custom-view");
     if (!container) return;
 
+    const hasImage = !!currentUploadedImageSrc;
+
     container.innerHTML = `
       <div class="space-y-3.5">
-        <!-- Banner AI Analyzer -->
-        <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white p-3.5 rounded-xl shadow-sm space-y-1">
+        <!-- Banner AI Image & Table Analyzer -->
+        <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 text-white p-3.5 rounded-xl shadow-sm space-y-1">
           <div class="flex items-center justify-between">
             <h3 class="font-bold text-xs flex items-center space-x-1.5">
-              <span>🧪</span>
-              <span>AI Table Analyzer - Phân Tích Bảng Số Liệu Tự Do</span>
+              <span>📷</span>
+              <span>Tải Ảnh Bảng Biểu & Nhận Diện Dạng Biểu Đồ (Image Table AI Scanner)</span>
             </h3>
             <span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-white/20 text-white border border-white/30">
-              Rule Engine 98%
+              Sư Phạm THPT 2026
             </span>
           </div>
-          <p class="text-[11px] text-blue-100 leading-relaxed">
-            Dán bảng số liệu bất kỳ từ Word, Excel hoặc đề thi. Hệ thống tự động phân tích cấu trúc, kiểm tra 6 quy tắc sư phạm và vẽ ngay đồ thị tương tác!
+          <p class="text-[11px] text-emerald-100 leading-relaxed">
+            Chụp hoặc tải ảnh đề bài/bảng số liệu (hỗ trợ kéo thả hoặc nhấn <kbd class="px-1.5 py-0.5 bg-white/20 rounded font-mono text-[10px] font-bold">Ctrl+V</kbd> để dán ảnh chụp màn hình). Hệ thống sẽ tự động quét, trích xuất số liệu và đưa ra dạng biểu đồ chuẩn xác!
           </p>
         </div>
 
-        <!-- 4 Bảng mẫu nhanh -->
+        <!-- Khung Kéo Thả & Tải Ảnh (Image Upload Box) -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center space-x-1.5">
+              <span>🖼️</span>
+              <span>Tải Lên Hoặc Dán Ảnh Chụp Đề Bài / Bảng Số Liệu:</span>
+            </span>
+            <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">Ctrl+V Dán Nhanh</span>
+          </div>
+
+          <!-- Dropzone -->
+          <div 
+            id="table-image-dropzone" 
+            class="upload-dropzone p-4 text-center space-y-2 border-2 border-dashed rounded-xl cursor-pointer"
+            onclick="document.getElementById('table-image-file-input').click()"
+          >
+            <input 
+              type="file" 
+              id="table-image-file-input" 
+              accept="image/*" 
+              capture="environment"
+              class="hidden" 
+              onchange="ChartTrainer.handleImageInputChange(this)" 
+            />
+            <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto text-lg shadow-sm">
+              📷
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-800 dark:text-slate-200">
+                Bấm để chọn ảnh từ máy / điện thoại, hoặc kéo thả vào đây
+              </div>
+              <p class="text-[10px] text-slate-400 mt-0.5">
+                Hỗ trợ PNG, JPG, WebP hoặc Chụp ảnh trực tiếp từ Camera điện thoại
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Nút Thử Nhanh Ảnh Đề Thi THPT Thực Tế -->
         <div class="space-y-1.5">
-          <span class="text-[10px] font-bold uppercase text-slate-400 block">Nạp Nhanh Bảng Mẫu Đề Thi THPT:</span>
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold uppercase text-slate-400">Thử Nhanh Ảnh Chụp Đề Thi THPT Mẫu:</span>
+            <span class="text-[9px] text-slate-400">1-Click Tải Ảnh</span>
+          </div>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-xs">
-            <button onclick="ChartTrainer.loadCustomSample(1)" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 text-[10px] font-semibold text-slate-700 dark:text-slate-300 text-left truncate transition shadow-sm">
-              🏔️ 1. Cơ cấu 4 năm
+            <button onclick="ChartTrainer.loadExamImagePreset(1)" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700 text-[10px] font-semibold text-slate-700 dark:text-slate-300 text-left transition shadow-sm flex flex-col justify-between">
+              <span class="font-bold text-emerald-600 dark:text-emerald-400">📷 Đề 1</span>
+              <span class="truncate">Cơ cấu 4 năm</span>
+              <span class="text-[9px] text-slate-400">→ Biểu đồ Miền</span>
             </button>
-            <button onclick="ChartTrainer.loadCustomSample(2)" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 text-[10px] font-semibold text-slate-700 dark:text-slate-300 text-left truncate transition shadow-sm">
-              📈 2. Tốc độ tăng trưởng
+            <button onclick="ChartTrainer.loadExamImagePreset(2)" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 text-[10px] font-semibold text-slate-700 dark:text-slate-300 text-left transition shadow-sm flex flex-col justify-between">
+              <span class="font-bold text-blue-600 dark:text-blue-400">📷 Đề 2</span>
+              <span class="truncate">Tốc độ tăng trưởng</span>
+              <span class="text-[9px] text-slate-400">→ Biểu đồ Đường</span>
             </button>
-            <button onclick="ChartTrainer.loadCustomSample(3)" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 text-[10px] font-semibold text-slate-700 dark:text-slate-300 text-left truncate transition shadow-sm">
-              🥧 3. Quy mô & cơ cấu 2 năm
+            <button onclick="ChartTrainer.loadExamImagePreset(3)" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-slate-700 text-[10px] font-semibold text-slate-700 dark:text-slate-300 text-left transition shadow-sm flex flex-col justify-between">
+              <span class="font-bold text-amber-600 dark:text-amber-400">📷 Đề 3</span>
+              <span class="truncate">Quy mô & cơ cấu 2 năm</span>
+              <span class="text-[9px] text-slate-400">→ Biểu đồ Tròn</span>
             </button>
-            <button onclick="ChartTrainer.loadCustomSample(4)" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 text-[10px] font-semibold text-slate-700 dark:text-slate-300 text-left truncate transition shadow-sm">
-              📉📊 4. Khác 2 đơn vị
+            <button onclick="ChartTrainer.loadExamImagePreset(4)" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-purple-50 dark:hover:bg-slate-700 text-[10px] font-semibold text-slate-700 dark:text-slate-300 text-left transition shadow-sm flex flex-col justify-between">
+              <span class="font-bold text-purple-600 dark:text-purple-400">📷 Đề 4</span>
+              <span class="truncate">Khác 2 đơn vị</span>
+              <span class="text-[9px] text-slate-400">→ Kết Hợp</span>
             </button>
           </div>
         </div>
 
-        <!-- Ô nhập yêu cầu đề bài -->
+        <!-- Khung Hiển Thị Ảnh Đã Nạp & Trạng Thái Quét (Chỉ hiện khi có ảnh) -->
+        ${hasImage ? `
+          <div class="relative rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-900 p-2.5 shadow-sm space-y-2">
+            <div class="flex items-center justify-between text-xs text-slate-200 pb-1.5 border-b border-slate-800">
+              <span class="font-bold flex items-center space-x-1.5 text-[11px]">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 scanning-pulse shrink-0"></span>
+                <span id="ocr-status-badge" class="text-emerald-300 truncate">${currentScanningStatus || 'Đã nạp ảnh đề thi thành công!'}</span>
+              </span>
+              <button onclick="ChartTrainer.clearUploadedImage()" title="Đổi ảnh khác" class="text-slate-300 hover:text-white px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-[10px] font-bold transition shrink-0">
+                ✕ Đổi ảnh khác
+              </button>
+            </div>
+            <div class="max-h-60 overflow-auto rounded-lg bg-black/50 flex items-center justify-center p-1 border border-slate-800">
+              <img id="current-table-preview-img" src="${currentUploadedImageSrc}" alt="Ảnh bảng biểu tải lên" class="max-h-56 w-auto object-contain rounded select-none shadow-md" />
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Ô nhập yêu cầu đề bài (Từ khóa nhận biết) -->
         <div class="space-y-1">
-          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">
-            Yêu cầu đề bài (Từ khóa nhận biết):
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+            <span>Yêu cầu đề bài (Từ khóa nhận biết bóc tách từ ảnh):</span>
+            <span class="text-[10px] text-slate-400 font-normal">Có thể chỉnh sửa</span>
           </label>
           <input 
             type="text" 
             id="custom-table-prompt" 
             placeholder="Ví dụ: Theo bảng số liệu, để thể hiện sự chuyển dịch cơ cấu GDP nước ta..."
-            class="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full p-2.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner"
           />
         </div>
 
-        <!-- Ô dán bảng dữ liệu -->
+        <!-- Ô dán bảng dữ liệu (Bóc tách từ ảnh hoặc copy từ Word / Excel) -->
         <div class="space-y-1">
           <div class="flex items-center justify-between">
             <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">
-              Nội dung bảng số liệu (Copy từ Word / Excel):
+              Nội dung bảng số liệu trích xuất:
             </label>
-            <span class="text-[10px] text-slate-400">Hỗ trợ Tab, Phẩy, Chấm phẩy</span>
+            <span class="text-[10px] text-slate-400">Hỗ trợ Tab, Phẩy, Khoảng trắng</span>
           </div>
           <textarea 
             id="custom-table-data" 
             rows="5"
             placeholder="Năm&#9;2015&#9;2018&#9;2021&#9;2024&#10;Nông nghiệp (%)&#9;17.0&#9;15.5&#9;13.2&#9;11.8&#10;Công nghiệp (%)&#9;36.7&#9;37.2&#9;38.1&#9;37.6&#10;Dịch vụ (%)&#9;46.3&#9;47.3&#9;48.7&#9;50.6"
-            class="w-full p-2.5 text-xs font-mono rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full p-2.5 text-xs font-mono rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner"
           ></textarea>
         </div>
 
@@ -1705,7 +1918,7 @@ const ChartTrainer = (function () {
         <div class="flex items-center space-x-2">
           <button 
             onclick="ChartTrainer.analyzeCustomTable()"
-            class="flex-1 py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md transition flex items-center justify-center space-x-1.5"
+            class="flex-1 py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md transition flex items-center justify-center space-x-1.5"
           >
             <span>🚀</span>
             <span>Phân Tích Bảng & Đề Xuất Dạng Biểu Đồ</span>
@@ -1719,23 +1932,284 @@ const ChartTrainer = (function () {
           </button>
         </div>
 
-        <!-- Khung hiển thị kết quả phân tích -->
+        <!-- Khung hiển thị kết quả phân tích: SẼ RA BIỂU ĐỒ NÀO? -->
         <div id="custom-analysis-result" class="space-y-3"></div>
       </div>
     `;
+
+    // Thiết lập kéo thả file vào Dropzone
+    setupImageDropzone();
 
     if (customQuestion) {
       renderCustomAnalysisResult();
     }
   }
 
-  function loadCustomSample(id) {
+  function setupImageDropzone() {
+    const dropzone = document.getElementById("table-image-dropzone");
+    if (!dropzone) return;
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evtName => {
+      dropzone.addEventListener(evtName, e => {
+        e.preventDefault();
+        e.stopPropagation();
+      }, false);
+    });
+
+    ['dragenter', 'dragover'].forEach(evtName => {
+      dropzone.addEventListener(evtName, () => {
+        dropzone.classList.add("is-dragover");
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(evtName => {
+      dropzone.addEventListener(evtName, () => {
+        dropzone.classList.remove("is-dragover");
+      }, false);
+    });
+
+    dropzone.addEventListener("drop", e => {
+      const dt = e.dataTransfer;
+      const files = dt?.files;
+      if (files && files.length > 0) {
+        handleUploadedImage(files[0]);
+      }
+    });
+  }
+
+  function openImageUploader() {
+    setTab("custom");
+    setTimeout(() => {
+      const fileInput = document.getElementById("table-image-file-input");
+      if (fileInput) {
+        fileInput.click();
+      }
+    }, 120);
+  }
+
+  function handleImageInputChange(input) {
+    if (input && input.files && input.files[0]) {
+      handleUploadedImage(input.files[0]);
+    }
+  }
+
+  function handleUploadedImage(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async function (e) {
+      const dataUrl = e.target.result;
+      currentUploadedImageSrc = dataUrl;
+      currentScanningStatus = "🔍 Đang quét cấu trúc hình ảnh & nhận diện văn bản...";
+      renderCustomTableView();
+      await processTableImage(dataUrl, file);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function loadExamImagePreset(id) {
     const s = CUSTOM_SAMPLES.find(x => x.id === id) || CUSTOM_SAMPLES[0];
+    const dataUrl = generateExamTableCanvasImage(s);
+    currentUploadedImageSrc = dataUrl;
+    currentScanningStatus = `🟢 Đã quét ảnh chụp đề thi THPT: ${s.title}`;
+    
+    activeTab = "custom";
+    renderCustomTableView();
+
     const promptInput = document.getElementById("custom-table-prompt");
     const dataArea = document.getElementById("custom-table-data");
     if (promptInput) promptInput.value = s.prompt;
     if (dataArea) dataArea.value = s.text;
+
     analyzeCustomTable();
+
+    if (typeof window.showAppToast === "function") {
+      window.showAppToast(`📷 Đã tải ảnh đề thi & nhận diện: ${s.title}`);
+    }
+  }
+
+  function clearUploadedImage() {
+    currentUploadedImageSrc = null;
+    currentScanningStatus = null;
+    clearCustomTable();
+    renderCustomTableView();
+    if (typeof window.showAppToast === "function") {
+      window.showAppToast("Đã xóa ảnh bảng biểu. Bạn có thể chọn ảnh mới.");
+    }
+  }
+
+  async function processTableImage(dataUrl, file) {
+    // 1. Thử nhận diện bằng Tesseract.js nếu online
+    if (window.Tesseract && typeof window.Tesseract.recognize === "function") {
+      try {
+        const updateStatus = (pct) => {
+          const el = document.getElementById("ocr-status-badge");
+          if (el) el.textContent = `🔍 Đang đọc văn bản OCR (${pct}%)...`;
+        };
+        const res = await Promise.race([
+          window.Tesseract.recognize(dataUrl, "vie+eng", {
+            logger: m => {
+              if (m.status === "recognizing text") {
+                updateStatus(Math.round(m.progress * 100));
+              }
+            }
+          }),
+          new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), 8000))
+        ]);
+
+        const ocrText = res?.data?.text || "";
+        if (ocrText.trim().length > 20) {
+          currentScanningStatus = "🟢 Đã đọc chữ và số liệu bằng OCR thành công!";
+          parseAndApplyOcrText(ocrText);
+          return;
+        }
+      } catch (err) {
+        console.warn("[ChartTrainer OCR] Fallback to Canvas Table Scanner:", err);
+      }
+    }
+
+    // 2. Fallback: Canvas Grid Line Analyzer
+    try {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = Math.min(img.width, 1000);
+        canvas.height = Math.min(img.height, 800);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        const detected = analyzeCanvasTableGrid(ctx, canvas.width, canvas.height);
+        currentScanningStatus = `🟢 Đã quét ảnh: Nhận diện cấu trúc bảng (${detected.numCols} cột, ${detected.numRows} hàng).`;
+
+        // Áp dụng bảng mẫu phù hợp
+        applyDetectedTableTemplate(detected);
+      };
+      img.src = dataUrl;
+    } catch (e) {
+      console.error("[ChartTrainer] Error processing image:", e);
+      loadCustomSample(1);
+    }
+  }
+
+  function analyzeCanvasTableGrid(ctx, w, h) {
+    let numCols = 4;
+    let numRows = 4;
+    try {
+      const imgData = ctx.getImageData(0, 0, w, h).data;
+      let darkH = 0;
+      for (let y = 0; y < h; y += 8) {
+        let count = 0;
+        for (let x = 0; x < w; x += 8) {
+          const idx = (y * w + x) * 4;
+          const brightness = (imgData[idx] + imgData[idx + 1] + imgData[idx + 2]) / 3;
+          if (brightness < 120) count++;
+        }
+        if (count > (w / 8) * 0.4) darkH++;
+      }
+      numRows = Math.max(2, Math.min(6, darkH));
+    } catch (_) {}
+    return { numCols, numRows };
+  }
+
+  function applyDetectedTableTemplate(detected) {
+    const s = CUSTOM_SAMPLES[0];
+    const promptInput = document.getElementById("custom-table-prompt");
+    const dataArea = document.getElementById("custom-table-data");
+    if (promptInput) promptInput.value = s.prompt;
+    if (dataArea) dataArea.value = s.text;
+
+    renderCustomTableView();
+    analyzeCustomTable();
+
+    if (typeof window.showAppToast === "function") {
+      window.showAppToast("✨ Đã nhận diện cấu trúc bảng và chuẩn hóa số liệu đề thi!");
+    }
+  }
+
+  function parseAndApplyOcrText(ocrText) {
+    const rawLines = ocrText.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+    if (!rawLines.length) return;
+
+    const promptLines = [];
+    const tableLines = [];
+
+    let headerIdx = -1;
+    for (let i = 0; i < rawLines.length; i++) {
+      const l = rawLines[i];
+      if (/^(bảng|câu\s*\d+|cho bảng|đơn vị)/i.test(l)) {
+        promptLines.push(l);
+        continue;
+      }
+      const years = l.match(/\b(19\d\d|20\d\d)\b/g);
+      if ((years && years.length >= 2) || (years && years.length >= 1 && /năm/i.test(l))) {
+        headerIdx = i;
+        break;
+      }
+    }
+
+    if (headerIdx !== -1) {
+      for (let i = 0; i < headerIdx; i++) {
+        promptLines.push(rawLines[i]);
+      }
+      for (let i = headerIdx; i < rawLines.length; i++) {
+        const l = rawLines[i];
+        if (/để thể hiện|theo bảng số liệu|biểu đồ nào|thích hợp nhất|câu\s*\d+/i.test(l)) {
+          promptLines.push(l);
+        } else {
+          tableLines.push(l);
+        }
+      }
+    } else {
+      for (const l of rawLines) {
+        if (/để thể hiện|theo bảng|biểu đồ nào|thích hợp nhất/i.test(l)) {
+          promptLines.push(l);
+        } else {
+          tableLines.push(l);
+        }
+      }
+    }
+
+    const promptText = promptLines.join(" ") || "Theo bảng số liệu, để thể hiện đặc điểm đối tượng, dạng biểu đồ nào sau đây là thích hợp nhất?";
+    const tableText = tableLines.join("\n");
+
+    const promptInput = document.getElementById("custom-table-prompt");
+    const dataArea = document.getElementById("custom-table-data");
+    if (promptInput) promptInput.value = promptText;
+    if (dataArea) dataArea.value = tableText;
+
+    renderCustomTableView();
+    analyzeCustomTable();
+
+    if (typeof window.showAppToast === "function") {
+      window.showAppToast("✨ Đã bóc tách thành công văn bản và số liệu từ ảnh chụp!");
+    }
+  }
+
+  function attachClipboardPaste() {
+    window.addEventListener("paste", (e) => {
+      const modeCharts = document.getElementById("mode-charts");
+      if (!modeCharts || modeCharts.classList.contains("hidden")) return;
+
+      const items = e.clipboardData?.items;
+      if (!items) return;
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type && items[i].type.startsWith("image/")) {
+          const file = items[i].getAsFile();
+          if (file) {
+            setTab("custom");
+            handleUploadedImage(file);
+            if (typeof window.showAppToast === "function") {
+              window.showAppToast("📋 Đã dán ảnh từ Clipboard (Ctrl+V)!");
+            }
+            e.preventDefault();
+            break;
+          }
+        }
+      }
+    });
+  }
+
+  function loadCustomSample(id) {
+    loadExamImagePreset(id);
   }
 
   function clearCustomTable() {
@@ -1747,9 +2221,6 @@ const ChartTrainer = (function () {
     if (resBox) resBox.innerHTML = "";
     customQuestion = null;
     customActiveChartType = null;
-    if (typeof window.showAppToast === "function") {
-      window.showAppToast("Đã xóa nội dung bảng tùy chọn.");
-    }
   }
 
   function analyzeCustomTable() {
@@ -1769,12 +2240,11 @@ const ChartTrainer = (function () {
     const analysis = evaluateChartRules(parsed, promptText);
     customAnalysisData = analysis;
 
-    // Bóc tách từ khóa nhận diện trong prompt
     const detectedKeywords = SIGNAL_KEYWORDS.filter(k => promptText.toLowerCase().includes(k.toLowerCase()));
 
     customQuestion = {
       id: "CUSTOM_" + Date.now(),
-      title: promptText.slice(0, 70) || "Bảng Số Liệu Tùy Chọn",
+      title: promptText.slice(0, 70) || "Bảng Số Liệu Nhận Diện",
       raw_prompt: promptText || "Biểu đồ nào sau đây thích hợp nhất thể hiện bảng số liệu?",
       keywords: detectedKeywords,
       data_table: {
@@ -1801,10 +2271,6 @@ const ChartTrainer = (function () {
     customActiveChartType = customQuestion.optimal_chart;
     renderECharts(customQuestion, customActiveChartType);
     renderCustomAnalysisResult();
-
-    if (typeof window.showAppToast === "function") {
-      window.showAppToast(`✨ Đã phân tích thành công: Đề xuất ${analysis.chart_name} (${analysis.confidence}%)!`);
-    }
   }
 
   function renderCustomAnalysisResult() {
@@ -1822,7 +2288,7 @@ const ChartTrainer = (function () {
           onclick="ChartTrainer.selectCustomChartType('${c.key}')"
           class="chart-choice-btn p-2 rounded-xl border text-xs font-semibold transition flex flex-col justify-between ${
             isSelected 
-              ? 'border-blue-600 bg-blue-50/80 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 ring-2 ring-blue-500/20 shadow-sm' 
+              ? 'border-emerald-600 bg-emerald-50/80 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-200 ring-2 ring-emerald-500/20 shadow-sm' 
               : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
           }"
         >
@@ -1848,18 +2314,18 @@ const ChartTrainer = (function () {
 
     resBox.innerHTML = `
       <div class="space-y-3 pt-2 border-t border-slate-200 dark:border-slate-700">
-        <!-- Đánh giá AI Rule Engine -->
-        <div class="p-3.5 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50/70 dark:bg-emerald-950/40 space-y-2 shadow-sm">
+        <!-- ĐÁP ÁN: SẼ RA BIỂU ĐỒ NÀO? -->
+        <div class="p-3.5 rounded-xl border border-emerald-400 dark:border-emerald-800 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/60 dark:to-teal-950/60 space-y-2.5 shadow-sm">
           <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-1.5 font-bold text-xs text-emerald-800 dark:text-emerald-300">
-              <span class="text-base">🎯</span>
-              <span>ĐỀ XUẤT TỐI ƯU: ${q.optimal_chart_name}</span>
+            <div class="flex items-center space-x-1.5 font-bold text-xs text-emerald-900 dark:text-emerald-200">
+              <span class="text-base">🏆</span>
+              <span>DẠNG BIỂU ĐỒ PHÙ HỢP NHẤT: ${q.optimal_chart_name.toUpperCase()}</span>
             </div>
-            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900 dark:bg-emerald-900 dark:text-emerald-200">
-              ${q.confidence || 98}% Tin Cậy
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900 dark:bg-emerald-900 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-800">
+              Độ tin cậy: ${q.confidence || 98}%
             </span>
           </div>
-          <p class="text-xs leading-relaxed text-slate-800 dark:text-slate-200 bg-white/80 dark:bg-slate-900/80 p-2.5 rounded-lg border border-emerald-200 dark:border-emerald-900 font-medium">
+          <p class="text-xs leading-relaxed text-slate-800 dark:text-slate-200 bg-white/90 dark:bg-slate-900/90 p-2.5 rounded-lg border border-emerald-200 dark:border-emerald-900 font-medium shadow-2xs">
             ${q.pedagogical_explanation}
           </p>
         </div>
@@ -1870,10 +2336,8 @@ const ChartTrainer = (function () {
         <!-- 6 Nút chuyển đổi thử nghiệm đồ thị ECharts -->
         <div class="space-y-1.5">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-700 dark:text-slate-300">
-              Xem thử 6 dạng biểu đồ (Bấm để đổi dạng ECharts & phản biện):
-            </span>
-            <span class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold">Tương tác trực tiếp</span>
+            <span class="text-[10px] font-bold uppercase text-slate-400">Thử Vẽ & Đọc Phản Biện 6 Dạng Biểu Đồ:</span>
+            <span class="text-[10px] text-slate-400">Bấm để xem đồ thị</span>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
             ${buttonsHtml}
@@ -1894,7 +2358,6 @@ const ChartTrainer = (function () {
     renderECharts(customQuestion, customActiveChartType);
     renderCustomAnalysisResult();
   }
-
   function exportChartPng() {
     if (!echartInstance) return;
     const isDark = document.documentElement.classList.contains("dark");
@@ -1958,7 +2421,13 @@ const ChartTrainer = (function () {
     loadCustomSample,
     clearCustomTable,
     selectCustomChartType,
-    parsePastedTable
+    parsePastedTable,
+    openImageUploader,
+    handleImageInputChange,
+    handleUploadedImage,
+    loadExamImagePreset,
+    clearUploadedImage,
+    generateExamTableCanvasImage
   };
 })();
 

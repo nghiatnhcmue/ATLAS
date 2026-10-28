@@ -49,6 +49,9 @@
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 
+<!-- Tesseract.js CDN (Client-side OCR for Chart Table Image Recognition) -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js" defer></script>
+
   <!-- Anti-cache meta headers for live updates -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -679,6 +682,9 @@
             <span class="text-[10px] text-slate-400 font-medium hidden sm:inline">ECharts Responsive</span>
           </div>
           <div class="flex items-center space-x-1 sm:space-x-1.5">
+            <button id="btn-upload-table-image" onclick="ChartTrainer.openImageUploader()" title="Tải ảnh chụp bảng biểu / đề bài lên để hệ thống nhận diện dạng biểu đồ phù hợp" class="px-2 sm:px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-[10px] sm:text-[11px] font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900 flex items-center space-x-1 transition shadow-sm">
+              <span>📷</span> <span class="hidden sm:inline">Tải Ảnh Bảng Biểu</span>
+            </button>
             <button onclick="ChartTrainer.exportChartPng()" title="Tải ảnh PNG chất lượng cao (2x DPI)" class="px-2 sm:px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[10px] sm:text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center space-x-1 transition shadow-sm">
               <span>📸</span> <span class="hidden md:inline">Tải ảnh</span>
             </button>

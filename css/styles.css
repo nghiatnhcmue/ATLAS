@@ -1181,3 +1181,50 @@ body.split-resizing #chart-visual-canvas {
     order: 2 !important;
   }
 }
+
+/* ====================================================================== */
+/* IMAGE TABLE SCANNER & OCR DROPZONE STYLES                              */
+/* ====================================================================== */
+.upload-dropzone {
+  position: relative;
+  border: 2px dashed #cbd5e1;
+  border-radius: 1rem;
+  background-color: #f8fafc;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.dark .upload-dropzone {
+  border-color: #334155;
+  background-color: #0f172a;
+}
+
+.upload-dropzone:hover,
+.upload-dropzone.is-dragover {
+  border-color: #10b981; /* emerald-500 */
+  background-color: rgba(16, 185, 129, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px rgba(16, 185, 129, 0.15);
+}
+
+.dark .upload-dropzone:hover,
+.dark .upload-dropzone.is-dragover {
+  border-color: #34d399; /* emerald-400 */
+  background-color: rgba(16, 185, 129, 0.1);
+  box-shadow: 0 4px 12px -2px rgba(16, 185, 129, 0.25);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.15);
+  }
+}
+
+.scanning-pulse {
+  animation: pulseGlow 1.8s infinite ease-in-out;
+}

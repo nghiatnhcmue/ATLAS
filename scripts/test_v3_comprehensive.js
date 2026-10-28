@@ -327,6 +327,45 @@ check("BUG-45", "Bố cục 2 Cột Tùy Biến: Cột Trái rộng rãi, Cột 
   assert(atlasEngine.includes("is-split-right"), "atlas-engine.js uses is-split-right for 50:50 split mode");
 });
 
+// 18. BUG-46: Tải ảnh bảng biểu đề bài lên nhận diện dạng biểu đồ (Image Table OCR & Rule Engine)
+check("BUG-46", "Nhận dạng biểu đồ: Tải ảnh bảng biểu đề bài lên đề xuất biểu đồ tối ưu", () => {
+  const indexHtml = fs.readFileSync("index.html", "utf-8");
+  const html200 = fs.readFileSync("200.html", "utf-8");
+  assert.strictEqual(indexHtml, html200, "index.html and 200.html must remain 100% strictly identical down to the byte");
+
+  // Check UI elements in HTML
+  assert(indexHtml.includes('id="btn-upload-table-image"'), "btn-upload-table-image exists in toolbar");
+  assert(indexHtml.includes('tesseract.min.js'), "tesseract.min.js CDN included in head");
+
+  // Check CSS styles
+  const css = fs.readFileSync("css/styles.css", "utf-8");
+  assert(css.includes(".upload-dropzone"), "css contains .upload-dropzone");
+  assert(css.includes(".scanning-pulse"), "css contains .scanning-pulse");
+
+  // Check JavaScript functions and exports
+  const trainerCode = fs.readFileSync("js/chart-trainer.js", "utf-8");
+  const requiredFuncs = [
+    "openImageUploader",
+    "handleImageInputChange",
+    "handleUploadedImage",
+    "loadExamImagePreset",
+    "clearUploadedImage",
+    "generateExamTableCanvasImage",
+    "processTableImage",
+    "parseAndApplyOcrText",
+    "attachClipboardPaste"
+  ];
+  requiredFuncs.forEach(fn => {
+    assert(trainerCode.includes(fn), `js/chart-trainer.js must implement ${fn}`);
+  });
+
+  // Verify that the 4 exam presets exist
+  assert(trainerCode.includes('Chuyển dịch cơ cấu GDP 4 năm'), "Custom sample 1 exists");
+  assert(trainerCode.includes('Tốc độ tăng trưởng than, dầu, khí'), "Custom sample 2 exists");
+  assert(trainerCode.includes('Quy mô và cơ cấu 2 năm'), "Custom sample 3 exists");
+  assert(trainerCode.includes('Sản lượng & Giá trị khác đơn vị'), "Custom sample 4 exists");
+});
+
 console.log("======================================================================");
 console.log(`  RESULT: ${passed}/${total} TESTS PASSED (${Math.round((passed/total)*100)}%)`);
 console.log("======================================================================");
